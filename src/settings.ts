@@ -2,11 +2,33 @@ import RSSTrackerPlugin from './main';
 import {PluginSettingTab, Setting, App} from 'obsidian';
 
 export interface RSSTrackerSettings {
-	mySetting: string;
+	feedTemplate: string;
+	itemTemplate: string;
 }
 
 export const DEFAULT_SETTINGS: RSSTrackerSettings = {
-	mySetting: 'default'
+	feedTemplate: `---
+feedurl:{{link}}
+itemlimit: 100
+updated: {{lastUpdate}}
+status: {{status}}"
+---
+
+> [!abstract] {{title}}
+> {{description}}
+
+`,
+	itemTemplate: `---
+author: {{author}}
+published: {{pubDate}}
+guid: {{guid}}
+read: false
+tags: [{{tags}}]
+---
+{{content}}
+- - -
+{{media}}
+`
 }
 
 export class RSSTrackerSettingTab extends PluginSettingTab {
@@ -19,18 +41,51 @@ export class RSSTrackerSettingTab extends PluginSettingTab {
 
 	display(): void {
 		const {containerEl} = this;
-
 		containerEl.empty();
 
+		// feed template setting
 		new Setting(containerEl)
-			.setName('Setting #1')
-			.setDesc('It\'s a secret')
-			.addText(text => text
-				.setPlaceholder('Enter your secret')
-				.setValue(this.plugin.settings.mySetting)
-				.onChange(async (value) => {
-					this.plugin.settings.mySetting = value;
+			.setName('Default RSS Feed Template')
+			.setDesc('Template for new RSS feed description markdown files.')
+			.addTextArea( ta => { ta
+					.setValue(this.plugin.settings.feedTemplate)
+					.onChange(async (value) => {
+						this.plugin.settings.feedTemplate = value;
+						await this.plugin.saveSettings();
+					});
+				ta.inputEl.style.width="100%";
+				ta.inputEl.rows = 10;
+				})
+			.addButton(btn => { btn
+				.setIcon("reset")
+				.setTooltip("Reset feed template to default")
+				.onClick(async evt => {
+					this.plugin.settings.feedTemplate = DEFAULT_SETTINGS.feedTemplate;
 					await this.plugin.saveSettings();
-				}));
+					this.display();
+				})
+			});
+		// item template setting
+		new Setting(containerEl)
+			.setName('Default RSS Item Template')
+			.setDesc('Template for new RSS item description markdown files.')
+			.addTextArea( ta => { ta
+					.setValue(this.plugin.settings.itemTemplate)
+					.onChange(async (value) => {
+						this.plugin.settings.itemTemplate = value;
+						await this.plugin.saveSettings();
+					});
+				ta.inputEl.style.width="100%";
+				ta.inputEl.rows = 10;
+				})
+			.addButton(btn => { btn
+				.setIcon("reset")
+				.setTooltip("Reset item template to default")
+				.onClick(async evt => {
+					this.plugin.settings.itemTemplate = DEFAULT_SETTINGS.itemTemplate;
+					await this.plugin.saveSettings();
+					this.display();
+				})
+			});
 	}
 }
