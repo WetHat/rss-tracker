@@ -50,7 +50,7 @@ export class EditorCommand implements Command {
 }
 
 /**
- * A simple command that can be triggered anywhere
+ * A complex command that can check whether the current state of the app allows execution of the command.
  */
 export class EditorComplexModalCommand implements Command {
     id = 'open-sample-modal-complex';
