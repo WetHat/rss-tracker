@@ -1,11 +1,22 @@
 import * as RssParser from 'rss-parser';
 
+export interface IRSSImage {
+    url: string;
+    width: string;
+    height: string;
+}
+
 export type TParserOptions = {[key: string] : any};
-export type TRssFeed = {[key: string] : any};
-type TRssFeedItem = {[key: string] : any};
+
+export type TRssFeedElement = {[key: string] : any};
+export type TRssFeed = TRssFeedElement
+type TRssFeedItem = TRssFeedElement;
+
+type TRssData = any[] | {[key: string] : any} | any;
 
 /**
- * A builder class to assembly anormalized
+ * A builder class to assembly a normalized RSS feed represenstion suitable
+ * for creating a usefull Markdown representation.
  */
 export default class TrackedFeed {
     static readonly DEFAULT_OPTIONS: TParserOptions = {
@@ -26,6 +37,20 @@ export default class TrackedFeed {
         this.parser = new RssParser(options);
     }
 
+    private assembleImage(element: TRssFeedElement): IRSSImage  {
+        let img: TRssData = element.image || element['media:thumbnail'] || element["media:group"]?.["media:thumbnail"] || {};
+        if (Array.isArray(img)) {
+            img = img[0];
+        }
+        img = img["$"] || img;
+
+        return {
+            url: img["url"],
+            width: img["width"],
+            height: img["height"]
+        };
+    }
+
     private assembleFeed(feed :TRssFeed) :TRssFeed {
         let cooked: TRssFeed = {};
 
@@ -35,7 +60,7 @@ export default class TrackedFeed {
         cooked["siteUrl"] = feed.link;
         cooked["siteDescription"] = feed.description ?? "";
 
-        cooked["siteImage"] = feed.image?.url || feed['media:thumbnail'] || feed["media:group"]?.["media:thumbnail"] || "";
+        cooked["siteImage"] = this.assembleImage(feed);
 
         let items: TRssFeedItem[] = feed.items;
 
@@ -50,7 +75,7 @@ export default class TrackedFeed {
             cookedItem["itemAuthor"] = item.creator || item.author || item["dc:creator"] || "";
             cookedItem["itemPublished"] = item.isoDate;
             cookedItem["itemContent"] = item["content:encoded"] || "";
-            cookedItem["itemImage"] = item['media:thumbnail'] || item["media:group"]?.["media:thumbnail"] || "";
+            cookedItem["itemImage"] = this.assembleImage(item);
             cookedItem["itemTags"] = item["categories"] ?? [];
             return cookedItem;
         })

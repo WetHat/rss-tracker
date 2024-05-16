@@ -1,6 +1,7 @@
 import * as RssParser from 'rss-parser';
 /**
- * A builder class to assembly anormalized
+ * A builder class to assembly a normalized RSS feed represenstion suitable
+ * for creating a usefull Markdown representation.
  */
 export default class TrackedFeed {
     static DEFAULT_OPTIONS = {
@@ -17,6 +18,18 @@ export default class TrackedFeed {
     constructor(options = TrackedFeed.DEFAULT_OPTIONS) {
         this.parser = new RssParser.default(options);
     }
+    assembleImage(element) {
+        let img = element.image || element['media:thumbnail'] || element["media:group"]?.["media:thumbnail"] || {};
+        if (Array.isArray(img)) {
+            img = img[0];
+        }
+        img = img["$"] || img;
+        return {
+            url: img["url"],
+            width: img["width"],
+            height: img["height"]
+        };
+    }
     assembleFeed(feed) {
         let cooked = {};
         // canonical fields
@@ -24,7 +37,7 @@ export default class TrackedFeed {
         cooked["feedUrl"] = feed.feedUrl;
         cooked["siteUrl"] = feed.link;
         cooked["siteDescription"] = feed.description ?? "";
-        cooked["siteImage"] = feed.image?.url || feed['media:thumbnail'] || feed["media:group"]?.["media:thumbnail"] || "";
+        cooked["siteImage"] = this.assembleImage(feed);
         let items = feed.items;
         cooked['items'] = items.map(item => {
             let cookedItem = {};
@@ -36,7 +49,7 @@ export default class TrackedFeed {
             cookedItem["itemAuthor"] = item.creator || item.author || item["dc:creator"] || "";
             cookedItem["itemPublished"] = item.isoDate;
             cookedItem["itemContent"] = item["content:encoded"] || "";
-            cookedItem["itemImage"] = item['media:thumbnail'] || item["media:group"]?.["media:thumbnail"] || "";
+            cookedItem["itemImage"] = this.assembleImage(item);
             cookedItem["itemTags"] = item["categories"] ?? [];
             return cookedItem;
         });
