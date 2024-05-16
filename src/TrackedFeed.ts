@@ -51,6 +51,12 @@ export default class TrackedFeed {
         };
     }
 
+    private assembleDescription(element: TRssFeedElement): string {
+        let desc : string | string[] = element.description || element["media:description"] || element["media:group"]?.["media:description"] || "";
+
+        return Array.isArray(desc) ? desc.join(" ") : desc;
+    }
+
     private assembleFeed(feed :TRssFeed) :TRssFeed {
         let cooked: TRssFeed = {};
 
@@ -70,7 +76,7 @@ export default class TrackedFeed {
             // canonical fields
             cookedItem["itemTitle"] = item.title;
             cookedItem["itemUrl"] = item.link;
-            cookedItem["itemDescription"] = item.description || item["media:description"] || item["media:group"]?.["media:description"] || "";
+            cookedItem["itemDescription"] = this.assembleDescription(item);
             cookedItem["itemID"] = item.id || item.guid;
             cookedItem["itemAuthor"] = item.creator || item.author || item["dc:creator"] || "";
             cookedItem["itemPublished"] = item.isoDate;

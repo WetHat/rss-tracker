@@ -30,6 +30,10 @@ export default class TrackedFeed {
             height: img["height"]
         };
     }
+    assembleDescription(element) {
+        let desc = element.description || element["media:description"] || element["media:group"]?.["media:description"] || "";
+        return Array.isArray(desc) ? desc.join(" ") : desc;
+    }
     assembleFeed(feed) {
         let cooked = {};
         // canonical fields
@@ -44,7 +48,7 @@ export default class TrackedFeed {
             // canonical fields
             cookedItem["itemTitle"] = item.title;
             cookedItem["itemUrl"] = item.link;
-            cookedItem["itemDescription"] = item.description || item["media:description"] || item["media:group"]?.["media:description"] || "";
+            cookedItem["itemDescription"] = this.assembleDescription(item);
             cookedItem["itemID"] = item.id || item.guid;
             cookedItem["itemAuthor"] = item.creator || item.author || item["dc:creator"] || "";
             cookedItem["itemPublished"] = item.isoDate;
