@@ -1,13 +1,12 @@
 import * as RssParser from 'rss-parser';
 
-export interface ICustomRSSFields {
-    item: string[];
-}
-
 export type TParserOptions = {[key: string] : any};
 export type TRssFeed = {[key: string] : any};
-export type TRssFeedItem = {[key: string] : any};
+type TRssFeedItem = {[key: string] : any};
 
+/**
+ * A builder class to assembly anormalized
+ */
 export default class TrackedFeed {
     static readonly DEFAULT_OPTIONS: TParserOptions = {
         customFields: {
@@ -15,6 +14,8 @@ export default class TrackedFeed {
                 "media:group",
                 "media:thumbnail",
                 "media:description"
+            ],
+            feed: [
             ]
         }
     };
@@ -25,7 +26,7 @@ export default class TrackedFeed {
         this.parser = new RssParser(options);
     }
 
-    private normalizeFeed(feed :TRssFeed) :TRssFeed {
+    private assembleFeed(feed :TRssFeed) :TRssFeed {
         let cooked: TRssFeed = {};
 
         // canonical fields
@@ -34,7 +35,7 @@ export default class TrackedFeed {
         cooked["siteUrl"] = feed.link;
         cooked["siteDescription"] = feed.description ?? "";
 
-        cooked["siteImage"] = feed.image?.url ?? "";
+        cooked["siteImage"] = feed.image?.url || feed['media:thumbnail'] || feed["media:group"]?.["media:thumbnail"] || "";
 
         let items: TRssFeedItem[] = feed.items;
 
@@ -50,7 +51,7 @@ export default class TrackedFeed {
             cookedItem["itemPublished"] = item.isoDate;
             cookedItem["itemContent"] = item["content:encoded"] || "";
             cookedItem["itemImage"] = item['media:thumbnail'] || item["media:group"]?.["media:thumbnail"] || "";
-
+            cookedItem["itemTags"] = item["categories"] ?? [];
             return cookedItem;
         })
 
@@ -58,10 +59,10 @@ export default class TrackedFeed {
     }
 
     async parseUrl(url:string) : Promise<TRssFeed> {
-       return this.normalizeFeed(await this.parser.parseURL(url));
+       return this.assembleFeed(await this.parser.parseURL(url));
     }
 
     async parseString(xml:string) : Promise<TRssFeed>   {
-        return this.normalizeFeed(await this.parser.parseString(xml));
+        return this.assembleFeed(await this.parser.parseString(xml));
     }
 }
