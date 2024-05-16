@@ -52,7 +52,7 @@ if (feedSource.includes("//")) {
 }
 
 // update the feed. json
-fs.writeFileSync(path.join(testDir,"expected.json"),JSON.stringify(feed), {encoding:"utf8"});
+fs.writeFileSync(path.join(testDir,"expected.json"),JSON.stringify(feed,{encoding:"utf8"},4));
 
 console.log(`${testDir} feed updated!`);
 
