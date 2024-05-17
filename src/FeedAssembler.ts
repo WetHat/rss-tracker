@@ -211,11 +211,11 @@ export class TrackedRSSfeed {
      * @returns Feed obkect {TrackedRSSfeed} contaiing all relevant properties that
      *          were available in the feed.
      */
-    static assembleFromXml(xml:string,options: ReaderOptions =DEFAULT_OPTIONS) : TrackedRSSfeed {
+    static assembleFromXml(xml:string,options: ReaderOptions = DEFAULT_OPTIONS) : TrackedRSSfeed {
         return new TrackedRSSfeed(extractFromXml(xml,options));
     }
 
-    static async assembleFromUrl(url:string,options=DEFAULT_OPTIONS) : Promise<TrackedRSSfeed> {
+    static async assembleFromUrl(url:string,options: ReaderOptions = DEFAULT_OPTIONS) : Promise<TrackedRSSfeed> {
         return new TrackedRSSfeed(await extract(url,options));
     }
 
