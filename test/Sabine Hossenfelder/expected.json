@@ -1,234 +1,217 @@
 {
+    "feedDescription": "",
     "feedTitle": "Sabine Hossenfelder",
-    "feedUrl": "http://www.youtube.com/feeds/videos.xml?channel_id=UC1yNl2E66ZzKApQdRuTQ4tw",
-    "siteUrl": "https://www.youtube.com/channel/UC1yNl2E66ZzKApQdRuTQ4tw",
-    "siteDescription": "",
-    "siteImage": {},
+    "siteUrl": "http://www.youtube.com/feeds/videos.xml?channel_id=UC1yNl2E66ZzKApQdRuTQ4tw",
     "items": [
         {
-            "itemTitle": "Geothermal Power Everywhere: Tech Advances Rapidly",
-            "itemUrl": "https://www.youtube.com/watch?v=QByk4jJwp9c",
+            "itemTags": [],
             "itemDescription": "Learn more about your favourite subjects on Brilliant! First 30 days are free and 20% off the annual premium subscription when you use our link ➜  https://brilliant.org/sabine.\n\nGeothermal energy is everywhere, just right under our feet. So could it be the solution to climate change? I used to think it was just too difficult and expensive to make much sense in most places, but some recent advances have made me rethink. Let’s have a look.\n\n🤓 Check out my new quiz app ➜  http://quizwithit.com/\n💌 Support me on Donorbox ➜ https://donorbox.org/swtg\n📝 Transcripts and written news on Substack ➜ https://sciencewtg.substack.com/\n👉 Transcript with links to references on Patreon ➜ https://www.patreon.com/Sabine\n📩 Free weekly science newsletter  ➜ https://sabinehossenfelder.com/newsletter/\n👂 Audio only podcast ➜  https://open.spotify.com/show/0MkNfXlKnMPEUMEeKQYmYC\n🔗 Join this channel to get access to perks ➜\nhttps://www.youtube.com/channel/UC1yNl2E66ZzKApQdRuTQ4tw/join\n🖼️ On instagram ➜ https://www.instagram.com/sciencewtg/\n\n#science #sciencenews #tech #technews",
             "itemID": "yt:video:QByk4jJwp9c",
+            "itemTitle": "Geothermal Power Everywhere: Tech Advances Rapidly",
+            "itemUrl": "https://www.youtube.com/watch?v=QByk4jJwp9c",
+            "itemPublished": "2024-05-14T15:00:22+00:00",
             "itemAuthor": "Sabine Hossenfelder",
-            "itemPublished": "2024-05-14T15:00:22.000Z",
-            "itemContent": "",
             "itemImage": {
                 "url": "https://i2.ytimg.com/vi/QByk4jJwp9c/hqdefault.jpg",
                 "width": "480",
                 "height": "360"
-            },
-            "itemTags": []
+            }
         },
         {
-            "itemTitle": "Does \"Quark\" Rhyme With \"Dark\"?",
-            "itemUrl": "https://www.youtube.com/watch?v=_U3oIWQJqH0",
+            "itemTags": [],
             "itemDescription": "💌 Support me on Donorbox ➜ https://donorbox.org/swtg\n👉 Support me on Patreon ➜ https://www.patreon.com/Sabine\n📩 Free weekly science newsletter  ➜ https://sabinehossenfelder.com/newsletter/",
             "itemID": "yt:video:_U3oIWQJqH0",
+            "itemTitle": "Does \"Quark\" Rhyme With \"Dark\"?",
+            "itemUrl": "https://www.youtube.com/watch?v=_U3oIWQJqH0",
+            "itemPublished": "2024-05-13T15:00:35+00:00",
             "itemAuthor": "Sabine Hossenfelder",
-            "itemPublished": "2024-05-13T15:00:35.000Z",
-            "itemContent": "",
             "itemImage": {
                 "url": "https://i4.ytimg.com/vi/_U3oIWQJqH0/hqdefault.jpg",
                 "width": "480",
                 "height": "360"
-            },
-            "itemTags": []
+            }
         },
         {
-            "itemTitle": "Brain Really Uses Quantum Effects, New Study Finds",
-            "itemUrl": "https://www.youtube.com/watch?v=R6G1D2UQ3gg",
+            "itemTags": [],
             "itemDescription": "Start speaking a new language in 3 weeks with Babbel 🎉. Get up to 60% OFF your subscription ➡Here: https://bit.ly/sabinebabbel05\n\nWhen Roger Penrose originally came out with the idea that the human brain uses quantum effects in microtubules and that was the origin of consciousness, many thought the idea was a little crazy. According to a new study, it turns out that Penrose was actually right… about the microtubules anyways. Let’s have a look.\n\nPaper: https://pubs.acs.org/doi/10.1021/acs.jpcb.3c07936\n\n🤓 Check out my new quiz app ➜  http://quizwithit.com/\n💌 Support me on Donorbox ➜ https://donorbox.org/swtg\n📝 Transcripts and written news on Substack ➜ https://sciencewtg.substack.com/\n👉 Transcript with links to references on Patreon ➜ https://www.patreon.com/Sabine\n📩 Free weekly science newsletter  ➜ https://sabinehossenfelder.com/newsletter/\n👂 Audio only podcast ➜  https://open.spotify.com/show/0MkNfXlKnMPEUMEeKQYmYC\n🔗 Join this channel to get access to perks ➜\nhttps://www.youtube.com/channel/UC1yNl2E66ZzKApQdRuTQ4tw/join\n🖼️ On instagram ➜ https://www.instagram.com/sciencewtg/\n\n#science #sciencenews #quantum #biology",
             "itemID": "yt:video:R6G1D2UQ3gg",
+            "itemTitle": "Brain Really Uses Quantum Effects, New Study Finds",
+            "itemUrl": "https://www.youtube.com/watch?v=R6G1D2UQ3gg",
+            "itemPublished": "2024-05-12T15:00:18+00:00",
             "itemAuthor": "Sabine Hossenfelder",
-            "itemPublished": "2024-05-12T15:00:18.000Z",
-            "itemContent": "",
             "itemImage": {
                 "url": "https://i3.ytimg.com/vi/R6G1D2UQ3gg/hqdefault.jpg",
                 "width": "480",
                 "height": "360"
-            },
-            "itemTags": []
+            }
         },
         {
-            "itemTitle": "CERN Looks for Origins of Quantum Randomness",
-            "itemUrl": "https://www.youtube.com/watch?v=lt7a3wjf3qY",
+            "itemTags": [],
             "itemDescription": "Learn more about quantum mechanics from my course on Brilliant! First 30 days are free and 20% off the annual premium subscription when you use our link ➜  https://brilliant.org/sabine.\n\nParticle physics have conducted a test using data from the Large Hadron Collider at CERN to see if the particles in their collisions play by the rules of quantum physics - whether they have quantum entanglement. Why was this test conducted when previous tests already found that entanglement is real? Is it just nonsense or is it not nonsense? Let’s have a look.\n\nPaper: https://arxiv.org/abs/2311.07288\n\n🤓 Check out my new quiz app ➜  http://quizwithit.com/\n💌 Support me on Donorbox ➜ https://donorbox.org/swtg\n📝 Transcripts and written news on Substack ➜ https://sciencewtg.substack.com/\n👉 Transcript with links to references on Patreon ➜ https://www.patreon.com/Sabine\n📩 Free weekly science newsletter  ➜ https://sabinehossenfelder.com/newsletter/\n👂 Audio only podcast ➜  https://open.spotify.com/show/0MkNfXlKnMPEUMEeKQYmYC\n🔗 Join this channel to get access to perks ➜\nhttps://www.youtube.com/channel/UC1yNl2E66ZzKApQdRuTQ4tw/join\n🖼️ On instagram ➜ https://www.instagram.com/sciencewtg/\n\n#science #sciencenews #CERN  #physics",
             "itemID": "yt:video:lt7a3wjf3qY",
+            "itemTitle": "CERN Looks for Origins of Quantum Randomness",
+            "itemUrl": "https://www.youtube.com/watch?v=lt7a3wjf3qY",
+            "itemPublished": "2024-05-11T15:00:42+00:00",
             "itemAuthor": "Sabine Hossenfelder",
-            "itemPublished": "2024-05-11T15:00:42.000Z",
-            "itemContent": "",
             "itemImage": {
                 "url": "https://i1.ytimg.com/vi/lt7a3wjf3qY/hqdefault.jpg",
                 "width": "480",
                 "height": "360"
-            },
-            "itemTags": []
+            }
         },
         {
-            "itemTitle": "What Einstein wrote to Marie Curie",
-            "itemUrl": "https://www.youtube.com/watch?v=yPDo7S-EGCE",
+            "itemTags": [],
             "itemDescription": "💌 Support me on Donorbox ➜ https://donorbox.org/swtg\n📝 Transcripts and written news on Substack ➜ https://sciencewtg.substack.com/\n👉 Support me on Patreon ➜ https://www.patreon.com/Sabine\n📩 Free weekly science newsletter  ➜ https://sabinehossenfelder.com/newsletter/",
             "itemID": "yt:video:yPDo7S-EGCE",
+            "itemTitle": "What Einstein wrote to Marie Curie",
+            "itemUrl": "https://www.youtube.com/watch?v=yPDo7S-EGCE",
+            "itemPublished": "2024-05-10T15:00:54+00:00",
             "itemAuthor": "Sabine Hossenfelder",
-            "itemPublished": "2024-05-10T15:00:54.000Z",
-            "itemContent": "",
             "itemImage": {
                 "url": "https://i2.ytimg.com/vi/yPDo7S-EGCE/hqdefault.jpg",
                 "width": "480",
                 "height": "360"
-            },
-            "itemTags": []
+            }
         },
         {
-            "itemTitle": "Scientific Progress is Slowing Down. But Why?",
-            "itemUrl": "https://www.youtube.com/watch?v=KBT9vFrV6yQ",
+            "itemTags": [],
             "itemDescription": "Speed up your scientific progress with Brilliant! First 30 days are free and 20% off the annual premium subscription when you use our link ➜  https://brilliant.org/sabine.\n\nWe see constant progress in the world every day, from better cars to faster phones to virtual reality and the internet of things. However, despite all the technological and engineering advances, science seems to be slowing down? Let’s have a look.\n\nPaper here: https://www.sciencedirect.com/science/article/abs/pii/S0048733324000416?via%3Dihub\n\n🤓 Check out my new quiz app ➜  http://quizwithit.com/\n💌 Support me on Donorbox ➜ https://donorbox.org/swtg\n📝 Transcripts and written news on Substack ➜ https://sciencewtg.substack.com/\n👉 Transcript with links to references on Patreon ➜ https://www.patreon.com/Sabine\n📩 Free weekly science newsletter  ➜ https://sabinehossenfelder.com/newsletter/\n👂 Audio only podcast ➜  https://open.spotify.com/show/0MkNfXlKnMPEUMEeKQYmYC\n🔗 Join this channel to get access to perks ➜\nhttps://www.youtube.com/channel/UC1yNl2E66ZzKApQdRuTQ4tw/join\n🖼️ On instagram ➜ https://www.instagram.com/sciencewtg/\n\n#science #sciencenews #scientists #research",
             "itemID": "yt:video:KBT9vFrV6yQ",
+            "itemTitle": "Scientific Progress is Slowing Down. But Why?",
+            "itemUrl": "https://www.youtube.com/watch?v=KBT9vFrV6yQ",
+            "itemPublished": "2024-05-09T15:00:27+00:00",
             "itemAuthor": "Sabine Hossenfelder",
-            "itemPublished": "2024-05-09T15:00:27.000Z",
-            "itemContent": "",
             "itemImage": {
                 "url": "https://i4.ytimg.com/vi/KBT9vFrV6yQ/hqdefault.jpg",
                 "width": "480",
                 "height": "360"
-            },
-            "itemTags": []
+            }
         },
         {
-            "itemTitle": "The era of nuclear precision has begun",
-            "itemUrl": "https://www.youtube.com/watch?v=xTnYS3od6iY",
+            "itemTags": [],
             "itemDescription": "Stay safe with NordVPN. Sign up for a 2 year plan, and get 4 months free here ➼ https://NordVPN.com/sabine Risk-free with Nord’s 30-day money-back guarantee ✌\n\nScientists finally succeeded in exiting an atomic resonance with a laser in the near ultraviolet. It's a remarkable feat that they've been working on since the 1970s. It could usher in the era of nuclear precision. Let’s have a look.\n\nPaper here: https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.132.182501\n\n🤓 Check out my new quiz app ➜  http://quizwithit.com/\n💌 Support me on Donorbox ➜ https://donorbox.org/swtg\n📝 Transcripts and written news on Substack ➜ https://sciencewtg.substack.com/\n👉 Transcript with links to references on Patreon ➜ https://www.patreon.com/Sabine\n📩 Free weekly science newsletter  ➜ https://sabinehossenfelder.com/newsletter/\n👂 Audio only podcast ➜  https://open.spotify.com/show/0MkNfXlKnMPEUMEeKQYmYC\n🔗 Join this channel to get access to perks ➜\nhttps://www.youtube.com/channel/UC1yNl2E66ZzKApQdRuTQ4tw/join\n🖼️ On instagram ➜ https://www.instagram.com/sciencewtg/\n\n#science #sciencenews #nuclear #physics",
             "itemID": "yt:video:xTnYS3od6iY",
+            "itemTitle": "The era of nuclear precision has begun",
+            "itemUrl": "https://www.youtube.com/watch?v=xTnYS3od6iY",
+            "itemPublished": "2024-05-08T15:00:51+00:00",
             "itemAuthor": "Sabine Hossenfelder",
-            "itemPublished": "2024-05-08T15:00:51.000Z",
-            "itemContent": "",
             "itemImage": {
                 "url": "https://i1.ytimg.com/vi/xTnYS3od6iY/hqdefault.jpg",
                 "width": "480",
                 "height": "360"
-            },
-            "itemTags": []
+            }
         },
         {
-            "itemTitle": "NASA named an asteroid after me",
-            "itemUrl": "https://www.youtube.com/watch?v=iiC1VO_uvrQ",
+            "itemTags": [],
             "itemDescription": "The first 500 people to use my link will get a 1 month free trial of Skillshare https://skl.sh/sabinehossenfelder05241\n\nIt's not a joke, they did indeed name an asteroid after me. You can look it up here: https://ssd.jpl.nasa.gov/tools/sbdb_lookup.html#/?sstr=16648\n\nI want to use this opportunity as an excuse to explain why asteroids are cool.\n\n🤓 Check out my new quiz app ➜  http://quizwithit.com/\n💌 Support me on Donorbox ➜ https://donorbox.org/swtg\n📝 Transcripts and written news on Substack ➜ https://sciencewtg.substack.com/\n👉 Transcript with links to references on Patreon ➜ https://www.patreon.com/Sabine\n📩 Free weekly science newsletter  ➜ https://sabinehossenfelder.com/newsletter/\n👂 Audio only podcast ➜  https://open.spotify.com/show/0MkNfXlKnMPEUMEeKQYmYC\n🔗 Join this channel to get access to perks ➜\nhttps://www.youtube.com/channel/UC1yNl2E66ZzKApQdRuTQ4tw/join\n🖼️ On instagram ➜ https://www.instagram.com/sciencewtg/\n\n#scienece #sciencenews #astrophysics",
             "itemID": "yt:video:iiC1VO_uvrQ",
+            "itemTitle": "NASA named an asteroid after me",
+            "itemUrl": "https://www.youtube.com/watch?v=iiC1VO_uvrQ",
+            "itemPublished": "2024-05-07T15:00:42+00:00",
             "itemAuthor": "Sabine Hossenfelder",
-            "itemPublished": "2024-05-07T15:00:42.000Z",
-            "itemContent": "",
             "itemImage": {
                 "url": "https://i2.ytimg.com/vi/iiC1VO_uvrQ/hqdefault.jpg",
                 "width": "480",
                 "height": "360"
-            },
-            "itemTags": []
+            }
         },
         {
-            "itemTitle": "π=4",
-            "itemUrl": "https://www.youtube.com/watch?v=lT1bX1UbCSs",
+            "itemTags": [],
             "itemDescription": "💌 Support me on Donorbox ➜ https://donorbox.org/swtg\n👉 Support me on Patreon ➜ https://www.patreon.com/Sabine\n📩 Free weekly science newsletter  ➜ https://sabinehossenfelder.com/newsletter/\n🔗 Join this channel to get access to perks ➜\nhttps://www.youtube.com/channel/UC1yNl2E66ZzKApQdRuTQ4tw/join\n\n#maths",
             "itemID": "yt:video:lT1bX1UbCSs",
+            "itemTitle": "π=4",
+            "itemUrl": "https://www.youtube.com/watch?v=lT1bX1UbCSs",
+            "itemPublished": "2024-05-06T15:00:46+00:00",
             "itemAuthor": "Sabine Hossenfelder",
-            "itemPublished": "2024-05-06T15:00:46.000Z",
-            "itemContent": "",
             "itemImage": {
                 "url": "https://i1.ytimg.com/vi/lT1bX1UbCSs/hqdefault.jpg",
                 "width": "480",
                 "height": "360"
-            },
-            "itemTags": []
+            }
         },
         {
-            "itemTitle": "How does gravity escape a black hole?",
-            "itemUrl": "https://www.youtube.com/watch?v=qwu58DOxLdA",
+            "itemTags": [],
             "itemDescription": "Take my course on quantum mechanics on Brilliant. First 30 days are free and 20% off the annual premium subscription when you use our link ➜ https://brilliant.org/sabine.\n\nIf nothing gets out of a black hole, how does gravity do it? Something with virtual gravitons? Is this really necessary? It's tricky question, but this is what I can say without resorting to equations.\n\n🤓 Check out my new quiz app ➜  http://quizwithit.com/\n💌 Support me on Donatebox ➜ https://donorbox.org/swtg\n📝 Transcripts and written news on Substack ➜ https://sciencewtg.substack.com/\n👉 Transcript with links to references on Patreon ➜ https://www.patreon.com/Sabine\n📩 Free weekly science newsletter  ➜ https://sabinehossenfelder.com/newsletter/\n👂 Audio only podcast ➜  https://open.spotify.com/show/0MkNfXlKnMPEUMEeKQYmYC\n🔗 Join this channel to get access to perks ➜\nhttps://www.youtube.com/channel/UC1yNl2E66ZzKApQdRuTQ4tw/join\n🖼️ On instagram ➜ https://www.instagram.com/sciencewtg/\n\n#science #physics #blackholes",
             "itemID": "yt:video:qwu58DOxLdA",
+            "itemTitle": "How does gravity escape a black hole?",
+            "itemUrl": "https://www.youtube.com/watch?v=qwu58DOxLdA",
+            "itemPublished": "2024-05-05T15:00:45+00:00",
             "itemAuthor": "Sabine Hossenfelder",
-            "itemPublished": "2024-05-05T15:00:45.000Z",
-            "itemContent": "",
             "itemImage": {
                 "url": "https://i2.ytimg.com/vi/qwu58DOxLdA/hqdefault.jpg",
                 "width": "480",
                 "height": "360"
-            },
-            "itemTags": []
+            }
         },
         {
-            "itemTitle": "Why flat earthers scare me",
-            "itemUrl": "https://www.youtube.com/watch?v=TW6hgOc3wuI",
+            "itemTags": [],
             "itemDescription": "Continue learning more about your favorite topics with Brilliant! First 30 days are free and 20% off the annual premium subscription when you use our link ➜  https://brilliant.org/sabine.\n\nThe flat earther community seems to be growing, and it's beginning to worry me. It's not just a question of lacking science education, there is more going on here.\n\n🤓 Check out my new quiz app ➜  http://quizwithit.com/\n💌 Support me on Donorbox ➜ https://donorbox.org/swtg\n📝 Transcripts and written news on Substack ➜ https://sciencewtg.substack.com/\n👉 Transcript with links to references on Patreon ➜ https://www.patreon.com/Sabine\n📩 Free weekly science newsletter  ➜ https://sabinehossenfelder.com/newsletter/\n👂 Audio only podcast ➜  https://open.spotify.com/show/0MkNfXlKnMPEUMEeKQYmYC\n🔗 Join this channel to get access to perks ➜\nhttps://www.youtube.com/channel/UC1yNl2E66ZzKApQdRuTQ4tw/join\n🖼️ On instagram ➜ https://www.instagram.com/sciencewtg/\n\n#science #conspiracy #flatearth",
             "itemID": "yt:video:TW6hgOc3wuI",
+            "itemTitle": "Why flat earthers scare me",
+            "itemUrl": "https://www.youtube.com/watch?v=TW6hgOc3wuI",
+            "itemPublished": "2024-05-04T15:00:24+00:00",
             "itemAuthor": "Sabine Hossenfelder",
-            "itemPublished": "2024-05-04T15:00:24.000Z",
-            "itemContent": "",
             "itemImage": {
                 "url": "https://i1.ytimg.com/vi/TW6hgOc3wuI/hqdefault.jpg",
                 "width": "480",
                 "height": "360"
-            },
-            "itemTags": []
+            }
         },
         {
-            "itemTitle": "Bird Flu Spreads to Dairy Cattle, Farm Worker Infected, Virus Fragments in Milk",
-            "itemUrl": "https://www.youtube.com/watch?v=ZKXcR3kEYN4",
+            "itemTags": [],
             "itemDescription": "Enjoy 10% OFF on all Hoverpens and free shipping to most countries with code SABINE:\nNorth America & other countries: https://bit.ly/sabine_novium\nUK & Europe: https://bit.ly/sabine_noviumeu\n\nThe bird flu has spread to cattle in the United States.  Inactive fragments of the virus have been found in milk. The World Health Organization rates the current risk for humans as low but epidemiologists all over the world are on high alert. I have the summary.\n\nThe WHO evaluation is here: https://cdn.who.int/media/docs/default-source/global-influenza-programme/2024_04_23_fao-woah-who_h5n1_assessment.pdf\n\nThe paper about the farm worker is here: https://www.nejm.org/doi/full/10.1056/NEJMc2405371\n\n🤓 Check out my new quiz app ➜  http://quizwithit.com/\n💌 Support me on Donorbox ➜ https://donorbox.org/swtg\n📝 Transcripts and written news on Substack ➜ https://sciencewtg.substack.com/\n👉 Transcript with links to references on Patreon ➜ https://www.patreon.com/Sabine\n📩 Free weekly science newsletter  ➜ https://sabinehossenfelder.com/newsletter/\n👂 Audio only podcast ➜  https://open.spotify.com/show/0MkNfXlKnMPEUMEeKQYmYC\n🔗 Join this channel to get access to perks ➜\nhttps://www.youtube.com/channel/UC1yNl2E66ZzKApQdRuTQ4tw/join\n🖼️ On instagram ➜ https://www.instagram.com/sciencewtg/\n\n#science #sciencenews #health #birdflu",
             "itemID": "yt:video:ZKXcR3kEYN4",
+            "itemTitle": "Bird Flu Spreads to Dairy Cattle, Farm Worker Infected, Virus Fragments in Milk",
+            "itemUrl": "https://www.youtube.com/watch?v=ZKXcR3kEYN4",
+            "itemPublished": "2024-05-03T15:18:07+00:00",
             "itemAuthor": "Sabine Hossenfelder",
-            "itemPublished": "2024-05-03T15:18:07.000Z",
-            "itemContent": "",
             "itemImage": {
                 "url": "https://i3.ytimg.com/vi/ZKXcR3kEYN4/hqdefault.jpg",
                 "width": "480",
                 "height": "360"
-            },
-            "itemTags": []
+            }
         },
         {
-            "itemTitle": "The Multiverse just Got Bigger: An Upgrade for the Many Worlds Interpretation",
-            "itemUrl": "https://www.youtube.com/watch?v=rvG1A795tqE",
+            "itemTags": [],
             "itemDescription": "Check out my course on quantum mechanics on Brilliant! First 30 days are free and 20% off the annual premium subscription when you use our link ➜  https://brilliant.org/sabine.\n\nThe idea of parallel universes is both crazy and not. In physics, it's prominently represented by the “Many Worlds” interpretation of quantum mechanics. A group of physicists now says that the many worlds interpretation contains many more worlds than we thought so far, meaning the infinite number of multiverses could be infinitely larger. Let’s have a look.\n\nPaper: https://arxiv.org/abs/2403.10895\n\n🤓 Check out my new quiz app ➜  http://quizwithit.com/\n💌 Support me on Donorbox ➜ https://donorbox.org/swtg\n📝 Transcripts and written news on Substack ➜ https://sciencewtg.substack.com/\n👉 Transcript with links to references on Patreon ➜ https://www.patreon.com/Sabine\n📩 Free weekly science newsletter  ➜ https://sabinehossenfelder.com/newsletter/\n👂 Audio only podcast ➜  https://open.spotify.com/show/0MkNfXlKnMPEUMEeKQYmYC\n🔗 Join this channel to get access to perks ➜\nhttps://www.youtube.com/channel/UC1yNl2E66ZzKApQdRuTQ4tw/join\n🖼️ On instagram ➜ https://www.instagram.com/sciencewtg/\n\n#science #sciencenews #physics #multiverse",
             "itemID": "yt:video:rvG1A795tqE",
+            "itemTitle": "The Multiverse just Got Bigger: An Upgrade for the Many Worlds Interpretation",
+            "itemUrl": "https://www.youtube.com/watch?v=rvG1A795tqE",
+            "itemPublished": "2024-05-02T15:00:48+00:00",
             "itemAuthor": "Sabine Hossenfelder",
-            "itemPublished": "2024-05-02T15:00:48.000Z",
-            "itemContent": "",
             "itemImage": {
                 "url": "https://i3.ytimg.com/vi/rvG1A795tqE/hqdefault.jpg",
                 "width": "480",
                 "height": "360"
-            },
-            "itemTags": []
+            }
         },
         {
-            "itemTitle": "Fusion in Space: New Plasma Thruster Tested Successfully",
-            "itemUrl": "https://www.youtube.com/watch?v=tm_AdmDbeuo",
+            "itemTags": [],
             "itemDescription": "Try Opera browser FOR FREE here https://opr.as/eiiu-sabine-hossenfelder\n\nLast week I saw a lot of headlines about a space propulsion system that uses nuclear fusion. The news comes from a company by name RocketStar Inc. which announced in a press release that they have “reinvented” spacecraft by releasing the “world’s first fusion-enhanced space thruster, the FireStar™ Fusion Drive.  They claim that the FireStar TM Fusion Drive improves their water powered pulsed plasma thruster by harnessing aneutronic nuclear fusion by 50%.  In this video I explain what this all means.\n\n🤓 Check out my new quiz app ➜  http://quizwithit.com/\n💌 Support me on Donorbox ➜ https://donorbox.org/swtg\n📝 Transcripts and written news on Substack ➜ https://sciencewtg.substack.com/\n👉 Transcript with links to references on Patreon ➜ https://www.patreon.com/Sabine\n📩 Free weekly science newsletter  ➜ https://sabinehossenfelder.com/newsletter/\n👂 Audio only podcast ➜  https://open.spotify.com/show/0MkNfXlKnMPEUMEeKQYmYC\n🔗 Join this channel to get access to perks ➜\nhttps://www.youtube.com/channel/UC1yNl2E66ZzKApQdRuTQ4tw/join\n🖼️ On instagram ➜ https://www.instagram.com/sciencewtg/\n\n#science #sciencenews #technews #technews #space #nuclear",
             "itemID": "yt:video:tm_AdmDbeuo",
+            "itemTitle": "Fusion in Space: New Plasma Thruster Tested Successfully",
+            "itemUrl": "https://www.youtube.com/watch?v=tm_AdmDbeuo",
+            "itemPublished": "2024-05-01T15:00:58+00:00",
             "itemAuthor": "Sabine Hossenfelder",
-            "itemPublished": "2024-05-01T15:00:58.000Z",
-            "itemContent": "",
             "itemImage": {
                 "url": "https://i1.ytimg.com/vi/tm_AdmDbeuo/hqdefault.jpg",
                 "width": "480",
                 "height": "360"
-            },
-            "itemTags": []
+            }
         },
         {
-            "itemTitle": "New Experiment Could Settle 100 Years-Old Debate about Quantum Tunneling",
-            "itemUrl": "https://www.youtube.com/watch?v=2kTxX-0sYcM",
+            "itemTags": [],
             "itemDescription": "💰Special Offer!💰 Use our link https://joinnautilus.com/SABINE to get 15% off your membership!\n\nQuantum Tunnelling is a fascinating process in which a particle goes through a barrier faster than the speed of light. At least that’s what some physicists think. Others say this is just a wrong interpretation of what is really going on. This debate has been going on for a century, but a new experiment could finally end the debate once and for all. Let’s have a look.\n\nPaper: https://www.science.org/doi/10.1126/sciadv.adl6078\n\n🤓 Check out my new quiz app ➜  http://quizwithit.com/\n💌 Support me on Donorbox ➜ https://donorbox.org/swtg\n📝 Transcripts and written news on Substack ➜ https://sciencewtg.substack.com/\n👉 Transcript with links to references on Patreon ➜ https://www.patreon.com/Sabine\n📩 Free weekly science newsletter  ➜ https://sabinehossenfelder.com/newsletter/\n👂 Audio only podcast ➜  https://open.spotify.com/show/0MkNfXlKnMPEUMEeKQYmYC\n🔗 Join this channel to get access to perks ➜\nhttps://www.youtube.com/channel/UC1yNl2E66ZzKApQdRuTQ4tw/join\n🖼️ On instagram ➜ https://www.instagram.com/sciencewtg/\n\n#science #sciencenews #physics",
             "itemID": "yt:video:2kTxX-0sYcM",
+            "itemTitle": "New Experiment Could Settle 100 Years-Old Debate about Quantum Tunneling",
+            "itemUrl": "https://www.youtube.com/watch?v=2kTxX-0sYcM",
+            "itemPublished": "2024-04-30T15:00:03+00:00",
             "itemAuthor": "Sabine Hossenfelder",
-            "itemPublished": "2024-04-30T15:00:03.000Z",
-            "itemContent": "",
             "itemImage": {
                 "url": "https://i3.ytimg.com/vi/2kTxX-0sYcM/hqdefault.jpg",
                 "width": "480",
                 "height": "360"
-            },
-            "itemTags": []
+            }
         }
     ]
 }

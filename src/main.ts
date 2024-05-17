@@ -1,6 +1,6 @@
 import { MarkdownView, Modal, Notice, Plugin} from 'obsidian';
 import { DEFAULT_SETTINGS, RSSTrackerSettingTab, RSSTrackerSettings } from "./settings";
-import {EditorCommand, EditorModalCommand, EditorComplexModalCommand} from "./commands";
+import {EditorCommand, EditorModalCommand, NewRSSFeedModalCommand} from "./commands";
 
 export default class RSSTrackerPlugin extends Plugin {
 	settings: RSSTrackerSettings = DEFAULT_SETTINGS;
@@ -25,7 +25,7 @@ export default class RSSTrackerPlugin extends Plugin {
 		// This adds an editor command that can perform some operation on the current editor instance
 		this.addCommand(new EditorCommand(this.app));
 		// This adds a complex command that can check whether the current state of the app allows execution of the command
-		this.addCommand(new EditorComplexModalCommand(this.app));
+		this.addCommand(new NewRSSFeedModalCommand(this.app,this));
 		// This adds a settings tab so the user can configure various aspects of the plugin
 		this.addSettingTab(new RSSTrackerSettingTab(this.app, this));
 

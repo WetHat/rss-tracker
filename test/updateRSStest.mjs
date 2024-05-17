@@ -2,10 +2,10 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import fetch from 'node-fetch';
-import * as Parser from './TrackedFeed.mjs';
+//import * as Parser from './TrackedFeed.mjs';
 //import * as Parser from 'rss-parser';
+import { assembleFromXml } from './FeedAssembler.mjs'
 
-console.log(Parser.default);
 const usage = `USAGE:
 node ${path.basename(process.argv[1])}  <feed url> | <test directory>
 
@@ -19,36 +19,22 @@ if (process.argv.length < 3) {
 
 const feedSource = process.argv[2];
 
-const rssParser = new Parser.default({
-    customFields: {
-        item: [
-            "media:group",
-            "media:thumbnail",
-            "media:description"
-        ],
-        feed: [
-        ]}
-});
-
-//console.log(rssParser);
-//process.exit(1);
-
-let feed,testDir = null;
+let feed, testDir = null;
 
 if (feedSource.includes("//")) {
     // download feed from the web.
     const feedXML = await fetch(feedSource)
         .then(response => response.text());
 
-    feed = await rssParser.parseString(feedXML);
+    feed = await extractFromXml(feedXML,options);
     testDir = path.join("./",feed.title);
     fs.mkdir(testDir,{recursive: true}, err => console.error(err));
     fs.writeFileSync(path.join(testDir,"feed.xml"),feedXML,{encoding:"utf8"});
 } else {
     testDir = feedSource;
 
-    const feedXML =fs.readFileSync(path.join(testDir,"feed.xml"));
-    feed = await rssParser.parseString(feedXML);
+    const feedXML =fs.readFileSync(path.join(testDir,"feed.xml"),{encoding:"utf8"}).toString();
+    feed = assembleFromXml(feedXML);
 }
 
 // update the feed. json

@@ -1,4 +1,4 @@
-import * as RssParser from 'rss-parser';
+import * as Parser from 'rss-parser';
 /**
  * A builder class to assembly a normalized RSS feed represenstion suitable
  * for creating a usefull Markdown representation.
@@ -16,7 +16,7 @@ export default class TrackedFeed {
     };
     parser;
     constructor(options = TrackedFeed.DEFAULT_OPTIONS) {
-        this.parser = new RssParser.default(options);
+        this.parser = new Parser(options);
     }
     assembleImage(element) {
         let img = element.image || element['media:thumbnail'] || element["media:group"]?.["media:thumbnail"] || {};

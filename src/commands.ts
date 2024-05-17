@@ -1,4 +1,48 @@
-import { App, Modal, Command, MarkdownView, Editor, MarkdownFileInfo } from 'obsidian';
+import { App, Modal, Command, MarkdownView, Editor, MarkdownFileInfo, Setting, TFile, Plugin } from 'obsidian';
+import {assembleFromXml} from "./FeedAssembler";
+import RSSTrackerPlugin from "./main";
+import * as path from "path";
+
+export class InputUrlModal extends Modal {
+    result: string = "";
+
+    onSubmit: (result: string) => void;
+
+    constructor(app: App, onSubmit: (result: string) => void) {
+      super(app);
+      this.onSubmit = onSubmit;
+    }
+
+    onOpen() {
+      const { contentEl } = this;
+      // Input fiels
+      new Setting(contentEl)
+        .setName("Feed Url:")
+        .setDesc("Enter the url of the rss feed:")
+        .setHeading()
+        .addText((text) => {
+            text.inputEl.style.width="100%";
+            text.setPlaceholder("https://x.com/feed")
+            text.onChange((value) => {
+                this.result = value
+            })});
+
+      new Setting(contentEl)
+        .addButton((btn) =>
+          btn
+            .setButtonText("Submit")
+            .setCta()
+            .onClick(() => {
+              this.close();
+              this.onSubmit(this.result);
+            }));
+    }
+
+    onClose() {
+      let { contentEl } = this;
+      contentEl.empty();
+    }
+  }
 
 export class SampleModal extends Modal {
 
@@ -52,26 +96,43 @@ export class EditorCommand implements Command {
 /**
  * A complex command that can check whether the current state of the app allows execution of the command.
  */
-export class EditorComplexModalCommand implements Command {
-    id = 'open-sample-modal-complex';
-    name = 'Open sample modal (complex)';
+export class NewRSSFeedModalCommand implements Command {
+    id = 'open-url-input-modal-checked';
+    name = 'New RSS Feed';
     private app: App;
-    constructor (app: App) {
+    private plugin: RSSTrackerPlugin;
+    constructor (app: App,plugin: RSSTrackerPlugin) {
         this.app = app;
+        this.plugin = plugin;
     }
 
     checkCallback(checking: boolean): any  {
         // Conditions to check
-        const markdownView = this.app.workspace.getActiveViewOfType(MarkdownView);
-        if (markdownView) {
+
+        const active = this.app.workspace.getActiveFile();
+
+        if (active) {
             // If checking is true, we're simply "checking" if the command can be run.
             // If checking is false, then we want to actually perform the operation.
             if (!checking) {
-                new SampleModal(this.app).open();
+                const modal = new InputUrlModal(this.app, async result => {
+                    console.log(result);
+                    const f: TFile | null = this.app.workspace.getActiveFile();
+
+                    if (f) {
+
+                        // create a markdown file representing the feed
+                        const feedTemplate: string = this.plugin.settings.feedTemplate;
+
+                        //Sconst feedFile: TFile = await this.app.vault.create(path.join(f?.parent?.path ?? "/", newFeed["feedTitle"]) ,feedTemplate);
+                    }
+                });
+                modal.open();
             }
 
             // This command will only show up in Command Palette when the check function returns true
             return true;
         }
+        return false;
     }
 }
