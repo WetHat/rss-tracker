@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
     "forceConsistentCasingInFileNames" : true,
+    "allowSyntheticDefaultImports": false,
+    "esModuleInterop": false,
     "strict" : true,
     "baseUrl": ".",
     "rootDir": "./src",
