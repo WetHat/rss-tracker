@@ -1,13 +1,22 @@
 import {extractFromXml,FeedData,ReaderOptions,FeedEntry} from '@extractus/feed-extractor'
 
+/**
+ * Type for property bag objects with unknown content.
+ */
 type TPropertyBag = {[key: string] :any};
 
+/**
+ * An image reference within an RSS feed.
+ */
 interface IRSSimage {
     url: string;
     width?: string;
     height?:string;
 }
 
+/**
+ * Specification of an item of an RSS feed.
+ */
 interface IRSSitem {
     itemTags: string[];
     itemDescription: string;
@@ -20,29 +29,44 @@ interface IRSSitem {
     itemContent?:string;
 }
 
+/**
+ * Specification of an RSS feed.
+ */
 interface IRSSfeed {
     feedTitle: string;
     feedDescription: string;
     siteUrl: string;
-    siteImage?: IRSSimage;
-    content?: string;
+    feedImage?: IRSSimage;
     items: IRSSitem[];
 }
 
 //////////////////////////////////////
-interface IEntryDataExtra{
-    category?: string[] ;
-    published?: string;
+
+/**
+ * Specification of the tracked properties of an RSS item.
+ * Some properties overlap with the property specification in the
+ * `FeedEntry` interface.
+ */
+interface IEntryDataTracked{
     id: string;
+    description?:string;
+    published?: string;
+    category?: string[] ;
     creator?: string;
     image?: IRSSimage;
     content?: string;
-    description?: string;
 }
 
-interface IEntryDataExtended extends IEntryDataExtra,FeedEntry {
+/**
+ * Specification of a parsed RSS item including canonical and
+ * extra properties.
+ */
+interface IEntryDataExtended extends IEntryDataTracked, FeedEntry {
 }
 
+/**
+ * Specification of tracked properties of an RSS feed.
+ */
 interface IFeedDataExtra {
     image?: IRSSimage
 }
@@ -104,13 +128,9 @@ function assembleCreator(elem: TPropertyBag) :string {
 
     return author.name;
 }
-function assembleDescription(elem: TPropertyBag): string {
-    let {description} = elem;
-    if (description) {
-        return description;
-    }
 
-    description = elem["media:description"];
+function assembleDescription(elem: TPropertyBag): string {
+    let description = elem["media:description"];
     if (!description) {
         let group = elem["media:group"];
         if (group) {
@@ -122,42 +142,51 @@ function assembleDescription(elem: TPropertyBag): string {
 }
 ///////////////////////////////
 const DEFAULT_OPTIONS: ReaderOptions = {
-    getExtraEntryFields: (item: TPropertyBag): IEntryDataExtra => {
-        let {category,pubDate, guid,id,published} = item;
-        if (!id && guid) {
-            id = guid["#text"];
+    getExtraEntryFields: (item: TPropertyBag): IEntryDataTracked => {
+        let {id, guid} = item;
+        let tracked: IEntryDataTracked = {
+            id: id || (guid ? guid["#text"] : ""),
         }
 
-        let extra: IEntryDataExtra = {
-            category: typeof category === "string" ? [category] : category,
-            published:  published || pubDate || "",
-            id: id,
-            description: assembleDescription(item) ?? ""
+        let description = item.description;
+        if (!description && (description = assembleDescription(item))) {
+            tracked.description = description;
         }
 
-        let creator: string = assembleCreator(item);
-        if (creator) {
-            extra.creator = creator;
+        let {published,pubDate} = item;
+        if (!published && pubDate) {
+            tracked.published = pubDate;
+        }
+
+        let category = item.category;
+        if (category) {
+            tracked.category = typeof category === "string" ? [category] : category;
+        }
+
+        let creator = item.creator;
+        if (!creator && (creator = assembleCreator(item))) {
+            tracked.creator = creator;
         }
 
         let image = assembleImage(item);
         if (image) {
-            extra.image = image;
+            tracked.image = image;
         }
 
-        let content: string = item["content:encoded"];
+        let content = item["content:encoded"];
         if (content) {
-            extra.content = content;
+            tracked.content = content;
         }
-        return extra;
+        return tracked;
     },
+
     getExtraFeedFields: (feedData: TPropertyBag ) => {
-        let extra: IFeedDataExtra = {};
+        let tracked: IFeedDataExtra = {};
         let image = assembleImage(feedData);
         if (image) {
-            extra.image = image;
+            tracked.image = image;
         }
-        return extra;
+        return tracked;
     },
 }
 
@@ -193,7 +222,7 @@ function assembleFeed(feed: IFeedDataExtended): IRSSfeed {
 
     // add optional fields
     if (image) {
-        feedObj.siteImage = image;
+        feedObj.feedImage = image;
     }
 
     return feedObj;

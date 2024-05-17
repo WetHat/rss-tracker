@@ -46,11 +46,7 @@ function assembleCreator(elem) {
     return author.name;
 }
 function assembleDescription(elem) {
-    let { description } = elem;
-    if (description) {
-        return description;
-    }
-    description = elem["media:description"];
+    let description = elem["media:description"];
     if (!description) {
         let group = elem["media:group"];
         if (group) {
@@ -62,37 +58,43 @@ function assembleDescription(elem) {
 ///////////////////////////////
 const DEFAULT_OPTIONS = {
     getExtraEntryFields: (item) => {
-        let { category, pubDate, guid, id, published } = item;
-        if (!id && guid) {
-            id = guid["#text"];
-        }
-        let extra = {
-            category: typeof category === "string" ? [category] : category,
-            published: published || pubDate || "",
-            id: id,
-            description: assembleDescription(item) ?? ""
+        let { id, guid } = item;
+        let tracked = {
+            id: id || (guid ? guid["#text"] : ""),
         };
-        let creator = assembleCreator(item);
-        if (creator) {
-            extra.creator = creator;
+        let description = item.description;
+        if (!description && (description = assembleDescription(item))) {
+            tracked.description = description;
+        }
+        let { published, pubDate } = item;
+        if (!published && pubDate) {
+            tracked.published = pubDate;
+        }
+        let category = item.category;
+        if (category) {
+            tracked.category = typeof category === "string" ? [category] : category;
+        }
+        let creator = item.creator;
+        if (!creator && (creator = assembleCreator(item))) {
+            tracked.creator = creator;
         }
         let image = assembleImage(item);
         if (image) {
-            extra.image = image;
+            tracked.image = image;
         }
         let content = item["content:encoded"];
         if (content) {
-            extra.content = content;
+            tracked.content = content;
         }
-        return extra;
+        return tracked;
     },
     getExtraFeedFields: (feedData) => {
-        let extra = {};
+        let tracked = {};
         let image = assembleImage(feedData);
         if (image) {
-            extra.image = image;
+            tracked.image = image;
         }
-        return extra;
+        return tracked;
     },
 };
 function assembleFeed(feed) {
@@ -125,7 +127,7 @@ function assembleFeed(feed) {
     };
     // add optional fields
     if (image) {
-        feedObj.siteImage = image;
+        feedObj.feedImage = image;
     }
     return feedObj;
 }
