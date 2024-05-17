@@ -1,4 +1,37 @@
-import { extractFromXml } from '@extractus/feed-extractor';
+import { extractFromXml, extract } from '@extractus/feed-extractor';
+/**
+ * A tracked RSS feed item with all availabe relevant properties.
+ */
+export class TrackedRSSitem {
+    id;
+    tags;
+    description;
+    title;
+    link;
+    published;
+    author;
+    image;
+    content;
+    constructor(entry) {
+        this.tags = entry.category ?? [];
+        let { id, title, description, published, link, category, creator, image, content } = entry;
+        this.id = id;
+        this.tags = this.tags = category ?? [];
+        if (description) {
+            this.description = description;
+        }
+        this.published = published ?? new Date().toISOString();
+        this.title = title ?? `${creator} - ${published}`;
+        this.link = link;
+        this.author = creator;
+        if (image) {
+            this.image = image;
+        }
+        if (content) {
+            this.content = content;
+        }
+    }
+}
 function assembleImage(elem) {
     let { image } = elem;
     if (typeof image === 'string') {
@@ -97,40 +130,44 @@ const DEFAULT_OPTIONS = {
         return tracked;
     },
 };
-function assembleFeed(feed) {
-    const { description, title, link, image, entries } = feed;
-    // populate the feed obj with all mandatory fields
-    let feedObj = {
-        feedDescription: description ?? "",
-        feedTitle: title ?? "",
-        siteUrl: link ?? "",
-        items: entries?.map((entry) => {
-            const { category, description, id, title, link, published, creator, image, content } = entry;
-            // populate the mandatory properties
-            let itemObj = {
-                itemTags: category ?? [],
-                itemDescription: description ?? "",
-                itemID: id,
-                itemTitle: title ?? `${creator} - ${published}`,
-                itemUrl: link ?? "",
-                itemPublished: published ?? "",
-                itemAuthor: creator ?? ""
-            };
-            if (image) {
-                itemObj.itemImage = image;
-            }
-            if (content) {
-                itemObj.itemContent = content;
-            }
-            return itemObj;
-        }) ?? []
-    };
-    // add optional fields
-    if (image) {
-        feedObj.feedImage = image;
+export class TrackedRSSfeed {
+    /**
+     * Factory method to assemble an RSS feed from its XMK representation.
+     * @param xml {string} - XML represntation of an RSS feed.
+     * @param options {ReaderOptions} Parsing options.
+     * @returns Feed obkect {TrackedRSSfeed} contaiing all relevant properties that
+     *          were available in the feed.
+     */
+    static assembleFromXml(xml, options = DEFAULT_OPTIONS) {
+        return new TrackedRSSfeed(extractFromXml(xml, options));
     }
-    return feedObj;
-}
-export function assembleFromXml(xml, options = DEFAULT_OPTIONS) {
-    return assembleFeed(extractFromXml(xml, options));
+    static async assembleFromUrl(url, options = DEFAULT_OPTIONS) {
+        return new TrackedRSSfeed(await extract(url, options));
+    }
+    title;
+    description;
+    site;
+    image;
+    items;
+    constructor(feed) {
+        let { link, title, description, image, entries } = feed;
+        if (title) {
+            this.title = title;
+        }
+        if (description) {
+            this.description = description;
+        }
+        if (link) {
+            this.site = link;
+        }
+        if (image) {
+            this.image = image;
+        }
+        if (Array.isArray(entries)) {
+            this.items = entries.map(e => new TrackedRSSitem(e));
+        }
+        else {
+            this.items = [];
+        }
+    }
 }

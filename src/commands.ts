@@ -1,5 +1,5 @@
 import { App, Modal, Command, MarkdownView, Editor, MarkdownFileInfo, Setting, TFile, Plugin } from 'obsidian';
-import {assembleFromXml} from "./FeedAssembler";
+import {TrackedRSSfeed} from "./FeedAssembler";
 import RSSTrackerPlugin from "./main";
 import * as path from "path";
 
@@ -120,11 +120,11 @@ export class NewRSSFeedModalCommand implements Command {
                     const f: TFile | null = this.app.workspace.getActiveFile();
 
                     if (f) {
-
+                        const feed = await TrackedRSSfeed.assembleFromUrl(result);
                         // create a markdown file representing the feed
                         const feedTemplate: string = this.plugin.settings.feedTemplate;
 
-                        //Sconst feedFile: TFile = await this.app.vault.create(path.join(f?.parent?.path ?? "/", newFeed["feedTitle"]) ,feedTemplate);
+                        const feedSpec: TFile = await this.app.vault.create(path.join(f?.parent?.path ?? "/", feed.title ?? "Anonymous Feed") ,feedTemplate);
                     }
                 });
                 modal.open();

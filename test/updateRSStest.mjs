@@ -2,9 +2,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import fetch from 'node-fetch';
-//import * as Parser from './TrackedFeed.mjs';
-//import * as Parser from 'rss-parser';
-import { assembleFromXml } from './FeedAssembler.mjs'
+import { TrackedRSSfeed } from './FeedAssembler.mjs'
 
 const usage = `USAGE:
 node ${path.basename(process.argv[1])}  <feed url> | <test directory>
@@ -26,7 +24,7 @@ if (feedSource.includes("//")) {
     const feedXML = await fetch(feedSource)
         .then(response => response.text());
 
-    feed = await extractFromXml(feedXML,options);
+    feed = await TrackedRSSfeed.assembleFromUrl(feedXML,options);
     testDir = path.join("./",feed.title);
     fs.mkdir(testDir,{recursive: true}, err => console.error(err));
     fs.writeFileSync(path.join(testDir,"feed.xml"),feedXML,{encoding:"utf8"});
@@ -34,7 +32,7 @@ if (feedSource.includes("//")) {
     testDir = feedSource;
 
     const feedXML =fs.readFileSync(path.join(testDir,"feed.xml"),{encoding:"utf8"}).toString();
-    feed = assembleFromXml(feedXML);
+    feed = TrackedRSSfeed.assembleFromXml(feedXML);
 }
 
 // update the feed. json

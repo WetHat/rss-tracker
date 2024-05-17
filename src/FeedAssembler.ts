@@ -1,4 +1,4 @@
-import {extractFromXml,FeedData,ReaderOptions,FeedEntry} from '@extractus/feed-extractor'
+import {extractFromXml,extract,FeedData,ReaderOptions,FeedEntry} from '@extractus/feed-extractor'
 
 /**
  * Type for property bag objects with unknown content.
@@ -6,41 +6,13 @@ import {extractFromXml,FeedData,ReaderOptions,FeedEntry} from '@extractus/feed-e
 type TPropertyBag = {[key: string] :any};
 
 /**
- * An image reference within an RSS feed.
+ * Specification of an image reference within an RSS feed.
  */
 interface IRSSimage {
     url: string;
     width?: string;
     height?:string;
 }
-
-/**
- * Specification of an item of an RSS feed.
- */
-interface IRSSitem {
-    itemTags: string[];
-    itemDescription: string;
-    itemID: string;
-    itemTitle: string;
-    itemUrl: string;
-    itemPublished: string;
-    itemAuthor: string;
-    itemImage?: IRSSimage;
-    itemContent?:string;
-}
-
-/**
- * Specification of an RSS feed.
- */
-interface IRSSfeed {
-    feedTitle: string;
-    feedDescription: string;
-    siteUrl: string;
-    feedImage?: IRSSimage;
-    items: IRSSitem[];
-}
-
-//////////////////////////////////////
 
 /**
  * Specification of the tracked properties of an RSS item.
@@ -51,7 +23,7 @@ interface IEntryDataTracked{
     id: string;
     description?:string;
     published?: string;
-    category?: string[] ;
+    category?: string[];
     creator?: string;
     image?: IRSSimage;
     content?: string;
@@ -59,7 +31,7 @@ interface IEntryDataTracked{
 
 /**
  * Specification of a parsed RSS item including canonical and
- * extra properties.
+ * tracked properties.
  */
 interface IEntryDataExtended extends IEntryDataTracked, FeedEntry {
 }
@@ -70,9 +42,50 @@ interface IEntryDataExtended extends IEntryDataTracked, FeedEntry {
 interface IFeedDataExtra {
     image?: IRSSimage
 }
-
+/**
+ * Specification of a parsed RSS feed including canonical and
+ * tracked properties.
+ */
 interface IFeedDataExtended extends IFeedDataExtra,FeedData {
 }
+
+/**
+ * A tracked RSS feed item with all availabe relevant properties.
+ */
+export class TrackedRSSitem {
+    id: string;
+    tags: string[];
+    description?: string;
+    title: string;
+    link?: string;
+    published: string;
+    author?: string;
+    image?: IRSSimage;
+    content?:string;
+
+    constructor(entry: IEntryDataExtended ) {
+        this.tags = entry.category ?? [];
+        let {id,title,description,published,link,category,creator,image,content} = entry;
+        this.id = id;
+        this.tags = this.tags = category ?? [];
+
+        if (description) {
+            this.description = description;
+        }
+
+        this.published = published ?? new Date().toISOString();
+        this.title = title ?? `${creator} - ${published}`;
+        this.link = link;
+        this.author = creator;
+        if (image) {
+            this.image = image;
+        }
+        if (content) {
+            this.content = content;
+        }
+    }
+}
+
 
 function assembleImage(elem: TPropertyBag): IRSSimage | null {
     let {image} = elem;
@@ -190,44 +203,46 @@ const DEFAULT_OPTIONS: ReaderOptions = {
     },
 }
 
-function assembleFeed(feed: IFeedDataExtended): IRSSfeed {
-    const {description,title,link,image, entries} = feed;
-
-    // populate the feed obj with all mandatory fields
-    let feedObj: IRSSfeed = {
-        feedDescription: description ?? "",
-        feedTitle: title ?? "",
-        siteUrl: link ?? "",
-
-        items: entries?.map( (entry: IEntryDataExtended): IRSSitem  => {
-            const {category,description,id,title,link,published,creator,image,content} = entry;
-            // populate the mandatory properties
-            let itemObj: IRSSitem = {
-                itemTags: category ?? [],
-                itemDescription: description ?? "",
-                itemID: id,
-                itemTitle: title ?? `${creator} - ${published}`,
-                itemUrl: link ?? "",
-                itemPublished: published ?? "",
-                itemAuthor: creator ?? ""
-            }
-            if (image) {
-                itemObj.itemImage = image;
-            }
-            if (content) {
-                itemObj.itemContent = content;
-            }
-            return itemObj;
-        }) ?? []};
-
-    // add optional fields
-    if (image) {
-        feedObj.feedImage = image;
+export class TrackedRSSfeed {
+    /**
+     * Factory method to assemble an RSS feed from its XMK representation.
+     * @param xml {string} - XML represntation of an RSS feed.
+     * @param options {ReaderOptions} Parsing options.
+     * @returns Feed obkect {TrackedRSSfeed} contaiing all relevant properties that
+     *          were available in the feed.
+     */
+    static assembleFromXml(xml:string,options: ReaderOptions =DEFAULT_OPTIONS) : TrackedRSSfeed {
+        return new TrackedRSSfeed(extractFromXml(xml,options));
     }
 
-    return feedObj;
-}
+    static async assembleFromUrl(url:string,options=DEFAULT_OPTIONS) : Promise<TrackedRSSfeed> {
+        return new TrackedRSSfeed(await extract(url,options));
+    }
 
-export function assembleFromXml(xml:string,options=DEFAULT_OPTIONS) : IRSSfeed {
-    return assembleFeed(extractFromXml(xml,options));
+    title?: string;
+    description?: string;
+    site?: string;
+    image?: IRSSimage;
+    items: TrackedRSSitem[];
+
+    constructor(feed: IFeedDataExtended) {
+        let {link,title,description,image,entries} = feed;
+        if (title) {
+            this.title = title;
+        }
+        if (description) {
+            this.description = description;
+        }
+        if (link) {
+            this.site = link;
+        }
+        if (image) {
+            this.image = image;
+        }
+        if (Array.isArray(entries)) {
+            this.items = (entries as Array<IEntryDataExtended>).map( e => new TrackedRSSitem(e));
+        } else {
+            this.items = []
+        }
+    }
 }
