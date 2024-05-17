@@ -8,11 +8,11 @@ export interface RSSTrackerSettings {
 
 export const DEFAULT_SETTINGS: RSSTrackerSettings = {
 	feedTemplate: `---
-feedurl:{{feedUrl}}
+feedurl: {{feedUrl}}
 site: {{siteUrl}}
 itemlimit: 100
-updated: {{lastUpdate}}
-status: {{status}}"
+updated: never
+status: unknown
 ---
 
 > [!abstract] {{title}}
