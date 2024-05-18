@@ -1,8 +1,10 @@
 import { App, Modal, Command, MarkdownView, Editor, MarkdownFileInfo, Setting, TFile, Plugin } from 'obsidian';
 import FeedManager from "./FeedManager";
 import RSSTrackerPlugin from "./main";
-import * as path from "path";
 
+/**
+ * Modal dialog to request rss url input from the user.
+ */
 export class InputUrlModal extends Modal {
     result: string = "";
 
@@ -21,7 +23,7 @@ export class InputUrlModal extends Modal {
         .setDesc("Enter the url of the rss feed:")
         .setHeading()
         .addText((text) => {
-            text.inputEl.style.width="100%";
+            text.inputEl.style.width="95%";
             text.setPlaceholder("https://x.com/feed")
             text.onChange((value) => {
                 this.result = value
@@ -76,6 +78,41 @@ export class EditorModalCommand implements Command {
         new SampleModal(this.app).open();
     }
 }
+
+/**
+ * A simple command that can be triggered anywhere
+ */
+export class UpdateRSSfeedCommand implements Command {
+    id = 'update-tracked-rss-feed checked';
+    name = 'Open sample modal (simple)';
+    private app: App;
+    private plugin: RSSTrackerPlugin;
+    constructor (app: App, plugin: RSSTrackerPlugin) {
+        this.app = app;
+        this.plugin = plugin;
+    }
+
+    checkCallback(checking: boolean): any  {
+        // Conditions to check
+        const active = this.app.workspace.getActiveFile();
+
+        if (active) {
+            // If checking is true, we're simply "checking" if the command can be run.
+            // If checking is false, then we want to actually perform the operation.
+            if (!checking) {
+                const modal = new InputUrlModal(this.app, async result => {
+                    console.log(active);
+                });
+                modal.open();
+            }
+
+            // This command will only show up in Command Palette when the check function returns true
+            return true;
+        }
+        return false;
+    }
+}
+
 /**
  * An editor command that can perform some operation on the current editor instance
  */
@@ -97,7 +134,7 @@ export class EditorCommand implements Command {
  * A complex command that can check whether the current state of the app allows execution of the command.
  */
 export class NewRSSFeedModalCommand implements Command {
-    id = 'open-url-input-modal-checked';
+    id = 'open-url-input-modal';
     name = 'New RSS Feed';
     private app: App;
     private plugin: RSSTrackerPlugin;
@@ -106,33 +143,20 @@ export class NewRSSFeedModalCommand implements Command {
         this.plugin = plugin;
     }
 
-    checkCallback(checking: boolean): any  {
+    callback(): any  {
         // Conditions to check
+        const modal = new InputUrlModal(this.app, async result => {
+            console.log(result);
+            const f: TFile | null = this.app.workspace.getActiveFile();
 
-        const active = this.app.workspace.getActiveFile();
+            if (f) {
+                const parent = this.app.fileManager.getNewFileParent(f.path),
+                      mgr = new FeedManager(this.app,this.plugin),
+                      leaf = this.app.workspace.getLeaf(false);
 
-        if (active) {
-            // If checking is true, we're simply "checking" if the command can be run.
-            // If checking is false, then we want to actually perform the operation.
-            if (!checking) {
-                const modal = new InputUrlModal(this.app, async result => {
-                    console.log(result);
-                    const f: TFile | null = this.app.workspace.getActiveFile();
-
-                    if (f) {
-                        const parent = this.app.fileManager.getNewFileParent(f.path),
-                              mgr = new FeedManager(this.app,this.plugin),
-                              leaf = this.app.workspace.getLeaf(false);
-
-                        leaf.openFile(await mgr.createFeed(result,parent));
-                    }
-                });
-                modal.open();
+                leaf.openFile(await mgr.createFeed(result,parent));
             }
-
-            // This command will only show up in Command Palette when the check function returns true
-            return true;
-        }
-        return false;
+        });
+        modal.open();
     }
 }

@@ -1,6 +1,6 @@
-import { MarkdownView, Modal, Notice, Plugin} from 'obsidian';
-import { DEFAULT_SETTINGS, RSSTrackerSettingTab, RSSTrackerSettings } from "./settings";
-import {EditorCommand, EditorModalCommand, NewRSSFeedModalCommand} from "./commands";
+import {Notice, Plugin} from 'obsidian';
+import {DEFAULT_SETTINGS, RSSTrackerSettingTab, RSSTrackerSettings} from "./settings";
+import {EditorCommand, EditorModalCommand, NewRSSFeedModalCommand,UpdateRSSfeedCommand} from "./commands";
 
 export default class RSSTrackerPlugin extends Plugin {
 	settings: RSSTrackerSettings = DEFAULT_SETTINGS;
@@ -9,12 +9,13 @@ export default class RSSTrackerPlugin extends Plugin {
 		await this.loadSettings();
 
 		// This creates an icon in the left ribbon.
-		const ribbonIconEl = this.addRibbonIcon('dice', 'RSS Tracker', (evt: MouseEvent) => {
+		const ribbonIconEl = this.addRibbonIcon('folder-sync', 'Update All RSS Feeds', (evt: MouseEvent) => {
 			// Called when the user clicks the icon.
-			new Notice('This is a notice!');
+			new Notice('All RSS feeds are being updated');
 		});
+
 		// Perform additional things with the ribbon
-		ribbonIconEl.addClass('my-plugin-ribbon-class');
+		ribbonIconEl.addClass('rss-tracker-plugin-ribbon-class');
 
 		// This adds a status bar item to the bottom of the app. Does not work on mobile apps.
 		const statusBarItemEl = this.addStatusBarItem();
@@ -25,6 +26,8 @@ export default class RSSTrackerPlugin extends Plugin {
 		// This adds an editor command that can perform some operation on the current editor instance
 		this.addCommand(new EditorCommand(this.app));
 		// This adds a complex command that can check whether the current state of the app allows execution of the command
+		this.addCommand(new UpdateRSSfeedCommand(this.app,this));
+		// This adds a simple command that can be triggered anywhere
 		this.addCommand(new NewRSSFeedModalCommand(this.app,this));
 		// This adds a settings tab so the user can configure various aspects of the plugin
 		this.addSettingTab(new RSSTrackerSettingTab(this.app, this));
@@ -34,7 +37,31 @@ export default class RSSTrackerPlugin extends Plugin {
 		this.registerDomEvent(document, 'click', (evt: MouseEvent) => {
 			console.log('click', evt);
 		});
+		this.registerEvent(
+			this.app.workspace.on("file-menu", (menu, file) => {
+			  menu.addItem((item) => {
+				item
+				  .setTitle("Print file path 👈")
+				  .setIcon("document")
+				  .onClick(async () => {
+					new Notice(file.path);
+				  });
+			  });
+			})
+		  );
 
+		this.registerEvent(
+			this.app.workspace.on("editor-menu", (menu, editor, view) => {
+			  menu.addItem((item) => {
+				item
+				  .setTitle("Print file path 👈")
+				  .setIcon("document")
+				  .onClick(async () => {
+					new Notice(view?.file?.path ?? "unavailable");
+				  });
+			  });
+			})
+		  );
 		// When registering intervals, this function will automatically clear the interval when the plugin is disabled.
 		this.registerInterval(window.setInterval(() => console.log('setInterval'), 5 * 60 * 1000));
 	}
