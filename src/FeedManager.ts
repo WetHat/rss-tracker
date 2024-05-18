@@ -17,7 +17,7 @@ export default class FeedManager {
     }
 
     private expandTemplate(template:string,properties: TPropertyBag): string {
-        return template.split(FeedManager.TOKEN_SPLITTER).map( s => s.startsWith("{{") ? properties[s] : s).join("");
+        return template.split(FeedManager.TOKEN_SPLITTER).map( s => s.startsWith("{{") ? (properties[s] ?? s) : s).join("");
     }
 
     private formatImage(image: IRSSimage): string {
@@ -124,6 +124,12 @@ export default class FeedManager {
         // create the folder for the feed items
         const itemFolder = await this.app.vault.createFolder(itemfolderPath);
         this.updateFeedItems(100,itemFolder,feed);
+
+        this.app.fileManager.processFrontMatter(feedConfig,frontmatter => {
+            frontmatter.status = "OK";
+            frontmatter.updated = new Date().toISOString();
+        });
+
         return feedConfig;
     }
 
