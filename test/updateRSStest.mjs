@@ -24,7 +24,7 @@ if (feedSource.includes("//")) {
     const feedXML = await fetch(feedSource)
         .then(response => response.text());
 
-    feed = await TrackedRSSfeed.assembleFromUrl(feedXML,options);
+    feed = await TrackedRSSfeed.assembleFromXml(feedXML);
     testDir = path.join("./",feed.title);
     fs.mkdir(testDir,{recursive: true}, err => console.error(err));
     fs.writeFileSync(path.join(testDir,"feed.xml"),feedXML,{encoding:"utf8"});

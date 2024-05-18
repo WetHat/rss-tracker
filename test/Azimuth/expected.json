@@ -1,6 +1,6 @@
 {
     "title": "Azimuth",
-    "site": "https://johncarlosbaez.wordpress.com/",
+    "site": "https://johncarlosbaez.wordpress.com",
     "image": {
         "url": "https://s0.wp.com/i/buttonw-com.png"
     },
@@ -12,7 +12,7 @@
                 "epidemiology",
                 "mathematics"
             ],
-            "description": "Since May 1st, Kris Brown, Nathaniel Osgood, Xiaoyan Li, William Waites and I have been meeting daily in James Clerk Maxwell’s childhood home in Edinburgh. We’re hard at work on our project called New Mathematics and Software for Agent-Based...",
+            "description": "Since May 1st, Kris Brown, Nathaniel Osgood, Xiaoyan Li, William Waites and I have been meeting daily in James Clerk Maxwell&#8217;s childhood home in Edinburgh. We&#8217;re hard at work on our project called New Mathematics and Software for Agent-Based models. It&#8217;s impossible to explain everything we&#8217;re doing while it&#8217;s happening. But I want to record [&#8230;]",
             "title": "Agent-Based Models (Part 9)",
             "link": "https://johncarlosbaez.wordpress.com/2024/05/13/agent-based-models-part-9/",
             "published": "Mon, 13 May 2024 18:23:03 +0000",
@@ -27,7 +27,7 @@
             "tags": [
                 "mathematics"
             ],
-            "description": "This picture by Roice Nelson shows a remarkable structure: the hexagonal tiling honeycomb. What is it? Roughly speaking, a honeycomb is a way of filling 3d space with polyhedra. The most symmetrical honeycombs are the ‘regular’ ones. For any...",
+            "description": "This picture by Roice Nelson shows a remarkable structure: the hexagonal tiling honeycomb. What is it? Roughly speaking, a honeycomb is a way of filling 3d space with polyhedra. The most symmetrical honeycombs are the &#8216;regular&#8217; ones. For any honeycomb, we define a flag to be a chosen vertex lying on a chosen edge lying [&#8230;]",
             "title": "Hexagonal Tiling Honeycomb",
             "link": "https://johncarlosbaez.wordpress.com/2024/05/04/hexagonal-tiling-honeycomb/",
             "published": "Sat, 04 May 2024 15:47:17 +0000",
@@ -44,7 +44,7 @@
                 "epidemiology",
                 "mathematics"
             ],
-            "description": "Last time I presented a class of agent-based models where agents hop around a graph in a stochastic way. Each vertex of the graph is some ‘state’ agents can be in, and each edge is called a ‘transition’. In these models, the probability per time of...",
+            "description": "Last time I presented a class of agent-based models where agents hop around a graph in a stochastic way. Each vertex of the graph is some &#8216;state&#8217; agents can be in, and each edge is called a &#8216;transition&#8217;. In these models, the probability per time of an agent making a transition and leaving some state [&#8230;]",
             "title": "Agent-Based Models (Part 8)",
             "link": "https://johncarlosbaez.wordpress.com/2024/04/16/agent-based-models-part-8/",
             "published": "Tue, 16 Apr 2024 19:01:15 +0000",
@@ -59,7 +59,7 @@
             "tags": [
                 "physics"
             ],
-            "description": "It looks like they’ve found protonium in the decay of a heavy particle! Protonium is made of a proton and an antiproton orbiting each other. It lasts a very short time before they annihilate each other. It’s a bit like a hydrogen atom where the...",
+            "description": "It looks like they&#8217;ve found protonium in the decay of a heavy particle! Protonium is made of a proton and an antiproton orbiting each other. It lasts a very short time before they annihilate each other. It&#8217;s a bit like a hydrogen atom where the electron has been replaced with an antiproton! But it&#8217;s much [&#8230;]",
             "title": "Protonium",
             "link": "https://johncarlosbaez.wordpress.com/2024/04/14/protonium/",
             "published": "Sun, 14 Apr 2024 10:57:14 +0000",
@@ -74,7 +74,7 @@
             "tags": [
                 "uncategorized"
             ],
-            "description": "Sometime this year, the star T Corona Borealis will go nova and become much brighter! At least that’s what a lot of astronomers think. So examine the sky between Arcturus and Vega now—and look again if you hear this event has happened. Normally...",
+            "description": "&#160; Sometime this year, the star T Corona Borealis will go nova and become much brighter! At least that&#8217;s what a lot of astronomers think. So examine the sky between Arcturus and Vega now&#8212;and look again if you hear this event has happened. Normally this star is magnitude 10, too dim to see. When it [&#8230;]",
             "title": "T Corona Borealis",
             "link": "https://johncarlosbaez.wordpress.com/2024/03/27/t-corona-borealis/",
             "published": "Wed, 27 Mar 2024 18:32:47 +0000",
@@ -89,7 +89,7 @@
             "tags": [
                 "mathematics"
             ],
-            "description": "There’s a lot we don’t know. There’s a lot we can’t know. But can we at least know how much we can’t know? What fraction of mathematical statements are undecidable—that is, can be neither proved nor disproved? There are many ways to make this...",
+            "description": "There&#8217;s a lot we don&#8217;t know. There&#8217;s a lot we can&#8217;t know. But can we at least know how much we can&#8217;t know? What fraction of mathematical statements are undecidable&#8212;that is, can be neither proved nor disproved? There are many ways to make this question precise&#8230; but it remains a bit mysterious. The best results [&#8230;]",
             "title": "The Probability of Undecidability",
             "link": "https://johncarlosbaez.wordpress.com/2024/03/15/the-probability-of-undecidability/",
             "published": "Fri, 15 Mar 2024 10:10:44 +0000",
@@ -104,7 +104,7 @@
             "tags": [
                 "mathematics"
             ],
-            "description": "The Law of Excluded Middle says that for any statement P, “P or not P” is true. Is this law true? In classical logic it is. But in intuitionistic logic it’s not. So, in intuitionistic logic we can ask what’s the probability that a randomly chosen...",
+            "description": "The Law of Excluded Middle says that for any statement P, &#8220;P or not P&#8221; is true. Is this law true? In classical logic it is. But in intuitionistic logic it&#8217;s not. So, in intuitionistic logic we can ask what&#8217;s the probability that a randomly chosen statement obeys the Law of Excluded Middle. And the [&#8230;]",
             "title": "The Probability of the Law of Excluded Middle",
             "link": "https://johncarlosbaez.wordpress.com/2024/03/13/the-probability-of-the-law-of-excluded-middle/",
             "published": "Wed, 13 Mar 2024 23:20:10 +0000",
@@ -119,7 +119,7 @@
             "tags": [
                 "music"
             ],
-            "description": "At first glance it’s amazing that one of the great British composers of the 1400s largely sank from view until his works were rediscovered in 1850. But the reason is not hard to find. When the Puritans took over England, they burned not only...",
+            "description": "At first glance it&#8217;s amazing that one of the great British composers of the 1400s largely sank from view until his works were rediscovered in 1850. But the reason is not hard to find. When the Puritans took over England, they burned not only witches and heretics, but also books &#8212; and music! They hated [&#8230;]",
             "title": "Nicholas Ludford",
             "link": "https://johncarlosbaez.wordpress.com/2024/02/29/nicholas-ludford/",
             "published": "Thu, 29 Feb 2024 10:00:24 +0000",
@@ -136,7 +136,7 @@
                 "epidemiology",
                 "mathematics"
             ],
-            "description": "Last time I presented a simple, limited class of agent-based models where each agent independently hops around a graph. I wrote: Today the probability for an agent to hop from one vertex of the graph to another by going along some edge will be...",
+            "description": "Last time I presented a simple, limited class of agent-based models where each agent independently hops around a graph. I wrote: Today the probability for an agent to hop from one vertex of the graph to another by going along some edge will be determined the moment the agent arrives at that vertex. It will [&#8230;]",
             "title": "Agent-Based Models (Part 7)",
             "link": "https://johncarlosbaez.wordpress.com/2024/02/28/agent-based-models-part-7/",
             "published": "Wed, 28 Feb 2024 21:09:29 +0000",
@@ -151,7 +151,7 @@
             "tags": [
                 "music"
             ],
-            "description": "Andreas Werckmeister (1645–1706) was a musician and expert on the organ. Compared to Kirnberger, his life seems outwardly dull. He got his musical training from his uncles, and from the age of 19 to his death he worked as an organist in three...",
+            "description": "Andreas Werckmeister (1645&#8211;1706) was a musician and expert on the organ. Compared to Kirnberger, his life seems outwardly dull. He got his musical training from his uncles, and from the age of 19 to his death he worked as an organist in three German towns. That&#8217;s about all I know. His fame comes from the [&#8230;]",
             "title": "Well Temperaments (Part 6)",
             "link": "https://johncarlosbaez.wordpress.com/2024/02/26/well-temperaments-part-6/",
             "published": "Mon, 26 Feb 2024 10:00:27 +0000",

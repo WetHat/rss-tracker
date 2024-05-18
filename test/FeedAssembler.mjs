@@ -69,14 +69,11 @@ function assembleImage(elem) {
     return null;
 }
 function assembleCreator(elem) {
-    let { creator, author } = elem;
+    const creator = elem.creator || elem["dc:creator"];
     if (creator) {
         return creator;
     }
-    if (creator = elem["dc:creator"]) {
-        return creator;
-    }
-    return author.name;
+    return elem.author?.name;
 }
 function assembleDescription(elem) {
     let description = elem["media:description"];
@@ -95,37 +92,51 @@ const DEFAULT_OPTIONS = {
         let tracked = {
             id: id || (guid ? guid["#text"] : ""),
         };
-        let description = item.description;
-        if (!description && (description = assembleDescription(item))) {
+        let description = item.description || assembleDescription(item);
+        if (description) {
             tracked.description = description;
         }
-        let { published, pubDate } = item;
-        if (!published && pubDate) {
-            tracked.published = pubDate;
+        let published = item.published || item.pubDate;
+        if (published) {
+            tracked.published = published;
         }
-        let category = item.category;
+        const category = item.category;
         if (category) {
             tracked.category = typeof category === "string" ? [category] : category;
         }
-        let creator = item.creator;
-        if (!creator && (creator = assembleCreator(item))) {
+        let creator = item.creator || assembleCreator(item);
+        if (creator) {
             tracked.creator = creator;
         }
-        let image = assembleImage(item);
+        const image = assembleImage(item);
         if (image) {
             tracked.image = image;
         }
-        let content = item["content:encoded"];
+        let content = item["content:encoded"] || item.content;
         if (content) {
-            tracked.content = content;
+            tracked.content = typeof content === "string" ? content : content["#text"];
         }
         return tracked;
     },
     getExtraFeedFields: (feedData) => {
         let tracked = {};
-        let image = assembleImage(feedData);
+        const image = assembleImage(feedData);
         if (image) {
             tracked.image = image;
+        }
+        let link = feedData.link;
+        if (link) {
+            if (Array.isArray(link)) {
+                for (let l of link) {
+                    if (l["@_rel"] !== 'self') {
+                        tracked.link = l["@_href"];
+                        break;
+                    }
+                }
+            }
+            else {
+                tracked.link = link;
+            }
         }
         return tracked;
     },
