@@ -18,8 +18,10 @@ status: unknown
 > [!abstract] {{title}}
 > {{description}}
 
+# Unread Feed Items
 ~~~dataview
 TASK
+FROM "{{folderPath}}"
 WHERE !completed
 ~~~
 `,
@@ -33,7 +35,7 @@ id: {{id}}
 read: false
 tags: {{tags}}
 ---
-- [ ] {{title}}
+- [ ] [[{{fileName}}]]
 
 {{content}}
 `

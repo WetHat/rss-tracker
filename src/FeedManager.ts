@@ -1,4 +1,4 @@
-import {App,request,TFile,TFolder,htmlToMarkdown} from "obsidian";
+import {App,request,TFile,TFolder,htmlToMarkdown,normalizePath} from "obsidian";
 import RSSTrackerPlugin from './main';
 import {TrackedRSSfeed,TrackedRSSitem,IRSSimage,TPropertyBag} from "./FeedAssembler"
 import * as path from 'path';
@@ -6,6 +6,7 @@ import * as path from 'path';
 export default class FeedManager {
 
     private static readonly TOKEN_SPLITTER = /(?<={{[^{}]+}})|(?={{[^{}]+}})/g;
+    private static readonly ILLEGAL_FS_CHARS =/[#\\><\/|\[\]:?^]/g;
 
     private app: App;
     private plugin: RSSTrackerPlugin;
@@ -31,11 +32,14 @@ export default class FeedManager {
         return `![image${size}](${url})`;
     }
 
+    private formatFilename(name: string): string {
+        return name.replace(FeedManager.ILLEGAL_FS_CHARS,"🔹");
+    }
     private formatTags(tags: string[]): string {
-        return "[" + tags.map( t => t.replace(" ","_")).join(",") + "]";
+        return "[" + tags.map( t => "rss/" + t.replace(" ","_")).join(",") + "]";
     }
 
-    private async createFeedItem(itemFolder: TFolder, item: TrackedRSSitem): Promise<TFile> {
+    private async saveFeedItem(itemFolder: TFolder, item: TrackedRSSitem): Promise<TFile> {
         let {id,tags,title,link,description,published,author,image,content} = item;
 
         if (description) {
@@ -58,6 +62,9 @@ export default class FeedManager {
         if (!content) {
             content = description
         }
+        const basename = this.formatFilename(item.title);
+        const itemPath = path.join(itemFolder.path,this.formatFilename(`${basename}.md`));
+
         // fill in the template
         const itemContent = this.expandTemplate(this.plugin.settings.itemTemplate, {
                 "{{id}}": id,
@@ -67,9 +74,10 @@ export default class FeedManager {
                 "{{link}}": link ?? "",
                 "{{publishDate}}": published ?? "",
                 "{{tags}}": this.formatTags(tags),
-                "{{content}}": abstract + "\n" + content
+                "{{content}}": abstract + "\n" + content,
+                "{{fileName}}": basename,
               });
-         return this.app.vault.create(path.join(itemFolder.path,`${title}.md`),itemContent);
+         return this.app.vault.create(itemPath,itemContent);
     }
 
     private updateFeedItems(itemLimit:number,itemFolder:TFolder,feed:TrackedRSSfeed) {
@@ -91,7 +99,7 @@ export default class FeedManager {
         }
         // save items
         for (let item of feed.items) {
-            this.createFeedItem(itemFolder,item);
+            this.saveFeedItem(itemFolder,item);
         }
     }
 
@@ -101,30 +109,35 @@ export default class FeedManager {
                                 method: "GET",
                              }),
             feed = TrackedRSSfeed.assembleFromXml(feedXML),
+            basename=this.formatFilename(feed.title ?? "Anonymous Feed"),
+            itemfolderPath = normalizePath(path.join(location.path,basename)),
             content = this.expandTemplate(this.plugin.settings.feedTemplate,{
                 "{{feedUrl}}": url,
                 "{{siteUrl}}": feed.site ?? "",
                 "{{title}}": feed.title ?? "",
-                "{{description}}": feed.description ?? ""
+                "{{description}}": feed.description ?? "",
+                "{{folderPath}}": itemfolderPath
             });
-        // create the folder for the feed items
-        const itemFolder = await this.app.vault.createFolder(path.join(location.path,`${feed.title}`));
         // create the feed configuration file
-        let feedConfig = await this.app.vault.create(path.join(location.path,`${feed.title}.md`),content);
+        let feedConfig = await this.app.vault.create(path.join(location.path,`${basename}.md`),content);
+
+        // create the folder for the feed items
+        const itemFolder = await this.app.vault.createFolder(itemfolderPath);
+        this.updateFeedItems(100,itemFolder,feed);
+        return feedConfig;
+    }
+
+    async updateFeed(feedConfig: TFile) {
         // get the feed config from the frontmatter and update the items up to the item limit
         const meta = this.app.metadataCache,
               itemLimit = meta.getFileCache(feedConfig)?.frontmatter?.["itemlimit"] ?? "100";
 
-        this.updateFeedItems(parseInt(itemLimit),itemFolder,feed);
-
-        return feedConfig;
-    }
-
-    updateFeed(feed: TFile) {
         // obtain feed specifications
-        const frontmatter = this.app.metadataCache.getFileCache(feed)?.frontmatter
+        const frontmatter = this.app.metadataCache.getFileCache(feedConfig)?.frontmatter
         if (frontmatter) {
             const url = frontmatter["feedurl"];
         }
+         // create the folder for the feed items (if needed)
+         const itemFolder = await this.app.vault.createFolder(path.join(feedConfig.path,feedConfig.basename));
     }
 }
