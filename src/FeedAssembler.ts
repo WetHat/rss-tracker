@@ -8,7 +8,7 @@ type TPropertyBag = {[key: string] :any};
 /**
  * Specification of an image reference within an RSS feed.
  */
-interface IRSSimage {
+export interface IRSSimage {
     url: string;
     width?: string;
     height?:string;
@@ -62,7 +62,7 @@ export class TrackedRSSitem {
     published: string;
     author?: string;
     image?: IRSSimage;
-    content?:string;
+    content?: string;
 
     constructor(entry: IEntryDataExtended ) {
         this.tags = entry.category ?? [];
