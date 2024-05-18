@@ -18,19 +18,24 @@ status: unknown
 > [!abstract] {{title}}
 > {{description}}
 
+~~~dataview
+TASK
+WHERE !completed
+~~~
 `,
 	itemTemplate: `---
 title: {{title}}
+feed: {{feedName}}
 author: {{author}}
 link: {{link}}
-published: {{pubDate}}
-guid: {{guid}}
+published: {{publishDate}}
+id: {{id}}
 read: false
-tags: [{{tags}}]
+tags: {{tags}}
 ---
+- [ ] {{title}}
+
 {{content}}
-- - -
-{{media}}
 `
 }
 
