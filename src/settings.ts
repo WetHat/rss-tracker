@@ -32,7 +32,6 @@ author: {{author}}
 link: {{link}}
 published: {{publishDate}}
 id: {{id}}
-read: false
 tags: {{tags}}
 ---
 - [ ] [[{{fileName}}]]
