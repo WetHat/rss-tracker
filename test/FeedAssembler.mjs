@@ -126,6 +126,11 @@ const DEFAULT_OPTIONS = {
         if (content) {
             tracked.content = typeof content === "string" ? content : content["#text"];
         }
+        let title = item.title;
+        if (!title) {
+            // a title is mandatory - synthesize one
+            tracked.title = published;
+        }
         return tracked;
     },
     getExtraFeedFields: (feedData) => {
