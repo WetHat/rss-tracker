@@ -68,9 +68,9 @@ export default class FeedManager {
         // fill in the template
         const itemContent = this.expandTemplate(this.plugin.settings.itemTemplate, {
                 "{{id}}": id,
-                "{{title}}": title,
-                "{{feedName}}": itemFolder.name,
-                "{{author}}": author ?? "",
+                "{{title}}": '"' + title + '"',
+                "{{feedName}}": '"' + itemFolder.name + '"',
+                "{{author}}": author ? ('"' + author + '"') :('"' + itemFolder.name + '"'),
                 "{{link}}": link ?? "",
                 "{{publishDate}}": published ?? "",
                 "{{tags}}": this.formatTags(tags),
@@ -108,14 +108,15 @@ export default class FeedManager {
                                 url: url,
                                 method: "GET",
                              }),
-            feed = TrackedRSSfeed.assembleFromXml(feedXML),
-            basename=this.formatFilename(feed.title ?? "Anonymous Feed"),
+            feed = TrackedRSSfeed.assembleFromXml(feedXML);
+        const {title,site,description} = feed,
+            basename=this.formatFilename(title ?? "Anonymous Feed"),
             itemfolderPath = normalizePath(path.join(location.path,basename)),
             content = this.expandTemplate(this.plugin.settings.feedTemplate,{
                 "{{feedUrl}}": url,
-                "{{siteUrl}}": feed.site ?? "",
-                "{{title}}": feed.title ?? "",
-                "{{description}}": feed.description ?? "",
+                "{{siteUrl}}": site ?? "",
+                "{{title}}": title ?? "",
+                "{{description}}": description ? htmlToMarkdown(description) : "",
                 "{{folderPath}}": itemfolderPath
             });
         // create the feed configuration file

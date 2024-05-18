@@ -26,9 +26,9 @@ WHERE !completed
 ~~~
 `,
 	itemTemplate: `---
-title: "{{title}}"
-feed: "{{feedName}}"
-author: "{{author}}"
+title: {{title}}
+feed: {{feedName}}
+author: {{author}}
 link: {{link}}
 published: {{publishDate}}
 id: {{id}}
