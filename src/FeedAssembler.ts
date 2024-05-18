@@ -21,6 +21,7 @@ export interface IRSSimage {
  */
 interface IEntryDataTracked{
     id: string;
+    title?: string;
     description?:string;
     published?: string;
     category?: string[];
@@ -194,6 +195,12 @@ const DEFAULT_OPTIONS: ReaderOptions = {
         let content = item["content:encoded"] || item.content;
         if (content) {
             tracked.content = typeof content === "string" ? content : content["#text"];
+        }
+
+        let title = item.title;
+        if (!title) {
+            // a title is mandatory - synthesize one
+            tracked.title = published;
         }
         return tracked;
     },
