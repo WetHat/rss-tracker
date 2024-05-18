@@ -100,7 +100,7 @@ const DEFAULT_OPTIONS = {
     getExtraEntryFields: (item) => {
         let { id, guid } = item;
         let tracked = {
-            id: id || (guid ? guid["#text"] : ""),
+            id: id || guid?.["#text"] || item.link
         };
         let description = item.description || assembleDescription(item);
         if (description) {

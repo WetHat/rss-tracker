@@ -164,7 +164,7 @@ const DEFAULT_OPTIONS: ReaderOptions = {
     getExtraEntryFields: (item: TPropertyBag): IEntryDataTracked => {
         let {id, guid} = item;
         let tracked: IEntryDataTracked = {
-            id: id || (guid ? guid["#text"] : ""),
+            id: id || guid?.["#text"] || item.link
         }
 
         let description = item.description || assembleDescription(item);
@@ -202,6 +202,7 @@ const DEFAULT_OPTIONS: ReaderOptions = {
             // a title is mandatory - synthesize one
             tracked.title = published;
         }
+
         return tracked;
     },
 
