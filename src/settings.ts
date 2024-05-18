@@ -9,7 +9,7 @@ export interface RSSTrackerSettings {
 export const DEFAULT_SETTINGS: RSSTrackerSettings = {
 	feedTemplate: `---
 feedurl: {{feedUrl}}
-site: {{siteUrl}}
+site: "{{siteUrl}}"
 itemlimit: 100
 updated: never
 status: unknown
@@ -26,9 +26,9 @@ WHERE !completed
 ~~~
 `,
 	itemTemplate: `---
-title: {{title}}
-feed: {{feedName}}
-author: {{author}}
+title: "{{title}}"
+feed: "{{feedName}}"
+author: "{{author}}"
 link: {{link}}
 published: {{publishDate}}
 id: {{id}}
