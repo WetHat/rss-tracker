@@ -3,7 +3,7 @@ import {extractFromXml,extract,FeedData,ReaderOptions,FeedEntry} from '@extractu
 /**
  * Type for property bag objects with unknown content.
  */
-type TPropertyBag = {[key: string] :any};
+export type TPropertyBag = {[key: string] :any};
 
 /**
  * Specification of an image reference within an RSS feed.
