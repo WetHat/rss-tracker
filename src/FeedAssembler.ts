@@ -74,7 +74,17 @@ export class TrackedRSSitem {
             this.description = description;
         }
 
-        this.published = published ?? new Date().toISOString();
+        if (published) {
+            // normalize date
+            const ticks = Date.parse(published);
+            if (!isNaN(ticks)) {
+                published = new Date(ticks).toISOString();
+            }
+        } else {
+            published = new Date().toISOString();
+        }
+
+        this.published = published;
         this.title = title ?? `${creator} - ${published}`;
         this.link = link;
         this.author = creator;
