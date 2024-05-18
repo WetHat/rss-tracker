@@ -83,8 +83,8 @@ export class EditorModalCommand implements Command {
  * A simple command that can be triggered anywhere
  */
 export class UpdateRSSfeedCommand implements Command {
-    id = 'update-tracked-rss-feed checked';
-    name = 'Open sample modal (simple)';
+    id = 'update-tracked-rss-feed-checked';
+    name = 'Update RSS Feed';
     private app: App;
     private plugin: RSSTrackerPlugin;
     constructor (app: App, plugin: RSSTrackerPlugin) {
@@ -110,7 +110,7 @@ export class UpdateRSSfeedCommand implements Command {
             return true;
         }
         return false;
-    }
+   }
 }
 
 /**
@@ -134,7 +134,7 @@ export class EditorCommand implements Command {
  * A complex command that can check whether the current state of the app allows execution of the command.
  */
 export class NewRSSFeedModalCommand implements Command {
-    id = 'open-url-input-modal';
+    id = 'rss-tracker-url-input-modal';
     name = 'New RSS Feed';
     private app: App;
     private plugin: RSSTrackerPlugin;
