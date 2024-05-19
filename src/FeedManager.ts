@@ -33,11 +33,11 @@ export default class FeedManager {
     }
 
     private formatFilename(name: string): string {
-        return name.replace(/(\w+:\/\/|[,.?]).*/,"")
+        return name.replace(/\w+:\/\/.*/,"")
                    .replace(FeedManager.ILLEGAL_FS_CHARS,"🔹")
                    .replace(/🔹{2,🔹}|🔹\s+/g,"🔹")
                    .substring(0,60)
-                   .trim();
+                   .replace(/[.\s🔹]*$/,"");
     }
     private formatTags(tags: string[]): string {
         return "[" + tags.map( t => "rss/" + t.replace(" ","_")).join(",") + "]";
