@@ -33,7 +33,11 @@ export default class FeedManager {
     }
 
     private formatFilename(name: string): string {
-        return name.replace(FeedManager.ILLEGAL_FS_CHARS,"🔹");
+        return name.replace(/(\w+:\/\/|[,.?]).*/,"")
+                   .replace(FeedManager.ILLEGAL_FS_CHARS,"🔹")
+                   .replace(/🔹{2,🔹}|🔹\s+/g,"🔹")
+                   .substring(0,60)
+                   .trim();
     }
     private formatTags(tags: string[]): string {
         return "[" + tags.map( t => "rss/" + t.replace(" ","_")).join(",") + "]";
@@ -63,7 +67,16 @@ export default class FeedManager {
             content = description
         }
         const basename = this.formatFilename(item.title);
-        const itemPath = path.join(itemFolder.path,this.formatFilename(`${basename}.md`));
+        let itemPath = normalizePath(path.join(itemFolder.path,`${basename}.md`));
+
+        // make sure the name is unique
+        let uniqueBasename = basename,
+            counter:number = 1;
+        while (this.app.vault.getFileByPath(itemPath)) {
+            uniqueBasename = `${basename} (${counter})`;
+            itemPath = normalizePath(path.join(itemFolder.path,`${uniqueBasename}.md`));
+            counter++;
+        }
 
         // fill in the template
         const itemContent = this.expandTemplate(this.plugin.settings.itemTemplate, {
@@ -75,12 +88,24 @@ export default class FeedManager {
                 "{{publishDate}}": published ?? "",
                 "{{tags}}": this.formatTags(tags),
                 "{{content}}": abstract + "\n" + content,
-                "{{fileName}}": basename,
+                "{{fileName}}": uniqueBasename,
               });
-         return this.app.vault.create(itemPath,itemContent);
+
+        const itemFile = await this.app.vault.create(itemPath,itemContent).catch(reason => {throw reason});
+
+        // fix embedded tags
+        const meta = this.app.metadataCache.getFileCache(itemFile);
+        const fileTags = meta?.tags;
+        if (fileTags) {
+            let contents = this.app.vault.read(itemFile);
+
+            fileTags.forEach(t => console.log(t));
+        }
+
+        return itemFile;
     }
 
-    private updateFeedItems(itemLimit:number,itemFolder:TFolder,feed:TrackedRSSfeed) {
+    private async updateFeedItems(itemLimit:number,itemFolder:TFolder,feed:TrackedRSSfeed) {
         const meta = this.app.metadataCache;
         let items: TFile[] = itemFolder.children.filter( (fof) => fof instanceof TFile)
                                                 .map(f => f as TFile)
@@ -99,7 +124,7 @@ export default class FeedManager {
         }
         // save items
         for (let item of feed.items) {
-            this.saveFeedItem(itemFolder,item);
+            await this.saveFeedItem(itemFolder,item).catch(reason => {throw reason});
         }
     }
 
@@ -124,10 +149,18 @@ export default class FeedManager {
 
         // create the folder for the feed items
         const itemFolder = await this.app.vault.createFolder(itemfolderPath);
-        this.updateFeedItems(100,itemFolder,feed);
+        let status: any;
+
+        try {
+            await this.updateFeedItems(100,itemFolder,feed);
+            status = "OK";
+        } catch (err:any) {
+            console.error(err);
+            status = err.message;
+        }
 
         this.app.fileManager.processFrontMatter(feedConfig,frontmatter => {
-            frontmatter.status = "OK";
+            frontmatter.status = status;
             frontmatter.updated = new Date().toISOString();
         });
 
