@@ -7,7 +7,7 @@ export default class FeedManager {
 
     private static readonly TOKEN_SPLITTER = /(?<={{[^{}]+}})|(?={{[^{}]+}})/g;
     private static readonly ILLEGAL_FS_CHARS =/[#\\><\/|\[\]:?^]/g;
-
+    private static readonly HASH_FINDER = /(?<!\]\([^[\]()]+)#(?=\b)/g;
     private app: App;
     private plugin: RSSTrackerPlugin;
 
@@ -42,16 +42,20 @@ export default class FeedManager {
     private formatTags(tags: string[]): string {
         return "[" + tags.map( t => "rss/" + t.replace(" ","_")).join(",") + "]";
     }
+    private formatHashTags(md: string) : string {
+        return md.replace(FeedManager.HASH_FINDER,"#rss/");
+    }
 
     private async saveFeedItem(itemFolder: TFolder, item: TrackedRSSitem): Promise<TFile> {
         let {id,tags,title,link,description,published,author,image,content} = item;
 
         if (description) {
-            description = htmlToMarkdown(description);
+            description = this.formatHashTags(htmlToMarkdown(description));
         }
         if (content) {
-            content = htmlToMarkdown(content);
+            content = this.formatHashTags(htmlToMarkdown(content));
         }
+        title = this.formatHashTags(title);
 
         const byline = author ? ` by ${author}` : "";
         let abstract = `> [!abstract] [${title}](${link})${byline})`;
@@ -91,18 +95,7 @@ export default class FeedManager {
                 "{{fileName}}": uniqueBasename,
               });
 
-        const itemFile = await this.app.vault.create(itemPath,itemContent).catch(reason => {throw reason});
-
-        // fix embedded tags
-        const meta = this.app.metadataCache.getFileCache(itemFile);
-        const fileTags = meta?.tags;
-        if (fileTags) {
-            let contents = this.app.vault.read(itemFile);
-
-            fileTags.forEach(t => console.log(t));
-        }
-
-        return itemFile;
+        return this.app.vault.create(itemPath,itemContent).catch(reason => {throw reason});
     }
 
     private async updateFeedItems(itemLimit:number,itemFolder:TFolder,feed:TrackedRSSfeed) {
@@ -141,7 +134,7 @@ export default class FeedManager {
                 "{{feedUrl}}": url,
                 "{{siteUrl}}": site ?? "",
                 "{{title}}": title ?? "",
-                "{{description}}": description ? htmlToMarkdown(description) : "",
+                "{{description}}": description ? this.formatHashTags(htmlToMarkdown(description)) : "",
                 "{{folderPath}}": itemfolderPath
             });
         // create the feed configuration file
