@@ -137,6 +137,19 @@ function assembleImage(elem: TPropertyBag): IRSSimage | null {
         return img;
     }
 
+    let enc = elem.enclosure;
+    if (enc?.["@_type"]?.includes("image")) {
+        let img:IRSSimage = {url: enc["@_url"]};
+        const [width,height] = [enc["@_width"],enc["@_height"]];
+        if (width) {
+            img.width = width;
+        }
+        if (height) {
+            img.height = height;
+        }
+
+        return img;
+    }
     return null;
 }
 
