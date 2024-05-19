@@ -13,6 +13,7 @@ site: "{{siteUrl}}"
 itemlimit: 100
 updated: never
 status: unknown
+tags: [rss]
 ---
 
 > [!abstract] {{title}}
