@@ -1,66 +1,66 @@
 import { App, Modal, Command, MarkdownView, Editor, MarkdownFileInfo, Setting, TFile, Plugin } from 'obsidian';
-import FeedManager from "./FeedManager";
-import RSSTrackerPlugin from "./main";
+import { FeedManager } from './FeedManager';
+import RSSTrackerPlugin from './main';
 
 /**
  * Modal dialog to request rss url input from the user.
  */
 export class InputUrlModal extends Modal {
-    result: string = "";
+    result: string = '';
 
     onSubmit: (result: string) => void;
 
-    constructor(app: App, onSubmit: (result: string) => void) {
-      super(app);
-      this.onSubmit = onSubmit;
+    constructor (app: App, onSubmit: (result: string) => void) {
+        super(app);
+        this.onSubmit = onSubmit;
     }
 
-    onOpen() {
-      const { contentEl } = this;
-      // Input fiels
-      new Setting(contentEl)
-        .setName("Feed Url:")
-        .setDesc("Enter the url of the rss feed:")
-        .setHeading()
-        .addText((text) => {
-            text.inputEl.style.width="95%";
-            text.setPlaceholder("https://x.com/feed")
-            text.onChange((value) => {
-                this.result = value
-            })});
+    onOpen () {
+        const { contentEl } = this;
+        // Input fiels
+        new Setting(contentEl)
+            .setName('Feed Url:')
+            .setDesc('Enter the url of the rss feed:')
+            .setHeading()
+            .addText(text => {
+                text.inputEl.style.width = '95%';
+                text.setPlaceholder('https://x.com/feed');
+                text.onChange(value => {
+                    this.result = value;
+                });
+            });
 
-      new Setting(contentEl)
-        .addButton((btn) =>
-          btn
-            .setButtonText("Submit")
-            .setCta()
-            .onClick(() => {
-              this.close();
-              this.onSubmit(this.result);
-            }));
+        new Setting(contentEl).addButton(btn =>
+            btn
+                .setButtonText('Submit')
+                .setCta()
+                .onClick(() => {
+                    this.close();
+                    this.onSubmit(this.result);
+                })
+        );
     }
 
-    onClose() {
-      let { contentEl } = this;
-      contentEl.empty();
+    onClose () {
+        const { contentEl } = this;
+        contentEl.empty();
     }
-  }
+}
 
 export class SampleModal extends Modal {
+    constructor (app: App) {
+        super(app);
+    }
 
-	constructor(app: App) {
-		super(app);
-	}
+    onOpen () {
+        const { contentEl } = this;
+        contentEl.setText('Woah!');
+    }
 
-	onOpen() {
-		const {contentEl} = this;
-		contentEl.setText('Woah!');
-	}
-
-	onClose() {
-		const {contentEl} = this;
-		contentEl.empty();
-	}
+    onClose () {
+        const { contentEl } = this;
+        contentEl.empty();
+    }
 }
 
 /**
@@ -74,7 +74,7 @@ export class EditorModalCommand implements Command {
         this.app = app;
     }
 
-    callback() : any {
+    callback (): any {
         new SampleModal(this.app).open();
     }
 }
@@ -92,25 +92,27 @@ export class UpdateRSSfeedCommand implements Command {
         this.plugin = plugin;
     }
 
-    checkCallback(checking: boolean): any  {
+    checkCallback (checking: boolean): any {
         // Conditions to check
         const active = this.app.workspace.getActiveFile();
 
         if (active) {
             // If checking is true, we're simply "checking" if the command can be run.
             // If checking is false, then we want to actually perform the operation.
-            if (!checking) {
+            if (checking) {
+                // This command will only show up in Command Palette when the check function returns true
+                // check if active file is a rss feed dashboard.
+                return this.plugin.feedmgr.getFeedConfig(active);
+            } else {
                 const modal = new InputUrlModal(this.app, async result => {
                     console.log(active);
                 });
                 modal.open();
             }
-
-            // This command will only show up in Command Palette when the check function returns true
             return true;
         }
         return false;
-   }
+    }
 }
 
 /**
@@ -124,9 +126,9 @@ export class EditorCommand implements Command {
         this.app = app;
     }
 
-    editorCallback(editor: Editor, view: MarkdownView | MarkdownFileInfo) : any {
+    editorCallback (editor: Editor, view: MarkdownView | MarkdownFileInfo): any {
         console.log(editor.getSelection());
-		editor.replaceSelection('Sample Editor Command was here');
+        editor.replaceSelection('Sample Editor Command was here');
     }
 }
 
@@ -138,23 +140,23 @@ export class NewRSSFeedModalCommand implements Command {
     name = 'New RSS Feed';
     private app: App;
     private plugin: RSSTrackerPlugin;
-    constructor (app: App,plugin: RSSTrackerPlugin) {
+    constructor (app: App, plugin: RSSTrackerPlugin) {
         this.app = app;
         this.plugin = plugin;
     }
 
-    callback(): any  {
+    callback (): any {
         // Conditions to check
         const modal = new InputUrlModal(this.app, async result => {
             console.log(result);
             const f: TFile | null = this.app.workspace.getActiveFile();
 
             if (f) {
-                const parent = this.app.fileManager.getNewFileParent(f.path),
-                      mgr = new FeedManager(this.app,this.plugin),
-                      leaf = this.app.workspace.getLeaf(false);
+                const parent = this.app.fileManager.getNewFileParent(f.path);
+                    const mgr = this.plugin.feedmgr;
+                    const leaf = this.app.workspace.getLeaf(false);
 
-                leaf.openFile(await mgr.createFeed(result,parent));
+                leaf.openFile(await mgr.createFeed(result, parent));
             }
         });
         modal.open();
