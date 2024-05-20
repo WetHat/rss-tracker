@@ -3,8 +3,37 @@ import RSSTrackerPlugin from './main';
 import {TrackedRSSfeed,TrackedRSSitem,IRSSimage,TPropertyBag} from "./FeedAssembler"
 import * as path from 'path';
 
-export default class FeedManager {
+export class FeedConfig {
+    feedUrl: string;
+    itemLimit: number;
+    itemFolder: string ;
 
+    static fromFile(app:App,file: TFile) : FeedConfig | null {
+        if (!file) {
+            return null;
+        }
+        // read file frontmatter to determine if this is a feed dashboard
+        const frontmatter = app.metadataCache.getFileCache(file)?.frontmatter;
+        if (!frontmatter) {
+            return null;
+        }
+        const {feedurl,itemlimit} = frontmatter
+        if (!feedurl || !itemlimit) {
+            return null;
+        }
+
+        return new FeedConfig(feedurl,itemlimit,path.join(file.parent?.path ?? "",file.basename));
+
+    }
+
+    private constructor (feedurl:string, itemlimit: string, itemfolder: string) {
+        this.feedUrl = feedurl;
+        this.itemLimit = parseInt(itemlimit);
+        this.itemFolder = itemfolder;
+    }
+}
+
+export class FeedManager {
     private static readonly TOKEN_SPLITTER = /(?<={{[^{}]+}})|(?={{[^{}]+}})/g;
     private static readonly ILLEGAL_FS_CHARS =/[#\\><\/|\[\]:?^]/g;
     private static readonly HASH_FINDER = /(?<!\]\([^[\]()]+)#(?=\b)/g;
@@ -172,5 +201,9 @@ export default class FeedManager {
         }
          // create the folder for the feed items (if needed)
          const itemFolder = await this.app.vault.createFolder(path.join(feedConfig.path,feedConfig.basename));
+    }
+
+    getFeedConfig(file: TFile): FeedConfig | null {
+       return FeedConfig.fromFile(this.app,file);
     }
 }
