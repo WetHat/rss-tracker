@@ -1,6 +1,6 @@
 import { Notice, Plugin, PluginManifest, App } from 'obsidian';
 import { DEFAULT_SETTINGS, RSSTrackerSettingTab, RSSTrackerSettings } from './settings';
-import { EditorCommand, EditorModalCommand, NewRSSFeedModalCommand, UpdateRSSfeedCommand } from './commands';
+import { NewRSSFeedModalCommand, UpdateRSSfeedCommand } from './commands';
 import { FeedManager } from './FeedManager';
 import { UpdateRSSfeedMenuItem } from './menus';
 
@@ -29,10 +29,6 @@ export default class RSSTrackerPlugin extends Plugin {
         //const statusBarItemEl = this.addStatusBarItem();
         //statusBarItemEl.setText('Status Bar Text');
 
-        // This adds a simple command that can be triggered anywhere
-        this.addCommand(new EditorModalCommand(this.app));
-        // This adds an editor command that can perform some operation on the current editor instance
-        this.addCommand(new EditorCommand(this.app));
         // This adds a complex command that can check whether the current state of the app allows execution of the command
         this.addCommand(new UpdateRSSfeedCommand(this.app, this));
         // This adds a simple command that can be triggered anywhere

@@ -1,4 +1,4 @@
-import { App, Modal, Command, MarkdownView, Editor, MarkdownFileInfo, Setting, TFile, Plugin } from 'obsidian';
+import { App, Modal, Command, Setting, TFile, Notice } from 'obsidian';
 import { FeedConfig } from './FeedManager';
 import RSSTrackerPlugin from './main';
 
@@ -47,38 +47,6 @@ export class InputUrlModal extends Modal {
     }
 }
 
-export class SampleModal extends Modal {
-    constructor (app: App) {
-        super(app);
-    }
-
-    onOpen () {
-        const { contentEl } = this;
-        contentEl.setText('Woah!');
-    }
-
-    onClose () {
-        const { contentEl } = this;
-        contentEl.empty();
-    }
-}
-
-/**
- * A simple command that can be triggered anywhere
- */
-export class EditorModalCommand implements Command {
-    id = 'open-sample-modal-simple';
-    name = 'Open sample modal (simple)';
-    private app: App;
-    constructor (app: App) {
-        this.app = app;
-    }
-
-    callback (): any {
-        new SampleModal(this.app).open();
-    }
-}
-
 /**
  * A simple command that can be triggered anywhere
  */
@@ -99,36 +67,18 @@ export class UpdateRSSfeedCommand implements Command {
         if (active) {
             // If checking is true, we're simply "checking" if the command can be run.
             // If checking is false, then we want to actually perform the operation.
+            const cfg = FeedConfig.fromFile(this.app,active);
             if (checking) {
                 // This command will only show up in Command Palette when the check function returns true
                 // check if active file is a rss feed dashboard.
-                return FeedConfig.fromFile(this.app,active);
-            } else {
-                const modal = new InputUrlModal(this.app, async result => {
-                    console.log(active);
-                });
-                modal.open();
+                return cfg;
             }
-            return true;
+            if (cfg) {
+                this.plugin.feedmgr.updateFeed(cfg).then(() => new Notice(`${cfg.source.basename} updated!`));
+                return true;
+            }
         }
         return false;
-    }
-}
-
-/**
- * An editor command that can perform some operation on the current editor instance
- */
-export class EditorCommand implements Command {
-    id = 'sample-editor-command';
-    name = 'Sample editor command';
-    private app: App;
-    constructor (app: App) {
-        this.app = app;
-    }
-
-    editorCallback (editor: Editor, view: MarkdownView | MarkdownFileInfo): any {
-        console.log(editor.getSelection());
-        editor.replaceSelection('Sample Editor Command was here');
     }
 }
 
