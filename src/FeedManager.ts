@@ -87,7 +87,7 @@ export class FeedManager {
         title = this.formatHashTags(title);
 
         const byline = author ? ` by ${author}` : "";
-        let abstract = `> [!abstract] [${title}](${link})${byline})`;
+        let abstract = `> [!abstract] [${title}](${link})${byline} - ${published})`;
 
         if (description && item.content) {
             abstract += "\n> " + description;
