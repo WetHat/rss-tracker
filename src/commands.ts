@@ -48,11 +48,11 @@ export class InputUrlModal extends Modal {
 }
 
 /**
- * A simple command that can be triggered anywhere
+ * A command that can update an RSS feed uf the current file is a RSS feed dashboard.
  */
 export class UpdateRSSfeedCommand implements Command {
-    id = 'update-tracked-rss-feed-checked';
-    name = 'Update RSS Feed';
+    id = 'rss-tracker-update-feed-checked';
+    name = 'Update RSS feed';
     private app: App;
     private plugin: RSSTrackerPlugin;
     constructor (app: App, plugin: RSSTrackerPlugin) {
@@ -83,11 +83,46 @@ export class UpdateRSSfeedCommand implements Command {
 }
 
 /**
+ * A command that can update an RSS feed uf the current file is a RSS feed dashboard.
+ */
+export class MarkAllRSSitemsReadCommand implements Command {
+    id = 'tracked-rss-mark-items-read-checked';
+    name = 'Mark all RSS feed items as read';
+    private app: App;
+    private plugin: RSSTrackerPlugin;
+    constructor (app: App, plugin: RSSTrackerPlugin) {
+        this.app = app;
+        this.plugin = plugin;
+    }
+
+    checkCallback (checking: boolean): any {
+        // Conditions to check
+        const active = this.app.workspace.getActiveFile();
+
+        if (active) {
+            // If checking is true, we're simply "checking" if the command can be run.
+            // If checking is false, then we want to actually perform the operation.
+            const cfg = FeedConfig.fromFile(this.app,active);
+            if (checking) {
+                // This command will only show up in Command Palette when the check function returns true
+                // check if active file is a rss feed dashboard.
+                return cfg;
+            }
+            if (cfg) {
+                this.plugin.feedmgr.markFeedItemsRead(cfg.source).then(() => new Notice(`${cfg.source.basename} updated!`));
+                return true;
+            }
+        }
+        return false;
+    }
+}
+
+/**
  * A complex command that can check whether the current state of the app allows execution of the command.
  */
 export class NewRSSFeedModalCommand implements Command {
-    id = 'rss-tracker-url-input-modal';
-    name = 'New RSS Feed';
+    id = 'rss-tracker-new-feed-url-input-modal';
+    name = 'New RSS feed';
     private app: App;
     private plugin: RSSTrackerPlugin;
     constructor (app: App, plugin: RSSTrackerPlugin) {
