@@ -159,9 +159,11 @@ export class FeedManager {
          }
 
         // save items
-        for (let item of newItems) {
+        const n = Math.min(itemLimit,newItems.length)
+        for (let index = 0; index < n; index++) {
+            const item = newItems[index];
             await this.saveFeedItem(itemFolder,item).catch(reason => {throw reason});
-        }
+         }
     }
 
     async createFeed(url: string,location: TFolder): Promise<TFile> {
