@@ -2,7 +2,7 @@ import { Notice, Plugin, PluginManifest, App } from 'obsidian';
 import { DEFAULT_SETTINGS, RSSTrackerSettingTab, RSSTrackerSettings } from './settings';
 import { NewRSSFeedModalCommand, UpdateRSSfeedCommand } from './commands';
 import { FeedManager } from './FeedManager';
-import { UpdateRSSfeedMenuItem } from './menus';
+import { UpdateRSSfeedMenuItem ,MarkAllItemsReadMenuItem} from './menus';
 
 export default class RSSTrackerPlugin extends Plugin {
     settings: RSSTrackerSettings = DEFAULT_SETTINGS;
@@ -46,6 +46,10 @@ export default class RSSTrackerPlugin extends Plugin {
 		const updateFeedItem = new UpdateRSSfeedMenuItem(this.app,this);
         this.registerEvent(updateFeedItem.editorMenuHandler);
 		this.registerEvent(updateFeedItem.fileMenuHandler);
+
+        const markAsRead = new MarkAllItemsReadMenuItem(this.app,this);
+        this.registerEvent(markAsRead.editorMenuHandler);
+		this.registerEvent(markAsRead.fileMenuHandler);
 
         // When registering intervals, this function will automatically clear the interval when the plugin is disabled.
         this.registerInterval(window.setInterval(() => console.log('setInterval'), 5 * 60 * 1000));
