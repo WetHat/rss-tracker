@@ -6,7 +6,7 @@ import * as path from 'path';
 export class FeedConfig {
     feedUrl: string;
     itemLimit: number;
-    itemFolder: string ;
+    source: TFile ;
 
     static fromFile(app:App,file: TFile) : FeedConfig | null {
         if (!file) {
@@ -22,14 +22,14 @@ export class FeedConfig {
             return null;
         }
 
-        return new FeedConfig(feedurl,itemlimit,path.join(file.parent?.path ?? "",file.basename));
+        return new FeedConfig(feedurl,itemlimit,file);
 
     }
 
-    private constructor (feedurl:string, itemlimit: string, itemfolder: string) {
+    private constructor (feedurl:string, itemlimit: string, source: TFile) {
         this.feedUrl = feedurl;
         this.itemLimit = parseInt(itemlimit);
-        this.itemFolder = itemfolder;
+        this.source = source;
     }
 }
 
@@ -127,25 +127,39 @@ export class FeedManager {
         return this.app.vault.create(itemPath,itemContent).catch(reason => {throw reason});
     }
 
-    private async updateFeedItems(itemLimit:number,itemFolder:TFolder,feed:TrackedRSSfeed) {
+    private async updateFeedItems(feedConfig: FeedConfig,feed:TrackedRSSfeed) {
+        const { feedUrl, itemLimit, source } = feedConfig;
+
+        // create the folder for the feed items (if needed)
+        const itemFolderPath = normalizePath(path.join(source?.parent?.path ?? "",source.basename));
+        let itemFolder = this.app.vault.getFolderByPath(itemFolderPath);
+        if (!itemFolder) {
+            itemFolder = await this.app.vault.createFolder(itemFolderPath);
+        }
+
         const meta = this.app.metadataCache;
+        // get all existing items from the items directory. Oldest items first.
         let items: TFile[] = itemFolder.children.filter( (fof) => fof instanceof TFile)
-                                                .map(f => f as TFile)
-                                                .filter(f => {
+                                                 .map(f => f as TFile)
+                                                 .filter(f => {
                                                         const fm = meta.getFileCache(f)?.frontmatter;
                                                         return fm?.["id"] && fm?.["feed"]})
-                                                .sort( (a,b) => b.stat.mtime - a.stat.mtime);
+                                                 .sort( (a,b) => b.stat.mtime - a.stat.mtime);
 
+        // find new items
         const knownIDs = new Set<string>(items.map(it => meta.getFileCache(it)?.frontmatter?.["id"])),
-              newItems = feed.items.filter(it => !knownIDs.has(it.id)),
-              toDelete = Math.min(items.length + newItems.length - itemLimit,items.length);
+              newItems = feed.items.filter(it => !knownIDs.has(it.id));
+        // determine how many items needs to be purged
+        const deleteCount = Math.min(items.length + newItems.length - itemLimit,items.length);
 
+         // remove feed obsolete items from disk
+         for (let index = 0; index < deleteCount; index++) {
+            const item = items[index];
+            this.app.vault.delete(item);
+         }
 
-        while (toDelete > 0 ) {
-             // remove feed Items from disk
-        }
         // save items
-        for (let item of feed.items) {
+        for (let item of newItems) {
             await this.saveFeedItem(itemFolder,item).catch(reason => {throw reason});
         }
     }
@@ -153,7 +167,7 @@ export class FeedManager {
     async createFeed(url: string,location: TFolder): Promise<TFile> {
         const feedXML = await request({
                                 url: url,
-                                method: "GET",
+                                method: "GET"
                              }),
             feed = TrackedRSSfeed.assembleFromXml(feedXML);
         const {title,site,description} = feed,
@@ -166,44 +180,34 @@ export class FeedManager {
                 "{{description}}": description ? this.formatHashTags(htmlToMarkdown(description)) : "",
                 "{{folderPath}}": itemfolderPath
             });
+
+
         // create the feed configuration file
-        let feedConfig = await this.app.vault.create(path.join(location.path,`${basename}.md`),content);
+        const dashboard = await this.app.vault.create(normalizePath(path.join(location.path,`${basename}.md`)),content),
+              cfg = FeedConfig.fromFile(this.app,dashboard);
 
-        // create the folder for the feed items
-        const itemFolder = await this.app.vault.createFolder(itemfolderPath);
-        let status: any;
-
-        try {
-            await this.updateFeedItems(100,itemFolder,feed);
-            status = "OK";
-        } catch (err:any) {
-            console.error(err);
-            status = err.message;
+        if (dashboard && cfg) {
+            let status: string;
+            try {
+                await this.updateFeedItems(cfg,feed);
+                status = "OK";
+                this.app.fileManager.processFrontMatter(dashboard,frontmatter => {
+                    frontmatter.status = status;
+                    frontmatter.updated = new Date().toISOString();
+                });
+            } catch (err:any) {
+                console.error(err);
+                status = err.message;
+            }
         }
-
-        this.app.fileManager.processFrontMatter(feedConfig,frontmatter => {
-            frontmatter.status = status;
-            frontmatter.updated = new Date().toISOString();
-        });
-
-        return feedConfig;
+        return dashboard;
     }
 
-    async updateFeed(feedConfig: TFile) {
-        // get the feed config from the frontmatter and update the items up to the item limit
-        const meta = this.app.metadataCache,
-              itemLimit = meta.getFileCache(feedConfig)?.frontmatter?.["itemlimit"] ?? "100";
-
-        // obtain feed specifications
-        const frontmatter = this.app.metadataCache.getFileCache(feedConfig)?.frontmatter
-        if (frontmatter) {
-            const url = frontmatter["feedurl"];
-        }
-         // create the folder for the feed items (if needed)
-         const itemFolder = await this.app.vault.createFolder(path.join(feedConfig.path,feedConfig.basename));
-    }
-
-    getFeedConfig(file: TFile): FeedConfig | null {
-       return FeedConfig.fromFile(this.app,file);
+    async updateFeed(feedConfig: FeedConfig) {
+        const feedXML = await request({
+                    url: feedConfig.feedUrl,
+                    method: "GET"
+                });
+        this.updateFeedItems(feedConfig,TrackedRSSfeed.assembleFromXml(feedXML));
     }
 }

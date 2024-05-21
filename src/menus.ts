@@ -1,5 +1,6 @@
 import RSSTrackerPlugin from './main';
 import { App, Notice, Menu, TFile, EventRef } from 'obsidian';
+import { FeedConfig } from './FeedManager';
 
 /**
  * Utility class to conditionally add an item to Obsidian menus.
@@ -8,8 +9,8 @@ import { App, Notice, Menu, TFile, EventRef } from 'obsidian';
  * contains frontmatter defiing the feed configuration.
  *
  * Currently event menu event hadlers can be generated for the file menu
- * @see {link fileMenuHandler} and the ditor menu
- * @see {link editorMenuHandler}.
+ * @see {@link fileMenuHandler} and the ditor menu
+ * @see {@link editorMenuHandler}.
  *
  */
 export class UpdateRSSfeedMenuItem {
@@ -33,12 +34,13 @@ export class UpdateRSSfeedMenuItem {
      */
     private addItem (menu: Menu, file: TFile | null) {
         if (file) {
-            const feedconfig = this.plugin.feedmgr.getFeedConfig(file);
+            const feedconfig = FeedConfig.fromFile(this.app, file);
             if (feedconfig) {
                 menu.addItem(item => {
                     item.setTitle('Update RSS feed')
                         .setIcon('rss')
                         .onClick(async () => {
+                            this.plugin.feedmgr.updateFeed(feedconfig);
                             new Notice(`${file?.name ?? 'unavailable'} updated`);
                         });
                 });

@@ -1,5 +1,5 @@
 import { App, Modal, Command, MarkdownView, Editor, MarkdownFileInfo, Setting, TFile, Plugin } from 'obsidian';
-import { FeedManager } from './FeedManager';
+import { FeedConfig } from './FeedManager';
 import RSSTrackerPlugin from './main';
 
 /**
@@ -102,7 +102,7 @@ export class UpdateRSSfeedCommand implements Command {
             if (checking) {
                 // This command will only show up in Command Palette when the check function returns true
                 // check if active file is a rss feed dashboard.
-                return this.plugin.feedmgr.getFeedConfig(active);
+                return FeedConfig.fromFile(this.app,active);
             } else {
                 const modal = new InputUrlModal(this.app, async result => {
                     console.log(active);
