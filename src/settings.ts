@@ -22,8 +22,17 @@ tags: [rss]
 # Unread Feed Items
 ~~~dataview
 TASK
-FROM "{{folderPath}}"
+FROM "{{folderPath)}}"
 WHERE !completed
+SORT updated DESC
+~~~
+
+# Read Feed Items
+~~~dataview
+TASK
+FROM "{{folderPath)}}"
+WHERE completed
+SORT updated DESC
 ~~~
 `,
 	itemTemplate: `---
