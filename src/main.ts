@@ -1,7 +1,7 @@
 import { Notice, Plugin, PluginManifest, App } from 'obsidian';
 import { DEFAULT_SETTINGS, RSSTrackerSettingTab, RSSTrackerSettings } from './settings';
 import { MarkAllRSSitemsReadCommand, NewRSSFeedModalCommand, UpdateRSSfeedCommand } from './commands';
-import { FeedManager } from './FeedManager';
+import { FeedConfig, FeedManager } from './FeedManager';
 import { UpdateRSSfeedMenuItem ,MarkAllItemsReadMenuItem} from './menus';
 
 export default class RSSTrackerPlugin extends Plugin {
@@ -17,9 +17,13 @@ export default class RSSTrackerPlugin extends Plugin {
         await this.loadSettings();
 
         // This creates an icon in the left ribbon.
-        const ribbonIconEl = this.addRibbonIcon('rss', 'Update All RSS Feeds', (evt: MouseEvent) => {
+        const ribbonIconEl = this.addRibbonIcon('rss', 'Update all RSS Feeds', (evt: MouseEvent) => {
             // Called when the user clicks the icon.
-            new Notice('All RSS feeds are being updated');
+            const promises = this.app.vault.getMarkdownFiles()
+                                           .map(md => FeedConfig.fromFile(this.app,md))
+                                           .filter(cfg => cfg)
+                                           .map( cfg => cfg ? this.feedmgr.updateFeed(cfg) : null);
+            new Notice(`${promises.length} RSS feeds updated`);
         });
 
         // Perform additional things with the ribbon
