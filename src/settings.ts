@@ -22,7 +22,7 @@ tags: [rss]
 # Unread Feed Items
 ~~~dataview
 TASK
-FROM "{{folderPath)}}"
+FROM "{{folderPath}}"
 WHERE !completed
 SORT published DESC
 ~~~
@@ -30,7 +30,7 @@ SORT published DESC
 # Read Feed Items
 ~~~dataview
 TASK
-FROM "{{folderPath)}}"
+FROM "{{folderPath}}"
 WHERE completed
 SORT published DESC
 ~~~
@@ -40,12 +40,12 @@ author: "{{author}}"
 published: {{publishDate}}
 link: {{link}}
 id: {{id}}
-feed: {{feedName}}
+feed: "{{feedName}}"
 tags: {{tags}}
 ---
 {{abstract}}
 
-🔗Read [article]({{link}}) online. For other items in this feed see [[{{feedName}}]].
+🔗Read article [online]({{link}}). For other items in this feed see [[{{feedName}}]].
 
 - [ ] [[{{fileName}}]] - {{publishDate}}
 - - -
