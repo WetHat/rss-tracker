@@ -1,7 +1,7 @@
 import {extractFromXml,extract,FeedData,ReaderOptions,FeedEntry} from '@extractus/feed-extractor'
 
 /**
- * Type for property bag objects with unknown content.
+ * Type for property bag objects (key -> value) with unknown content.
  */
 export type TPropertyBag = {[key: string] :any};
 
@@ -69,7 +69,7 @@ export class TrackedRSSitem {
         this.tags = entry.category ?? [];
         let {id,title,description,published,link,category,creator,image,content} = entry;
         this.id = id;
-        this.tags = this.tags = category ?? [];
+        this.tags = category?.map(c => typeof c === "string" ? c : c["#text"]) ?? [];
 
         if (description) {
             this.description = description;
