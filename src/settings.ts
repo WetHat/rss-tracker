@@ -36,7 +36,7 @@ SORT published DESC
 ~~~
 `,
 	itemTemplate: `---
-author: {{author}}
+author: "{{author}}"
 published: {{publishDate}}
 link: {{link}}
 id: {{id}}
@@ -45,10 +45,10 @@ tags: {{tags}}
 ---
 {{abstract}}
 
-🔗Read [article]({{link}}) online.
+🔗Read [article]({{link}}) online. For other items in this feed see [[{{feedName}}]].
 
 - [ ] [[{{fileName}}]] - {{publishDate}}
-
+- - -
 {{content}}
 `
 }

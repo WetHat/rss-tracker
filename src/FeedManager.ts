@@ -118,7 +118,7 @@ export class FeedManager {
         // fill in the template
         const itemContent = this.expandTemplate(this.plugin.settings.itemTemplate, {
             "{{id}}": id,
-            "{{author}}": author ? ('"' + author + '"') : ('"' + itemFolder.name + '"'),
+            "{{author}}": author ?? itemFolder.name,
             "{{link}}": link ?? "",
             "{{publishDate}}": published ?? "",
             "{{tags}}": this.formatTags(tags),
