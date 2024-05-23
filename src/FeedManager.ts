@@ -91,13 +91,13 @@ export class FeedManager {
         title = this.formatHashTags(title);
 
         const byline = author ? ` by ${author}` : "";
-        let abstract = `> ${title}${byline} - ${published}`;
+        let abstract = `> [!abstract] ${title}${byline} - ${published}`;
 
         if (description && item.content) {
             abstract += "\n> " + description;
         }
         if (image) {
-            abstract += "\n> " + this.formatImage(image);
+            abstract += "\n>\n> " + this.formatImage(image);
         }
 
         if (!content) {
@@ -118,13 +118,12 @@ export class FeedManager {
         // fill in the template
         const itemContent = this.expandTemplate(this.plugin.settings.itemTemplate, {
             "{{id}}": id,
-            "{{title}}": '"' + title + '"',
-            "{{feedName}}": '"' + itemFolder.name + '"',
             "{{author}}": author ? ('"' + author + '"') : ('"' + itemFolder.name + '"'),
             "{{link}}": link ?? "",
             "{{publishDate}}": published ?? "",
             "{{tags}}": this.formatTags(tags),
-            "{{content}}": abstract + "\n" + content,
+            "{{abstract}}": abstract,
+            "{{content}}": content,
             "{{fileName}}": uniqueBasename,
         });
 

@@ -24,7 +24,7 @@ tags: [rss]
 TASK
 FROM "{{folderPath)}}"
 WHERE !completed
-SORT updated DESC
+SORT published DESC
 ~~~
 
 # Read Feed Items
@@ -32,19 +32,21 @@ SORT updated DESC
 TASK
 FROM "{{folderPath)}}"
 WHERE completed
-SORT updated DESC
+SORT published DESC
 ~~~
 `,
 	itemTemplate: `---
-title: {{title}}
-feed: {{feedName}}
 author: {{author}}
 link: {{link}}
 published: {{publishDate}}
 id: {{id}}
 tags: {{tags}}
 ---
-- [ ] [[{{fileName}}]]
+{{abstract}}
+
+🔗Read [article]({{link}}) online.
+
+- [ ] [[{{fileName}}]] - {{publishDate}}
 
 {{content}}
 `
