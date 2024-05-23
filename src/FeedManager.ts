@@ -72,7 +72,8 @@ export class FeedManager {
         return name.replace(/\w+:\/\/.*/, "")
             .replace(FeedManager.ILLEGAL_FS_CHARS, " ")
             .replace(/\s{2,}|🔹\s+/g, " ")
-            .substring(0, 60);
+            .substring(0, 60)
+            .trim();
     }
     private formatTags(tags: string[]): string {
         return "[" + tags.map(t => "rss/" + t.replace(" ", "_")).join(",") + "]";
