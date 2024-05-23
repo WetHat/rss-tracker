@@ -91,7 +91,7 @@ export class FeedManager {
         title = this.formatHashTags(title);
 
         const byline = author ? ` by ${author}` : "";
-        let abstract = `> [!abstract] [${title}](${link})${byline} - ${published}`;
+        let abstract = `> ${title}${byline} - ${published}`;
 
         if (description && item.content) {
             abstract += "\n> " + description;
@@ -211,11 +211,20 @@ export class FeedManager {
     }
 
     async updateFeed(feedConfig: FeedConfig) {
-        const feedXML = await request({
-            url: feedConfig.feedUrl,
-            method: "GET"
+        let status = "OK";
+        try {
+            const feedXML = await request({
+                url: feedConfig.feedUrl,
+                method: "GET"
+            });
+                this.updateFeedItems(feedConfig, TrackedRSSfeed.assembleFromXml(feedXML));
+        } catch (err: any) {
+            status = err.message;
+        }
+        this.app.fileManager.processFrontMatter(feedConfig.source, fm => {
+            fm.status = status;
+            fm.updated = new Date().toISOString();
         });
-        this.updateFeedItems(feedConfig, TrackedRSSfeed.assembleFromXml(feedXML));
     }
 
     async markFeedItemsRead(feed: TFile) {
