@@ -18,7 +18,8 @@ tags: [rss]
 
 > [!abstract] {{title}}
 > {{description}}
-
+>
+> {{image}}
 # Unread Feed Items
 ~~~dataview
 TASK
