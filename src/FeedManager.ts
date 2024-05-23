@@ -35,7 +35,7 @@ export class FeedConfig {
 
 export class FeedManager {
     private static readonly TOKEN_SPLITTER = /(?<={{[^{}]+}})|(?={{[^{}]+}})/g;
-    private static readonly ILLEGAL_FS_CHARS = /[#\\><\/|\[\]:?^]/g;
+    private static readonly ILLEGAL_FS_CHARS = /[#\\><\/|\[\]:"?^]/g;
     private static readonly HASH_FINDER = /(?<!\]\([^[\]()]+)#(?=\b)/g;
     private static ITEMLIMIT_FINDER = /(?<=itemlimit:\s*)\d+/;
 
@@ -69,10 +69,9 @@ export class FeedManager {
 
     private formatFilename(name: string): string {
         return name.replace(/\w+:\/\/.*/, "")
-            .replace(FeedManager.ILLEGAL_FS_CHARS, "🔹")
-            .replace(/🔹{2,🔹}|🔹\s+/g, "🔹")
-            .substring(0, 60)
-            .replace(/[.\s🔹]*$/, "");
+            .replace(FeedManager.ILLEGAL_FS_CHARS, " ")
+            .replace(/\s{2,}|🔹\s+/g, " ")
+            .substring(0, 60);
     }
     private formatTags(tags: string[]): string {
         return "[" + tags.map(t => "rss/" + t.replace(" ", "_")).join(",") + "]";
@@ -130,7 +129,7 @@ export class FeedManager {
             "{{fileName}}": uniqueBasename,
         });
 
-        return this.app.vault.create(itemPath, itemContent).catch(reason => { throw reason });
+        return this.app.vault.create(itemPath, itemContent).catch(reason => { throw new Error(reason.message + ` for ${uniqueBasename}`) });
     }
 
     private async updateFeedItems(feedConfig: FeedConfig, feed: TrackedRSSfeed) {
@@ -201,14 +200,15 @@ export class FeedManager {
             try {
                 await this.updateFeedItems(cfg, feed);
                 status = "OK";
-                this.app.fileManager.processFrontMatter(dashboard, frontmatter => {
-                    frontmatter.status = status;
-                    frontmatter.updated = new Date().toISOString();
-                });
             } catch (err: any) {
                 console.error(err);
                 status = err.message;
             }
+
+            this.app.fileManager.processFrontMatter(dashboard, frontmatter => {
+                frontmatter.status = status;
+                frontmatter.updated = new Date().toISOString();
+            });
         }
         return dashboard;
     }
