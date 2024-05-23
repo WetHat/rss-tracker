@@ -37,9 +37,10 @@ SORT published DESC
 `,
 	itemTemplate: `---
 author: {{author}}
-link: {{link}}
 published: {{publishDate}}
+link: {{link}}
 id: {{id}}
+feed: {{feedName}}
 tags: {{tags}}
 ---
 {{abstract}}

@@ -124,6 +124,7 @@ export class FeedManager {
             "{{tags}}": this.formatTags(tags),
             "{{abstract}}": abstract,
             "{{content}}": content,
+            "{{feedName}}": itemFolder.name,
             "{{fileName}}": uniqueBasename,
         });
 
