@@ -26,7 +26,7 @@ export class FeedConfig {
 
     }
 
-    private constructor(feedurl: string, itemlimit: string, source: TFile) {
+    constructor(feedurl: string, itemlimit: string, source: TFile) {
         this.feedUrl = feedurl;
         this.itemLimit = parseInt(itemlimit);
         this.source = source;
@@ -37,6 +37,8 @@ export class FeedManager {
     private static readonly TOKEN_SPLITTER = /(?<={{[^{}]+}})|(?={{[^{}]+}})/g;
     private static readonly ILLEGAL_FS_CHARS = /[#\\><\/|\[\]:?^]/g;
     private static readonly HASH_FINDER = /(?<!\]\([^[\]()]+)#(?=\b)/g;
+    private static ITEMLIMIT_FINDER = /(?<=itemlimit:\s*)\d+/;
+
     private app: App;
     private plugin: RSSTrackerPlugin;
 
@@ -173,14 +175,14 @@ export class FeedManager {
 
     async createFeed(url: string, location: TFolder): Promise<TFile> {
         const feedXML = await request({
-            url: url,
-            method: "GET"
-        }),
-            feed = TrackedRSSfeed.assembleFromXml(feedXML);
+                    url: url,
+                    method: "GET" }),
+             feed = TrackedRSSfeed.assembleFromXml(feedXML);
         const { title, site, description } = feed,
             basename = this.formatFilename(title ?? "Anonymous Feed"),
             itemfolderPath = normalizePath(path.join(location.path, basename)),
-            content = this.expandTemplate(this.plugin.settings.feedTemplate, {
+            tpl =this.plugin.settings.feedTemplate,
+            content = this.expandTemplate(tpl, {
                 "{{feedUrl}}": url,
                 "{{siteUrl}}": site ?? "",
                 "{{title}}": title ?? "",
@@ -191,7 +193,8 @@ export class FeedManager {
 
         // create the feed configuration file
         const dashboard = await this.app.vault.create(normalizePath(path.join(location.path, `${basename}.md`)), content),
-            cfg = FeedConfig.fromFile(this.app, dashboard);
+              itemlimit = tpl.match(FeedManager.ITEMLIMIT_FINDER)?.[0],
+              cfg = new FeedConfig(url,itemlimit ?? "100", dashboard);
 
         if (dashboard && cfg) {
             let status: string;
