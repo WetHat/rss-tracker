@@ -9,7 +9,7 @@ export type TPropertyBag = {[key: string] :any};
  * Specification of an image reference within an RSS feed.
  */
 export interface IRSSimage {
-    url: string;
+    src: string;
     width?: string;
     height?:string;
 }
@@ -102,12 +102,12 @@ function assembleImage(elem: TPropertyBag): IRSSimage | null {
     let {image} = elem;
 
     if (typeof image === 'string') {
-        return {url: image};
+        return {src: image};
     }
 
     if (image?.url) {
         const {url , width, height} = image;
-        let img:IRSSimage = {url: url};
+        let img:IRSSimage = {src: url};
         if (width) {
             img.width = width;
         }
@@ -127,7 +127,7 @@ function assembleImage(elem: TPropertyBag): IRSSimage | null {
 
     if (thumb) {
         let [width,height] = [thumb["@_width"], thumb["@_height"]];
-        let img:IRSSimage = {url: thumb["@_url"]};
+        let img:IRSSimage = {src: thumb["@_url"]};
         if (width) {
             img.width = width;
         }
@@ -139,7 +139,7 @@ function assembleImage(elem: TPropertyBag): IRSSimage | null {
 
     let enc = elem.enclosure;
     if (enc?.["@_type"]?.includes("image")) {
-        let img:IRSSimage = {url: enc["@_url"]};
+        let img:IRSSimage = {src: enc["@_url"]};
 
         return img;
     }

@@ -45,11 +45,11 @@ export class TrackedRSSitem {
 function assembleImage(elem) {
     let { image } = elem;
     if (typeof image === 'string') {
-        return { url: image };
+        return { src: image };
     }
     if (image?.url) {
         const { url, width, height } = image;
-        let img = { url: url };
+        let img = { src: url };
         if (width) {
             img.width = width;
         }
@@ -67,7 +67,7 @@ function assembleImage(elem) {
     }
     if (thumb) {
         let [width, height] = [thumb["@_width"], thumb["@_height"]];
-        let img = { url: thumb["@_url"] };
+        let img = { src: thumb["@_url"] };
         if (width) {
             img.width = width;
         }
@@ -78,7 +78,7 @@ function assembleImage(elem) {
     }
     let enc = elem.enclosure;
     if (enc?.["@_type"]?.includes("image")) {
-        let img = { url: enc["@_url"] };
+        let img = { src: enc["@_url"] };
         return img;
     }
     return null;
