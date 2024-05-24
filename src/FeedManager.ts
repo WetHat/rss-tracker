@@ -35,7 +35,7 @@ export class FeedConfig {
 
 export class FeedManager {
     private static readonly TOKEN_SPLITTER = /(?<={{[^{}]+}})|(?={{[^{}]+}})/g;
-    private static readonly ILLEGAL_FS_CHARS = /[#\\><\/|\[\]:"?^]/g;
+    private static readonly ILLEGAL_FS_CHARS = /\.[#\\><\/|\[\]:"?^]/g;
     private static readonly HASH_FINDER = /(?<!\]\([^[\]()]+)#(?=\b)/g;
     private static ITEMLIMIT_FINDER = /(?<=itemlimit:\s*)\d+/;
 
@@ -74,10 +74,19 @@ export class FeedManager {
 
     private formatFilename(name: string): string {
         return name.replace(/\w+:\/\/.*/, "")
-            .replace(FeedManager.ILLEGAL_FS_CHARS, " ")
-            .replace(/\s{2,}|🔹\s+/g, " ")
-            .substring(0, 60)
-            .trim();
+                   .replaceAll("?","❓")
+                   .replaceAll(".","🔸")
+                   .replaceAll(":","꞉")
+                   .replaceAll('"',"″")
+                   .replaceAll('<"',"‹")
+                   .replaceAll('>"',"›")
+                   .replaceAll('|"',"›")
+                   .replaceAll("\\","/")
+                   .replaceAll("/","╱")
+                   .replace(FeedManager.ILLEGAL_FS_CHARS, " ")
+                   .replace(/\s{2,}|🔹\s+/g, " ")
+                   .substring(0, 60)
+                   .trim();
     }
     private formatTags(tags: string[]): string {
         return "[" + tags.map(t => "rss/" + t.replace(" ", "_")).join(",") + "]";
