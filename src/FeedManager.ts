@@ -35,7 +35,6 @@ export class FeedConfig {
 
 export class FeedManager {
     private static readonly TOKEN_SPLITTER = /(?<={{[^{}]+}})|(?={{[^{}]+}})/g;
-    private static readonly ILLEGAL_FS_CHARS = /\.[#\\><\/|\[\]:"?^]/g;
     private static readonly HASH_FINDER = /(?<!\]\([^[\]()]+)#(?=\b)/g;
     private static ITEMLIMIT_FINDER = /(?<=itemlimit:\s*)\d+/;
 
@@ -73,18 +72,21 @@ export class FeedManager {
     }
 
     private formatFilename(name: string): string {
-        return name.replace(/\w+:\/\/.*/, "")
+        return name.replace(/\w+:\/\/.*/, "") // strip urls
                    .replaceAll("?","❓")
-                   .replaceAll(".","🔸")
+                   .replaceAll(".","․")
                    .replaceAll(":","꞉")
                    .replaceAll('"',"″")
-                   .replaceAll('<"',"‹")
-                   .replaceAll('>"',"›")
-                   .replaceAll('|"',"›")
+                   .replaceAll('<"',"＜")
+                   .replaceAll('>"',"＞")
+                   .replaceAll('|"',"∣")
                    .replaceAll("\\","/")
                    .replaceAll("/","╱")
-                   .replace(FeedManager.ILLEGAL_FS_CHARS, " ")
-                   .replace(/\s{2,}|🔹\s+/g, " ")
+                   .replaceAll("[","{")
+                   .replaceAll("]","}")
+                   .replaceAll("#","＃")
+                   .replaceAll("^","△")
+                   .replaceAll("&","+")
                    .substring(0, 60)
                    .trim();
     }
