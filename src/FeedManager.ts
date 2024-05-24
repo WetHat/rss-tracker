@@ -234,6 +234,7 @@ export class FeedManager {
             this.app.fileManager.processFrontMatter(dashboard, frontmatter => {
                 frontmatter.status = status;
                 frontmatter.updated = new Date().toISOString();
+                frontmatter.interval = feed.avgPostInterval;
             });
         }
         return dashboard;
@@ -258,19 +259,15 @@ export class FeedManager {
             }
         }
 
-        let interval = 12; // default 12h
+        let interval = 1; // default 1h
         let status = "OK";
         try {
             const feedXML = await request({
                 url: feedConfig.feedUrl,
                 method: "GET"}),
                 feed = TrackedRSSfeed.assembleFromXml(feedXML);
-            // computer the new update intervall
-            let pubdates = feed.items.map( it => new Date(it.published).valueOf()).sort();
-            const n = pubdates.length -1;
-            if (n > 0 ) {
-                interval = Math.round((pubdates[n] - pubdates[0]) / (n * 1000 * 60 * 60)) ;
-            }
+            // compute the new update interval in hours
+            interval = feed.avgPostInterval;
             this.updateFeedItems(feedConfig, feed);
 
         } catch (err: any) {

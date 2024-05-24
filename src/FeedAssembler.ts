@@ -278,4 +278,18 @@ export class TrackedRSSfeed {
             this.items = []
         }
     }
+
+    /**
+     * @returns the avarage time interval between posts in the feed in hours.
+     */
+    get avgPostInterval() : number {
+        let pubdateMillies = this.items.map( it => new Date(it.published).valueOf()).sort();
+        const n = pubdateMillies.length -1; // number of intervals between posts
+        if (n > 0 ) {
+            return Math.round((pubdateMillies[n] - pubdateMillies[0]) / (n * 60 * 60 * 1000)) ;
+        }
+
+        return 1;
+    }
+
 }
