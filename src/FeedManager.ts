@@ -1,4 +1,4 @@
-import { App, request, TFile, TFolder, htmlToMarkdown, normalizePath, ListItemCache, Vault } from 'obsidian';
+import { App, request, TFile, TFolder, htmlToMarkdown, normalizePath, ListItemCache, Vault, Notice } from 'obsidian';
 import RSSTrackerPlugin from './main';
 import { TrackedRSSfeed, TrackedRSSitem, IRSSimage, TPropertyBag } from './FeedAssembler';
 import * as path from 'path';
@@ -138,7 +138,7 @@ export class FeedManager {
         return this.app.vault.create(itemPath, itemContent).catch(reason => { throw new Error(reason.message + ` for ${uniqueBasename}`) });
     }
 
-    private async updateFeedItems(feedConfig: FeedConfig, feed: TrackedRSSfeed) {
+    private async updateFeedItems(feedConfig: FeedConfig, feed: TrackedRSSfeed): Promise<number> {
         const { itemLimit, source } = feedConfig;
 
         // create the folder for the feed items (if needed)
@@ -174,8 +174,9 @@ export class FeedManager {
         const n = Math.min(itemLimit, newItems.length)
         for (let index = 0; index < n; index++) {
             const item = newItems[index];
-            await this.saveFeedItem(itemFolder, item).catch(reason => { throw reason });
+            this.saveFeedItem(itemFolder, item).catch(reason => { throw reason });
         }
+        return n;
     }
 
     async createFeed(url: string, location: TFolder): Promise<TFile> {
@@ -229,21 +230,50 @@ export class FeedManager {
         return dashboard;
     }
 
-    async updateFeed(feedConfig: FeedConfig) {
+    async updateFeed(feedConfig: FeedConfig | null, force: boolean): Promise<boolean> {
+        if (!feedConfig) {
+            return false;
+        }
+
+        if (!force) {
+            // check if it time to update
+            const meta = this.app.metadataCache.getFileCache(feedConfig.source),
+                fm = meta?.frontmatter;
+            if (fm?.updated && fm?.interval) {
+                const now = new Date().valueOf(),
+                      lastUpdate = new Date(fm.updated).valueOf(),
+                      span = parseInt(fm.interval) * 60 * 60 * 1000;
+                if ((lastUpdate + span) > now) {
+                    return false; // time has not come
+                }
+            }
+        }
+
+        let interval = 12; // default 12h
         let status = "OK";
         try {
             const feedXML = await request({
                 url: feedConfig.feedUrl,
-                method: "GET"
-            });
-            this.updateFeedItems(feedConfig, TrackedRSSfeed.assembleFromXml(feedXML));
+                method: "GET"}),
+                feed = TrackedRSSfeed.assembleFromXml(feedXML);
+            // computer the new update intervall
+            let pubdates = feed.items.map( it => new Date(it.published).valueOf()).sort();
+            const n = pubdates.length -1;
+            if (n > 0 ) {
+                interval = Math.round((pubdates[n] - pubdates[0]) / (n * 1000 * 60 * 60)) ;
+            }
+            this.updateFeedItems(feedConfig, feed);
+
         } catch (err: any) {
             status = err.message;
         }
+
         this.app.fileManager.processFrontMatter(feedConfig.source, fm => {
             fm.status = status;
             fm.updated = new Date().toISOString();
+            fm.interval = interval
         });
+        return true;
     }
 
     async markFeedItemsRead(feed: TFile) {
@@ -270,6 +300,23 @@ export class FeedManager {
                     this.app.vault.modify(item, newdata);
                 }
             }
+        }
+    }
+
+    async updateAllRSSfeeds(force: boolean) {
+        const updates = this.app.vault.getMarkdownFiles()
+            .map(md => FeedConfig.fromFile(this.app,md))
+            .filter(cfg => cfg)
+            .map(async cfg => await this.updateFeed(cfg,force));
+        let n: number = 0;
+        for (let u of updates) {
+            let r = await u;
+            if (r) {
+                n++;
+            }
+        }
+        if (n > 0) {
+            new Notice(`${n} RSS feeds updated`);
         }
     }
 }

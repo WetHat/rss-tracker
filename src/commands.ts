@@ -74,7 +74,7 @@ export class UpdateRSSfeedCommand implements Command {
                 return cfg;
             }
             if (cfg) {
-                this.plugin.feedmgr.updateFeed(cfg).then(() => new Notice(`${cfg.source.basename} updated!`));
+                this.plugin.feedmgr.updateFeed(cfg,true).then(() => new Notice(`${cfg.source.basename} updated!`));
                 return true;
             }
         }
