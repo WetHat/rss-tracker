@@ -133,7 +133,6 @@ export class NewRSSFeedModalCommand implements Command {
     callback (): any {
         // Conditions to check
         const modal = new InputUrlModal(this.app, async result => {
-            console.log(result);
             const f: TFile | null = this.app.workspace.getActiveFile();
 
             if (f) {

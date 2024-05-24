@@ -14,6 +14,8 @@ export default class RSSTrackerPlugin extends Plugin {
     }
 
     async onload () {
+        console.log('Loading rss-tracker.');
+
         await this.loadSettings();
 
         // This creates an icon in the left ribbon.

@@ -256,7 +256,6 @@ export class FeedManager {
                         e = first.position.end.offset,
                         newdata = data.substring(0, s) + "- [x]" + data.substring(s + 5);
                     this.app.vault.modify(item,newdata);
-                    console.log(`Task at ${s} ... ${e}: >${data.substring(s, s + 4)}<`);
                 }
             }
         }
