@@ -1,9 +1,11 @@
+import { DefaultDeserializer } from 'v8';
 import RSSTrackerPlugin from './main';
-import {PluginSettingTab, Setting, App} from 'obsidian';
+import { PluginSettingTab, Setting, App } from 'obsidian';
 
 export interface RSSTrackerSettings {
 	feedTemplate: string;
 	itemTemplate: string;
+	autoUpdateFeeds: boolean;
 }
 
 export const DEFAULT_SETTINGS: RSSTrackerSettings = {
@@ -51,7 +53,8 @@ tags: {{tags}}
 - [ ] [[{{fileName}}]] - {{publishDate}}
 - - -
 {{content}}
-`
+`,
+	autoUpdateFeeds: false
 }
 
 export class RSSTrackerSettingTab extends PluginSettingTab {
@@ -63,24 +66,26 @@ export class RSSTrackerSettingTab extends PluginSettingTab {
 	}
 
 	display(): void {
-		const {containerEl} = this;
+		const { containerEl } = this;
 		containerEl.empty();
 
 		// feed template setting
 		new Setting(containerEl)
 			.setName('Default RSS Feed Template')
 			.setDesc('Template for new RSS feed description markdown files.')
-			.addTextArea( ta => { ta
+			.addTextArea(ta => {
+				ta
 					.setValue(this.plugin.settings.feedTemplate)
-					.onChange(async (value) => {
-						this.plugin.settings.feedTemplate = value;
-						await this.plugin.saveSettings();
-					});
-				ta.inputEl.style.width="100%";
+				.onChange(async (value) => {
+					this.plugin.settings.feedTemplate = value;
+					await this.plugin.saveSettings();
+				});
+				ta.inputEl.style.width = "100%";
 				ta.inputEl.rows = 10;
-				})
-			.addButton(btn => { btn
-				.setIcon("reset")
+			})
+			.addButton(btn => {
+				btn
+					.setIcon("reset")
 				.setTooltip("Reset feed template to default")
 				.onClick(async evt => {
 					this.plugin.settings.feedTemplate = DEFAULT_SETTINGS.feedTemplate;
@@ -92,22 +97,35 @@ export class RSSTrackerSettingTab extends PluginSettingTab {
 		new Setting(containerEl)
 			.setName('Default RSS Item Template')
 			.setDesc('Template for new RSS item description markdown files.')
-			.addTextArea( ta => { ta
+			.addTextArea(ta => {
+				ta
 					.setValue(this.plugin.settings.itemTemplate)
 					.onChange(async (value) => {
 						this.plugin.settings.itemTemplate = value;
 						await this.plugin.saveSettings();
 					});
-				ta.inputEl.style.width="100%";
+				ta.inputEl.style.width = "100%";
 				ta.inputEl.rows = 10;
-				})
-			.addButton(btn => { btn
-				.setIcon("reset")
-				.setTooltip("Reset item template to default")
-				.onClick(async evt => {
-					this.plugin.settings.itemTemplate = DEFAULT_SETTINGS.itemTemplate;
+			})
+			.addButton(btn => {
+				btn
+					.setIcon("reset")
+					.setTooltip("Reset item template to default")
+					.onClick(async evt => {
+						this.plugin.settings.itemTemplate = DEFAULT_SETTINGS.itemTemplate;
+						await this.plugin.saveSettings();
+						this.display();
+					})
+			});
+
+		new Setting(containerEl)
+			.setName('Automatic RSS Updates')
+			.setDesc('Turn on to update RSS feeds periodically in the background.')
+			.addToggle(tg => {
+				tg.setValue(this.plugin.settings.autoUpdateFeeds);
+				tg.onChange(async evt => {
+					this.plugin.settings.autoUpdateFeeds = tg.getValue();
 					await this.plugin.saveSettings();
-					this.display();
 				})
 			});
 	}
