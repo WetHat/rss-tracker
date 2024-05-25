@@ -23,21 +23,29 @@ export class InputUrlModal extends Modal {
             .setDesc('Enter the url of the rss feed:')
             .setHeading()
             .addText(text => {
+                text.inputEl.addEventListener("keyup", (evt) => {
+                    var keyCode = evt.code ?? evt.key;
+                    if (keyCode === "Enter") {
+                        if (this.result) {
+                            this.close();
+                            this.onSubmit(this.result);
+                        }
+                        return false;
+                    }
+                });
                 text.inputEl.style.width = '95%';
-                text.setPlaceholder('https://x.com/feed');
-                text.onChange(value => {
+                text.setPlaceholder('https://x.com/feed')
+                    .onChange(value => {
                     this.result = value;
                 });
             });
 
         new Setting(contentEl).addButton(btn =>
-            btn
-                .setButtonText('Submit')
-                .setCta()
-                .onClick(() => {
-                    this.close();
-                    this.onSubmit(this.result);
-                })
+            btn.setButtonText('Submit')
+               .setCta()
+               .onClick(() => {
+                   this.close();
+                   this.onSubmit(this.result);})
         );
     }
 
