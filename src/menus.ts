@@ -51,16 +51,16 @@ export class MarkAllItemsReadMenuItem extends  RSSTrackerMenuItem {
         super(app,plugin);
      }
 
-     protected addItem(menu: Menu, file: TFile | null) {
-        if (file) {
-            const feedconfig = FeedConfig.fromFile(this.app, file);
+     protected addItem(menu: Menu, dashboard: TFile | null) {
+        if (dashboard) {
+            const feedconfig = FeedConfig.fromFile(this.app, dashboard);
             if (feedconfig) {
                 menu.addItem(item => {
                     item.setTitle('Mark all RSS items as read')
                         .setIcon('list-checks')
                         .onClick(async () => {
-                            this.plugin.feedmgr.markFeedItemsRead(file);
-                            new Notice(`All items of "${file?.name ?? 'unavailable'}" marked read.`);
+                            this.plugin.feedmgr.markFeedItemsRead(dashboard);
+                            new Notice(`All items of "${dashboard?.basename ?? 'unavailable'}" marked read.`);
                         });
                 });
             }
