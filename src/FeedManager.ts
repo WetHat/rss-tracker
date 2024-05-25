@@ -87,6 +87,7 @@ export class FeedManager {
                    .replaceAll("#","＃")
                    .replaceAll("^","△")
                    .replaceAll("&","+")
+                   .replaceAll("*","✱")
                    .substring(0, 60)
                    .trim();
     }
