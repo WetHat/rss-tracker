@@ -1,0 +1,242 @@
+{
+  "main": {
+    "id": "6235b0259f7eaa63",
+    "type": "split",
+    "children": [
+      {
+        "id": "6de85c4fd96ab217",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "143134e6515d7161",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Fedi․Directory – Interesting accounts on Mastodon + the Fedi/Official Slavutych Славутич.md",
+                "mode": "preview",
+                "source": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "23650b3c6ba1d193",
+    "type": "split",
+    "children": [
+      {
+        "id": "8bd59ca4fbe2ecc1",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "676526ecb45c57b5",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "0ee661b422150d60",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "treasure",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "61aeb0f7fd4a3996",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 476.5
+  },
+  "right": {
+    "id": "4be942c0ca4186ab",
+    "type": "split",
+    "children": [
+      {
+        "id": "dce7e08a52f5b611",
+        "type": "tabs",
+        "dimension": 68.14671814671814,
+        "children": [
+          {
+            "id": "656257a7af58a95d",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Fedi․Directory – Interesting accounts on Mastodon + the Fedi/Official Slavutych Славутич.md",
+                "collapseAll": true,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "0e7fb947b71c210f",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Fedi․Directory – Interesting accounts on Mastodon + the Fedi/Official Slavutych Славутич.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "7a923c455e8936b4",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "45decb740fac8e8c",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Fedi․Directory – Interesting accounts on Mastodon + the Fedi/Official Slavutych Славутич.md"
+              }
+            }
+          }
+        ],
+        "currentTab": 3
+      },
+      {
+        "id": "4dbb10fbff009ee9",
+        "type": "tabs",
+        "dimension": 31.85328185328185,
+        "children": [
+          {
+            "id": "c715e15f519ec84f",
+            "type": "leaf",
+            "state": {
+              "type": "localgraph",
+              "state": {
+                "file": "Fedi․Directory – Interesting accounts on Mastodon + the Fedi/Official Slavutych Славутич.md",
+                "options": {
+                  "collapse-filter": true,
+                  "search": "",
+                  "localJumps": 1,
+                  "localBacklinks": true,
+                  "localForelinks": true,
+                  "localInterlinks": false,
+                  "showTags": false,
+                  "showAttachments": false,
+                  "hideUnresolved": false,
+                  "collapse-color-groups": true,
+                  "colorGroups": [],
+                  "collapse-display": true,
+                  "showArrow": false,
+                  "textFadeMultiplier": 0,
+                  "nodeSizeMultiplier": 1,
+                  "lineSizeMultiplier": 1,
+                  "collapse-forces": true,
+                  "centerStrength": 0.518713248970312,
+                  "repelStrength": 10,
+                  "linkStrength": 1,
+                  "linkDistance": 250,
+                  "scale": 1,
+                  "close": true
+                }
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 276.5
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "markdown-importer:Open format converter": false,
+      "rss-tracker:Update all RSS Feeds": false
+    }
+  },
+  "active": "143134e6515d7161",
+  "lastOpenFiles": [
+    "Fedi․Directory – Interesting accounts on Mastodon + the Fedi.md",
+    "Fedi․Directory – Interesting accounts on Mastodon + the Fedi/Thomas Preece.md",
+    "Fedi․Directory – Interesting accounts on Mastodon + the Fedi/Northeastern Minnesota Bot.md",
+    "Fedi․Directory – Interesting accounts on Mastodon + the Fedi/Minnesota Guppe Group.md",
+    "Fedi․Directory – Interesting accounts on Mastodon + the Fedi/Trove Astronomy Bot.md",
+    "Fedi․Directory – Interesting accounts on Mastodon + the Fedi/Anaesthesia and Intensive Care.md",
+    "Fedi․Directory – Interesting accounts on Mastodon + the Fedi/Trove Air Bot.md",
+    "Fedi․Directory – Interesting accounts on Mastodon + the Fedi/Unofficial South Australian County Fire Service Alerts.md",
+    "Fedi․Directory – Interesting accounts on Mastodon + the Fedi/Australian Football Association of North America.md",
+    "Fedi․Directory – Interesting accounts on Mastodon + the Fedi/Crikey RSS Feed.md",
+    "Fedi․Directory – Interesting accounts on Mastodon + the Fedi/Official Slavutych Славутич.md",
+    "Daniel Lemire's blog.md",
+    "Fedi․Directory – Interesting accounts on Mastodon + the Fedi",
+    "§ About this Vault.md",
+    "Planet PowerShell/Soft Skills - Part 1 - Communication.md",
+    "Planet PowerShell.md",
+    "Planet PowerShell/Soft Skills - Part 2 - Collaboration.md",
+    "Planet PowerShell/A Powershell GUI using DotNet Windows․Forms to start AWS Lam.md",
+    "Planet PowerShell/Questions from a PowerShell․org Forums User.md",
+    "Planet PowerShell/Soft Skills - Part 3 - Motivation and Inspiration.md",
+    "Python Morsels.md",
+    "JavaScript Weekly.md",
+    "Python Morsels/Python Morsels Lifetime Access Sale.md",
+    "Daniel Lemire's blog/Book review꞉ Theft of Fire by Devon Eriksen.md",
+    "Python Morsels/Python Terminology꞉ an unofficial glossary.md",
+    "Python Morsels/Counting occurrences in Python with collections․Counter.md",
+    "Python Morsels/Django June 2023꞉ Tips + Discussions.md",
+    "Python Morsels",
+    "assets/Python MorselsLogo.svg",
+    "Radar",
+    "assets/RadarLogo.svg",
+    "assets/JavaScript WeeklyLogo.svg",
+    "assets/TypeScript TVLogo.svg",
+    "JavaScript Weekly",
+    "TypeScript TV",
+    "Daniel Lemire's blog",
+    "Planet PowerShell",
+    "․NET Blog",
+    "🔸NET Blog",
+    "assets",
+    "assets/PowerShellLogo.svg",
+    "PowerShellLogo.svg",
+    "assets/8ea8529093a692c14a55c2deb60df5bc_MD5.svg",
+    "assets/8ea8529093a692c14a55c2deb60df5bc_MD5.svg",
+    "PyCoder’s Weekly/ea3161e8f8c374277d9ca6056473e3a7_MD5.png",
+    "PyCoder’s Weekly/bb341b7dbe11a781c7500f99d0a2c737_MD5.png"
+  ]
+}
