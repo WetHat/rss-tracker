@@ -195,7 +195,7 @@ export class FeedManager {
             url: url,
             method: "GET"
         }),
-            feed = TrackedRSSfeed.assembleFromXml(feedXML);
+            feed = new TrackedRSSfeed(feedXML);
         const { title, site, description } = feed,
             basename = this.formatFilename(title ?? "Anonymous Feed"),
             itemfolderPath = normalizePath(path.join(location.path, basename)),
@@ -267,7 +267,7 @@ export class FeedManager {
             const feedXML = await request({
                 url: feedConfig.feedUrl,
                 method: "GET"}),
-                feed = TrackedRSSfeed.assembleFromXml(feedXML);
+                feed = new TrackedRSSfeed(feedXML);
             // compute the new update interval in hours
             interval = feed.avgPostInterval;
             this.updateFeedItems(feedConfig, feed);

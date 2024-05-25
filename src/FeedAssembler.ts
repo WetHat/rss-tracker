@@ -1,9 +1,9 @@
-import {extractFromXml,extract,FeedData,ReaderOptions,FeedEntry} from '@extractus/feed-extractor'
+import { extractFromXml, FeedData, ReaderOptions, FeedEntry } from '@extractus/feed-extractor'
 
 /**
  * Type for property bag objects (key -> value) with unknown content.
  */
-export type TPropertyBag = {[key: string] :any};
+export type TPropertyBag = { [key: string]: any };
 
 /**
  * Specification of an image reference within an RSS feed.
@@ -11,7 +11,7 @@ export type TPropertyBag = {[key: string] :any};
 export interface IRSSimage {
     src: string;
     width?: string;
-    height?:string;
+    height?: string;
 }
 
 /**
@@ -19,10 +19,10 @@ export interface IRSSimage {
  * Some properties overlap with the property specification in the
  * `FeedEntry` interface.
  */
-interface IEntryDataTracked{
+interface IEntryDataTracked {
     id: string;
     title?: string;
-    description?:string;
+    description?: string;
     published?: string;
     category?: string[];
     creator?: string;
@@ -42,13 +42,13 @@ interface IEntryDataExtended extends IEntryDataTracked, FeedEntry {
  */
 interface IFeedDataExtra {
     image?: IRSSimage,
-    link?:string;
+    link?: string;
 }
 /**
  * Specification of a parsed RSS feed including canonical and
  * tracked properties.
  */
-interface IFeedDataExtended extends IFeedDataExtra,FeedData {
+interface IFeedDataExtended extends IFeedDataExtra, FeedData {
 }
 
 /**
@@ -65,9 +65,9 @@ export class TrackedRSSitem {
     image?: IRSSimage;
     content?: string;
 
-    constructor(entry: IEntryDataExtended ) {
+    constructor(entry: IEntryDataExtended) {
         this.tags = entry.category ?? [];
-        let {id,title,description,published,link,category,creator,image,content} = entry;
+        let { id, title, description, published, link, category, creator, image, content } = entry;
         this.id = id;
         this.tags = category?.map(c => typeof c === "string" ? c : c["#text"]) ?? [];
 
@@ -99,15 +99,15 @@ export class TrackedRSSitem {
 }
 
 function assembleImage(elem: TPropertyBag): IRSSimage | null {
-    let {image} = elem;
+    let { image } = elem;
 
     if (typeof image === 'string') {
-        return {src: image};
+        return { src: image };
     }
 
     if (image?.url) {
-        const {url , width, height} = image;
-        let img:IRSSimage = {src: url};
+        const { url, width, height } = image;
+        let img: IRSSimage = { src: url };
         if (width) {
             img.width = width;
         }
@@ -126,8 +126,8 @@ function assembleImage(elem: TPropertyBag): IRSSimage | null {
     }
 
     if (thumb) {
-        let [width,height] = [thumb["@_width"], thumb["@_height"]];
-        let img:IRSSimage = {src: thumb["@_url"]};
+        let [width, height] = [thumb["@_width"], thumb["@_height"]];
+        let img: IRSSimage = { src: thumb["@_url"] };
         if (width) {
             img.width = width;
         }
@@ -139,14 +139,14 @@ function assembleImage(elem: TPropertyBag): IRSSimage | null {
 
     let enc = elem.enclosure;
     if (enc?.["@_type"]?.includes("image")) {
-        let img:IRSSimage = {src: enc["@_url"]};
+        let img: IRSSimage = { src: enc["@_url"] };
 
         return img;
     }
     return null;
 }
 
-function assembleCreator(elem: TPropertyBag) :string {
+function assembleCreator(elem: TPropertyBag): string {
     const creator = elem.creator || elem["dc:creator"];
     if (creator) {
         return creator;
@@ -168,7 +168,7 @@ function assembleDescription(elem: TPropertyBag): string {
 ///////////////////////////////
 const DEFAULT_OPTIONS: ReaderOptions = {
     getExtraEntryFields: (item: TPropertyBag): IEntryDataTracked => {
-        let {id, guid} = item;
+        let { id, guid } = item;
         let tracked: IEntryDataTracked = {
             id: id || guid?.["#text"] || item.link
         }
@@ -212,7 +212,7 @@ const DEFAULT_OPTIONS: ReaderOptions = {
         return tracked;
     },
 
-    getExtraFeedFields: (feedData: TPropertyBag ) => {
+    getExtraFeedFields: (feedData: TPropertyBag) => {
         let tracked: IFeedDataExtra = {};
         const image = assembleImage(feedData);
         if (image) {
@@ -236,30 +236,25 @@ const DEFAULT_OPTIONS: ReaderOptions = {
     },
 }
 
-export class TrackedRSSfeed {
-    /**
-     * Factory method to assemble an RSS feed from its XMK representation.
-     * @param xml {string} - XML represntation of an RSS feed.
-     * @param options {ReaderOptions} Parsing options.
-     * @returns Feed obkect {TrackedRSSfeed} contaiing all relevant properties that
-     *          were available in the feed.
-     */
-    static assembleFromXml(xml:string,options: ReaderOptions = DEFAULT_OPTIONS) : TrackedRSSfeed {
-        return new TrackedRSSfeed(extractFromXml(xml,options));
-    }
-
-    static async assembleFromUrl(url:string,options: ReaderOptions = DEFAULT_OPTIONS) : Promise<TrackedRSSfeed> {
-        return new TrackedRSSfeed(await extract(url,options));
-    }
-
+export class TrackedRSSfeed implements IFeedDataExtended {
     title?: string;
     description?: string;
     site?: string;
     image?: IRSSimage;
     items: TrackedRSSitem[];
-
-    constructor(feed: IFeedDataExtended) {
-        let {link,title,description,image,entries} = feed;
+    /**
+     * Assemble an RSS feed from its XML representation.
+     * Collect a all necessary data that are available data nad backfill
+     * canonical properties.
+     *
+     * @param xml - XML representation of an RSS feed.
+     * @param options Optional Parsing options.
+     * @returns Feed obkect {TrackedRSSfeed} contaiing all relevant properties that
+     *          were available in the feed.
+     */
+    constructor(xml: string, options: ReaderOptions = DEFAULT_OPTIONS) {
+        const feed = extractFromXml(xml, options);
+        let { link, title, description, image, entries } = feed as IFeedDataExtended;
         if (title) {
             this.title = title;
         }
@@ -273,7 +268,7 @@ export class TrackedRSSfeed {
             this.image = image;
         }
         if (Array.isArray(entries)) {
-            this.items = (entries as Array<IEntryDataExtended>).map( e => new TrackedRSSitem(e));
+            this.items = (entries as Array<IEntryDataExtended>).map(e => new TrackedRSSitem(e));
         } else {
             this.items = []
         }
@@ -282,11 +277,11 @@ export class TrackedRSSfeed {
     /**
      * @returns the avarage time interval between posts in the feed in hours.
      */
-    get avgPostInterval() : number {
-        let pubdateMillies = this.items.map( it => new Date(it.published).valueOf()).sort();
-        const n = pubdateMillies.length -1; // number of intervals between posts
-        if (n > 0 ) {
-            return Math.round((pubdateMillies[n] - pubdateMillies[0]) / (n * 60 * 60 * 1000)) ;
+    get avgPostInterval(): number {
+        let pubdateMillies = this.items.map(it => new Date(it.published).valueOf()).sort();
+        const n = pubdateMillies.length - 1; // number of intervals between posts
+        if (n > 0) {
+            return Math.round((pubdateMillies[n] - pubdateMillies[0]) / (n * 60 * 60 * 1000));
         }
 
         return 1;
