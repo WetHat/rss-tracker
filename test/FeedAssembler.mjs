@@ -1,4 +1,4 @@
-import { extractFromXml, extract } from '@extractus/feed-extractor';
+import { extractFromXml } from '@extractus/feed-extractor';
 /**
  * A tracked RSS feed item with all availabe relevant properties.
  */
@@ -162,25 +162,24 @@ const DEFAULT_OPTIONS = {
     },
 };
 export class TrackedRSSfeed {
-    /**
-     * Factory method to assemble an RSS feed from its XMK representation.
-     * @param xml {string} - XML represntation of an RSS feed.
-     * @param options {ReaderOptions} Parsing options.
-     * @returns Feed obkect {TrackedRSSfeed} contaiing all relevant properties that
-     *          were available in the feed.
-     */
-    static assembleFromXml(xml, options = DEFAULT_OPTIONS) {
-        return new TrackedRSSfeed(extractFromXml(xml, options));
-    }
-    static async assembleFromUrl(url, options = DEFAULT_OPTIONS) {
-        return new TrackedRSSfeed(await extract(url, options));
-    }
     title;
     description;
     site;
     image;
     items;
-    constructor(feed) {
+    source;
+    /**
+     * Assemble an RSS feed from its XML representation.
+     * Collect a all necessary data that are available data nad backfill
+     * canonical properties.
+     *
+     * @param xml - XML representation of an RSS feed.
+     * @param options Optional Parsing options.
+     * @returns Feed obkect {TrackedRSSfeed} contaiing all relevant properties that
+     *          were available in the feed.
+     */
+    constructor(xml, options = DEFAULT_OPTIONS) {
+        const feed = extractFromXml(xml, options);
         let { link, title, description, image, entries } = feed;
         if (title) {
             this.title = title;

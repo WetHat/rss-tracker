@@ -236,12 +236,13 @@ const DEFAULT_OPTIONS: ReaderOptions = {
     },
 }
 
-export class TrackedRSSfeed implements IFeedDataExtended {
+export class TrackedRSSfeed {
     title?: string;
     description?: string;
     site?: string;
     image?: IRSSimage;
     items: TrackedRSSitem[];
+    source?: string;
     /**
      * Assemble an RSS feed from its XML representation.
      * Collect a all necessary data that are available data nad backfill
