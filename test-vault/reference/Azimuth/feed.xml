@@ -1,47 +1,53 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
 	xmlns:content="http://purl.org/rss/1.0/modules/content/"
 	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
 	xmlns:dc="http://purl.org/dc/elements/1.1/"
 	xmlns:atom="http://www.w3.org/2005/Atom"
 	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
 	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
-	xmlns:georss="http://www.georss.org/georss" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" xmlns:media="http://search.yahoo.com/mrss/"
-	>
+	xmlns:georss="http://www.georss.org/georss" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	xmlns:media="http://search.yahoo.com/mrss/"
+>
 
-<channel>
-	<title>Azimuth</title>
-	<atom:link href="https://johncarlosbaez.wordpress.com/feed/" rel="self" type="application/rss+xml" />
-	<link>https://johncarlosbaez.wordpress.com</link>
-	<description></description>
-	<lastBuildDate>Mon, 13 May 2024 18:42:35 +0000</lastBuildDate>
-	<language>en</language>
-	<sy:updatePeriod>
-	hourly	</sy:updatePeriod>
-	<sy:updateFrequency>
-	1	</sy:updateFrequency>
-	<generator>http://wordpress.com/</generator>
-<cloud domain='johncarlosbaez.wordpress.com' port='80' path='/?rsscloud=notify' registerProcedure='' protocol='http-post' />
-<image>
-		<url>https://s0.wp.com/i/buttonw-com.png</url>
+	<channel>
 		<title>Azimuth</title>
+		<atom:link href="https://johncarlosbaez.wordpress.com/feed/" rel="self"
+			type="application/rss+xml" />
 		<link>https://johncarlosbaez.wordpress.com</link>
-	</image>
-	<atom:link rel="search" type="application/opensearchdescription+xml" href="https://johncarlosbaez.wordpress.com/osd.xml" title="Azimuth" />
-	<atom:link rel='hub' href='https://johncarlosbaez.wordpress.com/?pushpress=hub'/>
-	<item>
-		<title>Agent-Based Models (Part 9)</title>
-		<link>https://johncarlosbaez.wordpress.com/2024/05/13/agent-based-models-part-9/</link>
-					<comments>https://johncarlosbaez.wordpress.com/2024/05/13/agent-based-models-part-9/#comments</comments>
-		
-		<dc:creator><![CDATA[John Baez]]></dc:creator>
-		<pubDate>Mon, 13 May 2024 18:23:03 +0000</pubDate>
-				<category><![CDATA[computer science]]></category>
-		<category><![CDATA[epidemiology]]></category>
-		<category><![CDATA[mathematics]]></category>
-		<guid isPermaLink="false">http://johncarlosbaez.wordpress.com/?p=37840</guid>
+		<description></description>
+		<lastBuildDate>Mon, 13 May 2024 18:42:35 +0000</lastBuildDate>
+		<language>en</language>
+		<sy:updatePeriod>
+			hourly </sy:updatePeriod>
+		<sy:updateFrequency>
+			1 </sy:updateFrequency>
+		<generator>http://wordpress.com/</generator>
+		<cloud domain='johncarlosbaez.wordpress.com' port='80' path='/?rsscloud=notify'
+			registerProcedure='' protocol='http-post' />
+		<image>
+			<url>https://s0.wp.com/i/buttonw-com.png</url>
+			<title>Azimuth</title>
+			<link>https://johncarlosbaez.wordpress.com</link>
+		</image>
+		<atom:link rel="search" type="application/opensearchdescription+xml"
+			href="https://johncarlosbaez.wordpress.com/osd.xml" title="Azimuth" />
+		<atom:link rel='hub' href='https://johncarlosbaez.wordpress.com/?pushpress=hub' />
+		<item>
+			<title>Agent-Based Models (Part 9)</title>
+			<link>https://johncarlosbaez.wordpress.com/2024/05/13/agent-based-models-part-9/</link>
+			<comments>
+				https://johncarlosbaez.wordpress.com/2024/05/13/agent-based-models-part-9/#comments</comments>
 
-					<description><![CDATA[Since May 1st, Kris Brown, Nathaniel Osgood, Xiaoyan Li, William Waites and I have been meeting daily in James Clerk Maxwell&#8217;s childhood home in Edinburgh. We&#8217;re hard at work on our project called New Mathematics and Software for Agent-Based models. It&#8217;s impossible to explain everything we&#8217;re doing while it&#8217;s happening. But I want to record [&#8230;]]]></description>
-										<content:encoded><![CDATA[<p>Since May 1st, <a href="https://www.krisb.org/docs/research">Kris Brown</a>, <a href="https://www.cs.usask.ca/faculty/osgood/">Nathaniel Osgood</a>, <a href="https://scholar.google.ca/citations?user=55dzbRgAAAAJ&amp;hl=en">Xiaoyan Li</a>, <a href="https://scholar.google.com/citations?user=eayiEiwAAAAJ&amp;hl=en">William Waites</a> and I have been meeting daily in James Clerk Maxwell&#8217;s childhood home in Edinburgh.</p>
+			<dc:creator><![CDATA[John Baez]]></dc:creator>
+			<pubDate>Mon, 13 May 2024 18:23:03 +0000</pubDate>
+			<category><![CDATA[computer science]]></category>
+			<category><![CDATA[epidemiology]]></category>
+			<category><![CDATA[mathematics]]></category>
+			<guid isPermaLink="false">http://johncarlosbaez.wordpress.com/?p=37840</guid>
+
+			<description><![CDATA[Since May 1st, Kris Brown, Nathaniel Osgood, Xiaoyan Li, William Waites and I have been meeting daily in James Clerk Maxwell&#8217;s childhood home in Edinburgh. We&#8217;re hard at work on our project called New Mathematics and Software for Agent-Based models. It&#8217;s impossible to explain everything we&#8217;re doing while it&#8217;s happening. But I want to record [&#8230;]]]></description>
+			<content:encoded><![CDATA[<p>Since May 1st, <a href="https://www.krisb.org/docs/research">Kris Brown</a>, <a href="https://www.cs.usask.ca/faculty/osgood/">Nathaniel Osgood</a>, <a href="https://scholar.google.ca/citations?user=55dzbRgAAAAJ&amp;hl=en">Xiaoyan Li</a>, <a href="https://scholar.google.com/citations?user=eayiEiwAAAAJ&amp;hl=en">William Waites</a> and I have been meeting daily in James Clerk Maxwell&#8217;s childhood home in Edinburgh.</p>
 <p><a href="https://johncarlosbaez.files.wordpress.com/2024/05/1200px-maxwellsequations-1860-1871.jpg"><img data-attachment-id="37852" data-permalink="https://johncarlosbaez.wordpress.com/2024/05/13/agent-based-models-part-9/1200px-maxwellsequations-1860-1871/" data-orig-file="https://johncarlosbaez.files.wordpress.com/2024/05/1200px-maxwellsequations-1860-1871.jpg" data-orig-size="1200,794" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="1200px-MaxwellsEquations-1860-1871" data-image-description="" data-image-caption="" data-medium-file="https://johncarlosbaez.files.wordpress.com/2024/05/1200px-maxwellsequations-1860-1871.jpg?w=300" data-large-file="https://johncarlosbaez.files.wordpress.com/2024/05/1200px-maxwellsequations-1860-1871.jpg?w=450" src="https://johncarlosbaez.files.wordpress.com/2024/05/1200px-maxwellsequations-1860-1871.jpg?w=450&#038;h=298" alt="" width="450" height="298" class="aligncenter size-large wp-image-37852" srcset="https://johncarlosbaez.files.wordpress.com/2024/05/1200px-maxwellsequations-1860-1871.jpg?w=450 450w, https://johncarlosbaez.files.wordpress.com/2024/05/1200px-maxwellsequations-1860-1871.jpg?w=900 900w, https://johncarlosbaez.files.wordpress.com/2024/05/1200px-maxwellsequations-1860-1871.jpg?w=150 150w, https://johncarlosbaez.files.wordpress.com/2024/05/1200px-maxwellsequations-1860-1871.jpg?w=300 300w, https://johncarlosbaez.files.wordpress.com/2024/05/1200px-maxwellsequations-1860-1871.jpg?w=768 768w" sizes="(max-width: 450px) 100vw, 450px" /></a></p>
 <p>We&#8217;re hard at work on our project called <a href="https://johncarlosbaez.wordpress.com/2023/08/17/agent-based-models-part-2/">New Mathematics and Software for Agent-Based models</a>.  It&#8217;s impossible to explain everything we&#8217;re doing while it&#8217;s happening.  But I want to record some of our work.  So please pardon how I skim through a bunch of already known ideas in my desperate attempt to quickly reach the main point.  I&#8217;ll try to make up for this by giving lots of references.</p>
 <p>Today I&#8217;ll talk about an interesting class of models we have developed together with Sean Wu.  We call them &#8216;stochastic <i>C</i>-set rewriting systems&#8217;.  They&#8217;re just part of our overall framework, but they&#8217;re an important part.</p>
@@ -119,37 +125,47 @@
 <p>The dependence on <img src="https://s0.wp.com/latex.php?latex=t+%5Cin+%5B0%2C%5Cinfty%29&#038;bg=ffffff&#038;fg=333333&#038;s=0&#038;c=20201002" srcset="https://s0.wp.com/latex.php?latex=t+%5Cin+%5B0%2C%5Cinfty%29&#038;bg=ffffff&#038;fg=333333&#038;s=0&#038;c=20201002 1x, https://s0.wp.com/latex.php?latex=t+%5Cin+%5B0%2C%5Cinfty%29&#038;bg=ffffff&#038;fg=333333&#038;s=0&#038;c=20201002&#038;zoom=4.5 4x" alt="t &#92;in [0,&#92;infty)" class="latex" /> here means the wait time can depend on when we start the timer.  And the fact that this stochastic map takes values in <img src="https://s0.wp.com/latex.php?latex=%5B0%2C%5Cinfty%5D&#038;bg=ffffff&#038;fg=333333&#038;s=0&#038;c=20201002" srcset="https://s0.wp.com/latex.php?latex=%5B0%2C%5Cinfty%5D&#038;bg=ffffff&#038;fg=333333&#038;s=0&#038;c=20201002 1x, https://s0.wp.com/latex.php?latex=%5B0%2C%5Cinfty%5D&#038;bg=ffffff&#038;fg=333333&#038;s=0&#038;c=20201002&#038;zoom=4.5 4x" alt="[0,&#92;infty]" class="latex" /> means the wait time can be <em>infinite</em>.  This is a way of letting rewrite rules have a probability &lt; 1 of ever being applied.  If you don&#039;t like these features you can easily limit the formalism to avoid them.</p>
 <p>The more serious subtleties involve whether and how to change wait times as the state of the world changes.  For example, we can imagine more general timers that explicitly depend on the current state of the world as well as the time <img src="https://s0.wp.com/latex.php?latex=t+%5Cin+%5B0%2C%5Cinfty%29.&#038;bg=ffffff&#038;fg=333333&#038;s=0&#038;c=20201002" srcset="https://s0.wp.com/latex.php?latex=t+%5Cin+%5B0%2C%5Cinfty%29.&#038;bg=ffffff&#038;fg=333333&#038;s=0&#038;c=20201002 1x, https://s0.wp.com/latex.php?latex=t+%5Cin+%5B0%2C%5Cinfty%29.&#038;bg=ffffff&#038;fg=333333&#038;s=0&#038;c=20201002&#038;zoom=4.5 4x" alt="t &#92;in [0,&#92;infty)." class="latex" />  However, in this case I am confused about how we should update our table of wait times as the state of the world changes.   So I decided to postpone discussing this generalization!</p>
 ]]></content:encoded>
-					
-					<wfw:commentRss>https://johncarlosbaez.wordpress.com/2024/05/13/agent-based-models-part-9/feed/</wfw:commentRss>
+
+			<wfw:commentRss>
+				https://johncarlosbaez.wordpress.com/2024/05/13/agent-based-models-part-9/feed/</wfw:commentRss>
 			<slash:comments>2</slash:comments>
-		
-		
-		
-		<media:thumbnail url="https://johncarlosbaez.files.wordpress.com/2023/07/state_diagram.png" />
-		<media:content url="https://johncarlosbaez.files.wordpress.com/2023/07/state_diagram.png" medium="image">
-			<media:title type="html">state_diagram</media:title>
-		</media:content>
 
-		<media:content url="https://1.gravatar.com/avatar/7a940c155bd1e3fbddbf5dff9b93df0588e66d7121832d395ffec41b6e91792b?s=96&#38;d=identicon&#38;r=G" medium="image">
-			<media:title type="html">John Baez</media:title>
-		</media:content>
 
-		<media:content url="https://johncarlosbaez.files.wordpress.com/2024/05/1200px-maxwellsequations-1860-1871.jpg?w=450" medium="image" />
+			<media:thumbnail
+				url="https://johncarlosbaez.files.wordpress.com/2023/07/state_diagram.png" />
+			<media:content
+				url="https://johncarlosbaez.files.wordpress.com/2023/07/state_diagram.png"
+				medium="image">
+				<media:title type="html">state_diagram</media:title>
+			</media:content>
 
-		<media:content url="http://math.ucr.edu/home/baez/networks/catalysts/petri_marking_1.png" medium="image" />
-	</item>
+			<media:content
+				url="https://1.gravatar.com/avatar/7a940c155bd1e3fbddbf5dff9b93df0588e66d7121832d395ffec41b6e91792b?s=96&#38;d=identicon&#38;r=G"
+				medium="image">
+				<media:title type="html">John Baez</media:title>
+			</media:content>
+
+			<media:content
+				url="https://johncarlosbaez.files.wordpress.com/2024/05/1200px-maxwellsequations-1860-1871.jpg?w=450"
+				medium="image" />
+
+			<media:content
+				url="http://math.ucr.edu/home/baez/networks/catalysts/petri_marking_1.png"
+				medium="image" />
+		</item>
 		<item>
-		<title>Hexagonal Tiling Honeycomb</title>
-		<link>https://johncarlosbaez.wordpress.com/2024/05/04/hexagonal-tiling-honeycomb/</link>
-					<comments>https://johncarlosbaez.wordpress.com/2024/05/04/hexagonal-tiling-honeycomb/#comments</comments>
-		
-		<dc:creator><![CDATA[John Baez]]></dc:creator>
-		<pubDate>Sat, 04 May 2024 15:47:17 +0000</pubDate>
-				<category><![CDATA[mathematics]]></category>
-		<guid isPermaLink="false">http://johncarlosbaez.wordpress.com/?p=37783</guid>
+			<title>Hexagonal Tiling Honeycomb</title>
+			<link>https://johncarlosbaez.wordpress.com/2024/05/04/hexagonal-tiling-honeycomb/</link>
+			<comments>
+				https://johncarlosbaez.wordpress.com/2024/05/04/hexagonal-tiling-honeycomb/#comments</comments>
 
-					<description><![CDATA[This picture by Roice Nelson shows a remarkable structure: the hexagonal tiling honeycomb. What is it? Roughly speaking, a honeycomb is a way of filling 3d space with polyhedra. The most symmetrical honeycombs are the &#8216;regular&#8217; ones. For any honeycomb, we define a flag to be a chosen vertex lying on a chosen edge lying [&#8230;]]]></description>
-										<content:encoded><![CDATA[<div align="center">
+			<dc:creator><![CDATA[John Baez]]></dc:creator>
+			<pubDate>Sat, 04 May 2024 15:47:17 +0000</pubDate>
+			<category><![CDATA[mathematics]]></category>
+			<guid isPermaLink="false">http://johncarlosbaez.wordpress.com/?p=37783</guid>
+
+			<description><![CDATA[This picture by Roice Nelson shows a remarkable structure: the hexagonal tiling honeycomb. What is it? Roughly speaking, a honeycomb is a way of filling 3d space with polyhedra. The most symmetrical honeycombs are the &#8216;regular&#8217; ones. For any honeycomb, we define a flag to be a chosen vertex lying on a chosen edge lying [&#8230;]]]></description>
+			<content:encoded><![CDATA[<div align="center">
 <a href="https://commons.wikimedia.org/wiki/File:H3_633_FC_boundary.png"><br />
 <img src="https://i0.wp.com/math.ucr.edu/home/baez/mathematical/{6,3,3}_honeycomb_roice_bright.png" width="450" alt="" /><br />
 </a>
@@ -241,47 +257,64 @@
 <p>&bull; <a href="https://golem.ph.utexas.edu/category/2024/04/post_2.html">Line bundles on complex tori (part 4)</a>, <i>The n-Category Caf&eacute;</i>, April 26, 2024.</p>
 <p>Briefly, the hexagon centers in the hexagonal tiling honeycomb correspond to principal polarizations of the abelian variety <img src="https://s0.wp.com/latex.php?latex=%5Cmathbb%7BC%7D%5E2%2F%5Cmathbb%7BE%7D%5E2&#038;bg=ffffff&#038;fg=333333&#038;s=0&#038;c=20201002" srcset="https://s0.wp.com/latex.php?latex=%5Cmathbb%7BC%7D%5E2%2F%5Cmathbb%7BE%7D%5E2&#038;bg=ffffff&#038;fg=333333&#038;s=0&#038;c=20201002 1x, https://s0.wp.com/latex.php?latex=%5Cmathbb%7BC%7D%5E2%2F%5Cmathbb%7BE%7D%5E2&#038;bg=ffffff&#038;fg=333333&#038;s=0&#038;c=20201002&#038;zoom=4.5 4x" alt="&#92;mathbb{C}^2/&#92;mathbb{E}^2" class="latex" />.  These are concepts that algebraic geometers know and love.  Similarly, if the conjecture above is true, the square centers in the square tiling honeycomb will correspond to principal polarizations of the abelian variety <img src="https://s0.wp.com/latex.php?latex=%5Cmathbb%7BC%7D%5E2%2F%5Cmathbb%7BG%7D%5E2&#038;bg=ffffff&#038;fg=333333&#038;s=0&#038;c=20201002" srcset="https://s0.wp.com/latex.php?latex=%5Cmathbb%7BC%7D%5E2%2F%5Cmathbb%7BG%7D%5E2&#038;bg=ffffff&#038;fg=333333&#038;s=0&#038;c=20201002 1x, https://s0.wp.com/latex.php?latex=%5Cmathbb%7BC%7D%5E2%2F%5Cmathbb%7BG%7D%5E2&#038;bg=ffffff&#038;fg=333333&#038;s=0&#038;c=20201002&#038;zoom=4.5 4x" alt="&#92;mathbb{C}^2/&#92;mathbb{G}^2" class="latex" />.  But I&#8217;m especially interested in interpreting the other features of these honeycombs &#8212; not just the hexagon and square centers &#8212; using ideas from algebraic geometry.</p>
 ]]></content:encoded>
-					
-					<wfw:commentRss>https://johncarlosbaez.wordpress.com/2024/05/04/hexagonal-tiling-honeycomb/feed/</wfw:commentRss>
+
+			<wfw:commentRss>
+				https://johncarlosbaez.wordpress.com/2024/05/04/hexagonal-tiling-honeycomb/feed/</wfw:commentRss>
 			<slash:comments>2</slash:comments>
-		
-		
-		
-		<media:thumbnail url="https://johncarlosbaez.files.wordpress.com/2024/05/633_honeycomb_roice_bright.png" />
-		<media:content url="https://johncarlosbaez.files.wordpress.com/2024/05/633_honeycomb_roice_bright.png" medium="image">
-			<media:title type="html">{6,3,3}_honeycomb_roice_bright</media:title>
-		</media:content>
 
-		<media:content url="https://1.gravatar.com/avatar/7a940c155bd1e3fbddbf5dff9b93df0588e66d7121832d395ffec41b6e91792b?s=96&#38;d=identicon&#38;r=G" medium="image">
-			<media:title type="html">John Baez</media:title>
-		</media:content>
 
-		<media:content url="http://math.ucr.edu/home/baez/mathematical/6,3,3_honeycomb_roice_bright.png" medium="image" />
+			<media:thumbnail
+				url="https://johncarlosbaez.files.wordpress.com/2024/05/633_honeycomb_roice_bright.png" />
+			<media:content
+				url="https://johncarlosbaez.files.wordpress.com/2024/05/633_honeycomb_roice_bright.png"
+				medium="image">
+				<media:title type="html">{6,3,3}_honeycomb_roice_bright</media:title>
+			</media:content>
 
-		<media:content url="https://upload.wikimedia.org/wikipedia/commons/a/a7/H3_435_CC_center.png" medium="image" />
+			<media:content
+				url="https://1.gravatar.com/avatar/7a940c155bd1e3fbddbf5dff9b93df0588e66d7121832d395ffec41b6e91792b?s=96&#38;d=identicon&#38;r=G"
+				medium="image">
+				<media:title type="html">John Baez</media:title>
+			</media:content>
 
-		<media:content url="http://math.ucr.edu/home/baez/mathematical/6,3,3_honeycomb_roice_bright.png" medium="image" />
+			<media:content
+				url="http://math.ucr.edu/home/baez/mathematical/6,3,3_honeycomb_roice_bright.png"
+				medium="image" />
 
-		<media:content url="http://math.ucr.edu/home/baez/mathematical/6,3,3_honeycomb_one_cell_horosphere.png" medium="image" />
+			<media:content
+				url="https://upload.wikimedia.org/wikipedia/commons/a/a7/H3_435_CC_center.png"
+				medium="image" />
 
-		<media:content url="https://math.ucr.edu/home/baez/mathematical/eisenstein_integers.png" medium="image" />
+			<media:content
+				url="http://math.ucr.edu/home/baez/mathematical/6,3,3_honeycomb_roice_bright.png"
+				medium="image" />
 
-		<media:content url="http://math.ucr.edu/home/baez/mathematical/4,3,3_honeycomb_roice.png" medium="image" />
-	</item>
+			<media:content
+				url="http://math.ucr.edu/home/baez/mathematical/6,3,3_honeycomb_one_cell_horosphere.png"
+				medium="image" />
+
+			<media:content url="https://math.ucr.edu/home/baez/mathematical/eisenstein_integers.png"
+				medium="image" />
+
+			<media:content
+				url="http://math.ucr.edu/home/baez/mathematical/4,3,3_honeycomb_roice.png"
+				medium="image" />
+		</item>
 		<item>
-		<title>Agent-Based Models (Part 8)</title>
-		<link>https://johncarlosbaez.wordpress.com/2024/04/16/agent-based-models-part-8/</link>
-					<comments>https://johncarlosbaez.wordpress.com/2024/04/16/agent-based-models-part-8/#comments</comments>
-		
-		<dc:creator><![CDATA[John Baez]]></dc:creator>
-		<pubDate>Tue, 16 Apr 2024 19:01:15 +0000</pubDate>
-				<category><![CDATA[computer science]]></category>
-		<category><![CDATA[epidemiology]]></category>
-		<category><![CDATA[mathematics]]></category>
-		<guid isPermaLink="false">http://johncarlosbaez.wordpress.com/?p=37766</guid>
+			<title>Agent-Based Models (Part 8)</title>
+			<link>https://johncarlosbaez.wordpress.com/2024/04/16/agent-based-models-part-8/</link>
+			<comments>
+				https://johncarlosbaez.wordpress.com/2024/04/16/agent-based-models-part-8/#comments</comments>
 
-					<description><![CDATA[Last time I presented a class of agent-based models where agents hop around a graph in a stochastic way. Each vertex of the graph is some &#8216;state&#8217; agents can be in, and each edge is called a &#8216;transition&#8217;. In these models, the probability per time of an agent making a transition and leaving some state [&#8230;]]]></description>
-										<content:encoded><![CDATA[<p><a href="https://johncarlosbaez.wordpress.com/2024/02/28/agent-based-models-part-7/">Last time</a> I presented a class of agent-based models where agents hop around a graph in a stochastic way. Each vertex of the graph is some &#8216;state&#8217; agents can be in, and each edge is called a &#8216;transition&#8217;.  In these models, the probability per time of an agent making a transition and leaving some state can depend on when it arrived at that state.  It can also depend on which agents are in other states that are &#8216;linked&#8217; to that edge&#8212;and when <i>those</i> agents arrived.</p>
+			<dc:creator><![CDATA[John Baez]]></dc:creator>
+			<pubDate>Tue, 16 Apr 2024 19:01:15 +0000</pubDate>
+			<category><![CDATA[computer science]]></category>
+			<category><![CDATA[epidemiology]]></category>
+			<category><![CDATA[mathematics]]></category>
+			<guid isPermaLink="false">http://johncarlosbaez.wordpress.com/?p=37766</guid>
+
+			<description><![CDATA[Last time I presented a class of agent-based models where agents hop around a graph in a stochastic way. Each vertex of the graph is some &#8216;state&#8217; agents can be in, and each edge is called a &#8216;transition&#8217;. In these models, the probability per time of an agent making a transition and leaving some state [&#8230;]]]></description>
+			<content:encoded><![CDATA[<p><a href="https://johncarlosbaez.wordpress.com/2024/02/28/agent-based-models-part-7/">Last time</a> I presented a class of agent-based models where agents hop around a graph in a stochastic way. Each vertex of the graph is some &#8216;state&#8217; agents can be in, and each edge is called a &#8216;transition&#8217;.  In these models, the probability per time of an agent making a transition and leaving some state can depend on when it arrived at that state.  It can also depend on which agents are in other states that are &#8216;linked&#8217; to that edge&#8212;and when <i>those</i> agents arrived.</p>
 <p>I&#8217;ve been trying to generalize this framework to handle processes where agents are born or die&#8212;or perhaps more generally, processes where some number of agents turn into some other number of agents.   There&#8217;s already a framework that does something sort of like this.  It&#8217;s called &#8216;stochastic Petri nets&#8217;, and we explained this framework here:</p>
 <p>&bull; John Baez and Jacob Biamonte, <i><a href="https://arxiv.org/abs/1209.3632">Quantum Techniques for Stochastic Mechanics</a></i>, World Scientific Press, Singapore, 2018.  (See also blog articles <a href="https://math.ucr.edu/home/baez/networks/#petri">here</a>.)</p>
 <p>However, in their simplest form, stochastic Petri nets are designed for agents whose only distinguishing information is which state they&#8217;re in.  They don&#8217;t have &#8216;names&#8217;&#8212;that is, individual identities.  Thus, even calling them &#8216;agents&#8217; is a bit of a stretch: usually they&#8217;re called &#8216;tokens&#8217;, since they&#8217;re drawn as black dots.</p>
@@ -316,33 +349,38 @@
 <p>Here&#8217;s one possible problem: if we start with a finite number of agents in the &#8216;unborn&#8217; states, the population of agents can&#8217;t grow indefinitely!   But this doesn&#8217;t seem very dire.  For most agent-based models we don&#8217;t feel a need to let the number of agents grow arbitrarily large.  Or we can relax the requirement that the set of agents is finite, and put an infinite number of agents <img src="https://s0.wp.com/latex.php?latex=u_1%2C+u_2%2C+u_3%2C+%5Cdots&#038;bg=ffffff&#038;fg=333333&#038;s=0&#038;c=20201002" srcset="https://s0.wp.com/latex.php?latex=u_1%2C+u_2%2C+u_3%2C+%5Cdots&#038;bg=ffffff&#038;fg=333333&#038;s=0&#038;c=20201002 1x, https://s0.wp.com/latex.php?latex=u_1%2C+u_2%2C+u_3%2C+%5Cdots&#038;bg=ffffff&#038;fg=333333&#038;s=0&#038;c=20201002&#038;zoom=4.5 4x" alt="u_1, u_2, u_3, &#92;dots" class="latex" /> in an unborn state.  This can be done without using an infinite amount of memory: it&#8217;s a &#8216;potential infinity&#8217; rather than an &#8216;actual infinity&#8217;.</p>
 <p>There could be other problems.  So I&#8217;ll post this now before I think of them.</p>
 ]]></content:encoded>
-					
-					<wfw:commentRss>https://johncarlosbaez.wordpress.com/2024/04/16/agent-based-models-part-8/feed/</wfw:commentRss>
+
+			<wfw:commentRss>
+				https://johncarlosbaez.wordpress.com/2024/04/16/agent-based-models-part-8/feed/</wfw:commentRss>
 			<slash:comments>17</slash:comments>
-		
-		
-		
-		<media:thumbnail url="https://johncarlosbaez.files.wordpress.com/2023/07/state_diagram.png" />
-		<media:content url="https://johncarlosbaez.files.wordpress.com/2023/07/state_diagram.png" medium="image">
-			<media:title type="html">state_diagram</media:title>
-		</media:content>
 
-		<media:content url="https://1.gravatar.com/avatar/7a940c155bd1e3fbddbf5dff9b93df0588e66d7121832d395ffec41b6e91792b?s=96&#38;d=identicon&#38;r=G" medium="image">
-			<media:title type="html">John Baez</media:title>
-		</media:content>
-	</item>
+
+			<media:thumbnail
+				url="https://johncarlosbaez.files.wordpress.com/2023/07/state_diagram.png" />
+			<media:content
+				url="https://johncarlosbaez.files.wordpress.com/2023/07/state_diagram.png"
+				medium="image">
+				<media:title type="html">state_diagram</media:title>
+			</media:content>
+
+			<media:content
+				url="https://1.gravatar.com/avatar/7a940c155bd1e3fbddbf5dff9b93df0588e66d7121832d395ffec41b6e91792b?s=96&#38;d=identicon&#38;r=G"
+				medium="image">
+				<media:title type="html">John Baez</media:title>
+			</media:content>
+		</item>
 		<item>
-		<title>Protonium</title>
-		<link>https://johncarlosbaez.wordpress.com/2024/04/14/protonium/</link>
-					<comments>https://johncarlosbaez.wordpress.com/2024/04/14/protonium/#comments</comments>
-		
-		<dc:creator><![CDATA[John Baez]]></dc:creator>
-		<pubDate>Sun, 14 Apr 2024 10:57:14 +0000</pubDate>
-				<category><![CDATA[physics]]></category>
-		<guid isPermaLink="false">http://johncarlosbaez.wordpress.com/?p=37742</guid>
+			<title>Protonium</title>
+			<link>https://johncarlosbaez.wordpress.com/2024/04/14/protonium/</link>
+			<comments>https://johncarlosbaez.wordpress.com/2024/04/14/protonium/#comments</comments>
 
-					<description><![CDATA[It looks like they&#8217;ve found protonium in the decay of a heavy particle! Protonium is made of a proton and an antiproton orbiting each other. It lasts a very short time before they annihilate each other. It&#8217;s a bit like a hydrogen atom where the electron has been replaced with an antiproton! But it&#8217;s much [&#8230;]]]></description>
-										<content:encoded><![CDATA[<div align="center"><a href="https://en.wikipedia.org/wiki/Protonium"><img width="450" src="http:math.ucr.edu/home/baez/physical/protonium.jpg" /></a></div>
+			<dc:creator><![CDATA[John Baez]]></dc:creator>
+			<pubDate>Sun, 14 Apr 2024 10:57:14 +0000</pubDate>
+			<category><![CDATA[physics]]></category>
+			<guid isPermaLink="false">http://johncarlosbaez.wordpress.com/?p=37742</guid>
+
+			<description><![CDATA[It looks like they&#8217;ve found protonium in the decay of a heavy particle! Protonium is made of a proton and an antiproton orbiting each other. It lasts a very short time before they annihilate each other. It&#8217;s a bit like a hydrogen atom where the electron has been replaced with an antiproton! But it&#8217;s much [&#8230;]]]></description>
+			<content:encoded><![CDATA[<div align="center"><a href="https://en.wikipedia.org/wiki/Protonium"><img width="450" src="http:math.ucr.edu/home/baez/physical/protonium.jpg" /></a></div>
 <p>It looks like they&#8217;ve found <a href="https://en.wikipedia.org/wiki/Protonium">protonium</a> in the decay of a heavy particle!</p>
 <p>Protonium is made of a proton and an antiproton orbiting each other.   It lasts a very short time before they annihilate each other.</p>
 <p>It&#8217;s a bit like a hydrogen atom where the electron has been replaced with an antiproton!  But it&#8217;s much smaller than a hydrogen atom.  And unlike a hydrogen atom, which is held together by the electric force, protonium is mainly held together by the strong nuclear force.</p>
@@ -359,35 +397,37 @@
 <p>&bull; N. Zurlo, M. Amoretti, C. Amsler, G. Bonomi, C. Carraro, C. L. Cesar, M. Charlton, M. Doser, A. Fontana, R. Funakoshi, P. Genova, R. S. Hayano, L. V. Jorgensen, A. Kellerbauer, V. Lagomarsino, R. Landua, E. Lodi Rizzini, M. Macri, N. Madsen, G. Manuzio, D. Mitchard, P. Montagna, L. G. Posada, H. Pruys, C. Regenfus, A. Rotondi, G. Testera, D. P. Van der Werf, A. Variola, L. Venturelli and Y. Yamazaki, <a href="http://arxiv.org/abs/0801.3193">Production of slow protonium in vacuum</a>, <i>Hyperfine Interactions</i> <b>172</b> (2006), 97&ndash;105.</p>
 <p>Protonium is sometimes called an &#8216;exotic atom&#8217;&mdash;though personally I&#8217;d consider it an exotic nucleus.  The child in me thinks it&#8217;s really cool that there&#8217;s an abbreviation for protonium, Pn, just like a normal element.</p>
 ]]></content:encoded>
-					
-					<wfw:commentRss>https://johncarlosbaez.wordpress.com/2024/04/14/protonium/feed/</wfw:commentRss>
+
+			<wfw:commentRss>https://johncarlosbaez.wordpress.com/2024/04/14/protonium/feed/</wfw:commentRss>
 			<slash:comments>15</slash:comments>
-		
-		
-		
-		<media:thumbnail url="https://johncarlosbaez.files.wordpress.com/2024/04/protonium.jpg" />
-		<media:content url="https://johncarlosbaez.files.wordpress.com/2024/04/protonium.jpg" medium="image">
-			<media:title type="html">protonium</media:title>
-		</media:content>
 
-		<media:content url="https://1.gravatar.com/avatar/7a940c155bd1e3fbddbf5dff9b93df0588e66d7121832d395ffec41b6e91792b?s=96&#38;d=identicon&#38;r=G" medium="image">
-			<media:title type="html">John Baez</media:title>
-		</media:content>
 
-		<media:content url="http:math.ucr.edu/home/baez/physical/protonium.jpg" medium="image" />
-	</item>
+			<media:thumbnail url="https://johncarlosbaez.files.wordpress.com/2024/04/protonium.jpg" />
+			<media:content url="https://johncarlosbaez.files.wordpress.com/2024/04/protonium.jpg"
+				medium="image">
+				<media:title type="html">protonium</media:title>
+			</media:content>
+
+			<media:content
+				url="https://1.gravatar.com/avatar/7a940c155bd1e3fbddbf5dff9b93df0588e66d7121832d395ffec41b6e91792b?s=96&#38;d=identicon&#38;r=G"
+				medium="image">
+				<media:title type="html">John Baez</media:title>
+			</media:content>
+
+			<media:content url="http:math.ucr.edu/home/baez/physical/protonium.jpg" medium="image" />
+		</item>
 		<item>
-		<title>T Corona Borealis</title>
-		<link>https://johncarlosbaez.wordpress.com/2024/03/27/t-corona-borealis/</link>
-					<comments>https://johncarlosbaez.wordpress.com/2024/03/27/t-corona-borealis/#respond</comments>
-		
-		<dc:creator><![CDATA[John Baez]]></dc:creator>
-		<pubDate>Wed, 27 Mar 2024 18:32:47 +0000</pubDate>
-				<category><![CDATA[uncategorized]]></category>
-		<guid isPermaLink="false">http://johncarlosbaez.wordpress.com/?p=37700</guid>
+			<title>T Corona Borealis</title>
+			<link>https://johncarlosbaez.wordpress.com/2024/03/27/t-corona-borealis/</link>
+			<comments>https://johncarlosbaez.wordpress.com/2024/03/27/t-corona-borealis/#respond</comments>
 
-					<description><![CDATA[&#160; Sometime this year, the star T Corona Borealis will go nova and become much brighter! At least that&#8217;s what a lot of astronomers think. So examine the sky between Arcturus and Vega now&#8212;and look again if you hear this event has happened. Normally this star is magnitude 10, too dim to see. When it [&#8230;]]]></description>
-										<content:encoded><![CDATA[<p>&nbsp;</p>
+			<dc:creator><![CDATA[John Baez]]></dc:creator>
+			<pubDate>Wed, 27 Mar 2024 18:32:47 +0000</pubDate>
+			<category><![CDATA[uncategorized]]></category>
+			<guid isPermaLink="false">http://johncarlosbaez.wordpress.com/?p=37700</guid>
+
+			<description><![CDATA[&#160; Sometime this year, the star T Corona Borealis will go nova and become much brighter! At least that&#8217;s what a lot of astronomers think. So examine the sky between Arcturus and Vega now&#8212;and look again if you hear this event has happened. Normally this star is magnitude 10, too dim to see. When it [&#8230;]]]></description>
+			<content:encoded><![CDATA[<p>&nbsp;</p>
 <div align="center">
 <a href="https://johncarlosbaez.files.wordpress.com/2024/03/corona_borealis.jpg"><img data-attachment-id="37704" data-permalink="https://johncarlosbaez.wordpress.com/2024/03/27/t-corona-borealis/corona_borealis/" data-orig-file="https://johncarlosbaez.files.wordpress.com/2024/03/corona_borealis.jpg" data-orig-size="894,451" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="corona_borealis" data-image-description="" data-image-caption="" data-medium-file="https://johncarlosbaez.files.wordpress.com/2024/03/corona_borealis.jpg?w=300" data-large-file="https://johncarlosbaez.files.wordpress.com/2024/03/corona_borealis.jpg?w=450" src="https://johncarlosbaez.files.wordpress.com/2024/03/corona_borealis.jpg?w=450&#038;h=227" alt="" width="450" height="227" class="aligncenter size-large wp-image-37704" srcset="https://johncarlosbaez.files.wordpress.com/2024/03/corona_borealis.jpg?w=450 450w, https://johncarlosbaez.files.wordpress.com/2024/03/corona_borealis.jpg?w=150 150w, https://johncarlosbaez.files.wordpress.com/2024/03/corona_borealis.jpg?w=300 300w, https://johncarlosbaez.files.wordpress.com/2024/03/corona_borealis.jpg?w=768 768w, https://johncarlosbaez.files.wordpress.com/2024/03/corona_borealis.jpg 894w" sizes="(max-width: 450px) 100vw, 450px" /></a>
 </div>
@@ -410,37 +450,44 @@
 <p>For more details, try this:</p>
 <p>&bull;  B. E. Schaefer, B. Kloppenborg, E. O. Waagen and the AAVSO observers, <a href="https://www.aavso.org/news/t-crb-pre-eruption-dip">Announcing T CrB pre-eruption dip</a>, <i>AAVSO News and Announcements.</i></p>
 ]]></content:encoded>
-					
-					<wfw:commentRss>https://johncarlosbaez.wordpress.com/2024/03/27/t-corona-borealis/feed/</wfw:commentRss>
+
+			<wfw:commentRss>https://johncarlosbaez.wordpress.com/2024/03/27/t-corona-borealis/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
-		
-		
-		
-		<media:thumbnail url="https://johncarlosbaez.files.wordpress.com/2024/03/corona_borealis.jpg" />
-		<media:content url="https://johncarlosbaez.files.wordpress.com/2024/03/corona_borealis.jpg" medium="image">
-			<media:title type="html">corona_borealis</media:title>
-		</media:content>
 
-		<media:content url="https://1.gravatar.com/avatar/7a940c155bd1e3fbddbf5dff9b93df0588e66d7121832d395ffec41b6e91792b?s=96&#38;d=identicon&#38;r=G" medium="image">
-			<media:title type="html">John Baez</media:title>
-		</media:content>
 
-		<media:content url="https://johncarlosbaez.files.wordpress.com/2024/03/corona_borealis.jpg?w=450" medium="image" />
+			<media:thumbnail
+				url="https://johncarlosbaez.files.wordpress.com/2024/03/corona_borealis.jpg" />
+			<media:content
+				url="https://johncarlosbaez.files.wordpress.com/2024/03/corona_borealis.jpg"
+				medium="image">
+				<media:title type="html">corona_borealis</media:title>
+			</media:content>
 
-		<media:content url="https://math.ucr.edu/home/baez/astronomical/nova.gif" medium="image" />
-	</item>
+			<media:content
+				url="https://1.gravatar.com/avatar/7a940c155bd1e3fbddbf5dff9b93df0588e66d7121832d395ffec41b6e91792b?s=96&#38;d=identicon&#38;r=G"
+				medium="image">
+				<media:title type="html">John Baez</media:title>
+			</media:content>
+
+			<media:content
+				url="https://johncarlosbaez.files.wordpress.com/2024/03/corona_borealis.jpg?w=450"
+				medium="image" />
+
+			<media:content url="https://math.ucr.edu/home/baez/astronomical/nova.gif" medium="image" />
+		</item>
 		<item>
-		<title>The Probability of Undecidability</title>
-		<link>https://johncarlosbaez.wordpress.com/2024/03/15/the-probability-of-undecidability/</link>
-					<comments>https://johncarlosbaez.wordpress.com/2024/03/15/the-probability-of-undecidability/#comments</comments>
-		
-		<dc:creator><![CDATA[John Baez]]></dc:creator>
-		<pubDate>Fri, 15 Mar 2024 10:10:44 +0000</pubDate>
-				<category><![CDATA[mathematics]]></category>
-		<guid isPermaLink="false">http://johncarlosbaez.wordpress.com/?p=37690</guid>
+			<title>The Probability of Undecidability</title>
+			<link>https://johncarlosbaez.wordpress.com/2024/03/15/the-probability-of-undecidability/</link>
+			<comments>
+				https://johncarlosbaez.wordpress.com/2024/03/15/the-probability-of-undecidability/#comments</comments>
 
-					<description><![CDATA[There&#8217;s a lot we don&#8217;t know. There&#8217;s a lot we can&#8217;t know. But can we at least know how much we can&#8217;t know? What fraction of mathematical statements are undecidable&#8212;that is, can be neither proved nor disproved? There are many ways to make this question precise&#8230; but it remains a bit mysterious. The best results [&#8230;]]]></description>
-										<content:encoded><![CDATA[<p>There&#8217;s a lot we don&#8217;t know.  There&#8217;s a lot we <em>can&#8217;t</em> know.  But can we at least know how <em>much</em> we can&#8217;t know?</p>
+			<dc:creator><![CDATA[John Baez]]></dc:creator>
+			<pubDate>Fri, 15 Mar 2024 10:10:44 +0000</pubDate>
+			<category><![CDATA[mathematics]]></category>
+			<guid isPermaLink="false">http://johncarlosbaez.wordpress.com/?p=37690</guid>
+
+			<description><![CDATA[There&#8217;s a lot we don&#8217;t know. There&#8217;s a lot we can&#8217;t know. But can we at least know how much we can&#8217;t know? What fraction of mathematical statements are undecidable&#8212;that is, can be neither proved nor disproved? There are many ways to make this question precise&#8230; but it remains a bit mysterious. The best results [&#8230;]]]></description>
+			<content:encoded><![CDATA[<p>There&#8217;s a lot we don&#8217;t know.  There&#8217;s a lot we <em>can&#8217;t</em> know.  But can we at least know how <em>much</em> we can&#8217;t know?</p>
 <p>What fraction of mathematical statements are undecidable&#8212;that is, can be neither proved nor disproved?   There are many ways to make this question precise&#8230; but it remains a bit mysterious.   The best results I know appear, not in a published paper, but on MathOverflow!</p>
 <p>In 1998, the Fields-medal winning topologist <a href="https://eudml.org/doc/224467">Michael Freedman</a> conjectured that the fraction of statements that are provable in Peano Arithmetic approaches zero quite rapidly as you go to longer and longer statements:</p>
 <p>&nbsp;</p>
@@ -454,35 +501,44 @@
 <p>In 2009, <a href="https://mathoverflow.net/a/7902/2893">David Speyer</a> argued that the fraction of provable statements does not approach 0 and does not approach 1 as we consider longer and longer statements.   Instead, it&#8217;s bounded by numbers between 0 and 1.  Similarly for the fraction of undecidable statements!   His argument is not air-tight, as he admits and explains&#8212;but I believe it.   Someone should try to complete his proof.</p>
 <p>Speyer&#8217;s idea is very simple: if P is any statement, the statement &#8220;P or 1 = 1&#8221; is provable.  This can be used to get a lower bound on the number of provable statements of a given length.  Similarly, suppose G is some undecidable statement.  Then for any statement P, the statement &#8220;G and (P or 1 = 1)&#8221; is undecidable.   This can be used to get a lower bound on the number of undecidable statements of a given length.</p>
 ]]></content:encoded>
-					
-					<wfw:commentRss>https://johncarlosbaez.wordpress.com/2024/03/15/the-probability-of-undecidability/feed/</wfw:commentRss>
+
+			<wfw:commentRss>
+				https://johncarlosbaez.wordpress.com/2024/03/15/the-probability-of-undecidability/feed/</wfw:commentRss>
 			<slash:comments>13</slash:comments>
-		
-		
-		
-		<media:thumbnail url="https://johncarlosbaez.files.wordpress.com/2024/03/unprovability_michael_freedman.png" />
-		<media:content url="https://johncarlosbaez.files.wordpress.com/2024/03/unprovability_michael_freedman.png" medium="image">
-			<media:title type="html">unprovability_michael_freedman</media:title>
-		</media:content>
 
-		<media:content url="https://1.gravatar.com/avatar/7a940c155bd1e3fbddbf5dff9b93df0588e66d7121832d395ffec41b6e91792b?s=96&#38;d=identicon&#38;r=G" medium="image">
-			<media:title type="html">John Baez</media:title>
-		</media:content>
 
-		<media:content url="http://math.ucr.edu/home/baez/mathematical/unprovability_michael_freedman.png" medium="image" />
-	</item>
+			<media:thumbnail
+				url="https://johncarlosbaez.files.wordpress.com/2024/03/unprovability_michael_freedman.png" />
+			<media:content
+				url="https://johncarlosbaez.files.wordpress.com/2024/03/unprovability_michael_freedman.png"
+				medium="image">
+				<media:title type="html">unprovability_michael_freedman</media:title>
+			</media:content>
+
+			<media:content
+				url="https://1.gravatar.com/avatar/7a940c155bd1e3fbddbf5dff9b93df0588e66d7121832d395ffec41b6e91792b?s=96&#38;d=identicon&#38;r=G"
+				medium="image">
+				<media:title type="html">John Baez</media:title>
+			</media:content>
+
+			<media:content
+				url="http://math.ucr.edu/home/baez/mathematical/unprovability_michael_freedman.png"
+				medium="image" />
+		</item>
 		<item>
-		<title>The Probability of the Law of Excluded Middle</title>
-		<link>https://johncarlosbaez.wordpress.com/2024/03/13/the-probability-of-the-law-of-excluded-middle/</link>
-					<comments>https://johncarlosbaez.wordpress.com/2024/03/13/the-probability-of-the-law-of-excluded-middle/#comments</comments>
-		
-		<dc:creator><![CDATA[John Baez]]></dc:creator>
-		<pubDate>Wed, 13 Mar 2024 23:20:10 +0000</pubDate>
-				<category><![CDATA[mathematics]]></category>
-		<guid isPermaLink="false">http://johncarlosbaez.wordpress.com/?p=37675</guid>
+			<title>The Probability of the Law of Excluded Middle</title>
+			<link>
+				https://johncarlosbaez.wordpress.com/2024/03/13/the-probability-of-the-law-of-excluded-middle/</link>
+			<comments>
+				https://johncarlosbaez.wordpress.com/2024/03/13/the-probability-of-the-law-of-excluded-middle/#comments</comments>
 
-					<description><![CDATA[The Law of Excluded Middle says that for any statement P, &#8220;P or not P&#8221; is true. Is this law true? In classical logic it is. But in intuitionistic logic it&#8217;s not. So, in intuitionistic logic we can ask what&#8217;s the probability that a randomly chosen statement obeys the Law of Excluded Middle. And the [&#8230;]]]></description>
-										<content:encoded><![CDATA[<p>The <a href="https://en.wikipedia.org/wiki/Law_of_excluded_middle">Law of Excluded Middle</a> says that for any statement P,  &#8220;P or not P&#8221; is true.</p>
+			<dc:creator><![CDATA[John Baez]]></dc:creator>
+			<pubDate>Wed, 13 Mar 2024 23:20:10 +0000</pubDate>
+			<category><![CDATA[mathematics]]></category>
+			<guid isPermaLink="false">http://johncarlosbaez.wordpress.com/?p=37675</guid>
+
+			<description><![CDATA[The Law of Excluded Middle says that for any statement P, &#8220;P or not P&#8221; is true. Is this law true? In classical logic it is. But in intuitionistic logic it&#8217;s not. So, in intuitionistic logic we can ask what&#8217;s the probability that a randomly chosen statement obeys the Law of Excluded Middle. And the [&#8230;]]]></description>
+			<content:encoded><![CDATA[<p>The <a href="https://en.wikipedia.org/wiki/Law_of_excluded_middle">Law of Excluded Middle</a> says that for any statement P,  &#8220;P or not P&#8221; is true.</p>
 <p>Is this law true?  In classical logic it is.  But in <a href="https://en.wikipedia.org/wiki/Intuitionistic_logic">intuitionistic logic</a> it&#8217;s not.</p>
 <p>So, in intuitionistic logic we can ask what&#8217;s the <i>probability</i> that a randomly chosen statement obeys the Law of Excluded Middle.  And the answer is &#8220;at most 2/3&#8212;or else your logic is classical&#8221;.</p>
 <p>This is a very nice new result by Benjamin Bumpus and Zoltan Kocsis:</p>
@@ -500,35 +556,42 @@
 </div>
 <p>I disagree with this statement, but boy, Hilbert sure could write!</p>
 ]]></content:encoded>
-					
-					<wfw:commentRss>https://johncarlosbaez.wordpress.com/2024/03/13/the-probability-of-the-law-of-excluded-middle/feed/</wfw:commentRss>
+
+			<wfw:commentRss>
+				https://johncarlosbaez.wordpress.com/2024/03/13/the-probability-of-the-law-of-excluded-middle/feed/</wfw:commentRss>
 			<slash:comments>14</slash:comments>
-		
-		
-		
-		<media:thumbnail url="https://johncarlosbaez.files.wordpress.com/2024/03/free_heyting_algebra_on_one_generator.jpg" />
-		<media:content url="https://johncarlosbaez.files.wordpress.com/2024/03/free_heyting_algebra_on_one_generator.jpg" medium="image">
-			<media:title type="html">free_heyting_algebra_on_one_generator</media:title>
-		</media:content>
 
-		<media:content url="https://1.gravatar.com/avatar/7a940c155bd1e3fbddbf5dff9b93df0588e66d7121832d395ffec41b6e91792b?s=96&#38;d=identicon&#38;r=G" medium="image">
-			<media:title type="html">John Baez</media:title>
-		</media:content>
 
-		<media:content url="http://math.ucr.edu/home/baez/mathematical/free_heyting_algebra_on_one_generator.jpg" medium="image" />
-	</item>
+			<media:thumbnail
+				url="https://johncarlosbaez.files.wordpress.com/2024/03/free_heyting_algebra_on_one_generator.jpg" />
+			<media:content
+				url="https://johncarlosbaez.files.wordpress.com/2024/03/free_heyting_algebra_on_one_generator.jpg"
+				medium="image">
+				<media:title type="html">free_heyting_algebra_on_one_generator</media:title>
+			</media:content>
+
+			<media:content
+				url="https://1.gravatar.com/avatar/7a940c155bd1e3fbddbf5dff9b93df0588e66d7121832d395ffec41b6e91792b?s=96&#38;d=identicon&#38;r=G"
+				medium="image">
+				<media:title type="html">John Baez</media:title>
+			</media:content>
+
+			<media:content
+				url="http://math.ucr.edu/home/baez/mathematical/free_heyting_algebra_on_one_generator.jpg"
+				medium="image" />
+		</item>
 		<item>
-		<title>Nicholas Ludford</title>
-		<link>https://johncarlosbaez.wordpress.com/2024/02/29/nicholas-ludford/</link>
-					<comments>https://johncarlosbaez.wordpress.com/2024/02/29/nicholas-ludford/#comments</comments>
-		
-		<dc:creator><![CDATA[John Baez]]></dc:creator>
-		<pubDate>Thu, 29 Feb 2024 10:00:24 +0000</pubDate>
-				<category><![CDATA[music]]></category>
-		<guid isPermaLink="false">http://johncarlosbaez.wordpress.com/?p=37567</guid>
+			<title>Nicholas Ludford</title>
+			<link>https://johncarlosbaez.wordpress.com/2024/02/29/nicholas-ludford/</link>
+			<comments>https://johncarlosbaez.wordpress.com/2024/02/29/nicholas-ludford/#comments</comments>
 
-					<description><![CDATA[At first glance it&#8217;s amazing that one of the great British composers of the 1400s largely sank from view until his works were rediscovered in 1850. But the reason is not hard to find. When the Puritans took over England, they burned not only witches and heretics, but also books &#8212; and music! They hated [&#8230;]]]></description>
-										<content:encoded><![CDATA[<div align="center">
+			<dc:creator><![CDATA[John Baez]]></dc:creator>
+			<pubDate>Thu, 29 Feb 2024 10:00:24 +0000</pubDate>
+			<category><![CDATA[music]]></category>
+			<guid isPermaLink="false">http://johncarlosbaez.wordpress.com/?p=37567</guid>
+
+			<description><![CDATA[At first glance it&#8217;s amazing that one of the great British composers of the 1400s largely sank from view until his works were rediscovered in 1850. But the reason is not hard to find. When the Puritans took over England, they burned not only witches and heretics, but also books &#8212; and music! They hated [&#8230;]]]></description>
+			<content:encoded><![CDATA[<div align="center">
 <p><a href="https://www.blueheron.org/learn-more/the-peterhouse-partbooks/"><img border="2" width="400" src="https://i0.wp.com/math.ucr.edu/home/baez/cultural/blue_heron_peterhouse_partbooks.jpg" /></a></div>
 <p>At first glance it&#8217;s amazing that one of the great British composers of the 1400s largely sank from view until his works were rediscovered in 1850.</p>
 <p>But the reason is not hard to find.  When the Puritans took over England, they burned not only witches and heretics, but also books &mdash; and music!  They hated the complex polyphonic choral music of the Catholics.</p>
@@ -546,37 +609,44 @@ it is more a matter of astonishment that such mastery should be displayed by a c
 <iframe class="youtube-player" width="460" height="315" src="https://www.youtube.com/embed/qLrgI6-3I-s?version=3&#038;rel=1&#038;showsearch=0&#038;showinfo=1&#038;iv_load_policy=1&#038;fs=1&#038;hl=en&#038;autohide=2&#038;wmode=transparent" allowfullscreen="true" style="border:0;" sandbox="allow-scripts allow-same-origin allow-popups allow-presentation allow-popups-to-escape-sandbox"></iframe>
 </div>
 ]]></content:encoded>
-					
-					<wfw:commentRss>https://johncarlosbaez.wordpress.com/2024/02/29/nicholas-ludford/feed/</wfw:commentRss>
+
+			<wfw:commentRss>https://johncarlosbaez.wordpress.com/2024/02/29/nicholas-ludford/feed/</wfw:commentRss>
 			<slash:comments>1</slash:comments>
-		
-		
-		
-		<media:thumbnail url="https://johncarlosbaez.files.wordpress.com/2024/02/blue_heron_peterhouse_partbooks.jpg" />
-		<media:content url="https://johncarlosbaez.files.wordpress.com/2024/02/blue_heron_peterhouse_partbooks.jpg" medium="image">
-			<media:title type="html">blue_heron_peterhouse_partbooks</media:title>
-		</media:content>
 
-		<media:content url="https://1.gravatar.com/avatar/7a940c155bd1e3fbddbf5dff9b93df0588e66d7121832d395ffec41b6e91792b?s=96&#38;d=identicon&#38;r=G" medium="image">
-			<media:title type="html">John Baez</media:title>
-		</media:content>
 
-		<media:content url="http://math.ucr.edu/home/baez/cultural/blue_heron_peterhouse_partbooks.jpg" medium="image" />
-	</item>
+			<media:thumbnail
+				url="https://johncarlosbaez.files.wordpress.com/2024/02/blue_heron_peterhouse_partbooks.jpg" />
+			<media:content
+				url="https://johncarlosbaez.files.wordpress.com/2024/02/blue_heron_peterhouse_partbooks.jpg"
+				medium="image">
+				<media:title type="html">blue_heron_peterhouse_partbooks</media:title>
+			</media:content>
+
+			<media:content
+				url="https://1.gravatar.com/avatar/7a940c155bd1e3fbddbf5dff9b93df0588e66d7121832d395ffec41b6e91792b?s=96&#38;d=identicon&#38;r=G"
+				medium="image">
+				<media:title type="html">John Baez</media:title>
+			</media:content>
+
+			<media:content
+				url="http://math.ucr.edu/home/baez/cultural/blue_heron_peterhouse_partbooks.jpg"
+				medium="image" />
+		</item>
 		<item>
-		<title>Agent-Based Models (Part 7)</title>
-		<link>https://johncarlosbaez.wordpress.com/2024/02/28/agent-based-models-part-7/</link>
-					<comments>https://johncarlosbaez.wordpress.com/2024/02/28/agent-based-models-part-7/#comments</comments>
-		
-		<dc:creator><![CDATA[John Baez]]></dc:creator>
-		<pubDate>Wed, 28 Feb 2024 21:09:29 +0000</pubDate>
-				<category><![CDATA[computer science]]></category>
-		<category><![CDATA[epidemiology]]></category>
-		<category><![CDATA[mathematics]]></category>
-		<guid isPermaLink="false">http://johncarlosbaez.wordpress.com/?p=37547</guid>
+			<title>Agent-Based Models (Part 7)</title>
+			<link>https://johncarlosbaez.wordpress.com/2024/02/28/agent-based-models-part-7/</link>
+			<comments>
+				https://johncarlosbaez.wordpress.com/2024/02/28/agent-based-models-part-7/#comments</comments>
 
-					<description><![CDATA[Last time I presented a simple, limited class of agent-based models where each agent independently hops around a graph. I wrote: Today the probability for an agent to hop from one vertex of the graph to another by going along some edge will be determined the moment the agent arrives at that vertex. It will [&#8230;]]]></description>
-										<content:encoded><![CDATA[<p><a href="https://johncarlosbaez.wordpress.com/2024/02/21/agent-based-models-part-6/">Last time</a> I presented a simple, limited class of agent-based models where each agent independently hops around a graph.  I wrote:</p>
+			<dc:creator><![CDATA[John Baez]]></dc:creator>
+			<pubDate>Wed, 28 Feb 2024 21:09:29 +0000</pubDate>
+			<category><![CDATA[computer science]]></category>
+			<category><![CDATA[epidemiology]]></category>
+			<category><![CDATA[mathematics]]></category>
+			<guid isPermaLink="false">http://johncarlosbaez.wordpress.com/?p=37547</guid>
+
+			<description><![CDATA[Last time I presented a simple, limited class of agent-based models where each agent independently hops around a graph. I wrote: Today the probability for an agent to hop from one vertex of the graph to another by going along some edge will be determined the moment the agent arrives at that vertex. It will [&#8230;]]]></description>
+			<content:encoded><![CDATA[<p><a href="https://johncarlosbaez.wordpress.com/2024/02/21/agent-based-models-part-6/">Last time</a> I presented a simple, limited class of agent-based models where each agent independently hops around a graph.  I wrote:</p>
 <blockquote><p>
   Today the probability for an agent to hop from one vertex of the graph to another by going along some edge will be determined the moment the agent arrives at that vertex.  It will depend only on the agent and the various edges leaving that vertex.  Later I&#8217;ll want this probability to depend on other things too&#8212;like whether other agents are at some vertex or other.  When we do that, we&#8217;ll need to keep updating this probability as the other agents move around.
 </p></blockquote>
@@ -640,33 +710,39 @@ it is more a matter of astonishment that such mastery should be displayed by a c
 <p>Then we loop back around to step 1), but with <img src="https://s0.wp.com/latex.php?latex=i%2B1&#038;bg=ffffff&#038;fg=333333&#038;s=0&#038;c=20201002" srcset="https://s0.wp.com/latex.php?latex=i%2B1&#038;bg=ffffff&#038;fg=333333&#038;s=0&#038;c=20201002 1x, https://s0.wp.com/latex.php?latex=i%2B1&#038;bg=ffffff&#038;fg=333333&#038;s=0&#038;c=20201002&#038;zoom=4.5 4x" alt="i+1" class="latex" /> replacing <img src="https://s0.wp.com/latex.php?latex=i.&#038;bg=ffffff&#038;fg=333333&#038;s=0&#038;c=20201002" srcset="https://s0.wp.com/latex.php?latex=i.&#038;bg=ffffff&#038;fg=333333&#038;s=0&#038;c=20201002 1x, https://s0.wp.com/latex.php?latex=i.&#038;bg=ffffff&#038;fg=333333&#038;s=0&#038;c=20201002&#038;zoom=4.5 4x" alt="i." class="latex" /></p>
 <p>Whew!  I hope you followed that.  If not, please ask questions.</p>
 ]]></content:encoded>
-					
-					<wfw:commentRss>https://johncarlosbaez.wordpress.com/2024/02/28/agent-based-models-part-7/feed/</wfw:commentRss>
+
+			<wfw:commentRss>
+				https://johncarlosbaez.wordpress.com/2024/02/28/agent-based-models-part-7/feed/</wfw:commentRss>
 			<slash:comments>2</slash:comments>
-		
-		
-		
-		<media:thumbnail url="https://johncarlosbaez.files.wordpress.com/2023/07/state_diagram.png" />
-		<media:content url="https://johncarlosbaez.files.wordpress.com/2023/07/state_diagram.png" medium="image">
-			<media:title type="html">state_diagram</media:title>
-		</media:content>
 
-		<media:content url="https://1.gravatar.com/avatar/7a940c155bd1e3fbddbf5dff9b93df0588e66d7121832d395ffec41b6e91792b?s=96&#38;d=identicon&#38;r=G" medium="image">
-			<media:title type="html">John Baez</media:title>
-		</media:content>
-	</item>
+
+			<media:thumbnail
+				url="https://johncarlosbaez.files.wordpress.com/2023/07/state_diagram.png" />
+			<media:content
+				url="https://johncarlosbaez.files.wordpress.com/2023/07/state_diagram.png"
+				medium="image">
+				<media:title type="html">state_diagram</media:title>
+			</media:content>
+
+			<media:content
+				url="https://1.gravatar.com/avatar/7a940c155bd1e3fbddbf5dff9b93df0588e66d7121832d395ffec41b6e91792b?s=96&#38;d=identicon&#38;r=G"
+				medium="image">
+				<media:title type="html">John Baez</media:title>
+			</media:content>
+		</item>
 		<item>
-		<title>Well Temperaments (Part 6)</title>
-		<link>https://johncarlosbaez.wordpress.com/2024/02/26/well-temperaments-part-6/</link>
-					<comments>https://johncarlosbaez.wordpress.com/2024/02/26/well-temperaments-part-6/#comments</comments>
-		
-		<dc:creator><![CDATA[John Baez]]></dc:creator>
-		<pubDate>Mon, 26 Feb 2024 10:00:27 +0000</pubDate>
-				<category><![CDATA[music]]></category>
-		<guid isPermaLink="false">http://johncarlosbaez.wordpress.com/?p=37578</guid>
+			<title>Well Temperaments (Part 6)</title>
+			<link>https://johncarlosbaez.wordpress.com/2024/02/26/well-temperaments-part-6/</link>
+			<comments>
+				https://johncarlosbaez.wordpress.com/2024/02/26/well-temperaments-part-6/#comments</comments>
 
-					<description><![CDATA[Andreas Werckmeister (1645&#8211;1706) was a musician and expert on the organ. Compared to Kirnberger, his life seems outwardly dull. He got his musical training from his uncles, and from the age of 19 to his death he worked as an organist in three German towns. That&#8217;s about all I know. His fame comes from the [&#8230;]]]></description>
-										<content:encoded><![CDATA[<p>Andreas Werckmeister (1645&ndash;1706) was a musician and expert on the organ.  Compared to <a href="https://johncarlosbaez.wordpress.com/2024/02/05/well-temperaments-part-4/">Kirnberger</a>, his life seems outwardly dull.  He got his musical training from his uncles, and from the age of 19 to his death he worked as an organist in three German towns.  That&#8217;s about all I know.</p>
+			<dc:creator><![CDATA[John Baez]]></dc:creator>
+			<pubDate>Mon, 26 Feb 2024 10:00:27 +0000</pubDate>
+			<category><![CDATA[music]]></category>
+			<guid isPermaLink="false">http://johncarlosbaez.wordpress.com/?p=37578</guid>
+
+			<description><![CDATA[Andreas Werckmeister (1645&#8211;1706) was a musician and expert on the organ. Compared to Kirnberger, his life seems outwardly dull. He got his musical training from his uncles, and from the age of 19 to his death he worked as an organist in three German towns. That&#8217;s about all I know. His fame comes from the [&#8230;]]]></description>
+			<content:encoded><![CDATA[<p>Andreas Werckmeister (1645&ndash;1706) was a musician and expert on the organ.  Compared to <a href="https://johncarlosbaez.wordpress.com/2024/02/05/well-temperaments-part-4/">Kirnberger</a>, his life seems outwardly dull.  He got his musical training from his uncles, and from the age of 19 to his death he worked as an organist in three German towns.  That&#8217;s about all I know.</p>
 <p>His fame comes from the tremendous impact of his  his theoretical writings.  Most importantly, in his 1687 book <i>Musikalische Temperatur</i> he described the first &#8216;well tempered&#8217; tuning systems for keyboards, where every key sounds acceptable but each has its own personality.  Johann Sebastian Bach read and was influenced by Werckmeister&#8217;s work.  The first book of Bach&#8217;s <i>Well-Tempered Clavier</i> came out in 1722&#8212;the first collection of keyboard pieces in all 24 keys.</p>
 <p>But Bach was also influenced by Werckmeister&#8217;s writings on counterpoint.  Werckmeister believed that well-written counterpoint reflected the orderly movements of the planets&mdash;especially <a href="https://en.wikipedia.org/wiki/Inversion_(music)#Counterpoint">invertible counterpoint</a>, where as the music goes on, a melody that starts in the high voice switches to the low voice and vice versa.  Bach&#8217;s Invention No. 13 in A minor is full of invertible counterpoint:</p>
 <div align="center">
@@ -756,34 +832,52 @@ Had I straightaway assigned the 3rds of the diatonic genus, that tempering which
 <p>For more on equal temperament, read this series:</p>
 <p>&bull; <a href="https://johncarlosbaez.wordpress.com/2023/10/13/perfect-fifths-in-equal-tempered-scales/">Equal temperament</a>.</p>
 ]]></content:encoded>
-					
-					<wfw:commentRss>https://johncarlosbaez.wordpress.com/2024/02/26/well-temperaments-part-6/feed/</wfw:commentRss>
+
+			<wfw:commentRss>
+				https://johncarlosbaez.wordpress.com/2024/02/26/well-temperaments-part-6/feed/</wfw:commentRss>
 			<slash:comments>5</slash:comments>
-		
-		
-		
-		<media:thumbnail url="https://johncarlosbaez.files.wordpress.com/2024/02/temperament_werckmeister_iii.jpg" />
-		<media:content url="https://johncarlosbaez.files.wordpress.com/2024/02/temperament_werckmeister_iii.jpg" medium="image">
-			<media:title type="html">temperament_werckmeister_III</media:title>
-		</media:content>
 
-		<media:content url="https://1.gravatar.com/avatar/7a940c155bd1e3fbddbf5dff9b93df0588e66d7121832d395ffec41b6e91792b?s=96&#38;d=identicon&#38;r=G" medium="image">
-			<media:title type="html">John Baez</media:title>
-		</media:content>
 
-		<media:content url="http://math.ucr.edu/home/baez/cultural/invertible_counterpoint.jpg" medium="image" />
+			<media:thumbnail
+				url="https://johncarlosbaez.files.wordpress.com/2024/02/temperament_werckmeister_iii.jpg" />
+			<media:content
+				url="https://johncarlosbaez.files.wordpress.com/2024/02/temperament_werckmeister_iii.jpg"
+				medium="image">
+				<media:title type="html">temperament_werckmeister_III</media:title>
+			</media:content>
 
-		<media:content url="https://math.ucr.edu/home/baez/astronomical/Hamonices_Mundi_planetary_scales.jpg" medium="image" />
+			<media:content
+				url="https://1.gravatar.com/avatar/7a940c155bd1e3fbddbf5dff9b93df0588e66d7121832d395ffec41b6e91792b?s=96&#38;d=identicon&#38;r=G"
+				medium="image">
+				<media:title type="html">John Baez</media:title>
+			</media:content>
 
-		<media:content url="http://math.ucr.edu/home/baez/cultural/temperaments/temperament_quarter-comma.jpg" medium="image" />
+			<media:content url="http://math.ucr.edu/home/baez/cultural/invertible_counterpoint.jpg"
+				medium="image" />
 
-		<media:content url="http://math.ucr.edu/home/baez/cultural/temperaments/temperament_werckmeister_III.jpg" medium="image" />
+			<media:content
+				url="https://math.ucr.edu/home/baez/astronomical/Hamonices_Mundi_planetary_scales.jpg"
+				medium="image" />
 
-		<media:content url="http://math.ucr.edu/home/baez/cultural/temperaments/temperament_werckmeister_IV.jpg" medium="image" />
+			<media:content
+				url="http://math.ucr.edu/home/baez/cultural/temperaments/temperament_quarter-comma.jpg"
+				medium="image" />
 
-		<media:content url="http://math.ucr.edu/home/baez/cultural/temperaments/temperament_werckmeister_V.jpg" medium="image" />
+			<media:content
+				url="http://math.ucr.edu/home/baez/cultural/temperaments/temperament_werckmeister_III.jpg"
+				medium="image" />
 
-		<media:content url="https://johncarlosbaez.files.wordpress.com/2024/02/temperament_equal-tempered.jpg?w=450" medium="image" />
-	</item>
+			<media:content
+				url="http://math.ucr.edu/home/baez/cultural/temperaments/temperament_werckmeister_IV.jpg"
+				medium="image" />
+
+			<media:content
+				url="http://math.ucr.edu/home/baez/cultural/temperaments/temperament_werckmeister_V.jpg"
+				medium="image" />
+
+			<media:content
+				url="https://johncarlosbaez.files.wordpress.com/2024/02/temperament_equal-tempered.jpg?w=450"
+				medium="image" />
+		</item>
 	</channel>
 </rss>
