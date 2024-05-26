@@ -88,7 +88,7 @@ export class FeedManager {
             .replaceAll("^", "△")
             .replaceAll("&", "+")
             .replaceAll("*", "✱")
-            .substring(0, 60)
+            .substring(0, 80)
             .trim();
     }
     private formatTags(tags: string[]): string {
