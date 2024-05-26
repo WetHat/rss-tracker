@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "reference/Azimuth.md",
+                "file": "reference/The Hacker News.md",
                 "mode": "source",
                 "source": false
               }
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "reference/Azimuth.md",
+                "file": "reference/The Hacker News.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "reference/Azimuth.md",
+                "file": "reference/The Hacker News.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "reference/Azimuth.md"
+                "file": "reference/The Hacker News.md"
               }
             }
           }
@@ -144,7 +144,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "reference/Azimuth.md",
+                "file": "reference/The Hacker News.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -192,6 +192,8 @@
   },
   "active": "676526ecb45c57b5",
   "lastOpenFiles": [
+    "assets",
+    "reference/Azimuth.md",
     "reference/The Hacker News/Researchers Uncover 11 Security Flaws in GE HealthCare Ultrasound Machines.md",
     "reference/The Hacker News/North Korean Hackers Exploit Facebook Messenger in Targeted Malware Campaign.md",
     "reference/The Hacker News/New Wi-Fi Vulnerability Enables Network Eavesdropping via Downgrade Attacks.md",
@@ -203,7 +205,7 @@
     "reference/The Hacker News/Grandoreiro Banking Trojan Resurfaces, Targeting Over 1,500 Banks Worldwide.md",
     "reference/The Hacker News/Chinese Nationals Arrested for Laundering $73 Million in Pig Butchering Crypto.md",
     "reference/The Hacker News.md",
-    "The Hacker NewsLogo.svg",
+    "assets/The Hacker NewsLogo.svg",
     "reference/The Hacker News/assets",
     "reference/Azimuth/Hexagonal Tiling Honeycomb.md",
     "reference/Azimuth/Protonium.md",
@@ -215,13 +217,11 @@
     "reference/Azimuth/T Corona Borealis.md",
     "reference/Azimuth/Agent-Based Models (Part 8).md",
     "reference/Azimuth/Agent-Based Models (Part 9).md",
-    "reference/Azimuth.md",
     "scripts/FeedAssembler.js",
     "reference/Azimuth/assets",
     "Fedi․Directory – Interesting accounts on Mastodon + the Fedi.md",
     "Fedi․Directory – Interesting accounts on Mastodon + the Fedi/Thomas Preece.md",
     "Fedi․Directory – Interesting accounts on Mastodon + the Fedi/Northeastern Minnesota Bot.md",
-    "Fedi․Directory – Interesting accounts on Mastodon + the Fedi/Minnesota Guppe Group.md",
     "Fedi․Directory – Interesting accounts on Mastodon + the Fedi",
     "Python Morsels",
     "assets/Python MorselsLogo.svg",
