@@ -3,6 +3,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import fetch from 'node-fetch';
 import { TrackedRSSfeed } from '../../test/FeedAssembler.mjs'
+import open from "open";
 
 const usage = `USAGE:
 node ${path.basename(process.argv[1])}  <feed url> | <test directory>
@@ -17,7 +18,7 @@ if (process.argv.length < 3) {
 
 const feedSource = process.argv[2]; // url or relative directory path
 
-let feed, assetsFs, assetsVault = null;
+let feed, fsAssets, vaultAssets = null;
 
 if (feedSource.includes("//")) {
     // download feed from the web.
@@ -26,26 +27,28 @@ if (feedSource.includes("//")) {
 
     feed = new TrackedRSSfeed(feedXML, feedSource);
     const feedname = feed.title;
-    assetsFs = path.join("../reference", feedname, "assets");
-    assetsVault = `reference/${feedname}/assets`;
+    console.log("Downloaded feed " + feedSource);
+    fsAssets = path.join("../reference", feedname, "assets");
+    vaultAssets = `reference/${feedname}/assets`;
+    feed.source = `${vaultAssets}/feed.xml`;
 
-    console.log("Creating reference data: " + assetsVault);
-    fs.mkdir(assetsFs, { recursive: true }, err => console.error(err));
-    feed.source = `${assetsVault}/feed.xml`;
-    fs.writeFileSync(path.join(assetsFs, "feed.xml"), feedXML, { encoding: "utf8" });
+    console.log("Creating reference data at: " + fsAssets);
+    fs.mkdirSync(fsAssets, { recursive: true });
+    fs.writeFileSync(path.join(fsAssets, "feed.xml"), feedXML, { encoding: "utf8" });
 } else {
     const feedname = path.basename(feedSource);
-    assetsFs = path.join("../reference", feedname, "assets");
-    assetsVault = `reference/${feedname}/assets`;
+    fsAssets = path.join("../reference", feedname, "assets");
+    vaultAssets = `reference/${feedname}/assets`;
 
     console.log(`Updating ${feedname}`);
-    const feedXML = fs.readFileSync(path.join(assetsFs, "feed.xml"), { encoding: "utf8" }).toString();
-    feed = new TrackedRSSfeed(feedXML, `${assetsVault}/feed.xml`);
+    const feedXML = fs.readFileSync(path.join(fsAssets, "feed.xml"), { encoding: "utf8" }).toString();
+    feed = new TrackedRSSfeed(feedXML, `${vaultAssets}/feed.xml`);
 }
 
 // update the feed. json
-fs.writeFileSync(path.join(assetsFs, "expected.json"), JSON.stringify(feed, { encoding: "utf8" }, 4));
+fs.writeFileSync(path.join(fsAssets, "expected.json"), JSON.stringify(feed, { encoding: "utf8" }, 4));
+await open("https://x.com");
 
-console.log(`${assetsVault} feed updated!`);
+console.log(`${vaultAssets} feed updated!`);
 
 process.exit(0);
