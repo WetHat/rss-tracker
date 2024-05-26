@@ -9,7 +9,7 @@
 		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production && npm run prep-test && node pack.mjs ",
 		"ship": "npm run build && node ship.mjs",
 		"version": "node version-bump.mjs && git add manifest.json versions.json",
-		"prep-test": "npx tsc src/FeedAssembler.ts --module esnext --moduleResolution node --isolatedModules true --importHelpers true --allowJS true --target esnext --outDir test"
+		"prep-test": "npx tsc src/FeedAssembler.ts --module esnext --moduleResolution node --isolatedModules true --importHelpers true --allowJS true --target esnext --outDir test-vault/scripts"
 	},
 	"keywords": [],
 	"author": "@WetHat",
