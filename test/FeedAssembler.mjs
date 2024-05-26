@@ -174,11 +174,13 @@ export class TrackedRSSfeed {
      * canonical properties.
      *
      * @param xml - XML representation of an RSS feed.
+     * @param source - The location where the xml data came from. Usually a url or file path.
      * @param options Optional Parsing options.
      * @returns Feed obkect {TrackedRSSfeed} contaiing all relevant properties that
      *          were available in the feed.
      */
-    constructor(xml, options = DEFAULT_OPTIONS) {
+    constructor(xml, source, options = DEFAULT_OPTIONS) {
+        this.source = source;
         const feed = extractFromXml(xml, options);
         let { link, title, description, image, entries } = feed;
         if (title) {

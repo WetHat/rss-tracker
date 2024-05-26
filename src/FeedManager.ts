@@ -73,23 +73,23 @@ export class FeedManager {
 
     private formatFilename(name: string): string {
         return name.replace(/\w+:\/\/.*/, "") // strip urls
-                   .replaceAll("?","❓")
-                   .replaceAll(".","․")
-                   .replaceAll(":","꞉")
-                   .replaceAll('"',"″")
-                   .replaceAll('<"',"＜")
-                   .replaceAll('>"',"＞")
-                   .replaceAll('|"',"∣")
-                   .replaceAll("\\","/")
-                   .replaceAll("/","╱")
-                   .replaceAll("[","{")
-                   .replaceAll("]","}")
-                   .replaceAll("#","＃")
-                   .replaceAll("^","△")
-                   .replaceAll("&","+")
-                   .replaceAll("*","✱")
-                   .substring(0, 60)
-                   .trim();
+            .replaceAll("?", "❓")
+            .replaceAll(".", "․")
+            .replaceAll(":", "꞉")
+            .replaceAll('"', "″")
+            .replaceAll('<"', "＜")
+            .replaceAll('>"', "＞")
+            .replaceAll('|"', "∣")
+            .replaceAll("\\", "/")
+            .replaceAll("/", "╱")
+            .replaceAll("[", "{")
+            .replaceAll("]", "}")
+            .replaceAll("#", "＃")
+            .replaceAll("^", "△")
+            .replaceAll("&", "+")
+            .replaceAll("*", "✱")
+            .substring(0, 60)
+            .trim();
     }
     private formatTags(tags: string[]): string {
         return "[" + tags.map(t => "rss/" + t.replace(" ", "_")).join(",") + "]";
@@ -191,12 +191,20 @@ export class FeedManager {
         return n;
     }
 
-    async createFeed(url: string, location: TFolder): Promise<TFile> {
+    async createFeedFromFile(xml: TFile, location: TFolder): Promise<TFile> {
+        const feedXML = await this.app.vault.read(xml);
+        return this.createFeed(new TrackedRSSfeed(feedXML, xml.path), location);
+    }
+
+    async createFeedFromUrl(url: string, location: TFolder): Promise<TFile> {
         const feedXML = await request({
             url: url,
             method: "GET"
-        }),
-            feed = new TrackedRSSfeed(feedXML);
+        });
+        return this.createFeed(new TrackedRSSfeed(feedXML, url), location);
+    }
+
+    private async createFeed(feed: TrackedRSSfeed, location: TFolder): Promise<TFile> {
         const { title, site, description } = feed,
             basename = this.formatFilename(title ?? "Anonymous Feed"),
             itemfolderPath = normalizePath(path.join(location.path, basename)),
@@ -206,12 +214,12 @@ export class FeedManager {
         // generate a default image
         if (!image) {
             const imageAsset = `${basename}Logo.svg`,
-                  logoPath = await this.app.fileManager.getAvailablePathForAttachment(imageAsset, dashboardPath);
+                logoPath = await this.app.fileManager.getAvailablePathForAttachment(imageAsset, dashboardPath);
             image = await this.app.vault.create(logoPath, FeedManager.RSS_IMAGE_SVG);
         }
 
         const content = this.expandTemplate(tpl, {
-            "{{feedUrl}}": url,
+            "{{feedUrl}}": feed.source,
             "{{siteUrl}}": site ?? "",
             "{{title}}": title ?? "",
             "{{description}}": description ? this.formatHashTags(htmlToMarkdown(description)) : "",
@@ -222,7 +230,7 @@ export class FeedManager {
         // create the feed configuration file
         const dashboard = await this.app.vault.create(dashboardPath, content),
             itemlimit = tpl.match(FeedManager.ITEMLIMIT_FINDER)?.[0],
-            cfg = new FeedConfig(url, itemlimit ?? "100", dashboard);
+            cfg = new FeedConfig(feed.source ?? "", itemlimit ?? "100", dashboard);
 
         if (dashboard && cfg) {
             let status: string;
@@ -254,8 +262,8 @@ export class FeedManager {
                 fm = meta?.frontmatter;
             if (fm?.updated && fm?.interval) {
                 const now = new Date().valueOf(),
-                      lastUpdate = new Date(fm.updated).valueOf(),
-                      span = parseInt(fm.interval) * 60 * 60 * 1000;
+                    lastUpdate = new Date(fm.updated).valueOf(),
+                    span = parseInt(fm.interval) * 60 * 60 * 1000;
                 if ((lastUpdate + span) > now) {
                     return false; // time has not come
                 }
@@ -267,8 +275,9 @@ export class FeedManager {
         try {
             const feedXML = await request({
                 url: feedConfig.feedUrl,
-                method: "GET"}),
-                feed = new TrackedRSSfeed(feedXML);
+                method: "GET"
+            }),
+                feed = new TrackedRSSfeed(feedXML,feedConfig.feedUrl);
             // compute the new update interval in hours
             interval = feed.avgPostInterval;
             this.updateFeedItems(feedConfig, feed);
@@ -314,9 +323,9 @@ export class FeedManager {
 
     async updateAllRSSfeeds(force: boolean) {
         const updates = this.app.vault.getMarkdownFiles()
-            .map(md => FeedConfig.fromFile(this.app,md))
+            .map(md => FeedConfig.fromFile(this.app, md))
             .filter(cfg => cfg)
-            .map(async cfg => await this.updateFeed(cfg,force));
+            .map(async cfg => await this.updateFeed(cfg, force));
         let n: number = 0;
         for (let u of updates) {
             let r = await u;

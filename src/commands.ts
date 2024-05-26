@@ -148,7 +148,7 @@ export class NewRSSFeedModalCommand implements Command {
                     const mgr = this.plugin.feedmgr;
                     const leaf = this.app.workspace.getLeaf(false);
 
-                leaf.openFile(await mgr.createFeed(result, parent));
+                leaf.openFile(await mgr.createFeedFromUrl(result, parent));
             }
         });
         modal.open();

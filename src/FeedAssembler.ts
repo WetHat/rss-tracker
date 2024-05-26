@@ -242,18 +242,20 @@ export class TrackedRSSfeed {
     site?: string;
     image?: IRSSimage;
     items: TrackedRSSitem[];
-    source?: string;
+    source: string;
     /**
      * Assemble an RSS feed from its XML representation.
      * Collect a all necessary data that are available data nad backfill
      * canonical properties.
      *
      * @param xml - XML representation of an RSS feed.
+     * @param source - The location where the xml data came from. Usually a url or file path.
      * @param options Optional Parsing options.
      * @returns Feed obkect {TrackedRSSfeed} contaiing all relevant properties that
      *          were available in the feed.
      */
-    constructor(xml: string, options: ReaderOptions = DEFAULT_OPTIONS) {
+    constructor(xml: string, source: string, options: ReaderOptions = DEFAULT_OPTIONS) {
+        this.source = source;
         const feed = extractFromXml(xml, options);
         let { link, title, description, image, entries } = feed as IFeedDataExtended;
         if (title) {
