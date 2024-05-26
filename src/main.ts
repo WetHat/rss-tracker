@@ -1,19 +1,19 @@
-import { Notice, Plugin, PluginManifest, App } from 'obsidian';
+import { Notice, Plugin, PluginManifest, App, ObsidianProtocolData } from 'obsidian';
 import { DEFAULT_SETTINGS, RSSTrackerSettingTab, RSSTrackerSettings } from './settings';
 import { MarkAllRSSitemsReadCommand, NewRSSFeedModalCommand, UpdateRSSfeedCommand } from './commands';
-import { FeedConfig, FeedManager } from './FeedManager';
-import { UpdateRSSfeedMenuItem ,MarkAllItemsReadMenuItem} from './menus';
+import { FeedManager } from './FeedManager';
+import { UpdateRSSfeedMenuItem, MarkAllItemsReadMenuItem } from './menus';
 
 export default class RSSTrackerPlugin extends Plugin {
     settings: RSSTrackerSettings = DEFAULT_SETTINGS;
     feedmgr: FeedManager;
 
-    constructor (app: App, manifest: PluginManifest) {
+    constructor(app: App, manifest: PluginManifest) {
         super(app, manifest);
         this.feedmgr = new FeedManager(app, this);
     }
 
-    async onload () {
+    async onload() {
         console.log('Loading rss-tracker.');
 
         await this.loadSettings();
@@ -21,7 +21,7 @@ export default class RSSTrackerPlugin extends Plugin {
         // This creates an icon in the left ribbon.
         const ribbonIconEl = this.addRibbonIcon('rss', 'Update all RSS Feeds', (evt: MouseEvent) => {
             // Called when the user clicks the icon.
-           this.feedmgr.updateAllRSSfeeds(true);
+            this.feedmgr.updateAllRSSfeeds(true);
         });
 
         // Perform additional things with the ribbon
@@ -35,7 +35,7 @@ export default class RSSTrackerPlugin extends Plugin {
         this.addCommand(new UpdateRSSfeedCommand(this.app, this));
         // This adds a simple command that can be triggered anywhere
         this.addCommand(new NewRSSFeedModalCommand(this.app, this));
-        this.addCommand(new MarkAllRSSitemsReadCommand(this.app,this));
+        this.addCommand(new MarkAllRSSitemsReadCommand(this.app, this));
         // This adds a settings tab so the user can configure various aspects of the plugin
         this.addSettingTab(new RSSTrackerSettingTab(this.app, this));
 
@@ -45,17 +45,29 @@ export default class RSSTrackerPlugin extends Plugin {
         //    console.log('click', evt);
         //});
 
-		// context menu configuration
-		const updateFeedItem = new UpdateRSSfeedMenuItem(this.app,this);
+        // context menu configuration
+        const updateFeedItem = new UpdateRSSfeedMenuItem(this.app, this);
         this.registerEvent(updateFeedItem.editorMenuHandler);
-		this.registerEvent(updateFeedItem.fileMenuHandler);
+        this.registerEvent(updateFeedItem.fileMenuHandler);
 
-        const markAsRead = new MarkAllItemsReadMenuItem(this.app,this);
+        const markAsRead = new MarkAllItemsReadMenuItem(this.app, this);
         this.registerEvent(markAsRead.editorMenuHandler);
-		this.registerEvent(markAsRead.fileMenuHandler);
+        this.registerEvent(markAsRead.fileMenuHandler);
+
+        // protocol handler
+        this.registerObsidianProtocolHandler('newRssFeed', (params: ObsidianProtocolData) => {
+            const { xml, dir } = params;
+            console.log("newRssFeed:xml=" + xml + "\n=>" + dir);
+            const xmlFile = this.app.vault.getFileByPath(xml),
+                feedDir = this.app.vault.getFolderByPath(dir);
+            if (xmlFile && feedDir) {
+                this.feedmgr.createFeedFromFile(xmlFile, feedDir);
+                new Notice("New RSS Feed imported")
+            }
+        });
 
         // When registering intervals, this function will automatically clear the interval when the plugin is disabled.
-        this.registerInterval(window.setInterval(() =>{
+        this.registerInterval(window.setInterval(() => {
             if (this.settings.autoUpdateFeeds) {
                 this.feedmgr.updateAllRSSfeeds(false);
                 console.log("RSS Feed background update complete.")
@@ -63,15 +75,15 @@ export default class RSSTrackerPlugin extends Plugin {
         }, 60 * 60 * 1000));
     }
 
-    onunload () {
+    onunload() {
         console.log('Unloading rss-tracker.');
     }
 
-    async loadSettings () {
+    async loadSettings() {
         this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
     }
 
-    async saveSettings () {
+    async saveSettings() {
         await this.saveData(this.settings);
     }
 }
