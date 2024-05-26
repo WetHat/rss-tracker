@@ -2,8 +2,8 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import fetch from 'node-fetch';
-import { TrackedRSSfeed } from '../../test/FeedAssembler.mjs'
-import open from "open";
+import { TrackedRSSfeed } from './FeedAssembler.mjs'
+import start, {apps} from "open";
 
 const usage = `USAGE:
 node ${path.basename(process.argv[1])}  <feed url> | <test directory>
@@ -47,7 +47,8 @@ if (feedSource.includes("//")) {
 
 // update the feed. json
 fs.writeFileSync(path.join(fsAssets, "expected.json"), JSON.stringify(feed, { encoding: "utf8" }, 4));
-await open("https://x.com");
+
+await start("notepad.exe");
 
 console.log(`${vaultAssets} feed updated!`);
 
