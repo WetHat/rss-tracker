@@ -6,8 +6,7 @@ id: https://thehackernews.com/2024/05/chinese-nationals-arrested-for.html
 feed: "The Hacker News"
 tags: []
 ---
-> [!abstract] Chinese Nationals Arrested for Laundering $73 Million in Pig Butchering Crypto
-                Scam - 2024-05-19T09:46:00.000Z
+> [!abstract] Chinese Nationals Arrested for Laundering $73 Million in Pig Butchering Crypto Scam - 2024-05-19T09:46:00.000Z
 >
 > ![image](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgYY-3t_2tEUCVX41dZcLK7NZIikQ7t63JtNS5jX7NbaaimvXybHsXlveMWPFT7QoHTxI9pM4DTdCije4sDSd7Yt6c46gYuudMKp1Ud0L92UBMhLd_6-0_QldH6ucXCnWnOEbzO52dMTHetk494taJhWkjOi6pows13Ixl-zhXBPBkCiAt8k9kD51LsiNip/s1600/pig.png)
 

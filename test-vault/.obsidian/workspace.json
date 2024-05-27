@@ -4,19 +4,43 @@
     "type": "split",
     "children": [
       {
-        "id": "6de85c4fd96ab217",
+        "id": "ed250599d5785e12",
         "type": "tabs",
         "children": [
           {
-            "id": "143134e6515d7161",
+            "id": "b964e701a4c99253",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "reference/The Hacker News.md",
-                "mode": "source",
-                "source": false
+                "file": "reference/PyCoder’s Weekly/Issue ＃627 (April 30, 2024).md",
+                "mode": "preview",
+                "source": true
               }
+            }
+          },
+          {
+            "id": "7ba21399cffd8eec",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
+            }
+          },
+          {
+            "id": "d70337d3589f6f26",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
+            }
+          },
+          {
+            "id": "c1b7692946b7e550",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -48,7 +72,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "treasure",
+                "query": "China",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -86,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "reference/The Hacker News.md",
+                "file": "reference/PyCoder’s Weekly/Issue ＃627 (April 30, 2024).md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "reference/The Hacker News.md",
+                "file": "reference/PyCoder’s Weekly/Issue ＃627 (April 30, 2024).md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "reference/The Hacker News.md"
+                "file": "reference/PyCoder’s Weekly/Issue ＃627 (April 30, 2024).md"
               }
             }
           }
@@ -144,7 +168,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "reference/The Hacker News.md",
+                "file": "reference/PyCoder’s Weekly/Issue ＃627 (April 30, 2024).md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -192,51 +216,50 @@
   },
   "active": "676526ecb45c57b5",
   "lastOpenFiles": [
+    "reference/@wethat7․bsky․social - WetHat💦/11 May 2024 08꞉11 +0000.md",
+    "reference/@wethat7․bsky․social - WetHat💦/11 May 2024 08꞉28 +0000.md",
+    "reference/@wethat7․bsky․social - WetHat💦/11 May 2024 17꞉56 +0000.md",
+    "reference/@wethat7․bsky․social - WetHat💦/11 May 2024 18꞉32 +0000.md",
+    "reference/@wethat7․bsky․social - WetHat💦/11 May 2024 18꞉51 +0000.md",
+    "reference/@wethat7․bsky․social - WetHat💦/13 May 2024 09꞉14 +0000.md",
+    "reference/@wethat7․bsky․social - WetHat💦/13 May 2024 09꞉27 +0000.md",
+    "reference/@wethat7․bsky․social - WetHat💦/13 May 2024 09꞉35 +0000.md",
+    "reference/@wethat7․bsky․social - WetHat💦/13 May 2024 09꞉59 +0000.md",
+    "reference/@wethat7․bsky․social - WetHat💦/13 May 2024 10꞉10 +0000.md",
+    "reference/@wethat7․bsky․social - WetHat💦.md",
+    "assets/@wethat7․bsky․social - WetHat💦Logo 1.svg",
+    "reference/@wethat7․bsky․social - WetHat💦",
+    "assets/@wethat7․bsky․social - WetHat💦Logo.svg",
+    "reference/@wethat7․bsky․social - WetHat💦/assets",
+    "reference/@WetHat (WetHat💦)/Replied to꞉ @WetHat it's AI-generated․ See comments at.md",
+    "reference/@WetHat (WetHat💦)/Replied to꞉ @WetHat Newtonsoft,Json is not dead․ It's last release was 14 months.md",
+    "reference/@WetHat (WetHat💦)/Replied to꞉ @WetHat Thanks for sharing․ Makes me wonder if AoT or PGO might bene.md",
+    "reference/@WetHat (WetHat💦)/Boosted꞉ @WetHat There can be significant benefits with static readonly fields,.md",
+    "reference/@WetHat (WetHat💦)/Replied to꞉ @WetHat There can be significant benefits with static readonly field.md",
+    "reference/@WetHat (WetHat💦)/Replied to꞉ @WetHat I recall several stack overflow libraries had compiler switc.md",
+    "reference/@WetHat (WetHat💦)/Boosted꞉ Celluar ＃fooocus ＃stablediffusion ＃selfhosted ＃AI ＃AIart ＃generativeAI.md",
+    "reference/@WetHat (WetHat💦)/Boosted꞉ Polyhedral tiling for ＃TilingTuesday ＃Tiling ＃Hedron ＃Geometry ＃mathart.md",
+    "reference/@WetHat (WetHat💦)/Boosted꞉ Series꞉ A Functional Approach To Common Lisp.md",
+    "reference/@WetHat (WetHat💦).md",
+    "assets/@WetHat (WetHat💦)Logo 1.svg",
+    "reference/Sabine Hossenfelder.md",
+    "reference/PyCoder’s Weekly/Issue ＃627 (April 30, 2024).md",
+    "reference/PyCoder’s Weekly/Issue ＃628 (May 7, 2024).md",
+    "reference/PyCoder’s Weekly/Issue ＃629 (May 14, 2024).md",
+    "assets/PyCoder’s WeeklyLogo.svg",
+    "reference/PyCoder’s Weekly/assets",
+    "assets/@WetHat (WetHat💦)Logo.svg",
+    "assets/Sabine HossenfelderLogo 1.svg",
+    "reference/Sabine Hossenfelder/Sabine Hossenfelder",
+    "assets/Sabine HossenfelderLogo.svg",
+    "reference/Sabine Hossenfelder/assets/feed.xml",
+    "reference/Sabine Hossenfelder/assets/expected.json",
+    "reference/Sabine Hossenfelder/assets",
+    "scripts/t.mjs",
     "assets",
-    "reference/Azimuth.md",
-    "reference/The Hacker News/Researchers Uncover 11 Security Flaws in GE HealthCare Ultrasound Machines.md",
-    "reference/The Hacker News/North Korean Hackers Exploit Facebook Messenger in Targeted Malware Campaign.md",
-    "reference/The Hacker News/New Wi-Fi Vulnerability Enables Network Eavesdropping via Downgrade Attacks.md",
-    "reference/The Hacker News/CISA Warns of Actively Exploited D-Link Router Vulnerabilities - Patch Now.md",
-    "reference/The Hacker News/Kimsuky APT Deploying Linux Backdoor Gomir in South Korean Cyber Attacks.md",
-    "reference/The Hacker News/China-Linked Hackers Adopt Two-Stage Infection Tactic to Deploy Deuterbear RAT.md",
-    "reference/The Hacker News/New XM Cyber Research꞉ 80% of Exposures from Misconfigurations, Less Than 1% fro.md",
-    "reference/The Hacker News/Kinsing Hacker Group Exploits More Flaws to Expand Botnet for Cryptojacking.md",
-    "reference/The Hacker News/Grandoreiro Banking Trojan Resurfaces, Targeting Over 1,500 Banks Worldwide.md",
-    "reference/The Hacker News/Chinese Nationals Arrested for Laundering $73 Million in Pig Butchering Crypto.md",
-    "reference/The Hacker News.md",
     "assets/The Hacker NewsLogo.svg",
     "reference/The Hacker News/assets",
-    "reference/Azimuth/Hexagonal Tiling Honeycomb.md",
-    "reference/Azimuth/Protonium.md",
-    "reference/Azimuth/Well Temperaments (Part 6).md",
-    "reference/Azimuth/Agent-Based Models (Part 7).md",
-    "reference/Azimuth/Nicholas Ludford.md",
-    "reference/Azimuth/The Probability of the Law of Excluded Middle.md",
-    "reference/Azimuth/The Probability of Undecidability.md",
-    "reference/Azimuth/T Corona Borealis.md",
-    "reference/Azimuth/Agent-Based Models (Part 8).md",
-    "reference/Azimuth/Agent-Based Models (Part 9).md",
-    "scripts/FeedAssembler.js",
-    "reference/Azimuth/assets",
-    "Fedi․Directory – Interesting accounts on Mastodon + the Fedi.md",
-    "Fedi․Directory – Interesting accounts on Mastodon + the Fedi/Thomas Preece.md",
-    "Fedi․Directory – Interesting accounts on Mastodon + the Fedi/Northeastern Minnesota Bot.md",
-    "Fedi․Directory – Interesting accounts on Mastodon + the Fedi",
-    "Python Morsels",
     "assets/Python MorselsLogo.svg",
-    "Radar",
-    "assets/RadarLogo.svg",
-    "assets/JavaScript WeeklyLogo.svg",
-    "assets/TypeScript TVLogo.svg",
-    "JavaScript Weekly",
-    "TypeScript TV",
-    "Daniel Lemire's blog",
-    "Planet PowerShell",
-    "assets/PowerShellLogo.svg",
-    "PowerShellLogo.svg",
-    "assets/8ea8529093a692c14a55c2deb60df5bc_MD5.svg",
-    "assets/8ea8529093a692c14a55c2deb60df5bc_MD5.svg",
-    "PyCoder’s Weekly/ea3161e8f8c374277d9ca6056473e3a7_MD5.png"
+    "assets/RadarLogo.svg"
   ]
 }
