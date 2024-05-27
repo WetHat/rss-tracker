@@ -41,7 +41,7 @@ if (feedSource.includes("//")) {
     vaultAssets = `reference/${feedname}/assets`;
 
     console.log(`Updating ${feedname}`);
-    const feedXML = fs.readFileSync(path.join(fsAssets, "feed.xml"), { encoding: "utf8" }).toString();
+    const feedXML = fs.readFileSync(path.join(fsAssets, "feed.xml"), { encoding: "utf8" });
     feed = new TrackedRSSfeed(feedXML, `${vaultAssets}/feed.xml`);
 }
 
