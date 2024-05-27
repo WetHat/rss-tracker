@@ -1,4 +1,5 @@
 import { extractFromXml, FeedData, ReaderOptions, FeedEntry } from '@extractus/feed-extractor'
+import { request } from 'obsidian';
 
 /**
  * Type for property bag objects (key -> value) with unknown content.
@@ -156,7 +157,7 @@ function assembleCreator(elem: TPropertyBag): string {
     if (creator) {
         return creator;
     }
-    return elem.author?.name;
+    return elem.author?.name || elem.author;
 }
 
 function assembleDescription(elem: TPropertyBag): string {
@@ -211,8 +212,10 @@ const DEFAULT_OPTIONS: ReaderOptions = {
         let title = item.title;
         if (!title) {
             // a title is mandatory - synthesize one
-            tracked.title = published;
+            title = published;
         }
+        // remove linefeeds and extra spaces
+        tracked.title = title.replace(/[\s\r\n]{2,}/g," ");
 
         return tracked;
     },
