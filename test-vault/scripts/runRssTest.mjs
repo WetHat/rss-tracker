@@ -1,8 +1,9 @@
-import { diffString, diff } from "json-diff";
+import { diff } from "json-diff";
 import * as path from 'path';
 import { TrackedRSSfeed } from './FeedAssembler.mjs'
 import * as fs from 'fs';
-
+import {execFileSync} from "child_process";
+import { globSync } from "glob";
 
 const usage = `USAGE:
 node ${path.basename(process.argv[1])} <test directory>
@@ -36,7 +37,7 @@ const expectedJson = JSON.parse(fs.readFileSync(expectedFile));
 let jsondiff = diff(feed,expectedJson);
 
 let reportData = `
-# Test Results for ${feedname}
+# Parsed JSON differences for ${feedname}
 
 ~~~json
 ${JSON.stringify(jsondiff, { encoding: "utf8" }, 4)}
@@ -48,6 +49,19 @@ if (reportData.match(/"+"|"-"|"__old"|"_new"/)) {
     fs.writeFileSync(reportFile , reportData);
 }
 
+
+// clear old test output
+// cleanupp the markdown files
+const dashboard = path.join("..","output",`${feedname}.md`);
+if (fs.existsSync(dashboard)) {
+    fs.unlinkSync(dashboard);
+}
+globSync(`../output/${feedname}/*.md`).forEach(md => fs.unlinkSync(md));
+
+// create the feed items
+const xmlAsset = encodeURIComponent(`reference/${feedname}/assets/feed.xml`);
+
+execFileSync("cmd",["/C","start",`obsidian://newRssFeed?xml=${xmlAsset}^&dir=output`]);
 //console.log (JSON.stringify(result,{ encoding: "utf8" },4));
 
 //console.log(diffString({ foo: 'bar' }, { foo: 'baz' }, { color: false }));

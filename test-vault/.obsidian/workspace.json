@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "reference/PyCoder’s Weekly/Issue ＃627 (April 30, 2024).md",
+                "file": "reference/The Hacker News.md",
                 "mode": "preview",
                 "source": true
               }
@@ -110,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "reference/PyCoder’s Weekly/Issue ＃627 (April 30, 2024).md",
+                "file": "reference/The Hacker News.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "reference/PyCoder’s Weekly/Issue ＃627 (April 30, 2024).md",
+                "file": "reference/The Hacker News.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "reference/PyCoder’s Weekly/Issue ＃627 (April 30, 2024).md"
+                "file": "reference/The Hacker News.md"
               }
             }
           }
@@ -168,7 +168,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "reference/PyCoder’s Weekly/Issue ＃627 (April 30, 2024).md",
+                "file": "reference/The Hacker News.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -216,6 +216,19 @@
   },
   "active": "676526ecb45c57b5",
   "lastOpenFiles": [
+    "output/Azimuth/Well Temperaments (Part 6).md",
+    "output/Azimuth/Agent-Based Models (Part 7).md",
+    "output/Azimuth/Nicholas Ludford.md",
+    "output/Azimuth/The Probability of the Law of Excluded Middle.md",
+    "output/Azimuth/The Probability of Undecidability.md",
+    "output/Azimuth/T Corona Borealis.md",
+    "output/Azimuth/Protonium.md",
+    "output/Azimuth/Agent-Based Models (Part 8).md",
+    "output/Azimuth/Hexagonal Tiling Honeycomb.md",
+    "output/Azimuth/Agent-Based Models (Part 9).md",
+    "output/Azimuth",
+    "output/Azimuth.md",
+    "reference/PyCoder’s Weekly/Issue ＃627 (April 30, 2024).md",
     "reference/@wethat7․bsky․social - WetHat💦/11 May 2024 08꞉11 +0000.md",
     "reference/@wethat7․bsky․social - WetHat💦/11 May 2024 08꞉28 +0000.md",
     "reference/@wethat7․bsky․social - WetHat💦/11 May 2024 17꞉56 +0000.md",
@@ -234,18 +247,7 @@
     "reference/@WetHat (WetHat💦)/Replied to꞉ @WetHat it's AI-generated․ See comments at.md",
     "reference/@WetHat (WetHat💦)/Replied to꞉ @WetHat Newtonsoft,Json is not dead․ It's last release was 14 months.md",
     "reference/@WetHat (WetHat💦)/Replied to꞉ @WetHat Thanks for sharing․ Makes me wonder if AoT or PGO might bene.md",
-    "reference/@WetHat (WetHat💦)/Boosted꞉ @WetHat There can be significant benefits with static readonly fields,.md",
-    "reference/@WetHat (WetHat💦)/Replied to꞉ @WetHat There can be significant benefits with static readonly field.md",
-    "reference/@WetHat (WetHat💦)/Replied to꞉ @WetHat I recall several stack overflow libraries had compiler switc.md",
-    "reference/@WetHat (WetHat💦)/Boosted꞉ Celluar ＃fooocus ＃stablediffusion ＃selfhosted ＃AI ＃AIart ＃generativeAI.md",
-    "reference/@WetHat (WetHat💦)/Boosted꞉ Polyhedral tiling for ＃TilingTuesday ＃Tiling ＃Hedron ＃Geometry ＃mathart.md",
-    "reference/@WetHat (WetHat💦)/Boosted꞉ Series꞉ A Functional Approach To Common Lisp.md",
-    "reference/@WetHat (WetHat💦).md",
     "assets/@WetHat (WetHat💦)Logo 1.svg",
-    "reference/Sabine Hossenfelder.md",
-    "reference/PyCoder’s Weekly/Issue ＃627 (April 30, 2024).md",
-    "reference/PyCoder’s Weekly/Issue ＃628 (May 7, 2024).md",
-    "reference/PyCoder’s Weekly/Issue ＃629 (May 14, 2024).md",
     "assets/PyCoder’s WeeklyLogo.svg",
     "reference/PyCoder’s Weekly/assets",
     "assets/@WetHat (WetHat💦)Logo.svg",
@@ -258,7 +260,6 @@
     "scripts/t.mjs",
     "assets",
     "assets/The Hacker NewsLogo.svg",
-    "reference/The Hacker News/assets",
     "assets/Python MorselsLogo.svg",
     "assets/RadarLogo.svg"
   ]
