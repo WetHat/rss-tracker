@@ -1,6 +1,6 @@
 import { diff } from "json-diff";
 import * as path from 'path';
-import { TrackedRSSfeed } from './FeedAssembler.mjs'
+import { TrackedRSSfeed } from '../../test/scripts/FeedAssembler.mjs'
 import * as fs from 'fs';
 import {execFileSync} from "child_process";
 import { globSync } from "glob";
@@ -24,9 +24,9 @@ const feedname = path.basename(feedSource),
     expectedFile = path.join("../reference", feedname, "assets","expected.json"),
     reportFile = path.join("../reports", `${feedname}.md`);
 
-if (fs.existsSync(reportFile)) {
-    fs.rmSync(reportFile);
-}
+    if (fs.existsSync(reportFile)) {
+        fs.rmSync(reportFile);
+    }
 
 console.log(`Testing ${feedname}`);
 const feedXML = fs.readFileSync(rssFile, { encoding: "utf8" }),
@@ -34,7 +34,7 @@ const feedXML = fs.readFileSync(rssFile, { encoding: "utf8" }),
 
 const expectedJson = JSON.parse(fs.readFileSync(expectedFile));
 
-let jsondiff = diff(feed,expectedJson);
+let jsondiff = diff(expectedJson,feed);
 
 let reportData = `
 # Parsed JSON differences for ${feedname}
@@ -45,7 +45,7 @@ ${JSON.stringify(jsondiff, { encoding: "utf8" }, 4)}
 
 `;
 
-if (reportData.match(/"+"|"-"|"__old"|"_new"/)) {
+if (reportData.match(/"+"|"-"|"__old"|"_new"|"__added"|"__deleted"/)) {
     fs.writeFileSync(reportFile , reportData);
 }
 

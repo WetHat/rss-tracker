@@ -2,7 +2,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import fetch from 'node-fetch';
-import { TrackedRSSfeed } from './FeedAssembler.mjs'
+import { TrackedRSSfeed } from '../../test/scripts/FeedAssembler.mjs'
 import {execFileSync} from "child_process";
 import { globSync } from "glob";
 const usage = `USAGE:
