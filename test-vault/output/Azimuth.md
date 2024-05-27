@@ -2,7 +2,7 @@
 feedurl: reference/Azimuth/assets/feed.xml
 site: https://johncarlosbaez.wordpress.com
 itemlimit: 10
-updated: 2024-05-27T10:00:38.757Z
+updated: 2024-05-27T10:03:15.098Z
 status: OK
 tags:
   - rss
