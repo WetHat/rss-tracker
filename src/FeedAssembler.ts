@@ -18,7 +18,8 @@ export interface IRSSimage {
 /**
  * Specification of the tracked properties of an RSS item.
  * Some properties overlap with the property specification in the
- * `FeedEntry` interface.
+ * `FeedEntry` interface. These will get special attention during
+ * parsing.
  */
 interface IEntryDataTracked {
     id: string;
@@ -33,13 +34,13 @@ interface IEntryDataTracked {
 
 /**
  * Specification of a parsed RSS item including canonical and
- * tracked properties.
+ * specifically tracked properties.
  */
 interface IEntryDataExtended extends IEntryDataTracked, FeedEntry {
 }
 
 /**
- * Specification of tracked properties of an RSS feed.
+ * Specification of specifically tracked properties of an RSS feed.
  */
 interface IFeedDataExtra {
     image?: IRSSimage,
