@@ -216,7 +216,7 @@ const DEFAULT_OPTIONS: ReaderOptions = {
             title = published;
         }
         // remove linefeeds and extra spaces
-        tracked.title = title.replace(/[\s\r\n]{2,}/g," ");
+        tracked.title = title.replace(/[\s\r\n]+/g," ");
 
         return tracked;
     },
