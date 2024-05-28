@@ -1,12 +1,12 @@
 ---
-author: "The Hacker News"
+author: "info@thehackernews.com (The Hacker News)"
 published: 2024-05-17T11:20:00.000Z
 link: https://thehackernews.com/2024/05/china-linked-hackers-adopt-two-stage.html
 id: https://thehackernews.com/2024/05/china-linked-hackers-adopt-two-stage.html
 feed: "The Hacker News"
 tags: []
 ---
-> [!abstract] China-Linked Hackers Adopt Two-Stage Infection Tactic to Deploy Deuterbear RAT - 2024-05-17T11:20:00.000Z
+> [!abstract] China-Linked Hackers Adopt Two-Stage Infection Tactic to Deploy Deuterbear RAT by info@thehackernews.com (The Hacker News) - 2024-05-17T11:20:00.000Z
 >
 > ![image](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjd44DTDc43zIEkapTS7x1xzyCuyAq_BI-BiV3FPnh7kVYP1TcsOx6e8Vrbg1HCEfH5WSLrvA5nQqj6MuOxwidV_Z932WsQP4IY4evbsueNrOTCA41v9AK8CSs7sEGvsiLkFMK9y_wVU6sMKHy3ga73CEwIJjnJjLdbfBUD2QihTjVvHBxrbWQXpYfiiNKn/s1600/cyber.jpg)
 
