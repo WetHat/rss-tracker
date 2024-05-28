@@ -1,12 +1,12 @@
 ---
-author: "@WetHat (WetHat💦)"
+author: "@WetHat"
 published: 2024-05-15T05:36:22.000Z
 link: https://mathstodon.xyz/@ngons/112440813968194589
 id: https://mathstodon.xyz/@ngons/112440813968194589
 feed: "@WetHat (WetHat💦)"
 tags: []
 ---
-> [!abstract] Boosted: Polyhedral tiling for #rss/TilingTuesday #rss/Tiling #rss/Hedron #rss/Geometry #rss/mathart #rss/mathsart #rss/mastoart - 2024-05-15T05:36:22.000Z
+> [!abstract] Boosted: Polyhedral tiling for #rss/TilingTuesday #rss/Tiling #rss/Hedron #rss/Geometry #rss/mathart #rss/mathsart #rss/mastoart by @WetHat - 2024-05-15T05:36:22.000Z
 
 🔗Read article [online](https://mathstodon.xyz/@ngons/112440813968194589). For other items in this feed see [[@WetHat (WetHat💦)]].
 

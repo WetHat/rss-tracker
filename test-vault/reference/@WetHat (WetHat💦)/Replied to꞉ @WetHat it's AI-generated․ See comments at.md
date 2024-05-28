@@ -1,12 +1,12 @@
 ---
-author: "@WetHat (WetHat💦)"
+author: "@WetHat"
 published: 2024-05-13T12:20:10.000Z
 link: https://fosstodon.org/@WetHat/112433745762841309
 id: https://fosstodon.org/@WetHat/112433745762841309
 feed: "@WetHat (WetHat💦)"
 tags: []
 ---
-> [!abstract] Replied to: @WetHat it's AI-generated. See comments at https://old.reddit.com/r/lisp/comments/1cpfljb/how_to_explore_lisp_metaprogramming_techniques/ - 2024-05-13T12:20:10.000Z
+> [!abstract] Replied to: @WetHat it's AI-generated. See comments at https://old.reddit.com/r/lisp/comments/1cpfljb/how_to_explore_lisp_metaprogramming_techniques/ by @WetHat - 2024-05-13T12:20:10.000Z
 
 🔗Read article [online](https://fosstodon.org/@WetHat/112433745762841309). For other items in this feed see [[@WetHat (WetHat💦)]].
 

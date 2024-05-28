@@ -1,12 +1,12 @@
 ---
-author: "@WetHat (WetHat💦)"
+author: "@WetHat"
 published: 2024-05-13T16:13:42.000Z
 link: https://mastodon.online/@kvandermotten/112434653881037869
 id: https://mastodon.online/@kvandermotten/112434653881037869
 feed: "@WetHat (WetHat💦)"
 tags: []
 ---
-> [!abstract] Boosted: @WetHat There can be significant benefits with static readonly fields, see https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-8/#rss/tiering-and-dynamic-pgo and https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-8/#rss/constant-folding IIRC, the JIT will also optimize multiple loads of the same field better in some cases if it is readonly. - 2024-05-13T16:13:42.000Z
+> [!abstract] Boosted: @WetHat There can be significant benefits with static readonly fields, see https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-8/#rss/tiering-and-dynamic-pgo and https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-8/#rss/constant-folding IIRC, the JIT will also optimize multiple loads of the same field better in some cases if it is readonly. by @WetHat - 2024-05-13T16:13:42.000Z
 
 🔗Read article [online](https://mastodon.online/@kvandermotten/112434653881037869). For other items in this feed see [[@WetHat (WetHat💦)]].
 
