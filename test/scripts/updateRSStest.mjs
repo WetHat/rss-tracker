@@ -2,7 +2,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import fetch from 'node-fetch';
-import { TrackedRSSfeed } from '../../test/scripts/FeedAssembler.mjs'
+import { TrackedRSSfeed } from './FeedAssembler.mjs'
 import {execFileSync} from "child_process";
 import { globSync } from "glob";
 const usage = `USAGE:
@@ -16,7 +16,9 @@ if (process.argv.length < 3) {
     process.exit(1);
 }
 
-const feedSource = process.argv[2]; // url or relative directory path
+const
+    feedSource = process.argv[2], // url or relative directory path
+    referencePath = "./test-vault/reference";
 
 let feed, fsAssets, vaultAssets, feedName = null;
 
@@ -28,7 +30,7 @@ if (feedSource.includes("//")) {
     feed = new TrackedRSSfeed(feedXML, feedSource);
     feedName = feed.title;
     console.log("Downloaded feed " + feedSource);
-    fsAssets = path.join("../reference", feedName, "assets");
+    fsAssets = path.join(referencePath, feedName, "assets");
     vaultAssets = `reference/${feedName}/assets`;
     feed.source = `${vaultAssets}/feed.xml`;
 
@@ -37,11 +39,11 @@ if (feedSource.includes("//")) {
     fs.writeFileSync(path.join(fsAssets, "feed.xml"), feedXML, { encoding: "utf8" });
 } else {
     feedName = path.basename(feedSource);
-    fsAssets = path.join("../reference", feedName, "assets");
+    fsAssets = path.join(referencePath, feedName, "assets");
     vaultAssets = `reference/${feedName}/assets`;
 
     console.log(`Updating ${feedName}`);
-    const feedXML = fs.readFileSync(path.join(fsAssets, "feed.xml"), { encoding: "utf8" });
+    const feedXML = fs.readFileSync(path.join(fsAssets, "feed.xml"), { encoding: "utf8" }).toString();
     feed = new TrackedRSSfeed(feedXML, `${vaultAssets}/feed.xml`);
 }
 
@@ -49,11 +51,11 @@ if (feedSource.includes("//")) {
 fs.writeFileSync(path.join(fsAssets, "expected.json"), JSON.stringify(feed, { encoding: "utf8" }, 4));
 
 // cleanupp the markdown files
-const dashboard = path.join("..","reference",`${feedName}.md`);
+const dashboard = path.join(referencePath,`${feedName}.md`);
 if (fs.existsSync(dashboard)) {
     fs.unlinkSync(dashboard);
 }
-globSync(`../reference/${feedName}/*.md`).forEach(md => fs.unlinkSync(md));
+globSync(`${referencePath}/${feedName}/*.md`).forEach(md => fs.unlinkSync(md));
 
 // regenerate the feed markdown files
 const xmlAsset = encodeURIComponent(`${vaultAssets}/feed.xml`);
