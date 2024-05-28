@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "reference/The Hacker News.md",
+                "file": "output/The Hacker News.md",
                 "mode": "preview",
                 "source": true
               }
@@ -110,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "reference/The Hacker News.md",
+                "file": "output/The Hacker News.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "reference/The Hacker News.md",
+                "file": "output/The Hacker News.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "reference/The Hacker News.md"
+                "file": "output/The Hacker News.md"
               }
             }
           }
@@ -168,7 +168,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "reference/The Hacker News.md",
+                "file": "output/The Hacker News.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -216,8 +216,21 @@
   },
   "active": "b964e701a4c99253",
   "lastOpenFiles": [
-    "reports/Planet PowerShell Assembler.md",
     "reference/The Hacker News.md",
+    "reference/The Hacker News/Researchers Uncover 11 Security Flaws in GE HealthCare Ultrasound Machines.md",
+    "assets/The Hacker NewsLogo 1.svg",
+    "output/The Hacker News.md",
+    "reference/The Hacker News/North Korean Hackers Exploit Facebook Messenger in Targeted Malware Campaign.md",
+    "reference/The Hacker News/New Wi-Fi Vulnerability Enables Network Eavesdropping via Downgrade Attacks.md",
+    "reference/The Hacker News/CISA Warns of Actively Exploited D-Link Router Vulnerabilities - Patch Now.md",
+    "reference/The Hacker News/Kimsuky APT Deploying Linux Backdoor Gomir in South Korean Cyber Attacks.md",
+    "reference/The Hacker News/China-Linked Hackers Adopt Two-Stage Infection Tactic to Deploy Deuterbear RAT.md",
+    "reference/The Hacker News/New XM Cyber Research꞉ 80% of Exposures from Misconfigurations, Less Than 1% fro.md",
+    "reference/The Hacker News/Kinsing Hacker Group Exploits More Flaws to Expand Botnet for Cryptojacking.md",
+    "reference/The Hacker News/Grandoreiro Banking Trojan Resurfaces, Targeting Over 1,500 Banks Worldwide.md",
+    "reference/The Hacker News/Chinese Nationals Arrested for Laundering $73 Million in Pig Butchering Crypto S.md",
+    "assets/The Hacker NewsLogo 10.svg",
+    "reports/Planet PowerShell Assembler.md",
     "reference/Planet PowerShell/Upload a PowerShell Script to Intune (With PowerShell) From Scratch.md",
     "reference/Planet PowerShell/Parameters for PowerShell Scripts and Functions.md",
     "reference/Planet PowerShell/Keep Microsoft Teams status Available instead of away using PowerShell.md",
@@ -230,19 +243,7 @@
     "reference/Planet PowerShell.md",
     "output/The Hacker News/Researchers Uncover 11 Security Flaws in GE HealthCare Ultrasound Machines.md",
     "output/The Hacker News/North Korean Hackers Exploit Facebook Messenger in Targeted Malware Campaign.md",
-    "output/The Hacker News/New Wi-Fi Vulnerability Enables Network Eavesdropping via Downgrade Attacks.md",
-    "output/The Hacker News/CISA Warns of Actively Exploited D-Link Router Vulnerabilities - Patch Now.md",
-    "output/The Hacker News/Kimsuky APT Deploying Linux Backdoor Gomir in South Korean Cyber Attacks.md",
-    "output/The Hacker News/China-Linked Hackers Adopt Two-Stage Infection Tactic to Deploy Deuterbear RAT.md",
-    "output/The Hacker News/New XM Cyber Research꞉ 80% of Exposures from Misconfigurations, Less Than 1% fro.md",
-    "output/The Hacker News/Kinsing Hacker Group Exploits More Flaws to Expand Botnet for Cryptojacking.md",
-    "output/The Hacker News/Grandoreiro Banking Trojan Resurfaces, Targeting Over 1,500 Banks Worldwide.md",
-    "output/The Hacker News/Chinese Nationals Arrested for Laundering $73 Million in Pig Butchering Crypto.md",
-    "output/The Hacker News.md",
     "assets/The Hacker NewsLogo 9.svg",
-    "reference/The Hacker News/Dutch Court Sentences Tornado Cash Co-Founder to 5 Years in Prison for Money.md",
-    "reference/The Hacker News/It's Time to Master the Lift + Shift꞉ Migrating from VMware vSphere to.md",
-    "reference/The Hacker News/Ebury Botnet Malware Compromises 400,000 Linux Servers Over Past 14 Years.md",
     "assets/The Hacker NewsLogo 8.svg",
     "assets/The Hacker NewsLogo 7.svg",
     "assets/The Hacker NewsLogo 6.svg",
@@ -251,9 +252,7 @@
     "assets/The Hacker NewsLogo 3.svg",
     "assets/The Hacker NewsLogo 2.svg",
     "output/The Hacker News",
-    "assets/The Hacker NewsLogo 1.svg",
     "output/Azimuth",
-    "assets/@wethat7․bsky․social - WetHat💦Logo 1.svg",
     "reference/@wethat7․bsky․social - WetHat💦",
     "reference/@wethat7․bsky․social - WetHat💦/assets",
     "reference/PyCoder’s Weekly/assets",

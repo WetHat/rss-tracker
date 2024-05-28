@@ -12,7 +12,7 @@ interval: 5
 > [!abstract] The Hacker News
 > Most trusted, widely-read independent cybersecurity news source for everyone; supported by hackers and IT professionals — Send TIPs to admin@thehackernews.com
 >
-> ![[The Hacker NewsLogo 9.svg|200x200]]
+> ![[The Hacker NewsLogo.svg]]
 # Unread Feed Items
 ~~~dataview
 TASK
