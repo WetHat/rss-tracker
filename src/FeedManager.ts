@@ -1,4 +1,4 @@
-import { App, request, TFile, TFolder, htmlToMarkdown, normalizePath, ListItemCache, Vault, Notice } from 'obsidian';
+import { App, request, TFile, TFolder, htmlToMarkdown, normalizePath, ListItemCache, Notice } from 'obsidian';
 import RSSTrackerPlugin from './main';
 import { TrackedRSSfeed, TrackedRSSitem, IRSSimage, TPropertyBag } from './FeedAssembler';
 import * as path from 'path';
@@ -55,11 +55,7 @@ export class FeedManager {
         return template.split(FeedManager.TOKEN_SPLITTER).map(s => s.startsWith("{{") ? (properties[s] ?? s) : s).join("");
     }
 
-    private formatImage(image: IRSSimage | TFile): string {
-        if (image instanceof TFile) {
-            return `![[${image.name}|200x200]]`;
-        }
-
+    private formatImage(image: IRSSimage): string {
         const { src, width, height } = image as IRSSimage;
         let size = "";
         if (width) {
@@ -205,18 +201,14 @@ export class FeedManager {
     }
 
     private async createFeed(feed: TrackedRSSfeed, location: TFolder): Promise<TFile> {
-        const { title, site, description } = feed,
+        const
+            { title, site, description } = feed,
             basename = this.formatFilename(title ?? "Anonymous Feed"),
             itemfolderPath = normalizePath(path.join(location.path, basename)),
             tpl = this.plugin.settings.feedTemplate,
-            dashboardPath = normalizePath(path.join(location.path, `${basename}.md`));
-        let image: IRSSimage | TFile | undefined = feed.image;
-        // generate a default image
-        if (!image) {
-            const imageAsset = `${basename}Logo.svg`,
-                logoPath = await this.app.fileManager.getAvailablePathForAttachment(imageAsset, dashboardPath);
-            image = await this.app.vault.create(logoPath, FeedManager.RSS_IMAGE_SVG);
-        }
+            dashboardPath = normalizePath(path.join(location.path, `${basename}.md`)),
+            defaultImage = basename + ".svg";
+        let image: IRSSimage | string | undefined = feed.image;
 
         const content = this.expandTemplate(tpl, {
             "{{feedUrl}}": feed.source,
@@ -224,15 +216,21 @@ export class FeedManager {
             "{{title}}": title ?? "",
             "{{description}}": description ? this.formatHashTags(htmlToMarkdown(description)) : "",
             "{{folderPath}}": itemfolderPath,
-            "{{image}}": image ? this.formatImage(image) : ""
+            "{{image}}": image ? this.formatImage(image) : `![[${defaultImage}|200x200]]`
         });
 
-        // create the feed configuration file
+        // create the feed dashboard file
         const dashboard = await this.app.vault.create(dashboardPath, content),
             itemlimit = tpl.match(FeedManager.ITEMLIMIT_FINDER)?.[0],
             cfg = new FeedConfig(feed.source ?? "", itemlimit ?? "100", dashboard);
 
         if (dashboard && cfg) {
+            // suppy a defaultl image if needed
+            if (!image) {
+                // to find the location of the default image we need to wait until the dasboard exists
+                const imagePath = await this.app.fileManager.getAvailablePathForAttachment(defaultImage, dashboardPath);
+                await this.app.vault.create(imagePath, FeedManager.RSS_IMAGE_SVG);
+            }
             let status: string;
             try {
                 await this.updateFeedItems(cfg, feed);
