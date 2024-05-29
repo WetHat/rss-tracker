@@ -47,7 +47,7 @@ describe('FeedAssembler ', function () {
             describe(`Items same as reference`, function () {
                 const
                     n = Math.min(actualFiles.length, refFiles.length),
-                    reportFile = `./test-vault/reports/${feedName} Content.md`;
+                    reportFile = `./test-vault/reports/${feedName} Item Differences.md`;
 
                 if (fs.existsSync(reportFile)) {
                     fs.unlinkSync(reportFile);
@@ -66,7 +66,7 @@ describe('FeedAssembler ', function () {
                     const
                         actualContent = fs.readFileSync(actualFile, { encoding: "utf8" }).toString(),
                         expectedContent = fs.readFileSync(refFile, { encoding: "utf8" }).toString(),
-                        diff = Diff.diffLines(actualContent, expectedContent, { newlineIsToken: true })
+                        diff = Diff.diffLines(actualContent, expectedContent, { newlineIsToken: true, stripTrailingCr: true })
                             .filter(d => d["added"] || d["removed"]);
                     if (diff.length > 0) {
                         const report = `# Differences in "${actualName}"
@@ -78,8 +78,8 @@ ${JSON.stringify(diff, { encoding: "utf8" }, 4)}
                     }
                 }
 
-                it('Item content same as reference',function () {
-                   assert.equal(fs.existsSync(reportFile),false);
+                it('Item content same as reference', function () {
+                    assert.equal(fs.existsSync(reportFile), false);
                 });
             });
         });
