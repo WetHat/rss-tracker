@@ -68,7 +68,7 @@ export class FeedManager {
     }
 
     private formatTags(tags: string[]): string {
-        return "[" + tags.map(t => "rss/" + t.replace(" ", "_")).join(",") + "]";
+        return "[" + tags.map(t => "rss/" + t.replaceAll(" ", "_")).join(",") + "]";
     }
     private formatHashTags(md: string): string {
         return md.replace(FeedManager.HASH_FINDER, "#rss/");
