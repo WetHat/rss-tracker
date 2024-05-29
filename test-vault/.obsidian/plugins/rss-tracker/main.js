@@ -2599,7 +2599,7 @@ var TrackedRSSitem = class {
     this.media = media;
     this.tags = (_b = category == null ? void 0 : category.map((c) => {
       const category2 = typeof c === "string" ? c : c["#text"];
-      return category2.replace(/[#"\[\]\{\}}]*/g, "").replace(/[:;\\/]/g, " ");
+      return category2.replace(/^#(?=\w)|["\[\]\{\}]*/g, "").replaceAll("#", "\uFF03").replaceAll(/\s*&\s*/g, "\u2795").replaceAll(".", "\u302D").replace(/[:;\\/]/g, " ");
     })) != null ? _b : [];
     if (description) {
       this.description = description;
@@ -2881,7 +2881,7 @@ var _FeedManager = class {
     return `![image${size}](${src})`;
   }
   formatTags(tags) {
-    return "[" + tags.map((t) => "rss/" + t.replace(" ", "_")).join(",") + "]";
+    return "[" + tags.map((t) => "rss/" + t.replaceAll(" ", "_")).join(",") + "]";
   }
   formatHashTags(md) {
     return md.replace(_FeedManager.HASH_FINDER, "#rss/");

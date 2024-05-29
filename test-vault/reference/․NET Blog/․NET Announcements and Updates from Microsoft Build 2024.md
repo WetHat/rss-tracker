@@ -4,7 +4,7 @@ published: 2024-05-21T17:05:00.000Z
 link: https://devblogs.microsoft.com/dotnet/dotnet-build-2024-announcements/
 id: https://devblogs.microsoft.com/dotnet/?p=51919
 feed: "․NET Blog"
-tags: [rss/.NET,rss/.NET_Aspire,rss/.NET_Internals,rss/.NET_MAUI,rss/AI,rss/ASP.NET,rss/ASP.NET_Core,rss/Blazor,rss/C,rss/Cloud_Native,rss/Containers,rss/Performance,rss/Visual_Studio,rss/Visual_Studio Code,rss/.net_9,rss/.net_9 preview 4,rss/.net_aspire,rss/announcement,rss/microsoft_build]
+tags: [rss/〭NET,rss/〭NET_Aspire,rss/〭NET_Internals,rss/〭NET_MAUI,rss/AI,rss/ASP〭NET,rss/ASP〭NET_Core,rss/Blazor,rss/C＃,rss/Cloud_Native,rss/Containers,rss/Performance,rss/Visual_Studio,rss/Visual_Studio_Code,rss/〭net_9,rss/〭net_9_preview_4,rss/〭net_aspire,rss/announcement,rss/microsoft_build]
 ---
 > [!abstract] .NET Announcements and Updates from Microsoft Build 2024 by .NET Team - 2024-05-21T17:05:00.000Z
 > Our latest updates and announcements from Microsoft Build including .NET Aspire, .NET 9 Preview 4, C# 13, Blazor, .NET MAUI, and more!

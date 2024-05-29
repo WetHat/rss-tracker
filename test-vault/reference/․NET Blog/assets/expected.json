@@ -12,8 +12,8 @@
         {
             "id": "https://devblogs.microsoft.com/dotnet/?p=51967",
             "tags": [
-                ".NET",
-                "F",
+                "〭NET",
+                "F＃",
                 "Performance",
                 "compilers",
                 "performance"
@@ -29,9 +29,9 @@
         {
             "id": "https://devblogs.microsoft.com/dotnet/?p=51964",
             "tags": [
-                ".NET",
-                ".NET Fundamentals",
-                ".NET Internals",
+                "〭NET",
+                "〭NET Fundamentals",
+                "〭NET Internals",
                 "microsoft learn",
                 "Source Link"
             ],
@@ -46,23 +46,23 @@
         {
             "id": "https://devblogs.microsoft.com/dotnet/?p=51919",
             "tags": [
-                ".NET",
-                ".NET Aspire",
-                ".NET Internals",
-                ".NET MAUI",
+                "〭NET",
+                "〭NET Aspire",
+                "〭NET Internals",
+                "〭NET MAUI",
                 "AI",
-                "ASP.NET",
-                "ASP.NET Core",
+                "ASP〭NET",
+                "ASP〭NET Core",
                 "Blazor",
-                "C",
+                "C＃",
                 "Cloud Native",
                 "Containers",
                 "Performance",
                 "Visual Studio",
                 "Visual Studio Code",
-                ".net 9",
-                ".net 9 preview 4",
-                ".net aspire",
+                "〭net 9",
+                "〭net 9 preview 4",
+                "〭net aspire",
                 "announcement",
                 "microsoft build"
             ],
@@ -77,8 +77,8 @@
         {
             "id": "https://devblogs.microsoft.com/dotnet/?p=51907",
             "tags": [
-                ".NET",
-                ".NET Aspire",
+                "〭NET",
+                "〭NET Aspire",
                 "Azure",
                 "Cloud Native",
                 "Containers",
@@ -104,10 +104,10 @@
         {
             "id": "https://devblogs.microsoft.com/dotnet/?p=51837",
             "tags": [
-                ".NET",
-                ".NET Framework",
-                "Maintenance & Updates",
-                ".net framework"
+                "〭NET",
+                "〭NET Framework",
+                "Maintenance➕Updates",
+                "〭net framework"
             ],
             "description": "<p>A recap of the latest servicing updates for .NET and .NET Framework for May 2024.</p>\n<p>The post <a href=\"https://devblogs.microsoft.com/dotnet/dotnet-and-dotnet-framework-may-2024-servicing-updates/\">.NET and .NET Framework May 2024 Servicing Updates</a> appeared first on <a href=\"https://devblogs.microsoft.com/dotnet\">.NET Blog</a>.</p>\n",
             "title": ".NET and .NET Framework May 2024 Servicing Updates",
@@ -120,14 +120,14 @@
         {
             "id": "https://devblogs.microsoft.com/dotnet/?p=51767",
             "tags": [
-                ".NET",
-                ".NET Aspire",
-                "ASP.NET",
-                "ASP.NET Core",
+                "〭NET",
+                "〭NET Aspire",
+                "ASP〭NET",
+                "ASP〭NET Core",
                 "Cloud",
                 "Cloud Native",
                 "Orleans",
-                ".net aspire",
+                "〭net aspire",
                 "cloud native",
                 "orleans"
             ],
@@ -142,12 +142,12 @@
         {
             "id": "https://devblogs.microsoft.com/dotnet/?p=51773",
             "tags": [
-                ".NET",
-                ".NET Core",
+                "〭NET",
+                "〭NET Core",
                 "AI",
-                "ASP.NET",
-                "ASP.NET Core",
-                "C",
+                "ASP〭NET",
+                "ASP〭NET Core",
+                "C＃",
                 "Machine Learning",
                 "azure",
                 "event",
@@ -164,10 +164,10 @@
         {
             "id": "https://devblogs.microsoft.com/dotnet/?p=51745",
             "tags": [
-                ".NET",
-                "C",
-                ".net 8",
-                "c 12"
+                "〭NET",
+                "C＃",
+                "〭net 8",
+                "c＃ 12"
             ],
             "description": "<p>Explore various C# 12 refactoring scenarios for a variety of target types using collection expressions, collection initializers, and the spread syntax.</p>\n<p>The post <a href=\"https://devblogs.microsoft.com/dotnet/refactor-your-code-with-collection-expressions/\">Refactor your code with C# collection expressions</a> appeared first on <a href=\"https://devblogs.microsoft.com/dotnet\">.NET Blog</a>.</p>\n",
             "title": "Refactor your code with C# collection expressions",
@@ -180,11 +180,11 @@
         {
             "id": "https://devblogs.microsoft.com/dotnet/?p=51662",
             "tags": [
-                ".NET",
-                "C",
+                "〭NET",
+                "C＃",
                 "Cloud Native",
                 "Visual Studio Code",
-                "C Dev Kit",
+                "C＃ Dev Kit",
                 "Csharp",
                 "csharpdevkit",
                 "vscode"
@@ -200,10 +200,10 @@
         {
             "id": "https://devblogs.microsoft.com/dotnet/?p=51654",
             "tags": [
-                ".NET",
+                "〭NET",
                 "Cloud Native",
                 "Containers",
-                ".net sdk",
+                "〭net sdk",
                 "CLI",
                 "dotnet cli",
                 "sdk"

@@ -4,7 +4,7 @@ published: 2024-04-30T17:05:00.000Z
 link: https://devblogs.microsoft.com/dotnet/secure-your-container-build-and-publish-with-dotnet-8/
 id: https://devblogs.microsoft.com/dotnet/?p=51654
 feed: "․NET Blog"
-tags: [rss/.NET,rss/Cloud_Native,rss/Containers,rss/.net_sdk,rss/CLI,rss/dotnet_cli,rss/sdk]
+tags: [rss/〭NET,rss/Cloud_Native,rss/Containers,rss/〭net_sdk,rss/CLI,rss/dotnet_cli,rss/sdk]
 ---
 > [!abstract] Secure your container build and publish with .NET 8 by Richard Lander - 2024-04-30T17:05:00.000Z
 > .NET 8 has new security features for containers, including non-root images and SDK tools. Discover how to create non-root container images, configure Kubernetes pods, and inspect images and containers for enhanced security.

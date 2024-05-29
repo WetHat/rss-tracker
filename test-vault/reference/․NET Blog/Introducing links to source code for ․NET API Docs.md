@@ -4,7 +4,7 @@ published: 2024-05-27T15:00:00.000Z
 link: https://devblogs.microsoft.com/dotnet/dotnet-docs-link-to-source-code/
 id: https://devblogs.microsoft.com/dotnet/?p=51964
 feed: "․NET Blog"
-tags: [rss/.NET,rss/.NET_Fundamentals,rss/.NET_Internals,rss/microsoft_learn,rss/Source_Link]
+tags: [rss/〭NET,rss/〭NET_Fundamentals,rss/〭NET_Internals,rss/microsoft_learn,rss/Source_Link]
 ---
 > [!abstract] Introducing links to source code for .NET API Docs by Min Huang - 2024-05-27T15:00:00.000Z
 > .NET API reference docs now link directly to the source code! Learn how the links are generated, and some of ideas for future improvements.

@@ -4,7 +4,7 @@ published: 2024-05-13T17:05:00.000Z
 link: https://devblogs.microsoft.com/dotnet/whats-new-in-orleans-8/
 id: https://devblogs.microsoft.com/dotnet/?p=51767
 feed: "․NET Blog"
-tags: ["#rss/.NET",rss/.NET_Aspire,rss/ASP.NET,rss/ASP.NET_Core,rss/Cloud,rss/Cloud_Native,rss/Orleans,rss/.net_aspire,rss/cloud_native,rss/orleans]
+tags: [rss/〭NET,rss/〭NET_Aspire,rss/ASP〭NET,rss/ASP〭NET_Core,rss/Cloud,rss/Cloud_Native,rss/Orleans,rss/〭net_aspire,rss/cloud_native,rss/orleans]
 ---
 > [!abstract] What&#rss/8217;s new in Orleans 8 for Scalable Distributed Applications by Mike Kistler - 2024-05-13T17:05:00.000Z
 > Let's take a look at what is new with Orleans for building robust, scalable distribute applications with Orleans 8 and integration with .NET Aspire.
