@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "reference/Python Morsels.md",
+                "file": "reference/Python Morsels/Equality versus identity in Python.md",
                 "mode": "source",
                 "source": false
               }
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "reference/Python Morsels.md",
+                "file": "reference/Python Morsels/Equality versus identity in Python.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "reference/Python Morsels.md",
+                "file": "reference/Python Morsels/Equality versus identity in Python.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "reference/Python Morsels.md"
+                "file": "reference/Python Morsels/Equality versus identity in Python.md"
               }
             }
           }
@@ -143,7 +143,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "reference/Python Morsels.md",
+                "file": "reference/Python Morsels/Equality versus identity in Python.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -191,9 +191,7 @@
   },
   "active": "48b37c2970574279",
   "lastOpenFiles": [
-    "reference/assets/Python Morsels.svg",
-    "reference/assets/Python Morsels 1.svg",
-    "reference/@WetHat (WetHat💦).md",
+    "reports/Python Morsels Assembler.md",
     "output/@WetHat (WetHat💦)/Replied to꞉ @WetHat it's AI-generated․ See comments at.md",
     "output/@WetHat (WetHat💦)/Replied to꞉ @WetHat Newtonsoft,Json is not dead․ It's last release was 14 months.md",
     "output/@WetHat (WetHat💦)/Replied to꞉ @WetHat Thanks for sharing․ Makes me wonder if AoT or PGO might bene.md",
@@ -222,6 +220,7 @@
     "output/Azimuth/Well Temperaments (Part 6).md",
     "output/Azimuth/Agent-Based Models (Part 7).md",
     "output/Azimuth/Nicholas Ludford.md",
+    "output/Azimuth/The Probability of the Law of Excluded Middle.md",
     "output/Azimuth",
     "output/Planet PowerShell",
     "output/PyCoder’s Weekly",
@@ -233,6 +232,8 @@
     "output/The Hacker News",
     "output/assets/The Hacker News.svg",
     "output/assets",
+    "reference/assets/Python Morsels 1.svg",
+    "reference/assets/Python Morsels.svg",
     "reference/Python Morsels/assets/expected.json",
     "assets/PyCoder’s WeeklyLogo.svg",
     "assets/@wethat7․bsky․social - WetHat💦Logo 3.svg"

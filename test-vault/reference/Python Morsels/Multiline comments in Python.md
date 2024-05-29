@@ -29,7 +29,8 @@ Python does not have multiline comments. But you can use alternatives like docst
 
 For single-line comments, Python uses the octothorpe character (`#`), also known as pound, number sign, crunch, and of course, the hashtag character:
 
-`# This is a comment  this = "is not a comment"`
+`# This is a comment                                  this = "is not a                                 comment"`
+                                
 
 But what if you want to comment out **a whole block** of code?
 

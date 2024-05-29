@@ -31,7 +31,8 @@ When talking about Python code, if I say **we changed X**, there are two differe
 
 Let's say we have two variables that point to the same value:
 
-`>>> a = [2, 1, 3, 4] >>> b = a`
+`>>> a =                                 [2,                                 1, 3,                                 4]                                 >>>                                 b = a`
+                                
 
 Remember that [variables in Python are pointers](https://www.pythonmorsels.com/variables-are-pointers/). That means that **two variables _can point_ to the same object**. That's actually what we've done here.
 

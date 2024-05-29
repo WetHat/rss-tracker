@@ -39,7 +39,8 @@ Time complexity is usually discussed in terms of "Big O" notation. This is basic
 
 Here's a graph of the common time complexity curves:
 
-![O(1), O(log n), O(n), O(n log n), and O(n^2) curves plotted on a graph, each being steeper in slope than the last](https://pythonmorsels.s3.amazonaws.com/medialibrary/2024/03/time_complexity.png)
+![O(1), O(log n), O(n), O(n log n), and O(n^2) curves plotted on
+a graph, each being steeper in slope than the last](https://pythonmorsels.s3.amazonaws.com/medialibrary/2024/03/time_complexity.png)
 
 Remember that these lines are simply about **orders of magnitude**. If an operation is on the order of `n`, that means 100 times more data will slow things down about 100 times. If an operation is on the order of `n²` (that's `n*n`), that means 100 times more data will slow things down `100*100` times.
 

@@ -28,29 +28,35 @@ Python's variables are not buckets that contain objects; they're pointers. Assig
 
 Here we have a variable `a` that points to a [list](https://www.pythonmorsels.com/what-are-lists/):
 
-`>>> a = [2, 1, 3, 4]`
+`>>> a =                                 [2,                                 1, 3,                                 4]`
+                                
 
 Let's make a new variable `b` and assign it to `a`:
 
-`>>> a = [2, 1, 3, 4] >>> b = a`
+`>>> a =                                 [2,                                 1, 3,                                 4]                                 >>>                                 b = a`
+                                
 
 If we append a new item to `b`, what will its length be?
 
-`>>> b.append(7) >>> len(b)`
+`>>> b.append(7)                                 >>>                                 len(b)`
+                                
 
 Initially, the `b` list had four items, so now it should have five items. And it does:
 
-`>>> len(b) 5`
+`>>> len(b)                                 5`
+                                
 
 How many items do you think `a` has? What's your guess?
 
 `>>> len(a)`
+                                
 
 Is it five, the same as `b`? Or is it still four, as it was before?
 
 The `a` list also has five items:
 
-`>>> len(a) 5`
+`>>> len(a)                                 5`
+                                
 
 What's going on here?
 
@@ -58,7 +64,8 @@ Well, the variables `a` and `b`, both point to the same list.
 
 If we look up the unique ID for the object that each of these variables points to, we'll see that **they both point to the same object**:
 
-`>>> id(a) 140534104117312 >>> id(b) 140534104117312`
+`>>> id(a)                                 140534104117312                                 >>>                                 id(b)                                 140534104117312`
+                                
 
 This is possible because variables in Python are **_not_ buckets, but pointers**.
 

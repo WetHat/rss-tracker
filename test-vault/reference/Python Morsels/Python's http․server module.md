@@ -28,11 +28,13 @@ Use Python's `http.server` module to serve up a static website on your own machi
 
 We have a directory here that represents a static website:
 
-`~/comprehensions/_build/dirhtml $ ls index.html index.html`
+`~/comprehensions/_build/dirhtml                                 $ ls index.html                                 index.html`
+                                
 
 We not only have an `index.html` file, but also a bunch of sub-directories, each with their own `index.html` file:
 
-`~/comprehensions/_build/dirhtml $ ls generator-expressions index.html`
+`~/comprehensions/_build/dirhtml                                 $ ls generator-expressions                                 index.html`
+                                
 
 The only way to really navigate this website locally is to **serve up these files** using some sort of HTTP server that is aware of these index files.
 

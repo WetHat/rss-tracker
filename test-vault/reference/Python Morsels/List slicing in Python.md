@@ -34,15 +34,18 @@ In Python, slicing looks like indexing with colons (`:`). You can slice a list (
 
 Let's say we have a `fruits` variable that points to a [list](https://www.pythonmorsels.com/what-are-lists/):
 
-`>>> fruits = ['watermelon', 'apple', 'lime', 'kiwi', 'pear', 'lemon', 'orange'] >>> fruits ['watermelon', 'apple', 'lime', 'kiwi', 'pear', 'lemon', 'orange']`
+`>>> fruits = ['watermelon', 'apple', 'lime', 'kiwi', 'pear', 'lemon', 'orange']                                 >>>                                 fruits                                 ['watermelon', 'apple', 'lime', 'kiwi',                                 'pear', 'lemon', 'orange']`
+                                
 
 We can get an item from this list by indexing it:
 
-`>>> fruits[3] 'kiwi'`
+`>>> fruits[3]                                 'kiwi'`
+                                
 
 If we put a colon and another number inside the square brackets, we'll slice this list instead of indexing it:
 
-`>>> fruits[0:3] ['watermelon', 'apple', 'lime']`
+`>>> fruits[0:3]                                 ['watermelon', 'apple', 'lime']`
+                                
 
 **Slicing a list gives us back a new list.** We're getting a list of the first three items within our original list.
 

@@ -26,11 +26,13 @@ Ever encountered an `_io.TextIOWrapper` object when you wished you had a string?
 
 If you use Python's built-in `open` function to read from a file, you'll end up with a `_io.TextIOWrapper` object. You can think of this as **a file object**.
 
-`>>> file = open("example.txt", mode="rt") >>> type(file) <class '_io.TextIOWrapper'>`
+`>>> file =                                 open("example.txt", mode="rt")                                 >>>                                 type(file)                                 <class                                 '_io.TextIOWrapper'>`
+                                
 
 If you open a file in **read mode** (the default mode), you should be able to call the `read` method on your file object to read your file into a string:
 
-`>>> contents = file.read() >>> contents 'This is an example text-based file.\nIt existed before we read it.\n'`
+`>>> contents = file.read()                                 >>>                                 contents                                 'This is an example text-based file.\nIt                                 existed before we read it.\n'`
+                                
 
 More on reading text files in [reading files in Python](https://www.pythonmorsels.com/how-read-text-file/).
 

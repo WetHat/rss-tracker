@@ -28,11 +28,13 @@ When your function ends in an `else` block with a `return` statement in it, shou
 
 This `earliest_date` function uses the [python-dateutil](https://pypi.org/project/python-dateutil/) third-party library to parse two strings as dates:
 
-`from dateutil.parser import parse  def earliest_date(date1, date2):     """Return the string representing the earliest date."""     if parse(date1, fuzzy=True) < parse(date2, fuzzy=True):         return date1     else:         return date2`
+`from dateutil.parser import parse                                  def earliest_date(date1,                                 date2):                                 """Return the string representing the                                 earliest date."""                                 if parse(date1,                                 fuzzy=True)                                 < parse(date2,                                 fuzzy=True):                                 return date1                                 else:                                 return date2`
+                                
 
 This function returns the string which represents the earliest given date:
 
-`>>> earliest_date("May 3 2024", "June 5 2025") 'May 3 2024' >>> earliest_date("Feb 3 2026", "June 5 2025") 'June 5 2025'`
+`>>> earliest_date("May 3                                 2024", "June 5 2025")                                 'May 3 2024'                                 >>>                                 earliest_date("Feb 3                                 2026", "June 5 2025")                                 'June 5 2025'`
+                                
 
 Note that this function uses an [if statement](https://www.pythonmorsels.com/if-statements/) that returns, and an `else` that also returns.
 

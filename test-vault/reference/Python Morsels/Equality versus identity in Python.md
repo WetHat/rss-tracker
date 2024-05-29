@@ -29,21 +29,25 @@ Equality checks whether two objects **represent the same value**. Identity check
 
 Let's say we have two variables that point to two lists:
 
-`>>> a = [2, 1, 3] >>> b = [2, 1, 3, 4]`
+`>>> a =                                 [2,                                 1, 3]                                 >>>                                 b = [2,                                 1, 3,                                 4]`
+                                
 
 When we use the `==` operator to check whether these lists are equal, we'll see that they are not equal:
 
-`>>> a == b False`
+`>>> a ==                                 b                                 False`
+                                
 
 These lists **don't have the same values right now, so they're not equal**.
 
 Let's update the first list so that these two lists do have equivalent values:
 
-`>>> a.append(4) >>> a [2, 1, 3, 4]`
+`>>> a.append(4)                                 >>>                                 a                                 [2, 1, 3, 4]`
+                                
 
 If we use `==` again, we'll see that these lists _are_ equal now:
 
-`>>> a == b True`
+`>>> a ==                                 b                                 True`
+                                
 
 Python's `==` operator checks for **equality**. Two objects are equal if **they represent the same data**.
 
