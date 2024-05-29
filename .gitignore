@@ -3,7 +3,9 @@
 
 # npm
 node_modules
+# the generated output for comparison with the reference
 
+test-vault/output
 # Don't include the compiled main.js file in the repo.
 # They should be uploaded to GitHub releases instead.
 main.js
