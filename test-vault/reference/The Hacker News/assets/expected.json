@@ -12,8 +12,10 @@
             "published": "2024-05-19T09:46:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgYY-3t_2tEUCVX41dZcLK7NZIikQ7t63JtNS5jX7NbaaimvXybHsXlveMWPFT7QoHTxI9pM4DTdCije4sDSd7Yt6c46gYuudMKp1Ud0L92UBMhLd_6-0_QldH6ucXCnWnOEbzO52dMTHetk494taJhWkjOi6pows13Ixl-zhXBPBkCiAt8k9kD51LsiNip/s1600/pig.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgYY-3t_2tEUCVX41dZcLK7NZIikQ7t63JtNS5jX7NbaaimvXybHsXlveMWPFT7QoHTxI9pM4DTdCije4sDSd7Yt6c46gYuudMKp1Ud0L92UBMhLd_6-0_QldH6ucXCnWnOEbzO52dMTHetk494taJhWkjOi6pows13Ixl-zhXBPBkCiAt8k9kD51LsiNip/s1600/pig.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/grandoreiro-banking-trojan-resurfaces.html",
@@ -24,8 +26,10 @@
             "published": "2024-05-19T07:59:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi5-kZvOVxoh88ywy2pxjyTedNazjZeTetG15AeVqaK0dpeege9CD6e2nGix7xcLI8J5RtixTt0_ADwR6weDe_DL8Zpy5P0W8PgKn5lk0SFi421tllqDPbFLTqy03f-EBXdNDL2FEoIBeqLQcEtMwUf9AH2XFER0KHuzr7EgmKXZEM-6P8C7gydaNIbRKgm/s1600/bank.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi5-kZvOVxoh88ywy2pxjyTedNazjZeTetG15AeVqaK0dpeege9CD6e2nGix7xcLI8J5RtixTt0_ADwR6weDe_DL8Zpy5P0W8PgKn5lk0SFi421tllqDPbFLTqy03f-EBXdNDL2FEoIBeqLQcEtMwUf9AH2XFER0KHuzr7EgmKXZEM-6P8C7gydaNIbRKgm/s1600/bank.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/kinsing-hacker-group-exploits-more.html",
@@ -36,8 +40,10 @@
             "published": "2024-05-17T17:20:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhI4mP8B96EWYEiuIhr6QfWevzBBDrF1MExz8DaxQyyFW5Xi8oI5PbXBXtS9s2pHFVphKGD-17WDofzuHK0yqCr6pZ6wlGEPnWXEpVl8O5bynP0-n-wITgskYUjgHq5TqJp0XGOSm9hW1oAmzlsRdvXHciMXmnCjotvoj0Tugvqgcu4fvm_4WwFVgZxLgaJ/s1600/victim.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhI4mP8B96EWYEiuIhr6QfWevzBBDrF1MExz8DaxQyyFW5Xi8oI5PbXBXtS9s2pHFVphKGD-17WDofzuHK0yqCr6pZ6wlGEPnWXEpVl8O5bynP0-n-wITgskYUjgHq5TqJp0XGOSm9hW1oAmzlsRdvXHciMXmnCjotvoj0Tugvqgcu4fvm_4WwFVgZxLgaJ/s1600/victim.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/new-xm-cyber-research-80-of-exposures.html",
@@ -48,8 +54,10 @@
             "published": "2024-05-17T11:29:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgyW5tQUIjpctocrlvWbnUcdnROq7YRBoKp5VQEfa97lFMq6oPX_VN0u_eDInWPMdG2cCEcZgH9L8c0MjYSQoGHpGE1pTPos0ihhtK1IuZIYz7X7go2EOMELR9ch2bTiYMY0ffMQ28jSrkM-xv7KmHgbUTyppDuM_xywMtAR6ZyT5UkT8eR3po0JIXTSeo/s1600/main.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgyW5tQUIjpctocrlvWbnUcdnROq7YRBoKp5VQEfa97lFMq6oPX_VN0u_eDInWPMdG2cCEcZgH9L8c0MjYSQoGHpGE1pTPos0ihhtK1IuZIYz7X7go2EOMELR9ch2bTiYMY0ffMQ28jSrkM-xv7KmHgbUTyppDuM_xywMtAR6ZyT5UkT8eR3po0JIXTSeo/s1600/main.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/china-linked-hackers-adopt-two-stage.html",
@@ -60,8 +68,10 @@
             "published": "2024-05-17T11:20:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjd44DTDc43zIEkapTS7x1xzyCuyAq_BI-BiV3FPnh7kVYP1TcsOx6e8Vrbg1HCEfH5WSLrvA5nQqj6MuOxwidV_Z932WsQP4IY4evbsueNrOTCA41v9AK8CSs7sEGvsiLkFMK9y_wVU6sMKHy3ga73CEwIJjnJjLdbfBUD2QihTjVvHBxrbWQXpYfiiNKn/s1600/cyber.jpg"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjd44DTDc43zIEkapTS7x1xzyCuyAq_BI-BiV3FPnh7kVYP1TcsOx6e8Vrbg1HCEfH5WSLrvA5nQqj6MuOxwidV_Z932WsQP4IY4evbsueNrOTCA41v9AK8CSs7sEGvsiLkFMK9y_wVU6sMKHy3ga73CEwIJjnJjLdbfBUD2QihTjVvHBxrbWQXpYfiiNKn/s1600/cyber.jpg",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/kimsuky-apt-deploying-linux-backdoor.html",
@@ -72,8 +82,10 @@
             "published": "2024-05-17T08:46:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgKkkd9TlpBH69SJ2A5la8Bres_d4l53vzANAK7W2RVh3HJoJjX9PuIhhtiYhO5YlDnu8RuFrT8bAyj_0DwcjPB4tSIcLglj7N2PGus3G1cYnF29ytBkUvgf_DuGCsD5wc7c9NZ-Y5WoSifZzg5ZcNs2nbhRgepHlfcURgaVUvEu_6OQwZktjWfr-did40B/s1600/linux.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgKkkd9TlpBH69SJ2A5la8Bres_d4l53vzANAK7W2RVh3HJoJjX9PuIhhtiYhO5YlDnu8RuFrT8bAyj_0DwcjPB4tSIcLglj7N2PGus3G1cYnF29ytBkUvgf_DuGCsD5wc7c9NZ-Y5WoSifZzg5ZcNs2nbhRgepHlfcURgaVUvEu_6OQwZktjWfr-did40B/s1600/linux.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/cisa-warns-of-actively-exploited-d-link.html",
@@ -84,8 +96,10 @@
             "published": "2024-05-17T06:43:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjif0vHPiJpWqSsxYf6_ZftcHyQWnudXK5c0G1j4lk-mM1WJs-TZHhgitfonc7VJBNvCrZMtrAmL0ms_XPCe8LYGpB5CxrIn8xijJTtD98T5hDh7xTWBl5DkzbNmrY8Z2XwrVFa29h2SYwv2Ambz4DKI3fhCFPn3vzfFFcdHUR1NeJUzJfocCIac_SOBlZo/s1600/dlink.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjif0vHPiJpWqSsxYf6_ZftcHyQWnudXK5c0G1j4lk-mM1WJs-TZHhgitfonc7VJBNvCrZMtrAmL0ms_XPCe8LYGpB5CxrIn8xijJTtD98T5hDh7xTWBl5DkzbNmrY8Z2XwrVFa29h2SYwv2Ambz4DKI3fhCFPn3vzfFFcdHUR1NeJUzJfocCIac_SOBlZo/s1600/dlink.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/new-wi-fi-vulnerability-enabling.html",
@@ -96,8 +110,10 @@
             "published": "2024-05-16T16:02:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj6d7Gzb_h-iUyW-ZV9K-72UmwGBH5s6LAObmfDc7t5yM8sjbhw5BiJ1tl6YYaIyz7rDm3A0V6yivf7rF9438dH0cguzgTV821Tn0TbVubAm7qfWQZjXHfyVF2sbH-72wMa6elHZq8sGiW6VomBjgRLgcAersRKeraJa16BdWZkU04X5WSAfRLEsFfjoAKT/s1600/wifi.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj6d7Gzb_h-iUyW-ZV9K-72UmwGBH5s6LAObmfDc7t5yM8sjbhw5BiJ1tl6YYaIyz7rDm3A0V6yivf7rF9438dH0cguzgTV821Tn0TbVubAm7qfWQZjXHfyVF2sbH-72wMa6elHZq8sGiW6VomBjgRLgcAersRKeraJa16BdWZkU04X5WSAfRLEsFfjoAKT/s1600/wifi.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/north-korean-hackers-exploit-facebook.html",
@@ -108,8 +124,10 @@
             "published": "2024-05-16T13:48:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi0CgQjTGmGSfRS1sg_daBIAU-YSbp-JtU2wJUNbsvH_Z7lMjjdGBl1RMbetEr4oFfmuHwcDQFYa6CtTZYbI3UzTjzIs6sqIbAEBIH9VqH1hUdZz9OFPtEpUGXAzEw-6Njmcbngrrx3SoZN5DFEC3txh9Q9GTUkI123G9pXWKuBp7O7DwhMqnuGdf37Mqhm/s1600/hack.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi0CgQjTGmGSfRS1sg_daBIAU-YSbp-JtU2wJUNbsvH_Z7lMjjdGBl1RMbetEr4oFfmuHwcDQFYa6CtTZYbI3UzTjzIs6sqIbAEBIH9VqH1hUdZz9OFPtEpUGXAzEw-6Njmcbngrrx3SoZN5DFEC3txh9Q9GTUkI123G9pXWKuBp7O7DwhMqnuGdf37Mqhm/s1600/hack.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/researchers-uncover-11-security-flaws.html",
@@ -120,8 +138,10 @@
             "published": "2024-05-16T10:12:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj0W6bvR9fzkycXkJJdcnbs_5eE6MI3KteW1cqK4EmjT9CtU3UeHZ9qrBsDt81R0i6Ihyphenhyphen9LKFhwPHDAoHdYzi_rLcg_FZC7x4ddV05oV0ybdTa8rd1Uu-lwxbQbHJeLL2X19HyElBjinJemsN7A8V5cenapqWtdFi0mJjbbAQroZFomNspkugGaARpukihf/s1600/machine.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj0W6bvR9fzkycXkJJdcnbs_5eE6MI3KteW1cqK4EmjT9CtU3UeHZ9qrBsDt81R0i6Ihyphenhyphen9LKFhwPHDAoHdYzi_rLcg_FZC7x4ddV05oV0ybdTa8rd1Uu-lwxbQbHJeLL2X19HyElBjinJemsN7A8V5cenapqWtdFi0mJjbbAQroZFomNspkugGaARpukihf/s1600/machine.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/cybercriminals-exploiting-microsofts.html",
@@ -132,8 +152,10 @@
             "published": "2024-05-16T03:16:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhG-PcUDkVO7cSuiKU_orq2mhb9VqxGYPcQgP4eSUAh4OL_-f_CubxQBn1Htu_Br7xERfpfD3QjIul2LRq6fTa6Iz43Snrla-go6qPN9o-aJJ7o7CxNU2kK4yvj6lPQKwLms8JbgbHX38B-apXbBuPkVN95W_0kdwXHmi1lBS43GDFcOvwEvIuNWFhtRdMo/s1600/ms.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhG-PcUDkVO7cSuiKU_orq2mhb9VqxGYPcQgP4eSUAh4OL_-f_CubxQBn1Htu_Br7xERfpfD3QjIul2LRq6fTa6Iz43Snrla-go6qPN9o-aJJ7o7CxNU2kK4yvj6lPQKwLms8JbgbHX38B-apXbBuPkVN95W_0kdwXHmi1lBS43GDFcOvwEvIuNWFhtRdMo/s1600/ms.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/google-patches-yet-another-actively.html",
@@ -144,8 +166,10 @@
             "published": "2024-05-16T03:01:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgbF8wx_xuLZ51MTHpCOGdzhN7uoQqeUv9WnoyH1_pZ-84rV1BgjxUr1NQfMiogwJkoUXmvki27jHE-xRC-GwTpFEPuxTASdjeQIpdevA628w8I8Ufh-AHtkuK9jXo7CYdSxpqCjW8pFMP71VTdcutUPOQOZeexKjkzZi5vhypW952FbL8uw07mq-NMQF77/s1600/chrome.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgbF8wx_xuLZ51MTHpCOGdzhN7uoQqeUv9WnoyH1_pZ-84rV1BgjxUr1NQfMiogwJkoUXmvki27jHE-xRC-GwTpFEPuxTASdjeQIpdevA628w8I8Ufh-AHtkuK9jXo7CYdSxpqCjW8pFMP71VTdcutUPOQOZeexKjkzZi5vhypW952FbL8uw07mq-NMQF77/s1600/chrome.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/fbi-seizes-breachforums-again-urges.html",
@@ -156,8 +180,10 @@
             "published": "2024-05-15T17:52:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjCXr2dbbDhMkcRibJUp2K02Qb3JwpOR8ZtazciTs8E36_l_t671ju76x7-P7nePx-sg-zMVzDR3cJ_wbLPcobjXz2nXE4zCAwTDUHgBDf8alqqTYLedg14b5LYjB8OOT4KHWZ5BHQWovYovduLQnIxD2jbs-4aN5XL3IrdWQSo3IBBrebzVLADhjwfeszk/s1600/fbi.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjCXr2dbbDhMkcRibJUp2K02Qb3JwpOR8ZtazciTs8E36_l_t671ju76x7-P7nePx-sg-zMVzDR3cJ_wbLPcobjXz2nXE4zCAwTDUHgBDf8alqqTYLedg14b5LYjB8OOT4KHWZ5BHQWovYovduLQnIxD2jbs-4aN5XL3IrdWQSo3IBBrebzVLADhjwfeszk/s1600/fbi.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/google-adds-ai-powered-theft-protection.html",
@@ -168,8 +194,10 @@
             "published": "2024-05-15T17:00:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSXArZPLs2xoQsPxEI7dwO9FQhcJD4L2jqdTMYu8bLpIUTLN5aYpp1gbA0ranFijRCTaxENd0Wp94A5ilS7E6gnWbfulmafIwu6WmJ2HclOVy7ltJPtZZeCXGyHMTlwXt5q6dWNUBthyphenhyphentCYwclR35dqV3RwJn57AaolO2S521J57aIArOyTxp8876P-Jda/s1600/theft.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSXArZPLs2xoQsPxEI7dwO9FQhcJD4L2jqdTMYu8bLpIUTLN5aYpp1gbA0ranFijRCTaxENd0Wp94A5ilS7E6gnWbfulmafIwu6WmJ2HclOVy7ltJPtZZeCXGyHMTlwXt5q6dWNUBthyphenhyphentCYwclR35dqV3RwJn57AaolO2S521J57aIArOyTxp8876P-Jda/s1600/theft.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/android-15-introduces-new-features-to.html",
@@ -180,8 +208,10 @@
             "published": "2024-05-15T17:00:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhjzmzJIldOiZh2c4S9W_dAr7OIpkKAYlProKSmMCr0WI30vVIfl9ynDpMLu9_Z-Fr9kIEV0rvm7TZOotA5d79_htMnvCLYW12I_enFTHhlAEfqNnk5_hAaNp6hGqGdr9dIxSX2hVKZcQVuGFb-ajdN_k1pN1VwtZ_ywDtPJnll3oM_dSdz1JXVkdk__agp/s1600/malware.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhjzmzJIldOiZh2c4S9W_dAr7OIpkKAYlProKSmMCr0WI30vVIfl9ynDpMLu9_Z-Fr9kIEV0rvm7TZOotA5d79_htMnvCLYW12I_enFTHhlAEfqNnk5_hAaNp6hGqGdr9dIxSX2hVKZcQVuGFb-ajdN_k1pN1VwtZ_ywDtPJnll3oM_dSdz1JXVkdk__agp/s1600/malware.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/turla-group-deploys-lunarweb-and.html",
@@ -192,8 +222,10 @@
             "published": "2024-05-15T12:29:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg0cHYoES0UHkeCQhIzrtg0-1PPT-Pd5wjEMvOv8Xs6Coix-T0WYczWTIeJPtTASn03jxqIlTXjgCY3TQlBpshgywr1ORTLltZGa1OyOXAtVLtl5TL9WLGaA5Fl0onRYieAlgE7Lz6OsJBV9B5ChUtpMfNxi0o3yVGc7dsFQZScPQp0jXgxxay5CI69u22e/s1600/malware.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg0cHYoES0UHkeCQhIzrtg0-1PPT-Pd5wjEMvOv8Xs6Coix-T0WYczWTIeJPtTASn03jxqIlTXjgCY3TQlBpshgywr1ORTLltZGa1OyOXAtVLtl5TL9WLGaA5Fl0onRYieAlgE7Lz6OsJBV9B5ChUtpMfNxi0o3yVGc7dsFQZScPQp0jXgxxay5CI69u22e/s1600/malware.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/get-cyber-resilient-with-cvss.html",
@@ -204,8 +236,10 @@
             "published": "2024-05-15T11:38:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhdgCH-Jik1Js52TVIN2kGab7KiF4kumGWoODciZOCHrfEG7sqYmkO4P2lte1JH6gZe7XwWbjGvNWLSfwj-D-7DkHDoh6HFCCrM826P2_1qm9fRfaRYLuTECiDaRkOMZRFllfyQKYJv7twdfLW27ZrrP8JEPTQGuEwUHSt-RDURMM3quAI5mWra9iD5e8k/s1600/2.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhdgCH-Jik1Js52TVIN2kGab7KiF4kumGWoODciZOCHrfEG7sqYmkO4P2lte1JH6gZe7XwWbjGvNWLSfwj-D-7DkHDoh6HFCCrM826P2_1qm9fRfaRYLuTECiDaRkOMZRFllfyQKYJv7twdfLW27ZrrP8JEPTQGuEwUHSt-RDURMM3quAI5mWra9iD5e8k/s1600/2.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/ebury-botnet-malware-compromises-400000.html",
@@ -216,8 +250,10 @@
             "published": "2024-05-15T10:56:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgFcopCewQJMs6m2QrYmO-yLRWF8j0J1p3RH7nRvUNcxMzeMWla1RVkbi2DlVfqU2wQBYuv0hc9OZPZiC7RMVjlgmJSRYf-SBP2CzzHJZeEeMNbL632oiH9k1Lfqu2IjmVpXxltFVGCZ6PMOGkPBfiSFdz1eC1eiUL1JY3PcZh3_dnK_vm_0uN9cnr6EIA5/s1600/ebury.jpg"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgFcopCewQJMs6m2QrYmO-yLRWF8j0J1p3RH7nRvUNcxMzeMWla1RVkbi2DlVfqU2wQBYuv0hc9OZPZiC7RMVjlgmJSRYf-SBP2CzzHJZeEeMNbL632oiH9k1Lfqu2IjmVpXxltFVGCZ6PMOGkPBfiSFdz1eC1eiUL1JY3PcZh3_dnK_vm_0uN9cnr6EIA5/s1600/ebury.jpg",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/its-time-to-master-lift-shift-migrating.html",
@@ -228,8 +264,10 @@
             "published": "2024-05-15T10:55:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjqRxRQHPZw-cjEhbW56EdcQ6QL-NR5uJjk9AYPcym9XjJWJQBj-JmPFSy1Texg4GXNJdN3TUVs53wcWG95ClRrZkhM1gFXZXHiajndG8OSe4WsPFWfo9j4-_yFS-YtPoi85r1ITbhyRy9NH5ar50KSviZMs3ZE2XImdZGj4sKTjL-lUzvsdQIa9eHF5R0/s1600/main.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjqRxRQHPZw-cjEhbW56EdcQ6QL-NR5uJjk9AYPcym9XjJWJQBj-JmPFSy1Texg4GXNJdN3TUVs53wcWG95ClRrZkhM1gFXZXHiajndG8OSe4WsPFWfo9j4-_yFS-YtPoi85r1ITbhyRy9NH5ar50KSviZMs3ZE2XImdZGj4sKTjL-lUzvsdQIa9eHF5R0/s1600/main.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/dutch-court-sentences-tornado-cash-co.html",
@@ -240,8 +278,10 @@
             "published": "2024-05-15T08:28:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgBPk-hQq2Zp77E2oPvv_a6v5qZcic-fMnamnazYDiOxRjCDkaBpawAz2aJHS5PDYLOy8LhfFefLGVniZ4QQaISgQuJZuDirj3cYon-WnvQVVaaW63p-EBRZuf-qnoa4i_anIXxGiyJ9C35NEN5b5_qwPYZfVuuzLqN4AyPnzFxA-otoo6obsvcDo7ZHidY/s1600/cash.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgBPk-hQq2Zp77E2oPvv_a6v5qZcic-fMnamnazYDiOxRjCDkaBpawAz2aJHS5PDYLOy8LhfFefLGVniZ4QQaISgQuJZuDirj3cYon-WnvQVVaaW63p-EBRZuf-qnoa4i_anIXxGiyJ9C35NEN5b5_qwPYZfVuuzLqN4AyPnzFxA-otoo6obsvcDo7ZHidY/s1600/cash.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/microsoft-patches-61-flaws-including.html",
@@ -252,8 +292,10 @@
             "published": "2024-05-15T07:17:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjRWyceMEGNjv9gX0r64Da_hcbZmpbkOE-U-sRN8zX5m3iKTPCFAQ3Zc_NsfOM_1Qmf1yjGWcK1bHa0BZv-HAVVNJdWGHID9CIYZNyaYyU_AsoaYnz7iyUmHtBZrlRT78cpQGdTaN1iSQlBW_vV8udl18eRRpI8wV7OvTtsEBuLhwdFgsoe7F4FOqgMe8vM/s1600/windows.jpg"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjRWyceMEGNjv9gX0r64Da_hcbZmpbkOE-U-sRN8zX5m3iKTPCFAQ3Zc_NsfOM_1Qmf1yjGWcK1bHa0BZv-HAVVNJdWGHID9CIYZNyaYyU_AsoaYnz7iyUmHtBZrlRT78cpQGdTaN1iSQlBW_vV8udl18eRRpI8wV7OvTtsEBuLhwdFgsoe7F4FOqgMe8vM/s1600/windows.jpg",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/vmware-patches-severe-security-flaws-in.html",
@@ -264,8 +306,10 @@
             "published": "2024-05-14T15:49:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh-pzoIE9OnLDHB8KIQVybTE2wnBsTI_1QVCBzh5pnbmIaPdYMHYjnH0mxkSowWMkCqZzsANsz5iKxL96siXr3O04tsO_PEV-j_NA4JKPbuIOaXRJC9fE-CIKOfNOy8TLIawuFf-Q0hTvSGjvKzFxlHNnFsRq_k1bfd7_wfohmNRVtgUXNYGXasYHaSpl3Y/s1600/vmware.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh-pzoIE9OnLDHB8KIQVybTE2wnBsTI_1QVCBzh5pnbmIaPdYMHYjnH0mxkSowWMkCqZzsANsz5iKxL96siXr3O04tsO_PEV-j_NA4JKPbuIOaXRJC9fE-CIKOfNOy8TLIawuFf-Q0hTvSGjvKzFxlHNnFsRq_k1bfd7_wfohmNRVtgUXNYGXasYHaSpl3Y/s1600/vmware.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/new-chrome-zero-day-vulnerability-cve.html",
@@ -276,8 +320,10 @@
             "published": "2024-05-14T13:51:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibh2nNGZ-2lt1wpR9uYjcE3feawRpDHdC-0unnr9Bfx0E6RMQ1Psb5mtKQQp6fwf91MEEFg5-KGH25MgZBcOUsm-2t1zwLIToKqT-6ayvgBebjkU5WQLZoEosXwsF8YtOfCuPupZK8fFXdjwiOdL-PPAj0TvFJPwekUglRjR_fKgJhewEq6rSQRSFMaUgK/s1600/chrome.jpg"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibh2nNGZ-2lt1wpR9uYjcE3feawRpDHdC-0unnr9Bfx0E6RMQ1Psb5mtKQQp6fwf91MEEFg5-KGH25MgZBcOUsm-2t1zwLIToKqT-6ayvgBebjkU5WQLZoEosXwsF8YtOfCuPupZK8fFXdjwiOdL-PPAj0TvFJPwekUglRjR_fKgJhewEq6rSQRSFMaUgK/s1600/chrome.jpg",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/critical-flaws-in-cacti-framework-could.html",
@@ -288,8 +334,10 @@
             "published": "2024-05-14T11:17:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiHLObaDDW6hdIpLGFNDDk2sYbQB81_DFHKufB40rUMtjWDIHnxm6KFsECxwXCMaSXiZNYt11Oqp_5iWn7F6THWOMJPE2HZLD1jjV5t20PcFyEG_IyW9sWX00AsLPlfT-XhA00tSyHjNdwe1NjptEAWja1IH6HUuMGJAihrs6Y9sjQbAeUTH24vfCQ-Medf/s1600/catci.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiHLObaDDW6hdIpLGFNDDk2sYbQB81_DFHKufB40rUMtjWDIHnxm6KFsECxwXCMaSXiZNYt11Oqp_5iWn7F6THWOMJPE2HZLD1jjV5t20PcFyEG_IyW9sWX00AsLPlfT-XhA00tSyHjNdwe1NjptEAWja1IH6HUuMGJAihrs6Y9sjQbAeUTH24vfCQ-Medf/s1600/catci.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/6-mistakes-organizations-make-when.html",
@@ -300,8 +348,10 @@
             "published": "2024-05-14T10:51:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjLFi5vwgPwmrKgIafhE-_gG3voXLQC3RGTK0MFU0pxOFmqlOekYX5kOJ2W4RUqmzsSgjQpgnIHbpZJAbZB3L-_8h1bKkDMAy29F47szXCvmzdY1gutG3rqEoD3ETmNDpktqkntOGN7_FRzw-Kh3HogU0g4Rk5k9rurEga5551q3K2pXVGELQwMOPJbyiY/s1600/ONE.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjLFi5vwgPwmrKgIafhE-_gG3voXLQC3RGTK0MFU0pxOFmqlOekYX5kOJ2W4RUqmzsSgjQpgnIHbpZJAbZB3L-_8h1bKkDMAy29F47szXCvmzdY1gutG3rqEoD3ETmNDpktqkntOGN7_FRzw-Kh3HogU0g4Rk5k9rurEga5551q3K2pXVGELQwMOPJbyiY/s1600/ONE.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/ongoing-campaign-bombarded-enterprises.html",
@@ -312,8 +362,10 @@
             "published": "2024-05-14T10:44:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi73OKiZQwK_Ile4L79a5ZC2ZHqReLRn0hfIzp96t0SQVa_YKh5L6e7Evy-GG8C8YI_WZ9zh5RkLdPYLWCDcRuxu2WaBhotnL2BiT4EUFnvu5FHVrqddCfG8ocx0R0pmn_piAgDkIkqqdy3CmzJeSB3B-m7lQ9vXfUP8jV7rCPQLXT8jNfoxoo5fGiCsIlZ/s1600/phone-spam.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi73OKiZQwK_Ile4L79a5ZC2ZHqReLRn0hfIzp96t0SQVa_YKh5L6e7Evy-GG8C8YI_WZ9zh5RkLdPYLWCDcRuxu2WaBhotnL2BiT4EUFnvu5FHVrqddCfG8ocx0R0pmn_piAgDkIkqqdy3CmzJeSB3B-m7lQ9vXfUP8jV7rCPQLXT8jNfoxoo5fGiCsIlZ/s1600/phone-spam.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/apple-and-google-launch-cross-platform.html",
@@ -324,8 +376,10 @@
             "published": "2024-05-14T05:16:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgObKafwXTvS8TkJlQc8yMb4vVEIkZe5OIVC6T1AqpzyrFxsdcmHzDoMTDqd7bGEKxYnGPrx73JhWmFGLuvXCD4mkLpvZwKultOaTQk8VS2BK8pnqpDMjBrRtdVMeZrcwVeA7IJCdDMCz_1NW1AB3NHerl2Moi22iXqw8ZuqWjTUeYGAYqVIRsOKs6FgywW/s1600/google.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgObKafwXTvS8TkJlQc8yMb4vVEIkZe5OIVC6T1AqpzyrFxsdcmHzDoMTDqd7bGEKxYnGPrx73JhWmFGLuvXCD4mkLpvZwKultOaTQk8VS2BK8pnqpDMjBrRtdVMeZrcwVeA7IJCdDMCz_1NW1AB3NHerl2Moi22iXqw8ZuqWjTUeYGAYqVIRsOKs6FgywW/s1600/google.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/mitre-unveils-emb3d-threat-modeling.html",
@@ -336,8 +390,10 @@
             "published": "2024-05-13T14:29:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi1D1wnx1DJ7Arc47tALIJpvQa-wwjJIS_F5-laBVgVXphQ9vqQvjXzHT_BGrmzNZp8B16UDdxoq4LJygejxxCrEDhIJo1TTXbF_zHVb1oHtIYaEk626-oenl-YNtbbT6iboroTycRoj-ZqIxfumBl21Gne9TjRG1lw_KS3kQ5DNnpV5KBAgOgl1VbKJo9y/s1600/device.jpg"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi1D1wnx1DJ7Arc47tALIJpvQa-wwjJIS_F5-laBVgVXphQ9vqQvjXzHT_BGrmzNZp8B16UDdxoq4LJygejxxCrEDhIJo1TTXbF_zHVb1oHtIYaEk626-oenl-YNtbbT6iboroTycRoj-ZqIxfumBl21Gne9TjRG1lw_KS3kQ5DNnpV5KBAgOgl1VbKJo9y/s1600/device.jpg",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/the-2024-browser-security-report.html",
@@ -348,8 +404,10 @@
             "published": "2024-05-13T12:06:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEijSLFEn8-QfApj4gdNDUFOgQ-2WUKqdp737_4VxzL4xySRYwTXmYvbnVNcSqJeyAh-1nrQQ0ukxawxrTiS43xRjNaHnjAoo4NER14CUws2-alIb7SGE5u1vsW5OysBftZIN1X12cVmPkXrOdGpcU-TGjvF0-8xgkDE7fYMJIljp23hyphenhyphenu9DobEtWoxMaqAh/s1600/2024.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEijSLFEn8-QfApj4gdNDUFOgQ-2WUKqdp737_4VxzL4xySRYwTXmYvbnVNcSqJeyAh-1nrQQ0ukxawxrTiS43xRjNaHnjAoo4NER14CUws2-alIb7SGE5u1vsW5OysBftZIN1X12cVmPkXrOdGpcU-TGjvF0-8xgkDE7fYMJIljp23hyphenhyphenu9DobEtWoxMaqAh/s1600/2024.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/shq-response-platform-and-risk-centre.html",
@@ -360,8 +418,10 @@
             "published": "2024-05-13T10:19:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjnlU1-NhlyNyk19CgLQbkq80WbGg-WNMi9cZvcMu7twTPPrIFJM92a0LTticOq-iGIHr_qG2WBSrqMq1zVBM_Ptn5UG3x6DNXYyOeDRnh6ySoiSHD3l8hOvn1sEUCtm2lhJoNRqrSdlrlNZlg5rwS_8lDvlaEQvEDW4fcOieerKi6p0rD1sd48ArkCIEmw/s1600/shqq.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjnlU1-NhlyNyk19CgLQbkq80WbGg-WNMi9cZvcMu7twTPPrIFJM92a0LTticOq-iGIHr_qG2WBSrqMq1zVBM_Ptn5UG3x6DNXYyOeDRnh6ySoiSHD3l8hOvn1sEUCtm2lhJoNRqrSdlrlNZlg5rwS_8lDvlaEQvEDW4fcOieerKi6p0rD1sd48ArkCIEmw/s1600/shqq.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/severe-vulnerabilities-in-cinterion.html",
@@ -372,8 +432,10 @@
             "published": "2024-05-13T10:12:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiw5Y6QTYy8lc2gfLQmtyC9OD8rg6srhJ1mN3QIUuyhmyOM2pGxYJ4mn6mh8F8oDNBbuCnp28OexbQo9nenllHfQ9KIqw15wEA4BusboyXhujCd8zvUXhiAQuAx1KZn_d476b31KuRnjzOXlSL5QkO2J6NeCuD6a6U99RRVRPZGDTpnMDgxP67wGbg2v1tu/s1600/tel.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiw5Y6QTYy8lc2gfLQmtyC9OD8rg6srhJ1mN3QIUuyhmyOM2pGxYJ4mn6mh8F8oDNBbuCnp28OexbQo9nenllHfQ9KIqw15wEA4BusboyXhujCd8zvUXhiAQuAx1KZn_d476b31KuRnjzOXlSL5QkO2J6NeCuD6a6U99RRVRPZGDTpnMDgxP67wGbg2v1tu/s1600/tel.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/black-basta-ransomware-strikes-500.html",
@@ -384,8 +446,10 @@
             "published": "2024-05-13T10:01:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiWOHiEN0OtwESEetnjfH3hslYWDThSiGHFocrzKqZP6Uw3kErdgYV3a8xnpiWkPxNyc5M5ZkuTaW_G3Z5GF9V6x1yiDtyVdWG4l4EB5svc6q1fKaBM9TNj-7MQl8d5nLuiMdGRo_qrjdGhPk8ZetizQPSb2We9cH-opXOdDoQ7J2LLMHrMKUiM53JI6D7D/s1600/ransomware.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiWOHiEN0OtwESEetnjfH3hslYWDThSiGHFocrzKqZP6Uw3kErdgYV3a8xnpiWkPxNyc5M5ZkuTaW_G3Z5GF9V6x1yiDtyVdWG4l4EB5svc6q1fKaBM9TNj-7MQl8d5nLuiMdGRo_qrjdGhPk8ZetizQPSb2We9cH-opXOdDoQ7J2LLMHrMKUiM53JI6D7D/s1600/ransomware.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/malicious-python-package-hides-sliver.html",
@@ -396,8 +460,10 @@
             "published": "2024-05-13T06:18:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhMQICHAT2vwAjFq5fO9q_dUX6I4-SONVfpHzNeGUlwZa6dp85TbpU-FEVvT3XTjZMRzz4Og2MCs3ARJwIljRCz1zPZblcXoxyWSrVfKEgR5XcW06Sj_pWk1wr9pFT4t5N6TfJ2Gg8WzRfmYEF0LJbP56ImbLey2hdwg4hr6mQXq2TCT6W3ZkV8w2tzxAoT/s1600/python.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhMQICHAT2vwAjFq5fO9q_dUX6I4-SONVfpHzNeGUlwZa6dp85TbpU-FEVvT3XTjZMRzz4Og2MCs3ARJwIljRCz1zPZblcXoxyWSrVfKEgR5XcW06Sj_pWk1wr9pFT4t5N6TfJ2Gg8WzRfmYEF0LJbP56ImbLey2hdwg4hr6mQXq2TCT6W3ZkV8w2tzxAoT/s1600/python.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/fin7-hacker-group-leverages-malicious.html",
@@ -408,8 +474,10 @@
             "published": "2024-05-11T07:29:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEidGxM7ADAzrplKASUpJQ3bzcolJSyabMKaYKT4HClyzRgCOuWCVvr4duu8KJkPW_9Ga8ADrETgYfu0Pwx9QosFgHep34F7jq5lOwmpYTooakEW-L3-1pyG0UDv5s2UEUJ-etPxVPf3FsuaCnRzo-2SfgR6sBYGaiuMLgIfVMCeQ_eylo2l6zR3vJ-i3oYb/s1600/browser.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEidGxM7ADAzrplKASUpJQ3bzcolJSyabMKaYKT4HClyzRgCOuWCVvr4duu8KJkPW_9Ga8ADrETgYfu0Pwx9QosFgHep34F7jq5lOwmpYTooakEW-L3-1pyG0UDv5s2UEUJ-etPxVPf3FsuaCnRzo-2SfgR6sBYGaiuMLgIfVMCeQ_eylo2l6zR3vJ-i3oYb/s1600/browser.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/north-korean-hackers-deploy-new-golang.html",
@@ -420,8 +488,10 @@
             "published": "2024-05-10T14:54:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEidJpCh60Y9OeOx9Vlo9dCf4aW8aHjXqU-MHJt8NBiVPiHKC7wWrDk1vRCuo90pQ3mtyy9t9A3ouhAdU6aUe5MxKQm5Tvt9XRGYYiX5EDVnNXthkbqKLKD-YikG_sWfHjatO8QRZIClAHjB2novZftoHKSkAEs50ZfCDkCDZzrPE_qZgIrvet1tAfPwa4L2/s1600/map.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEidJpCh60Y9OeOx9Vlo9dCf4aW8aHjXqU-MHJt8NBiVPiHKC7wWrDk1vRCuo90pQ3mtyy9t9A3ouhAdU6aUe5MxKQm5Tvt9XRGYYiX5EDVnNXthkbqKLKD-YikG_sWfHjatO8QRZIClAHjB2novZftoHKSkAEs50ZfCDkCDZzrPE_qZgIrvet1tAfPwa4L2/s1600/map.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/censysgpt-ai-powered-threat-hunting-for.html",
@@ -432,8 +502,10 @@
             "published": "2024-05-10T12:52:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgrQzKHxF9wi3LGibNRnANXUG8_15lCG3M1Xufs8A98ul3VXJnGRM_LhxYgNXMMIF6bEVuMk1irdTzogocwMaUQgv6xl34h-r4-TpWtnaV9dpLC3ZsX2XyRYNMvMQTjJmpIZrScfZJdRhQcn0hVrVjH-4EAxWu-EXyDq0ebtYgGX787Xuf40HWe1XQYxVC3/s1600/webinar.jpg"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgrQzKHxF9wi3LGibNRnANXUG8_15lCG3M1Xufs8A98ul3VXJnGRM_LhxYgNXMMIF6bEVuMk1irdTzogocwMaUQgv6xl34h-r4-TpWtnaV9dpLC3ZsX2XyRYNMvMQTjJmpIZrScfZJdRhQcn0hVrVjH-4EAxWu-EXyDq0ebtYgGX787Xuf40HWe1XQYxVC3/s1600/webinar.jpg",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/chrome-zero-day-alert-update-your.html",
@@ -444,8 +516,10 @@
             "published": "2024-05-10T10:23:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgPhSx8fwDELvWKGNqNBlu-6Ndi0sPJb5p7SWiIt3zy9vzwPZSe7riuvdLHazxW6fjyi7S27qv4kzvcF9xE_ftF8djTvTvdEzg1Oh4XMApFiK4rwg7xw_hB5QuQ5S7y76OVPdl2zVCKaS0gHR54fTN805N7NUzdgw-Ivg3EOYBvCPBwOlveakXMpHVZXvAY/s1600/chrome.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgPhSx8fwDELvWKGNqNBlu-6Ndi0sPJb5p7SWiIt3zy9vzwPZSe7riuvdLHazxW6fjyi7S27qv4kzvcF9xE_ftF8djTvTvdEzg1Oh4XMApFiK4rwg7xw_hB5QuQ5S7y76OVPdl2zVCKaS0gHR54fTN805N7NUzdgw-Ivg3EOYBvCPBwOlveakXMpHVZXvAY/s1600/chrome.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/whats-right-edr-for-you.html",
@@ -456,8 +530,10 @@
             "published": "2024-05-10T10:22:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgf4ObBPhLrcp9eQ4wBjjsqmgCiTTduqn2Z86NyBvqJIICGm88V2AZbHI3LUgw2V6T2O_Stp9triqnH0DHUM2PlpbZy9cNfIlkbHRMq_H6aQHjOuDTHBQ88jPyn6Lm913dcGTutJLCvyWd4BPWNKYVHQCApwvtTP2wbDwosiP6wzj2L7Yh4HDgCoxNwkHo/s1600/HUNT.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgf4ObBPhLrcp9eQ4wBjjsqmgCiTTduqn2Z86NyBvqJIICGm88V2AZbHI3LUgw2V6T2O_Stp9triqnH0DHUM2PlpbZy9cNfIlkbHRMq_H6aQHjOuDTHBQ88jPyn6Lm913dcGTutJLCvyWd4BPWNKYVHQCApwvtTP2wbDwosiP6wzj2L7Yh4HDgCoxNwkHo/s1600/HUNT.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/malicious-android-apps-pose-as-google.html",
@@ -468,8 +544,10 @@
             "published": "2024-05-10T10:21:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgu7hyphenhyphennU2IYjiz-ihf3HI2sV7T0y8bp02Lny2zKl22QLmn60deJC7JrSYqlkAEihse0cDSvFoTKVWehDNwJHrR4xoMZOMSFkDUTBuDWNqQ6tbDT5Z7hZ784vbqPeKYUv9W9NFIV32gq8n_72bAOq0NcSHKiEtrKHmePuoQcgVdyRddlABJ3R4Q0upkj8NZG/s1600/apps.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgu7hyphenhyphennU2IYjiz-ihf3HI2sV7T0y8bp02Lny2zKl22QLmn60deJC7JrSYqlkAEihse0cDSvFoTKVWehDNwJHrR4xoMZOMSFkDUTBuDWNqQ6tbDT5Z7hZ784vbqPeKYUv9W9NFIV32gq8n_72bAOq0NcSHKiEtrKHmePuoQcgVdyRddlABJ3R4Q0upkj8NZG/s1600/apps.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/researchers-uncover-llmjacking-scheme.html",
@@ -480,8 +558,10 @@
             "published": "2024-05-10T07:41:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj8sh-XmpsFwYT_aLaIqq4Tzn_W8HiANHxel6Vyy2-hLUvNgqpex97k8qG7SE8xPouPjkPpF-RuctUUeURbv0wg8sR-RUBFStCYplZP56arpce9kZ0rg8rb_bMRMFGV3Q_u5h3PUxznvpjiCljMNt33Yk2IcleXBku1rS0K6saao9m6MTqHsFiMDmcvdkJ-/s1600/app.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj8sh-XmpsFwYT_aLaIqq4Tzn_W8HiANHxel6Vyy2-hLUvNgqpex97k8qG7SE8xPouPjkPpF-RuctUUeURbv0wg8sR-RUBFStCYplZP56arpce9kZ0rg8rb_bMRMFGV3Q_u5h3PUxznvpjiCljMNt33Yk2IcleXBku1rS0K6saao9m6MTqHsFiMDmcvdkJ-/s1600/app.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/new-tunnelvision-attack-allows.html",
@@ -492,8 +572,10 @@
             "published": "2024-05-09T17:55:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhQlsUsoiYy4aXpmIuXau1TgGOZCD90EijcsFIeenHhC3SbZx0oCAUNX5BXImJJt4h30CotZ6v2szc7nwoa7K1DksiIAUboLQbvpH_7gBFvurgPQd2ANs1v9JieyCVRolbQ3_smQa-p7gM2krtcbqLr0kfuCMhvxGNCjgBb5YqCnTMcCO-PDA_7R96f3VF2/s1600/vpn.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhQlsUsoiYy4aXpmIuXau1TgGOZCD90EijcsFIeenHhC3SbZx0oCAUNX5BXImJJt4h30CotZ6v2szc7nwoa7K1DksiIAUboLQbvpH_7gBFvurgPQd2ANs1v9JieyCVRolbQ3_smQa-p7gM2krtcbqLr0kfuCMhvxGNCjgBb5YqCnTMcCO-PDA_7R96f3VF2/s1600/vpn.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/kremlin-backed-apt28-targets-polish.html",
@@ -504,8 +586,10 @@
             "published": "2024-05-09T15:20:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgKaJfnAR5HtIZkrkiZDce4SNgIRTNBO1fYGif-AkvpQCCR-tFBjCuJEzl0ZntSFuIOqSOkNfxt5nddzAggYy2udFTPTl8g_eoAc1PRavjKXJ8rxnFNtW46LsMi8sFKRoIR5mtQZonRLTLVNMn9pWdAmz1Y_kJ6UAoQpqEUoFGSp3Q5waTY2JojNLtOlgjr/s1600/russian-hacker.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgKaJfnAR5HtIZkrkiZDce4SNgIRTNBO1fYGif-AkvpQCCR-tFBjCuJEzl0ZntSFuIOqSOkNfxt5nddzAggYy2udFTPTl8g_eoAc1PRavjKXJ8rxnFNtW46LsMi8sFKRoIR5mtQZonRLTLVNMn9pWdAmz1Y_kJ6UAoQpqEUoFGSp3Q5waTY2JojNLtOlgjr/s1600/russian-hacker.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/new-guide-how-to-scale-your-vciso.html",
@@ -516,8 +600,10 @@
             "published": "2024-05-09T11:05:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjM1BLP41CBRl5iEZSK9mvuJoYFZVFZalw82yXj3w-5GSvvVu4AZd8eFwQKPE1-L2HrZMo7zGoxAw6XqWa_3UandW1xhaUkh14DIKqTWz1-rZMWx9BLgcs6LXDdLvaS5yONjZAzHvBU14YVUGGWM2TdwPEAaAVv02Cby7DbmJ0ykQ7B3LEm0bCrmuJ18CA/s1600/vciso.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjM1BLP41CBRl5iEZSK9mvuJoYFZVFZalw82yXj3w-5GSvvVu4AZd8eFwQKPE1-L2HrZMo7zGoxAw6XqWa_3UandW1xhaUkh14DIKqTWz1-rZMWx9BLgcs6LXDdLvaS5yONjZAzHvBU14YVUGGWM2TdwPEAaAVv02Cby7DbmJ0ykQ7B3LEm0bCrmuJ18CA/s1600/vciso.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/mirai-botnet-exploits-ivanti-connect.html",
@@ -528,8 +614,10 @@
             "published": "2024-05-09T11:04:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiuC0ui9EG4pPDPZvAfEntUJHehkrx0pkCo9KtjkzGzuk-qZLFMgEAegkw-wyjimRyrDCrLaAc52sd3LtHVaWeCkfpPAgTjLeSFRsyCnsYdR61C1dtkaydj6XmdSIAwrJupGHJheMs5NO3kg4vZdJTJdxERSgDqbXegmxqtE3v-NuqixyQxtQ9Ns5KCCHa6/s1600/botnet.jpg"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiuC0ui9EG4pPDPZvAfEntUJHehkrx0pkCo9KtjkzGzuk-qZLFMgEAegkw-wyjimRyrDCrLaAc52sd3LtHVaWeCkfpPAgTjLeSFRsyCnsYdR61C1dtkaydj6XmdSIAwrJupGHJheMs5NO3kg4vZdJTJdxERSgDqbXegmxqtE3v-NuqixyQxtQ9Ns5KCCHa6/s1600/botnet.jpg",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/critical-f5-central-manager.html",
@@ -540,8 +628,10 @@
             "published": "2024-05-09T06:11:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj5s6eeVoQhFHOb9Vb_Vk3Rz9njcAmLGjrcKnDXKudv7jB3msdb7D7GCy-PZwg0I7yBZ-xfEjrmFtVxGiQH4wN33t7V5g6YbDs1s1oaPaArP2yRPtoRCAKThOWtdkaZv6iBzjNAxSOm8St97-q5-TNBv3Z5zv3ADd7G2kATs78RlqOGz3QNyJfb5bCXNsF2/s1600/f5.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj5s6eeVoQhFHOb9Vb_Vk3Rz9njcAmLGjrcKnDXKudv7jB3msdb7D7GCy-PZwg0I7yBZ-xfEjrmFtVxGiQH4wN33t7V5g6YbDs1s1oaPaArP2yRPtoRCAKThOWtdkaZv6iBzjNAxSOm8St97-q5-TNBv3Z5zv3ADd7G2kATs78RlqOGz3QNyJfb5bCXNsF2/s1600/f5.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/a-saas-security-challenge-getting.html",
@@ -552,8 +642,10 @@
             "published": "2024-05-08T14:18:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjk9_-3ho9CnD6vcmj1tvvCvrvAdmKsFY-cbaja-5pRVV8_mArnYK3PxyRqgJ9nWCe9kovyGsFfO3BjgqUs8dmCsnFcYYxyCaeRSoVuS8kU648juKSN1toRwKGiUSbdvcFxO_AJkqalwScXF49DPxDqz23ZB4mLRQwVYZ7S_smVY-N924qApp-IpZGKvSE/s1600/as.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjk9_-3ho9CnD6vcmj1tvvCvrvAdmKsFY-cbaja-5pRVV8_mArnYK3PxyRqgJ9nWCe9kovyGsFfO3BjgqUs8dmCsnFcYYxyCaeRSoVuS8kU648juKSN1toRwKGiUSbdvcFxO_AJkqalwScXF49DPxDqz23ZB4mLRQwVYZ7S_smVY-N924qApp-IpZGKvSE/s1600/as.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/new-spectre-style-pathfinder-attack.html",
@@ -564,8 +656,10 @@
             "published": "2024-05-08T14:17:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiCsXxKSHjymsIMRDDrahsvY3mz_fB0fJj8ZZiVAsOCuyhG7SsO0WlvM_jMqvLhVvvEAsX0Pi2sbuDgu8ZMlNRaK_OkANH4GzvsL8K7TYEcyI-dvPzbHMC-H-1lYURtObXu8WLtF56ou9HUkmg_6mRikd1gp6KOXuDMgvV-LdLOogFHxVGWx2pOeVchbVx6/s1600/cpu.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiCsXxKSHjymsIMRDDrahsvY3mz_fB0fJj8ZZiVAsOCuyhG7SsO0WlvM_jMqvLhVvvEAsX0Pi2sbuDgu8ZMlNRaK_OkANH4GzvsL8K7TYEcyI-dvPzbHMC-H-1lYURtObXu8WLtF56ou9HUkmg_6mRikd1gp6KOXuDMgvV-LdLOogFHxVGWx2pOeVchbVx6/s1600/cpu.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/hijack-loader-malware-employs-process.html",
@@ -576,8 +670,10 @@
             "published": "2024-05-08T10:58:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgHPvhxGd_HGIF7-1OfNtRETRbpPNP33Y8GrqyC4vMegYiv65ZJxIPQYzHOLQPIf8VctiQ3SZ8FJYyPe4_ymMO3V6YclEEXI_IKFDh9IdPN3qDv7pmfFoiB_TNYple9aJlp_xxX2kj5vOulQ2WUFQ8eVz83fdF98SqYM9aK8H8gGec4MuQIjg86j1M74ahJ/s1600/data.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgHPvhxGd_HGIF7-1OfNtRETRbpPNP33Y8GrqyC4vMegYiv65ZJxIPQYzHOLQPIf8VctiQ3SZ8FJYyPe4_ymMO3V6YclEEXI_IKFDh9IdPN3qDv7pmfFoiB_TNYple9aJlp_xxX2kj5vOulQ2WUFQ8eVz83fdF98SqYM9aK8H8gGec4MuQIjg86j1M74ahJ/s1600/data.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/the-fundamentals-of-cloud-security.html",
@@ -588,8 +684,10 @@
             "published": "2024-05-08T10:58:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi9g0_5hh9yyfiqTDAJeGldQ363-xqM83qZitESxMRryqG8TxZrN0XEBeKwwJvWIzoV_MgNFQSFwlYIw6D-9kvBsLkEQ4x-jwm0W1f2mBfmESM1hyMmnQ1s9rQFzu_5aSyLIrguF0hROMma0LFvJuIr3zsyNyuzWLcR88ebXEzdLdbGffcUxTPy4-Ltzi4/s1600/pen.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi9g0_5hh9yyfiqTDAJeGldQ363-xqM83qZitESxMRryqG8TxZrN0XEBeKwwJvWIzoV_MgNFQSFwlYIw6D-9kvBsLkEQ4x-jwm0W1f2mBfmESM1hyMmnQ1s9rQFzu_5aSyLIrguF0hROMma0LFvJuIr3zsyNyuzWLcR88ebXEzdLdbGffcUxTPy4-Ltzi4/s1600/pen.png",
+                "type": "image"
+            },
+            "media": []
         },
         {
             "id": "https://thehackernews.com/2024/05/hackers-exploiting-litespeed-cache-bug.html",
@@ -600,8 +698,10 @@
             "published": "2024-05-08T07:03:00.000Z",
             "author": "info@thehackernews.com (The Hacker News)",
             "image": {
-                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgwWxqiKarD6EDbef2U4m3_BOnbMMSi3QcX7IRua5mjCkdTXC6Y0w6ZBkv8braHsd8pXPyEt65hxXN_Dlto4UCHiOis3OGtJkxNjG1o4sKiRKwXzumV-4XZ5dEccd109nFBUmPc_kR7FeVWaM1Lg8oT5jq7mEt4-rKc_97tWahO_Pn1u20qHspppHZtw1aQ/s1600/wordpress.png"
-            }
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgwWxqiKarD6EDbef2U4m3_BOnbMMSi3QcX7IRua5mjCkdTXC6Y0w6ZBkv8braHsd8pXPyEt65hxXN_Dlto4UCHiOis3OGtJkxNjG1o4sKiRKwXzumV-4XZ5dEccd109nFBUmPc_kR7FeVWaM1Lg8oT5jq7mEt4-rKc_97tWahO_Pn1u20qHspppHZtw1aQ/s1600/wordpress.png",
+                "type": "image"
+            },
+            "media": []
         }
     ],
     "source": "reference/The Hacker News/assets/feed.xml"

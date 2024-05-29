@@ -2,7 +2,7 @@
 feedurl: reference/PyCoder’s Weekly/assets/feed.xml
 site: https://pycoders.com/
 itemlimit: 10
-updated: 2024-05-27T08:59:01.447Z
+updated: 2024-05-29T17:17:14.539Z
 status: OK
 tags:
   - rss
@@ -12,7 +12,7 @@ interval: 168
 > [!abstract] PyCoder’s Weekly
 > 
 >
-> ![[reference/assets/PyCoder’s WeeklyLogo.svg|200x200]]
+> ![[PyCoder’s Weekly.svg|200x200]]
 # Unread Feed Items
 ~~~dataview
 TASK

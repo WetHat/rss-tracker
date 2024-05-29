@@ -12,9 +12,16 @@
             "author": "Sabine Hossenfelder",
             "image": {
                 "src": "https://i2.ytimg.com/vi/QByk4jJwp9c/hqdefault.jpg",
+                "type": "image",
                 "width": "480",
                 "height": "360"
-            }
+            },
+            "media": [
+                {
+                    "src": "https://www.youtube.com/v/QByk4jJwp9c?version=3",
+                    "type": "video"
+                }
+            ]
         },
         {
             "id": "yt:video:_U3oIWQJqH0",
@@ -26,9 +33,16 @@
             "author": "Sabine Hossenfelder",
             "image": {
                 "src": "https://i4.ytimg.com/vi/_U3oIWQJqH0/hqdefault.jpg",
+                "type": "image",
                 "width": "480",
                 "height": "360"
-            }
+            },
+            "media": [
+                {
+                    "src": "https://www.youtube.com/v/_U3oIWQJqH0?version=3",
+                    "type": "video"
+                }
+            ]
         },
         {
             "id": "yt:video:R6G1D2UQ3gg",
@@ -40,9 +54,16 @@
             "author": "Sabine Hossenfelder",
             "image": {
                 "src": "https://i3.ytimg.com/vi/R6G1D2UQ3gg/hqdefault.jpg",
+                "type": "image",
                 "width": "480",
                 "height": "360"
-            }
+            },
+            "media": [
+                {
+                    "src": "https://www.youtube.com/v/R6G1D2UQ3gg?version=3",
+                    "type": "video"
+                }
+            ]
         },
         {
             "id": "yt:video:lt7a3wjf3qY",
@@ -54,9 +75,16 @@
             "author": "Sabine Hossenfelder",
             "image": {
                 "src": "https://i1.ytimg.com/vi/lt7a3wjf3qY/hqdefault.jpg",
+                "type": "image",
                 "width": "480",
                 "height": "360"
-            }
+            },
+            "media": [
+                {
+                    "src": "https://www.youtube.com/v/lt7a3wjf3qY?version=3",
+                    "type": "video"
+                }
+            ]
         },
         {
             "id": "yt:video:yPDo7S-EGCE",
@@ -68,9 +96,16 @@
             "author": "Sabine Hossenfelder",
             "image": {
                 "src": "https://i2.ytimg.com/vi/yPDo7S-EGCE/hqdefault.jpg",
+                "type": "image",
                 "width": "480",
                 "height": "360"
-            }
+            },
+            "media": [
+                {
+                    "src": "https://www.youtube.com/v/yPDo7S-EGCE?version=3",
+                    "type": "video"
+                }
+            ]
         },
         {
             "id": "yt:video:KBT9vFrV6yQ",
@@ -82,9 +117,16 @@
             "author": "Sabine Hossenfelder",
             "image": {
                 "src": "https://i4.ytimg.com/vi/KBT9vFrV6yQ/hqdefault.jpg",
+                "type": "image",
                 "width": "480",
                 "height": "360"
-            }
+            },
+            "media": [
+                {
+                    "src": "https://www.youtube.com/v/KBT9vFrV6yQ?version=3",
+                    "type": "video"
+                }
+            ]
         },
         {
             "id": "yt:video:xTnYS3od6iY",
@@ -96,9 +138,16 @@
             "author": "Sabine Hossenfelder",
             "image": {
                 "src": "https://i1.ytimg.com/vi/xTnYS3od6iY/hqdefault.jpg",
+                "type": "image",
                 "width": "480",
                 "height": "360"
-            }
+            },
+            "media": [
+                {
+                    "src": "https://www.youtube.com/v/xTnYS3od6iY?version=3",
+                    "type": "video"
+                }
+            ]
         },
         {
             "id": "yt:video:iiC1VO_uvrQ",
@@ -110,9 +159,16 @@
             "author": "Sabine Hossenfelder",
             "image": {
                 "src": "https://i2.ytimg.com/vi/iiC1VO_uvrQ/hqdefault.jpg",
+                "type": "image",
                 "width": "480",
                 "height": "360"
-            }
+            },
+            "media": [
+                {
+                    "src": "https://www.youtube.com/v/iiC1VO_uvrQ?version=3",
+                    "type": "video"
+                }
+            ]
         },
         {
             "id": "yt:video:lT1bX1UbCSs",
@@ -124,9 +180,16 @@
             "author": "Sabine Hossenfelder",
             "image": {
                 "src": "https://i1.ytimg.com/vi/lT1bX1UbCSs/hqdefault.jpg",
+                "type": "image",
                 "width": "480",
                 "height": "360"
-            }
+            },
+            "media": [
+                {
+                    "src": "https://www.youtube.com/v/lT1bX1UbCSs?version=3",
+                    "type": "video"
+                }
+            ]
         },
         {
             "id": "yt:video:qwu58DOxLdA",
@@ -138,9 +201,16 @@
             "author": "Sabine Hossenfelder",
             "image": {
                 "src": "https://i2.ytimg.com/vi/qwu58DOxLdA/hqdefault.jpg",
+                "type": "image",
                 "width": "480",
                 "height": "360"
-            }
+            },
+            "media": [
+                {
+                    "src": "https://www.youtube.com/v/qwu58DOxLdA?version=3",
+                    "type": "video"
+                }
+            ]
         },
         {
             "id": "yt:video:TW6hgOc3wuI",
@@ -152,9 +222,16 @@
             "author": "Sabine Hossenfelder",
             "image": {
                 "src": "https://i1.ytimg.com/vi/TW6hgOc3wuI/hqdefault.jpg",
+                "type": "image",
                 "width": "480",
                 "height": "360"
-            }
+            },
+            "media": [
+                {
+                    "src": "https://www.youtube.com/v/TW6hgOc3wuI?version=3",
+                    "type": "video"
+                }
+            ]
         },
         {
             "id": "yt:video:ZKXcR3kEYN4",
@@ -166,9 +243,16 @@
             "author": "Sabine Hossenfelder",
             "image": {
                 "src": "https://i3.ytimg.com/vi/ZKXcR3kEYN4/hqdefault.jpg",
+                "type": "image",
                 "width": "480",
                 "height": "360"
-            }
+            },
+            "media": [
+                {
+                    "src": "https://www.youtube.com/v/ZKXcR3kEYN4?version=3",
+                    "type": "video"
+                }
+            ]
         },
         {
             "id": "yt:video:rvG1A795tqE",
@@ -180,9 +264,16 @@
             "author": "Sabine Hossenfelder",
             "image": {
                 "src": "https://i3.ytimg.com/vi/rvG1A795tqE/hqdefault.jpg",
+                "type": "image",
                 "width": "480",
                 "height": "360"
-            }
+            },
+            "media": [
+                {
+                    "src": "https://www.youtube.com/v/rvG1A795tqE?version=3",
+                    "type": "video"
+                }
+            ]
         },
         {
             "id": "yt:video:tm_AdmDbeuo",
@@ -194,9 +285,16 @@
             "author": "Sabine Hossenfelder",
             "image": {
                 "src": "https://i1.ytimg.com/vi/tm_AdmDbeuo/hqdefault.jpg",
+                "type": "image",
                 "width": "480",
                 "height": "360"
-            }
+            },
+            "media": [
+                {
+                    "src": "https://www.youtube.com/v/tm_AdmDbeuo?version=3",
+                    "type": "video"
+                }
+            ]
         },
         {
             "id": "yt:video:2kTxX-0sYcM",
@@ -208,9 +306,16 @@
             "author": "Sabine Hossenfelder",
             "image": {
                 "src": "https://i3.ytimg.com/vi/2kTxX-0sYcM/hqdefault.jpg",
+                "type": "image",
                 "width": "480",
                 "height": "360"
-            }
+            },
+            "media": [
+                {
+                    "src": "https://www.youtube.com/v/2kTxX-0sYcM?version=3",
+                    "type": "video"
+                }
+            ]
         }
     ],
     "source": "reference/Sabine Hossenfelder/assets/feed.xml"
