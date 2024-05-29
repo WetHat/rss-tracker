@@ -1,0 +1,1603 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Python Morsels</title><link>https://www.pythonmorsels.com/topics/</link><description>Python Morsels</description><atom:link href="https://www.pythonmorsels.com/topics/feed/" rel="self"></atom:link><language>en-us</language><lastBuildDate>Tue, 28 May 2024 23:52:24 +0000</lastBuildDate><item><title>Equality versus identity in Python</title><link>https://www.pythonmorsels.com/equality-vs-identity/</link><description>
+
+&lt;p&gt;Equality checks whether two objects &lt;strong&gt;represent the same value&lt;/strong&gt;.  Identity checks whether two variables &lt;strong&gt;point to the same object&lt;/strong&gt;.&lt;/p&gt;
+
+
+&lt;div&gt;
+  
+    &lt;img width=480 height=270 src="https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F1859635053-5a5a328c38769260b233cb1fae005603a26ff65e609fba2d15a8af03ad563ba9-d_1920x1080&amp;amp;src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png"/&gt;
+  
+  &lt;p&gt;
+  &lt;strong&gt;Table of contents&lt;/strong&gt;
+  &lt;ol&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/equality-vs-identity/#the-equality-operator-in-python" target="_blank"&gt;The equality operator in Python&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/equality-vs-identity/#the-is-operator-in-python" target="_blank"&gt;The &lt;code&gt;is&lt;/code&gt; operator in Python&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/equality-vs-identity/#how-equality-and-identity-work-differently" target="_blank"&gt;How equality and identity work differently?&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/equality-vs-identity/#inequality-and-non-identity-operators" target="_blank"&gt;Inequality and non-identity operators&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/equality-vs-identity/#where-are-identity-checks-used" target="_blank"&gt;Where are identity checks used?&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/equality-vs-identity/#equality-vs-identity" target="_blank"&gt;Equality vs. Identity&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;/ol&gt;
+  &lt;/p&gt;
+&lt;/div&gt;
+&lt;div&gt;
+  
+    &lt;h2&gt;The equality operator in Python&lt;/h2&gt;
+    
+      
+        &lt;p&gt;Let's say we have two variables that point to two lists:&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;When we use the &lt;code&gt;==&lt;/code&gt; operator to check whether these lists are equal, we'll see that they are not equal:&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;
+&lt;span class="go"&gt;False&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;These lists &lt;strong&gt;don't have the same values right now, so they're not equal&lt;/strong&gt;.&lt;/p&gt;
+
+      
+        &lt;p&gt;Let's update the first list so that these two lists do have equivalent values:&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;
+&lt;span class="go"&gt;[2, 1, 3, 4]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;If we use &lt;code&gt;==&lt;/code&gt; again, we'll see that these lists &lt;em&gt;are&lt;/em&gt; equal now:&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;
+&lt;span class="go"&gt;True&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;Python's &lt;code&gt;==&lt;/code&gt; operator checks for &lt;strong&gt;equality&lt;/strong&gt;.
+Two objects are equal if &lt;strong&gt;they represent the same data&lt;/strong&gt;.&lt;/p&gt;
+
+      
+    
+  
+    &lt;h2&gt;The &lt;code&gt;is&lt;/code&gt; operator in Python&lt;/h2&gt;
+    
+      &lt;p&gt;Python also has an &lt;code&gt;is …&lt;/code&gt;&lt;/p&gt;
+    
+  
+&lt;/div&gt;
+&lt;h3&gt;&lt;a href="https://www.pythonmorsels.com/equality-vs-identity/" target="_blank"&gt;Read the full article: https://www.pythonmorsels.com/equality-vs-identity/&lt;/a&gt;&lt;/h3&gt;
+</description><pubDate>Tue, 28 May 2024 23:52:24 +0000</pubDate><guid>https://www.pythonmorsels.com/equality-vs-identity/</guid></item><item><title>Assignment vs. Mutation in Python</title><link>https://www.pythonmorsels.com/assignment-versus-mutation/</link><description>
+
+&lt;p&gt;In Python, "change" can mean two different things. Assignment changes which object a variable points to. Mutation, changes the object itself.&lt;/p&gt;
+
+
+&lt;div&gt;
+  
+    &lt;img width=480 height=270 src="https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F1854521349-e14ed4db822e6fea015ebfe110262647a82f42a5680adaa7865ff74da2cb4765-d_1920x1080&amp;amp;src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png"/&gt;
+  
+  &lt;p&gt;
+  &lt;strong&gt;Table of contents&lt;/strong&gt;
+  &lt;ol&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/assignment-versus-mutation/#remember-variables-are-pointers" target="_blank"&gt;Remember: variables are pointers&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/assignment-versus-mutation/#mutating-a-list" target="_blank"&gt;Mutating a list&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/assignment-versus-mutation/#mutation" target="_blank"&gt;Mutation&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/assignment-versus-mutation/#assignment" target="_blank"&gt;Assignment&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/assignment-versus-mutation/#assignments-versus-mutations" target="_blank"&gt;Assignments versus mutations&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/assignment-versus-mutation/#changing-variables-and-changing-objects" target="_blank"&gt;Changing variables and changing objects&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;/ol&gt;
+  &lt;/p&gt;
+&lt;/div&gt;
+&lt;div&gt;
+  
+    &lt;h2&gt;Remember: variables are pointers&lt;/h2&gt;
+    
+      
+        &lt;p&gt;When talking about Python code, if I say &lt;strong&gt;we changed X&lt;/strong&gt;, there are two different things that I might mean.&lt;/p&gt;
+
+      
+        &lt;p&gt;Let's say we have two variables that point to the same value:&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;Remember that &lt;a href="https://www.pythonmorsels.com/variables-are-pointers/" target="_blank"&gt;variables in Python are pointers&lt;/a&gt;.
+That means that &lt;strong&gt;two variables &lt;em&gt;can point&lt;/em&gt; to the same object&lt;/strong&gt;.
+That's actually what we've done here.&lt;/p&gt;
+
+      
+        &lt;p&gt;Let's change the object that the variable &lt;code&gt;b&lt;/code&gt; points to.&lt;/p&gt;
+
+      
+    
+  
+    &lt;h2&gt;Mutating a list&lt;/h2&gt;
+    
+      &lt;p&gt;If we append a number …&lt;/p&gt;
+    
+  
+&lt;/div&gt;
+&lt;h3&gt;&lt;a href="https://www.pythonmorsels.com/assignment-versus-mutation/" target="_blank"&gt;Read the full article: https://www.pythonmorsels.com/assignment-versus-mutation/&lt;/a&gt;&lt;/h3&gt;
+</description><pubDate>Sat, 18 May 2024 12:13:21 +0000</pubDate><guid>https://www.pythonmorsels.com/assignment-versus-mutation/</guid></item><item><title>Variables are pointers in Python</title><link>https://www.pythonmorsels.com/variables-are-pointers/</link><description>
+
+&lt;p&gt;Python's variables are not buckets that contain objects; they're pointers. Assignment statements don't copy: they point a variable to a value (and multiple variables can "point" to the same value).&lt;/p&gt;
+
+
+&lt;div&gt;
+  
+    &lt;img width=480 height=270 src="https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F1845329914-b5fa57ff219326904a95bd76a0f43718091a20347606e8c743228177821624c4-d_1920x1080&amp;amp;src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png"/&gt;
+  
+  &lt;p&gt;
+  &lt;strong&gt;Table of contents&lt;/strong&gt;
+  &lt;ol&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/variables-are-pointers/#changing-two-lists-at-once" target="_blank"&gt;Changing two lists at once...?&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/variables-are-pointers/#variables-are-separate-from-objects" target="_blank"&gt;Variables are &lt;em&gt;separate&lt;/em&gt; from objects&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/variables-are-pointers/#assignment-statements-dont-copy" target="_blank"&gt;Assignment statements don't copy&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/variables-are-pointers/#explicitly-copying-a-list" target="_blank"&gt;Explicitly copying a list&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/variables-are-pointers/#variables-are-like-pointers-not-buckets" target="_blank"&gt;Variables are like pointers, not buckets&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;/ol&gt;
+  &lt;/p&gt;
+&lt;/div&gt;
+&lt;div&gt;
+  
+    &lt;h2&gt;Changing two lists at once...?&lt;/h2&gt;
+    
+      
+        &lt;p&gt;Here we have a variable &lt;code&gt;a&lt;/code&gt; that points to a &lt;a href="https://www.pythonmorsels.com/what-are-lists/" target="_blank"&gt;list&lt;/a&gt;:&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;Let's make a new variable &lt;code&gt;b&lt;/code&gt; and assign it to &lt;code&gt;a&lt;/code&gt;:&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;If we append a new item to &lt;code&gt;b&lt;/code&gt;, what will its length be?&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;Initially, the &lt;code&gt;b&lt;/code&gt; list had four items, so now it should have five items.
+And it does:&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="go"&gt;5&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;How many items do you think &lt;code&gt;a&lt;/code&gt; has?
+What's your guess?&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;Is it five, the same as &lt;code&gt;b&lt;/code&gt;?
+Or is it still four, as it was before?&lt;/p&gt;
+
+      
+        &lt;p&gt;The &lt;code&gt;a&lt;/code&gt; list also has five items:&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="go"&gt;5&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;What's going on here?&lt;/p&gt;
+
+      
+        &lt;p&gt;Well, the variables &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;b&lt;/code&gt;, both point to the same list.&lt;/p&gt;
+
+      
+        &lt;p&gt;If we look up the unique ID for the object that each of these variables points to, we'll see that &lt;strong&gt;they both point to the same object&lt;/strong&gt;:&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="nb"&gt;id&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="go"&gt;140534104117312&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="nb"&gt;id&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="go"&gt;140534104117312&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;This is possible because variables in Python are &lt;strong&gt;&lt;em&gt;not&lt;/em&gt; buckets, but pointers&lt;/strong&gt;.&lt;/p&gt;
+
+      
+    
+  
+    &lt;h2&gt;Variables are &lt;em&gt;separate&lt;/em&gt; from objects&lt;/h2&gt;
+    
+      &lt;p&gt;Let's say we've made three …&lt;/p&gt;
+    
+  
+&lt;/div&gt;
+&lt;h3&gt;&lt;a href="https://www.pythonmorsels.com/variables-are-pointers/" target="_blank"&gt;Read the full article: https://www.pythonmorsels.com/variables-are-pointers/&lt;/a&gt;&lt;/h3&gt;
+</description><pubDate>Thu, 02 May 2024 15:00:00 +0000</pubDate><guid>https://www.pythonmorsels.com/variables-are-pointers/</guid></item><item><title>Multiline comments in Python</title><link>https://www.pythonmorsels.com/multiline-comments/</link><description>
+
+&lt;p&gt;Python does not have multiline comments. But you can use alternatives like docstrings, editor shortcuts, and conventional commenting methods, depending on your requirements.&lt;/p&gt;
+
+
+&lt;div&gt;
+  
+    &lt;img width=480 height=270 src="https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F1841759670-0b28dacb1984f308cc6f5f4b2e1ab6c842bffdd8cce9a544b0097584850ccc6a-d_1920x1080&amp;amp;src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png"/&gt;
+  
+  &lt;p&gt;
+  &lt;strong&gt;Table of contents&lt;/strong&gt;
+  &lt;ol&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/multiline-comments/#does-python-have-multi-line-comments" target="_blank"&gt;Does Python have multi-line comments?&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/multiline-comments/#what-about-triple-quotes" target="_blank"&gt;What about triple quotes?&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/multiline-comments/#docstrings-versus-comments" target="_blank"&gt;Docstrings versus comments&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/multiline-comments/#what-if-i-want-to-comment-out-a-whole-block-of-code" target="_blank"&gt;What if I want to comment-out a whole block of code?&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/multiline-comments/#how-to-comment-multiple-lines" target="_blank"&gt;How to comment multiple lines&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/multiline-comments/#use-docstrings-your-code-editor-or-version-control" target="_blank"&gt;Use docstrings, your code editor, or version control&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;/ol&gt;
+  &lt;/p&gt;
+&lt;/div&gt;
+&lt;div&gt;
+  
+    &lt;h2&gt;Does Python have multi-line comments?&lt;/h2&gt;
+    
+      
+        &lt;p&gt;For single-line comments, Python uses the octothorpe character (&lt;code&gt;#&lt;/code&gt;), also known as pound, number sign, crunch, and of course, the hashtag character:&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# This is a comment&lt;/span&gt;
+
+&lt;span class="n"&gt;this&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"is not a comment"&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;But what if you want to comment out &lt;strong&gt;a whole block&lt;/strong&gt; of code?&lt;/p&gt;
+
+      
+        &lt;p&gt;Unlike some programming languages, Python does &lt;em&gt;not&lt;/em&gt; have multi-line comments.&lt;/p&gt;
+
+      
+    
+  
+    &lt;h2&gt;What about triple quotes?&lt;/h2&gt;
+    
+      &lt;p&gt;You might be thinking, wait, …&lt;/p&gt;
+    
+  
+&lt;/div&gt;
+&lt;h3&gt;&lt;a href="https://www.pythonmorsels.com/multiline-comments/" target="_blank"&gt;Read the full article: https://www.pythonmorsels.com/multiline-comments/&lt;/a&gt;&lt;/h3&gt;
+</description><pubDate>Fri, 19 Apr 2024 23:00:00 +0000</pubDate><guid>https://www.pythonmorsels.com/multiline-comments/</guid></item><item><title>Python Big O: the time complexities of different data structures in Python</title><link>https://www.pythonmorsels.com/time-complexities/</link><description>
+
+&lt;p&gt;The time complexity of common operations on Python's many data structures.&lt;/p&gt;
+
+
+&lt;div&gt;
+  
+  &lt;p&gt;
+  &lt;strong&gt;Table of contents&lt;/strong&gt;
+  &lt;ol&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/time-complexities/#time-complexity" target="_blank"&gt;Time Complexity &amp;#9201;&amp;#65039;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/time-complexities/#list" target="_blank"&gt;List &amp;#128203;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/time-complexities/#double-ended-queue" target="_blank"&gt;Double-Ended Queue &amp;#8596;&amp;#65039;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/time-complexities/#dictionary" target="_blank"&gt;Dictionary &amp;#128477;&amp;#65039;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/time-complexities/#set" target="_blank"&gt;Set &amp;#127912;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/time-complexities/#counter" target="_blank"&gt;Counter &amp;#129518;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/time-complexities/#heap-priority-queue" target="_blank"&gt;Heap / Priority Queue &amp;#9968;&amp;#65039;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/time-complexities/#sorted-list" target="_blank"&gt;Sorted List &amp;#128292;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/time-complexities/#traversal-techniques" target="_blank"&gt;Traversal Techniques &amp;#128269;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/time-complexities/#other-data-structures" target="_blank"&gt;Other Data Structures? &amp;#128218;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/time-complexities/#beware-of-loops-in-loops" target="_blank"&gt;Beware of Loops-in-Loops! &amp;#129327;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/time-complexities/#mind-your-data-structures" target="_blank"&gt;Mind Your Data Structures &amp;#128451;&amp;#65039;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;/ol&gt;
+  &lt;/p&gt;
+&lt;/div&gt;
+&lt;div&gt;
+  
+    &lt;h2&gt;Time Complexity &amp;#9201;&amp;#65039;&lt;/h2&gt;
+    
+      
+        &lt;p&gt;Time complexity is one of those Computer Science concepts that's scary in its purest form, but often fairly practical as a rough "&lt;em&gt;am I doing this right&lt;/em&gt;" measurement.&lt;/p&gt;
+
+      
+        &lt;p&gt;In the words of &lt;a href="https://nedbatchelder.com/text/bigo.html" target="_blank"&gt;Ned Batchelder&lt;/a&gt;, time complexity is all about "how your code slows as your data grows".&lt;/p&gt;
+
+      
+        &lt;p&gt;Time complexity is usually discussed in terms of "Big O" notation.
+This is basically a way to discuss the &lt;strong&gt;order of magnitude&lt;/strong&gt; for a given operation while ignoring the &lt;em&gt;exact&lt;/em&gt; number of computations it needs.
+In "Big O" land, we don't care if something is twice as slow, but we do care whether it's &lt;code&gt;n&lt;/code&gt; times slower where &lt;code&gt;n&lt;/code&gt; is the length of our list/set/slice/etc.&lt;/p&gt;
+
+      
+        &lt;p&gt;Here's a graph of the common time complexity curves:&lt;/p&gt;
+
+      
+        &lt;div class="image mb-3"&gt;
+  &lt;img src="https://pythonmorsels.s3.amazonaws.com/medialibrary/2024/03/time_complexity.png" alt="O(1), O(log n), O(n), O(n log n), and O(n^2) curves plotted on a graph, each being steeper in slope than the last" class="img-fluid"&gt;
+  
+&lt;/div&gt;
+
+
+      
+        &lt;p&gt;Remember that these lines are simply about &lt;strong&gt;orders of magnitude&lt;/strong&gt;.
+If an operation is on the order of &lt;code&gt;n&lt;/code&gt;, that means 100 times more data will slow things down about 100 times.
+If an operation is on the order of &lt;code&gt;n&amp;#178;&lt;/code&gt; (that's &lt;code&gt;n*n&lt;/code&gt;), that means 100 times more data will slow things down &lt;code&gt;100*100&lt;/code&gt; times.&lt;/p&gt;
+
+      
+        &lt;p&gt;I usually think about those curves in terms of what would happen if we suddenly had 1,000 times more data to work with:&lt;/p&gt;
+
+      
+        &lt;ul&gt;
+&lt;li&gt;&lt;code&gt;O(1)&lt;/code&gt;: no change in time (&lt;em&gt;constant&lt;/em&gt; time!)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;O(log n)&lt;/code&gt;: ~10 times slow down&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;O(n)&lt;/code&gt;: 1,000 times slow down&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;O(n log n)&lt;/code&gt;: 10,000 times slow down&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;O(n&amp;#178;)&lt;/code&gt;: 1,000,000 times slow down! &amp;#128562;&lt;/li&gt;
+&lt;/ul&gt;
+
+      
+        &lt;p&gt;With that &lt;em&gt;very&lt;/em&gt; quick recap behind us, let's take a look at the relative speeds of all common operations on each of Python's data structures.&lt;/p&gt;
+
+      
+    
+  
+    &lt;h2&gt;List &amp;#128203;&lt;/h2&gt;
+    
+      &lt;p&gt;Python's &lt;strong&gt;lists&lt;/strong&gt; are similar to …&lt;/p&gt;
+    
+  
+&lt;/div&gt;
+&lt;h3&gt;&lt;a href="https://www.pythonmorsels.com/time-complexities/" target="_blank"&gt;Read the full article: https://www.pythonmorsels.com/time-complexities/&lt;/a&gt;&lt;/h3&gt;
+</description><pubDate>Tue, 16 Apr 2024 15:00:00 +0000</pubDate><guid>https://www.pythonmorsels.com/time-complexities/</guid></item><item><title>Python's http.server module</title><link>https://www.pythonmorsels.com/http-server/</link><description>
+
+&lt;p&gt;Use Python's &lt;code&gt;http.server&lt;/code&gt; module to serve up a static website on your own machine.&lt;/p&gt;
+
+
+&lt;div&gt;
+  
+    &lt;img width=480 height=270 src="https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F1841759405-9da045272fa3ba2c3dafbff1086447bd10609290a8f06c9e3ef300b43cd23fbf-d_1920x1080&amp;amp;src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png"/&gt;
+  
+  &lt;p&gt;
+  &lt;strong&gt;Table of contents&lt;/strong&gt;
+  &lt;ol&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/http-server/#a-directory-trees-of-indexhtml-files" target="_blank"&gt;A directory trees of &lt;code&gt;index.html&lt;/code&gt; files&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/http-server/#serving-up-html-files-with-httpserver" target="_blank"&gt;Serving up HTML files with &lt;code&gt;http.server&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/http-server/#customizing-httpserver-with-cli-arguments" target="_blank"&gt;Customizing &lt;code&gt;http.server&lt;/code&gt; with CLI arguments&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/http-server/#using-httpserver-as-a-module" target="_blank"&gt;Using &lt;code&gt;http.server&lt;/code&gt; as a module&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/http-server/#use-python-m-httpserver-for-a-local-http-server" target="_blank"&gt;Use &lt;code&gt;python -m http.server&lt;/code&gt; for a local HTTP server&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;/ol&gt;
+  &lt;/p&gt;
+&lt;/div&gt;
+&lt;div&gt;
+  
+    &lt;h2&gt;A directory trees of &lt;code&gt;index.html&lt;/code&gt; files&lt;/h2&gt;
+    
+      
+        &lt;p&gt;We have a directory here that represents a static website:&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;~/comprehensions/_build/dirhtml $ ls index.html
+index.html
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;We not only have an &lt;code&gt;index.html&lt;/code&gt; file, but also a bunch of sub-directories, each with their own &lt;code&gt;index.html&lt;/code&gt; file:&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;~/comprehensions/_build/dirhtml $ ls generator-expressions
+index.html
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;The only way to really navigate this website locally is to &lt;strong&gt;serve up these files&lt;/strong&gt; using some sort of HTTP server that is aware of these index files.&lt;/p&gt;
+
+      
+        &lt;p&gt;Python comes bundled with an HTTP server that we can use.
+It's called &lt;code&gt;http.server&lt;/code&gt;.&lt;/p&gt;
+
+      
+    
+  
+    &lt;h2&gt;Serving up HTML files with &lt;code&gt;http.server&lt;/code&gt;&lt;/h2&gt;
+    
+      &lt;p&gt;If we run this module …&lt;/p&gt;
+    
+  
+&lt;/div&gt;
+&lt;h3&gt;&lt;a href="https://www.pythonmorsels.com/http-server/" target="_blank"&gt;Read the full article: https://www.pythonmorsels.com/http-server/&lt;/a&gt;&lt;/h3&gt;
+</description><pubDate>Fri, 05 Apr 2024 23:41:43 +0000</pubDate><guid>https://www.pythonmorsels.com/http-server/</guid></item><item><title>Unnecessary else statements</title><link>https://www.pythonmorsels.com/unnecessary-else-statements/</link><description>
+
+&lt;p&gt;When your function ends in an &lt;code&gt;else&lt;/code&gt; block with a &lt;code&gt;return&lt;/code&gt; statement in it, should you remove that &lt;code&gt;else&lt;/code&gt;?&lt;/p&gt;
+
+
+&lt;div&gt;
+  
+    &lt;img width=480 height=270 src="https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F1819454470-59789a86671b414679eb978d1af70942df16e8d2ea5ca46c1f4eab3ae5e2e0eb-d_1920x1080&amp;amp;src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png"/&gt;
+  
+  &lt;p&gt;
+  &lt;strong&gt;Table of contents&lt;/strong&gt;
+  &lt;ol&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/unnecessary-else-statements/#a-function-where-both-if-and-else-return" target="_blank"&gt;A function where both &lt;code&gt;if&lt;/code&gt; and &lt;code&gt;else&lt;/code&gt; return&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/unnecessary-else-statements/#is-that-else-statement-unnecessary" target="_blank"&gt;Is that &lt;code&gt;else&lt;/code&gt; statement unnecessary?&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/unnecessary-else-statements/#sometimes-else-improves-readability" target="_blank"&gt;Sometimes &lt;code&gt;else&lt;/code&gt; improves readability&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/unnecessary-else-statements/#when-should-you-remove-an-else-statement" target="_blank"&gt;When should you remove an &lt;code&gt;else&lt;/code&gt; statement?&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/unnecessary-else-statements/#considering-readability-with-if-else-statements" target="_blank"&gt;Considering readability with &lt;code&gt;if&lt;/code&gt;-&lt;code&gt;else&lt;/code&gt; statements&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;/ol&gt;
+  &lt;/p&gt;
+&lt;/div&gt;
+&lt;div&gt;
+  
+    &lt;h2&gt;A function where both &lt;code&gt;if&lt;/code&gt; and &lt;code&gt;else&lt;/code&gt; return&lt;/h2&gt;
+    
+      
+        &lt;p&gt;This &lt;code&gt;earliest_date&lt;/code&gt; function uses the &lt;a href="https://pypi.org/project/python-dateutil/" target="_blank"&gt;python-dateutil&lt;/a&gt; third-party library to parse two strings as dates:&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;dateutil.parser&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;parse&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;earliest_date&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;date1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;date2&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;"""Return the string representing the earliest date."""&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;parse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;date1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fuzzy&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;parse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;date2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fuzzy&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;date1&lt;/span&gt;
+    &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;date2&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;This function returns the string which represents the earliest given date:&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;earliest_date&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"May 3 2024"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"June 5 2025"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="go"&gt;'May 3 2024'&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;earliest_date&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"Feb 3 2026"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"June 5 2025"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="go"&gt;'June 5 2025'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;Note that this function uses an &lt;a href="https://www.pythonmorsels.com/if-statements/" target="_blank"&gt;if statement&lt;/a&gt; that returns, and an &lt;code&gt;else&lt;/code&gt; that also returns.&lt;/p&gt;
+
+      
+    
+  
+    &lt;h2&gt;Is that &lt;code&gt;else&lt;/code&gt; statement unnecessary?&lt;/h2&gt;
+    
+      &lt;p&gt;We don't necessarily &lt;em&gt;need&lt;/em&gt; that …&lt;/p&gt;
+    
+  
+&lt;/div&gt;
+&lt;h3&gt;&lt;a href="https://www.pythonmorsels.com/unnecessary-else-statements/" target="_blank"&gt;Read the full article: https://www.pythonmorsels.com/unnecessary-else-statements/&lt;/a&gt;&lt;/h3&gt;
+</description><pubDate>Fri, 22 Mar 2024 22:00:00 +0000</pubDate><guid>https://www.pythonmorsels.com/unnecessary-else-statements/</guid></item><item><title>Every dunder method in Python</title><link>https://www.pythonmorsels.com/every-dunder-method/</link><description>
+
+&lt;p&gt;An explanation of all of Python's 100+ dunder methods and 50+ dunder attributes, including a summary of each one.&lt;/p&gt;
+
+
+&lt;div&gt;
+  
+  &lt;p&gt;
+  &lt;strong&gt;Table of contents&lt;/strong&gt;
+  &lt;ol&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/every-dunder-method/#the-3-essential-dunder-methods" target="_blank"&gt;The 3 essential dunder methods &amp;#128273;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/every-dunder-method/#equality-and-hashability" target="_blank"&gt;Equality and hashability &amp;#129008;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/every-dunder-method/#orderability" target="_blank"&gt;Orderability &amp;#9878;&amp;#65039;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/every-dunder-method/#type-conversions-and-string-formatting" target="_blank"&gt;Type conversions and string formatting &amp;#9879;&amp;#65039;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/every-dunder-method/#context-managers" target="_blank"&gt;Context managers &amp;#128682;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/every-dunder-method/#containers-and-collections" target="_blank"&gt;Containers and collections &amp;#128451;&amp;#65039;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/every-dunder-method/#callability" target="_blank"&gt;Callability &amp;#9742;&amp;#65039;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/every-dunder-method/#arithmetic-operators" target="_blank"&gt;Arithmetic operators &amp;#10135;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/every-dunder-method/#in-place-arithmetic-operations" target="_blank"&gt;In-place arithmetic operations &amp;#9851;&amp;#65039;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/every-dunder-method/#built-in-math-functions" target="_blank"&gt;Built-in math functions &amp;#129518;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/every-dunder-method/#attribute-access" target="_blank"&gt;Attribute access &amp;#128220;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/every-dunder-method/#metaprogramming" target="_blank"&gt;Metaprogramming &amp;#129668;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/every-dunder-method/#descriptors" target="_blank"&gt;Descriptors &amp;#127991;&amp;#65039;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/every-dunder-method/#buffers" target="_blank"&gt;Buffers &amp;#128190;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/every-dunder-method/#asynchronous-operations" target="_blank"&gt;Asynchronous operations &amp;#129337;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/every-dunder-method/#construction-and-finalizing" target="_blank"&gt;Construction and finalizing &amp;#127981;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/every-dunder-method/#library-specific-dunder-methods" target="_blank"&gt;Library-specific dunder methods &amp;#129520;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/every-dunder-method/#dunder-attributes" target="_blank"&gt;Dunder attributes &amp;#128199;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/every-dunder-method/#cheat-sheet" target="_blank"&gt;Every dunder method: a cheat sheet &amp;#11088;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;/ol&gt;
+  &lt;/p&gt;
+&lt;/div&gt;
+&lt;div&gt;
+  
+    &lt;h2&gt;The 3 essential dunder methods &amp;#128273;&lt;/h2&gt;
+    
+      
+        &lt;p&gt;There are 3 dunder methods that &lt;em&gt;most&lt;/em&gt; classes should have: &lt;a href="https://www.pythonmorsels.com/what-is-init/" target="_blank"&gt;&lt;code&gt;__init__&lt;/code&gt;&lt;/a&gt;, &lt;a href="https://www.pythonmorsels.com/customizing-string-representation-your-objects/" target="_blank"&gt;&lt;code&gt;__repr__&lt;/code&gt;&lt;/a&gt;, and &lt;a href="https://www.pythonmorsels.com/overloading-equality-in-python/" target="_blank"&gt;&lt;code&gt;__eq__&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+
+      
+        &lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Operation&lt;/th&gt;
+&lt;th&gt;Dunder Method Call&lt;/th&gt;
+&lt;th&gt;Returns&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;T(a, b=3)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;T.__init__(x, a, b=3)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;None&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;repr(x)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;x.__repr__()&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;str&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;x == y&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;x.__eq__(y)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Typically &lt;code&gt;bool&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+      
+        &lt;p&gt;The &lt;a href="https://www.pythonmorsels.com/what-is-init/" target="_blank"&gt;&lt;code&gt;__init__&lt;/code&gt;&lt;/a&gt; method is the &lt;strong&gt;initializer&lt;/strong&gt; (not to be confused with the &lt;a href="#construction-and-finalizing" target="_blank"&gt;constructor&lt;/a&gt;), the &lt;a href="https://www.pythonmorsels.com/customizing-string-representation-your-objects/" target="_blank"&gt;&lt;code&gt;__repr__&lt;/code&gt;&lt;/a&gt; method customizes an object's string representation, and the &lt;a href="https://www.pythonmorsels.com/overloading-equality-in-python/" target="_blank"&gt;&lt;code&gt;__eq__&lt;/code&gt;&lt;/a&gt; method customizes what it means for objects to be &lt;em&gt;equal&lt;/em&gt; to one another.&lt;/p&gt;
+
+      
+        &lt;p&gt;The &lt;code&gt;__repr__&lt;/code&gt; method is particularly helpful at the &lt;a href="https://www.pythonmorsels.com/using-the-python-repl/" target="_blank"&gt;the Python REPL&lt;/a&gt; and when debugging.&lt;/p&gt;
+
+      
+    
+  
+    &lt;h2&gt;Equality and hashability &amp;#129008;&lt;/h2&gt;
+    
+      &lt;p&gt;In addition to the &lt;code&gt;__eq__ …&lt;/code&gt;&lt;/p&gt;
+    
+  
+&lt;/div&gt;
+&lt;h3&gt;&lt;a href="https://www.pythonmorsels.com/every-dunder-method/" target="_blank"&gt;Read the full article: https://www.pythonmorsels.com/every-dunder-method/&lt;/a&gt;&lt;/h3&gt;
+</description><pubDate>Tue, 19 Mar 2024 21:30:00 +0000</pubDate><guid>https://www.pythonmorsels.com/every-dunder-method/</guid></item><item><title>List slicing in Python</title><link>https://www.pythonmorsels.com/slicing/</link><description>
+
+&lt;p&gt;In Python, slicing looks like indexing with colons (&lt;code&gt;:&lt;/code&gt;). You can slice a list (or any sequence) to get the first few items, the last few items, or all items in reverse.&lt;/p&gt;
+
+
+&lt;div&gt;
+  
+    &lt;img width=480 height=270 src="https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F1809471197-6ac16458794fea7dbf99e06573578d8c7d78c395f13e143d7c899431706a0715-d_1920x1080&amp;amp;src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png"/&gt;
+  
+  &lt;p&gt;
+  &lt;strong&gt;Table of contents&lt;/strong&gt;
+  &lt;ol&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/slicing/#getting-the-first-n-elements-from-a-list" target="_blank"&gt;Getting the first N elements from a list&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/slicing/#slicing-makes-a-new-list" target="_blank"&gt;Slicing makes a new list&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/slicing/#the-start-index-is-inclusive-but-the-stop-index-is-exclusive" target="_blank"&gt;The start index is inclusive but the stop index is exclusive&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/slicing/#default-slice-startstop-values" target="_blank"&gt;Default slice start/stop values&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/slicing/#why-the-stop-index-isnt-included-in-slices" target="_blank"&gt;Why the stop index isn't included in slices&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/slicing/#negative-indexes-work-too" target="_blank"&gt;Negative indexes work too&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/slicing/#out-of-bounds-slicing-is-allowed" target="_blank"&gt;Out-of-bounds slicing is allowed&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/slicing/#the-slice-step-value" target="_blank"&gt;The slice step value&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/slicing/#slicing-works-on-all-sequences" target="_blank"&gt;Slicing works on all sequences&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/slicing/#the-most-common-uses-for-slicing-in-python" target="_blank"&gt;The most common uses for slicing in Python&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/slicing/#use-slicing-to-get-slices-of-sequences-in-python" target="_blank"&gt;Use slicing to get "slices" of sequences in Python&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;/ol&gt;
+  &lt;/p&gt;
+&lt;/div&gt;
+&lt;div&gt;
+  
+    &lt;h2&gt;Getting the first N elements from a list&lt;/h2&gt;
+    
+      
+        &lt;p&gt;Let's say we have a &lt;code&gt;fruits&lt;/code&gt; variable that points to a &lt;a href="https://www.pythonmorsels.com/what-are-lists/" target="_blank"&gt;list&lt;/a&gt;:&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;fruits&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'watermelon'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'apple'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'lime'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'kiwi'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'pear'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'lemon'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'orange'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;fruits&lt;/span&gt;
+&lt;span class="go"&gt;['watermelon', 'apple', 'lime', 'kiwi', 'pear', 'lemon', 'orange']&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;We can get an item from this list by indexing it:&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;fruits&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="go"&gt;'kiwi'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;If we put a colon and another number inside the square brackets, we'll slice this list instead of indexing it:&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;fruits&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="go"&gt;['watermelon', 'apple', 'lime']&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;&lt;strong&gt;Slicing a list gives us back a new list.&lt;/strong&gt;
+We're getting a list of the first three items within our original list.&lt;/p&gt;
+
+      
+    
+  
+    &lt;h2&gt;Slicing makes a new list&lt;/h2&gt;
+    
+      &lt;p&gt;Note that the &lt;em&gt;original&lt;/em&gt; list …&lt;/p&gt;
+    
+  
+&lt;/div&gt;
+&lt;h3&gt;&lt;a href="https://www.pythonmorsels.com/slicing/" target="_blank"&gt;Read the full article: https://www.pythonmorsels.com/slicing/&lt;/a&gt;&lt;/h3&gt;
+</description><pubDate>Fri, 08 Mar 2024 22:16:58 +0000</pubDate><guid>https://www.pythonmorsels.com/slicing/</guid></item><item><title>TextIOWrapper‽ converting files to strings in Python</title><link>https://www.pythonmorsels.com/TextIOWrapper/</link><description>
+
+&lt;p&gt;Ever encountered an &lt;code&gt;_io.TextIOWrapper&lt;/code&gt; object when you wished you had a string? That's Python's version of a "text file" object!&lt;/p&gt;
+
+
+&lt;div&gt;
+  
+  &lt;p&gt;
+  &lt;strong&gt;Table of contents&lt;/strong&gt;
+  &lt;ol&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/TextIOWrapper/#textiowrapper-objects-are-files" target="_blank"&gt;&lt;code&gt;TextIOWrapper&lt;/code&gt; objects are files&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/TextIOWrapper/#_iotextiowrapper-arent-the-only-files" target="_blank"&gt;&lt;code&gt;_io.TextIOWrapper&lt;/code&gt; aren't the &lt;em&gt;only&lt;/em&gt; "files"&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/TextIOWrapper/#dont-try-to-pass-a-file-to-str" target="_blank"&gt;Don't try to pass a file to &lt;code&gt;str&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/TextIOWrapper/#you-can-also-read-line-by-line" target="_blank"&gt;You can also read line-by-line&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/TextIOWrapper/#use-read-to-convert-_iotextiowrapper-objects-to-strings" target="_blank"&gt;Use &lt;code&gt;read&lt;/code&gt; to convert &lt;code&gt;_io.TextIOWrapper&lt;/code&gt; objects to strings&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;/ol&gt;
+  &lt;/p&gt;
+&lt;/div&gt;
+&lt;div&gt;
+  
+    &lt;h2&gt;&lt;code&gt;TextIOWrapper&lt;/code&gt; objects are files&lt;/h2&gt;
+    
+      
+        &lt;p&gt;If you use Python's built-in &lt;code&gt;open&lt;/code&gt; function to read from a file, you'll end up with a &lt;code&gt;_io.TextIOWrapper&lt;/code&gt; object.
+You can think of this as &lt;strong&gt;a file object&lt;/strong&gt;.&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"example.txt"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"rt"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="go"&gt;&amp;lt;class '_io.TextIOWrapper'&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;If you open a file in &lt;strong&gt;read mode&lt;/strong&gt; (the default mode), you should be able to call the &lt;code&gt;read&lt;/code&gt; method on your file object to read your file into a string:&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;contents&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;contents&lt;/span&gt;
+&lt;span class="go"&gt;'This is an example text-based file.\nIt existed before we read it.\n'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;More on reading text files in &lt;a href="https://www.pythonmorsels.com/how-read-text-file/" target="_blank"&gt;reading files in Python&lt;/a&gt;.&lt;/p&gt;
+
+      
+    
+  
+    &lt;h2&gt;&lt;code&gt;_io.TextIOWrapper&lt;/code&gt; aren't the &lt;em&gt;only&lt;/em&gt; "files"&lt;/h2&gt;
+    
+      &lt;p&gt;Due to &lt;a href="https://www.pythonmorsels.com/duck-typing/" target="_blank"&gt;duck typing&lt;/a&gt;, …&lt;/p&gt;
+    
+  
+&lt;/div&gt;
+&lt;h3&gt;&lt;a href="https://www.pythonmorsels.com/TextIOWrapper/" target="_blank"&gt;Read the full article: https://www.pythonmorsels.com/TextIOWrapper/&lt;/a&gt;&lt;/h3&gt;
+</description><pubDate>Mon, 05 Feb 2024 16:00:00 +0000</pubDate><guid>https://www.pythonmorsels.com/TextIOWrapper/</guid></item><item><title>None in Python</title><link>https://www.pythonmorsels.com/none/</link><description>
+
+&lt;p&gt;Python's &lt;code&gt;None&lt;/code&gt; value is used to represent nothingness. &lt;code&gt;None&lt;/code&gt; is the default function return value.&lt;/p&gt;
+
+
+&lt;div&gt;
+  
+    &lt;img width=480 height=270 src="https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F1757373892-970b540ce5ca85a45c973bc7b3009662cff0ca6fdcf6d5554cc64c3f6e0978ea-d_1920x1080&amp;amp;src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png"/&gt;
+  
+  &lt;p&gt;
+  &lt;strong&gt;Table of contents&lt;/strong&gt;
+  &lt;ol&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/none/#pythons-none-value" target="_blank"&gt;Python's &lt;code&gt;None&lt;/code&gt; value&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/none/#none-is-falsey" target="_blank"&gt;&lt;code&gt;None&lt;/code&gt; is falsey&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/none/#none-represents-nothingness" target="_blank"&gt;&lt;code&gt;None&lt;/code&gt; represents nothingness&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/none/#the-default-function-return-value-is-none" target="_blank"&gt;The default function return value is &lt;code&gt;None&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/none/#none-is-like-null-in-other-programming-languages" target="_blank"&gt;&lt;code&gt;None&lt;/code&gt; is like NULL in other programming languages&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;/ol&gt;
+  &lt;/p&gt;
+&lt;/div&gt;
+&lt;div&gt;
+  
+    &lt;h2&gt;Python's &lt;code&gt;None&lt;/code&gt; value&lt;/h2&gt;
+    
+      
+        &lt;p&gt;Python has a special object that's typically &lt;strong&gt;used for representing nothingness&lt;/strong&gt;.
+It's called &lt;code&gt;None&lt;/code&gt;.&lt;/p&gt;
+
+      
+        &lt;p&gt;If we look at &lt;code&gt;None&lt;/code&gt; from &lt;a href="https://www.pythonmorsels.com/using-the-python-repl/" target="_blank"&gt;the Python REPL&lt;/a&gt;, we'll see nothing at all:&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;
+&lt;span class="go"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;Though if we print it, we'll see &lt;code&gt;None&lt;/code&gt;:&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="go"&gt;None&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;When checking for &lt;code&gt;None&lt;/code&gt; values, you'll usually see Python's &lt;code&gt;is&lt;/code&gt; operator used (for &lt;a href="https://www.pythonmorsels.com/equality-vs-identity/" target="_blank"&gt;identity&lt;/a&gt;) instead of the equality operator (&lt;code&gt;==&lt;/code&gt;):&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;
+&lt;span class="go"&gt;True&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;
+&lt;span class="go"&gt;True&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;Why is that?&lt;/p&gt;
+
+      
+        &lt;p&gt;Well, &lt;strong&gt;&lt;code&gt;None&lt;/code&gt; has its own special type&lt;/strong&gt;, the &lt;code&gt;NoneType&lt;/code&gt;, and it's &lt;strong&gt;the only object of that type&lt;/strong&gt;:&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="go"&gt;&amp;lt;class 'NoneType'&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;In fact, if we got a reference to that &lt;code&gt;NoneType&lt;/code&gt; &lt;a href="https://www.pythonmorsels.com/classes-are-everywhere/" target="_blank"&gt;class&lt;/a&gt;, and then we called that class to make a new instance of it, we'll actually get back the same exact instance, always, every time we call it:&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;NoneType&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;NoneType&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;
+&lt;span class="go"&gt;True&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;The &lt;code&gt;NoneType&lt;/code&gt; class is a &lt;strong&gt;&lt;a href="https://www.pythonmorsels.com/making-singletons/" target="_blank"&gt;singleton class&lt;/a&gt;&lt;/strong&gt;.
+So comparing to &lt;code&gt;None&lt;/code&gt; with &lt;code&gt;is&lt;/code&gt; works because there's only one &lt;code&gt;None&lt;/code&gt; value.
+No object should compare as equal to None unless it is &lt;code&gt;None&lt;/code&gt;.&lt;/p&gt;
+
+      
+    
+  
+    &lt;h2&gt;&lt;code&gt;None&lt;/code&gt; is falsey&lt;/h2&gt;
+    
+      &lt;p&gt;We often rely on the …&lt;/p&gt;
+    
+  
+&lt;/div&gt;
+&lt;h3&gt;&lt;a href="https://www.pythonmorsels.com/none/" target="_blank"&gt;Read the full article: https://www.pythonmorsels.com/none/&lt;/a&gt;&lt;/h3&gt;
+</description><pubDate>Mon, 22 Jan 2024 23:00:00 +0000</pubDate><guid>https://www.pythonmorsels.com/none/</guid></item><item><title>Python Morsels Lifetime Access Sale</title><link>https://www.pythonmorsels.com/python-morsels-lifetime-access-sale/</link><description>
+
+&lt;p&gt;Sale: Until Nov. 27, you can get lifetime access to Python Morsels&lt;/p&gt;
+
+
+&lt;div&gt;
+  
+  &lt;p&gt;
+  &lt;strong&gt;Table of contents&lt;/strong&gt;
+  &lt;ol&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/python-morsels-lifetime-access-sale/#how-far-python-morsels-has-come" target="_blank"&gt;How far Python Morsels has come&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/python-morsels-lifetime-access-sale/#the-sale-lifetime-access" target="_blank"&gt;The sale: lifetime access&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;/ol&gt;
+  &lt;/p&gt;
+&lt;/div&gt;
+&lt;div&gt;
+  
+    &lt;h2&gt;How far Python Morsels has come&lt;/h2&gt;
+    
+      
+        &lt;p&gt;My initial idea was simple &amp;#8212; sending one real-world Python exercise every week via email. I had been teaching Python to teams and I wanted to see if I could bring learning techniques that I &lt;em&gt;know&lt;/em&gt; work to a much larger audience.&lt;/p&gt;
+
+      
+        &lt;p&gt;Fast forward to today, and Python Morsels has grown into a sophisticated web app with a treasure trove of hands-on learning materials and a level-based recommendation system. It's been quite a journey, and I'm immensely proud of what we've built.&lt;/p&gt;
+
+      
+        &lt;p&gt;The heart of Python Morsels has always been you: the Python learners and enthusiasts who've joined me on this journey. Your feedback and support have been the driving force behind this platform's evolution. Your success stories are my biggest source of motivation and I'm grateful to be a part of your learning journey.&lt;/p&gt;
+
+      
+        &lt;div class="card mb-3"&gt;
+&lt;div class="card-body"&gt;
+&lt;div class="media"&gt;
+&lt;div class="media-body"&gt;
+&lt;div class="mb-n3"&gt;
+&lt;div class="mt-0 mb-2 h4"&gt;
+&lt;img src="https://pythonmorsels.s3.amazonaws.com/avatars/sourcedelica.jpg?AWSAccessKeyId=AKIAILQADBYH6E3M7VEA&amp;amp;Signature=UPp4uK%2BNh6gj3rTqvwaks0zuH7Q%3D&amp;amp;Expires=1703012822" alt="" class="mr-1" width="30"&gt;
+Eric Pederson
+&lt;/div&gt;
+&lt;p&gt;The time I spent working on Python Morsels problems translates into &lt;strong&gt;saved time programming for work&lt;/strong&gt;. And it's not a grind - &lt;strong&gt;it's actually fun&lt;/strong&gt;. I've learned &lt;strong&gt;advanced Python concepts&lt;/strong&gt; that I would have never had the opportunity to use in my day to day work.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+      
+    
+  
+    &lt;h2&gt;The sale: lifetime access&lt;/h2&gt;
+    
+      &lt;p&gt;Now, I'm excited to announce …&lt;/p&gt;
+    
+  
+&lt;/div&gt;
+&lt;h3&gt;&lt;a href="https://www.pythonmorsels.com/python-morsels-lifetime-access-sale/" target="_blank"&gt;Read the full article: https://www.pythonmorsels.com/python-morsels-lifetime-access-sale/&lt;/a&gt;&lt;/h3&gt;
+</description><pubDate>Mon, 20 Nov 2023 01:00:00 +0000</pubDate><guid>https://www.pythonmorsels.com/python-morsels-lifetime-access-sale/</guid></item><item><title>Solving programming exercises</title><link>https://www.pythonmorsels.com/programming-exercise-tips/</link><description>
+
+&lt;p&gt;How can you maximize the learning value from each coding challenge you solve?&lt;/p&gt;
+
+
+&lt;div&gt;
+  
+  &lt;p&gt;
+  &lt;strong&gt;Table of contents&lt;/strong&gt;
+  &lt;ol&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/programming-exercise-tips/#outline-an-approach-and-walk-away" target="_blank"&gt;Outline an approach and walk away &amp;#128173;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/programming-exercise-tips/#time-box-yourself" target="_blank"&gt;Time-box yourself &amp;#9202;&amp;#65039;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/programming-exercise-tips/#remove-your-distractions" target="_blank"&gt;Remove your distractions &amp;#128277;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/programming-exercise-tips/#write-now-refactor-later" target="_blank"&gt;Write now, refactor later &amp;#128221;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/programming-exercise-tips/#stuck-stop" target="_blank"&gt;Stuck? Stop! &amp;#128721;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/programming-exercise-tips/#flounder-first-then-seek-help" target="_blank"&gt;Flounder first, then seek help &amp;#128373;&amp;#65039;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/programming-exercise-tips/#do-it-all-over-again" target="_blank"&gt;Do it all over again &amp;#128257;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/programming-exercise-tips/#focus-on-the-process-not-the-product" target="_blank"&gt;Focus on the process, not the product &amp;#9968;&amp;#65039;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;/ol&gt;
+  &lt;/p&gt;
+&lt;/div&gt;
+&lt;div&gt;
+  
+    &lt;h2&gt;Outline an approach and walk away &amp;#128173;&lt;/h2&gt;
+    
+      
+        &lt;p&gt;Start by &lt;strong&gt;outlining your approach&lt;/strong&gt; in &lt;strong&gt;a &lt;a href="https://www.pythonmorsels.com/docstrings/" target="_blank"&gt;docstring&lt;/a&gt; or a comment&lt;/strong&gt;.
+Be detailed, but use rough descriptions and &lt;strong&gt;pseudocode&lt;/strong&gt;.
+You'll likely find yourself rereading the problem statement multiple times as you outline your approach.&lt;/p&gt;
+
+      
+        &lt;p&gt;For a challenging problem where you're likely to get stuck, &lt;strong&gt;time-box your outlining time&lt;/strong&gt;.
+For example, set a timer for 15 minutes and then start outlining.
+When the timer goes off, &lt;strong&gt;walk away&lt;/strong&gt;.&lt;/p&gt;
+
+      
+        &lt;p&gt;Walking away will let your brain &lt;strong&gt;work on the problem in the background&lt;/strong&gt;.
+This will decrease the stress of getting stuck on a problem &lt;em&gt;and&lt;/em&gt; &lt;strong&gt;allow your brain to be more creative&lt;/strong&gt; because you're now unencumbered by the need to solve the problem quickly.&lt;/p&gt;
+
+      
+        &lt;p&gt;Ideally, after outlining the problem you might take a shower, make yourself a meal, or go for a walk.
+If you can, try to perform an activity that doesn't require intent focus, &lt;strong&gt;so your brain can wander&lt;/strong&gt;.&lt;/p&gt;
+
+      
+        &lt;p&gt;When you walk away from an exercise before it's complete, you're likely to keep pondering it.
+You might realize your approach has a flaw &lt;em&gt;or&lt;/em&gt; you might think of a completely different approach.
+The next time you sit down to solve your programming exercise, you'll likely find that you're &lt;strong&gt;a bit more eager to jump in&lt;/strong&gt; than you would have if you'd kept coding right after outlining.&lt;/p&gt;
+
+      
+    
+  
+    &lt;h2&gt;Time-box yourself &amp;#9202;&amp;#65039;&lt;/h2&gt;
+    
+      &lt;p&gt;Ready to sit down and …&lt;/p&gt;
+    
+  
+&lt;/div&gt;
+&lt;h3&gt;&lt;a href="https://www.pythonmorsels.com/programming-exercise-tips/" target="_blank"&gt;Read the full article: https://www.pythonmorsels.com/programming-exercise-tips/&lt;/a&gt;&lt;/h3&gt;
+</description><pubDate>Tue, 14 Nov 2023 14:00:00 +0000</pubDate><guid>https://www.pythonmorsels.com/programming-exercise-tips/</guid></item><item><title>Python's lambda functions</title><link>https://www.pythonmorsels.com/lambda-expressions/</link><description>
+
+&lt;p&gt;What are lambda expressions and how are they used in Python?&lt;/p&gt;
+
+
+&lt;div&gt;
+  
+  &lt;p&gt;
+  &lt;strong&gt;Table of contents&lt;/strong&gt;
+  &lt;ol&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/lambda-expressions/#lambda-expressions-define-functions" target="_blank"&gt;Lambda expressions define functions&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/lambda-expressions/#lambda-expressions-can-be-defined-on-the-same-line-theyre-used" target="_blank"&gt;Lambda expressions can be defined on the same line they're used&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/lambda-expressions/#the-limitations-of-lambda-expressions" target="_blank"&gt;The limitations of lambda expressions&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/lambda-expressions/#when-should-you-avoid-lambda-expressions" target="_blank"&gt;When should you avoid lambda expressions?&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/lambda-expressions/#where-is-lambda-often-used" target="_blank"&gt;Where is lambda often used?&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/lambda-expressions/#pass-functions-around-but-use-lambda-conservatively" target="_blank"&gt;Pass functions around, but use lambda conservatively&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;/ol&gt;
+  &lt;/p&gt;
+&lt;/div&gt;
+&lt;div&gt;
+  
+    &lt;h2&gt;Lambda expressions define functions&lt;/h2&gt;
+    
+      
+        &lt;p&gt;A lambda expression looks like this:&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;square&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;This &lt;code&gt;square&lt;/code&gt; variable &lt;a href="https://www.pythonmorsels.com/pointers/" target="_blank"&gt;points&lt;/a&gt; to some object now.
+What do you think its &lt;em&gt;type&lt;/em&gt; might be?&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;square&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="go"&gt;&amp;lt;class 'function'&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;It's a function!&lt;/p&gt;
+
+      
+        &lt;p&gt;We could &lt;a href="https://www.pythonmorsels.com/calling-a-function/" target="_blank"&gt;call this function&lt;/a&gt; just like any other function in Python:&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;square&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="go"&gt;9&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;A lambda expression is a way of making a function.
+And a lambda function is the object we get back from a lambda expression:&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;square&lt;/span&gt;
+&lt;span class="go"&gt;&amp;lt;function &amp;lt;lambda&amp;gt; at 0x7f7f221eaca0&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;But wait... don't we already have a syntax for making functions in Python?&lt;/p&gt;
+
+      
+        &lt;p&gt;We do and you've probably seen it many times before:&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;square&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;We can use this &lt;code&gt;def&lt;/code&gt; syntax for &lt;a href="https://www.pythonmorsels.com/making-a-function/" target="_blank"&gt;defining a new function&lt;/a&gt;.&lt;/p&gt;
+
+      
+        &lt;p&gt;So why do lambda expressions exist?&lt;/p&gt;
+
+      
+    
+  
+    &lt;h2&gt;Lambda expressions can be defined on the same line they're used&lt;/h2&gt;
+    
+      &lt;p&gt;Let's say we'd like to …&lt;/p&gt;
+    
+  
+&lt;/div&gt;
+&lt;h3&gt;&lt;a href="https://www.pythonmorsels.com/lambda-expressions/" target="_blank"&gt;Read the full article: https://www.pythonmorsels.com/lambda-expressions/&lt;/a&gt;&lt;/h3&gt;
+</description><pubDate>Wed, 25 Oct 2023 12:30:00 +0000</pubDate><guid>https://www.pythonmorsels.com/lambda-expressions/</guid></item><item><title>What is recursion?</title><link>https://www.pythonmorsels.com/what-is-recursion/</link><description>
+
+&lt;p&gt;Recursion is when a function calls itself. Loops are usually preferable to recursion, but recursion is excellent for traversing tree-like structures.&lt;/p&gt;
+
+
+&lt;div&gt;
+  
+    &lt;img width=480 height=270 src="https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F1706362507-e783dfde4957831df8348108e502930de2ffc75a4423989e2a4ac6bf66134a46-d_1920x1080&amp;amp;src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png"/&gt;
+  
+  &lt;p&gt;
+  &lt;strong&gt;Table of contents&lt;/strong&gt;
+  &lt;ol&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/what-is-recursion/#recursive-functions-call-themselves" target="_blank"&gt;Recursive functions call themselves&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/what-is-recursion/#beware-infinite-recursion" target="_blank"&gt;Beware infinite recursion&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/what-is-recursion/#recursion-works-thanks-to-the-call-stack" target="_blank"&gt;Recursion works thanks to the call stack&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/what-is-recursion/#using-for-loops-instead-of-recursion" target="_blank"&gt;Using &lt;code&gt;for&lt;/code&gt; loops instead of recursion&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/what-is-recursion/#recursions-most-common-use-case" target="_blank"&gt;Recursion's most common use case&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/what-is-recursion/#loops-are-great-but-recursion-does-have-its-uses" target="_blank"&gt;Loops are great, but recursion does have its uses&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;/ol&gt;
+  &lt;/p&gt;
+&lt;/div&gt;
+&lt;div&gt;
+  
+    &lt;h2&gt;Recursive functions call themselves&lt;/h2&gt;
+    
+      
+        &lt;p&gt;Here's a &lt;a href="https://www.pythonmorsels.com/module-vs-script/" target="_blank"&gt;Python script&lt;/a&gt; that counts up to a given number:&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;argparse&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ArgumentParser&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;count_to&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;number&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;number&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;parse_args&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="n"&gt;parser&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ArgumentParser&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;parser&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_argument&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"stop"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;parser&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;parse_args&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="n"&gt;args&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;parse_args&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;count_to&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;stop&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;"__main__"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;Note that the &lt;a href="https://www.pythonmorsels.com/making-main-function-python/" target="_blank"&gt;&lt;code&gt;main&lt;/code&gt; function&lt;/a&gt; in that program calls the &lt;code&gt;parse_args&lt;/code&gt; function as well as the &lt;code&gt;count_to&lt;/code&gt; function.&lt;/p&gt;
+
+      
+        &lt;p&gt;Functions can &lt;a href="https://www.pythonmorsels.com/calling-a-function/" target="_blank"&gt;call &lt;em&gt;other&lt;/em&gt; functions&lt;/a&gt; in Python.
+But functions can &lt;em&gt;also&lt;/em&gt; &lt;strong&gt;call themselves&lt;/strong&gt;!&lt;/p&gt;
+
+      
+        &lt;p&gt;Here's a &lt;a href="https://www.pythonmorsels.com/making-a-function/" target="_blank"&gt;function&lt;/a&gt; that calls itself:&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;factorial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="ne"&gt;ValueError&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"Negative numbers not accepted"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;factorial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;A function that calls itself is called a &lt;strong&gt;recursive function&lt;/strong&gt;.&lt;/p&gt;
+
+      
+        &lt;p&gt;It might seem like a bad idea for a function to call itself and it often &lt;em&gt;is&lt;/em&gt; a bad idea... but not always.&lt;/p&gt;
+
+      
+    
+  
+    &lt;h2&gt;Beware infinite recursion&lt;/h2&gt;
+    
+      &lt;p&gt;If a function calls itself …&lt;/p&gt;
+    
+  
+&lt;/div&gt;
+&lt;h3&gt;&lt;a href="https://www.pythonmorsels.com/what-is-recursion/" target="_blank"&gt;Read the full article: https://www.pythonmorsels.com/what-is-recursion/&lt;/a&gt;&lt;/h3&gt;
+</description><pubDate>Mon, 04 Sep 2023 18:15:00 +0000</pubDate><guid>https://www.pythonmorsels.com/what-is-recursion/</guid></item><item><title>Creating a context manager in Python</title><link>https://www.pythonmorsels.com/creating-a-context-manager/</link><description>
+
+&lt;p&gt;Objects with &lt;code&gt;__enter__&lt;/code&gt; and &lt;code&gt;__exit__&lt;/code&gt; methods can be used as context managers in Python.&lt;/p&gt;
+
+
+&lt;div&gt;
+  
+    &lt;img width=480 height=270 src="https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F1688735518-f063c9288c1bd9612f1ad0a4e77be3e3d6442067bc6a5ec53f03f072dd24ef5b-d_1920x1080&amp;amp;src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png"/&gt;
+  
+  &lt;p&gt;
+  &lt;strong&gt;Table of contents&lt;/strong&gt;
+  &lt;ol&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/creating-a-context-manager/#what-is-a-context-manager" target="_blank"&gt;What is a context manager?&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/creating-a-context-manager/#a-useful-context-manager" target="_blank"&gt;A useful context manager&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/creating-a-context-manager/#what-about-that-as-keyword" target="_blank"&gt;What about that &lt;code&gt;as&lt;/code&gt; keyword?&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/creating-a-context-manager/#the-return-value-of-__enter__" target="_blank"&gt;The return value of &lt;code&gt;__enter__&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/creating-a-context-manager/#the-arguments-passed-to-__exit__" target="_blank"&gt;The arguments passed to &lt;code&gt;__exit__&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/creating-a-context-manager/#the-return-value-of-__exit__" target="_blank"&gt;The return value of &lt;code&gt;__exit__&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/creating-a-context-manager/#aside-what-about-contextmanager" target="_blank"&gt;Aside: what about &lt;code&gt;contextmanager&lt;/code&gt;?&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/creating-a-context-manager/#make-context-managers-with-__enter__-__exit__" target="_blank"&gt;Make context managers with &lt;code&gt;__enter__&lt;/code&gt; &amp;amp; &lt;code&gt;__exit__&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;/ol&gt;
+  &lt;/p&gt;
+&lt;/div&gt;
+&lt;div&gt;
+  
+    &lt;h2&gt;What is a context manager?&lt;/h2&gt;
+    
+      
+        &lt;p&gt;A &lt;a href="https://www.pythonmorsels.com/what-is-a-context-manager/" target="_blank"&gt;context manager&lt;/a&gt; is &lt;strong&gt;an object that can be used in a &lt;code&gt;with&lt;/code&gt; block&lt;/strong&gt; to sandwich some code between an entrance action and an exit action.&lt;/p&gt;
+
+      
+        &lt;p&gt;File objects can be used as context managers to &lt;em&gt;automatically&lt;/em&gt; close the file when we're done working with it:&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"example.txt"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"w"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="gp"&gt;... &lt;/span&gt;    &lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"Hello, world!"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="gp"&gt;...&lt;/span&gt;
+&lt;span class="go"&gt;13&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;closed&lt;/span&gt;
+&lt;span class="go"&gt;True&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;Context managers need a &lt;code&gt;__enter__&lt;/code&gt; method and a &lt;code&gt;__exit__&lt;/code&gt; method, and the &lt;code&gt;__exit__&lt;/code&gt; method should accept three &lt;a href="https://www.pythonmorsels.com/positional-vs-keyword-arguments/" target="_blank"&gt;positional arguments&lt;/a&gt;:&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Example&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__enter__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"enter"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__exit__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;exc_type&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;exc_val&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;exc_tb&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"exit"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;This context manager just prints &lt;code&gt;enter&lt;/code&gt; when the &lt;code&gt;with&lt;/code&gt; block is entered and &lt;code&gt;exit&lt;/code&gt; when the &lt;code&gt;with&lt;/code&gt; block is exited:&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;Example&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+&lt;span class="gp"&gt;... &lt;/span&gt;    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"Yay Python!"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="gp"&gt;...&lt;/span&gt;
+&lt;span class="go"&gt;enter&lt;/span&gt;
+&lt;span class="go"&gt;Yay Python!&lt;/span&gt;
+&lt;span class="go"&gt;exit&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;Of course, this is a somewhat silly context manager.
+Let's look at a context manager that actually does something a little bit useful.&lt;/p&gt;
+
+      
+    
+  
+    &lt;h2&gt;A useful context manager&lt;/h2&gt;
+    
+      &lt;p&gt;This context manager &lt;strong&gt;temporarily changes …&lt;/strong&gt;&lt;/p&gt;
+    
+  
+&lt;/div&gt;
+&lt;h3&gt;&lt;a href="https://www.pythonmorsels.com/creating-a-context-manager/" target="_blank"&gt;Read the full article: https://www.pythonmorsels.com/creating-a-context-manager/&lt;/a&gt;&lt;/h3&gt;
+</description><pubDate>Mon, 07 Aug 2023 15:00:00 +0000</pubDate><guid>https://www.pythonmorsels.com/creating-a-context-manager/</guid></item><item><title>Python's next() function</title><link>https://www.pythonmorsels.com/next/</link><description>
+
+&lt;p&gt;Python's built-in &lt;code&gt;next&lt;/code&gt; function will consume the next item from a given iterator.&lt;/p&gt;
+
+
+&lt;div&gt;
+  
+  &lt;p&gt;
+  &lt;strong&gt;Table of contents&lt;/strong&gt;
+  &lt;ol&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/next/#getting-the-next-line-from-a-file" target="_blank"&gt;Getting the next line from a file&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/next/#you-cant-use-next-on-most-iterables" target="_blank"&gt;You can't use &lt;code&gt;next&lt;/code&gt; on most iterables&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/next/#iterators-work-with-next" target="_blank"&gt;Iterators work with &lt;code&gt;next&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/next/#using-the-next-function-with-any-iterable" target="_blank"&gt;Using the &lt;code&gt;next&lt;/code&gt; function with any iterable&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/next/#the-default-value" target="_blank"&gt;The default value&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/next/#prefer-for-loops-over-repeated-next-calls" target="_blank"&gt;Prefer &lt;code&gt;for&lt;/code&gt; loops over repeated &lt;code&gt;next&lt;/code&gt; calls&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/next/#when-to-use-the-next-function" target="_blank"&gt;When to use the &lt;code&gt;next&lt;/code&gt; function&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/next/#looping-helpers-often-use-next" target="_blank"&gt;Looping helpers often use &lt;code&gt;next&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/next/#use-next-for-consuming-a-single-iterator-item" target="_blank"&gt;Use &lt;code&gt;next&lt;/code&gt; for consuming a single iterator item&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;/ol&gt;
+  &lt;/p&gt;
+&lt;/div&gt;
+&lt;div&gt;
+  
+    &lt;h2&gt;Getting the next line from a file&lt;/h2&gt;
+    
+      
+        &lt;p&gt;You can use Python's &lt;code&gt;next&lt;/code&gt; function to get the next line from a file:&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"poems/harlem.txt"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"rt"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="gp"&gt;... &lt;/span&gt;    &lt;span class="n"&gt;first_line&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="gp"&gt;...&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;first_line&lt;/span&gt;
+&lt;span class="go"&gt;'What happens to a dream deferred?\n'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;The &lt;code&gt;next&lt;/code&gt; function doesn't just work on &lt;a href="https://www.pythonmorsels.com/terms/#file-object" target="_blank"&gt;file objects&lt;/a&gt; though.
+For example, it also works on &lt;code&gt;csv.reader&lt;/code&gt; objects:&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;csv&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"penguins_small.csv"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"rt"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;newline&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;""&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;penguins_file&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="gp"&gt;... &lt;/span&gt;    &lt;span class="n"&gt;reader&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;csv&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;reader&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;penguins_file&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="gp"&gt;... &lt;/span&gt;    &lt;span class="n"&gt;headers&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;reader&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="gp"&gt;...&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;headers&lt;/span&gt;
+&lt;span class="go"&gt;['species', 'island', 'bill_length_mm', 'bill_depth_mm', 'flipper_length_mm', 'body_mass_g', 'sex']&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;We just used &lt;code&gt;next&lt;/code&gt; to pop off the header row just before we start &lt;a href="https://www.pythonmorsels.com/csv-reading/" target="_blank"&gt;reading a CSV file&lt;/a&gt;.&lt;/p&gt;
+
+      
+        &lt;p&gt;Besides file objects and &lt;code&gt;csv.reader&lt;/code&gt; objects, what else does the &lt;code&gt;next&lt;/code&gt; function work with?&lt;/p&gt;
+
+      
+    
+  
+    &lt;h2&gt;You can't use &lt;code&gt;next&lt;/code&gt; on most iterables&lt;/h2&gt;
+    
+      &lt;p&gt;If you pass a list …&lt;/p&gt;
+    
+  
+&lt;/div&gt;
+&lt;h3&gt;&lt;a href="https://www.pythonmorsels.com/next/" target="_blank"&gt;Read the full article: https://www.pythonmorsels.com/next/&lt;/a&gt;&lt;/h3&gt;
+</description><pubDate>Mon, 17 Jul 2023 15:00:00 +0000</pubDate><guid>https://www.pythonmorsels.com/next/</guid></item><item><title>The difference between return and print in Python</title><link>https://www.pythonmorsels.com/print-vs-return/</link><description>
+
+&lt;p&gt;Both &lt;code&gt;return&lt;/code&gt; and &lt;code&gt;print&lt;/code&gt; "output" something, but one shows output to an end user and the other doesn't.&lt;/p&gt;
+
+
+&lt;div&gt;
+  
+    &lt;img width=480 height=270 src="https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F1830720410-07e28d2d73deb8541494e80d0e481caa67d4c43543a0dbf800580e141febe64c-d_1920x1080&amp;amp;src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png"/&gt;
+  
+  &lt;p&gt;
+  &lt;strong&gt;Table of contents&lt;/strong&gt;
+  &lt;ol&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/print-vs-return/#both-print-and-return-output-something" target="_blank"&gt;Both &lt;code&gt;print&lt;/code&gt; and &lt;code&gt;return&lt;/code&gt; &lt;em&gt;output&lt;/em&gt; something&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/print-vs-return/#the-difference-between-print-and-return" target="_blank"&gt;The difference between &lt;code&gt;print&lt;/code&gt; and &lt;code&gt;return&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/print-vs-return/#the-python-repl-prints-automatically" target="_blank"&gt;The Python REPL prints automatically&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/print-vs-return/#python-scripts-dont-print-automatically" target="_blank"&gt;Python scripts don't print automatically&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/print-vs-return/#when-to-print-and-when-to-return" target="_blank"&gt;When to &lt;code&gt;print&lt;/code&gt; and when to &lt;code&gt;return&lt;/code&gt;?&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/print-vs-return/#most-python-functions-return-but-some-print" target="_blank"&gt;Most Python functions return, but some print&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;/ol&gt;
+  &lt;/p&gt;
+&lt;/div&gt;
+&lt;div&gt;
+  
+    &lt;h2&gt;Both &lt;code&gt;print&lt;/code&gt; and &lt;code&gt;return&lt;/code&gt; &lt;em&gt;output&lt;/em&gt; something&lt;/h2&gt;
+    
+      
+        &lt;p&gt;Here's a &lt;a href="https://www.pythonmorsels.com/making-a-function/" target="_blank"&gt;function&lt;/a&gt; called &lt;code&gt;nth_fibonacci&lt;/code&gt; that calculates the nth &lt;a href="https://en.wikipedia.org/wiki/Fibonacci_sequence" target="_blank"&gt;Fibonacci number&lt;/a&gt; and prints out the result:&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;math&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;sqrt&lt;/span&gt;
+
+&lt;span class="n"&gt;root5&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sqrt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;phi&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;root5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;  &lt;span class="c1"&gt;# The golden ratio&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;nth_fibonacci&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;round&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;phi&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;root5&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;If we give it the number &lt;code&gt;20&lt;/code&gt;, we'll see the 20th Fibonacci number:&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;nth_fibonacci&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="go"&gt;6765&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;Here's a function that does nearly the same thing, except it uses &lt;code&gt;return&lt;/code&gt; instead of &lt;a href="https://www.pythonmorsels.com/built-in-functions-in-python/#print" target="_blank"&gt;&lt;code&gt;print&lt;/code&gt;&lt;/a&gt;:&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;math&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;sqrt&lt;/span&gt;
+
+&lt;span class="n"&gt;root5&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sqrt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;phi&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;root5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;  &lt;span class="c1"&gt;# The golden ratio&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;nth_fibonacci&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;round&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;phi&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;root5&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;nth_fibonacci2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;round&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;phi&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;root5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;When we call this second function, it seems like it does &lt;em&gt;exactly&lt;/em&gt; the same thing:&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;nth_fibonacci2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="go"&gt;6765&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;nth_fibonacci&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="go"&gt;6765&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+        &lt;p&gt;What's going on here?&lt;/p&gt;
+
+      
+    
+  
+    &lt;h2&gt;The difference between &lt;code&gt;print&lt;/code&gt; and &lt;code&gt;return&lt;/code&gt;&lt;/h2&gt;
+    
+      &lt;p&gt;One of these functions prints …&lt;/p&gt;
+    
+  
+&lt;/div&gt;
+&lt;h3&gt;&lt;a href="https://www.pythonmorsels.com/print-vs-return/" target="_blank"&gt;Read the full article: https://www.pythonmorsels.com/print-vs-return/&lt;/a&gt;&lt;/h3&gt;
+</description><pubDate>Mon, 10 Jul 2023 15:00:00 +0000</pubDate><guid>https://www.pythonmorsels.com/print-vs-return/</guid></item><item><title>Django June 2023: Tips &amp; Discussions</title><link>https://www.pythonmorsels.com/django-june-2023/</link><description>
+
+&lt;p&gt;A summary of Django tips collected from #DjangoJune posts on Mastodon and Twitter in June 2023.&lt;/p&gt;
+
+
+&lt;div&gt;
+  
+  &lt;p&gt;
+  &lt;strong&gt;Table of contents&lt;/strong&gt;
+  &lt;ol&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/django-june-2023/#learning-and-community" target="_blank"&gt;Learning and community&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/django-june-2023/#architecture-and-code-style" target="_blank"&gt;Architecture and code style&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/django-june-2023/#admin-specific-tips" target="_blank"&gt;Admin-specific tips&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/django-june-2023/#sql-query-debugging" target="_blank"&gt;SQL query debugging&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/django-june-2023/#where-do-i-write-my-code" target="_blank"&gt;Where do I write my code?&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/django-june-2023/#miscellaneous-musings" target="_blank"&gt;Miscellaneous musings&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/django-june-2023/#keep-in-touch" target="_blank"&gt;Keep in touch&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;/ol&gt;
+  &lt;/p&gt;
+&lt;/div&gt;
+&lt;div&gt;
+  
+    &lt;h2&gt;Learning and community&lt;/h2&gt;
+    
+      
+        &lt;ul&gt;
+&lt;li&gt;&lt;a href="https://mastodon.social/@treyhunner/110470268038472681" target="_blank"&gt;Some thoughts on Django Learning&lt;/a&gt;: typically I recommend using &lt;a href="https://tutorial.djangogirls.org/" target="_blank"&gt;the Django Girls tutorial&lt;/a&gt; followed by &lt;a href="https://djangoproject.com/start/" target="_blank"&gt;the official tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://mastodon.social/@treyhunner/110486865581283610" target="_blank"&gt;The most important Django resources I can recommend&lt;/a&gt;: &lt;a href="https://djangopackages.org/" target="_blank"&gt;djangopackages.org&lt;/a&gt; and &lt;a href="https://awesomedjango.org/" target="_blank"&gt;awesomedjango.org&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      
+    
+  
+    &lt;h2&gt;Architecture and code style&lt;/h2&gt;
+    
+      &lt;ul&gt;
+&lt;li&gt;&lt;a href="https://mastodon.social/@treyhunner/110583346139138771" target="_blank"&gt;On naming Django apps&lt;/a&gt;: …&lt;/li&gt;&lt;/ul&gt;
+    
+  
+&lt;/div&gt;
+&lt;h3&gt;&lt;a href="https://www.pythonmorsels.com/django-june-2023/" target="_blank"&gt;Read the full article: https://www.pythonmorsels.com/django-june-2023/&lt;/a&gt;&lt;/h3&gt;
+</description><pubDate>Fri, 30 Jun 2023 16:00:00 +0000</pubDate><guid>https://www.pythonmorsels.com/django-june-2023/</guid></item><item><title>Counting occurrences in Python with collections.Counter</title><link>https://www.pythonmorsels.com/using-counter/</link><description>
+
+&lt;p&gt;Python's &lt;code&gt;collections.Counter&lt;/code&gt; class is extremely handy, especially when paired with generator expressions.&lt;/p&gt;
+
+
+&lt;div&gt;
+  
+  &lt;p&gt;
+  &lt;strong&gt;Table of contents&lt;/strong&gt;
+  &lt;ol&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/using-counter/#what-is-a-counter" target="_blank"&gt;What is a &lt;code&gt;Counter&lt;/code&gt;?&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/using-counter/#creating-a-counter-object" target="_blank"&gt;Creating a &lt;code&gt;Counter&lt;/code&gt; object&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/using-counter/#getting-the-n-most-common-items" target="_blank"&gt;Getting the N most common items&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/using-counter/#examples-of-getting-the-most-common-items" target="_blank"&gt;Examples of getting the most common items&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/using-counter/#adding-items-to-a-counter" target="_blank"&gt;Adding items to a &lt;code&gt;Counter&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/using-counter/#subtracting-items-from-a-counter" target="_blank"&gt;Subtracting items from a &lt;code&gt;Counter&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/using-counter/#removing-negative-counts" target="_blank"&gt;Removing negative counts&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/using-counter/#arithmetic-with-counter-objects" target="_blank"&gt;Arithmetic with &lt;code&gt;Counter&lt;/code&gt; objects&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/using-counter/#counter-comprehensions" target="_blank"&gt;&lt;code&gt;Counter&lt;/code&gt; comprehensions&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;li&gt;&lt;a href="https://www.pythonmorsels.com/using-counter/#use-counter-for-counting-occurrences-of-many-items" target="_blank"&gt;Use &lt;code&gt;Counter&lt;/code&gt; for counting occurrences of many items&lt;/a&gt;&lt;/li&gt;
+  
+  &lt;/ol&gt;
+  &lt;/p&gt;
+&lt;/div&gt;
+&lt;div&gt;
+  
+    &lt;h2&gt;What is a &lt;code&gt;Counter&lt;/code&gt;?&lt;/h2&gt;
+    
+      
+        &lt;p&gt;Python's &lt;a href="https://docs.python.org/3/library/collections.html#collections.Counter" target="_blank"&gt;&lt;code&gt;collections.Counter&lt;/code&gt;&lt;/a&gt; objects are similar to &lt;a href="https://www.pythonmorsels.com/using-dictionaries-in-python/" target="_blank"&gt;dictionaries&lt;/a&gt; but they have a few extra features that can simplify item tallying.&lt;/p&gt;
+
+      
+        &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;collections&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Counter&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;colors&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"purple"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"pink"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"green"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"yellow"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"yellow"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"purple"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"purple"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"black"&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;color_counts&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Counter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;colors&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;color_counts&lt;/span&gt;
+&lt;span class="go"&gt;Counter({'purple': 3, 'yellow': 2, 'pink': 1, 'green': 1, 'black': 1})&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;color_counts&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'purple'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="go"&gt;3&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+      
+    
+  
+    &lt;h2&gt;Creating a &lt;code&gt;Counter&lt;/code&gt; object&lt;/h2&gt;
+    
+      &lt;p&gt;There are &lt;strong&gt;two ways&lt;/strong&gt; you'll …&lt;/p&gt;
+    
+  
+&lt;/div&gt;
+&lt;h3&gt;&lt;a href="https://www.pythonmorsels.com/using-counter/" target="_blank"&gt;Read the full article: https://www.pythonmorsels.com/using-counter/&lt;/a&gt;&lt;/h3&gt;
+</description><pubDate>Tue, 27 Jun 2023 15:00:00 +0000</pubDate><guid>https://www.pythonmorsels.com/using-counter/</guid></item></channel></rss>
