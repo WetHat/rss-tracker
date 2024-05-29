@@ -26,7 +26,7 @@ const
     feedSource = process.argv[2], // url or relative directory path or --all
     referencePath = "./test-vault/reference";
 
-function generateFeedReferenceData(feed, feedName) {
+async function generateFeedReferenceData(feed, feedName) {
     // cleanup the markdown files
     const
         fsFeedDir = "./test-vault/reference/" + feedName,
@@ -47,6 +47,7 @@ function generateFeedReferenceData(feed, feedName) {
     execFileSync("cmd", ["/C", "start", `obsidian://newRssFeed?xml=${xmlAsset}^&dir=reference`]);
 
     console.log(`Reference data for "${feedName}" updated!`)
+    await new Promise(resolve => setTimeout(resolve,2000));
 }
 
 if (feedSource.includes("//")) {
@@ -72,7 +73,6 @@ let feedSources;
 if (feedSource === "--all") {
     feedSources = globSync(`${referencePath}/*/assets/feed.xml`);
     console.log(feedSources);
-    process.exit(0);
 } else {
     feedSources = [path.join(feedSource, "assets/feed.xml")];
 }
@@ -83,7 +83,7 @@ for (let source of feedSources) {
         feedName = path.basename(path.dirname(fsAssets)),
         feedXML = fs.readFileSync(source, { encoding: "utf8" }).toString(),
         feed = new TrackedRSSfeed(feedXML, `reference/${feedName}/assets/feed.xml`);
-    generateFeedReferenceData(feed, feedName);
+    await generateFeedReferenceData(feed, feedName);
 }
 
 process.exit(0);
