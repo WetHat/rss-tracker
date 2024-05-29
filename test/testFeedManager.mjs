@@ -3,7 +3,7 @@ import * as fs from 'fs';
 import { globSync } from "glob";
 import assert from "assert";
 import { execFileSync } from "child_process";
-import exp from 'constants';
+import * as Diff from "diff";
 
 describe('FeedAssembler ', function () {
     // collect all reference RSS feeds.
@@ -45,7 +45,14 @@ describe('FeedAssembler ', function () {
             });
 
             describe(`Items same as reference`, function () {
-                const n = Math.min(actualFiles.length, refFiles.length);
+                const
+                    n = Math.min(actualFiles.length, refFiles.length),
+                    reportFile = `./test-vault/reports/${feedName} Content.md`;
+
+                if (fs.existsSync(reportFile)) {
+                    fs.unlinkSync(reportFile);
+                }
+
                 for (let i = 0; i < n; i++) {
                     const
                         actualFile = actualFiles[i],
@@ -55,15 +62,25 @@ describe('FeedAssembler ', function () {
                     it(`"${actualName}" same name as reference`, function () {
                         assert.equal(actualName, expectedName);
                     });
-
-                    it(`"${actualName}" same content as reference`, function () {
-                        // check contents
-                        const
-                            actualContent = fs.readFileSync(actualFile, { encoding: "utf8" }).toString(),
-                            expectedContent = fs.readFileSync(refFile, { encoding: "utf8" }).toString();
-                        assert.equal(actualContent, expectedContent);
-                    })
+                    // check contents
+                    const
+                        actualContent = fs.readFileSync(actualFile, { encoding: "utf8" }).toString(),
+                        expectedContent = fs.readFileSync(refFile, { encoding: "utf8" }).toString(),
+                        diff = Diff.diffLines(actualContent, expectedContent, { newlineIsToken: true })
+                            .filter(d => d["added"] || d["removed"]);
+                    if (diff.length > 0) {
+                        const report = `# Differences in "${actualName}"
+~~~json
+${JSON.stringify(diff, { encoding: "utf8" }, 4)}
+~~~`
+                        // TODO determine if report neds to be generated
+                        fs.appendFileSync(reportFile, report);
+                    }
                 }
+
+                it('Item content same as reference',function () {
+                   assert.equal(fs.existsSync(reportFile),false);
+                });
             });
         });
     }

@@ -10,7 +10,7 @@
 		"ship": "npm run build && node ship.mjs",
 		"version": "node version-bump.mjs && git add manifest.json versions.json",
 		"prep-test": "npx tsc src/FeedAssembler.ts --module esnext --moduleResolution node --isolatedModules true --importHelpers true --allowJS true --target esnext --outDir test/scripts",
-		"test":"mocha"
+		"test": "mocha"
 	},
 	"keywords": [],
 	"author": "@WetHat",
@@ -20,6 +20,7 @@
 		"@typescript-eslint/eslint-plugin": "5.29.0",
 		"@typescript-eslint/parser": "5.29.0",
 		"builtin-modules": "3.3.0",
+		"diff": "^5.2.0",
 		"esbuild": "0.17.3",
 		"glob": "^10.4.1",
 		"json-diff": "^1.0.6",
