@@ -13,9 +13,9 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "reports/Azimuth Items.md",
-                "mode": "preview",
-                "source": true
+                "file": "output/Sabine Hossenfelder.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "reports/Azimuth Items.md",
+                "file": "output/Sabine Hossenfelder.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "reports/Azimuth Items.md",
+                "file": "output/Sabine Hossenfelder.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "reports/Azimuth Items.md"
+                "file": "output/Sabine Hossenfelder.md"
               }
             }
           }
@@ -144,7 +144,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "reports/Azimuth Items.md",
+                "file": "output/Sabine Hossenfelder.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -187,8 +187,8 @@
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
       "markdown-importer:Open format converter": false,
-      "rss-tracker:Update all RSS Feeds": false,
-      "obsidian-local-images-plus:Local Images Plus  0.15.9\r\nLocalize attachments (plugin folder)": false
+      "obsidian-local-images-plus:Local Images Plus  0.15.9\r\nLocalize attachments (plugin folder)": false,
+      "rss-tracker:Update all RSS Feeds": false
     }
   },
   "active": "48b37c2970574279",
@@ -203,8 +203,8 @@
     "output/@WetHat (WetHat💦)/Boosted꞉ Polyhedral tiling for ＃TilingTuesday ＃Tiling ＃Hedron ＃Geometry ＃mathart.md",
     "output/@WetHat (WetHat💦)/Boosted꞉ Series꞉ A Functional Approach To Common Lisp.md",
     "output/@WetHat (WetHat💦)",
+    "output/assets/@WetHat (WetHat💦).svg",
     "output/@WetHat (WetHat💦).md",
-    "assets/@WetHat (WetHat💦)Logo 5.svg",
     "output/@wethat7․bsky․social - WetHat💦/11 May 2024 08꞉11 +0000.md",
     "output/@wethat7․bsky․social - WetHat💦/11 May 2024 08꞉28 +0000.md",
     "output/@wethat7․bsky․social - WetHat💦/11 May 2024 17꞉56 +0000.md",
@@ -216,8 +216,8 @@
     "output/@wethat7․bsky․social - WetHat💦/13 May 2024 09꞉59 +0000.md",
     "output/@wethat7․bsky․social - WetHat💦/13 May 2024 10꞉10 +0000.md",
     "output/@wethat7․bsky․social - WetHat💦",
+    "output/assets/@wethat7․bsky․social - WetHat💦.svg",
     "output/@wethat7․bsky․social - WetHat💦.md",
-    "assets/@wethat7․bsky․social - WetHat💦Logo 5.svg",
     "output/Azimuth/Well Temperaments (Part 6).md",
     "output/Azimuth/Agent-Based Models (Part 7).md",
     "output/Azimuth/Nicholas Ludford.md",
@@ -226,18 +226,18 @@
     "output/Azimuth",
     "output/Planet PowerShell",
     "output/PyCoder’s Weekly",
-    "assets/PyCoder’s WeeklyLogo 5.svg",
+    "output/assets/PyCoder’s Weekly.svg",
     "output/Sabine Hossenfelder",
-    "assets/Sabine HossenfelderLogo 5.svg",
+    "output/assets/Sabine Hossenfelder.svg",
     "output/The Hacker News",
-    "assets/The Hacker NewsLogo 5.svg",
-    "assets/@WetHat (WetHat💦)Logo 3.svg",
-    "assets/@wethat7․bsky․social - WetHat💦Logo 4.svg",
-    "assets/PyCoder’s WeeklyLogo 4.svg",
-    "assets/Sabine HossenfelderLogo 4.svg",
-    "assets/The Hacker NewsLogo 4.svg",
+    "output/assets/The Hacker News.svg",
     "output/assets",
-    "reference/@wethat7․bsky․social - WetHat💦",
-    "reference/@wethat7․bsky․social - WetHat💦/assets"
+    "assets/PyCoder’s WeeklyLogo.svg",
+    "assets/@wethat7․bsky․social - WetHat💦Logo 3.svg",
+    "assets/@WetHat (WetHat💦)Logo 3.svg",
+    "assets/PyCoder’s WeeklyLogo 3.svg",
+    "assets/Sabine HossenfelderLogo 3.svg",
+    "output/Untitled",
+    "assets"
   ]
 }

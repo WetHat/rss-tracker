@@ -7,13 +7,20 @@ import * as Diff from "diff";
 
 describe('FeedAssembler ', function () {
     // collect all reference RSS feeds.
-    const tests = globSync("./test-vault/reference/*/assets/feed.xml")
-        .map(xmlPath => {
-            const assets = path.dirname(xmlPath),
-                feedName = path.basename(path.dirname(assets)),
-                vaultXmlPath = `reference/${feedName}/assets/feed.xml`;
-            return { args: [vaultXmlPath, feedName], expected: false };
-        });
+    const
+        tests = globSync("./test-vault/reference/*/assets/feed.xml")
+            .map(xmlPath => {
+                const assets = path.dirname(xmlPath),
+                    feedName = path.basename(path.dirname(assets)),
+                    vaultXmlPath = `reference/${feedName}/assets/feed.xml`;
+                return { args: [vaultXmlPath, feedName], expected: false };
+            }),
+        assets = `./test-vault/output/assets`;
+    // remove output assets
+    if (fs.existsSync(assets)) {
+        fs.rmSync(assets, { recursive: true, force: true });
+    }
+
     // now run the tests
     for (let testData of tests) {
         const

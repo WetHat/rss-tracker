@@ -12,7 +12,7 @@ interval: 168
 > [!abstract] PyCoder’s Weekly
 > 
 >
-> ![[PyCoder’s WeeklyLogo.svg|200x200]]
+> ![[reference/assets/PyCoder’s WeeklyLogo.svg|200x200]]
 # Unread Feed Items
 ~~~dataview
 TASK
