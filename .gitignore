@@ -5,7 +5,7 @@
 node_modules
 # the generated output for comparison with the reference
 
-test-vault/output/
+test-vault/output/*
 
 # Exclude sourcemaps
 *.map
