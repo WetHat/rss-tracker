@@ -62,6 +62,6 @@ const xmlAsset = encodeURIComponent(`${vaultAssets}/feed.xml`);
 
 execFileSync("cmd",["/C","start",`obsidian://newRssFeed?xml=${xmlAsset}^&dir=reference`]);
 
-console.log(`${vaultAssets} feed updated!`);
+console.log(`"${feedName}" updated!`);
 
 process.exit(0);
