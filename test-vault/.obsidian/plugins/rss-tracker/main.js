@@ -2591,8 +2591,9 @@ var TrackedRSSitem = class {
   constructor(entry) {
     var _a, _b;
     this.tags = (_a = entry.category) != null ? _a : [];
-    let { id, title, description, published, link, category, creator, image, content } = entry;
+    let { id, title, description, published, link, category, creator, image, content, media } = entry;
     this.id = id;
+    this.media = media;
     this.tags = (_b = category == null ? void 0 : category.map((c) => {
       const category2 = typeof c === "string" ? c : c["#text"];
       return category2.replace(/[#"\[\]\{\}}]*/g, "").replace(/[:;\\/]/g, " ");
@@ -2620,15 +2621,48 @@ var TrackedRSSitem = class {
     }
   }
 };
+function assembleMedia(elem) {
+  let mediaContent = elem["media:content"], media = null;
+  if (!mediaContent) {
+    let group = elem["media:group"];
+    if (group) {
+      mediaContent = group["media:content"];
+    }
+  }
+  if (mediaContent && !Array.isArray(mediaContent)) {
+    mediaContent = [mediaContent];
+  }
+  if (mediaContent) {
+    media = mediaContent.map((mc) => {
+      const type = mc["@_type"] || mc["@_medium"];
+      let mediumType = "?" /* Unknown */;
+      if (type.includes("image")) {
+        mediumType = "image" /* Image */;
+      } else if (type.match(/video|shock/)) {
+        mediumType = "video" /* Video */;
+      } else if (type.includes("audio")) {
+        mediumType = "audio" /* Audio */;
+      }
+      let medium = { src: mc["@_url"], type: mediumType };
+      const width = elem["@_width"], height = elem["@_height"];
+      if (width && height) {
+        medium["width"] = width;
+        medium["height"] = height;
+      }
+      return medium;
+    });
+  }
+  return media != null ? media : [];
+}
 function assembleImage(elem) {
   var _a;
   let { image } = elem;
   if (typeof image === "string") {
-    return { src: image };
+    return { src: image, type: "image" /* Image */ };
   }
   if (image == null ? void 0 : image.url) {
     const { url, width, height } = image;
-    let img = { src: url };
+    let img = { src: url, type: "image" /* Image */ };
     if (width) {
       img.width = width;
     }
@@ -2646,7 +2680,7 @@ function assembleImage(elem) {
   }
   if (thumb) {
     let [width, height] = [thumb["@_width"], thumb["@_height"]];
-    let img = { src: thumb["@_url"] };
+    let img = { src: thumb["@_url"], type: "image" /* Image */ };
     if (width) {
       img.width = width;
     }
@@ -2657,7 +2691,7 @@ function assembleImage(elem) {
   }
   let enc = elem.enclosure;
   if ((_a = enc == null ? void 0 : enc["@_type"]) == null ? void 0 : _a.includes("image")) {
-    let img = { src: enc["@_url"] };
+    let img = { src: enc["@_url"], type: "image" /* Image */ };
     return img;
   }
   return null;
@@ -2682,9 +2716,9 @@ function assembleDescription(elem) {
 }
 var DEFAULT_OPTIONS = {
   getExtraEntryFields: (item) => {
-    let { id, guid } = item;
-    let tracked = {
-      id: id || (guid == null ? void 0 : guid["#text"]) || item.link
+    let { id, guid } = item, tracked = {
+      id: id || (guid == null ? void 0 : guid["#text"]) || item.link,
+      media: assembleMedia(item)
     };
     let description = item.description || assembleDescription(item);
     if (description) {
