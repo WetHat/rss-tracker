@@ -67,26 +67,6 @@ export class FeedManager {
         return `![image${size}](${src})`;
     }
 
-    private formatFilename(name: string): string {
-        return name.replace(/\w+:\/\/.*/, "") // strip urls
-            .replaceAll("?", "❓")
-            .replaceAll(".", "․")
-            .replaceAll(":", "꞉")
-            .replaceAll('"', "″")
-            .replaceAll('<"', "＜")
-            .replaceAll('>"', "＞")
-            .replaceAll('|"', "∣")
-            .replaceAll("\\", "/")
-            .replaceAll("/", "╱")
-            .replaceAll("[", "{")
-            .replaceAll("]", "}")
-            .replaceAll("#", "＃")
-            .replaceAll("^", "△")
-            .replaceAll("&", "+")
-            .replaceAll("*", "✱")
-            .substring(0, 80)
-            .trim();
-    }
     private formatTags(tags: string[]): string {
         return "[" + tags.map(t => "rss/" + t.replace(" ", "_")).join(",") + "]";
     }
@@ -118,7 +98,7 @@ export class FeedManager {
         if (!content) {
             content = description
         }
-        const basename = this.formatFilename(item.title);
+        const basename = item.fileName;
         let itemPath = normalizePath(path.join(itemFolder.path, `${basename}.md`));
 
         // make sure the name is unique
@@ -203,7 +183,7 @@ export class FeedManager {
     private async createFeed(feed: TrackedRSSfeed, location: TFolder): Promise<TFile> {
         const
             { title, site, description } = feed,
-            basename = this.formatFilename(title ?? "Anonymous Feed"),
+            basename = feed.fileName,
             itemfolderPath = normalizePath(path.join(location.path, basename)),
             tpl = this.plugin.settings.feedTemplate,
             dashboardPath = normalizePath(path.join(location.path, `${basename}.md`)),

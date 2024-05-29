@@ -2587,6 +2587,9 @@ var extractFromXml = (xml, options = {}) => {
 };
 
 // src/FeedAssembler.ts
+function toFilename(name) {
+  return name.replace(/\w+:\/\/.*/, "").replaceAll("?", "\u2753").replaceAll(".", "\u2024").replaceAll(":", "\uA789").replaceAll('"', "\u2033").replaceAll('<"', "\uFF1C").replaceAll('>"', "\uFF1E").replaceAll('|"', "\u2223").replaceAll("\\", "/").replaceAll("/", "\u2571").replaceAll("[", "{").replaceAll("]", "}").replaceAll("#", "\uFF03").replaceAll("^", "\u25B3").replaceAll("&", "+").replaceAll("*", "\u2731").substring(0, 80).trim();
+}
 var TrackedRSSitem = class {
   constructor(entry) {
     var _a, _b;
@@ -2619,6 +2622,9 @@ var TrackedRSSitem = class {
     if (content) {
       this.content = content;
     }
+  }
+  get fileName() {
+    return toFilename(this.title);
   }
 };
 function assembleMedia(elem) {
@@ -2807,6 +2813,10 @@ var TrackedRSSfeed = class {
       this.items = [];
     }
   }
+  get fileName() {
+    var _a;
+    return toFilename((_a = this.title) != null ? _a : "Untitled");
+  }
   /**
    * @returns the avarage time interval between posts in the feed in hours.
    */
@@ -2870,9 +2880,6 @@ var _FeedManager = class {
     }
     return `![image${size}](${src})`;
   }
-  formatFilename(name) {
-    return name.replace(/\w+:\/\/.*/, "").replaceAll("?", "\u2753").replaceAll(".", "\u2024").replaceAll(":", "\uA789").replaceAll('"', "\u2033").replaceAll('<"', "\uFF1C").replaceAll('>"', "\uFF1E").replaceAll('|"', "\u2223").replaceAll("\\", "/").replaceAll("/", "\u2571").replaceAll("[", "{").replaceAll("]", "}").replaceAll("#", "\uFF03").replaceAll("^", "\u25B3").replaceAll("&", "+").replaceAll("*", "\u2731").substring(0, 80).trim();
-  }
   formatTags(tags) {
     return "[" + tags.map((t) => "rss/" + t.replace(" ", "_")).join(",") + "]";
   }
@@ -2899,7 +2906,7 @@ var _FeedManager = class {
     if (!content) {
       content = description;
     }
-    const basename = this.formatFilename(item.title);
+    const basename = item.fileName;
     let itemPath = (0, import_obsidian2.normalizePath)(path.join(itemFolder.path, `${basename}.md`));
     let uniqueBasename = basename, counter = 1;
     while (this.app.vault.getFileByPath(itemPath)) {
@@ -2966,7 +2973,7 @@ var _FeedManager = class {
   }
   async createFeed(feed, location) {
     var _a, _b;
-    const { title, site, description } = feed, basename = this.formatFilename(title != null ? title : "Anonymous Feed"), itemfolderPath = (0, import_obsidian2.normalizePath)(path.join(location.path, basename)), tpl = this.plugin.settings.feedTemplate, dashboardPath = (0, import_obsidian2.normalizePath)(path.join(location.path, `${basename}.md`)), defaultImage = basename + ".svg";
+    const { title, site, description } = feed, basename = feed.fileName, itemfolderPath = (0, import_obsidian2.normalizePath)(path.join(location.path, basename)), tpl = this.plugin.settings.feedTemplate, dashboardPath = (0, import_obsidian2.normalizePath)(path.join(location.path, `${basename}.md`)), defaultImage = basename + ".svg";
     let image = feed.image;
     const content = this.expandTemplate(tpl, {
       "{{feedUrl}}": feed.source,

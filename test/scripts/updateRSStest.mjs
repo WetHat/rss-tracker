@@ -26,11 +26,12 @@ const
     feedSource = process.argv[2], // url or relative directory path or --all
     referencePath = "./test-vault/reference";
 
-async function generateFeedReferenceData(feed, feedName) {
+async function generateFeedReference(feed) {
+
     // cleanup the markdown files
     const
+        feedName = feed.fileName,
         fsFeedDir = "./test-vault/reference/" + feedName,
-        fsFeedAssets = path.join(fsFeedDir, "/assets"),
         feedDashboard = fsFeedDir + ".md";
 
     if (fs.existsSync(feedDashboard)) {
@@ -39,15 +40,13 @@ async function generateFeedReferenceData(feed, feedName) {
 
     // clear out the markdown files, if any
     globSync(`${fsFeedDir}/*.md`).forEach(md => fs.unlinkSync(md));
-    // update the feed. json
-    fs.writeFileSync(path.join(fsFeedAssets, "expected.json"), JSON.stringify(feed, { encoding: "utf8" }, 4));
 
     // regenerate the feed markdown files
     const xmlAsset = encodeURIComponent(`reference/${feedName}/assets/feed.xml`);
     execFileSync("cmd", ["/C", "start", `obsidian://newRssFeed?xml=${xmlAsset}^&dir=reference`]);
 
-    console.log(`Reference data for "${feedName}" updated!`)
     await new Promise(resolve => setTimeout(resolve,2000));
+    console.log(`Reference data for "${feedName}" updated!`)
 }
 
 if (feedSource.includes("//")) {
@@ -56,16 +55,17 @@ if (feedSource.includes("//")) {
         feedXML = await fetch(feedSource)
             .then(response => response.text()),
         feed = new TrackedRSSfeed(feedXML, feedSource),
-        feedName = feed.title,
+        feedName = feed.fileName,
         fsAssets = path.join(referencePath, feedName, "assets");
-    console.log("Downloaded feed " + feedTitle);
+    console.log("Downloaded feed " + feedName);
     // pretend the feed came from the vault
     feed.source = `reference/${feedName}/assets/feed.xml`;
 
     fs.mkdirSync(fsAssets, { recursive: true });
     fs.writeFileSync(path.join(fsAssets, "feed.xml"), feedXML, { encoding: "utf8" });
-
-    generateFeedReferenceData(feed, feedName);
+    // update the feed. json
+    fs.writeFileSync(path.join(fsAssets, "expected.json"), JSON.stringify(feed, { encoding: "utf8" }, 4));
+    generateFeedReference(feed);
     process.exit(0);
 }
 
@@ -83,7 +83,8 @@ for (let source of feedSources) {
         feedName = path.basename(path.dirname(fsAssets)),
         feedXML = fs.readFileSync(source, { encoding: "utf8" }).toString(),
         feed = new TrackedRSSfeed(feedXML, `reference/${feedName}/assets/feed.xml`);
-    await generateFeedReferenceData(feed, feedName);
+    fs.writeFileSync(path.join(fsAssets, "expected.json"), JSON.stringify(feed, { encoding: "utf8" }, 4));
+    await generateFeedReference(feed);
 }
 
 process.exit(0);

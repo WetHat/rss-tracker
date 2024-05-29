@@ -1,4 +1,29 @@
 import { extractFromXml } from '@extractus/feed-extractor';
+/**
+ * Utility to convert a string into a valid filename.
+ * @param name - A string, such as a title, to create a filename for.
+ * @returns valid filename
+ */
+function toFilename(name) {
+    return name.replace(/\w+:\/\/.*/, "") // strip urls
+        .replaceAll("?", "❓")
+        .replaceAll(".", "․")
+        .replaceAll(":", "꞉")
+        .replaceAll('"', "″")
+        .replaceAll('<"', "＜")
+        .replaceAll('>"', "＞")
+        .replaceAll('|"', "∣")
+        .replaceAll("\\", "/")
+        .replaceAll("/", "╱")
+        .replaceAll("[", "{")
+        .replaceAll("]", "}")
+        .replaceAll("#", "＃")
+        .replaceAll("^", "△")
+        .replaceAll("&", "+")
+        .replaceAll("*", "✱")
+        .substring(0, 80)
+        .trim();
+}
 export var MediumType;
 (function (MediumType) {
     MediumType["Unknown"] = "?";
@@ -54,6 +79,9 @@ export class TrackedRSSitem {
         if (content) {
             this.content = content;
         }
+    }
+    get fileName() {
+        return toFilename(this.title);
     }
 }
 function assembleMedia(elem) {
@@ -252,6 +280,9 @@ export class TrackedRSSfeed {
         else {
             this.items = [];
         }
+    }
+    get fileName() {
+        return toFilename(this.title ?? "Untitled");
     }
     /**
      * @returns the avarage time interval between posts in the feed in hours.

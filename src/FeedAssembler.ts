@@ -1,6 +1,32 @@
 import { extractFromXml, FeedData, ReaderOptions, FeedEntry } from '@extractus/feed-extractor'
 
 /**
+ * Utility to convert a string into a valid filename.
+ * @param name - A string, such as a title, to create a filename for.
+ * @returns valid filename
+ */
+function toFilename(name: string): string {
+    return name.replace(/\w+:\/\/.*/, "") // strip urls
+        .replaceAll("?", "❓")
+        .replaceAll(".", "․")
+        .replaceAll(":", "꞉")
+        .replaceAll('"', "″")
+        .replaceAll('<"', "＜")
+        .replaceAll('>"', "＞")
+        .replaceAll('|"', "∣")
+        .replaceAll("\\", "/")
+        .replaceAll("/", "╱")
+        .replaceAll("[", "{")
+        .replaceAll("]", "}")
+        .replaceAll("#", "＃")
+        .replaceAll("^", "△")
+        .replaceAll("&", "+")
+        .replaceAll("*", "✱")
+        .substring(0, 80)
+        .trim();
+}
+
+/**
  * Type for property bag objects (key -> value) with unknown content.
  */
 export type TPropertyBag = { [key: string]: any };
@@ -113,6 +139,10 @@ export class TrackedRSSitem {
             this.content = content;
         }
     }
+
+    get fileName(): string {
+        return toFilename(this.title);
+    }
 }
 
 function assembleMedia(elem: TPropertyBag): IRssMedium[] {
@@ -132,8 +162,8 @@ function assembleMedia(elem: TPropertyBag): IRssMedium[] {
     }
 
     if (mediaContent) {
-        media = mediaContent.map( (mc: TPropertyBag) : IRssMedium => {
-            const type:string = mc["@_type"] || mc["@_medium"];
+        media = mediaContent.map((mc: TPropertyBag): IRssMedium => {
+            const type: string = mc["@_type"] || mc["@_medium"];
 
             let mediumType = MediumType.Unknown;
             if (type.includes("image")) {
@@ -144,7 +174,7 @@ function assembleMedia(elem: TPropertyBag): IRssMedium[] {
                 mediumType = MediumType.Audio;
             }
 
-            let medium :IRssMedium = {src: mc["@_url"], type: mediumType};
+            let medium: IRssMedium = { src: mc["@_url"], type: mediumType };
             const
                 width: string = elem["@_width"],
                 height: string = elem["@_height"];
@@ -339,6 +369,10 @@ export class TrackedRSSfeed {
         } else {
             this.items = []
         }
+    }
+
+    get fileName(): string {
+        return toFilename(this.title ?? "Untitled");
     }
 
     /**
