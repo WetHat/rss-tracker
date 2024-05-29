@@ -19,7 +19,7 @@ export class TrackedRSSitem {
         this.tags = category?.map(c => {
             const category = typeof c === "string" ? c : c["#text"];
             //return a cleaned up category
-            return c.replace(/[#"\[\]\{\}}]*/g, "")
+            return category.replace(/[#"\[\]\{\}}]*/g, "")
                 .replace(/[:;\\/]/g, " ");
         }) ?? [];
         if (description) {
