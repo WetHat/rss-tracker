@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "reference/@WetHat (WetHat💦).md",
+                "file": "reference/․NET Blog/F＃ developer stories꞉ how we+＃8217;ve finally fixed a 9-year-old performance iss.md",
                 "mode": "source",
                 "source": false
               }
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "reference/@WetHat (WetHat💦).md",
+                "file": "reference/․NET Blog/F＃ developer stories꞉ how we+＃8217;ve finally fixed a 9-year-old performance iss.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "reference/@WetHat (WetHat💦).md",
+                "file": "reference/․NET Blog/F＃ developer stories꞉ how we+＃8217;ve finally fixed a 9-year-old performance iss.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "reference/@WetHat (WetHat💦).md"
+                "file": "reference/․NET Blog/F＃ developer stories꞉ how we+＃8217;ve finally fixed a 9-year-old performance iss.md"
               }
             }
           }
@@ -143,7 +143,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "reference/@WetHat (WetHat💦).md",
+                "file": "reference/․NET Blog/F＃ developer stories꞉ how we+＃8217;ve finally fixed a 9-year-old performance iss.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -191,51 +191,50 @@
   },
   "active": "c419fa4eebd51258",
   "lastOpenFiles": [
+    "reference/․NET Blog/What+＃8217;s new in Orleans 8 for Scalable Distributed Applications.md",
+    "reference/․NET Blog/․NET and ․NET Framework May 2024 Servicing Updates.md",
+    "reference/․NET Blog.md",
+    "reference/assets/Sabine Hossenfelder.svg",
+    "reference/․NET Blog/Secure your container build and publish with ․NET 8.md",
+    "reference/․NET Blog/Package Management +＃038; improved ․NET Aspire support come to C＃ Dev Kit.md",
+    "reference/․NET Blog/Refactor your code with C＃ collection expressions.md",
+    "reference/․NET Blog/Join the ․NET Team at Microsoft Build 2024!.md",
+    "reference/․NET Blog/General Availability of ․NET Aspire꞉ Simplifying ․NET Cloud-Native Development.md",
+    "reference/․NET Blog/․NET Announcements and Updates from Microsoft Build 2024.md",
+    "reference/․NET Blog/Introducing links to source code for ․NET API Docs.md",
+    "reference/․NET Blog/F＃ developer stories꞉ how we+＃8217;ve finally fixed a 9-year-old performance iss.md",
+    "reference/․NET Blog/assets/feed.xml",
+    "reference/․NET Blog/assets/expected.json",
+    "reference/․NET Blog/assets",
+    "reference/․NET Blog",
+    "reference/assets/Sabine Hossenfelder 1.svg",
+    "reference/Sabine Hossenfelder.md",
+    "reference/Sabine Hossenfelder/How does gravity escape a black hole❓.md",
+    "reference/Sabine Hossenfelder/π=4.md",
+    "reference/Sabine Hossenfelder/NASA named an asteroid after me.md",
+    "reference/Sabine Hossenfelder/The era of nuclear precision has begun.md",
+    "reference/Sabine Hossenfelder/Scientific Progress is Slowing Down․ But Why❓.md",
+    "reference/Sabine Hossenfelder/What Einstein wrote to Marie Curie.md",
+    "reference/Sabine Hossenfelder/CERN Looks for Origins of Quantum Randomness.md",
+    "reference/Sabine Hossenfelder/Brain Really Uses Quantum Effects, New Study Finds.md",
+    "reference/Sabine Hossenfelder/Does ″Quark″ Rhyme With ″Dark″❓.md",
+    "reference/Sabine Hossenfelder/Geothermal Power Everywhere꞉ Tech Advances Rapidly.md",
+    "reference/@WetHat (WetHat💦).md",
     "reference/@wethat7․bsky․social - WetHat💦.md",
     "reference/Azimuth.md",
-    "reference/Bluesky.md",
-    "reference/Planet PowerShell.md",
-    "reference/PyCoder’s Weekly.md",
-    "reference/Python Morsels.md",
-    "reference/Sabine Hossenfelder.md",
-    "reference/The Hacker News.md",
-    "reference/TypeScript TV.md",
-    "reference/@WetHat (WetHat💦)/Replied to꞉ @WetHat it's AI-generated․ See comments at.md",
-    "reference/@WetHat (WetHat💦)/Replied to꞉ @WetHat Newtonsoft,Json is not dead․ It's last release was 14 months.md",
-    "reference/@WetHat (WetHat💦)/Replied to꞉ @WetHat Thanks for sharing․ Makes me wonder if AoT or PGO might bene.md",
-    "reference/@WetHat (WetHat💦)/Boosted꞉ @WetHat There can be significant benefits with static readonly fields,.md",
-    "reference/@WetHat (WetHat💦)/Replied to꞉ @WetHat There can be significant benefits with static readonly field.md",
-    "reference/@WetHat (WetHat💦)/Replied to꞉ @WetHat I recall several stack overflow libraries had compiler switc.md",
-    "reference/@WetHat (WetHat💦)/Boosted꞉ Celluar ＃fooocus ＃stablediffusion ＃selfhosted ＃AI ＃AIart ＃generativeAI.md",
-    "reference/@WetHat (WetHat💦)/Boosted꞉ Polyhedral tiling for ＃TilingTuesday ＃Tiling ＃Hedron ＃Geometry ＃mathart.md",
-    "reference/@WetHat (WetHat💦)/Boosted꞉ Series꞉ A Functional Approach To Common Lisp.md",
     "reference/assets/@WetHat (WetHat💦).svg",
-    "reference/@WetHat (WetHat💦).md",
-    "reference/@wethat7․bsky․social - WetHat💦/11 May 2024 08꞉11 +0000.md",
-    "reference/@wethat7․bsky․social - WetHat💦/11 May 2024 08꞉28 +0000.md",
-    "reference/@wethat7․bsky․social - WetHat💦/11 May 2024 17꞉56 +0000.md",
-    "reference/@wethat7․bsky․social - WetHat💦/11 May 2024 18꞉32 +0000.md",
-    "reference/@wethat7․bsky․social - WetHat💦/11 May 2024 18꞉51 +0000.md",
-    "reference/@wethat7․bsky․social - WetHat💦/13 May 2024 09꞉14 +0000.md",
-    "reference/@wethat7․bsky․social - WetHat💦/13 May 2024 09꞉27 +0000.md",
     "reference/assets/@wethat7․bsky․social - WetHat💦.svg",
     "reference/assets/Bluesky.svg",
     "reference/assets/PyCoder’s Weekly.svg",
     "reference/assets/Python Morsels.svg",
-    "reference/assets/Sabine Hossenfelder.svg",
     "reference/assets/The Hacker News.svg",
     "reference/assets/TypeScript TV.svg",
     "reference/assets/@WetHat (WetHat💦) 1.svg",
-    "reference/assets/@wethat7․bsky․social - WetHat💦 1.svg",
     "output/empty.txt",
     "reports/empty.txt",
     "output/@WetHat (WetHat💦)",
     "output/@wethat7․bsky․social - WetHat💦",
     "output/Azimuth",
-    "output/Bluesky",
-    "output/Planet PowerShell",
-    "output/PyCoder’s Weekly",
-    "output/Python Morsels",
-    "output/Sabine Hossenfelder"
+    "output/Bluesky"
   ]
 }

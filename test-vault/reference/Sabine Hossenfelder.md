@@ -2,7 +2,7 @@
 feedurl: reference/Sabine Hossenfelder/assets/feed.xml
 site: https://www.youtube.com/channel/UC1yNl2E66ZzKApQdRuTQ4tw
 itemlimit: 10
-updated: 2024-05-29T17:17:09.927Z
+updated: 2024-05-29T18:23:27.829Z
 status: OK
 tags:
   - rss
