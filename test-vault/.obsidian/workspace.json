@@ -11,8 +11,12 @@
             "id": "48b37c2970574279",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "reports/Azimuth Items.md",
+                "mode": "preview",
+                "source": true
+              }
             }
           }
         ]
@@ -82,6 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "reports/Azimuth Items.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -98,6 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "reports/Azimuth Items.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -119,10 +125,13 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "reports/Azimuth Items.md"
+              }
             }
           }
-        ]
+        ],
+        "currentTab": 3
       },
       {
         "id": "4dbb10fbff009ee9",
@@ -135,6 +144,7 @@
             "state": {
               "type": "localgraph",
               "state": {
+                "file": "reports/Azimuth Items.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -181,7 +191,7 @@
       "obsidian-local-images-plus:Local Images Plus  0.15.9\r\nLocalize attachments (plugin folder)": false
     }
   },
-  "active": "676526ecb45c57b5",
+  "active": "48b37c2970574279",
   "lastOpenFiles": [
     "output/@WetHat (WetHat💦)/Replied to꞉ @WetHat it's AI-generated․ See comments at.md",
     "output/@WetHat (WetHat💦)/Replied to꞉ @WetHat Newtonsoft,Json is not dead․ It's last release was 14 months.md",
@@ -194,7 +204,7 @@
     "output/@WetHat (WetHat💦)/Boosted꞉ Series꞉ A Functional Approach To Common Lisp.md",
     "output/@WetHat (WetHat💦)",
     "output/@WetHat (WetHat💦).md",
-    "assets/@WetHat (WetHat💦)Logo 8.svg",
+    "assets/@WetHat (WetHat💦)Logo 5.svg",
     "output/@wethat7․bsky․social - WetHat💦/11 May 2024 08꞉11 +0000.md",
     "output/@wethat7․bsky․social - WetHat💦/11 May 2024 08꞉28 +0000.md",
     "output/@wethat7․bsky․social - WetHat💦/11 May 2024 17꞉56 +0000.md",
@@ -207,7 +217,7 @@
     "output/@wethat7․bsky․social - WetHat💦/13 May 2024 10꞉10 +0000.md",
     "output/@wethat7․bsky․social - WetHat💦",
     "output/@wethat7․bsky․social - WetHat💦.md",
-    "assets/@wethat7․bsky․social - WetHat💦Logo 7.svg",
+    "assets/@wethat7․bsky․social - WetHat💦Logo 5.svg",
     "output/Azimuth/Well Temperaments (Part 6).md",
     "output/Azimuth/Agent-Based Models (Part 7).md",
     "output/Azimuth/Nicholas Ludford.md",
@@ -216,16 +226,16 @@
     "output/Azimuth",
     "output/Planet PowerShell",
     "output/PyCoder’s Weekly",
-    "assets/PyCoder’s WeeklyLogo 7.svg",
+    "assets/PyCoder’s WeeklyLogo 5.svg",
     "output/Sabine Hossenfelder",
-    "assets/Sabine HossenfelderLogo 7.svg",
+    "assets/Sabine HossenfelderLogo 5.svg",
     "output/The Hacker News",
-    "assets/The Hacker NewsLogo 7.svg",
-    "assets/@WetHat (WetHat💦)Logo 7.svg",
-    "assets/@wethat7․bsky․social - WetHat💦Logo 6.svg",
-    "assets/PyCoder’s WeeklyLogo 6.svg",
-    "assets/Sabine HossenfelderLogo 6.svg",
-    "assets/The Hacker NewsLogo 6.svg",
+    "assets/The Hacker NewsLogo 5.svg",
+    "assets/@WetHat (WetHat💦)Logo 3.svg",
+    "assets/@wethat7․bsky․social - WetHat💦Logo 4.svg",
+    "assets/PyCoder’s WeeklyLogo 4.svg",
+    "assets/Sabine HossenfelderLogo 4.svg",
+    "assets/The Hacker NewsLogo 4.svg",
     "output/assets",
     "reference/@wethat7․bsky․social - WetHat💦",
     "reference/@wethat7․bsky․social - WetHat💦/assets"
