@@ -1,4 +1,11 @@
 import { extractFromXml } from '@extractus/feed-extractor';
+export var MediumType;
+(function (MediumType) {
+    MediumType["Unknown"] = "?";
+    MediumType["Image"] = "image";
+    MediumType["Video"] = "video";
+    MediumType["Audio"] = "audio";
+})(MediumType || (MediumType = {}));
 /**
  * A tracked RSS feed item with all availabe relevant properties.
  */
@@ -11,11 +18,13 @@ export class TrackedRSSitem {
     published;
     author;
     image;
+    media;
     content;
     constructor(entry) {
         this.tags = entry.category ?? [];
-        let { id, title, description, published, link, category, creator, image, content } = entry;
+        let { id, title, description, published, link, category, creator, image, content, media } = entry;
         this.id = id;
+        this.media = media;
         this.tags = category?.map(c => {
             const category = typeof c === "string" ? c : c["#text"];
             //return a cleaned up category
@@ -47,14 +56,49 @@ export class TrackedRSSitem {
         }
     }
 }
+function assembleMedia(elem) {
+    let mediaContent = elem["media:content"], media = null;
+    if (!mediaContent) {
+        let group = elem["media:group"];
+        if (group) {
+            mediaContent = group["media:content"];
+        }
+    }
+    if (mediaContent && !Array.isArray(mediaContent)) {
+        mediaContent = [mediaContent];
+    }
+    if (mediaContent) {
+        media = mediaContent.map((mc) => {
+            const type = mc["@_type"] || mc["@_medium"];
+            let mediumType = MediumType.Unknown;
+            if (type.includes("image")) {
+                mediumType = MediumType.Image;
+            }
+            else if (type.match(/video|shock/)) {
+                mediumType = MediumType.Video;
+            }
+            else if (type.includes("audio")) {
+                mediumType = MediumType.Audio;
+            }
+            let medium = { src: mc["@_url"], type: mediumType };
+            const width = elem["@_width"], height = elem["@_height"];
+            if (width && height) {
+                medium["width"] = width;
+                medium["height"] = height;
+            }
+            return medium;
+        });
+    }
+    return media ?? [];
+}
 function assembleImage(elem) {
     let { image } = elem;
     if (typeof image === 'string') {
-        return { src: image };
+        return { src: image, type: MediumType.Image };
     }
     if (image?.url) {
         const { url, width, height } = image;
-        let img = { src: url };
+        let img = { src: url, type: MediumType.Image };
         if (width) {
             img.width = width;
         }
@@ -72,7 +116,7 @@ function assembleImage(elem) {
     }
     if (thumb) {
         let [width, height] = [thumb["@_width"], thumb["@_height"]];
-        let img = { src: thumb["@_url"] };
+        let img = { src: thumb["@_url"], type: MediumType.Image };
         if (width) {
             img.width = width;
         }
@@ -83,7 +127,7 @@ function assembleImage(elem) {
     }
     let enc = elem.enclosure;
     if (enc?.["@_type"]?.includes("image")) {
-        let img = { src: enc["@_url"] };
+        let img = { src: enc["@_url"], type: MediumType.Image };
         return img;
     }
     return null;
@@ -108,9 +152,9 @@ function assembleDescription(elem) {
 ///////////////////////////////
 const DEFAULT_OPTIONS = {
     getExtraEntryFields: (item) => {
-        let { id, guid } = item;
-        let tracked = {
-            id: id || guid?.["#text"] || item.link
+        let { id, guid } = item, tracked = {
+            id: id || guid?.["#text"] || item.link,
+            media: assembleMedia(item)
         };
         let description = item.description || assembleDescription(item);
         if (description) {

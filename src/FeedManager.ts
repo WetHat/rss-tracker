@@ -1,6 +1,6 @@
 import { App, request, TFile, TFolder, htmlToMarkdown, normalizePath, ListItemCache, Notice } from 'obsidian';
 import RSSTrackerPlugin from './main';
-import { TrackedRSSfeed, TrackedRSSitem, IRSSimage, TPropertyBag } from './FeedAssembler';
+import { TrackedRSSfeed, TrackedRSSitem, IRssMedium, TPropertyBag } from './FeedAssembler';
 import * as path from 'path';
 
 export class FeedConfig {
@@ -55,8 +55,8 @@ export class FeedManager {
         return template.split(FeedManager.TOKEN_SPLITTER).map(s => s.startsWith("{{") ? (properties[s] ?? s) : s).join("");
     }
 
-    private formatImage(image: IRSSimage): string {
-        const { src, width, height } = image as IRSSimage;
+    private formatImage(image: IRssMedium): string {
+        const { src, width, height } = image as IRssMedium;
         let size = "";
         if (width) {
             size = `|${width}`;
@@ -208,7 +208,7 @@ export class FeedManager {
             tpl = this.plugin.settings.feedTemplate,
             dashboardPath = normalizePath(path.join(location.path, `${basename}.md`)),
             defaultImage = basename + ".svg";
-        let image: IRSSimage | string | undefined = feed.image;
+        let image: IRssMedium | string | undefined = feed.image;
 
         const content = this.expandTemplate(tpl, {
             "{{feedUrl}}": feed.source,
