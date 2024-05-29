@@ -2595,7 +2595,7 @@ var TrackedRSSitem = class {
     this.id = id;
     this.tags = (_b = category == null ? void 0 : category.map((c) => {
       const category2 = typeof c === "string" ? c : c["#text"];
-      return c.replace(/[#"\[\]\{\}}]*/g, "").replace(/[:;\\/]/g, " ");
+      return category2.replace(/[#"\[\]\{\}}]*/g, "").replace(/[:;\\/]/g, " ");
     })) != null ? _b : [];
     if (description) {
       this.description = description;
@@ -2826,9 +2826,6 @@ var _FeedManager = class {
     }).join("");
   }
   formatImage(image) {
-    if (typeof image === "string") {
-      return `![[${image}|200x200]]`;
-    }
     const { src, width, height } = image;
     let size = "";
     if (width) {
