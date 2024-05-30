@@ -2599,7 +2599,7 @@ var TrackedRSSitem = class {
     this.media = media;
     this.tags = (_b = category == null ? void 0 : category.map((c) => {
       const category2 = typeof c === "string" ? c : c["#text"];
-      return category2.replace(/^#(?=\w)|["\[\]\{\}]*/g, "").replaceAll("#", "\uFF03").replaceAll(/\s*&\s*/g, "\u2795").replaceAll(".", "\u302D").replace(/[:;\\/]/g, " ");
+      return category2.replace(/^#(?=\w)|["\[\]\{\}]+/g, "").replaceAll("#", "\uFF03").replaceAll(".", "\u302D").replaceAll("&", "\uFF06").replace(/[:;\\/]/g, " ").replace(/\s+/, " ");
     })) != null ? _b : [];
     if (description) {
       this.description = description;

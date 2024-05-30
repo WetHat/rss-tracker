@@ -2,7 +2,7 @@
 feedurl: reference/․NET Blog/assets/feed.xml
 site: https://devblogs.microsoft.com/dotnet/
 itemlimit: 10
-updated: 2024-05-29T19:41:27.790Z
+updated: 2024-05-30T06:14:17.529Z
 status: OK
 tags:
   - rss
