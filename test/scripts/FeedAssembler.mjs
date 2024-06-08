@@ -6,7 +6,7 @@ import { decode, DecodingMode, EntityLevel } from "entities";
  * @returns valid filename
  */
 function toFilename(name) {
-    return name.replace(/\w+:\/\/.*/, "") // strip urls
+    let fname = name.replace(/\w+:\/\/.*/, "") // strip urls
         .replaceAll("?", "❓")
         .replaceAll(".", "․")
         .replaceAll(":", "꞉")
@@ -21,9 +21,13 @@ function toFilename(name) {
         .replaceAll("#", "＃")
         .replaceAll("^", "△")
         .replaceAll("&", "+")
-        .replaceAll("*", "✱")
-        .substring(0, 80)
-        .trim();
+        .replaceAll("*", "✱");
+    if (fname.length > 80) {
+        fname = fname
+            .substring(0, 80)
+            .trim() + "…";
+    }
+    return fname;
 }
 export var MediumType;
 (function (MediumType) {
