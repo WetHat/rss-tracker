@@ -79,7 +79,8 @@ describe('FeedAssembler ', function () {
                         const report = `# Differences in "${actualName}"
 ~~~json
 ${JSON.stringify(diff, { encoding: "utf8" }, 4)}
-~~~`
+~~~
+`
                         // TODO determine if report neds to be generated
                         fs.appendFileSync(reportFile, report);
                     }
