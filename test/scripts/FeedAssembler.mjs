@@ -1,4 +1,5 @@
 import { extractFromXml } from '@extractus/feed-extractor';
+import { decode, DecodingMode, EntityLevel } from "entities";
 /**
  * Utility to convert a string into a valid filename.
  * @param name - A string, such as a title, to create a filename for.
@@ -85,7 +86,7 @@ export class TrackedRSSitem {
         }
     }
     get fileName() {
-        return toFilename(this.title);
+        return toFilename(decode(this.title, { mode: DecodingMode.Strict, level: EntityLevel.HTML }));
     }
 }
 function assembleMedia(elem) {
@@ -286,7 +287,7 @@ export class TrackedRSSfeed {
         }
     }
     get fileName() {
-        return toFilename(this.title ?? "Untitled");
+        return toFilename(decode(this.title ?? "Untitled", { mode: DecodingMode.Strict, level: EntityLevel.HTML }));
     }
     /**
      * @returns the avarage time interval between posts in the feed in hours.
