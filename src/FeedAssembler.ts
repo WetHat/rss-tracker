@@ -1,5 +1,5 @@
 import { extractFromXml, FeedData, ReaderOptions, FeedEntry } from '@extractus/feed-extractor'
-
+import { decode, DecodingMode, EntityLevel } from "entities";
 /**
  * Utility to convert a string into a valid filename.
  * @param name - A string, such as a title, to create a filename for.
@@ -111,11 +111,11 @@ export class TrackedRSSitem {
             const category = typeof c === "string" ? c : c["#text"];
             //return a cleaned up category
             return category.replace(/^#(?=\w)|["\[\]\{\}]+/g, "")
-                .replaceAll("#","＃")
-                .replaceAll(".","〭")
-                .replaceAll("&","＆")
+                .replaceAll("#", "＃")
+                .replaceAll(".", "〭")
+                .replaceAll("&", "＆")
                 .replace(/[:;\\/]/g, " ")
-                .replace(/\s+/," ");
+                .replace(/\s+/, " ");
         }) ?? [];
 
         if (description) {
@@ -145,7 +145,7 @@ export class TrackedRSSitem {
     }
 
     get fileName(): string {
-        return toFilename(this.title);
+        return toFilename(decode(this.title,{mode: DecodingMode.Strict, level: EntityLevel.HTML}));
     }
 }
 
@@ -376,7 +376,7 @@ export class TrackedRSSfeed {
     }
 
     get fileName(): string {
-        return toFilename(this.title ?? "Untitled");
+        return toFilename(decode(this.title ?? "Untitled",{mode: DecodingMode.Strict, level: EntityLevel.HTML}));
     }
 
     /**
