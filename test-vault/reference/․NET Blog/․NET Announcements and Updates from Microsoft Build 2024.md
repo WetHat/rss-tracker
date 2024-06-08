@@ -23,11 +23,11 @@ Explore the [.NET sessions at Microsoft Build 2024](https://devblogs.microsoft.c
 
 Here’s a look at our updates & announcements:
 
-- [Artificial Intelligence](#rss/net-and-artificial-intelligence): End-to-end scenarios for building AI-enabled applications, embracing the AI ecosystem, and deep integration with cloud services.
-- [.NET Aspire](#rss/cloud-native-development-with-net): for building cloud-native distributed applications, releasing today.
-- [C# 13](#rss/c-13): Improvements to much loved C# features to make them even better for you.
-- [Performance](#rss/reducing-memory-usage): Reducing memory and execution time with critical benchmarks.
-- Enhancements to .NET libraries and frameworks including [ASP.NET Core](#rss/web-development-with-net), [Blazor](#rss/full-stack-web-ui-with-blazor), [.NET MAUI](#rss/multi-platform-development-with-net), and more.
+- [Artificial Intelligence](#net-and-artificial-intelligence): End-to-end scenarios for building AI-enabled applications, embracing the AI ecosystem, and deep integration with cloud services.
+- [.NET Aspire](#cloud-native-development-with-net): for building cloud-native distributed applications, releasing today.
+- [C# 13](#c-13): Improvements to much loved C# features to make them even better for you.
+- [Performance](#reducing-memory-usage): Reducing memory and execution time with critical benchmarks.
+- Enhancements to .NET libraries and frameworks including [ASP.NET Core](#web-development-with-net), [Blazor](#full-stack-web-ui-with-blazor), [.NET MAUI](#multi-platform-development-with-net), and more.
 
 Let’s start with how we are improving AI development for developers with .NET.
 

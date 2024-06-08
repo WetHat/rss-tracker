@@ -19,7 +19,7 @@ Andreas Werckmeister (1645–1706) was a musician and expert on the organ. Compa
 
 His fame comes from the tremendous impact of his his theoretical writings. Most importantly, in his 1687 book _Musikalische Temperatur_ he described the first ‘well tempered’ tuning systems for keyboards, where every key sounds acceptable but each has its own personality. Johann Sebastian Bach read and was influenced by Werckmeister’s work. The first book of Bach’s _Well-Tempered Clavier_ came out in 1722—the first collection of keyboard pieces in all 24 keys.
 
-But Bach was also influenced by Werckmeister’s writings on counterpoint. Werckmeister believed that well-written counterpoint reflected the orderly movements of the planets—especially [invertible counterpoint](https://en.wikipedia.org/wiki/Inversion_(music)#rss/Counterpoint), where as the music goes on, a melody that starts in the high voice switches to the low voice and vice versa. Bach’s Invention No. 13 in A minor is full of invertible counterpoint:
+But Bach was also influenced by Werckmeister’s writings on counterpoint. Werckmeister believed that well-written counterpoint reflected the orderly movements of the planets—especially [invertible counterpoint](https://en.wikipedia.org/wiki/Inversion_(music)#Counterpoint), where as the music goes on, a melody that starts in the high voice switches to the low voice and vice versa. Bach’s Invention No. 13 in A minor is full of invertible counterpoint:
 
 ![](https://i0.wp.com/math.ucr.edu/home/baez/cultural/invertible_counterpoint.jpg)
 

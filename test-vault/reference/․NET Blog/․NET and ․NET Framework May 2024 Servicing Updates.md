@@ -17,9 +17,9 @@ The post [.NET and .NET Framework May 2024 Servicing Updates](https://devblogs.m
 - - -
 Welcome to our new combined .NET servicing updates for May 2024. To help streamline and help you keep up to date with the latest service releases we have decided to combine together our update posts around both .NET & .NET Framework so you can find all the information in one convenient location on the blog. Don’t forget that you can find updates about .NET previews on [GitHub](https://github.com/dotnet/core/discussions/categories/news), specifically for .NET 9. Let’s get into the latest release of .NET & .NET Framework, here is a quik overview of what’s new in these releases:
 
-- [Security Improvements](#rss/security-improvements)
-- [.NET updates](#rss/net-may-2024-updates)
-- [.NET Framework updates](#rss/net-framework-may-2024-updates)
+- [Security Improvements](#security-improvements)
+- [.NET updates](#net-may-2024-updates)
+- [.NET Framework updates](#net-framework-may-2024-updates)
 
 ## Security improvements
 

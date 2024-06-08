@@ -49,7 +49,7 @@ To view the `Source Link` entry, you can open the DLL using dotPeek or [ILSpy](h
 
 Now we know we have an overall mapping stored in Source Link entry, the next question is how we build a unique link for each type/member in this DLL?
 
-For example, the link we built for `String.Clone` method is: [https://github.com/dotnet/runtime/blob/5535e31a712343a63f5d7d796cd874e563e5ac14/src/libraries/System.Private.CoreLib/src/System/String.cs#rss/L388C13-L388C25](https://github.com/dotnet/runtime/blob/5535e31a712343a63f5d7d796cd874e563e5ac14/src/libraries/System.Private.CoreLib/src/System/String.cs#L388C13-L388C25)
+For example, the link we built for `String.Clone` method is: [https://github.com/dotnet/runtime/blob/5535e31a712343a63f5d7d796cd874e563e5ac14/src/libraries/System.Private.CoreLib/src/System/String.cs#L388C13-L388C25](https://github.com/dotnet/runtime/blob/5535e31a712343a63f5d7d796cd874e563e5ac14/src/libraries/System.Private.CoreLib/src/System/String.cs#L388C13-L388C25)
 
 This link can be split into 3 parts:
 

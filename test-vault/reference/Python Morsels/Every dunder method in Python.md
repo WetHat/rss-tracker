@@ -46,7 +46,7 @@ There are 3 dunder methods that _most_ classes should have: [`__init__`](https:/
 |`repr(x)`|`x.__repr__()`|`str`|
 |`x == y`|`x.__eq__(y)`|Typically `bool`|
 
-The [`__init__`](https://www.pythonmorsels.com/what-is-init/) method is the **initializer** (not to be confused with the [constructor](#rss/construction-and-finalizing)), the [`__repr__`](https://www.pythonmorsels.com/customizing-string-representation-your-objects/) method customizes an object's string representation, and the [`__eq__`](https://www.pythonmorsels.com/overloading-equality-in-python/) method customizes what it means for objects to be _equal_ to one another.
+The [`__init__`](https://www.pythonmorsels.com/what-is-init/) method is the **initializer** (not to be confused with the [constructor](#construction-and-finalizing)), the [`__repr__`](https://www.pythonmorsels.com/customizing-string-representation-your-objects/) method customizes an object's string representation, and the [`__eq__`](https://www.pythonmorsels.com/overloading-equality-in-python/) method customizes what it means for objects to be _equal_ to one another.
 
 The `__repr__` method is particularly helpful at the [the Python REPL](https://www.pythonmorsels.com/using-the-python-repl/) and when debugging.
 

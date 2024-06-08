@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "565c319eeb268d5d",
+        "id": "c1dc8ca91b682bb7",
         "type": "tabs",
         "children": [
           {
-            "id": "c419fa4eebd51258",
+            "id": "2aafefaed2cd3956",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -123,7 +123,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       },
       {
         "id": "4dbb10fbff009ee9",
@@ -181,7 +181,7 @@
       "rss-tracker:Update all RSS Feeds": false
     }
   },
-  "active": "676526ecb45c57b5",
+  "active": "2aafefaed2cd3956",
   "lastOpenFiles": [
     "output/@WetHat (WetHat💦)/Replied to꞉ @WetHat it's AI-generated․ See comments at.md",
     "output/@WetHat (WetHat💦)/Replied to꞉ @WetHat Newtonsoft,Json is not dead․ It's last release was 14 months.md",
@@ -227,7 +227,7 @@
     "output/assets/The Hacker News.svg",
     "output/TypeScript TV",
     "output/assets/TypeScript TV.svg",
-    "reference/assets/Bluesky 1.svg",
-    "reference/assets/Sabine Hossenfelder.svg"
+    "reference/assets/@WetHat (WetHat💦) 2.svg",
+    "reference/assets/Python Morsels 1.svg"
   ]
 }

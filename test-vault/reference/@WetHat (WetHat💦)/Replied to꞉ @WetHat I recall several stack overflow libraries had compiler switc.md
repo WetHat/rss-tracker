@@ -17,8 +17,8 @@ tags: []
 I remeber these articles too. Hwever, I did not pay much attention because readonly field optimization was the least of my problems at that time.😉
 
 Apparently, there is an advantage with **static readonly** in [#rss/dotnet](https://fosstodon.org/tags/dotnet) profile guided optimization ([#rss/PGO](https://fosstodon.org/tags/PGO)) according to:  
-➡️[https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-8/#rss/tiering-and-dynamic-pgo](https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-8/#tiering-and-dynamic-pgo)  
-➡️[https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-8/#rss/constant-folding](https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-8/#constant-folding)
+➡️[https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-8/#tiering-and-dynamic-pgo](https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-8/#tiering-and-dynamic-pgo)  
+➡️[https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-8/#constant-folding](https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-8/#constant-folding)
 
 [@kvandermotten](https://mastodon.online/@kvandermotten) found these in a devblog article about performance Improvements in .NET 8
 

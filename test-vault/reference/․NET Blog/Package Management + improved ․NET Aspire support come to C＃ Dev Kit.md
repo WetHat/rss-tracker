@@ -6,14 +6,14 @@ id: https://devblogs.microsoft.com/dotnet/?p=51662
 feed: "․NET Blog"
 tags: [rss/〭NET,rss/C＃,rss/Cloud_Native,rss/Visual_Studio_Code,rss/C＃_Dev_Kit,rss/Csharp,rss/csharpdevkit,rss/vscode]
 ---
-> [!abstract] Package Management &#rss/038; improved .NET Aspire support come to C# Dev Kit by Wendy Breiding (SHE/HER) - 2024-05-07T20:05:00.000Z
+> [!abstract] Package Management &#038; improved .NET Aspire support come to C# Dev Kit by Wendy Breiding (SHE/HER) - 2024-05-07T20:05:00.000Z
 > Explore the new features and enhancements in the latest version of C# Dev Kit including NuGet package management, .NET Aspire project support, and much more.
 
 The post [Package Management & improved .NET Aspire support come to C# Dev Kit](https://devblogs.microsoft.com/dotnet/may-release-of-csharp-dev-kit/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 
 🔗Read article [online](https://devblogs.microsoft.com/dotnet/may-release-of-csharp-dev-kit/). For other items in this feed see [[․NET Blog]].
 
-- [ ] [[Package Management +＃038; improved ․NET Aspire support come to C＃ Dev Kit]] - 2024-05-07T20:05:00.000Z
+- [ ] [[Package Management + improved ․NET Aspire support come to C＃ Dev Kit]] - 2024-05-07T20:05:00.000Z
 - - -
 We are excited to announce the May release of C# Dev Kit, the official extension for C# development in Visual Studio Code. This release brings you several new features and improvements that will make your C# coding experience more productive and enjoyable. In this blog post, we will go over some of the highlights of this release and show you how to use them in your projects.
 

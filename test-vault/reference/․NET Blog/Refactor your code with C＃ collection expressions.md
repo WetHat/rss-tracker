@@ -52,7 +52,7 @@ The last example is the only to declare the type explicitly, instead of relying 
 List<char> david = [ 'D', 'a', 'v', 'i', 'd' ];
 ```
 
-Again, collection expressions cannot be used with the `var` keyword. You must declare the type because a collection expression doesn’t currently have a _natural_ type and can be converted to a wide variety of [collection types](#rss/supported-collection-types-). Supporting assignment to `var` is still under consideration, but the team has not settled on the what the natural type should be. In other words, the C# compiler errors out with CS9176: There is no target type for the collection expression, when writing the following code:
+Again, collection expressions cannot be used with the `var` keyword. You must declare the type because a collection expression doesn’t currently have a _natural_ type and can be converted to a wide variety of [collection types](#supported-collection-types-). Supporting assignment to `var` is still under consideration, but the team has not settled on the what the natural type should be. In other words, the C# compiler errors out with CS9176: There is no target type for the collection expression, when writing the following code:
 
 ```csharp
 // Error CS9176: There is no target type for the collection expression
@@ -117,7 +117,7 @@ Console.WriteLine($"Length: {all.Length}");
 //   Length: 7
 ```
 
-The spread element is a powerful feature that allows you to include the elements of another collection in the current collection. The spread element is a great way to combine collections in a concise way. The expression in a spread element must be enumerable (`foreach`-able). For more information, see the [Spread ![✨](https://s.w.org/images/core/emoji/15.0.3/72x72/2728.png)](#rss/spread-) section.
+The spread element is a powerful feature that allows you to include the elements of another collection in the current collection. The spread element is a great way to combine collections in a concise way. The expression in a spread element must be enumerable (`foreach`-able). For more information, see the [Spread ![✨](https://s.w.org/images/core/emoji/15.0.3/72x72/2728.png)](#spread-) section.
 
 ### Supported collection types ![🎯](https://s.w.org/images/core/emoji/15.0.3/72x72/1f3af.png)
 

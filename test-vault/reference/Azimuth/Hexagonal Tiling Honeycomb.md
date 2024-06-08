@@ -29,7 +29,7 @@ The most familiar regular honeycomb is the usual way of filling Euclidean space 
 ![](https://upload.wikimedia.org/wikipedia/commons/a/a7/H3_435_CC_center.png)  
 ](https://en.wikipedia.org/wiki/Order-5_cubic_honeycomb)
 
-Coxeter showed there are [15 regular hyperbolic honeycombs](https://en.wikipedia.org/wiki/Honeycomb_(geometry)#rss/Hyperbolic_honeycombs). The hexagonal tiling honeycomb is one of these. But it does not contain polyhedra of the usual sort! Instead, it contains flat Euclidean planes embedded in hyperbolic space, each plane containing the vertices of infinitely many regular hexagons. You can think of such a sheet of hexagons as a generalized polyhedron with _infinitely many_ faces. You can see a bunch of such sheets in the picture:
+Coxeter showed there are [15 regular hyperbolic honeycombs](https://en.wikipedia.org/wiki/Honeycomb_(geometry)#Hyperbolic_honeycombs). The hexagonal tiling honeycomb is one of these. But it does not contain polyhedra of the usual sort! Instead, it contains flat Euclidean planes embedded in hyperbolic space, each plane containing the vertices of infinitely many regular hexagons. You can think of such a sheet of hexagons as a generalized polyhedron with _infinitely many_ faces. You can see a bunch of such sheets in the picture:
 
 [  
 ![](https://i0.wp.com/math.ucr.edu/home/baez/mathematical/{6,3,3}_honeycomb_roice_bright.png)  

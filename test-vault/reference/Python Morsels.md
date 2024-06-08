@@ -2,7 +2,7 @@
 feedurl: reference/Python Morsels/assets/feed.xml
 site: https://www.pythonmorsels.com/topics/
 itemlimit: 10
-updated: 2024-05-29T17:17:12.269Z
+updated: 2024-06-08T16:36:37.108Z
 status: OK
 tags:
   - rss
