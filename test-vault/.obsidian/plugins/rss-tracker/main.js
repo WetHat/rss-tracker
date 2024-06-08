@@ -3106,9 +3106,9 @@ var TrackedRSSitem = class {
     let { id, title, description, published, link, category, creator, image, content, media } = entry;
     this.id = id;
     this.media = media;
-    this.tags = ((_a2 = entry.category) != null ? _a2 : []).map((c) => typeof c === "string" ? c : c["#text"]).join(",").split(",").filter((c) => !!c).map((c) => {
+    this.tags = ((_a2 = entry.category) != null ? _a2 : []).map((c) => typeof c === "string" ? c : c["#text"]).join(",").split(",").map((c) => {
       return c.replace(/^#(?=\w)|["\[\]\{\}]+/g, "").replaceAll("#", "\uFF03").replaceAll(".", "\u302D").replaceAll("&", "\uFF06").replace(/[:;\\/]/g, " ").replace(/\s+/, " ").trim();
-    });
+    }).filter((c) => !!c);
     if (description) {
       this.description = description;
     }

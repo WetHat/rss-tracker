@@ -54,7 +54,6 @@ export class TrackedRSSitem {
             .map(c => (typeof c === "string" ? c : c["#text"]))
             .join(",") // turn everything into a comma separated list to catch internal commas
             .split(",") // abd pull it apart again
-            .filter(c => !!c) // remove empty strings
             .map(c => {
             //return one cleaned up category
             return c.replace(/^#(?=\w)|["\[\]\{\}]+/g, "")
@@ -64,7 +63,8 @@ export class TrackedRSSitem {
                 .replace(/[:;\\/]/g, " ")
                 .replace(/\s+/, " ")
                 .trim();
-        });
+        })
+            .filter(c => !!c); // remove empty strings;
         if (description) {
             this.description = description;
         }

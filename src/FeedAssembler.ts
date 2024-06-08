@@ -110,17 +110,17 @@ export class TrackedRSSitem {
             .map(c => (typeof c === "string" ? c : c["#text"]))
             .join(",") // turn everything into a comma separated list to catch internal commas
             .split(",") // abd pull it apart again
-            .filter(c => !!c) // remove empty strings
             .map(c => {
-            //return one cleaned up category
-            return c.replace(/^#(?=\w)|["\[\]\{\}]+/g, "")
-                .replaceAll("#", "＃")
-                .replaceAll(".", "〭")
-                .replaceAll("&", "＆")
-                .replace(/[:;\\/]/g, " ")
-                .replace(/\s+/, " ")
-                .trim();
-        });
+                //return one cleaned up category
+                return c.replace(/^#(?=\w)|["\[\]\{\}]+/g, "")
+                    .replaceAll("#", "＃")
+                    .replaceAll(".", "〭")
+                    .replaceAll("&", "＆")
+                    .replace(/[:;\\/]/g, " ")
+                    .replace(/\s+/, " ")
+                    .trim();
+            })
+            .filter(c => !!c) // remove empty strings;
 
         if (description) {
             this.description = description;
@@ -149,7 +149,7 @@ export class TrackedRSSitem {
     }
 
     get fileName(): string {
-        return toFilename(decode(this.title,{mode: DecodingMode.Strict, level: EntityLevel.HTML}));
+        return toFilename(decode(this.title, { mode: DecodingMode.Strict, level: EntityLevel.HTML }));
     }
 }
 
@@ -380,7 +380,7 @@ export class TrackedRSSfeed {
     }
 
     get fileName(): string {
-        return toFilename(decode(this.title ?? "Untitled",{mode: DecodingMode.Strict, level: EntityLevel.HTML}));
+        return toFilename(decode(this.title ?? "Untitled", { mode: DecodingMode.Strict, level: EntityLevel.HTML }));
     }
 
     /**
