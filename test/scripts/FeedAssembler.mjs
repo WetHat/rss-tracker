@@ -198,7 +198,7 @@ const DEFAULT_OPTIONS = {
         }
         const category = item.category;
         if (category) {
-            tracked.category = typeof category === "string" ? [category] : category;
+            tracked.category = Array.isArray(category) ? category : [category];
         }
         let creator = item.creator || assembleCreator(item);
         if (creator) {

@@ -281,7 +281,7 @@ const DEFAULT_OPTIONS: ReaderOptions = {
 
         const category = item.category;
         if (category) {
-            tracked.category = typeof category === "string" ? [category] : category;
+            tracked.category = Array.isArray(category) ? category : [category];
         }
 
         let creator = item.creator || assembleCreator(item);

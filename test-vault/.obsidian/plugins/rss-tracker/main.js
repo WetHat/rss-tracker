@@ -2736,7 +2736,7 @@ var DEFAULT_OPTIONS = {
     }
     const category = item.category;
     if (category) {
-      tracked.category = typeof category === "string" ? [category] : category;
+      tracked.category = Array.isArray(category) ? category : [category];
     }
     let creator = item.creator || assembleCreator(item);
     if (creator) {
@@ -2863,6 +2863,12 @@ var _FeedManager = class {
     var _a, _b;
     return (0, import_obsidian2.normalizePath)(path.join((_b = (_a = feed.parent) == null ? void 0 : _a.path) != null ? _b : "", feed.basename));
   }
+  /**
+   * Expand `{{mustache}}` placeholders with data from a property bag.
+   * @param template - A template string with `{{mustache}}` placeholders.
+   * @param properties - A property bag replacing `{{mustache}}` placeholdes with data.
+   * @returns template with `{{mustache}}` placeholders substituted.
+   */
   expandTemplate(template, properties) {
     return template.split(_FeedManager.TOKEN_SPLITTER).map((s) => {
       var _a;

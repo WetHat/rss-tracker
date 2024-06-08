@@ -51,6 +51,12 @@ export class FeedManager {
         return normalizePath(path.join(feed.parent?.path ?? "", feed.basename));
     }
 
+    /**
+     * Expand `{{mustache}}` placeholders with data from a property bag.
+     * @param template - A template string with `{{mustache}}` placeholders.
+     * @param properties - A property bag replacing `{{mustache}}` placeholdes with data.
+     * @returns template with `{{mustache}}` placeholders substituted.
+     */
     private expandTemplate(template: string, properties: TPropertyBag): string {
         return template.split(FeedManager.TOKEN_SPLITTER).map(s => s.startsWith("{{") ? (properties[s] ?? s) : s).join("");
     }
@@ -200,7 +206,8 @@ export class FeedManager {
         });
 
         // create the feed dashboard file
-        const dashboard = await this.app.vault.create(dashboardPath, content),
+        const
+            dashboard = await this.app.vault.create(dashboardPath, content),
             itemlimit = tpl.match(FeedManager.ITEMLIMIT_FINDER)?.[0],
             cfg = new FeedConfig(feed.source ?? "", itemlimit ?? "100", dashboard);
 
