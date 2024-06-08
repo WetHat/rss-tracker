@@ -765,8 +765,18 @@
         {
             "id": "https://dfinke.github.io/powershell,%20powershellai,%20openai,%20azure%20openai,%20excel,%20copilot/2024/01/02/Videos-In-Review-2023",
             "tags": [
-                "PowerShell, PowerShellAI, OpenAI, Azure OpenAI, Excel, Copilot",
-                "PowerShell, PowerShellAI, OpenAI, Azure OpenAI, Excel, Copilot"
+                "PowerShell",
+                "PowerShellAI",
+                "OpenAI",
+                "Azure OpenAI",
+                "Excel",
+                "Copilot",
+                "PowerShell",
+                "PowerShellAI",
+                "OpenAI",
+                "Azure OpenAI",
+                "Excel",
+                "Copilot"
             ],
             "title": "2023 Videos In Review 2023",
             "link": "https://dfinke.github.io/powershell,%20powershellai,%20openai,%20azure%20openai,%20excel,%20copilot/2024/01/02/Videos-In-Review-2023.html",
@@ -1745,8 +1755,14 @@
         {
             "id": "https://dfinke.github.io/powershell,%20importexcel,%20excel%20tables,%20excel/2023/05/31/Excel-Tables-and-PowerShell-ImportExcel-A-Powerful-Combination-for-Data-Analysis",
             "tags": [
-                "PowerShell, ImportExcel, Excel Tables, Excel",
-                "PowerShell, ImportExcel, Excel Tables, Excel"
+                "PowerShell",
+                "ImportExcel",
+                "Excel Tables",
+                "Excel",
+                "PowerShell",
+                "ImportExcel",
+                "Excel Tables",
+                "Excel"
             ],
             "description": "Excel Tables and PowerShell Import-Excel",
             "title": "Excel Tables and PowerShell ImportExcel: A Powerful Combination for Data Analysis",
@@ -1930,8 +1946,18 @@
         {
             "id": "https://dfinke.github.io/powershell,%20powershellai,%20openai,%20azure%20openai,%20gpt-4,%20chatgpt/2023/04/13/Fixing%20JSON%20Syntax%20Errors%20with%20the%20PowerShellAI%20Module",
             "tags": [
-                "PowerShell, PowerShellAI, OpenAI, Azure OpenAI, GPT-4, ChatGPT",
-                "PowerShell, PowerShellAI, OpenAI, Azure OpenAI, GPT-4, ChatGPT"
+                "PowerShell",
+                "PowerShellAI",
+                "OpenAI",
+                "Azure OpenAI",
+                "GPT-4",
+                "ChatGPT",
+                "PowerShell",
+                "PowerShellAI",
+                "OpenAI",
+                "Azure OpenAI",
+                "GPT-4",
+                "ChatGPT"
             ],
             "title": "Fixing JSON Syntax Errors with the PowerShellAI Module",
             "link": "https://dfinke.github.io/powershell,%20powershellai,%20openai,%20azure%20openai,%20gpt-4,%20chatgpt/2023/04/13/Fixing-JSON-Syntax-Errors-with-the-PowerShellAI-Module.html",
@@ -1987,8 +2013,12 @@
         {
             "id": "https://dfinke.github.io/powershellai,%20powershell,%20chatgpt/2023/04/04/PowerShellAI-ChatGPT-Conversation-Mode",
             "tags": [
-                "PowerShellAI, PowerShell, ChatGPT",
-                "PowerShellAI, PowerShell, ChatGPT"
+                "PowerShellAI",
+                "PowerShell",
+                "ChatGPT",
+                "PowerShellAI",
+                "PowerShell",
+                "ChatGPT"
             ],
             "description": "&lt;!– https://learn.microsoft.com/en-us/azure/cognitive-services/openai/how-to/chatgpt",
             "title": "PowerShellAI ChatGPT Conversation Mode",
@@ -2128,8 +2158,14 @@
         {
             "id": "https://dfinke.github.io/powershellai,%20powershell,%20chatgpt,%20windows%20terminal/2023/03/24/How-to-Set-up-and-Use-ChatGPT-in-Windows-Terminal-using-PowerShellAI",
             "tags": [
-                "PowerShellAI, PowerShell, ChatGPT, Windows Terminal",
-                "PowerShellAI, PowerShell, ChatGPT, Windows Terminal"
+                "PowerShellAI",
+                "PowerShell",
+                "ChatGPT",
+                "Windows Terminal",
+                "PowerShellAI",
+                "PowerShell",
+                "ChatGPT",
+                "Windows Terminal"
             ],
             "description": "How to Set up and Use ChatGPT in Windows Terminal using PowerShellAI",
             "title": "How to Set up and Use ChatGPT in Windows Terminal using PowerShellAI",
@@ -2403,8 +2439,10 @@
         {
             "id": "https://dfinke.github.io/powershell,%20chatgpt/2023/01/15/Running-PowerShell-Inside-ChatGPT",
             "tags": [
-                "PowerShell, ChatGPT",
-                "PowerShell, ChatGPT"
+                "PowerShell",
+                "ChatGPT",
+                "PowerShell",
+                "ChatGPT"
             ],
             "description": "Running PowerShell inside ChatGPT And the PowerShell Console",
             "title": "Running PowerShell Inside ChatGPT",
@@ -2433,8 +2471,14 @@
         {
             "id": "https://dfinke.github.io/powershell,%20polyglot,%20interactive%20notebooks,%20scottplot/2022/12/28/Interactive-Plotting-with-PowerSheLL-and-Polyglot-Interactive-Notebooks",
             "tags": [
-                "PowerShell, Polyglot, Interactive Notebooks, ScottPlot",
-                "PowerShell, Polyglot, Interactive Notebooks, ScottPlot"
+                "PowerShell",
+                "Polyglot",
+                "Interactive Notebooks",
+                "ScottPlot",
+                "PowerShell",
+                "Polyglot",
+                "Interactive Notebooks",
+                "ScottPlot"
             ],
             "description": "PowerShell ScottPlot",
             "title": "Interactive Plotting with PowerShell and Polyglot Interactive Notebooks",

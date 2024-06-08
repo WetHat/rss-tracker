@@ -44,7 +44,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#rss/〭net_9",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -123,7 +123,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       },
       {
         "id": "4dbb10fbff009ee9",
@@ -181,8 +181,9 @@
       "rss-tracker:Update all RSS Feeds": false
     }
   },
-  "active": "2aafefaed2cd3956",
+  "active": "676526ecb45c57b5",
   "lastOpenFiles": [
+    "reports/Planet PowerShell Assembler.md",
     "output/@WetHat (WetHat💦)/Replied to꞉ @WetHat it's AI-generated․ See comments at.md",
     "output/@WetHat (WetHat💦)/Replied to꞉ @WetHat Newtonsoft,Json is not dead․ It's last release was 14 months.md",
     "output/@WetHat (WetHat💦)/Replied to꞉ @WetHat Thanks for sharing․ Makes me wonder if AoT or PGO might bene.md",
@@ -212,7 +213,6 @@
     "output/Azimuth/Agent-Based Models (Part 7).md",
     "output/Azimuth/Nicholas Ludford.md",
     "output/Azimuth/The Probability of the Law of Excluded Middle.md",
-    "output/Azimuth/The Probability of Undecidability.md",
     "output/Azimuth",
     "output/Bluesky",
     "output/assets/Bluesky.svg",

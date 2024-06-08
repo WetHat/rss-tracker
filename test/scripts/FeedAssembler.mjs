@@ -47,20 +47,24 @@ export class TrackedRSSitem {
     media;
     content;
     constructor(entry) {
-        this.tags = entry.category ?? [];
         let { id, title, description, published, link, category, creator, image, content, media } = entry;
         this.id = id;
         this.media = media;
-        this.tags = category?.map(c => {
-            const category = typeof c === "string" ? c : c["#text"];
-            //return a cleaned up category
-            return category.replace(/^#(?=\w)|["\[\]\{\}]+/g, "")
+        this.tags = (entry.category ?? [])
+            .map(c => (typeof c === "string" ? c : c["#text"]))
+            .join(",") // turn everything into a comma separated list to catch internal commas
+            .split(",") // abd pull it apart again
+            .filter(c => !!c) // remove empty strings
+            .map(c => {
+            //return one cleaned up category
+            return c.replace(/^#(?=\w)|["\[\]\{\}]+/g, "")
                 .replaceAll("#", "＃")
                 .replaceAll(".", "〭")
                 .replaceAll("&", "＆")
                 .replace(/[:;\\/]/g, " ")
-                .replace(/\s+/, " ");
-        }) ?? [];
+                .replace(/\s+/, " ")
+                .trim();
+        });
         if (description) {
             this.description = description;
         }

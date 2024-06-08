@@ -3102,15 +3102,13 @@ function toFilename(name) {
 }
 var TrackedRSSitem = class {
   constructor(entry) {
-    var _a2, _b;
-    this.tags = (_a2 = entry.category) != null ? _a2 : [];
+    var _a2;
     let { id, title, description, published, link, category, creator, image, content, media } = entry;
     this.id = id;
     this.media = media;
-    this.tags = (_b = category == null ? void 0 : category.map((c) => {
-      const category2 = typeof c === "string" ? c : c["#text"];
-      return category2.replace(/^#(?=\w)|["\[\]\{\}]+/g, "").replaceAll("#", "\uFF03").replaceAll(".", "\u302D").replaceAll("&", "\uFF06").replace(/[:;\\/]/g, " ").replace(/\s+/, " ");
-    })) != null ? _b : [];
+    this.tags = ((_a2 = entry.category) != null ? _a2 : []).map((c) => typeof c === "string" ? c : c["#text"]).join(",").split(",").filter((c) => !!c).map((c) => {
+      return c.replace(/^#(?=\w)|["\[\]\{\}]+/g, "").replaceAll("#", "\uFF03").replaceAll(".", "\u302D").replaceAll("&", "\uFF06").replace(/[:;\\/]/g, " ").replace(/\s+/, " ").trim();
+    });
     if (description) {
       this.description = description;
     }
