@@ -6,7 +6,8 @@ import { decode, DecodingMode, EntityLevel } from "entities";
  * @returns valid filename
  */
 function toFilename(name: string): string {
-    let fname = name.replace(/\w+:\/\/.*/, "") // strip urls
+    let fname = name
+        .replace(/\s*[htps]+:\/\/.*/, "…") // strip urls
         .replaceAll("?", "❓")
         .replaceAll(".", "․")
         .replaceAll(":", "꞉")
@@ -21,13 +22,14 @@ function toFilename(name: string): string {
         .replaceAll("#", "＃")
         .replaceAll("^", "△")
         .replaceAll("&", "+")
-        .replaceAll("*", "✱")
-        .trim();
+        .replaceAll("*", "✱");
 
     if (fname.length > 80) {
         fname = fname
             .substring(0, 80)
             .trim() + "…";
+    } else {
+        fname = fname.trim();
     }
 
     return fname;

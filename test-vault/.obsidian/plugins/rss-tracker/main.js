@@ -3098,9 +3098,11 @@ function decode2(data, options = EntityLevel.XML) {
 
 // src/FeedAssembler.ts
 function toFilename(name) {
-  let fname = name.replace(/\w+:\/\/.*/, "").replaceAll("?", "\u2753").replaceAll(".", "\u2024").replaceAll(":", "\uA789").replaceAll('"', "\u2033").replaceAll('<"', "\uFF1C").replaceAll('>"', "\uFF1E").replaceAll('|"', "\u2223").replaceAll("\\", "/").replaceAll("/", "\u2571").replaceAll("[", "{").replaceAll("]", "}").replaceAll("#", "\uFF03").replaceAll("^", "\u25B3").replaceAll("&", "+").replaceAll("*", "\u2731").trim();
+  let fname = name.replace(/\s*[htps]+:\/\/.*/, "\u2026").replaceAll("?", "\u2753").replaceAll(".", "\u2024").replaceAll(":", "\uA789").replaceAll('"', "\u2033").replaceAll('<"', "\uFF1C").replaceAll('>"', "\uFF1E").replaceAll('|"', "\u2223").replaceAll("\\", "/").replaceAll("/", "\u2571").replaceAll("[", "{").replaceAll("]", "}").replaceAll("#", "\uFF03").replaceAll("^", "\u25B3").replaceAll("&", "+").replaceAll("*", "\u2731");
   if (fname.length > 80) {
     fname = fname.substring(0, 80).trim() + "\u2026";
+  } else {
+    fname = fname.trim();
   }
   return fname;
 }
