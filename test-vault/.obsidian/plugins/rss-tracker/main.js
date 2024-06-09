@@ -3105,6 +3105,11 @@ function toFilename(name) {
   return fname;
 }
 var TrackedRSSitem = class {
+  // Optinal item content (in most cases a HTML fragment)
+  /**
+   * Build a RSS item representation object.
+   * @param entry - The parsed RSS item data.
+   */
   constructor(entry) {
     var _a2;
     let { id, title, description, published, link, category, creator, image, content, media } = entry;
@@ -3135,6 +3140,11 @@ var TrackedRSSitem = class {
       this.content = content;
     }
   }
+  /**
+   * Get a filename which is derived from the item*s title and is suitable for
+   * writing this item to disk.
+   * @returns Filename for this item
+   */
   get fileName() {
     return toFilename(decode2(this.title, { mode: DecodingMode.Strict, level: EntityLevel.HTML }));
   }
@@ -3292,6 +3302,7 @@ var DEFAULT_OPTIONS = {
   }
 };
 var TrackedRSSfeed = class {
+  // Link to the RSS feed content.
   /**
    * Assemble an RSS feed from its XML representation.
    * Collect a all necessary data that are available data nad backfill
@@ -3325,12 +3336,16 @@ var TrackedRSSfeed = class {
       this.items = [];
     }
   }
+  /**
+   * Get the a filename for this RSS feed.
+   * @returns A valid filename.
+   */
   get fileName() {
     var _a2;
     return toFilename(decode2((_a2 = this.title) != null ? _a2 : "Untitled", { mode: DecodingMode.Strict, level: EntityLevel.HTML }));
   }
   /**
-   * @returns the avarage time interval between posts in the feed in hours.
+   * @returns the avarage time interval between posts of the feed in hours.
    */
   get avgPostInterval() {
     let pubdateMillies = this.items.map((it) => new Date(it.published).valueOf()).sort();
@@ -3345,6 +3360,15 @@ var TrackedRSSfeed = class {
 // src/FeedManager.ts
 var path = __toESM(require("path"), 1);
 var FeedConfig = class {
+  // The dashboard Markdown file of the feed.
+  /**
+   * Factory method to parse the feed configuration from a
+   * RSS feed dashboard (AMrkdown file).
+   * @param app - The Obsidian application object
+   * @param file - Dashboard file
+   * @returns The RSS feed configuration. `null` if the
+   *          file does not exist or is not a feed dashboard.
+   */
   static fromFile(app, file) {
     var _a2;
     if (!file) {
@@ -3478,10 +3502,56 @@ var _FeedManager = class {
     }
     return n;
   }
+  /**
+   * Create an RSS feed Markdown representaiton from a local XML file.
+   *
+   * The Markdown representation consists of
+   * - a feed dashboard
+   * - a directory whic has the same name as the dashboard (without the .md extension)
+   *   containingthe RSS items of the feed,
+   *
+   * The file system layout of an Obsidian RSS feed looks like this:
+   * ~~~
+   * …
+   * ├─ <feedname>.md ← dashboard
+   * ╰─ <feedname>
+   *        ├─ <item-1>.md
+   *        ├─ …
+   *        ╰─ <item-n>.md
+   * ~~~
+   *
+   * @param xml - XML file representing an RSS feed.
+   * @param location - The obsidian folder where to create the Markdown files
+   *                   representing the feed.
+   * @returns The dashboard Markdown file.
+   */
   async createFeedFromFile(xml, location) {
     const feedXML = await this.app.vault.read(xml);
     return this.createFeed(new TrackedRSSfeed(feedXML, xml.path), location);
   }
+  /**
+  * Create an RSS feed Markdown representaiton from a hyperlink.
+  *
+  * The Markdown representation consists of
+  * - a feed dashboard
+  * - a directory whic has the same name as the dashboard (without the .md extension)
+  *   containingthe RSS items of the feed,
+  *
+  * The file system layout of an Obsidian RSS feed looks like this:
+  * ~~~
+  * …
+  * ├─ <feedname>.md ← dashboard
+  * ╰─ <feedname>
+  *        ├─ <item-1>.md
+  *        ├─ …
+  *        ╰─ <item-n>.md
+  * ~~~
+  *
+  * @param url - A hyperlink pointing to an RSS feed on the web.
+  * @param location - The obsidian folder where to create the Markdown files
+  *                   representing the feed.
+  * @returns The dashboard Markdown file.
+  */
   async createFeedFromUrl(url, location) {
     const feedXML = await (0, import_obsidian2.request)({
       url,
@@ -3523,6 +3593,9 @@ var _FeedManager = class {
     }
     return dashboard;
   }
+  /**
+   *
+   */
   async updateFeed(feedConfig, force) {
     if (!feedConfig) {
       return false;

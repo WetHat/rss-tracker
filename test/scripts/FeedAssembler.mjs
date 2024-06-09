@@ -29,6 +29,9 @@ function toFilename(name) {
     }
     return fname;
 }
+/**
+ * Enumeration of recognized media types.
+ */
 export var MediumType;
 (function (MediumType) {
     MediumType["Unknown"] = "?";
@@ -37,19 +40,24 @@ export var MediumType;
     MediumType["Audio"] = "audio";
 })(MediumType || (MediumType = {}));
 /**
- * A tracked RSS feed item with all availabe relevant properties.
+ * A tracked RSS feed item with a canonical set of properties
+ * collected from available sources.
  */
 export class TrackedRSSitem {
-    id;
-    tags;
-    description;
-    title;
-    link;
-    published;
-    author;
-    image;
-    media;
-    content;
+    id; // A reasonably unique id of an rss item.
+    tags; // a list of tags describing the item.
+    description; // Item description
+    title; // item title
+    link; // hyperlink to article.
+    published; // publish date
+    author; // one or more authors
+    image; // The items image
+    media; // A list of media associated with the articls
+    content; // Optinal item content (in most cases a HTML fragment)
+    /**
+     * Build a RSS item representation object.
+     * @param entry - The parsed RSS item data.
+     */
     constructor(entry) {
         let { id, title, description, published, link, category, creator, image, content, media } = entry;
         this.id = id;
@@ -93,10 +101,20 @@ export class TrackedRSSitem {
             this.content = content;
         }
     }
+    /**
+     * Get a filename which is derived from the item*s title and is suitable for
+     * writing this item to disk.
+     * @returns Filename for this item
+     */
     get fileName() {
         return toFilename(decode(this.title, { mode: DecodingMode.Strict, level: EntityLevel.HTML }));
     }
 }
+/**
+ * Gather media associated with an RSS item.
+ * @param elem - The parsed RSS item
+ * @returns A media content list.
+ */
 function assembleMedia(elem) {
     let mediaContent = elem["media:content"], media = null;
     if (!mediaContent) {
@@ -132,6 +150,12 @@ function assembleMedia(elem) {
     }
     return media ?? [];
 }
+/**
+ * Get the _signature_ image associated with the article described
+ * by an RSS item
+ * @param elem - The parsed RSS item
+ * @returns Image medium object, if available.
+ */
 function assembleImage(elem) {
     let { image } = elem;
     if (typeof image === 'string') {
@@ -173,6 +197,12 @@ function assembleImage(elem) {
     }
     return null;
 }
+/**
+ * Collect author information for the article described by
+ * an RSS item.
+ * @param elem - The parsed RSS item.
+ * @returns Author(s), if available.
+ */
 function assembleCreator(elem) {
     const creator = elem.creator || elem["dc:creator"];
     if (creator) {
@@ -190,7 +220,10 @@ function assembleDescription(elem) {
     }
     return description;
 }
-///////////////////////////////
+/**
+ * Custom RSS item and feed processing instructions to build
+ * the desired feed representation.
+ */
 const DEFAULT_OPTIONS = {
     getExtraEntryFields: (item) => {
         let { id, guid } = item, tracked = {
@@ -253,13 +286,17 @@ const DEFAULT_OPTIONS = {
         return tracked;
     },
 };
+/**
+ * Representation of an RSS feed with a canocical set of properties
+ * collected from available sources.
+ */
 export class TrackedRSSfeed {
-    title;
-    description;
-    site;
-    image;
-    items;
-    source;
+    title; // Feed title
+    description; // Feed Description
+    site; // the web site the Feed was published for.
+    image; // the _signature_ image of the site
+    items; // the RSS items for the articles on the site
+    source; // Link to the RSS feed content.
     /**
      * Assemble an RSS feed from its XML representation.
      * Collect a all necessary data that are available data nad backfill
@@ -294,11 +331,15 @@ export class TrackedRSSfeed {
             this.items = [];
         }
     }
+    /**
+     * Get the a filename for this RSS feed.
+     * @returns A valid filename.
+     */
     get fileName() {
         return toFilename(decode(this.title ?? "Untitled", { mode: DecodingMode.Strict, level: EntityLevel.HTML }));
     }
     /**
-     * @returns the avarage time interval between posts in the feed in hours.
+     * @returns the avarage time interval between posts of the feed in hours.
      */
     get avgPostInterval() {
         let pubdateMillies = this.items.map(it => new Date(it.published).valueOf()).sort();

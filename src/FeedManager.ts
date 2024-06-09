@@ -3,11 +3,22 @@ import RSSTrackerPlugin from './main';
 import { TrackedRSSfeed, TrackedRSSitem, IRssMedium, TPropertyBag } from './FeedAssembler';
 import * as path from 'path';
 
+/**
+ * RSS feed configuration data.
+ */
 export class FeedConfig {
-    feedUrl: string;
-    itemLimit: number;
-    source: TFile;
+    feedUrl: string; // rss feed location
+    itemLimit: number; // Maximum number of RSS items to cache on the filesystem.
+    source: TFile; // The dashboard Markdown file of the feed.
 
+    /**
+     * Factory method to parse the feed configuration from a
+     * RSS feed dashboard (AMrkdown file).
+     * @param app - The Obsidian application object
+     * @param file - Dashboard file
+     * @returns The RSS feed configuration. `null` if the
+     *          file does not exist or is not a feed dashboard.
+     */
     static fromFile(app: App, file: TFile): FeedConfig | null {
         if (!file) {
             return null;
@@ -33,6 +44,15 @@ export class FeedConfig {
     }
 }
 
+/**
+ * Manage RSS feeds in Obsidian.
+ *
+ * Currently available functionality:
+ * - Building a Markdown representation of RSS feeds including feed dashboards.
+ *   @see {@link createFeedFromFile} and  @see {@link createFeedFromUrl}
+ * - Updating feeds (individual or all). @see {@link updateFeed} and @see {@link}
+ * - Setting all items on a feed as _read_. see {@link markFeedItemsRead}
+ */
 export class FeedManager {
     private static readonly TOKEN_SPLITTER = /(?<={{[^{}]+}})|(?={{[^{}]+}})/g;
     private static readonly HASH_FINDER = /(?<!\]\([^\s]*|\[\[[^\]]*|[\w&/])#(?=\w)/g;
@@ -173,11 +193,57 @@ export class FeedManager {
         return n;
     }
 
+    /**
+     * Create an RSS feed Markdown representaiton from a local XML file.
+     *
+     * The Markdown representation consists of
+     * - a feed dashboard
+     * - a directory whic has the same name as the dashboard (without the .md extension)
+     *   containingthe RSS items of the feed,
+     *
+     * The file system layout of an Obsidian RSS feed looks like this:
+     * ~~~
+     * …
+     * ├─ <feedname>.md ← dashboard
+     * ╰─ <feedname>
+     *        ├─ <item-1>.md
+     *        ├─ …
+     *        ╰─ <item-n>.md
+     * ~~~
+     *
+     * @param xml - XML file representing an RSS feed.
+     * @param location - The obsidian folder where to create the Markdown files
+     *                   representing the feed.
+     * @returns The dashboard Markdown file.
+     */
     async createFeedFromFile(xml: TFile, location: TFolder): Promise<TFile> {
         const feedXML = await this.app.vault.read(xml);
         return this.createFeed(new TrackedRSSfeed(feedXML, xml.path), location);
     }
 
+     /**
+     * Create an RSS feed Markdown representaiton from a hyperlink.
+     *
+     * The Markdown representation consists of
+     * - a feed dashboard
+     * - a directory whic has the same name as the dashboard (without the .md extension)
+     *   containingthe RSS items of the feed,
+     *
+     * The file system layout of an Obsidian RSS feed looks like this:
+     * ~~~
+     * …
+     * ├─ <feedname>.md ← dashboard
+     * ╰─ <feedname>
+     *        ├─ <item-1>.md
+     *        ├─ …
+     *        ╰─ <item-n>.md
+     * ~~~
+     *
+     * @param url - A hyperlink pointing to an RSS feed on the web.
+     * @param location - The obsidian folder where to create the Markdown files
+     *                   representing the feed.
+     * @returns The dashboard Markdown file.
+     */
     async createFeedFromUrl(url: string, location: TFolder): Promise<TFile> {
         const feedXML = await request({
             url: url,
@@ -198,7 +264,7 @@ export class FeedManager {
         const content = this.expandTemplate(tpl, {
             "{{feedUrl}}": feed.source,
             "{{siteUrl}}": site ?? "",
-            "{{title}}": htmlToMarkdown(title ?? "")    ,
+            "{{title}}": htmlToMarkdown(title ?? ""),
             "{{description}}": description ? this.formatHashTags(htmlToMarkdown(description)) : "",
             "{{folderPath}}": itemfolderPath,
             "{{image}}": image ? this.formatImage(image) : `![[${defaultImage}|200x200]]`
@@ -235,6 +301,9 @@ export class FeedManager {
         return dashboard;
     }
 
+    /**
+     *
+     */
     async updateFeed(feedConfig: FeedConfig | null, force: boolean): Promise<boolean> {
         if (!feedConfig) {
             return false;
@@ -261,7 +330,7 @@ export class FeedManager {
                 url: feedConfig.feedUrl,
                 method: "GET"
             }),
-                feed = new TrackedRSSfeed(feedXML,feedConfig.feedUrl);
+                feed = new TrackedRSSfeed(feedXML, feedConfig.feedUrl);
             // compute the new update interval in hours
             interval = feed.avgPostInterval;
             this.updateFeedItems(feedConfig, feed);

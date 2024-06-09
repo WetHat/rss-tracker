@@ -37,6 +37,9 @@ function toFilename(name: string): string {
  */
 export type TPropertyBag = { [key: string]: any };
 
+/**
+ * Enumeration of recognized media types.
+ */
 export enum MediumType {
     Unknown = "?",
     Image = "image",
@@ -45,13 +48,13 @@ export enum MediumType {
 }
 
 /**
- * Specification of an image reference within an RSS feed.
+ * Specification of a medium object reference within an RSS feed.
  */
 export interface IRssMedium {
-    src: string;
-    type: MediumType;
-    width?: string;
-    height?: string;
+    src: string; // hyperlink to object
+    type: MediumType; // type of medium
+    width?: string; // optional embedding width
+    height?: string; // optional embedding height
 }
 
 /**
@@ -94,20 +97,25 @@ interface IFeedDataExtended extends IFeedDataExtra, FeedData {
 }
 
 /**
- * A tracked RSS feed item with all availabe relevant properties.
+ * A tracked RSS feed item with a canonical set of properties
+ * collected from available sources.
  */
 export class TrackedRSSitem {
-    id: string;
-    tags: string[];
-    description?: string;
-    title: string;
-    link?: string;
-    published: string;
-    author?: string;
-    image?: IRssMedium;
-    media: IRssMedium[];
-    content?: string;
+    id: string; // A reasonably unique id of an rss item.
+    tags: string[]; // a list of tags describing the item.
+    description?: string; // Item description
+    title: string; // item title
+    link?: string; // hyperlink to article.
+    published: string; // publish date
+    author?: string; // one or more authors
+    image?: IRssMedium; // The items image
+    media: IRssMedium[]; // A list of media associated with the articls
+    content?: string; // Optinal item content (in most cases a HTML fragment)
 
+    /**
+     * Build a RSS item representation object.
+     * @param entry - The parsed RSS item data.
+     */
     constructor(entry: IEntryDataExtended) {
         let { id, title, description, published, link, category, creator, image, content, media } = entry;
         this.id = id;
@@ -154,11 +162,21 @@ export class TrackedRSSitem {
         }
     }
 
+    /**
+     * Get a filename which is derived from the item*s title and is suitable for
+     * writing this item to disk.
+     * @returns Filename for this item
+     */
     get fileName(): string {
         return toFilename(decode(this.title, { mode: DecodingMode.Strict, level: EntityLevel.HTML }));
     }
 }
 
+/**
+ * Gather media associated with an RSS item.
+ * @param elem - The parsed RSS item
+ * @returns A media content list.
+ */
 function assembleMedia(elem: TPropertyBag): IRssMedium[] {
 
     let mediaContent = elem["media:content"],
@@ -202,6 +220,12 @@ function assembleMedia(elem: TPropertyBag): IRssMedium[] {
     return media ?? [];
 }
 
+/**
+ * Get the _signature_ image associated with the article described
+ * by an RSS item
+ * @param elem - The parsed RSS item
+ * @returns Image medium object, if available.
+ */
 function assembleImage(elem: TPropertyBag): IRssMedium | null {
     let { image } = elem;
 
@@ -250,7 +274,13 @@ function assembleImage(elem: TPropertyBag): IRssMedium | null {
     return null;
 }
 
-function assembleCreator(elem: TPropertyBag): string {
+/**
+ * Collect author information for the article described by
+ * an RSS item.
+ * @param elem - The parsed RSS item.
+ * @returns Author(s), if available.
+ */
+function assembleCreator(elem: TPropertyBag): string | null{
     const creator = elem.creator || elem["dc:creator"];
     if (creator) {
         return creator;
@@ -258,7 +288,7 @@ function assembleCreator(elem: TPropertyBag): string {
     return elem.author?.name || elem.author;
 }
 
-function assembleDescription(elem: TPropertyBag): string {
+function assembleDescription(elem: TPropertyBag): string | null {
     let description = elem["media:description"];
     if (!description) {
         let group = elem["media:group"];
@@ -269,7 +299,11 @@ function assembleDescription(elem: TPropertyBag): string {
 
     return description;
 }
-///////////////////////////////
+
+/**
+ * Custom RSS item and feed processing instructions to build
+ * the desired feed representation.
+ */
 const DEFAULT_OPTIONS: ReaderOptions = {
     getExtraEntryFields: (item: TPropertyBag): IEntryDataTracked => {
         let
@@ -344,13 +378,18 @@ const DEFAULT_OPTIONS: ReaderOptions = {
     },
 }
 
+/**
+ * Representation of an RSS feed with a canocical set of properties
+ * collected from available sources.
+ */
 export class TrackedRSSfeed {
-    title?: string;
-    description?: string;
-    site?: string;
-    image?: IRssMedium;
-    items: TrackedRSSitem[];
-    source: string;
+    title?: string; // Feed title
+    description?: string; // Feed Description
+    site?: string; // the web site the Feed was published for.
+    image?: IRssMedium; // the _signature_ image of the site
+    items: TrackedRSSitem[]; // the RSS items for the articles on the site
+    source: string; // Link to the RSS feed content.
+
     /**
      * Assemble an RSS feed from its XML representation.
      * Collect a all necessary data that are available data nad backfill
@@ -385,12 +424,16 @@ export class TrackedRSSfeed {
         }
     }
 
+    /**
+     * Get the a filename for this RSS feed.
+     * @returns A valid filename.
+     */
     get fileName(): string {
         return toFilename(decode(this.title ?? "Untitled", { mode: DecodingMode.Strict, level: EntityLevel.HTML }));
     }
 
     /**
-     * @returns the avarage time interval between posts in the feed in hours.
+     * @returns the avarage time interval between posts of the feed in hours.
      */
     get avgPostInterval(): number {
         let pubdateMillies = this.items.map(it => new Date(it.published).valueOf()).sort();
