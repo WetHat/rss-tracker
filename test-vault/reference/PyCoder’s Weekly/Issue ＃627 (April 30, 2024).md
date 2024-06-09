@@ -6,14 +6,14 @@ id: https://pycoders.com/issues/627
 feed: "PyCoder’s Weekly"
 tags: []
 ---
-> [!abstract] Issue #rss/627 (April 30, 2024) - 2024-04-30T19:30:00.000Z
-> #rss/627 – APRIL 30, 2024 View in Browser » PEP 686: Make UTF-8 Mode Default This Python Enhancement Proposal outlines making UTF-8 the default throughout Python. This takes the addition of Unicode introduced in Python 3 to...
+> [!abstract] Issue #627 (April 30, 2024) - 2024-04-30T19:30:00.000Z
+> #627 – APRIL 30, 2024 View in Browser » PEP 686: Make UTF-8 Mode Default This Python Enhancement Proposal outlines making UTF-8 the default throughout Python. This takes the addition of Unicode introduced in Python 3 to...
 
 🔗Read article [online](https://pycoders.com/issues/627). For other items in this feed see [[PyCoder’s Weekly]].
 
 - [ ] [[Issue ＃627 (April 30, 2024)]] - 2024-04-30T19:30:00.000Z
 - - -
-#rss/627 – APRIL 30, 2024  
+#627 – APRIL 30, 2024  
 [View in Browser »](https://pycoders.com/issues/627/feed)
 
 [![The PyCoder’s Weekly
@@ -183,7 +183,7 @@ May 6, 2024
 ---
 
 Happy Pythoning!  
-This was PyCoder’s Weekly Issue #rss/627.  
+This was PyCoder’s Weekly Issue #627.  
 [View in Browser »](https://pycoders.com/issues/627/feed)
 
 ![](https://pycoders.com/issues/627/open/feed)
