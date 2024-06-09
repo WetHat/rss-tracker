@@ -144,11 +144,15 @@ export class NewRSSFeedModalCommand implements Command {
             const f: TFile | null = this.app.workspace.getActiveFile();
 
             if (f) {
-                const parent = this.app.fileManager.getNewFileParent(f.path);
-                    const mgr = this.plugin.feedmgr;
-                    const leaf = this.app.workspace.getLeaf(false);
-
-                leaf.openFile(await mgr.createFeedFromUrl(result, parent));
+                const
+                    parent = this.app.fileManager.getNewFileParent(f.path),
+                    mgr = this.plugin.feedmgr,
+                    leaf = this.app.workspace.getLeaf(false);
+                try {
+                    leaf.openFile(await mgr.createFeedFromUrl(result, parent));
+                } catch (err: any) {
+                    new Notice(err.message);
+                }
             }
         });
         modal.open();
