@@ -2,7 +2,7 @@
 feedurl: reference/The Hacker News/assets/feed.xml
 site: https://thehackernews.com
 itemlimit: 10
-updated: 2024-05-29T17:17:07.587Z
+updated: 2024-06-09T16:49:22.819Z
 status: OK
 tags:
   - rss

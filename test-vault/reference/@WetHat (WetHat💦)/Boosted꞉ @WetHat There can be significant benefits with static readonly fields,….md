@@ -10,7 +10,7 @@ tags: []
 
 🔗Read article [online](https://mastodon.online/@kvandermotten/112434653881037869). For other items in this feed see [[@WetHat (WetHat💦)]].
 
-- [ ] [[Boosted꞉ @WetHat There can be significant benefits with static readonly fields,]] - 2024-05-13T16:13:42.000Z
+- [ ] [[Boosted꞉ @WetHat There can be significant benefits with static readonly fields,…]] - 2024-05-13T16:13:42.000Z
 - - -
 [@WetHat](https://fosstodon.org/@WetHat)  
 There can be significant benefits with static readonly fields, see [https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-8/#tiering-and-dynamic-pgo](https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-8/#tiering-and-dynamic-pgo) and [https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-8/#constant-folding](https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-8/#constant-folding)  

@@ -2,7 +2,7 @@
 feedurl: reference/Planet PowerShell/assets/feed.xml
 site: https://www.planetpowershell.com/
 itemlimit: 10
-updated: 2024-06-08T17:58:50.006Z
+updated: 2024-06-09T16:48:39.592Z
 status: OK
 tags:
   - rss

@@ -10,7 +10,7 @@ tags: []
 
 🔗Read article [online](https://fosstodon.org/@WetHat/112434102899083500). For other items in this feed see [[@WetHat (WetHat💦)]].
 
-- [ ] [[Replied to꞉ @WetHat Thanks for sharing․ Makes me wonder if AoT or PGO might bene]] - 2024-05-13T13:50:59.000Z
+- [ ] [[Replied to꞉ @WetHat Thanks for sharing․ Makes me wonder if AoT or PGO might bene…]] - 2024-05-13T13:50:59.000Z
 - - -
 [@blaue_Fledermaus](https://mstdn.io/@blaue_Fledermaus) I do see some possibility that readonly would allow AoT (Ahead of Time compilation) or PGO (Profile-Guided Optimization) to choose a memory layout better suited for the computing pipeline. However. I'm not aware of any measurements in this direction. And I would agree that the advantage is probably small.
 
