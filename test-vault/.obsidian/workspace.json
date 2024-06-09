@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "reports/@WetHat (WetHat💦) Item Differences.md",
+                "file": "reports/The Hacker News Item Differences.md",
                 "mode": "preview",
                 "source": false
               }
@@ -69,7 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 728.5
+    "width": 422.5
   },
   "right": {
     "id": "4be942c0ca4186ab",
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "reports/@WetHat (WetHat💦) Item Differences.md",
+                "file": "reports/The Hacker News Item Differences.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "reports/@WetHat (WetHat💦) Item Differences.md",
+                "file": "reports/The Hacker News Item Differences.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "reports/@WetHat (WetHat💦) Item Differences.md"
+                "file": "reports/The Hacker News Item Differences.md"
               }
             }
           }
@@ -144,7 +144,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "reports/@WetHat (WetHat💦) Item Differences.md",
+                "file": "reports/The Hacker News Item Differences.md",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -192,19 +192,21 @@
   },
   "active": "2aafefaed2cd3956",
   "lastOpenFiles": [
+    "reports/Planet PowerShell Item Differences.md",
+    "reports/Bluesky Item Differences.md",
+    "reports/@WetHat (WetHat💦) Item Differences.md",
+    "output/@WetHat (WetHat💦).md",
+    "output/@WetHat (WetHat💦)/Boosted꞉ Polyhedral tiling for ＃TilingTuesday ＃Tiling ＃Hedron ＃Geometry ＃mathart….md",
     "output/@WetHat (WetHat💦)/Replied to꞉ @WetHat it's AI-generated․ See comments at.md",
-    "reference/The GitHub Blog꞉ Product News and Updates/Research꞉ Quantifying GitHub Copilot’s impact in the enterprise with Accenture.md",
     "output/@WetHat (WetHat💦)/Replied to꞉ @WetHat Newtonsoft,Json is not dead․ It's last release was 14 months….md",
     "output/@WetHat (WetHat💦)/Replied to꞉ @WetHat Thanks for sharing․ Makes me wonder if AoT or PGO might bene….md",
     "output/@WetHat (WetHat💦)/Boosted꞉ @WetHat There can be significant benefits with static readonly fields,….md",
     "output/@WetHat (WetHat💦)/Replied to꞉ @WetHat There can be significant benefits with static readonly field….md",
     "output/@WetHat (WetHat💦)/Replied to꞉ @WetHat I recall several stack overflow libraries had compiler switc….md",
     "output/@WetHat (WetHat💦)/Boosted꞉ Celluar ＃fooocus ＃stablediffusion ＃selfhosted ＃AI ＃AIart ＃generativeAI….md",
-    "output/@WetHat (WetHat💦)/Boosted꞉ Polyhedral tiling for ＃TilingTuesday ＃Tiling ＃Hedron ＃Geometry ＃mathart….md",
-    "output/@WetHat (WetHat💦)/Boosted꞉ Series꞉ A Functional Approach To Common Lisp .md",
+    "output/@WetHat (WetHat💦)/Boosted꞉ Series꞉ A Functional Approach To Common Lisp.md",
     "output/@WetHat (WetHat💦)",
     "output/assets/@WetHat (WetHat💦).svg",
-    "output/@WetHat (WetHat💦).md",
     "output/@wethat7․bsky․social - WetHat💦/11 May 2024 08꞉11 +0000.md",
     "output/@wethat7․bsky․social - WetHat💦/11 May 2024 08꞉28 +0000.md",
     "output/@wethat7․bsky․social - WetHat💦/11 May 2024 17꞉56 +0000.md",
@@ -220,8 +222,6 @@
     "output/@wethat7․bsky․social - WetHat💦.md",
     "output/Azimuth/Well Temperaments (Part 6).md",
     "output/Azimuth/Agent-Based Models (Part 7).md",
-    "output/Azimuth/Nicholas Ludford.md",
-    "output/Azimuth/The Probability of the Law of Excluded Middle.md",
     "output/Azimuth",
     "output/Bluesky",
     "output/assets/Bluesky.svg",
