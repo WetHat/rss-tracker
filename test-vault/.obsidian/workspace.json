@@ -69,7 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 806.5
+    "width": 384.5
   },
   "right": {
     "id": "4be942c0ca4186ab",
@@ -192,13 +192,6 @@
   },
   "active": "a6120b3abe4d603f",
   "lastOpenFiles": [
-    "reference/Planet PowerShell.md",
-    "reference/․NET Blog.md",
-    "reference/Azimuth.md",
-    "reference/assets/@WetHat (WetHat💦) 3.svg",
-    "reference/assets/@WetHat (WetHat💦) 1.svg",
-    "reference/assets/@WetHat (WetHat💦) 4.svg",
-    "reference/assets/@WetHat (WetHat💦) 2.svg",
     "output/@WetHat (WetHat💦)/Replied to꞉ @WetHat it's AI-generated․ See comments at….md",
     "output/@WetHat (WetHat💦)/Replied to꞉ @WetHat Newtonsoft,Json is not dead․ It's last release was 14 months….md",
     "output/@WetHat (WetHat💦)/Replied to꞉ @WetHat Thanks for sharing․ Makes me wonder if AoT or PGO might bene….md",
@@ -226,9 +219,14 @@
     "output/@wethat7․bsky․social - WetHat💦.md",
     "output/Azimuth/Well Temperaments (Part 6).md",
     "output/Azimuth/Agent-Based Models (Part 7).md",
+    "output/Azimuth/Nicholas Ludford.md",
+    "output/Azimuth/The Probability of the Law of Excluded Middle.md",
+    "output/Azimuth/The Probability of Undecidability.md",
     "output/Azimuth",
     "output/Bluesky",
     "output/assets/Bluesky.svg",
+    "output/fettblog․eu ∣ TypeScript, JavaScript, Jamstack",
+    "output/assets/fettblog․eu ∣ TypeScript, JavaScript, Jamstack.svg",
     "output/Planet PowerShell",
     "output/PyCoder’s Weekly",
     "output/assets/PyCoder’s Weekly.svg",
@@ -237,6 +235,8 @@
     "output/Sabine Hossenfelder",
     "output/assets/Sabine Hossenfelder.svg",
     "output/The GitHub Blog꞉ Product News and Updates",
-    "output/The Hacker News"
+    "output/assets/The GitHub Blog꞉ Product News and Updates.svg",
+    "output/assets/The Hacker News.svg",
+    "output/assets/TypeScript TV.svg"
   ]
 }
