@@ -11,8 +11,12 @@
             "id": "2aafefaed2cd3956",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "reports/@WetHat (WetHat💦) Item Differences.md",
+                "mode": "preview",
+                "source": false
+              }
             }
           }
         ]
@@ -65,7 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 476.5
+    "width": 728.5
   },
   "right": {
     "id": "4be942c0ca4186ab",
@@ -82,6 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "reports/@WetHat (WetHat💦) Item Differences.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -98,6 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "reports/@WetHat (WetHat💦) Item Differences.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -119,7 +125,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "reports/@WetHat (WetHat💦) Item Differences.md"
+              }
             }
           }
         ],
@@ -136,6 +144,7 @@
             "state": {
               "type": "localgraph",
               "state": {
+                "file": "reports/@WetHat (WetHat💦) Item Differences.md",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -181,9 +190,10 @@
       "rss-tracker:Update all RSS Feeds": false
     }
   },
-  "active": "676526ecb45c57b5",
+  "active": "2aafefaed2cd3956",
   "lastOpenFiles": [
-    "output/@WetHat (WetHat💦)/Replied to꞉ @WetHat it's AI-generated․ See comments at .md",
+    "output/@WetHat (WetHat💦)/Replied to꞉ @WetHat it's AI-generated․ See comments at.md",
+    "reference/The GitHub Blog꞉ Product News and Updates/Research꞉ Quantifying GitHub Copilot’s impact in the enterprise with Accenture.md",
     "output/@WetHat (WetHat💦)/Replied to꞉ @WetHat Newtonsoft,Json is not dead․ It's last release was 14 months….md",
     "output/@WetHat (WetHat💦)/Replied to꞉ @WetHat Thanks for sharing․ Makes me wonder if AoT or PGO might bene….md",
     "output/@WetHat (WetHat💦)/Boosted꞉ @WetHat There can be significant benefits with static readonly fields,….md",
@@ -212,7 +222,6 @@
     "output/Azimuth/Agent-Based Models (Part 7).md",
     "output/Azimuth/Nicholas Ludford.md",
     "output/Azimuth/The Probability of the Law of Excluded Middle.md",
-    "output/Azimuth/The Probability of Undecidability.md",
     "output/Azimuth",
     "output/Bluesky",
     "output/assets/Bluesky.svg",
@@ -223,11 +232,11 @@
     "output/assets/Python Morsels.svg",
     "output/Sabine Hossenfelder",
     "output/assets/Sabine Hossenfelder.svg",
+    "output/The GitHub Blog꞉ Product News and Updates",
+    "output/assets/The GitHub Blog꞉ Product News and Updates.svg",
     "output/The Hacker News",
     "output/assets/The Hacker News.svg",
-    "output/TypeScript TV",
     "output/assets/TypeScript TV.svg",
-    "reference/assets/@WetHat (WetHat💦) 2.svg",
-    "reference/assets/Python Morsels 1.svg"
+    "reference/assets/The GitHub Blog꞉ Product News and Updates.svg"
   ]
 }

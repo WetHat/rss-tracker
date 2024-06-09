@@ -137,7 +137,7 @@ export class TrackedRSSitem {
             .filter(c => !!c) // remove empty strings;
 
         if (description) {
-            this.description = description;
+            this.description = typeof description === "string" ? description : (description as TPropertyBag)["#text"];
         }
 
         if (published) {
@@ -349,7 +349,7 @@ const DEFAULT_OPTIONS: ReaderOptions = {
             title = published;
         }
         // remove linefeeds and extra spaces
-        tracked.title = title.replace(/[\s\r\n]+/g, " ");
+        tracked.title = (title["#text"] ?? title).replace(/[\s\r\n]+/g, " ");
 
         return tracked;
     },
@@ -409,7 +409,7 @@ export class TrackedRSSfeed {
             this.title = title;
         }
         if (description) {
-            this.description = description;
+            this.description = typeof description === "string" ? description : (description as TPropertyBag)["#text"];
         }
         if (link) {
             this.site = link;

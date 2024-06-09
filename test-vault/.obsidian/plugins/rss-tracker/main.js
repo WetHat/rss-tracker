@@ -3119,7 +3119,7 @@ var TrackedRSSitem = class {
       return c.replace(/^#(?=\w)|["\[\]\{\}]+/g, "").replaceAll("#", "\uFF03").replaceAll(".", "\u302D").replaceAll("&", "\uFF06").replace(/[:;\\/]/g, " ").replace(/\s+/, " ").trim();
     }).filter((c) => !!c);
     if (description) {
-      this.description = description;
+      this.description = typeof description === "string" ? description : description["#text"];
     }
     if (published) {
       const ticks = Date.parse(published);
@@ -3244,6 +3244,7 @@ function assembleDescription(elem) {
 }
 var DEFAULT_OPTIONS = {
   getExtraEntryFields: (item) => {
+    var _a2;
     let { id, guid } = item, tracked = {
       id: id || (guid == null ? void 0 : guid["#text"]) || item.link,
       media: assembleMedia(item)
@@ -3276,7 +3277,7 @@ var DEFAULT_OPTIONS = {
     if (!title) {
       title = published;
     }
-    tracked.title = title.replace(/[\s\r\n]+/g, " ");
+    tracked.title = ((_a2 = title["#text"]) != null ? _a2 : title).replace(/[\s\r\n]+/g, " ");
     return tracked;
   },
   getExtraFeedFields: (feedData) => {
@@ -3322,7 +3323,7 @@ var TrackedRSSfeed = class {
       this.title = title;
     }
     if (description) {
-      this.description = description;
+      this.description = typeof description === "string" ? description : description["#text"];
     }
     if (link) {
       this.site = link;

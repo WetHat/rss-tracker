@@ -78,7 +78,7 @@ export class TrackedRSSitem {
         })
             .filter(c => !!c); // remove empty strings;
         if (description) {
-            this.description = description;
+            this.description = typeof description === "string" ? description : description["#text"];
         }
         if (published) {
             // normalize date
@@ -260,7 +260,7 @@ const DEFAULT_OPTIONS = {
             title = published;
         }
         // remove linefeeds and extra spaces
-        tracked.title = title.replace(/[\s\r\n]+/g, " ");
+        tracked.title = (title["#text"] ?? title).replace(/[\s\r\n]+/g, " ");
         return tracked;
     },
     getExtraFeedFields: (feedData) => {
@@ -316,7 +316,7 @@ export class TrackedRSSfeed {
             this.title = title;
         }
         if (description) {
-            this.description = description;
+            this.description = typeof description === "string" ? description : description["#text"];
         }
         if (link) {
             this.site = link;
