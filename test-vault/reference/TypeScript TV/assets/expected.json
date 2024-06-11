@@ -526,5 +526,5 @@
             "media": []
         }
     ],
-    "source": "reference/TypeScript TV/assets/feed.xml"
+    "source": "https://typescript.tv/rss.xml"
 }

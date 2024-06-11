@@ -704,5 +704,5 @@
             "media": []
         }
     ],
-    "source": "reference/The Hacker News/assets/feed.xml"
+    "source": "https://feeds.feedburner.com/TheHackersNews"
 }
