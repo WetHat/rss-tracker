@@ -158,7 +158,17 @@ export class TrackedRSSitem {
 
         this.published = published;
         this.title = title ?? `${creator} - ${published}`;
-        this.link = link?.startsWith("/") && baseURI ? baseURI + link : link;
+
+        if (link) {
+            if (typeof link !== "string") {
+                link = (link as TPropertyBag)["@_href"];
+            }
+            if (link?.startsWith("/") && baseURI) {
+                link = baseURI + link;
+            }
+            this.link = link;
+        }
+
         this.author = creator;
         if (image) {
             this.image = image;
