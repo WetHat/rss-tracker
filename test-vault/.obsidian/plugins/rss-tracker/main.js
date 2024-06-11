@@ -1942,9 +1942,7 @@ tags: {{tags}}
 - - -
 {{content}}
 `,
-  autoUpdateFeeds: false,
-  feedLocation: "./"
-  // defaults to next to current note
+  autoUpdateFeeds: false
 };
 var RSSTrackerSettingTab = class extends import_obsidian.PluginSettingTab {
   constructor(app, plugin) {
@@ -1989,7 +1987,6 @@ var RSSTrackerSettingTab = class extends import_obsidian.PluginSettingTab {
         await this.plugin.saveSettings();
       });
     });
-    new import_obsidian.Setting(containerEl).setName("RSS Feed Location").setDesc("The location for new RSS feeds.");
   }
 };
 
@@ -3114,10 +3111,12 @@ var TrackedRSSitem = class {
   /**
    * Build a RSS item representation object.
    * @param entry - The parsed RSS item data.
+   * @param baseURI - The base uri of the site the article is from. Used to
+   *                  make relativ# article links absolute,
    */
-  constructor(entry) {
+  constructor(entry, baseURI) {
     var _a2;
-    let { id, title, description, published, link, category, creator, image, content, media } = entry;
+    let { id, title, description, published, link, creator, image, content, media } = entry;
     this.id = id;
     this.media = media;
     this.tags = ((_a2 = entry.category) != null ? _a2 : []).map((c) => typeof c === "string" ? c : c["#text"]).join(",").split(",").map((c) => {
@@ -3136,7 +3135,7 @@ var TrackedRSSitem = class {
     }
     this.published = published;
     this.title = title != null ? title : `${creator} - ${published}`;
-    this.link = link;
+    this.link = (link == null ? void 0 : link.startsWith("/")) && baseURI ? baseURI + link : link;
     this.author = creator;
     if (image) {
       this.image = image;
@@ -3252,7 +3251,8 @@ var DEFAULT_OPTIONS = {
     var _a2;
     let { id, guid } = item, tracked = {
       id: id || (guid == null ? void 0 : guid["#text"]) || item.link,
-      media: assembleMedia(item)
+      media: assembleMedia(item),
+      link: item.link
     };
     let description = item.description || assembleDescription(item);
     if (description) {
@@ -3321,8 +3321,9 @@ var TrackedRSSfeed = class {
    *          were available in the feed.
    */
   constructor(xml, source, options = DEFAULT_OPTIONS) {
+    var _a2;
     this.source = source;
-    const feed = extractFromXml(xml, options);
+    const feed = extractFromXml(xml, options), baseURI = (_a2 = source.match(/[htps]+:\/\/[^\/]+(?=\/*)/)) == null ? void 0 : _a2[0];
     let { link, title, description, image, entries } = feed;
     if (title) {
       this.title = title;
@@ -3331,13 +3332,13 @@ var TrackedRSSfeed = class {
       this.description = typeof description === "string" ? description : description["#text"];
     }
     if (link) {
-      this.site = link;
+      this.site = link.startsWith("/") && baseURI ? baseURI + link : link;
     }
     if (image) {
       this.image = image;
     }
     if (Array.isArray(entries)) {
-      this.items = entries.map((e) => new TrackedRSSitem(e));
+      this.items = entries.map((e) => new TrackedRSSitem(e, baseURI));
     } else {
       this.items = [];
     }

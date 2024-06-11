@@ -61,9 +61,11 @@ export class TrackedRSSitem {
     /**
      * Build a RSS item representation object.
      * @param entry - The parsed RSS item data.
+     * @param baseURI - The base uri of the site the article is from. Used to
+     *                  make relativ# article links absolute,
      */
-    constructor(entry) {
-        let { id, title, description, published, link, category, creator, image, content, media } = entry;
+    constructor(entry, baseURI) {
+        let { id, title, description, published, link, creator, image, content, media } = entry;
         this.id = id;
         this.media = media;
         this.tags = (entry.category ?? [])
@@ -96,7 +98,7 @@ export class TrackedRSSitem {
         }
         this.published = published;
         this.title = title ?? `${creator} - ${published}`;
-        this.link = link;
+        this.link = link?.startsWith("/") && baseURI ? baseURI + link : link;
         this.author = creator;
         if (image) {
             this.image = image;
@@ -232,7 +234,8 @@ const DEFAULT_OPTIONS = {
     getExtraEntryFields: (item) => {
         let { id, guid } = item, tracked = {
             id: id || guid?.["#text"] || item.link,
-            media: assembleMedia(item)
+            media: assembleMedia(item),
+            link: item.link
         };
         let description = item.description || assembleDescription(item);
         if (description) {
@@ -314,7 +317,7 @@ export class TrackedRSSfeed {
      */
     constructor(xml, source, options = DEFAULT_OPTIONS) {
         this.source = source;
-        const feed = extractFromXml(xml, options);
+        const feed = extractFromXml(xml, options), baseURI = source.match(/[htps]+:\/\/[^\/]+(?=\/*)/)?.[0];
         let { link, title, description, image, entries } = feed;
         if (title) {
             this.title = title;
@@ -323,13 +326,13 @@ export class TrackedRSSfeed {
             this.description = typeof description === "string" ? description : description["#text"];
         }
         if (link) {
-            this.site = link;
+            this.site = link.startsWith("/") && baseURI ? baseURI + link : link;
         }
         if (image) {
             this.image = image;
         }
         if (Array.isArray(entries)) {
-            this.items = entries.map(e => new TrackedRSSitem(e));
+            this.items = entries.map(e => new TrackedRSSitem(e, baseURI));
         }
         else {
             this.items = [];

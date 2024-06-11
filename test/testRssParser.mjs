@@ -4,6 +4,7 @@ import { TrackedRSSfeed } from './scripts/FeedAssembler.mjs'
 import * as fs from 'fs';
 import { globSync } from "glob";
 import assert from "assert";
+import exp from "constants";
 
 /**
  * A dynamic test to collect all `feed.xml` files found in `test-vault/reference`,
@@ -19,13 +20,13 @@ describe('Test FeedAssembler ', function () {
         // setup some paths and names relevant to the test
         const [xmlPath] = args,
             assets = path.dirname(xmlPath), // location where we find other assets
-            feedName = path.basename(path.dirname(assets)), // dirctory name is the feed name
-            source = `reference/${feedName}/assets/feed.xml`, // Obsidian vault path
+            feedName = path.basename(path.dirname(assets)), // directory name is the feed name
             reportFile = path.join("./test-vault/reports", `${feedName} Assembler.md`);
         // run the test
-        it(`parsing "${source}"`, function () {
+        it(`parsing "${feedName}"`, function () {
             // get the reference data
-            const expectedPath = path.join(assets, "expected.json"),
+            const
+                expectedPath = path.join(assets, "expected.json"),
                 expectedJson = JSON.parse(fs.readFileSync(expectedPath));
 
             // get rid of old report
@@ -34,8 +35,9 @@ describe('Test FeedAssembler ', function () {
             }
 
             // parse the feed
-            const feedXml = fs.readFileSync(xmlPath, { encoding: "utf8" }),
-                actual = new TrackedRSSfeed(feedXml, source),
+            const
+                feedXml = fs.readFileSync(xmlPath, { encoding: "utf8" }),
+                actual = new TrackedRSSfeed(feedXml, expectedJson.source),
                 // we have to stringify and reparse the TrackedRSSfeed instance to avoid
                 // false positives in diff.
                 jsondiff = diff(expectedJson, JSON.parse(JSON.stringify(actual, { encoding: "utf8" }, 4)));

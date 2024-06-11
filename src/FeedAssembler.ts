@@ -76,6 +76,7 @@ interface IEntryDataTracked {
     image?: IRssMedium;
     media: IRssMedium[];
     content?: string;
+    link?: string;
 }
 
 /**
@@ -118,9 +119,11 @@ export class TrackedRSSitem {
     /**
      * Build a RSS item representation object.
      * @param entry - The parsed RSS item data.
+     * @param baseURI - The base uri of the site the article is from. Used to
+     *                  make relativ# article links absolute,
      */
-    constructor(entry: IEntryDataExtended) {
-        let { id, title, description, published, link, category, creator, image, content, media } = entry;
+    constructor(entry: IEntryDataExtended, baseURI?: string) {
+        let { id, title, description, published, link, creator, image, content, media } = entry;
         this.id = id;
         this.media = media;
         this.tags = (entry.category ?? [])
@@ -155,7 +158,7 @@ export class TrackedRSSitem {
 
         this.published = published;
         this.title = title ?? `${creator} - ${published}`;
-        this.link = link;
+        this.link = link?.startsWith("/") && baseURI ? baseURI + link : link;
         this.author = creator;
         if (image) {
             this.image = image;
@@ -283,7 +286,7 @@ function assembleImage(elem: TPropertyBag): IRssMedium | null {
  * @param elem - The parsed RSS item.
  * @returns Author(s), if available.
  */
-function assembleCreator(elem: TPropertyBag): string | null{
+function assembleCreator(elem: TPropertyBag): string | null {
     const creator = elem.creator || elem["dc:creator"];
     if (creator) {
         return creator;
@@ -313,7 +316,8 @@ const DEFAULT_OPTIONS: ReaderOptions = {
             { id, guid } = item,
             tracked: IEntryDataTracked = {
                 id: id || guid?.["#text"] || item.link,
-                media: assembleMedia(item)
+                media: assembleMedia(item),
+                link: item.link
             }
 
         let description = item.description || assembleDescription(item);
@@ -406,7 +410,10 @@ export class TrackedRSSfeed {
      */
     constructor(xml: string, source: string, options: ReaderOptions = DEFAULT_OPTIONS) {
         this.source = source;
-        const feed = extractFromXml(xml, options);
+        const
+            feed = extractFromXml(xml, options),
+            baseURI = source.match(/[htps]+:\/\/[^\/]+(?=\/*)/)?.[0];
+
         let { link, title, description, image, entries } = feed as IFeedDataExtended;
         if (title) {
             this.title = title;
@@ -415,13 +422,13 @@ export class TrackedRSSfeed {
             this.description = typeof description === "string" ? description : (description as TPropertyBag)["#text"];
         }
         if (link) {
-            this.site = link;
+            this.site = link.startsWith("/") && baseURI ? baseURI + link : link;
         }
         if (image) {
             this.image = image;
         }
         if (Array.isArray(entries)) {
-            this.items = (entries as Array<IEntryDataExtended>).map(e => new TrackedRSSitem(e));
+            this.items = (entries as Array<IEntryDataExtended>).map(e => new TrackedRSSitem(e,baseURI));
         } else {
             this.items = []
         }
