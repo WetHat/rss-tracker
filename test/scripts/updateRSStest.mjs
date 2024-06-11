@@ -58,8 +58,6 @@ if (feedSource.includes("//")) {
         feedName = feed.fileName,
         fsAssets = path.join(referencePath, feedName, "assets");
     console.log("Downloaded feed " + feedName);
-    // pretend the feed came from the vault
-    feed.source = `reference/${feedName}/assets/feed.xml`;
 
     fs.mkdirSync(fsAssets, { recursive: true });
     fs.writeFileSync(path.join(fsAssets, "feed.xml"), feedXML, { encoding: "utf8" });
@@ -69,21 +67,22 @@ if (feedSource.includes("//")) {
     process.exit(0);
 }
 
-let feedSources;
+let feeds;
 if (feedSource === "--all") {
-    feedSources = globSync(`${referencePath}/*/assets/feed.xml`);
-    console.log(feedSources);
+    feeds = globSync(`${referencePath}/*/assets/feed.xml`);
+    console.log(feeds);
 } else {
-    feedSources = [path.join(feedSource, "assets/feed.xml")];
+    feeds = [path.join(feedSource, "assets/feed.xml")];
 }
 
-for (let source of feedSources) {
+for (let feedXml of feeds) {
     const
-        fsAssets = path.dirname(source),
-        feedName = path.basename(path.dirname(fsAssets)),
-        feedXML = fs.readFileSync(source, { encoding: "utf8" }).toString(),
-        feed = new TrackedRSSfeed(feedXML, `reference/${feedName}/assets/feed.xml`);
-    fs.writeFileSync(path.join(fsAssets, "expected.json"), JSON.stringify(feed, { encoding: "utf8" }, 4));
+        fsAssets = path.dirname(feedXml),
+        expectedJsonPath = path.join(fsAssets, "expected.json"),
+        source = JSON.parse(fs.readFileSync(expectedJsonPath)).source,
+        feedXML = fs.readFileSync(feedXml, { encoding: "utf8" }).toString(),
+        feed = new TrackedRSSfeed(feedXML, source);
+    fs.writeFileSync(expectedJsonPath, JSON.stringify(feed, { encoding: "utf8" }, 4));
     await generateFeedReference(feed);
 }
 
