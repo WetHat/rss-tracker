@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "reference/Scott Hanselman's Blog/A Nightscout Segment for OhMyPosh shows my realtime Blood Sugar readings in my G….md",
+                "file": "reference/Blogs on Lisp journey.md",
                 "mode": "source",
                 "source": false
               }
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "reference/Scott Hanselman's Blog/A Nightscout Segment for OhMyPosh shows my realtime Blood Sugar readings in my G….md",
+                "file": "reference/Blogs on Lisp journey.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "reference/Scott Hanselman's Blog/A Nightscout Segment for OhMyPosh shows my realtime Blood Sugar readings in my G….md",
+                "file": "reference/Blogs on Lisp journey.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "reference/Scott Hanselman's Blog/A Nightscout Segment for OhMyPosh shows my realtime Blood Sugar readings in my G….md"
+                "file": "reference/Blogs on Lisp journey.md"
               }
             }
           }
@@ -144,7 +144,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "reference/Scott Hanselman's Blog/A Nightscout Segment for OhMyPosh shows my realtime Blood Sugar readings in my G….md",
+                "file": "reference/Blogs on Lisp journey.md",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -192,27 +192,6 @@
   },
   "active": "2dc24ad55947d30d",
   "lastOpenFiles": [
-    "reference/Blogs on Lisp journey/These Years in Common Lisp꞉ 2022 in review.md",
-    "reference/Blogs on Lisp journey/How to parse command line arguments in Common Lisp (bis).md",
-    "reference/Blogs on Lisp journey/i18n in my Lisp web app with Djula templates and gettext.md",
-    "reference/Blogs on Lisp journey/Pretty GUI in Common Lisp with nodgui's Tk themes.md",
-    "reference/Blogs on Lisp journey/Pretty GUIs now꞉ nodgui comes with a pre-installed nice looking theme.md",
-    "reference/Blogs on Lisp journey/I published 17 videos about Common Lisp macros - learn Lisp with a code-first tu….md",
-    "reference/Blogs on Lisp journey/Common Lisp on the web꞉ enrich your stacktrace with request and session data.md",
-    "reference/Blogs on Lisp journey/Latest string manipulation functions in the STR library.md",
-    "reference/Blogs on Lisp journey/Celebrating 1001 learners on my Common Lisp course 🥳.md",
-    "reference/Blogs on Lisp journey/Oh no, I started a Magit-like plugin for the Lem editor.md",
-    "reference/assets/Blogs on Lisp journey 9.svg",
-    "reference/Blogs on Lisp journey.md",
-    "reference/assets/Blogs on Lisp journey 8.svg",
-    "reference/assets/Blogs on Lisp journey 7.svg",
-    "reference/assets/Blogs on Lisp journey 6.svg",
-    "reference/assets/Blogs on Lisp journey 5.svg",
-    "reference/assets/Blogs on Lisp journey 4.svg",
-    "reference/assets/Blogs on Lisp journey 3.svg",
-    "reference/assets/Blogs on Lisp journey 2.svg",
-    "reference/assets/Blogs on Lisp journey 1.svg",
-    "reference/assets/Blogs on Lisp journey.svg",
     "output/@WetHat (WetHat💦)/Replied to꞉ @WetHat it's AI-generated․ See comments at….md",
     "output/@WetHat (WetHat💦)/Replied to꞉ @WetHat Newtonsoft,Json is not dead․ It's last release was 14 months….md",
     "output/@WetHat (WetHat💦)/Replied to꞉ @WetHat Thanks for sharing․ Makes me wonder if AoT or PGO might bene….md",
@@ -223,19 +202,41 @@
     "output/@WetHat (WetHat💦)/Boosted꞉ Polyhedral tiling for ＃TilingTuesday ＃Tiling ＃Hedron ＃Geometry ＃mathart….md",
     "output/@WetHat (WetHat💦)/Boosted꞉ Series꞉ A Functional Approach To Common Lisp….md",
     "output/@WetHat (WetHat💦)",
+    "output/assets/@WetHat (WetHat💦).svg",
     "output/@WetHat (WetHat💦).md",
     "output/@wethat7․bsky․social - WetHat💦/11 May 2024 08꞉11 +0000.md",
     "output/@wethat7․bsky․social - WetHat💦/11 May 2024 08꞉28 +0000.md",
     "output/@wethat7․bsky․social - WetHat💦/11 May 2024 17꞉56 +0000.md",
     "output/@wethat7․bsky․social - WetHat💦/11 May 2024 18꞉32 +0000.md",
+    "output/@wethat7․bsky․social - WetHat💦/11 May 2024 18꞉51 +0000.md",
+    "output/@wethat7․bsky․social - WetHat💦/13 May 2024 09꞉14 +0000.md",
+    "output/@wethat7․bsky․social - WetHat💦/13 May 2024 09꞉27 +0000.md",
+    "output/@wethat7․bsky․social - WetHat💦/13 May 2024 09꞉35 +0000.md",
+    "output/@wethat7․bsky․social - WetHat💦/13 May 2024 09꞉59 +0000.md",
+    "output/@wethat7․bsky․social - WetHat💦/13 May 2024 10꞉10 +0000.md",
     "output/@wethat7․bsky․social - WetHat💦",
+    "output/assets/@wethat7․bsky․social - WetHat💦.svg",
+    "output/@wethat7․bsky․social - WetHat💦.md",
+    "output/Azimuth/Well Temperaments (Part 6).md",
+    "output/Azimuth/Agent-Based Models (Part 7).md",
+    "output/Azimuth/Nicholas Ludford.md",
+    "output/Azimuth/The Probability of the Law of Excluded Middle.md",
+    "output/Azimuth/The Probability of Undecidability.md",
     "output/Azimuth",
+    "output/Blogs on Lisp journey",
+    "output/assets/Blogs on Lisp journey.svg",
     "output/Bluesky",
+    "output/assets/Bluesky.svg",
     "output/fettblog․eu ∣ TypeScript, JavaScript, Jamstack",
+    "output/assets/fettblog․eu ∣ TypeScript, JavaScript, Jamstack.svg",
     "output/Planet PowerShell",
     "output/PyCoder’s Weekly",
+    "output/assets/PyCoder’s Weekly.svg",
     "output/Python Morsels",
+    "output/assets/Python Morsels.svg",
     "output/Sabine Hossenfelder",
-    "output/Scott Hanselman's Blog"
+    "output/assets/Sabine Hossenfelder.svg",
+    "output/assets/The GitHub Blog꞉ Product News and Updates.svg",
+    "output/assets/The Hacker News.svg"
   ]
 }
