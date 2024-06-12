@@ -234,7 +234,7 @@ function assembleDescription(elem) {
  * the desired feed representation.
  */
 const DEFAULT_OPTIONS = {
-    descriptionMaxLen: 5000,
+    descriptionMaxLen: 0,
     getExtraEntryFields: (item) => {
         let { id, guid } = item, tracked = {
             id: id || guid?.["#text"] || item.link,

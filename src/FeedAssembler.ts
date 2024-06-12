@@ -315,7 +315,7 @@ function assembleDescription(elem: TPropertyBag): string | null {
  * the desired feed representation.
  */
 const DEFAULT_OPTIONS: ReaderOptions = {
-    descriptionMaxLen: 5000, // allow long descriptions
+    descriptionMaxLen: 0, // infinite length
     getExtraEntryFields: (item: TPropertyBag): IEntryDataTracked => {
         let
             { id, guid } = item,

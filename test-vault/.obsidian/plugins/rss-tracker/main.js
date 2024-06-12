@@ -3250,8 +3250,8 @@ function assembleDescription(elem) {
   return description;
 }
 var DEFAULT_OPTIONS = {
-  descriptionMaxLen: 5e3,
-  // allow long descriptions
+  descriptionMaxLen: 0,
+  // infinite length
   getExtraEntryFields: (item) => {
     var _a2;
     let { id, guid } = item, tracked = {
@@ -3539,7 +3539,7 @@ var _FeedManager = class {
    */
   async createFeedFromFile(xml, location) {
     const feedXML = await this.app.vault.read(xml);
-    return this.createFeed(new TrackedRSSfeed(feedXML, "https://localhost" + xml.path), location);
+    return this.createFeed(new TrackedRSSfeed(feedXML, "https://localhost/" + xml.path), location);
   }
   /**
   * Create an RSS feed Markdown representaiton from a hyperlink.

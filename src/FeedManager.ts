@@ -218,7 +218,7 @@ export class FeedManager {
      */
     async createFeedFromFile(xml: TFile, location: TFolder): Promise<TFile> {
         const feedXML = await this.app.vault.read(xml);
-        return this.createFeed(new TrackedRSSfeed(feedXML, "https://localhost" + xml.path), location);
+        return this.createFeed(new TrackedRSSfeed(feedXML, "https://localhost/" + xml.path), location);
     }
 
      /**
