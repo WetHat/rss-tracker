@@ -1,14 +1,14 @@
 ---
 author: "Blogs on Lisp journey"
 published: 2023-05-08T12:01:34.000Z
-link: /blog/i18n-in-my-lisp-web-app-with-djula-templates-and-gettext/
+link: https://localhost/blog/i18n-in-my-lisp-web-app-with-djula-templates-and-gettext/
 id: /blog/i18n-in-my-lisp-web-app-with-djula-templates-and-gettext/
 feed: "Blogs on Lisp journey"
 tags: []
 ---
 > [!abstract] i18n in my Lisp web app with Djula templates and gettext - 2023-05-08T12:01:34.000Z
 
-🔗Read article [online](/blog/i18n-in-my-lisp-web-app-with-djula-templates-and-gettext/). For other items in this feed see [[Blogs on Lisp journey]].
+🔗Read article [online](https://localhost/blog/i18n-in-my-lisp-web-app-with-djula-templates-and-gettext/). For other items in this feed see [[Blogs on Lisp journey]].
 
 - [ ] [[i18n in my Lisp web app with Djula templates and gettext]] - 2023-05-08T12:01:34.000Z
 - - -

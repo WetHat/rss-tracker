@@ -1,14 +1,14 @@
 ---
 author: "Blogs on Lisp journey"
 published: 2023-05-26T22:22:04.000Z
-link: /blog/pretty-gui-in-common-lisp-with-nodgui-tk-themes/
+link: https://localhost/blog/pretty-gui-in-common-lisp-with-nodgui-tk-themes/
 id: /blog/pretty-gui-in-common-lisp-with-nodgui-tk-themes/
 feed: "Blogs on Lisp journey"
 tags: []
 ---
 > [!abstract] Pretty GUI in Common Lisp with nodgui's Tk themes - 2023-05-26T22:22:04.000Z
 
-🔗Read article [online](/blog/pretty-gui-in-common-lisp-with-nodgui-tk-themes/). For other items in this feed see [[Blogs on Lisp journey]].
+🔗Read article [online](https://localhost/blog/pretty-gui-in-common-lisp-with-nodgui-tk-themes/). For other items in this feed see [[Blogs on Lisp journey]].
 
 - [ ] [[Pretty GUI in Common Lisp with nodgui's Tk themes]] - 2023-05-26T22:22:04.000Z
 - - -

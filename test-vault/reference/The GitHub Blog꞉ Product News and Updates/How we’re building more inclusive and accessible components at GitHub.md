@@ -7,7 +7,7 @@ feed: "The GitHub Blog꞉ Product News and Updates"
 tags: []
 ---
 > [!abstract] How we’re building more inclusive and accessible components at GitHub by Eric Bailey - 2024-05-07T17:00:20.000Z
-> We've made improvements to the way users of assistive technology can interact with and navigate lists of issues and pull requests and tables across GitHub.com. The post How we’re building more inclusive and accessible components at GitHub appeared...
+> We've made improvements to the way users of assistive technology can interact with and navigate lists of issues and pull requests and tables across GitHub.com. The post How we’re building more inclusive and accessible components at GitHub appeared first on The GitHub Blog.
 
 🔗Read article [online](https://github.blog/2024-05-07-how-were-building-more-inclusive-and-accessible-components-at-github/). For other items in this feed see [[The GitHub Blog꞉ Product News and Updates]].
 

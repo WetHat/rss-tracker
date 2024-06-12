@@ -1,8 +1,8 @@
 ---
-feedurl: reference/Bluesky/assets/feed.xml
+feedurl: https://localhost/reference/Bluesky/assets/feed.xml
 site: https://flipboard.com/topic/blueskysocial
 itemlimit: 10
-updated: 2024-06-11T11:42:27.847Z
+updated: 2024-06-12T06:48:24.734Z
 status: OK
 tags:
   - rss

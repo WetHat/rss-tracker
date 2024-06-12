@@ -18,7 +18,7 @@
             ],
             "description": "Several years ago Don Jones and I wrote what we hoped would be the definitive book on PowerShell scripting and toolmaking. The book takes all off our years of experience, not only from writing PowerShell code, to teaching and conference presentations where we hear first hand what people struggle with. We published the book on...",
             "title": "PowerShell Scripting and Toolmaking",
-            "link": "https://jdhitsolutions.com/blog/books/9389/powershell-scripting-and-toolmaking/?utm_source=rss&utm_medium=rss&utm_campaign=powershell-scripting-and-toolmaking",
+            "link": "https://jdhitsolutions.com/blog/books/9389/powershell-scripting-and-toolmaking/",
             "published": "2024-05-24T17:03:43.000Z",
             "author": {
                 "#text": "Jeffery Hicks",
@@ -45,7 +45,7 @@
             "tags": [],
             "description": "<p>A Powershell GUI using DotNet Windows.Forms to start AWS Lambda Functions and display their output - <div id=\"target-id6653457b053c0\" class=\"collapseomatic_content_inline colomat-inline \"> powershell-gui-aws-lambda-start-functions.ps1 </div><span class=\"collapseomatic my_button\" id=\"id6653457b053c0\"  tabindex=\"0\" title=\"(+)\"    >(+)</span><span id='swap-id6653457b053c0'  class='colomat-swap' style='display:none;'>(-)</span></p>",
             "title": "A Powershell GUI using DotNet Windows.Forms to start AWS Lambda Functions and display their output",
-            "link": "https://gist.github.com/aeveltstra/94806a1230b8165f43e9b4e4dec9bacc#file-powershell-gui-aws-lambda-start-functions-ps1",
+            "link": "https://gist.github.com/aeveltstra/94806a1230b8165f43e9b4e4dec9bacc",
             "published": "2024-05-24T12:24:44.000Z",
             "author": {
                 "#text": "Matthew Dowst",
@@ -281,7 +281,7 @@
             ],
             "description": "A number of years ago, I published book on Leanpub, designed to help you teach yourself PowerShell. After you get through the first Month of Lunches book, what do you do next? The best way to learn PowerShell is to do it. But it might be challending trying to figure out what to do. I...",
             "title": "Pick Up The PowerShell Practice Primer",
-            "link": "https://jdhitsolutions.com/blog/books/9352/pick-up-powershell-practice-primer/?utm_source=rss&utm_medium=rss&utm_campaign=pick-up-powershell-practice-primer",
+            "link": "https://jdhitsolutions.com/blog/books/9352/pick-up-powershell-practice-primer/",
             "published": "2024-04-29T19:02:37.000Z",
             "author": {
                 "#text": "Jeffery Hicks",
@@ -483,7 +483,7 @@
             ],
             "description": "Earlier this year I appeared on the PowerShell Podcast. I ended the interview with a scripting challenge. The Core Challenge Using whatever tools and techniques you want, write a PowerShell function that will query the Issues section of a GitHub repository and create output showing the number of open issues by label and the percentage...",
             "title": "GitHub Scripting Challenge Solution",
-            "link": "https://jdhitsolutions.com/blog/powershell/9343/github-scripting-challenge-solution/?utm_source=rss&utm_medium=rss&utm_campaign=github-scripting-challenge-solution",
+            "link": "https://jdhitsolutions.com/blog/powershell/9343/github-scripting-challenge-solution/",
             "published": "2024-03-07T18:45:25.000Z",
             "author": {
                 "#text": "Jeffery Hicks",
@@ -502,7 +502,7 @@
             ],
             "description": "I have been an IT professional for over 30 years. I have been speaking publicly and presenting at conferences for probably 25 years. I have presented to all types of groups, from small user groups to large conferences, literally around the world. As I enter the last part of my IT career, I am re-assessing...",
             "title": "My Conference Future",
-            "link": "https://jdhitsolutions.com/blog/conferences/9327/my-conference-future/?utm_source=rss&utm_medium=rss&utm_campaign=my-conference-future",
+            "link": "https://jdhitsolutions.com/blog/conferences/9327/my-conference-future/",
             "published": "2024-03-04T14:24:23.000Z",
             "author": {
                 "#text": "Jeffery Hicks",
@@ -553,7 +553,7 @@
             ],
             "description": "The other day on X, I was asked about what things I would setup or configure on a new PowerShell installation. This is something I actually have thought about and face all the time when I setup a new demo virtual machine. I had been meaning to build new tooling to meet this challenge, and...",
             "title": "PowerShell Refresh",
-            "link": "https://jdhitsolutions.com/blog/powershell/9325/powershell-refresh/?utm_source=rss&utm_medium=rss&utm_campaign=powershell-refresh",
+            "link": "https://jdhitsolutions.com/blog/powershell/9325/powershell-refresh/",
             "published": "2024-03-01T14:04:57.000Z",
             "author": {
                 "#text": "Jeffery Hicks",
@@ -571,7 +571,7 @@
             ],
             "description": "I know it has been a while since I've given the blog any attention. I am hoping to correct that in 2024, although I'm already behind schedule. But let's get to it. I have a short tip today that you may find useful, especially if you write modules for your private use. I have a...",
             "title": "Module Linking",
-            "link": "https://jdhitsolutions.com/blog/powershell/9323/module-linking/?utm_source=rss&utm_medium=rss&utm_campaign=module-linking",
+            "link": "https://jdhitsolutions.com/blog/powershell/9323/module-linking/",
             "published": "2024-02-27T14:14:16.000Z",
             "author": {
                 "#text": "Jeffery Hicks",
@@ -588,7 +588,7 @@
             ],
             "description": "<p>Some days ago I got a ticket where someone could not load his calendar in Microsoft Teams. Outlook worked fine the only thing was Out of Office Notification, also did not work. After some research I found the solution by activating EWS on this specific mailbox. One our later everything was fine. You can find &#8230; </p>\n<p class=\"link-more\"><a href=\"https://blog.it-koehler.com/en/Archive/5658\" class=\"more-link\">Read more<span class=\"screen-reader-text\"> \"Exchange Online mailbox apps check via PowerShell\"</span></a></p>\n<p>Articel <a href=\"https://blog.it-koehler.com/en/Archive/5658\">Exchange Online mailbox apps check via PowerShell</a> available first on <a href=\"https://blog.it-koehler.com/en\">IT koehler blog</a>.</p>",
             "title": "Exchange Online mailbox apps check via PowerShell",
-            "link": "https://blog.it-koehler.com/en/Archive/5658?utm_source=rss&utm_medium=rss&utm_campaign=exchange-online-mailbox-apps-check-via-powershell",
+            "link": "https://blog.it-koehler.com/en/Archive/5658",
             "published": "2024-02-16T14:30:21.000Z",
             "author": {
                 "#text": "A.K.",
@@ -863,7 +863,7 @@
             ],
             "description": "<p>Lot of people already know the new Microsoft strategy for blocking outdated Exchange OnPrem Versions in hybrid environments. See this old article which describes the most important informations, see also the timeline for throttling and blocking. https://techcommunity.microsoft.com/t5/exchange-team-blog/update-on-transport-enforcement-system-in-exchange-online/ba-p/3827774 After some time the Exchange Teams announced an new article about pausing this enforcement with throttling and blocking. &#8230; </p>\n<p class=\"link-more\"><a href=\"https://blog.it-koehler.com/en/Archive/5619\" class=\"more-link\">Read more<span class=\"screen-reader-text\"> \"Exchange Online Enforcement Pause\"</span></a></p>\n<p>Articel <a href=\"https://blog.it-koehler.com/en/Archive/5619\">Exchange Online Enforcement Pause</a> available first on <a href=\"https://blog.it-koehler.com/en\">IT koehler blog</a>.</p>",
             "title": "Exchange Online Enforcement Pause",
-            "link": "https://blog.it-koehler.com/en/Archive/5619?utm_source=rss&utm_medium=rss&utm_campaign=exchange-online-enforcement-pause",
+            "link": "https://blog.it-koehler.com/en/Archive/5619",
             "published": "2023-12-15T21:00:14.000Z",
             "author": {
                 "#text": "A.K.",
@@ -1103,7 +1103,7 @@
             ],
             "description": "<p>Clearing old or orphaned groups is also important in cloud environments, especially in larger structures. So an easy way is to check if there are disabled users in Azure AD groups. Of course there can be also some license savings in M365 if disabled users are removed. This use case I wrote a small PowerShell &#8230; </p>\n<p class=\"link-more\"><a href=\"https://blog.it-koehler.com/en/Archive/5461\" class=\"more-link\">Read more<span class=\"screen-reader-text\"> \"Cleanup M365 Azure AD groups via PowerShell\"</span></a></p>\n<p>Articel <a href=\"https://blog.it-koehler.com/en/Archive/5461\">Cleanup M365 Azure AD groups via PowerShell</a> available first on <a href=\"https://blog.it-koehler.com/en\">IT koehler blog</a>.</p>",
             "title": "Cleanup M365 Azure AD groups via PowerShell",
-            "link": "https://blog.it-koehler.com/en/Archive/5461?utm_source=rss&utm_medium=rss&utm_campaign=cleanup-m365-azure-ad-groups-via-powershell",
+            "link": "https://blog.it-koehler.com/en/Archive/5461",
             "published": "2023-11-06T09:30:00.000Z",
             "author": {
                 "#text": "A.K.",
@@ -1372,7 +1372,7 @@
             ],
             "description": "Time to get back to the to blog. I've been working through my backlog of projects. These are things that I started writing or updating but then got pushed to the back of the line. One of these projects is a PowerShell module I wrote as a teaching tool. The idea was to create short...",
             "title": "Friday Fun with PSQuizzes",
-            "link": "https://jdhitsolutions.com/blog/powershell/9260/friday-fun-with-psquizzes/?utm_source=rss&utm_medium=rss&utm_campaign=friday-fun-with-psquizzes",
+            "link": "https://jdhitsolutions.com/blog/powershell/9260/friday-fun-with-psquizzes/",
             "published": "2023-08-25T14:15:39.000Z",
             "author": {
                 "#text": "Jeffery Hicks",
@@ -1839,7 +1839,7 @@
             ],
             "description": "Earlier this Spring, I released a new function called Get-TypeMember. The function is in the PSScriptTools module. I wrote about that release here. This command is an alternative to Get-Member that includes more details. The other day I pushed a new version that makes it easier to identify properties that are enumerations. The function has...",
             "title": "Discover Enums with Get-TypeMember",
-            "link": "https://jdhitsolutions.com/blog/powershell/9247/discover-enums-with-get-typemember/?utm_source=rss&utm_medium=rss&utm_campaign=discover-enums-with-get-typemember",
+            "link": "https://jdhitsolutions.com/blog/powershell/9247/discover-enums-with-get-typemember/",
             "published": "2023-05-26T14:57:13.000Z",
             "author": {
                 "#text": "Jeffery Hicks",
@@ -1989,7 +1989,7 @@
             ],
             "description": "Words: 1,283 Time to read: ~ 7 minutes Welcome to T-SQL Tuesday, the monthly blogging party where a host provides a topic, and we blog about it. This month we have Reitse Eskens ( blog &#124; twitter &#124; mastadon ) asking us to talk about something fun we have done with T-SQL. It has been &#8230; <a href=\"https://nocolumnname.blog/2023/04/11/t-sql-tuesday-161-having-fun-with-sql/\" class=\"more-link\">Continue reading<span class=\"screen-reader-text\"> \"T-SQL Tuesday 161: Having Fun with SQL\"</span></a>",
             "title": "T-SQL Tuesday 161: Having Fun with SQL",
-            "link": "https://nocolumnname.blog/2023/04/11/t-sql-tuesday-161-having-fun-with-sql/?utm_source=rss&utm_medium=rss&utm_campaign=t-sql-tuesday-161-having-fun-with-sql",
+            "link": "https://nocolumnname.blog/2023/04/11/t-sql-tuesday-161-having-fun-with-sql/",
             "published": "2023-04-11T22:13:34.000Z",
             "author": {
                 "#text": "Shane O'Neill",
@@ -2331,7 +2331,7 @@
             ],
             "description": "A few weeks ago, I was working on content for a new PowerShell course for Pluralsight. The subject was objects. We all know the importance of working with objects in PowerShell. Hopefully, you also know that the output you get on your screen from running a PowerShell command is not the whole story. Formatted presentation...",
             "title": "Exposing the Mystery of PowerShell Objects",
-            "link": "https://jdhitsolutions.com/blog/powershell/9229/exposing-the-mystery-of-powershell-objects/?utm_source=rss&utm_medium=rss&utm_campaign=exposing-the-mystery-of-powershell-objects",
+            "link": "https://jdhitsolutions.com/blog/powershell/9229/exposing-the-mystery-of-powershell-objects/",
             "published": "2023-03-14T14:32:28.000Z",
             "author": {
                 "#text": "Jeffery Hicks",
@@ -2364,7 +2364,7 @@
             ],
             "description": "This post is an updated reprint from an article published to my premium PowerShell newsletter Behind the PowerShell Pipeline available on Substack. Subscribers receive 6-8 articles like this a month delivered to their inbox or available on the Substack app. I hope you’ll consider subscribing. Trial subscriptions are available. I’ve been scripting and automating things...",
             "title": "Automation Decisions",
-            "link": "https://jdhitsolutions.com/blog/powershell/9225/automation-decisions/?utm_source=rss&utm_medium=rss&utm_campaign=automation-decisions",
+            "link": "https://jdhitsolutions.com/blog/powershell/9225/automation-decisions/",
             "published": "2023-02-28T17:58:44.000Z",
             "author": {
                 "#text": "Jeffery Hicks",
@@ -2584,7 +2584,7 @@
             ],
             "description": "Words: 567 Time to read: ~ 3 minutes Skip This for Your Sanity I have created a module cause nobody wants to do timesheets no more; they want PowerShell to do it for ya. Well, if this is what you need, then this is what I&#8217;ll give ya. (Ahem, apologies about that, songs get stuck &#8230; <a href=\"https://nocolumnname.blog/2022/10/06/publishing-pstimesheets-to-the-psgallery/\" class=\"more-link\">Continue reading<span class=\"screen-reader-text\"> \"Publishing PSTimeSheets To The PSGallery\"</span></a>",
             "title": "Publishing PSTimeSheets To The PSGallery",
-            "link": "https://nocolumnname.blog/2022/10/06/publishing-pstimesheets-to-the-psgallery/?utm_source=rss&utm_medium=rss&utm_campaign=publishing-pstimesheets-to-the-psgallery",
+            "link": "https://nocolumnname.blog/2022/10/06/publishing-pstimesheets-to-the-psgallery/",
             "published": "2022-10-06T19:44:02.000Z",
             "author": {
                 "#text": "Shane O'Neill",

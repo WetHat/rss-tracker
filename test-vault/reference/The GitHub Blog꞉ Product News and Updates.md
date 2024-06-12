@@ -1,8 +1,8 @@
 ---
-feedurl: reference/The GitHub Blog꞉ Product News and Updates/assets/feed.xml
+feedurl: https://localhost/reference/The GitHub Blog꞉ Product News and Updates/assets/feed.xml
 site: https://github.blog/category/product/
 itemlimit: 10
-updated: 2024-06-09T16:05:37.384Z
+updated: 2024-06-12T06:54:10.290Z
 status: OK
 tags:
   - rss

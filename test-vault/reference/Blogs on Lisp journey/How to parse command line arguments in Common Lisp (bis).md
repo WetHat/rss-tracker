@@ -1,14 +1,14 @@
 ---
 author: "Blogs on Lisp journey"
 published: 2023-04-19T09:44:56.000Z
-link: /blog/how-to-parse-command-line-arguments-in-common-lisp/
+link: https://localhost/blog/how-to-parse-command-line-arguments-in-common-lisp/
 id: /blog/how-to-parse-command-line-arguments-in-common-lisp/
 feed: "Blogs on Lisp journey"
 tags: []
 ---
 > [!abstract] How to parse command line arguments in Common Lisp (bis) - 2023-04-19T09:44:56.000Z
 
-🔗Read article [online](/blog/how-to-parse-command-line-arguments-in-common-lisp/). For other items in this feed see [[Blogs on Lisp journey]].
+🔗Read article [online](https://localhost/blog/how-to-parse-command-line-arguments-in-common-lisp/). For other items in this feed see [[Blogs on Lisp journey]].
 
 - [ ] [[How to parse command line arguments in Common Lisp (bis)]] - 2023-04-19T09:44:56.000Z
 - - -

@@ -1,14 +1,14 @@
 ---
 author: "Blogs on Lisp journey"
 published: 2023-09-15T15:07:23.000Z
-link: /blog/17-new-videos-on-common-lisp-macros/
+link: https://localhost/blog/17-new-videos-on-common-lisp-macros/
 id: /blog/17-new-videos-on-common-lisp-macros/
 feed: "Blogs on Lisp journey"
 tags: []
 ---
 > [!abstract] I published 17 videos about Common Lisp macros - learn Lisp with a code-first tutorial 🎥 ⭐ - 2023-09-15T15:07:23.000Z
 
-🔗Read article [online](/blog/17-new-videos-on-common-lisp-macros/). For other items in this feed see [[Blogs on Lisp journey]].
+🔗Read article [online](https://localhost/blog/17-new-videos-on-common-lisp-macros/). For other items in this feed see [[Blogs on Lisp journey]].
 
 - [ ] [[I published 17 videos about Common Lisp macros - learn Lisp with a code-first tu…]] - 2023-09-15T15:07:23.000Z
 - - -

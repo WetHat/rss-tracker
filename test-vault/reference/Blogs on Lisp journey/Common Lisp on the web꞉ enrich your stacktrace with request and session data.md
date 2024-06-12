@@ -1,14 +1,14 @@
 ---
 author: "Blogs on Lisp journey"
 published: 2023-10-13T14:51:07.000Z
-link: /blog/common-lisp-on-the-web-enrich-your-stacktrace-with-request-and-session-data/
+link: https://localhost/blog/common-lisp-on-the-web-enrich-your-stacktrace-with-request-and-session-data/
 id: /blog/common-lisp-on-the-web-enrich-your-stacktrace-with-request-and-session-data/
 feed: "Blogs on Lisp journey"
 tags: []
 ---
 > [!abstract] Common Lisp on the web: enrich your stacktrace with request and session data - 2023-10-13T14:51:07.000Z
 
-🔗Read article [online](/blog/common-lisp-on-the-web-enrich-your-stacktrace-with-request-and-session-data/). For other items in this feed see [[Blogs on Lisp journey]].
+🔗Read article [online](https://localhost/blog/common-lisp-on-the-web-enrich-your-stacktrace-with-request-and-session-data/). For other items in this feed see [[Blogs on Lisp journey]].
 
 - [ ] [[Common Lisp on the web꞉ enrich your stacktrace with request and session data]] - 2023-10-13T14:51:07.000Z
 - - -

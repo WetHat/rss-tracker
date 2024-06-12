@@ -1,14 +1,14 @@
 ---
 author: "Blogs on Lisp journey"
 published: 2023-06-01T17:03:35.000Z
-link: /blog/nodgui-now-has-a-nice-looking-theme-by-default/
+link: https://localhost/blog/nodgui-now-has-a-nice-looking-theme-by-default/
 id: /blog/nodgui-now-has-a-nice-looking-theme-by-default/
 feed: "Blogs on Lisp journey"
 tags: []
 ---
 > [!abstract] Pretty GUIs now: nodgui comes with a pre-installed nice looking theme - 2023-06-01T17:03:35.000Z
 
-🔗Read article [online](/blog/nodgui-now-has-a-nice-looking-theme-by-default/). For other items in this feed see [[Blogs on Lisp journey]].
+🔗Read article [online](https://localhost/blog/nodgui-now-has-a-nice-looking-theme-by-default/). For other items in this feed see [[Blogs on Lisp journey]].
 
 - [ ] [[Pretty GUIs now꞉ nodgui comes with a pre-installed nice looking theme]] - 2023-06-01T17:03:35.000Z
 - - -

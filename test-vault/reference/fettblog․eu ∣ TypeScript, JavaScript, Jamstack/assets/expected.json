@@ -5,7 +5,7 @@
         {
             "id": "https://fettblog.eu/typescript-never-and-error-handling/",
             "tags": [],
-            "description": "One thing that I see more often recently is that folks find out about the never type, and start using it more often, especially trying to model error handling. But more often than not, they don’t use it properly or overlook some fundamental...",
+            "description": "One thing that I see more often recently is that folks find out about the never type, and start using it more often, especially trying to model error handling. But more often than not, they don’t use it properly or overlook some fundamental features of never. This can lead to faulty code that might act up in production, so I want to clear doubts and misconceptions, and show you what you can really do with never.",
             "title": "The `never` type and error handling in TypeScript",
             "link": "https://fettblog.eu/typescript-never-and-error-handling/",
             "published": "2024-03-05T00:00:00.000Z",
@@ -55,7 +55,7 @@
         {
             "id": "https://fettblog.eu/typescript-iterating-over-objects/",
             "tags": [],
-            "description": "There is rarely a head-scratcher in TypeScript as prominent as trying to access an object property via iterating through its keys. This is a pattern that’s so common in JavaScript, yet TypeScript seems to through all the obstacles at you. This...",
+            "description": "There is rarely a head-scratcher in TypeScript as prominent as trying to access an object property via iterating through its keys. This is a pattern that’s so common in JavaScript, yet TypeScript seems to through all the obstacles at you. This simple line:",
             "title": "TypeScript: Iterating over objects",
             "link": "https://fettblog.eu/typescript-iterating-over-objects/",
             "published": "2022-05-11T00:00:00.000Z",
@@ -85,7 +85,7 @@
         {
             "id": "https://fettblog.eu/rust-tiny-little-traits/",
             "tags": [],
-            "description": "Rust’s trait system has a feature that is often talked about, but which I don’t see used that often in application code: Implementing your traits for types that are not yours. You can see this a lot in the standard library, and also in some...",
+            "description": "Rust’s trait system has a feature that is often talked about, but which I don’t see used that often in application code: Implementing your traits for types that are not yours. You can see this a lot in the standard library, and also in some libraries (hello itertools), but I see developers shy away from doing that when writing applications. It’s so much fun and so useful, though!",
             "title": "Rust: Tiny little traits",
             "link": "https://fettblog.eu/rust-tiny-little-traits/",
             "published": "2022-04-15T00:00:00.000Z",
@@ -95,7 +95,7 @@
         {
             "id": "https://fettblog.eu/slides/the-typescript-converging-point/",
             "tags": [],
-            "description": "Usually, when doing TypeScript talks, I just open up a code editor and hack away some cool types that help in a certain scenario. This time, I was asked to do the same thing but within a 20-minute time limit. This has been super tough, so I...",
+            "description": "Usually, when doing TypeScript talks, I just open up a code editor and hack away some cool types that help in a certain scenario. This time, I was asked to do the same thing but within a 20-minute time limit. This has been super tough, so I scripted the entire thing and resorted to slides that have certain progress. Fewer chances for me to screw up! This allows me to give you not only the slides but also a write-up of this talk. I’ll give myself a bit of freedom and flesh it out where appropriate. Enjoy!",
             "title": "The TypeScript converging point",
             "link": "https://fettblog.eu/slides/the-typescript-converging-point/",
             "published": "2022-01-31T00:00:00.000Z",
@@ -105,7 +105,7 @@
         {
             "id": "https://fettblog.eu/how-not-to-learn-typescript/",
             "tags": [],
-            "description": "“TypeScript and I are never going to be friends”. Oh wow, how often have I heard this phrase? Learning TypeScript, even in 2022, can be frustrating it seems. And for so many different reasons. People who write Java or C# and find out things are...",
+            "description": "“TypeScript and I are never going to be friends”. Oh wow, how often have I heard this phrase? Learning TypeScript, even in 2022, can be frustrating it seems. And for so many different reasons. People who write Java or C# and find out things are working differently than they should. Folks who have done JavaScript most of their time and are being screamed at by a compiler. Here are some mistakes I’ve seen people do when getting started with TypeScript. I hope they’re helpful to you!",
             "title": "How not to learn TypeScript",
             "link": "https://fettblog.eu/how-not-to-learn-typescript/",
             "published": "2022-01-10T00:00:00.000Z",
@@ -115,7 +115,7 @@
         {
             "id": "https://fettblog.eu/getting-started-with-rust/",
             "tags": [],
-            "description": "Learning and teaching Rust has been a big part of me in the last couple of years. Interest in the Rust programming language has brought me to found the Rust Linz meetup with Rainer Stropek, to teach Rust at the local university, and to do a ton of...",
+            "description": "Learning and teaching Rust has been a big part of me in the last couple of years. Interest in the Rust programming language has brought me to found the Rust Linz meetup with Rainer Stropek, to teach Rust at the local university, and to do a ton of workshops on the topic. It’s a lot of fun! It has introduced me to one of the most welcoming communities. And I love seeing Rust code getting in production and keeping all the promises it gives us. Folks who I’m in contact with through various channels ask me how to best get started with Rust. This article tries to give you an overview.",
             "title": "Getting started with Rust",
             "link": "https://fettblog.eu/getting-started-with-rust/",
             "published": "2021-12-23T00:00:00.000Z",
@@ -125,7 +125,7 @@
         {
             "id": "https://fettblog.eu/introducing-the-slides-section/",
             "tags": [],
-            "description": "There’s a new section on this website! Since today, you’re able to see full coverage of my workshops and talks in the new slides and coverage section. That’s the announcement. If you want to see more, head over to the new section. If you want a...",
+            "description": "There’s a new section on this website! Since today, you’re able to see full coverage of my workshops and talks in the new slides and coverage section. That’s the announcement. If you want to see more, head over to the new section. If you want a little “Making of”, please continue with this article.",
             "title": "Introducing Slides and Coverage",
             "link": "https://fettblog.eu/introducing-the-slides-section/",
             "published": "2021-12-14T00:00:00.000Z",
@@ -135,7 +135,7 @@
         {
             "id": "https://fettblog.eu/typescript-function-overload/",
             "tags": [],
-            "description": "With the most recent type system features like conditional types or variadic tuple types, one technique to describe a function’s interface has faded into the background: Function overloads. And there’s a good reason for that. Both features have...",
+            "description": "With the most recent type system features like conditional types or variadic tuple types, one technique to describe a function’s interface has faded into the background: Function overloads. And there’s a good reason for that. Both features have been implemented to deal with the shortcomings of regular function overloads.",
             "title": "TypeScript: The humble function overload",
             "link": "https://fettblog.eu/typescript-function-overload/",
             "published": "2021-11-30T00:00:00.000Z",
@@ -155,7 +155,7 @@
         {
             "id": "https://fettblog.eu/typescript-any-is-ok/",
             "tags": [],
-            "description": "A couple of days ago I found this beauty on the internet: Give up and use any. That’s a fantastic website, absolutely hilarious! It also shows how much TypeScript has grown in popularity. You have to have a certain reach to get critics to create...",
+            "description": "A couple of days ago I found this beauty on the internet: Give up and use any. That’s a fantastic website, absolutely hilarious! It also shows how much TypeScript has grown in popularity. You have to have a certain reach to get critics to create websites like this.",
             "title": "TypeScript: In defense of any",
             "link": "https://fettblog.eu/typescript-any-is-ok/",
             "published": "2021-09-14T00:00:00.000Z",
@@ -165,7 +165,7 @@
         {
             "id": "https://fettblog.eu/rust-enums-wrapping-errors/",
             "tags": [],
-            "description": "This is a follow-up to Error handling in Rust from a couple of days ago. The moment we want to use error propagation for different error types, we have to rely on trait objects with Box, which means we defer a lot of information from compile-time...",
+            "description": "This is a follow-up to Error handling in Rust from a couple of days ago. The moment we want to use error propagation for different error types, we have to rely on trait objects with Box, which means we defer a lot of information from compile-time to runtime, for the sake of convenient error handling.",
             "title": "Rust: Enums to wrap multiple errors",
             "link": "https://fettblog.eu/rust-enums-wrapping-errors/",
             "published": "2021-09-09T00:00:00.000Z",
@@ -175,7 +175,7 @@
         {
             "id": "https://fettblog.eu/dissecting-deno/",
             "tags": [],
-            "description": "I had the chance to toy around with Deno recently. And with “toy around” I mean dissecting it into little pieces and see how the sausage was made. So, my view is not from a user’s perspective who wants to create and run apps with it, but rather one...",
+            "description": "I had the chance to toy around with Deno recently. And with “toy around” I mean dissecting it into little pieces and see how the sausage was made. So, my view is not from a user’s perspective who wants to create and run apps with it, but rather one who has a huge interest in JavaScript runtimes, Serverless, and Rust.",
             "title": "Dissecting Deno",
             "link": "https://fettblog.eu/dissecting-deno/",
             "published": "2021-09-08T00:00:00.000Z",
@@ -195,7 +195,7 @@
         {
             "id": "https://fettblog.eu/typescript-unexpected-intersections/",
             "tags": [],
-            "description": "Sometimes when writing TypeScript, some of the things you’d usually do in JavaScript work a little different and cause some weird, and puzzling situations. Sometimes you just want to assign a value to an object property and get a weird error like...",
+            "description": "Sometimes when writing TypeScript, some of the things you’d usually do in JavaScript work a little different and cause some weird, and puzzling situations. Sometimes you just want to assign a value to an object property and get a weird error like “Type ‘string | number’ is not assignable to type ‘never’. Type ‘string’ is not assignable to type ‘never’.(2322)”",
             "title": "TypeScript: Unexpected intersections",
             "link": "https://fettblog.eu/typescript-unexpected-intersections/",
             "published": "2021-07-21T00:00:00.000Z",
@@ -235,7 +235,7 @@
         {
             "id": "https://fettblog.eu/schroedingers-architecture/",
             "tags": [],
-            "description": "I do a lot of architecture work lately, and one thing that seems to appear more often than I thought it would be are module names that have generic-sounding names like shared, util, or core. There is something confusing about them, as they don’t...",
+            "description": "I do a lot of architecture work lately, and one thing that seems to appear more often than I thought it would be are module names that have generic-sounding names like shared, util, or core. There is something confusing about them, as they don’t tell you what’s inside!",
             "title": "shared, util, core: Schroedinger's module names",
             "link": "https://fettblog.eu/schroedingers-architecture/",
             "published": "2021-03-15T00:00:00.000Z",
@@ -255,7 +255,7 @@
         {
             "id": "https://fettblog.eu/typescript-typing-catch-clauses/",
             "tags": [],
-            "description": "When you are coming from languages like Java, C++, or C#, you are used to doing your error handling by throwing exceptions. And subsequently, catching them in a cascade of catch clauses. There are arguably better ways to do error handling, but this...",
+            "description": "When you are coming from languages like Java, C++, or C#, you are used to doing your error handling by throwing exceptions. And subsequently, catching them in a cascade of catch clauses. There are arguably better ways to do error handling, but this one has been around for ages and given history and influences, has also found its way into JavaScript.",
             "title": "TypeScript: Narrow types in catch clauses",
             "link": "https://fettblog.eu/typescript-typing-catch-clauses/",
             "published": "2021-03-02T00:00:00.000Z",
@@ -265,7 +265,7 @@
         {
             "id": "https://fettblog.eu/low-maintenance-types-typescript/",
             "tags": [],
-            "description": "I write a lot about TypeScript and I enjoy the benefits it gives me in my daily work a lot. But I have a confession to make, I don’t really like writing types or type annotations. I’m really happy that TypeScript can infer so much out of my usage...",
+            "description": "I write a lot about TypeScript and I enjoy the benefits it gives me in my daily work a lot. But I have a confession to make, I don’t really like writing types or type annotations. I’m really happy that TypeScript can infer so much out of my usage when writing regular JavaScript so I’m not bothered writing anything extra.",
             "title": "TypeScript: Low maintenance types",
             "link": "https://fettblog.eu/low-maintenance-types-typescript/",
             "published": "2021-01-20T00:00:00.000Z",
@@ -285,7 +285,7 @@
         {
             "id": "https://fettblog.eu/tidy-typescript-avoid-traditional-oop/",
             "tags": [],
-            "description": "This is the third article in a series of articles where I want to highlight ways on how to keep your TypeScript code neat and tidy. This series is heavily opinionated and you might find out things you don’t like. Don’t take it personally, it’s just...",
+            "description": "This is the third article in a series of articles where I want to highlight ways on how to keep your TypeScript code neat and tidy. This series is heavily opinionated and you might find out things you don’t like. Don’t take it personally, it’s just an opinion.",
             "title": "Tidy TypeScript: Avoid traditional OOP patterns",
             "link": "https://fettblog.eu/tidy-typescript-avoid-traditional-oop/",
             "published": "2020-11-24T00:00:00.000Z",
@@ -305,7 +305,7 @@
         {
             "id": "https://fettblog.eu/tidy-typescript-avoid-enums/",
             "tags": [],
-            "description": "This is the first article in a series of articles where I want to highlight ways on how to keep your TypeScript code neat and tidy. This series is heavily opinionated, so don’t be angry if I ditch a feature that you learned to like. It’s not...",
+            "description": "This is the first article in a series of articles where I want to highlight ways on how to keep your TypeScript code neat and tidy. This series is heavily opinionated, so don’t be angry if I ditch a feature that you learned to like. It’s not personal.",
             "title": "Tidy TypeScript: Prefer union types over enums",
             "link": "https://fettblog.eu/tidy-typescript-avoid-enums/",
             "published": "2020-11-19T00:00:00.000Z",
@@ -315,7 +315,7 @@
         {
             "id": "https://fettblog.eu/new-book-typescript-in-50-lessons/",
             "tags": [],
-            "description": "I’ve written a new book! On October 6, the pre-release of TypeScript in 50 Lessons started. It’s 450 pages, published by the wonderful people at Smashing Magazine, and available to read right now! The printed version is being produced as I write,...",
+            "description": "I’ve written a new book! On October 6, the pre-release of TypeScript in 50 Lessons started. It’s 450 pages, published by the wonderful people at Smashing Magazine, and available to read right now! The printed version is being produced as I write, and will be shipping in mid-November.",
             "title": "My new book: TypeScript in 50 Lessons",
             "link": "https://fettblog.eu/new-book-typescript-in-50-lessons/",
             "published": "2020-10-12T00:00:00.000Z",
@@ -345,7 +345,7 @@
         {
             "id": "https://fettblog.eu/typescript-and-es-modules/",
             "tags": [],
-            "description": "Working with real, native, ECMAScript modules is becoming a thing. Tools like Vite, ES Dev server, and Snowpack get their fast development experience from leaving module resolution to the browser. Package CDNs like Skypack and UnPKG are providing...",
+            "description": "Working with real, native, ECMAScript modules is becoming a thing. Tools like Vite, ES Dev server, and Snowpack get their fast development experience from leaving module resolution to the browser. Package CDNs like Skypack and UnPKG are providing pre-compiled ES modules which you can use in both Deno and the browser just by referencing a URL.",
             "title": "TypeScript and ECMAScript Modules",
             "link": "https://fettblog.eu/typescript-and-es-modules/",
             "published": "2020-08-14T00:00:00.000Z",
@@ -365,7 +365,7 @@
         {
             "id": "https://fettblog.eu/typescript-react-component-patterns/",
             "tags": [],
-            "description": "This list is a collection of component patterns for React when working with TypeScript. See them as an extension to the TypeScript + React Guide that deals with overall concepts and types. This list has been heavily inspired by chantastic’s...",
+            "description": "This list is a collection of component patterns for React when working with TypeScript. See them as an extension to the TypeScript + React Guide that deals with overall concepts and types. This list has been heavily inspired by chantastic’s original React patterns list.",
             "title": "TypeScript + React: Component patterns",
             "link": "https://fettblog.eu/typescript-react-component-patterns/",
             "published": "2020-07-28T00:00:00.000Z",
@@ -375,7 +375,7 @@
         {
             "id": "https://fettblog.eu/typescript-augmenting-global-lib-dom/",
             "tags": [],
-            "description": "Recently I wanted to use a ResizeObserver in my application. ResizeObserver recently landed in all major browsers, but when you use it in TypeScript — at the time of this writing — ResizeObserver won’t be recognized as a valid object (or...",
+            "description": "Recently I wanted to use a ResizeObserver in my application. ResizeObserver recently landed in all major browsers, but when you use it in TypeScript — at the time of this writing — ResizeObserver won’t be recognized as a valid object (or constructor). So why is that?",
             "title": "TypeScript: Augmenting global and lib.dom.d.ts",
             "link": "https://fettblog.eu/typescript-augmenting-global-lib-dom/",
             "published": "2020-07-17T00:00:00.000Z",
@@ -425,7 +425,7 @@
         {
             "id": "https://fettblog.eu/variadic-tuple-types-preview/",
             "tags": [],
-            "description": "TypeScript 4.0 is supposed to be released in August 2020, and one of the biggest changes in this release will be variadic tuple types. And even though his feature is hot of the press at the time of this writing, it’s worth checking out and see what...",
+            "description": "TypeScript 4.0 is supposed to be released in August 2020, and one of the biggest changes in this release will be variadic tuple types. And even though his feature is hot of the press at the time of this writing, it’s worth checking out and see what we can do with it. Note that stuff here might be subject to change, so be cautious! I will try to keep this page up to date until 4.0 is in RC or released.",
             "title": "TypeScript: Variadic Tuple Types Preview",
             "link": "https://fettblog.eu/variadic-tuple-types-preview/",
             "published": "2020-06-19T00:00:00.000Z",
@@ -445,7 +445,7 @@
         {
             "id": "https://fettblog.eu/remake-remodel-part-4-11ty/",
             "tags": [],
-            "description": "I originally wanted to launch my new website on June 1st, but there were more important things happening at the moment than relaunching a tech blog. Truth be told, it was really hard for me focussing on anything else but the protest. The ongoing...",
+            "description": "I originally wanted to launch my new website on June 1st, but there were more important things happening at the moment than relaunching a tech blog. Truth be told, it was really hard for me focussing on anything else but the protest. The ongoing protests have not lost any importance. Do your part and educate yourself and be an ally.",
             "title": "Remake, Remodel. Part 4.",
             "link": "https://fettblog.eu/remake-remodel-part-4-11ty/",
             "published": "2020-06-16T00:00:00.000Z",
@@ -455,7 +455,7 @@
         {
             "id": "https://fettblog.eu/typescript-react-typeing-custom-hooks/",
             "tags": [],
-            "description": "I recently stumbled upon a question on Reddit’s LearnTypeScript subreddit regarding custom React hooks. A user wanted to create a toggle custom hook, and stick to the naming convention as regular React hooks do: Returning an array that you...",
+            "description": "I recently stumbled upon a question on Reddit’s LearnTypeScript subreddit regarding custom React hooks. A user wanted to create a toggle custom hook, and stick to the naming convention as regular React hooks do: Returning an array that you destructure when calling the hook. For example useState:",
             "title": "TypeScript + React: Typing custom hooks with tuple types",
             "link": "https://fettblog.eu/typescript-react-typeing-custom-hooks/",
             "published": "2020-03-25T00:00:00.000Z",
@@ -595,7 +595,7 @@
         {
             "id": "https://fettblog.eu/streaming-your-meetup-part-1-projector/",
             "tags": [],
-            "description": "When we did Script’18 in January 2018, we borrowed an A/V equipment worth of 35.000 EUR to make sure we get kick-ass videos. A+ camera, an A/V mixer and a hard disc recording system that does editing on the fly. We wanted to go live with our...",
+            "description": "When we did Script’18 in January 2018, we borrowed an A/V equipment worth of 35.000 EUR to make sure we get kick-ass videos. A+ camera, an A/V mixer and a hard disc recording system that does editing on the fly. We wanted to go live with our recordings directly after the conference.",
             "title": "Streaming your Meetup - Part 1: Basics and Projector",
             "link": "https://fettblog.eu/streaming-your-meetup-part-1-projector/",
             "published": "2019-07-24T00:00:00.000Z",
@@ -605,7 +605,7 @@
         {
             "id": "https://fettblog.eu/redirect-to-typescript-react-styles/",
             "tags": [],
-            "description": "CSS in JS! In all possible ways. Or at least, in 5 of them. I collected a list of popular ways on how to style React components: emotion, styled components, styled-jsx, inline styles and webpack imports. The focus is again on typings. How well do...",
+            "description": "CSS in JS! In all possible ways. Or at least, in 5 of them. I collected a list of popular ways on how to style React components: emotion, styled components, styled-jsx, inline styles and webpack imports. The focus is again on typings. How well do they play with TypeScript? How complete are TypeScript integrations. Have fun!",
             "title": "TypeScript and React Guide: Added a new styles chapter",
             "link": "https://fettblog.eu/redirect-to-typescript-react-styles/",
             "published": "2019-07-19T00:00:00.000Z",
@@ -615,7 +615,7 @@
         {
             "id": "https://fettblog.eu/redirect-to-typescript-react-render-props/",
             "tags": [],
-            "description": "This took me exactly one year. But mostly due to not finding a lot to talk about. Typings for React render props are extremely easy and show through typings what its all about: About sharing state between components. Check out the chapter in my...",
+            "description": "This took me exactly one year. But mostly due to not finding a lot to talk about. Typings for React render props are extremely easy and show through typings what its all about: About sharing state between components. Check out the chapter in my TypeScript + React guide.",
             "title": "TypeScript and React Guide: Added a new render props chapter",
             "link": "https://fettblog.eu/redirect-to-typescript-react-render-props/",
             "published": "2019-07-18T00:00:00.000Z",
@@ -635,7 +635,7 @@
         {
             "id": "https://fettblog.eu/typescript-jsdoc-superpowers/",
             "tags": [],
-            "description": "One way to think about TypeScript is as a thin layer around JavaScript that adds type annotations. Type annotations that make sure you don’t make any mistakes. The TypeScript team worked hard on making sure that type checking also works with...",
+            "description": "One way to think about TypeScript is as a thin layer around JavaScript that adds type annotations. Type annotations that make sure you don’t make any mistakes. The TypeScript team worked hard on making sure that type checking also works with regular JavaScript files. TypeScript’s compiler (tsc) as well as language support in editors like VSCode give you a great developer experience without any compilation step. Let’s see how.",
             "title": "TypeScript without TypeScript -- JSDoc superpowers",
             "link": "https://fettblog.eu/typescript-jsdoc-superpowers/",
             "published": "2019-07-16T00:00:00.000Z",
@@ -655,7 +655,7 @@
         {
             "id": "https://fettblog.eu/jamstack-vs-serverless-web-apps/",
             "tags": [],
-            "description": "JAMStack seems to be one of the most trending topics right now. So are serverless web apps. Hot and loved! I’ve seen some tweets, articles and even live presentations just this week that talk about JAMStack and serverless web apps as if they are...",
+            "description": "JAMStack seems to be one of the most trending topics right now. So are serverless web apps. Hot and loved! I’ve seen some tweets, articles and even live presentations just this week that talk about JAMStack and serverless web apps as if they are the same. For good reason. In an ideal scenario, serverless web apps and JAMStack sites/apps are indistinguishable.",
             "title": "JAMStack vs serverless web apps",
             "link": "https://fettblog.eu/jamstack-vs-serverless-web-apps/",
             "published": "2019-05-30T00:00:00.000Z",
@@ -675,7 +675,7 @@
         {
             "id": "https://fettblog.eu/typescript-modules-for-webpack/",
             "tags": [],
-            "description": "When you work on modern JS apps you most likely use Webpack. Webpack always looked like a very complicated build tool to me, until I realised that it’s nothing but a JavaScript bundler. A JavaScript bundler that allows you to bundle everything!...",
+            "description": "When you work on modern JS apps you most likely use Webpack. Webpack always looked like a very complicated build tool to me, until I realised that it’s nothing but a JavaScript bundler. A JavaScript bundler that allows you to bundle everything! CSS, Markdown, SVGs, JPEGs, you name. It exists and helps the web, you can bundle it.",
             "title": "TypeScript: Ambient modules for Webpack loaders",
             "link": "https://fettblog.eu/typescript-modules-for-webpack/",
             "published": "2019-02-13T00:00:00.000Z",
@@ -725,7 +725,7 @@
         {
             "id": "https://fettblog.eu/jsx-syntactic-sugar/",
             "tags": [],
-            "description": "If you follow me you know that I’m super late to the React game. It was not until functional components showed up that I got really interested in the framework. I just loved the idea of having everything wrapped in an easy function rather than...",
+            "description": "If you follow me you know that I’m super late to the React game. It was not until functional components showed up that I got really interested in the framework. I just loved the idea of having everything wrapped in an easy function rather than needing to navigate up and down a class to get everything together. One thing that put me off in the beginning though was JSX. And I’m sure I’m not the only one. Every time I talk to people about my newly found React love, this point comes up constantly.",
             "title": "JSX is syntactic sugar",
             "link": "https://fettblog.eu/jsx-syntactic-sugar/",
             "published": "2018-11-21T00:00:00.000Z",
@@ -735,7 +735,7 @@
         {
             "id": "https://fettblog.eu/redirect-to-typescript-react-hooks/",
             "tags": [],
-            "description": "Hooks are a new feature in React that I personally find pretty exciting. Shortly after their release in React 16.7., people started developing TypeScript typings via DefinitelyTyped. They’re pretty good, as you don’t have to do much to get all the...",
+            "description": "Hooks are a new feature in React that I personally find pretty exciting. Shortly after their release in React 16.7., people started developing TypeScript typings via DefinitelyTyped. They’re pretty good, as you don’t have to do much to get all the type safety you need. I put together a little list of things to consider for all hook types in my TypeScript + React guide.",
             "title": "TypeScript and React Guide: Added a new hooks chapter",
             "link": "https://fettblog.eu/redirect-to-typescript-react-hooks/",
             "published": "2018-11-15T00:00:00.000Z",
@@ -745,7 +745,7 @@
         {
             "id": "https://fettblog.eu/rock-the-cfp/",
             "tags": [],
-            "description": "We just started the Call for Presentations for the upcoming DevOne conference, and I couldn’t be more excited. Last year’s proposals where excellent and a great addition to our line-up. And by looking at the people who already registered interest,...",
+            "description": "We just started the Call for Presentations for the upcoming DevOne conference, and I couldn’t be more excited. Last year’s proposals where excellent and a great addition to our line-up. And by looking at the people who already registered interest, I’m sure that there’s a ton of great stuff coming up.",
             "title": "Getting your CfP application right",
             "link": "https://fettblog.eu/rock-the-cfp/",
             "published": "2018-11-14T00:00:00.000Z",
@@ -755,7 +755,7 @@
         {
             "id": "https://fettblog.eu/angular-connect/",
             "tags": [],
-            "description": "I’m writing these lines as I fly back from an excellent Angular Connect. I started public speaking a couple of years ago, and this particular talk will be one I’m going to remember for a long time. I think it’s easily on par with my most favourite...",
+            "description": "I’m writing these lines as I fly back from an excellent Angular Connect. I started public speaking a couple of years ago, and this particular talk will be one I’m going to remember for a long time. I think it’s easily on par with my most favourite speaking experience that I had back in 2013 with Breaking Development.",
             "title": "FAQ on our Angular Connect Talk: Automating UI development",
             "link": "https://fettblog.eu/angular-connect/",
             "published": "2018-11-08T00:00:00.000Z",
@@ -765,7 +765,7 @@
         {
             "id": "https://fettblog.eu/typescript-substitutability/",
             "tags": [],
-            "description": "When starting with TypeScript it took not much time to stumble upon some of the type system’s odds. Odds that make a lot of sense if you take a closer look. In this article I want to show you why and how in some cases, TypeScript allows...",
+            "description": "When starting with TypeScript it took not much time to stumble upon some of the type system’s odds. Odds that make a lot of sense if you take a closer look. In this article I want to show you why and how in some cases, TypeScript allows non-matching method signatures.",
             "title": "TypeScript and Substitutability",
             "link": "https://fettblog.eu/typescript-substitutability/",
             "published": "2018-03-16T00:00:00.000Z",
@@ -815,7 +815,7 @@
         {
             "id": "https://fettblog.eu/cutting-the-mustard-2018/",
             "tags": [],
-            "description": "The other day I was holding a workshop on performance optimisation for single page applications. For this workshop I needed an example that I could optimise step by step. I decided not to use a framework, as I didn’t know the experiences and...",
+            "description": "The other day I was holding a workshop on performance optimisation for single page applications. For this workshop I needed an example that I could optimise step by step. I decided not to use a framework, as I didn’t know the experiences and background of my attendees. Also, I didn’t want to draw attention to framework details, rather focus on concepts that build on the platform and that are universally applicable to SPAs.",
             "title": "Cutting the mustard - 2018 edition",
             "link": "https://fettblog.eu/cutting-the-mustard-2018/",
             "published": "2018-02-13T00:00:00.000Z",
@@ -825,7 +825,7 @@
         {
             "id": "https://fettblog.eu/wordpress-and-jamstack-sites/",
             "tags": [],
-            "description": "The almighty JAMStack brings you fast and secure static websites, and with things like headless content management systems they become even easy to edit! However, every once in a while you will find yourself in front of a Wordpress blog that has...",
+            "description": "The almighty JAMStack brings you fast and secure static websites, and with things like headless content management systems they become even easy to edit! However, every once in a while you will find yourself in front of a Wordpress blog that has way too many articles (and way too many authors that fear change!) to be reasonably transferred. But Wordpress can be headless, too. In fact, Wordpress’ own hosting service uses its core only via API, the editing interface comes with the shiny new Calypso.",
             "title": "Wordpress as CMS for your JAMStack sites",
             "link": "https://fettblog.eu/wordpress-and-jamstack-sites/",
             "published": "2018-01-08T00:00:00.000Z",
@@ -835,7 +835,7 @@
         {
             "id": "https://fettblog.eu/top-podcast-episodes-2017/",
             "tags": [],
-            "description": "After my most favourite tech books and my most favourite tech talks I want to conclude my yearly review with some of podcast episodes I really enjoyed! I listen to one or two hours of podcasts a day. Most of the podcasts I subscribed to are about...",
+            "description": "After my most favourite tech books and my most favourite tech talks I want to conclude my yearly review with some of podcast episodes I really enjoyed! I listen to one or two hours of podcasts a day. Most of the podcasts I subscribed to are about growing up in the 80s and loving things like the Nintendo Entertainment System or Indiana Jones. But I also listen to a couple of tech podcasts occasionally. And there I found some true gems. Let’s go!",
             "title": "My most favourite podcast episodes in 2017",
             "link": "https://fettblog.eu/top-podcast-episodes-2017/",
             "published": "2017-12-31T00:00:00.000Z",
@@ -855,7 +855,7 @@
         {
             "id": "https://fettblog.eu/top-books-to-read-2017/",
             "tags": [],
-            "description": "I started taking reading seriously again in 2017. I had highs where I read about 10 books a month (phew), and also lows where I haven’t touched a page for a couple of months. Now with having both a toddler and a Kindle*, I gladly spend night again...",
+            "description": "I started taking reading seriously again in 2017. I had highs where I read about 10 books a month (phew), and also lows where I haven’t touched a page for a couple of months. Now with having both a toddler and a Kindle*, I gladly spend night again guarding the crib while reading both fiction and non-fiction. And oh, did I read a lot of non-fiction this year. There were some amazing books, and I want to share with you the ones that I found the most compelling.",
             "title": "My most favourite books in 2017",
             "link": "https://fettblog.eu/top-books-to-read-2017/",
             "published": "2017-12-28T00:00:00.000Z",
@@ -865,7 +865,7 @@
         {
             "id": "https://fettblog.eu/the-best-request/",
             "tags": [],
-            "description": "I had the incredible privilege to work with the fine folks at A List Apart on a text concerning resource bundling in the age of HTTP/2. Using the powers of the new protocol is something that keeps my head busy for quite some time now, and I had to...",
+            "description": "I had the incredible privilege to work with the fine folks at A List Apart on a text concerning resource bundling in the age of HTTP/2. Using the powers of the new protocol is something that keeps my head busy for quite some time now, and I had to write down my findings. Aaron and Jeremy from ALA were kind enough to accept this piece and work with me on it. It’s been a very thorough process, but it strengthens my belief that an editor’s work can’t be valued enough. Thanks for all your help in getting this one out!",
             "title": "The Best Request Is No Request, Revisited",
             "link": "https://fettblog.eu/the-best-request/",
             "published": "2017-11-29T00:00:00.000Z",
@@ -875,7 +875,7 @@
         {
             "id": "https://fettblog.eu/not-so-hidden-figures/",
             "tags": [],
-            "description": "I met Laura from Travis Foundation a couple of years ago at a conference in Austria, and we had some good time and nice chats together. It’s not easy to keep always in touch with everyone you meet a conference, but thankfully Laura and I managed to...",
+            "description": "I met Laura from Travis Foundation a couple of years ago at a conference in Austria, and we had some good time and nice chats together. It’s not easy to keep always in touch with everyone you meet a conference, but thankfully Laura and I managed to cross paths mutliple times in the last few years. I was also delighted to work with her on bringing diversity tickets to Script’17. After attending Script’17, she asked me to write about my experiences in organizing and getting such a wonderful line-up on stage. Laura was super patient, as it took me about six months to finally get the piece done. But here it is, finally! Check out Not so hidden figures - organizing ScriptConf over at Travis Foundation!",
             "title": "Not so hidden figures - Organizing ScriptConf",
             "link": "https://fettblog.eu/not-so-hidden-figures/",
             "published": "2017-08-09T00:00:00.000Z",
@@ -885,7 +885,7 @@
         {
             "id": "https://fettblog.eu/scriptcast/",
             "tags": [],
-            "description": "I love podcasting. I started back in 2009 and hosted a literature podcast for roughly two years. That’s where I made my first steps in producing non-written content and had lots of fun! I fiddled around doing interviews, chats, specials and audio...",
+            "description": "I love podcasting. I started back in 2009 and hosted a literature podcast for roughly two years. That’s where I made my first steps in producing non-written content and had lots of fun! I fiddled around doing interviews, chats, specials and audio dramas. Trying to read certain passages of books and added some sound effects to make those passages more interesting. Best thing was buying a semi-professional equipment and record public readings from authors directly from the mixer.",
             "title": "My podcast journey to ScriptCast",
             "link": "https://fettblog.eu/scriptcast/",
             "published": "2017-07-11T00:00:00.000Z",
@@ -895,7 +895,7 @@
         {
             "id": "https://fettblog.eu/grid-concepts/",
             "tags": [],
-            "description": "One of the great things about Microsoft Edge is that as a developer, you always know what to expect from an upcoming version. Communication is key! The platform status page gives you a by feature list of the current development status, and the Edge...",
+            "description": "One of the great things about Microsoft Edge is that as a developer, you always know what to expect from an upcoming version. Communication is key! The platform status page gives you a by feature list of the current development status, and the Edge user voice allows you to actively influence the developers’ backlog!",
             "title": "Grid layout, grid layout everywhere!",
             "link": "https://fettblog.eu/grid-concepts/",
             "published": "2017-06-27T00:00:00.000Z",
@@ -905,7 +905,7 @@
         {
             "id": "https://fettblog.eu/scriptconf-and-devone/",
             "tags": [],
-            "description": "About two years ago, Sebastian and I had our first chats about having a JavaScript conference in our town of Linz. And this January, we made our vision reality and launched ScriptConf, a conference about JavaScript. Giving it the (quite bold)...",
+            "description": "About two years ago, Sebastian and I had our first chats about having a JavaScript conference in our town of Linz. And this January, we made our vision reality and launched ScriptConf, a conference about JavaScript. Giving it the (quite bold) tagline “The conference this city needs”, we wanted to make JavaScript more popular in Linz, while having a great time with an amazing community.",
             "title": "#scriptconf and #devone",
             "link": "https://fettblog.eu/scriptconf-and-devone/",
             "published": "2017-06-03T00:00:00.000Z",
@@ -915,7 +915,7 @@
         {
             "id": "https://fettblog.eu/object-streams-in-node-js/",
             "tags": [],
-            "description": "I’m really good friends with the people at Rising Stack in Budapest. I had lots of fun when they invited me to JSConf Budapest back in May, and enjoy every time they show up here in Linz! I’m also looking forward to see them again when Peter will...",
+            "description": "I’m really good friends with the people at Rising Stack in Budapest. I had lots of fun when they invited me to JSConf Budapest back in May, and enjoy every time they show up here in Linz! I’m also looking forward to see them again when Peter will talk at the upcoming Devone conference. So it’s clear that I was more than eager to produce a guest post for their Rising Stack community. Even though I was so eager, it took me roughly 3 months to produce an article based on my recent book “Front-End tooling”. Nevertheless, I thought that my guide to object streams turned out pretty good! I hope you enjoy it!",
             "title": "Object streams in Node.js",
             "link": "https://fettblog.eu/object-streams-in-node-js/",
             "published": "2017-04-19T00:00:00.000Z",
@@ -925,7 +925,7 @@
         {
             "id": "https://fettblog.eu/get-the-gist/",
             "tags": [],
-            "description": "Back in the day I was an avid reader of The pastry box. You can imagine how super happy I was when Alex, the project’s creator asked me to contribute to his new project Human and the machine. It’s all about productivity, in all shapes and forms...",
+            "description": "Back in the day I was an avid reader of The pastry box. You can imagine how super happy I was when Alex, the project’s creator asked me to contribute to his new project Human and the machine. It’s all about productivity, in all shapes and forms imaginable. I wrote about “getting the gist”, and how I manage to stay up to date without having to become an expert myself. Contributing was a wonderful experience, thanks again to Alex for having me and for this great opportunity!",
             "title": "Guest post in \"Human and the machine\": Get the gist",
             "link": "https://fettblog.eu/get-the-gist/",
             "published": "2017-03-20T00:00:00.000Z",
@@ -935,7 +935,7 @@
         {
             "id": "https://fettblog.eu/guest-on-perfbytes/",
             "tags": [],
-            "description": "The Perfbytes crew was live at this year’s Perform conference, interviewing crew, attendees and speakers. I had the chance to have a few minutes with them talking about the Visually Complete metric and what it means for Real User Monitoring. Being...",
+            "description": "The Perfbytes crew was live at this year’s Perform conference, interviewing crew, attendees and speakers. I had the chance to have a few minutes with them talking about the Visually Complete metric and what it means for Real User Monitoring. Being a podcaster since 2009, it was funny for me doing an interview live from the other side of the microphone. But an experience I fully enjoyed, also mostly due to Mark’s excellent interviewing skills. I should do more live podcasts! If you like, give it a listen at Spreaker. It’s a long show, my part starts roughly at 37 minutes. And keep in mind that I was super jetlagged. Thanks Mark and Brian for having me!",
             "title": "I was a guest on the Perfbytes podcast",
             "link": "https://fettblog.eu/guest-on-perfbytes/",
             "published": "2017-02-22T00:00:00.000Z",
@@ -955,7 +955,7 @@
         {
             "id": "https://fettblog.eu/this-was-script-17/",
             "tags": [],
-            "description": "Sebastian and I gathered together a list of links and lots of coverage to our conference we held in January. Lots of great blogs, podcasts, images and tweets, including a few words from our side. We had so much fun organising the conference and a...",
+            "description": "Sebastian and I gathered together a list of links and lots of coverage to our conference we held in January. Lots of great blogs, podcasts, images and tweets, including a few words from our side. We had so much fun organising the conference and a wonderful time being there. Thanks to everybody for coming.",
             "title": "This was Script'17",
             "link": "https://fettblog.eu/this-was-script-17/",
             "published": "2017-02-16T00:00:00.000Z",
@@ -965,7 +965,7 @@
         {
             "id": "https://fettblog.eu/real-user-visually-complete/",
             "tags": [],
-            "description": "This is a somewhat personal post today. I’m currently in Las Vegas (which would be a story on its own) to speak and attend our company’s Perform conference. Why me, as a mere web developer with no customer contact? First, I do like to bring the...",
+            "description": "This is a somewhat personal post today. I’m currently in Las Vegas (which would be a story on its own) to speak and attend our company’s Perform conference. Why me, as a mere web developer with no customer contact? First, I do like to bring the developer’s view into the whole mix. Second, I want to see the birth of a new product feature.",
             "title": "Real user speed index and visually complete",
             "link": "https://fettblog.eu/real-user-visually-complete/",
             "published": "2017-02-07T00:00:00.000Z",
@@ -975,7 +975,7 @@
         {
             "id": "https://fettblog.eu/plumbin-pipelines-with-gulp-js/",
             "tags": [],
-            "description": "Now that my book is out, I dug up an old workshop I held almost one and a half years ago in Belgium at Devoxx. Devoxx is a special type of conference, unlike any other conference I’ve ever seen. And speaking at a cinema definitely is one of the...",
+            "description": "Now that my book is out, I dug up an old workshop I held almost one and a half years ago in Belgium at Devoxx. Devoxx is a special type of conference, unlike any other conference I’ve ever seen. And speaking at a cinema definitely is one of the things that get stuck with you. Anyways, here’s the 2 hour course (the rest of the show is a little off topic, intentionally), which is about 75% of the Gulp chapters in live coding. Enjoy:",
             "title": "Plumbin' Pipelines with Gulp.js (Workshop)",
             "link": "https://fettblog.eu/plumbin-pipelines-with-gulp-js/",
             "published": "2017-01-15T00:00:00.000Z",
@@ -985,7 +985,7 @@
         {
             "id": "https://fettblog.eu/top-talks-to-watch-2016/",
             "tags": [],
-            "description": "Let’s make this a tradition! I love to watch conference talks. Be it live or on tape. And just like last year I try to collect the talks that I loved most. I know, since I started organising Script I began seeing conference talks differently....",
+            "description": "Let’s make this a tradition! I love to watch conference talks. Be it live or on tape. And just like last year I try to collect the talks that I loved most. I know, since I started organising Script I began seeing conference talks differently. However, those are the ones I put my attendee-hat on. And let’s be honest: A good organiser needs to do that! So enjoy my list of talks I enjoyed most in 2016.",
             "title": "My most favorite talks in 2016",
             "link": "https://fettblog.eu/top-talks-to-watch-2016/",
             "published": "2016-12-31T00:00:00.000Z",
@@ -995,7 +995,7 @@
         {
             "id": "https://fettblog.eu/script-17/",
             "tags": [],
-            "description": "After years of attending conferences and gathering lots of impressions from around the world, my buddy Sebastian and I decided to do our own thing. We call it Script’17, and aim to provide an exciting, caring and inspiring JavaScript event for...",
+            "description": "After years of attending conferences and gathering lots of impressions from around the world, my buddy Sebastian and I decided to do our own thing. We call it Script’17, and aim to provide an exciting, caring and inspiring JavaScript event for everybody. If you’re interested, go ahead and check it out!",
             "title": "Script'17 JavaScript conference",
             "link": "https://fettblog.eu/script-17/",
             "published": "2016-10-26T00:00:00.000Z",
@@ -1025,7 +1025,7 @@
         {
             "id": "https://fettblog.eu/static-site-at-scale-smashing-mag-article/",
             "tags": [],
-            "description": "I’m so incredibly happy to have my first article published on Smashing Magazine. It’s a 6000 word long story about how we managed to bring roughly 2000 pages on a technology stack made for hackers. It took me roughly four years to find a story that...",
+            "description": "I’m so incredibly happy to have my first article published on Smashing Magazine. It’s a 6000 word long story about how we managed to bring roughly 2000 pages on a technology stack made for hackers. It took me roughly four years to find a story that I’m eager enough to pursue, but in the end I think it totally paid off. Working with Smashing Magazine, especially Vitaly and Iris, was a complete joy! Thank you again for the professional and friendly work experience!",
             "title": "Using a Static Site Generator at Scale",
             "link": "https://fettblog.eu/static-site-at-scale-smashing-mag-article/",
             "published": "2016-08-08T00:00:00.000Z",
@@ -1035,7 +1035,7 @@
         {
             "id": "https://fettblog.eu/snippets/node.js/progressive-jpegs-gm/",
             "tags": [],
-            "description": "We want to convert all our header images to progressive JPEGs to give a good impression of the content to come, rather than having everything line by line. If you’ve installed GraphicsMagick you can use the excellent gm Node.js bindings to do so....",
+            "description": "We want to convert all our header images to progressive JPEGs to give a good impression of the content to come, rather than having everything line by line. If you’ve installed GraphicsMagick you can use the excellent gm Node.js bindings to do so. This is some sample code, with an additional check if the conversion went well:",
             "title": "Create progressive JPEGs with graphicsmagick in Node.js",
             "link": "https://fettblog.eu/snippets/node.js/progressive-jpegs-gm/",
             "published": "2016-05-25T00:00:00.000Z",
@@ -1055,7 +1055,7 @@
         {
             "id": "https://fettblog.eu/topconf-at-2016/",
             "tags": [],
-            "description": "So, Linz has a software conference. One that’s supposed to stay. I think it’s about time. Linz has a wonderful IT community, with lots of great companies and so many schools and universities specialised for software development. Except for the...",
+            "description": "So, Linz has a software conference. One that’s supposed to stay. I think it’s about time. Linz has a wonderful IT community, with lots of great companies and so many schools and universities specialised for software development. Except for the short-lived Kod.io movement (spanning Kod.io, Codefront and Railsgirls in 2014), as well as some Linuxwochen now and then, I hardly can remember any full-fledged Software conference. So hey, we finally got one!",
             "title": "Topconf Linz 2016 is a wrap",
             "link": "https://fettblog.eu/topconf-at-2016/",
             "published": "2016-02-05T00:00:00.000Z",
@@ -1065,7 +1065,7 @@
         {
             "id": "https://fettblog.eu/mozilla-stomps-ie/",
             "tags": [],
-            "description": "Recently I did some “The History of the web” talks for various institutions. While preparing the story to tell, I remembered one specific tale from 1997. It was a tale from the first browser wars, when Microsoft battled Netscape for world browser...",
+            "description": "Recently I did some “The History of the web” talks for various institutions. While preparing the story to tell, I remembered one specific tale from 1997. It was a tale from the first browser wars, when Microsoft battled Netscape for world browser domination.",
             "title": "Tales from the Browser Wars: Mozilla Stomps IE",
             "link": "https://fettblog.eu/mozilla-stomps-ie/",
             "published": "2016-01-28T00:00:00.000Z",
@@ -1115,7 +1115,7 @@
         {
             "id": "https://fettblog.eu/top-talks-to-watch-2015/",
             "tags": [],
-            "description": "I enjoy being at conferences, however I can’t be on all of them. Which is sad, because judging from all the videos one misses a lot! Turns out, my most favorite talks were all from conferences I haven’t been to. The organizers however are kind...",
+            "description": "I enjoy being at conferences, however I can’t be on all of them. Which is sad, because judging from all the videos one misses a lot! Turns out, my most favorite talks were all from conferences I haven’t been to. The organizers however are kind enough to provide amazing videos for us:",
             "title": "My most favorite talks in 2015",
             "link": "https://fettblog.eu/top-talks-to-watch-2015/",
             "published": "2015-12-12T00:00:00.000Z",
@@ -1125,7 +1125,7 @@
         {
             "id": "https://fettblog.eu/gulp-merge-cdn-files-into-your-pipeline/",
             "tags": [],
-            "description": "This one is a shorty, but that’s what it makes it so nice. Imagine that you have only one dependency in your project, which is some third party library your code builds upon, like jQuery. Instead of having the complete dependency management stack...",
+            "description": "This one is a shorty, but that’s what it makes it so nice. Imagine that you have only one dependency in your project, which is some third party library your code builds upon, like jQuery. Instead of having the complete dependency management stack on your shoulders, you just want to use that single file.",
             "title": "Gulp: Grab files from your CDN and add them to your build pipeline",
             "link": "https://fettblog.eu/gulp-merge-cdn-files-into-your-pipeline/",
             "published": "2015-10-13T00:00:00.000Z",
@@ -1145,7 +1145,7 @@
         {
             "id": "https://fettblog.eu/stay-focused-with-web-monitoring/",
             "tags": [],
-            "description": "Another article I wrote for the blog over at my employer. When we switched our login from a purely JavaScript based to a progressively enhanced one, we ended up in some deployment mistakes. This was how our tool recognized those errors and what it...",
+            "description": "Another article I wrote for the blog over at my employer. When we switched our login from a purely JavaScript based to a progressively enhanced one, we ended up in some deployment mistakes. This was how our tool recognized those errors and what it meant for us. Read it over at Ruxit",
             "title": "Stay focused with Webmonitoring (ruxit.com)",
             "link": "https://fettblog.eu/stay-focused-with-web-monitoring/",
             "published": "2015-09-14T00:00:00.000Z",
@@ -1155,7 +1155,7 @@
         {
             "id": "https://fettblog.eu/gulp-and-node4-first-aid/",
             "tags": [],
-            "description": "Node.js 4.0.0 just got released! The jump from 0.12.x to 4.0 is a huge one, especially since it incorporates lots of changes that happened over at the IO.js project. So far, I haven’t experienced a lot of issues with it, and it quickly became the...",
+            "description": "Node.js 4.0.0 just got released! The jump from 0.12.x to 4.0 is a huge one, especially since it incorporates lots of changes that happened over at the IO.js project. So far, I haven’t experienced a lot of issues with it, and it quickly became the one version that I use as default on my system. However, there are some hickups here and there. Here I try to collect some issues with Gulp.js and first aid solutions. There are few and they might be out of date quickly.",
             "title": "Node.js 4.0.0 and Gulp first aid",
             "link": "https://fettblog.eu/gulp-and-node4-first-aid/",
             "published": "2015-09-10T00:00:00.000Z",
@@ -1195,7 +1195,7 @@
         {
             "id": "https://fettblog.eu/gulp-4-sourcemaps/",
             "tags": [],
-            "description": "One really cool feature on the Gulp 4 roadmap is the inclusion of native sourcemaps. A commit roughly two weeks ago at the vinyl-fs package makes this possible now. Instead of using the gulp-sourcemaps package directly, you can use a flag in...",
+            "description": "One really cool feature on the Gulp 4 roadmap is the inclusion of native sourcemaps. A commit roughly two weeks ago at the vinyl-fs package makes this possible now. Instead of using the gulp-sourcemaps package directly, you can use a flag in gulp.src. Gulp takes care of the rest:",
             "title": "Gulp 4: Built-in Sourcemaps",
             "link": "https://fettblog.eu/gulp-4-sourcemaps/",
             "published": "2015-09-03T00:00:00.000Z",
@@ -1215,7 +1215,7 @@
         {
             "id": "https://fettblog.eu/the-gulp-book/",
             "tags": [],
-            "description": "Okay, lovely people, this is huge for me. I’m actually in the midst of writing a book. It’s called “Front-End Tooling with Gulp, Bower and Yeoman”, and it’s – you guessed it – about front-end tooling with Gulp, Bower and Yeoman. Actually I’ve been...",
+            "description": "Okay, lovely people, this is huge for me. I’m actually in the midst of writing a book. It’s called “Front-End Tooling with Gulp, Bower and Yeoman”, and it’s – you guessed it – about front-end tooling with Gulp, Bower and Yeoman. Actually I’ve been writing on it for the last 9 months, and now it has reached the phase of going public for the first time. It’s in the so called “Early Access Program” from Manning (MEAP), where you can buy it before it goes to print, helping me pointing at all the mistakes I make. Or do some slap on the back because it’s so good.",
             "title": "I'm writing a book: Front-End Tooling with Gulp, Bower and Yeoman",
             "link": "https://fettblog.eu/the-gulp-book/",
             "published": "2015-08-26T00:00:00.000Z",
@@ -1235,7 +1235,7 @@
         {
             "id": "https://fettblog.eu/book-review-css-secrets/",
             "tags": [],
-            "description": "In 2012 I saw one of Lea Verou’s talks for the first time. And if you every had the opportunity of seeing her, you know that you are in for a treat. Her unique way of teaching all those nifty CSS tricks is not only entertaining and engaging, but...",
+            "description": "In 2012 I saw one of Lea Verou’s talks for the first time. And if you every had the opportunity of seeing her, you know that you are in for a treat. Her unique way of teaching all those nifty CSS tricks is not only entertaining and engaging, but also a huge motivation for your own work. Every time I returned home from one of those conferences, I tried recreating those tricks and secrets (as she calls it) at home. Using her interactive slides I managed to recreate a good deal of what she’s shown, but sometimes I wished I had some sort of documentation ready. Well, this is now available with her book “CSS Secrets”.",
             "title": "Book Review: CSS Secrets by Lea Verou",
             "link": "https://fettblog.eu/book-review-css-secrets/",
             "published": "2015-08-24T00:00:00.000Z",
@@ -1275,7 +1275,7 @@
         {
             "id": "https://fettblog.eu/beyond-tellerrand-2015/",
             "tags": [],
-            "description": "Last week I attended this year’s beyond tellerrand in Düsseldorf. It was now my third or fourth time (memories are actually really fuzzy … but then again you don’t remember how often you came back to your home during a year) and again I was blown...",
+            "description": "Last week I attended this year’s beyond tellerrand in Düsseldorf. It was now my third or fourth time (memories are actually really fuzzy … but then again you don’t remember how often you came back to your home during a year) and again I was blown away by both the quality of the conference and the warmth and open-mindedness of its audience.",
             "title": "beyond tellerrand 2015",
             "link": "https://fettblog.eu/beyond-tellerrand-2015/",
             "published": "2015-05-16T00:00:00.000Z",
@@ -1285,7 +1285,7 @@
         {
             "id": "https://fettblog.eu/gulp-recipes-part-2/",
             "tags": [],
-            "description": "One month has passed, many questions on StackOverflow have been answered, so here’s yet another round of common Gulp issues with a simple and repeatable solution to them. Be sure to check out last month’s edition, as well as my articles on Gulp,...",
+            "description": "One month has passed, many questions on StackOverflow have been answered, so here’s yet another round of common Gulp issues with a simple and repeatable solution to them. Be sure to check out last month’s edition, as well as my articles on Gulp, PHP and BrowserSync and multiple Browserify bundles.",
             "title": "Gulp Recipes - Part Two: You might not need this plugin",
             "link": "https://fettblog.eu/gulp-recipes-part-2/",
             "published": "2015-05-03T00:00:00.000Z",
@@ -1295,7 +1295,7 @@
         {
             "id": "https://fettblog.eu/interview-with-bugtrackers/",
             "tags": [],
-            "description": "I had the sincere pleasure of doing an interview with the guys at bugtrackers.io. We talked a lot about my journey as a web developer for the last 15 years. Starting as a teenage boy doing Gaming websites, up to creating websites professionally...",
+            "description": "I had the sincere pleasure of doing an interview with the guys at bugtrackers.io. We talked a lot about my journey as a web developer for the last 15 years. Starting as a teenage boy doing Gaming websites, up to creating websites professionally with several agencies, and finally my landing at Ruxit.",
             "title": "Interview with bugtrackers.io",
             "link": "https://fettblog.eu/interview-with-bugtrackers/",
             "published": "2015-04-27T00:00:00.000Z",
@@ -1305,7 +1305,7 @@
         {
             "id": "https://fettblog.eu/gulp-recipes-part-1/",
             "tags": [],
-            "description": "In the last two weeks I spent a good deal of time on StackOverflow, trying to solve every open Gulp question there is. The reasons for that are manifold, and besides an overall high amount of spare time and a strong tendency to masochism (it would...",
+            "description": "In the last two weeks I spent a good deal of time on StackOverflow, trying to solve every open Gulp question there is. The reasons for that are manifold, and besides an overall high amount of spare time and a strong tendency to masochism (it would be more if I’d watch the JavaScript channel there), there was one more reason, which I hope to address at some point in the future.",
             "title": "Gulp Recipes - Part One",
             "link": "https://fettblog.eu/gulp-recipes-part-1/",
             "published": "2015-04-04T00:00:00.000Z",
@@ -1325,7 +1325,7 @@
         {
             "id": "https://fettblog.eu/php-browsersync-grunt-gulp/",
             "tags": [],
-            "description": "Quite a while ago I wrote a little article on connect middleware and how to run PHP with it. While the article was originally intended to introduce the concept of connect middlewares to the Grunt audience, I get a lot of feedback on the PHP part....",
+            "description": "Quite a while ago I wrote a little article on connect middleware and how to run PHP with it. While the article was originally intended to introduce the concept of connect middlewares to the Grunt audience, I get a lot of feedback on the PHP part. Which was actually broken by design. So, if you’re search for a real on-demand PHP server in your Grunt or Gulp setup, and have all the livereload goodness you know from your connect server, proceed:",
             "title": "Running an on-demand PHP server with BrowserSync and Grunt/Gulp",
             "link": "https://fettblog.eu/php-browsersync-grunt-gulp/",
             "published": "2015-03-21T00:00:00.000Z",
@@ -1365,7 +1365,7 @@
         {
             "id": "https://fettblog.eu/frontend-tooling-2015/",
             "tags": [],
-            "description": "I happen to hold my third iteration of the “Frontend Tooling with Grunt and Yeoman” workshop at this years  JavaScript Days in March. It’s in Munich, so if you happen to be bear this lovely town, drop by and learn a lot about different JavaScript...",
+            "description": "I happen to hold my third iteration of the “Frontend Tooling with Grunt and Yeoman” workshop at this years  JavaScript Days in March. It’s in Munich, so if you happen to be bear this lovely town, drop by and learn a lot about different JavaScript technologies.",
             "title": "Frontend-Tooling Workshop in March - Slides inside",
             "link": "https://fettblog.eu/frontend-tooling-2015/",
             "published": "2015-01-04T00:00:00.000Z",
@@ -1415,7 +1415,7 @@
         {
             "id": "https://fettblog.eu/introduction-to-yeoman-slides/",
             "tags": [],
-            "description": "A few weeks ago I did a short talk on Yeoman at the Linzer edition of Codeweek and how it helps us in our daily workflow. For the first time I tried to have some sort of script, and afterwards I even made notes. So aside from funny images, you even...",
+            "description": "A few weeks ago I did a short talk on Yeoman at the Linzer edition of Codeweek and how it helps us in our daily workflow. For the first time I tried to have some sort of script, and afterwards I even made notes. So aside from funny images, you even can read what I was talking about. Have fun!",
             "title": "Introduction to Yeoman",
             "link": "https://fettblog.eu/introduction-to-yeoman-slides/",
             "published": "2014-12-09T00:00:00.000Z",
@@ -1435,7 +1435,7 @@
         {
             "id": "https://fettblog.eu/snippets/semantics/the-fine-print/",
             "tags": [],
-            "description": "This one gets overlooked the most, I guess. If you have any legal disclaimer, a so called fine print or small print (The ambitious “Kleingedruckte” in German), there is actually an element for that, that you might even know: small. You may put it...",
+            "description": "This one gets overlooked the most, I guess. If you have any legal disclaimer, a so called fine print or small print (The ambitious “Kleingedruckte” in German), there is actually an element for that, that you might even know: small. You may put it in a footer to separate it correctly:",
             "title": "The Fine Print",
             "link": "https://fettblog.eu/snippets/semantics/the-fine-print/",
             "published": "2014-09-19T00:00:00.000Z",
@@ -1465,7 +1465,7 @@
         {
             "id": "https://fettblog.eu/making-dragonquest-at-open-source/",
             "tags": [],
-            "description": "No tutorials or tech guides today, this is something rather personal! Yesterday while waiting for the launch of Netflix I got an E-Mail that the original Dragon Quest is available for Smartphones, making it the first time that this game makes it to...",
+            "description": "No tutorials or tech guides today, this is something rather personal! Yesterday while waiting for the launch of Netflix I got an E-Mail that the original Dragon Quest is available for Smartphones, making it the first time that this game makes it to Europe since its original release in 1986.",
             "title": "Making dragonquest.at Open Source",
             "link": "https://fettblog.eu/making-dragonquest-at-open-source/",
             "published": "2014-09-17T00:00:00.000Z",
@@ -1485,7 +1485,7 @@
         {
             "id": "https://fettblog.eu/style-select-elements/",
             "tags": [],
-            "description": "Remember those days where developers made the most amazing forms in Flash because they both had to do everything from scratch due to lack of being close to an operating system. And designers decided to put extra effort in looks in behaviour because...",
+            "description": "Remember those days where developers made the most amazing forms in Flash because they both had to do everything from scratch due to lack of being close to an operating system. And designers decided to put extra effort in looks in behaviour because of … design?",
             "title": "Formular One - or - How to style &lt;select&gt; elements",
             "link": "https://fettblog.eu/style-select-elements/",
             "published": "2014-06-05T00:00:00.000Z",
@@ -1535,7 +1535,7 @@
         {
             "id": "https://fettblog.eu/blog/2014/01/13/manageable-sass-components/",
             "tags": [],
-            "description": "Having a set of reusable and ready software components is a great thing. And for a multitude of reasons, like ensuring DRY development or boosting efficiency. A software component is a self contained unit of program code which can be accessed only...",
+            "description": "Having a set of reusable and ready software components is a great thing. And for a multitude of reasons, like ensuring DRY development or boosting efficiency. A software component is a self contained unit of program code which can be accessed only by a defined interface. Or like Berkely University puts it:",
             "title": "Create manageable Sass components (to use with Bower, etc.)",
             "link": "https://fettblog.eu/blog/2014/01/13/manageable-sass-components/",
             "published": "2014-01-13T00:00:00.000Z",
@@ -1545,7 +1545,7 @@
         {
             "id": "https://fettblog.eu/blog/2014/01/02/how-to-switch-from-wordpress-to-jekyll/",
             "tags": [],
-            "description": "Even tough I was pretty satisfied with my old blog, and especially its design, I felt the need to go into another round of updating not only the look, but more importantly the system behind it. So, even if everything looks shiny and new (more...",
+            "description": "Even tough I was pretty satisfied with my old blog, and especially its design, I felt the need to go into another round of updating not only the look, but more importantly the system behind it. So, even if everything looks shiny and new (more likely: crappy), this is all about the nuts and bolts behind the content: Converting your blog from Wordpress to Jekyll",
             "title": "Remake, Remodel! Part Three: How to switch from Wordpress to Jekyll",
             "link": "https://fettblog.eu/blog/2014/01/02/how-to-switch-from-wordpress-to-jekyll/",
             "published": "2014-01-02T00:00:00.000Z",
@@ -1555,7 +1555,7 @@
         {
             "id": "https://fettblog.eu/blog/2013/11/17/the-magic-of-grunt-contrib-connect-and-how-to-run-php-with-it/",
             "tags": [],
-            "description": "Note: This article is rather old. If you want to know more about `connect`, proceed, if you just want to have a PHP sever with livereload for your Grunt or Gulp setup, go there One of the most loved Grunt.js extensions in our team is the ability...",
+            "description": "Note: This article is rather old. If you want to know more about `connect`, proceed, if you just want to have a PHP sever with livereload for your Grunt or Gulp setup, go there One of the most loved Grunt.js extensions in our team is the ability to spawn a server for your project with the virtual push of a button, and to be able to see all the changes directly in the browser with a little Livereload magic. The seemingly endless Apache configuration days seemed to be over, and every front-end dev in our group was happy with the new workflow established. However, from time to time there was the urge to run some little PHP scripts. Not the big apps, mostly an inclusion of CMS managed labels. This need brought me to delve deeper into the mysteries of the connect task.",
             "title": "The magic of grunt-contrib-connect, and how to run PHP with it",
             "link": "https://fettblog.eu/blog/2013/11/17/the-magic-of-grunt-contrib-connect-and-how-to-run-php-with-it/",
             "published": "2013-11-17T00:00:00.000Z",
@@ -1565,7 +1565,7 @@
         {
             "id": "https://fettblog.eu/blog/2013/11/13/topconf-tallinn-2013/",
             "tags": [],
-            "description": "Last week I attended Topconf in Tallinn, Estonia. It was my very first time in Estonia and also my first time at a conference which wasn't targeted to web developers or designers. Instead, it was a software conference which appealed both hardcore...",
+            "description": "Last week I attended Topconf in Tallinn, Estonia. It was my very first time in Estonia and also my first time at a conference which wasn't targeted to web developers or designers. Instead, it was a software conference which appealed both hardcore coders and project managers.",
             "title": "Topconf Tallinn 2013",
             "link": "https://fettblog.eu/blog/2013/11/13/topconf-tallinn-2013/",
             "published": "2013-11-13T00:00:00.000Z",
@@ -1585,7 +1585,7 @@
         {
             "id": "https://fettblog.eu/blog/2013/10/16/great-scott-five-lesser-known-shortcuts-for-emmet-io-that-rock/",
             "tags": [],
-            "description": "I'm a huge fan of Emmet. It allows you not only to create markup in no-time by using a CSS-like syntax in your most favourite code editor (e.g. ul>li*5 expands to one  element with five nested  elements in HTML after hitting the tab key....",
+            "description": "I'm a huge fan of Emmet. It allows you not only to create markup in no-time by using a CSS-like syntax in your most favourite code editor (e.g. ul>li*5 expands to one  element with five nested  elements in HTML after hitting the tab key. Alternatively, you can just type m20 in your CSS to get margin: 20px after hitting tab).",
             "title": "Great Scott! Five lesser known shortcuts for Emmet.io that rock!",
             "link": "https://fettblog.eu/blog/2013/10/16/great-scott-five-lesser-known-shortcuts-for-emmet-io-that-rock/",
             "published": "2013-10-16T00:00:00.000Z",
@@ -1595,7 +1595,7 @@
         {
             "id": "https://fettblog.eu/blog/2013/10/11/its-all-about-the-content/",
             "tags": [],
-            "description": "You know parallel scrolling websites? The kind where big sunglasses assemble themselves, break through rocks and crash your browser? The kind everyone loves. Except developers. Today I found thereisnopagefold.com by Damien du Toit, who had his own...",
+            "description": "You know parallel scrolling websites? The kind where big sunglasses assemble themselves, break through rocks and crash your browser? The kind everyone loves. Except developers. Today I found thereisnopagefold.com by Damien du Toit, who had his own opinion on the whole thing. Check it out.",
             "title": "It's all about the content!",
             "link": "https://fettblog.eu/blog/2013/10/11/its-all-about-the-content/",
             "published": "2013-10-11T00:00:00.000Z",
@@ -1605,7 +1605,7 @@
         {
             "id": "https://fettblog.eu/blog/2013/10/10/digital-visions-2013/",
             "tags": [],
-            "description": "Last friday Jürgen Liechtenecker and company held the Digital Visions conference in Vienna for the second time. I was invited to speak and got the amazing opportunity to try out a new talk in front of an interested crowd. Digital Visions quickly...",
+            "description": "Last friday Jürgen Liechtenecker and company held the Digital Visions conference in Vienna for the second time. I was invited to speak and got the amazing opportunity to try out a new talk in front of an interested crowd. Digital Visions quickly became the no. 1 meeting point for all Front End devs and UX people in Austria, and I was not only happy to see a lot of familiar faces from Linz and Vienna, but also meet cab sharing buddy Sven Wolfermann again. He's an amazing speaker and combines true \"Berliner Schnauze\" with a lot of interesting information. Have fun in Amsterdam, pal, see you in Düsseldorf at the latest!",
             "title": "Digital Visions 2013",
             "link": "https://fettblog.eu/blog/2013/10/10/digital-visions-2013/",
             "published": "2013-10-10T00:00:00.000Z",
@@ -1654,7 +1654,7 @@
         {
             "id": "https://fettblog.eu/blog/2013/06/17/caring-for-sharing-social-share-urls/",
             "tags": [],
-            "description": "I truly hate social media share buttons. Especially those plugins which not only are coded badly but also create heavy traffic and performance issues. Plus, they're a pain in the ass to place correctly. If you really want to use (or have to use)...",
+            "description": "I truly hate social media share buttons. Especially those plugins which not only are coded badly but also create heavy traffic and performance issues. Plus, they're a pain in the ass to place correctly. If you really want to use (or have to use) those social liking/sharing/tweeting stuff, use their share URLs. Every single one of them has such, and you can either open them in a pop-up or in a new window. Here they are:",
             "title": "Caring for Sharing: Social share URLs",
             "link": "https://fettblog.eu/blog/2013/06/17/caring-for-sharing-social-share-urls/",
             "published": "2013-06-17T00:00:00.000Z",
@@ -1674,7 +1674,7 @@
         {
             "id": "https://fettblog.eu/blog/2013/06/06/beyond-our-own-noses-the-beyond-tellerrand-2013/",
             "tags": [],
-            "description": "Not one single line of JavaScript code? At a conference where web developers visibly outnumbered the rest of the audience? Yes, they can: Düsseldorf's \"beyond tellerrand\" conference saw its third edition this year, and what initially started as a...",
+            "description": "Not one single line of JavaScript code? At a conference where web developers visibly outnumbered the rest of the audience? Yes, they can: Düsseldorf's \"beyond tellerrand\" conference saw its third edition this year, and what initially started as a somewhat obscure insider gathering is now a definite \"Be there or be square\" for designers and coders. How come?  Well, \"beyond tellerrand\" translates as \"beyond our own noses\", and that is exactly what the event is about: Widening the horizon of web developers. Planting fresh ideas into bright brains. Seeding energizing motivation into otherwise boring \"business as usual\". Throwing a spotlight on fields which are closely linked to our own work, yet rarely part of our considerations. In other words, the principles of the Netural environment get blown up to a full-size conference here.",
             "title": "beyond our own noses - the \"beyond tellerrand 2013\"",
             "link": "https://fettblog.eu/blog/2013/06/06/beyond-our-own-noses-the-beyond-tellerrand-2013/",
             "published": "2013-06-06T00:00:00.000Z",
@@ -1684,7 +1684,7 @@
         {
             "id": "https://fettblog.eu/blog/2013/04/30/remake-remodel-part-2/",
             "tags": [],
-            "description": "@grigs said I should blog, so I'm going to take this thing seriously now. I spent the last few days (finally) creating a new look for my website. With the advent of flat designs I think I'm able to create at least one style that doesn't fail...",
+            "description": "@grigs said I should blog, so I'm going to take this thing seriously now. I spent the last few days (finally) creating a new look for my website. With the advent of flat designs I think I'm able to create at least one style that doesn't fail completely. And actually I'm pretty happy with it.",
             "title": "Remake. Remodel. Part 2",
             "link": "https://fettblog.eu/blog/2013/04/30/remake-remodel-part-2/",
             "published": "2013-04-30T00:00:00.000Z",
@@ -1704,7 +1704,7 @@
         {
             "id": "https://fettblog.eu/blog/2012/11/26/technologieplauscherl-at-netural/",
             "tags": [],
-            "description": "On Thursday we held the \"Technologieplauscherl\" at Netural for the first time. The \"Plauscherl\" (which translates to technology talk, but is unrelated to my beloved F.E.T.T.) is some sort of short evening barcamp held by the local dev community of...",
+            "description": "On Thursday we held the \"Technologieplauscherl\" at Netural for the first time. The \"Plauscherl\" (which translates to technology talk, but is unrelated to my beloved F.E.T.T.) is some sort of short evening barcamp held by the local dev community of Linz in different locations, mostly offices from attending persons. In its eight edition it had the unique topic \"books\", which was also a first for the group, I guess. The goal was: Present a book and give a short review.",
             "title": "\"Tech­no­logie­plausch­erl\" at Netural",
             "link": "https://fettblog.eu/blog/2012/11/26/technologieplauscherl-at-netural/",
             "published": "2012-11-26T00:00:00.000Z",
@@ -1714,7 +1714,7 @@
         {
             "id": "https://fettblog.eu/blog/2012/11/16/preventing-fout-on-ie9/",
             "tags": [],
-            "description": "FOUT is an abbrevation for flash of unstyled text (or type) and is one of those really nasty bits in modern frontend development. Summarized it means that if you use webfonts it might happen that you first see your text displayed in a fallback font...",
+            "description": "FOUT is an abbrevation for flash of unstyled text (or type) and is one of those really nasty bits in modern frontend development. Summarized it means that if you use webfonts it might happen that you first see your text displayed in a fallback font until the downloadble webfont is loaded, parsed and inserted. Remy Sharp and Paul Irish did a lot of research on that topic more than three years ago.",
             "title": "Preventing FOUT in IE9",
             "link": "https://fettblog.eu/blog/2012/11/16/preventing-fout-on-ie9/",
             "published": "2012-11-16T00:00:00.000Z",
@@ -1724,7 +1724,7 @@
         {
             "id": "https://fettblog.eu/blog/2012/11/15/remake-remodel/",
             "tags": [],
-            "description": "Let's face it: ModX -- even with the Articles Plugin -- isn't suitable for fast blogging. At least not in the way I need it. So I switched back to Wordpress. Setting the whole thing up from scratch. So there will be some changes in the next...",
+            "description": "Let's face it: ModX -- even with the Articles Plugin -- isn't suitable for fast blogging. At least not in the way I need it. So I switched back to Wordpress. Setting the whole thing up from scratch. So there will be some changes in the next days/weeks/months.",
             "title": "Remake, Remodel.",
             "link": "https://fettblog.eu/blog/2012/11/15/remake-remodel/",
             "published": "2012-11-15T00:00:00.000Z",
@@ -1754,7 +1754,7 @@
         {
             "id": "https://fettblog.eu/blog/2012/04/16/robust-but-hacky-way-of-portraitlandscape-detection/",
             "tags": [],
-            "description": "On mobile devices it's pretty easy (and in some cases also pretty cool) to change the look of your website respectively to the orientation of your device with media queries. However, sometimes the orientation does not only affect your layout, but...",
+            "description": "On mobile devices it's pretty easy (and in some cases also pretty cool) to change the look of your website respectively to the orientation of your device with media queries. However, sometimes the orientation does not only affect your layout, but also the routines of your Javascript. This article shows some possibilites how to detect portrait/landscape orientation on your mobile device. Some are less robust considering multiple device vendors, and some are in exchange a lot more hacky. You're gonna love it.",
             "title": "Robust (but hacky) way of portrait / land­scape detection",
             "link": "https://fettblog.eu/blog/2012/04/16/robust-but-hacky-way-of-portraitlandscape-detection/",
             "published": "2012-04-16T00:00:00.000Z",
@@ -1764,7 +1764,7 @@
         {
             "id": "https://fettblog.eu/blog/2012/04/08/html5-audio-on-mobile-devices/",
             "tags": [],
-            "description": "HTML5 Audio on desktop browsers is a mess. But you haven't experienced true pain and suffering until you try to get HTML5 audio done on mobile devices. This article is a follow-up to my talk at the Barcamp in Salzburg in March and was inspired by...",
+            "description": "HTML5 Audio on desktop browsers is a mess. But you haven't experienced true pain and suffering until you try to get HTML5 audio done on mobile devices. This article is a follow-up to my talk at the Barcamp in Salzburg in March and was inspired by Chris Heilmans tweets on that topic a few days ago.",
             "title": "HTML5 Audio on mobile devices",
             "link": "https://fettblog.eu/blog/2012/04/08/html5-audio-on-mobile-devices/",
             "published": "2012-04-08T00:00:00.000Z",

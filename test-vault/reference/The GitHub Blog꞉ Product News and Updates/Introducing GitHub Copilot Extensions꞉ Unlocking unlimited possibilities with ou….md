@@ -7,7 +7,7 @@ feed: "The GitHub Blog꞉ Product News and Updates"
 tags: []
 ---
 > [!abstract] Introducing GitHub Copilot Extensions: Unlocking unlimited possibilities with our ecosystem of partners by Mario Rodriguez - 2024-05-21T15:27:46.000Z
-> The world of Copilot is getting bigger, improving the developer experience by keeping developers in the flow longer and allowing them to do more in natural language. The post Introducing GitHub Copilot Extensions: Unlocking unlimited possibilities...
+> The world of Copilot is getting bigger, improving the developer experience by keeping developers in the flow longer and allowing them to do more in natural language. The post Introducing GitHub Copilot Extensions: Unlocking unlimited possibilities with our ecosystem of partners appeared first on The GitHub Blog.
 
 🔗Read article [online](https://github.blog/2024-05-21-introducing-github-copilot-extensions/). For other items in this feed see [[The GitHub Blog꞉ Product News and Updates]].
 

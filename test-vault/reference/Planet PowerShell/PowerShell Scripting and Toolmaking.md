@@ -1,14 +1,14 @@
 ---
 author: "[object Object]"
 published: 2024-05-24T17:03:43.000Z
-link: https://jdhitsolutions.com/blog/books/9389/powershell-scripting-and-toolmaking/?utm_source=rss&utm_medium=rss&utm_campaign=powershell-scripting-and-toolmaking
+link: https://jdhitsolutions.com/blog/books/9389/powershell-scripting-and-toolmaking/
 id: https://jdhitsolutions.com/blog/?p=9389
 feed: "Planet PowerShell"
 tags: [rss/Books,rss/PowerShell,rss/Scripting,rss/LeanPub,rss/toolmaking]
 ---
 > [!abstract] PowerShell Scripting and Toolmaking by [object Object] - 2024-05-24T17:03:43.000Z
 
-🔗Read article [online](https://jdhitsolutions.com/blog/books/9389/powershell-scripting-and-toolmaking/?utm_source=rss&utm_medium=rss&utm_campaign=powershell-scripting-and-toolmaking). For other items in this feed see [[Planet PowerShell]].
+🔗Read article [online](https://jdhitsolutions.com/blog/books/9389/powershell-scripting-and-toolmaking/). For other items in this feed see [[Planet PowerShell]].
 
 - [ ] [[PowerShell Scripting and Toolmaking]] - 2024-05-24T17:03:43.000Z
 - - -

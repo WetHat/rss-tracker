@@ -7,7 +7,7 @@ feed: "The GitHub Blog꞉ Product News and Updates"
 tags: []
 ---
 > [!abstract] Research: Quantifying GitHub Copilot’s impact in the enterprise with Accenture by Ya Gao - 2024-05-13T18:27:34.000Z
-> We conducted research with developers at Accenture to understand GitHub Copilot’s real-world impact in enterprise organizations. The post Research: Quantifying GitHub Copilot’s impact in the enterprise with Accenture appeared first on The GitHub...
+> We conducted research with developers at Accenture to understand GitHub Copilot’s real-world impact in enterprise organizations. The post Research: Quantifying GitHub Copilot’s impact in the enterprise with Accenture appeared first on The GitHub Blog.
 
 🔗Read article [online](https://github.blog/2024-05-13-research-quantifying-github-copilots-impact-in-the-enterprise-with-accenture/). For other items in this feed see [[The GitHub Blog꞉ Product News and Updates]].
 

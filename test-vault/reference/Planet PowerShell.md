@@ -1,8 +1,8 @@
 ---
-feedurl: reference/Planet PowerShell/assets/feed.xml
+feedurl: https://localhost/reference/Planet PowerShell/assets/feed.xml
 site: https://www.planetpowershell.com/
 itemlimit: 10
-updated: 2024-06-11T11:47:34.037Z
+updated: 2024-06-12T06:51:33.524Z
 status: OK
 tags:
   - rss

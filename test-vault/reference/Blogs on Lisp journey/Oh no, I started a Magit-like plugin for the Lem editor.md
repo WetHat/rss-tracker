@@ -1,14 +1,14 @@
 ---
 author: "Blogs on Lisp journey"
 published: 2024-03-14T12:11:34.000Z
-link: /blog/oh-no-i-started-a-magit-like-plugin-for-the-lem-editor/
+link: https://localhost/blog/oh-no-i-started-a-magit-like-plugin-for-the-lem-editor/
 id: /blog/oh-no-i-started-a-magit-like-plugin-for-the-lem-editor/
 feed: "Blogs on Lisp journey"
 tags: []
 ---
 > [!abstract] Oh no, I started a Magit-like plugin for the Lem editor - 2024-03-14T12:11:34.000Z
 
-🔗Read article [online](/blog/oh-no-i-started-a-magit-like-plugin-for-the-lem-editor/). For other items in this feed see [[Blogs on Lisp journey]].
+🔗Read article [online](https://localhost/blog/oh-no-i-started-a-magit-like-plugin-for-the-lem-editor/). For other items in this feed see [[Blogs on Lisp journey]].
 
 - [ ] [[Oh no, I started a Magit-like plugin for the Lem editor]] - 2024-03-14T12:11:34.000Z
 - - -

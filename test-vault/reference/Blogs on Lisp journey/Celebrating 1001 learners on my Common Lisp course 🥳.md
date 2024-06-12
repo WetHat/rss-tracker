@@ -1,14 +1,14 @@
 ---
 author: "Blogs on Lisp journey"
 published: 2024-02-14T16:05:44.000Z
-link: /blog/celebrating-1001-learners-on-my-common-lisp-course/
+link: https://localhost/blog/celebrating-1001-learners-on-my-common-lisp-course/
 id: /blog/celebrating-1001-learners-on-my-common-lisp-course/
 feed: "Blogs on Lisp journey"
 tags: []
 ---
 > [!abstract] Celebrating 1001 learners on my Common Lisp course 🥳 - 2024-02-14T16:05:44.000Z
 
-🔗Read article [online](/blog/celebrating-1001-learners-on-my-common-lisp-course/). For other items in this feed see [[Blogs on Lisp journey]].
+🔗Read article [online](https://localhost/blog/celebrating-1001-learners-on-my-common-lisp-course/). For other items in this feed see [[Blogs on Lisp journey]].
 
 - [ ] [[Celebrating 1001 learners on my Common Lisp course 🥳]] - 2024-02-14T16:05:44.000Z
 - - -

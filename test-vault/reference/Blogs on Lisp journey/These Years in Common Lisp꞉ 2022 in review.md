@@ -1,14 +1,14 @@
 ---
 author: "Blogs on Lisp journey"
 published: 2023-01-09T18:54:29.000Z
-link: /blog/these-years-in-common-lisp-2022-in-review/
+link: https://localhost/blog/these-years-in-common-lisp-2022-in-review/
 id: /blog/these-years-in-common-lisp-2022-in-review/
 feed: "Blogs on Lisp journey"
 tags: []
 ---
 > [!abstract] These Years in Common Lisp: 2022 in review - 2023-01-09T18:54:29.000Z
 
-🔗Read article [online](/blog/these-years-in-common-lisp-2022-in-review/). For other items in this feed see [[Blogs on Lisp journey]].
+🔗Read article [online](https://localhost/blog/these-years-in-common-lisp-2022-in-review/). For other items in this feed see [[Blogs on Lisp journey]].
 
 - [ ] [[These Years in Common Lisp꞉ 2022 in review]] - 2023-01-09T18:54:29.000Z
 - - -
