@@ -76,7 +76,6 @@ interface IEntryDataTracked {
     image?: IRssMedium;
     media: IRssMedium[];
     content?: string;
-    link?: string;
 }
 
 /**
@@ -119,10 +118,8 @@ export class TrackedRSSitem {
     /**
      * Build a RSS item representation object.
      * @param entry - The parsed RSS item data.
-     * @param baseURI - The base uri of the site the article is from. Used to
-     *                  make relativ# article links absolute,
      */
-    constructor(entry: IEntryDataExtended, baseURI?: string) {
+    constructor(entry: IEntryDataExtended) {
         let { id, title, description, published, link, creator, image, content, media } = entry;
         this.id = id;
         this.media = media;
@@ -162,9 +159,6 @@ export class TrackedRSSitem {
         if (link) {
             if (typeof link !== "string") {
                 link = (link as TPropertyBag)["@_href"];
-            }
-            if (link?.startsWith("/") && baseURI) {
-                link = baseURI + link;
             }
             this.link = link;
         }
@@ -321,13 +315,13 @@ function assembleDescription(elem: TPropertyBag): string | null {
  * the desired feed representation.
  */
 const DEFAULT_OPTIONS: ReaderOptions = {
+    descriptionMaxLen: 5000, // allow long descriptions
     getExtraEntryFields: (item: TPropertyBag): IEntryDataTracked => {
         let
             { id, guid } = item,
             tracked: IEntryDataTracked = {
                 id: id || guid?.["#text"] || item.link,
-                media: assembleMedia(item),
-                link: item.link
+                media: assembleMedia(item)
             }
 
         let description = item.description || assembleDescription(item);
@@ -420,25 +414,28 @@ export class TrackedRSSfeed {
      */
     constructor(xml: string, source: string, options: ReaderOptions = DEFAULT_OPTIONS) {
         this.source = source;
-        const
-            feed = extractFromXml(xml, options),
-            baseURI = source.match(/[htps]+:\/\/[^\/]+(?=\/*)/)?.[0];
+        options.baseUrl = source.match(/[htps]+:\/\/[^\/]+(?=\/*)/)?.[0];
+
+        const feed = extractFromXml(xml, options);
 
         let { link, title, description, image, entries } = feed as IFeedDataExtended;
+
+        if (link) {
+            this.site = link.startsWith("/") && options.baseUrl ? options.baseUrl + link : link;
+        }
+
         if (title) {
             this.title = title;
         }
         if (description) {
             this.description = typeof description === "string" ? description : (description as TPropertyBag)["#text"];
         }
-        if (link) {
-            this.site = link.startsWith("/") && baseURI ? baseURI + link : link;
-        }
+
         if (image) {
             this.image = image;
         }
         if (Array.isArray(entries)) {
-            this.items = (entries as Array<IEntryDataExtended>).map(e => new TrackedRSSitem(e,baseURI));
+            this.items = (entries as Array<IEntryDataExtended>).map(e => new TrackedRSSitem(e));
         } else {
             this.items = []
         }

@@ -3111,10 +3111,8 @@ var TrackedRSSitem = class {
   /**
    * Build a RSS item representation object.
    * @param entry - The parsed RSS item data.
-   * @param baseURI - The base uri of the site the article is from. Used to
-   *                  make relativ# article links absolute,
    */
-  constructor(entry, baseURI) {
+  constructor(entry) {
     var _a2;
     let { id, title, description, published, link, creator, image, content, media } = entry;
     this.id = id;
@@ -3138,9 +3136,6 @@ var TrackedRSSitem = class {
     if (link) {
       if (typeof link !== "string") {
         link = link["@_href"];
-      }
-      if ((link == null ? void 0 : link.startsWith("/")) && baseURI) {
-        link = baseURI + link;
       }
       this.link = link;
     }
@@ -3255,12 +3250,13 @@ function assembleDescription(elem) {
   return description;
 }
 var DEFAULT_OPTIONS = {
+  descriptionMaxLen: 5e3,
+  // allow long descriptions
   getExtraEntryFields: (item) => {
     var _a2;
     let { id, guid } = item, tracked = {
       id: id || (guid == null ? void 0 : guid["#text"]) || item.link,
-      media: assembleMedia(item),
-      link: item.link
+      media: assembleMedia(item)
     };
     let description = item.description || assembleDescription(item);
     if (description) {
@@ -3331,22 +3327,23 @@ var TrackedRSSfeed = class {
   constructor(xml, source, options = DEFAULT_OPTIONS) {
     var _a2;
     this.source = source;
-    const feed = extractFromXml(xml, options), baseURI = (_a2 = source.match(/[htps]+:\/\/[^\/]+(?=\/*)/)) == null ? void 0 : _a2[0];
+    options.baseUrl = (_a2 = source.match(/[htps]+:\/\/[^\/]+(?=\/*)/)) == null ? void 0 : _a2[0];
+    const feed = extractFromXml(xml, options);
     let { link, title, description, image, entries } = feed;
+    if (link) {
+      this.site = link.startsWith("/") && options.baseUrl ? options.baseUrl + link : link;
+    }
     if (title) {
       this.title = title;
     }
     if (description) {
       this.description = typeof description === "string" ? description : description["#text"];
     }
-    if (link) {
-      this.site = link.startsWith("/") && baseURI ? baseURI + link : link;
-    }
     if (image) {
       this.image = image;
     }
     if (Array.isArray(entries)) {
-      this.items = entries.map((e) => new TrackedRSSitem(e, baseURI));
+      this.items = entries.map((e) => new TrackedRSSitem(e));
     } else {
       this.items = [];
     }
@@ -3542,7 +3539,7 @@ var _FeedManager = class {
    */
   async createFeedFromFile(xml, location) {
     const feedXML = await this.app.vault.read(xml);
-    return this.createFeed(new TrackedRSSfeed(feedXML, xml.path), location);
+    return this.createFeed(new TrackedRSSfeed(feedXML, "https://localhost" + xml.path), location);
   }
   /**
   * Create an RSS feed Markdown representaiton from a hyperlink.

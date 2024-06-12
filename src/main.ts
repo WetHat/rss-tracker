@@ -61,7 +61,7 @@ export default class RSSTrackerPlugin extends Plugin {
             const xmlFile = this.app.vault.getFileByPath(xml),
                 feedDir = this.app.vault.getFolderByPath(dir);
             if (xmlFile && feedDir) {
-                const dashboard = await this.feedmgr.createFeedFromFile(xmlFile, feedDir);
+                const dashboard = await this.feedmgr.createFeedFromFile(xmlFile,feedDir);
                 new Notice(`New RSS Feed "${dashboard.basename}" created`);
             }
         });
