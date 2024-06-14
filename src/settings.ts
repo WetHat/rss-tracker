@@ -1,4 +1,3 @@
-import { DefaultDeserializer } from 'v8';
 import RSSTrackerPlugin from './main';
 import { PluginSettingTab, Setting, App } from 'obsidian';
 
@@ -6,6 +5,7 @@ export interface RSSTrackerSettings {
 	feedTemplate: string;
 	itemTemplate: string;
 	autoUpdateFeeds: boolean;
+	rssFeedFolder: string;
 }
 
 export const DEFAULT_SETTINGS: RSSTrackerSettings = {
@@ -54,7 +54,8 @@ tags: {{tags}}
 - - -
 {{content}}
 `,
-	autoUpdateFeeds: false
+	autoUpdateFeeds: false,
+	rssFeedFolder: "RSS",
 }
 
 export class RSSTrackerSettingTab extends PluginSettingTab {
@@ -126,6 +127,30 @@ export class RSSTrackerSettingTab extends PluginSettingTab {
 				tg.onChange(async evt => {
 					this.plugin.settings.autoUpdateFeeds = tg.getValue();
 					await this.plugin.saveSettings();
+				})
+			});
+		new Setting(containerEl)
+			.setName("Feed Location")
+			.setDesc("Vault level folder for RSS feeds")
+			.addText(ta => {
+				ta
+					.setPlaceholder(DEFAULT_SETTINGS.rssFeedFolder)
+					.onChange(async (value) => {
+						this.plugin.settings.rssFeedFolder = value;
+						await this.plugin.saveSettings();
+					});
+				if (this.plugin.settings.rssFeedFolder !== DEFAULT_SETTINGS.rssFeedFolder) {
+					ta.setValue(this.plugin.settings.rssFeedFolder)
+				}
+			})
+		.addButton(btn => {
+			btn
+				.setIcon("reset")
+				.setTooltip("Reset feed location to default")
+				.onClick(async evt => {
+					this.plugin.settings.rssFeedFolder = DEFAULT_SETTINGS.rssFeedFolder;
+					await this.plugin.saveSettings();
+					this.display();
 				})
 			});
 	}

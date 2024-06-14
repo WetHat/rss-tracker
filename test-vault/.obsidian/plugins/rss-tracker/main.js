@@ -1942,7 +1942,8 @@ tags: {{tags}}
 - - -
 {{content}}
 `,
-  autoUpdateFeeds: false
+  autoUpdateFeeds: false,
+  rssFeedFolder: "RSS"
 };
 var RSSTrackerSettingTab = class extends import_obsidian.PluginSettingTab {
   constructor(app, plugin) {
@@ -1985,6 +1986,21 @@ var RSSTrackerSettingTab = class extends import_obsidian.PluginSettingTab {
       tg.onChange(async (evt) => {
         this.plugin.settings.autoUpdateFeeds = tg.getValue();
         await this.plugin.saveSettings();
+      });
+    });
+    new import_obsidian.Setting(containerEl).setName("Feed Location").setDesc("Vault level folder for RSS feeds").addText((ta) => {
+      ta.setPlaceholder(DEFAULT_SETTINGS.rssFeedFolder).onChange(async (value) => {
+        this.plugin.settings.rssFeedFolder = value;
+        await this.plugin.saveSettings();
+      });
+      if (this.plugin.settings.rssFeedFolder !== DEFAULT_SETTINGS.rssFeedFolder) {
+        ta.setValue(this.plugin.settings.rssFeedFolder);
+      }
+    }).addButton((btn) => {
+      btn.setIcon("reset").setTooltip("Reset feed location to default").onClick(async (evt) => {
+        this.plugin.settings.rssFeedFolder = DEFAULT_SETTINGS.rssFeedFolder;
+        await this.plugin.saveSettings();
+        this.display();
       });
     });
   }
@@ -3520,18 +3536,19 @@ var _FeedManager = class {
    * The Markdown representation consists of
    * - a feed dashboard
    * - a directory whic has the same name as the dashboard (without the .md extension)
-   *   containingthe RSS items of the feed,
+   *   containing the RSS items of the feed,
    *
    * The file system layout of an Obsidian RSS feed looks like this:
    * ~~~
-   * …
-   * ├─ <feedname>.md ← dashboard
-   * ╰─ <feedname>
+   * 📂
+   *  ├─ <feedname>.md ← dashboard
+   *  ╰─ 📂<feedname>
    *        ├─ <item-1>.md
    *        ├─ …
    *        ╰─ <item-n>.md
    * ~~~
    *
+   * ⚠ the base url to make relative urls absolute is synthesized as `https://localhost`.
    * @param xml - XML file representing an RSS feed.
    * @param location - The obsidian folder where to create the Markdown files
    *                   representing the feed.
@@ -3551,9 +3568,9 @@ var _FeedManager = class {
   *
   * The file system layout of an Obsidian RSS feed looks like this:
   * ~~~
-  * …
-  * ├─ <feedname>.md ← dashboard
-  * ╰─ <feedname>
+  * 📂
+  *  ├─ <feedname>.md ← dashboard
+  *  ╰─ 📂<feedname>
   *        ├─ <item-1>.md
   *        ├─ …
   *        ╰─ <item-n>.md
@@ -3771,11 +3788,26 @@ var NewRSSFeedModalCommand = class {
   }
   callback() {
     const modal = new InputUrlModal(this.app, async (result) => {
-      const f = this.app.workspace.getActiveFile();
-      if (f) {
-        const parent = this.app.fileManager.getNewFileParent(f.path), mgr = this.plugin.feedmgr, leaf = this.app.workspace.getLeaf(false);
+      var _a2;
+      const locationSetting = (_a2 = this.plugin.settings.rssFeedFolder) != null ? _a2 : DEFAULT_SETTINGS.rssFeedFolder;
+      let feedFolder;
+      if (locationSetting === ".") {
+        const f = this.app.workspace.getActiveFile();
+        if (f) {
+          feedFolder = this.app.fileManager.getNewFileParent(f.path);
+        } else {
+          feedFolder = this.app.vault.getFolderByPath("/");
+        }
+      } else {
+        feedFolder = this.app.vault.getFolderByPath(locationSetting);
+        if (!feedFolder) {
+          feedFolder = await this.app.vault.createFolder(locationSetting);
+        }
+      }
+      if (feedFolder) {
+        const mgr = this.plugin.feedmgr, leaf = this.app.workspace.getLeaf(false);
         try {
-          leaf.openFile(await mgr.createFeedFromUrl(result, parent));
+          leaf.openFile(await mgr.createFeedFromUrl(result, feedFolder));
         } catch (err) {
           new import_obsidian3.Notice(err.message);
         }
