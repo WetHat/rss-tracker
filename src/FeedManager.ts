@@ -199,18 +199,19 @@ export class FeedManager {
      * The Markdown representation consists of
      * - a feed dashboard
      * - a directory whic has the same name as the dashboard (without the .md extension)
-     *   containingthe RSS items of the feed,
+     *   containing the RSS items of the feed,
      *
      * The file system layout of an Obsidian RSS feed looks like this:
      * ~~~
-     * …
-     * ├─ <feedname>.md ← dashboard
-     * ╰─ <feedname>
+     * 📂
+     *  ├─ <feedname>.md ← dashboard
+     *  ╰─ 📂<feedname>
      *        ├─ <item-1>.md
      *        ├─ …
      *        ╰─ <item-n>.md
      * ~~~
      *
+     * ⚠ the base url to make relative urls absolute is synthesized as `https://localhost`.
      * @param xml - XML file representing an RSS feed.
      * @param location - The obsidian folder where to create the Markdown files
      *                   representing the feed.
@@ -231,9 +232,9 @@ export class FeedManager {
      *
      * The file system layout of an Obsidian RSS feed looks like this:
      * ~~~
-     * …
-     * ├─ <feedname>.md ← dashboard
-     * ╰─ <feedname>
+     * 📂
+     *  ├─ <feedname>.md ← dashboard
+     *  ╰─ 📂<feedname>
      *        ├─ <item-1>.md
      *        ├─ …
      *        ╰─ <item-n>.md
