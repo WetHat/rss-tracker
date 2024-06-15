@@ -1953,6 +1953,7 @@ var RSSTrackerSettingTab = class extends import_obsidian.PluginSettingTab {
   display() {
     const { containerEl } = this;
     containerEl.empty();
+    const frag = containerEl.doc.createDocumentFragment();
     new import_obsidian.Setting(containerEl).setName("Default RSS Feed Template").setDesc("Template for new RSS feed description markdown files.").addTextArea((ta) => {
       ta.setValue(this.plugin.settings.feedTemplate).onChange(async (value) => {
         this.plugin.settings.feedTemplate = value;
@@ -1988,7 +1989,7 @@ var RSSTrackerSettingTab = class extends import_obsidian.PluginSettingTab {
         await this.plugin.saveSettings();
       });
     });
-    new import_obsidian.Setting(containerEl).setName("Feed Location").setDesc("Vault level folder for RSS feeds").addText((ta) => {
+    new import_obsidian.Setting(containerEl).setName("Feed Location").setDesc("'.' to create new feeds next to the active note, '/' to create new feeds at vault root or path to a folder for new feeds.").addText((ta) => {
       ta.setPlaceholder(DEFAULT_SETTINGS.rssFeedFolder).onChange(async (value) => {
         this.plugin.settings.rssFeedFolder = value;
         await this.plugin.saveSettings();
@@ -3114,9 +3115,9 @@ function decode2(data, options = EntityLevel.XML) {
 
 // src/FeedAssembler.ts
 function toFilename(name) {
-  let fname = name.replace(/\s*[htps]+:\/\/.*/, "\u2026").replaceAll("?", "\u2753").replaceAll(".", "\u2024").replaceAll(":", "\uA789").replaceAll('"', "\u2033").replaceAll("<", "\uFF1C").replaceAll(">", "\uFF1E").replaceAll("|", "\u2223").replaceAll("\\", "/").replaceAll("/", "\u2571").replaceAll("[", "{").replaceAll("]", "}").replaceAll("#", "\uFF03").replaceAll("^", "\u25B3").replaceAll("&", "+").replaceAll("*", "\u2731");
+  let fname = name.replace(/\s*[htps]+:\/\/.*/, "\u22EF").replaceAll("?", "\u2753").replaceAll(".", "\u2024").replaceAll(":", "\uA789").replaceAll('"', "\u2033").replaceAll("<", "\uFF1C").replaceAll(">", "\uFF1E").replaceAll("|", "\u2223").replaceAll("\\", "/").replaceAll("/", "\u2571").replaceAll("[", "{").replaceAll("]", "}").replaceAll("#", "\uFF03").replaceAll("^", "\u25B3").replaceAll("&", "+").replaceAll("*", "\u2731");
   if (fname.length > 80) {
-    fname = fname.substring(0, 80).trim() + "\u2026";
+    fname = fname.substring(0, 80).trim() + "\u22EF";
   } else {
     fname = fname.trim();
   }
@@ -3206,7 +3207,7 @@ function assembleMedia(elem) {
   return media != null ? media : [];
 }
 function assembleImage(elem) {
-  var _a2;
+  var _a2, _b;
   let { image } = elem;
   if (typeof image === "string") {
     return { src: image, type: "image" /* Image */ };
@@ -3230,7 +3231,7 @@ function assembleImage(elem) {
     }
   }
   if (thumb) {
-    let [width, height] = [thumb["@_width"], thumb["@_height"]];
+    const [width, height] = [thumb["@_width"], thumb["@_height"]];
     let img = { src: thumb["@_url"], type: "image" /* Image */ };
     if (width) {
       img.width = width;
@@ -3242,7 +3243,18 @@ function assembleImage(elem) {
   }
   let enc = elem.enclosure;
   if ((_a2 = enc == null ? void 0 : enc["@_type"]) == null ? void 0 : _a2.includes("image")) {
-    let img = { src: enc["@_url"], type: "image" /* Image */ };
+    return { src: enc["@_url"], type: "image" /* Image */ };
+  }
+  let media = elem["media:content"];
+  if (media && ((_b = media["@_type"]) == null ? void 0 : _b.includes("image"))) {
+    const [width, height] = [media["@_width"], media["@_height"]];
+    let img = { src: media["@_url"], type: "image" /* Image */ };
+    if (width) {
+      img.width = width;
+    }
+    if (height) {
+      img.height = height;
+    }
     return img;
   }
   return null;

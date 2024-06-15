@@ -7,7 +7,7 @@ import { decode, DecodingMode, EntityLevel } from "entities";
  */
 function toFilename(name: string): string {
     let fname = name
-        .replace(/\s*[htps]+:\/\/.*/, "…") // strip urls
+        .replace(/\s*[htps]+:\/\/.*/, "⋯") // strip urls
         .replaceAll("?", "❓")
         .replaceAll(".", "․")
         .replaceAll(":", "꞉")
@@ -27,7 +27,7 @@ function toFilename(name: string): string {
     if (fname.length > 80) {
         fname = fname
             .substring(0, 80)
-            .trim() + "…";
+            .trim() + "⋯";
     } else {
         fname = fname.trim();
     }
@@ -264,7 +264,7 @@ function assembleImage(elem: TPropertyBag): IRssMedium | null {
     }
 
     if (thumb) {
-        let [width, height] = [thumb["@_width"], thumb["@_height"]];
+        const [width, height] = [thumb["@_width"], thumb["@_height"]];
         let img: IRssMedium = { src: thumb["@_url"], type: MediumType.Image };
         if (width) {
             img.width = width;
@@ -277,8 +277,19 @@ function assembleImage(elem: TPropertyBag): IRssMedium | null {
 
     let enc = elem.enclosure;
     if (enc?.["@_type"]?.includes("image")) {
-        let img: IRssMedium = { src: enc["@_url"], type: MediumType.Image };
+        return { src: enc["@_url"], type: MediumType.Image };
+    }
 
+    let media = elem["media:content"];
+    if (media && media["@_type"]?.includes("image")) {
+        const [width, height] = [media["@_width"], media["@_height"]];
+        let img: IRssMedium = { src: media["@_url"], type: MediumType.Image };
+        if (width) {
+            img.width = width;
+        }
+        if (height) {
+            img.height = height;
+        }
         return img;
     }
     return null;
