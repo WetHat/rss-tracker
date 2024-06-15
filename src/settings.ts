@@ -69,7 +69,7 @@ export class RSSTrackerSettingTab extends PluginSettingTab {
 	display(): void {
 		const { containerEl } = this;
 		containerEl.empty();
-
+		const frag = containerEl.doc.createDocumentFragment()
 		// feed template setting
 		new Setting(containerEl)
 			.setName('Default RSS Feed Template')
@@ -131,7 +131,7 @@ export class RSSTrackerSettingTab extends PluginSettingTab {
 			});
 		new Setting(containerEl)
 			.setName("Feed Location")
-			.setDesc("Vault level folder for RSS feeds")
+			.setDesc("'.' to create new feeds next to the active note, '/' to create new feeds at vault root or path to a folder for new feeds.")
 			.addText(ta => {
 				ta
 					.setPlaceholder(DEFAULT_SETTINGS.rssFeedFolder)
