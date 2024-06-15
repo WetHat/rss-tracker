@@ -16,6 +16,12 @@
             "link": "https://www.entrepreneur.com/business-news/jack-dorsey-says-corporate-ai-has-surpassed-twitter-x/474595",
             "published": "2024-05-23T19:51:00.000Z",
             "author": "Sherin Shibu",
+            "image": {
+                "src": "https://ic-cdn.flipboard.com/entrepreneur.com/91d2cd6af4c2b6cc9bf09afc68c36e21a40755ca/_xlarge.jpeg",
+                "type": "image",
+                "width": "2000",
+                "height": "1333"
+            },
             "media": [
                 {
                     "src": "https://ic-cdn.flipboard.com/entrepreneur.com/91d2cd6af4c2b6cc9bf09afc68c36e21a40755ca/_xlarge.jpeg",
@@ -37,6 +43,12 @@
             "link": "https://buffer.com/resources/buffer-product-update-may-2024/",
             "published": "2024-05-22T15:03:57.000Z",
             "author": "Buffer",
+            "image": {
+                "src": "https://ic-cdn.flipboard.com/buffer.com/7295abec9d6cdb75b6d8e351974c1b331cafe126/_xlarge.png",
+                "type": "image",
+                "width": "1316",
+                "height": "632"
+            },
             "media": [
                 {
                     "src": "https://ic-cdn.flipboard.com/buffer.com/7295abec9d6cdb75b6d8e351974c1b331cafe126/_xlarge.png",
@@ -58,6 +70,12 @@
             "link": "https://www.t3.com/news/bluesky-just-gave-you-a-great-reason-to-finally-quit-twitter",
             "published": "2024-05-23T11:00:53.000Z",
             "author": "By Carrie Marshall",
+            "image": {
+                "src": "https://cdn.mos.cms.futurecdn.net/CcY75ZjGLzBZdVdfGxbdR3-1200-80.jpg",
+                "type": "image",
+                "width": "1200",
+                "height": "675"
+            },
             "media": [
                 {
                     "src": "https://cdn.mos.cms.futurecdn.net/CcY75ZjGLzBZdVdfGxbdR3-1200-80.jpg",
@@ -79,6 +97,12 @@
             "link": "https://www.cato.org/blog/jack-dorsey-why-social-medias-future-should-be-decentralized-what-takeaways-are-policymakers",
             "published": "2024-05-21T13:00:00.000Z",
             "author": "By David Inserra",
+            "image": {
+                "src": "https://ic-cdn.flipboard.com/cato.org/32c743e2bb2db6293443955896aa012b6ecf7aec/_xlarge.jpeg",
+                "type": "image",
+                "width": "5285",
+                "height": "3516"
+            },
             "media": [
                 {
                     "src": "https://ic-cdn.flipboard.com/cato.org/32c743e2bb2db6293443955896aa012b6ecf7aec/_xlarge.jpeg",
@@ -100,6 +124,12 @@
             "link": "https://techcrunch.com/2024/05/22/linktree-surpasses-50m-users-rolls-out-beta-social-commerce-program/?eicker.news=",
             "published": "2024-05-22T13:19:57.000Z",
             "author": "Lauren Forristal",
+            "image": {
+                "src": "https://ic-cdn.flipboard.com/techcrunch.com/7e8ca89da50410df713077858a681e2789455675/_xlarge.jpeg",
+                "type": "image",
+                "width": "1200",
+                "height": "800"
+            },
             "media": [
                 {
                     "src": "https://ic-cdn.flipboard.com/techcrunch.com/7e8ca89da50410df713077858a681e2789455675/_xlarge.jpeg",
@@ -121,6 +151,12 @@
             "link": "https://digiday.com/marketing/as-xs-turbulence-continues-can-alternative-social-platforms-catch-marketers-attention/",
             "published": "2024-05-29T04:01:00.000Z",
             "author": "By Kimeko McCoy and Sam Bradley",
+            "image": {
+                "src": "https://ic-cdn.flipboard.com/digiday.com/4f91701e979d754f166c46084485cdecd78872b0/_xlarge.jpeg",
+                "type": "image",
+                "width": "1030",
+                "height": "600"
+            },
             "media": [
                 {
                     "src": "https://ic-cdn.flipboard.com/digiday.com/4f91701e979d754f166c46084485cdecd78872b0/_xlarge.jpeg",
@@ -142,6 +178,12 @@
             "link": "https://qz.com/elon-musk-twitter-x-likes-private-1851496297",
             "published": "2024-05-23T14:40:29.000Z",
             "author": "Maxwell Zeff / Gizmodo",
+            "image": {
+                "src": "https://i.kinja-img.com/image/upload/c_fill,h_675,pg_1,q_80,w_1200/d0f0eb517862fbf31791896b080b14e1.jpg",
+                "type": "image",
+                "width": "1200",
+                "height": "675"
+            },
             "media": [
                 {
                     "src": "https://i.kinja-img.com/image/upload/c_fill,h_675,pg_1,q_80,w_1200/d0f0eb517862fbf31791896b080b14e1.jpg",
@@ -163,6 +205,12 @@
             "link": "https://www.washingtonpost.com/politics/2024/05/14/why-jack-dorsey-gave-up-bluesky/",
             "published": "2024-05-14T13:18:56.000Z",
             "author": "Will Oremus",
+            "image": {
+                "src": "https://ic-cdn.flipboard.com/washingtonpost.com/4dab25eb545f2ed428c4cbcdb7414a382cdf66d0/_xlarge.jpeg",
+                "type": "image",
+                "width": "1440",
+                "height": "987"
+            },
             "media": [
                 {
                     "src": "https://ic-cdn.flipboard.com/washingtonpost.com/4dab25eb545f2ed428c4cbcdb7414a382cdf66d0/_xlarge.jpeg",
@@ -184,6 +232,12 @@
             "link": "https://www.benzinga.com/24/05/38750990/jack-dorsey-says-he-left-twitter-alternative-he-helped-create-because-it-was-literally-repeating-all",
             "published": "2024-05-10T01:38:56.000Z",
             "author": "Benzinga Neuro",
+            "image": {
+                "src": "https://ic-cdn.flipboard.com/benzinga.com/9814915d0aa04651004b2e6fad485fdc5658ab7d/_large.jpeg",
+                "type": "image",
+                "width": "1024",
+                "height": "683"
+            },
             "media": [
                 {
                     "src": "https://ic-cdn.flipboard.com/benzinga.com/9814915d0aa04651004b2e6fad485fdc5658ab7d/_large.jpeg",
@@ -205,6 +259,12 @@
             "link": "https://www.pcmag.com/news/bluesky-adds-direct-messaging-but-its-no-signal-replacement-yet",
             "published": "2024-05-23T21:22:41.000Z",
             "author": "Rob Pegoraro",
+            "image": {
+                "src": "https://ic-cdn.flipboard.com/pcmag.com/bb8a66a81ff990c2c3b72c2e4bba7d439a38b4e5/_xlarge.jpeg",
+                "type": "image",
+                "width": "1119",
+                "height": "630"
+            },
             "media": [
                 {
                     "src": "https://ic-cdn.flipboard.com/pcmag.com/bb8a66a81ff990c2c3b72c2e4bba7d439a38b4e5/_xlarge.jpeg",
@@ -226,6 +286,12 @@
             "link": "https://www.dailykos.com/stories/2024/5/13/2240380/-I-Wanna-Tweet-Like-Common-People-Do",
             "published": "2024-05-13T12:00:07.000Z",
             "author": "by angryea",
+            "image": {
+                "src": "https://ic-cdn.flipboard.com/dailykos.com/8586379780730728c9bb0f2906a068545383b04b/_large.jpeg",
+                "type": "image",
+                "width": "915",
+                "height": "686"
+            },
             "media": [
                 {
                     "src": "https://ic-cdn.flipboard.com/dailykos.com/8586379780730728c9bb0f2906a068545383b04b/_large.jpeg",
@@ -247,6 +313,12 @@
             "link": "https://www.piratewires.com/p/interview-with-jack-dorsey-mike-solana",
             "published": "2024-05-09T19:44:53.000Z",
             "author": "Pirate Wires",
+            "image": {
+                "src": "https://ic-cdn.flipboard.com/sanity.io/0aff3a90073c1c6d8765c8eabd1a19d5f7299a49/_large.png",
+                "type": "image",
+                "width": "800",
+                "height": "420"
+            },
             "media": [
                 {
                     "src": "https://ic-cdn.flipboard.com/sanity.io/0aff3a90073c1c6d8765c8eabd1a19d5f7299a49/_large.png",
@@ -268,6 +340,12 @@
             "link": "https://www.entrepreneur.com/business-news/jack-dorsey-reveals-why-he-left-bluesky-deleted-account/473992",
             "published": "2024-05-10T18:49:50.000Z",
             "author": "Sherin Shibu",
+            "image": {
+                "src": "https://ic-cdn.flipboard.com/entrepreneur.com/087f9dc04f93846bbd87df9d09c97416507b4e44/_xlarge.jpeg",
+                "type": "image",
+                "width": "2000",
+                "height": "1333"
+            },
             "media": [
                 {
                     "src": "https://ic-cdn.flipboard.com/entrepreneur.com/087f9dc04f93846bbd87df9d09c97416507b4e44/_xlarge.jpeg",
@@ -289,6 +367,12 @@
             "link": "https://www.coindesk.com/markets/2024/05/10/former-twitter-ceo-jack-dorsey-says-bitcoin-will-go-beyond-1-million-in-2030/",
             "published": "2024-05-10T16:47:29.000Z",
             "author": "Helene Braun",
+            "image": {
+                "src": "https://ic-cdn.flipboard.com/coindesk.com/1a47910baa80e3351083e65e01cda0704f543404/_large.jpeg",
+                "type": "image",
+                "width": "567",
+                "height": "319"
+            },
             "media": [
                 {
                     "src": "https://ic-cdn.flipboard.com/coindesk.com/1a47910baa80e3351083e65e01cda0704f543404/_large.jpeg",
@@ -310,6 +394,12 @@
             "link": "https://decrypt.co/230155/jack-dorsey-bitcoin-price-to-hit-1-million-in-2030",
             "published": "2024-05-10T10:28:48.000Z",
             "author": "Stephen Graves",
+            "image": {
+                "src": "https://ic-cdn.flipboard.com/decrypt.co/6ed74fee2cf549c3d60ecacec357db41a4140cfe/_large.jpeg",
+                "type": "image",
+                "width": "1024",
+                "height": "512"
+            },
             "media": [
                 {
                     "src": "https://ic-cdn.flipboard.com/decrypt.co/6ed74fee2cf549c3d60ecacec357db41a4140cfe/_large.jpeg",
@@ -368,6 +458,12 @@
             "link": "https://play.acast.com/s/dtns/the-cisos-are-sweating-dtns-4767",
             "published": "2024-05-10T22:25:11.000Z",
             "author": "play.acast.com",
+            "image": {
+                "src": "https://assets.pippa.io/shows/61954547cb03c875f7617118/1715374035500-bdb277bce62f831a0845a69b1430959f.jpeg",
+                "type": "image",
+                "width": "3000",
+                "height": "3000"
+            },
             "media": [
                 {
                     "src": "https://assets.pippa.io/shows/61954547cb03c875f7617118/1715374035500-bdb277bce62f831a0845a69b1430959f.jpeg",
@@ -389,6 +485,12 @@
             "link": "https://www.benzinga.com/news/24/05/38634153/jack-dorsey-steps-down-from-bluesky-board-amidst-controversy-at-block-refers-to-elon-musks-x-as-free",
             "published": "2024-05-06T02:18:01.000Z",
             "author": "Ananya Gairola",
+            "image": {
+                "src": "https://ic-cdn.flipboard.com/benzinga.com/f254f25a7c0b838c397ce8343f1c0a0154b707f5/_large.jpeg",
+                "type": "image",
+                "width": "1024",
+                "height": "683"
+            },
             "media": [
                 {
                     "src": "https://ic-cdn.flipboard.com/benzinga.com/f254f25a7c0b838c397ce8343f1c0a0154b707f5/_large.jpeg",
@@ -410,6 +512,12 @@
             "link": "https://www.businessinsider.in/tech/news/former-twitter-ceo-jack-dorsey-is-spilling-tea-all-over-the-platform-fka-twitter-and-heres-a-possible-reason/articleshow/109869173.cms",
             "published": "2024-05-06T01:07:00.000Z",
             "author": "Hannah Getahun",
+            "image": {
+                "src": "https://ic-cdn.flipboard.com/businessinsider.in/79803084b1a25a339b8854f8729efb366270425b/_xlarge.jpeg",
+                "type": "image",
+                "width": "1200",
+                "height": "900"
+            },
             "media": [
                 {
                     "src": "https://ic-cdn.flipboard.com/businessinsider.in/79803084b1a25a339b8854f8729efb366270425b/_xlarge.jpeg",
@@ -431,6 +539,12 @@
             "link": "https://readwrite.com/bluesky-to-launch-dms-video-and-enhanced-custom-feeds/",
             "published": "2024-05-08T13:56:59.000Z",
             "author": "Suswati Basu",
+            "image": {
+                "src": "https://ic-cdn.flipboard.com/readwrite.com/1596d2c601aa472b47a62cd33fd6c6fe785157fd/_xlarge.png",
+                "type": "image",
+                "width": "1200",
+                "height": "800"
+            },
             "media": [
                 {
                     "src": "https://ic-cdn.flipboard.com/readwrite.com/1596d2c601aa472b47a62cd33fd6c6fe785157fd/_xlarge.png",
@@ -452,6 +566,12 @@
             "link": "https://boingboing.net/2024/05/07/jack-dorsey-takes-a-stool-at-elons-nazi-bar.html",
             "published": "2024-05-07T16:02:21.000Z",
             "author": "Jason Weisberger",
+            "image": {
+                "src": "https://ic-cdn.flipboard.com/boingboing.net/2de778ecc017f112355d1ae9cc5940b09bd26700/_xlarge.jpeg",
+                "type": "image",
+                "width": "1200",
+                "height": "1200"
+            },
             "media": [
                 {
                     "src": "https://ic-cdn.flipboard.com/boingboing.net/2de778ecc017f112355d1ae9cc5940b09bd26700/_xlarge.jpeg",
@@ -473,6 +593,12 @@
             "link": "https://www.bloomberg.com/news/articles/2024-05-06/jack-dorsey-leaves-bluesky-board-calls-x-freedom-technology",
             "published": "2024-05-06T03:57:16.000Z",
             "author": "By Vlad Savov",
+            "image": {
+                "src": "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iPw3ufuMGb7U/v1/1200x800.jpg",
+                "type": "image",
+                "width": "1200",
+                "height": "800"
+            },
             "media": [
                 {
                     "src": "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iPw3ufuMGb7U/v1/1200x800.jpg",
@@ -494,6 +620,12 @@
             "link": "https://gizmodo.com/jack-dorsey-bluesky-twitter-founder-elon-musk-x-1851469847",
             "published": "2024-05-10T20:00:00.000Z",
             "author": "Maxwell Zeff",
+            "image": {
+                "src": "https://ic-cdn.flipboard.com/kinja-img.com/7f6c3c91174d14a64e64e9b370922eb3df92512c/_xlarge.jpeg",
+                "type": "image",
+                "width": "1200",
+                "height": "675"
+            },
             "media": [
                 {
                     "src": "https://ic-cdn.flipboard.com/kinja-img.com/7f6c3c91174d14a64e64e9b370922eb3df92512c/_xlarge.jpeg",
@@ -515,6 +647,12 @@
             "link": "https://nypost.com/2024/05/10/tech/why-jack-dorsey-quit-bluesky-it-was-repeating-all-mistakes-twitter-made/",
             "published": "2024-05-10T14:20:10.000Z",
             "author": "Shannon Thaler",
+            "image": {
+                "src": "https://ic-cdn.flipboard.com/nypost.com/bb690fde8bd0b145d35b39c3904683e37ce36c67/_large.jpeg",
+                "type": "image",
+                "width": "1024",
+                "height": "682"
+            },
             "media": [
                 {
                     "src": "https://ic-cdn.flipboard.com/nypost.com/bb690fde8bd0b145d35b39c3904683e37ce36c67/_large.jpeg",
@@ -536,6 +674,12 @@
             "link": "https://qz.com/jack-dorsey-bluesky-twitter-x-elon-musk-1851458108",
             "published": "2024-05-06T15:26:50.000Z",
             "author": "Maxwell Zeff / Gizmodo",
+            "image": {
+                "src": "https://i.kinja-img.com/image/upload/c_fill,h_675,pg_1,q_80,w_1200/c719017c23b6cc5e80e4ab61df01289a.jpg",
+                "type": "image",
+                "width": "1200",
+                "height": "675"
+            },
             "media": [
                 {
                     "src": "https://i.kinja-img.com/image/upload/c_fill,h_675,pg_1,q_80,w_1200/c719017c23b6cc5e80e4ab61df01289a.jpg",
@@ -577,6 +721,12 @@
             "link": "https://shows.acast.com/gotch-watch/episodes/7-the-end-again",
             "published": "2024-05-10T19:21:13.000Z",
             "author": "shows.acast.com",
+            "image": {
+                "src": "https://assets.pippa.io/shows/6508bc9c8298b50011be9c3a/1715136430111-2f740ed3275af5c981bf96a2c5118c90.jpeg",
+                "type": "image",
+                "width": "3000",
+                "height": "3000"
+            },
             "media": [
                 {
                     "src": "https://assets.pippa.io/shows/6508bc9c8298b50011be9c3a/1715136430111-2f740ed3275af5c981bf96a2c5118c90.jpeg",
@@ -598,6 +748,12 @@
             "link": "https://www.techdirt.com/2024/05/13/bluesky-is-building-the-decentralized-social-media-jack-dorsey-wants-even-if-he-doesnt-realize-it/",
             "published": "2024-05-13T20:01:00.000Z",
             "author": "Mike Masnick",
+            "image": {
+                "src": "https://ic-cdn.flipboard.com/techdirt.com/898f1c9c9a8b4a400aeb7225c2f92177d4d07b34/_xlarge.png",
+                "type": "image",
+                "width": "1200",
+                "height": "630"
+            },
             "media": [
                 {
                     "src": "https://ic-cdn.flipboard.com/techdirt.com/898f1c9c9a8b4a400aeb7225c2f92177d4d07b34/_xlarge.png",
@@ -619,6 +775,12 @@
             "link": "https://www.ndtv.com/world-news/jack-dorsey-quits-bluesky-board-confirms-company-5598224",
             "published": "2024-05-06T04:51:22.000Z",
             "author": "Indo-Asian News Service",
+            "image": {
+                "src": "https://c.ndtvimg.com/2021-12/24n3cb38_jack-dorsey_625x300_22_December_21.jpg",
+                "type": "image",
+                "width": "650",
+                "height": "400"
+            },
             "media": [
                 {
                     "src": "https://c.ndtvimg.com/2021-12/24n3cb38_jack-dorsey_625x300_22_December_21.jpg",

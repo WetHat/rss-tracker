@@ -10,7 +10,7 @@ tags: []
 
 🔗Read article [online](https://fosstodon.org/@WetHat/112434672435437631). For other items in this feed see [[@WetHat (WetHat💦)]].
 
-- [ ] [[Replied to꞉ @WetHat There can be significant benefits with static readonly field…]] - 2024-05-13T16:15:50.000Z
+- [ ] [[Replied to꞉ @WetHat There can be significant benefits with static readonly field⋯]] - 2024-05-13T16:15:50.000Z
 - - -
 [@kvandermotten](https://mastodon.online/@kvandermotten) Excellent articles! Thanks for pointing that out!👍
 

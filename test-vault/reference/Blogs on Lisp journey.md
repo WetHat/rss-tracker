@@ -2,7 +2,7 @@
 feedurl: https://localhost/reference/Blogs on Lisp journey/assets/feed.xml
 site: https://localhost/blog/
 itemlimit: 10
-updated: 2024-06-12T06:27:20.558Z
+updated: 2024-06-15T17:13:28.840Z
 status: OK
 tags:
   - rss

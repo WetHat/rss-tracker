@@ -85,7 +85,7 @@ Then it's even smaller. No code changes. Run all my tests, looks good. My projec
 
 🔗Read article [online](https://feeds.hanselman.com/~/673659136/0/scotthanselman~Upgrading-a-year-old-University-Project-to-NET-with-dotnetupgradeassistant). For other items in this feed see [[Scott Hanselman's Blog]].
 
-- [ ] [[Upgrading a 20 year old University Project to ․NET 6 with dotnet-upgrade-assista…]] - 2021-11-18T21:18:00.000Z
+- [ ] [[Upgrading a 20 year old University Project to ․NET 6 with dotnet-upgrade-assista⋯]] - 2021-11-18T21:18:00.000Z
 - - -
 I wrote a [Tiny Virtual Operating System](https://feeds.hanselman.com/~/t/0/0/scotthanselman/~https://www.hanselman.com/blog/rescuing-the-tiny-os-in-c) for a 300-level OS class in C# for college back in 2001 (?) and later [moved it to VB.NET in 2002](https://feeds.hanselman.com/~/t/0/0/scotthanselman/~https://www.hanselman.com/blog/ive-ported-my-tiny-abstract-os-and-cpu-in-c-projectnbspfr). This is all pre-.NET Core, and on early .NET 1.1 or 2.0 on Windows. I [moved it to GitHub 5 years ago](https://feeds.hanselman.com/~/t/0/0/scotthanselman/~https://github.com/shanselman/TinyOS) and [ported it to .NET Core 2.0 at the time](https://feeds.hanselman.com/~/t/0/0/scotthanselman/~https://www.hanselman.com/blog/porting-a-15-year-old-net-11-virtual-cpu-tiny-operating-system-school-project-to-net-core-20). At this point it was 15 years old, so it was cool to see this project running on Windows, Linux, in Docker, and on a Raspberry Pi...a machine that didn't exist when the project was originally written.
 

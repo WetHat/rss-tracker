@@ -11,7 +11,7 @@ tags: []
 
 🔗Read article [online](https://github.blog/2024-05-21-introducing-github-copilot-extensions/). For other items in this feed see [[The GitHub Blog꞉ Product News and Updates]].
 
-- [ ] [[Introducing GitHub Copilot Extensions꞉ Unlocking unlimited possibilities with ou…]] - 2024-05-21T15:27:46.000Z
+- [ ] [[Introducing GitHub Copilot Extensions꞉ Unlocking unlimited possibilities with ou⋯]] - 2024-05-21T15:27:46.000Z
 - - -
 Today, we’re introducing GitHub Copilot Extensions to bring the world’s knowledge into the most widely adopted AI developer tool. Through a growing partner ecosystem, Copilot Extensions enables developers to build and deploy to the cloud in their natural language with their preferred tools and services, all without leaving the IDE or GitHub.com. With Copilot and now Copilot Extensions, developers can stay in the flow longer, uplevel their skills, and innovate faster.
 

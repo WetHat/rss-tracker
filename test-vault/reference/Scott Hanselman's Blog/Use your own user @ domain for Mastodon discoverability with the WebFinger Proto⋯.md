@@ -132,7 +132,7 @@ Hope this helps!
 
 🔗Read article [online](https://feeds.hanselman.com/~/722495722/0/scotthanselman~Use-your-own-user-domain-for-Mastodon-discoverability-with-the-WebFinger-Protocol-without-hosting-a-server). For other items in this feed see [[Scott Hanselman's Blog]].
 
-- [ ] [[Use your own user @ domain for Mastodon discoverability with the WebFinger Proto…]] - 2022-12-18T22:16:30.000Z
+- [ ] [[Use your own user @ domain for Mastodon discoverability with the WebFinger Proto⋯]] - 2022-12-18T22:16:30.000Z
 - - -
 Mastodon is a free, open-source social networking service that is decentralized and distributed. It was created in 2016 as an alternative to centralized social media platforms such as Twitter and Facebook.
 

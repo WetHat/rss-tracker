@@ -1,8 +1,8 @@
 ---
-feedurl: reference/The Hacker News/assets/feed.xml
+feedurl: https://localhost/reference/The Hacker News/assets/feed.xml
 site: https://thehackernews.com
 itemlimit: 10
-updated: 2024-06-09T16:49:22.819Z
+updated: 2024-06-15T16:46:20.258Z
 status: OK
 tags:
   - rss

@@ -70,7 +70,7 @@ Next step is to make this even more automatic or select a more automated solutio
 
 🔗Read article [online](https://feeds.hanselman.com/~/749206136/0/scotthanselman~Using-WSL-and-Lets-Encrypt-to-create-Azure-App-Service-SSL-Wildcard-Certificates). For other items in this feed see [[Scott Hanselman's Blog]].
 
-- [ ] [[Using WSL and Let's Encrypt to create Azure App Service SSL Wildcard Certificate…]] - 2023-06-27T17:17:25.000Z
+- [ ] [[Using WSL and Let's Encrypt to create Azure App Service SSL Wildcard Certificate⋯]] - 2023-06-27T17:17:25.000Z
 - - -
 There are many let's encrypt automatic tools for azure but I also wanted to see if I could use certbot in wsl to generate a wildcard certificate for the azure Friday website and then upload the resulting certificates to azure app service.
 

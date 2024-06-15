@@ -1,8 +1,8 @@
 ---
-feedurl: reference/Scott Hanselman's Blog/assets/feed.xml
+feedurl: https://localhost/reference/Scott Hanselman's Blog/assets/feed.xml
 site: https://www.hanselman.com/blog/
 itemlimit: 10
-updated: 2024-06-09T20:46:00.060Z
+updated: 2024-06-15T16:52:56.175Z
 status: OK
 tags:
   - rss

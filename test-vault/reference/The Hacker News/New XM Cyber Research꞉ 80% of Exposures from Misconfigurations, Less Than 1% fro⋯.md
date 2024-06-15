@@ -12,6 +12,6 @@ tags: []
 
 🔗Read article [online](https://thehackernews.com/2024/05/new-xm-cyber-research-80-of-exposures.html). For other items in this feed see [[The Hacker News]].
 
-- [ ] [[New XM Cyber Research꞉ 80% of Exposures from Misconfigurations, Less Than 1% fro…]] - 2024-05-17T11:29:00.000Z
+- [ ] [[New XM Cyber Research꞉ 80% of Exposures from Misconfigurations, Less Than 1% fro⋯]] - 2024-05-17T11:29:00.000Z
 - - -
 A new report from XM Cyber has found – among other insights - a dramatic gap between where most organizations focus their security efforts, and where the most serious threats actually reside. The new report, Navigating the Paths of Risk: The State of Exposure Management in 2024, is based on hundreds of thousands of attack path assessments conducted by the XM Cyber
