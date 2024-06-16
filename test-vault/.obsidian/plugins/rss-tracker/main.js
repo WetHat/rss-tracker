@@ -1938,7 +1938,7 @@ tags: {{tags}}
 
 \u{1F517}Read article [online]({{link}}). For other items in this feed see [[{{feedName}}]].
 
-- [ ] [[{{fileName}}]] - {{publishDate}}
+- [ ] [[{{fileName}}]]
 - - -
 {{content}}
 `,
@@ -3519,28 +3519,37 @@ var _FeedManager = class {
       itemFolder = await this.app.vault.createFolder(itemFolderPath);
     }
     const meta = this.app.metadataCache;
-    let items = itemFolder.children.filter((fof) => fof instanceof import_obsidian2.TFile).map((f) => f).filter((f) => {
+    let items = itemFolder.children.filter((fof) => fof instanceof import_obsidian2.TFile).map((x) => {
       var _a2;
-      const fm = (_a2 = meta.getFileCache(f)) == null ? void 0 : _a2.frontmatter;
-      return (fm == null ? void 0 : fm["id"]) && (fm == null ? void 0 : fm["feed"]);
-    }).sort((a, b) => b.stat.mtime - a.stat.mtime);
-    const knownIDs = new Set(items.map((it) => {
+      const f = x, fm = (_a2 = meta.getFileCache(f)) == null ? void 0 : _a2.frontmatter, annotated = { item: f };
+      if (fm) {
+        const { id, published } = fm;
+        annotated.id = id;
+        if (published) {
+          annotated.published = new Date(published).valueOf();
+        }
+      }
+      return annotated;
+    }).filter((itm) => itm.published && itm.id).sort((a, b) => {
       var _a2, _b;
-      return (_b = (_a2 = meta.getFileCache(it)) == null ? void 0 : _a2.frontmatter) == null ? void 0 : _b["id"];
-    })), newItems = feed.items.filter((it) => !knownIDs.has(it.id));
+      return ((_a2 = a.published) != null ? _a2 : 0) - ((_b = b.published) != null ? _b : 0);
+    });
+    const knownIDs = new Set(items.map((it) => {
+      var _a2;
+      return (_a2 = it.id) != null ? _a2 : "?";
+    })), newItems = feed.items.slice(0, itemLimit).filter((it) => !knownIDs.has(it.id));
     const deleteCount = Math.min(items.length + newItems.length - itemLimit, items.length);
     for (let index = 0; index < deleteCount; index++) {
       const item = items[index];
-      this.app.vault.delete(item);
+      this.app.vault.delete(item.item);
     }
-    const n = Math.min(itemLimit, newItems.length);
-    for (let index = 0; index < n; index++) {
+    for (let index = 0; index < newItems.length; index++) {
       const item = newItems[index];
       this.saveFeedItem(itemFolder, item).catch((reason) => {
         throw reason;
       });
     }
-    return n;
+    return newItems.length;
   }
   /**
    * Create an RSS feed Markdown representaiton from a local XML file.

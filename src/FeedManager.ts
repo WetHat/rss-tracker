@@ -45,6 +45,15 @@ export class FeedConfig {
 }
 
 /**
+ * Annotated RSS item with selected Frontmatter properties.
+ */
+interface IAnnotatedItem {
+    item: TFile;
+    id?: string;
+    published?: number;
+}
+
+/**
  * Manage RSS feeds in Obsidian.
  *
  * Currently available functionality:
@@ -164,33 +173,45 @@ export class FeedManager {
 
         const meta = this.app.metadataCache;
         // get all existing items from the items directory. Oldest items first.
-        let items: TFile[] = itemFolder.children.filter((fof) => fof instanceof TFile)
-            .map(f => f as TFile)
-            .filter(f => {
-                const fm = meta.getFileCache(f)?.frontmatter;
-                return fm?.["id"] && fm?.["feed"]
+        let items: IAnnotatedItem[] = itemFolder.children.filter((fof) => fof instanceof TFile)
+            .map(x => { // annotate the file
+                const
+                    f = x as TFile,
+                    fm = meta.getFileCache(f)?.frontmatter,
+                    annotated: IAnnotatedItem = { item: f };
+                if (fm) {
+                    const { id, published } = fm;
+                    annotated.id = id;
+                    if (published) {
+                        annotated.published = new Date(published).valueOf();
+                    }
+                }
+                return annotated;
             })
-            .sort((a, b) => b.stat.mtime - a.stat.mtime);
+            .filter(itm => itm.published && itm.id)
+            .sort((a: IAnnotatedItem, b: IAnnotatedItem) => (a.published ?? 0) - (b.published ?? 0)); // oldest first
 
         // find new items
-        const knownIDs = new Set<string>(items.map(it => meta.getFileCache(it)?.frontmatter?.["id"])),
-            newItems = feed.items.filter(it => !knownIDs.has(it.id));
+        const
+            knownIDs = new Set<string>(items.map(it => it.id ?? "?")),
+            newItems = feed.items
+                .slice(0,itemLimit) // do not exceed limit
+                .filter(it => !knownIDs.has(it.id)); // assuming newest items first
         // determine how many items needs to be purged
         const deleteCount = Math.min(items.length + newItems.length - itemLimit, items.length);
 
         // remove feed obsolete items from disk
         for (let index = 0; index < deleteCount; index++) {
             const item = items[index];
-            this.app.vault.delete(item);
+            this.app.vault.delete(item.item);
         }
 
         // save items
-        const n = Math.min(itemLimit, newItems.length)
-        for (let index = 0; index < n; index++) {
+        for (let index = 0; index < newItems.length; index++) {
             const item = newItems[index];
             this.saveFeedItem(itemFolder, item).catch(reason => { throw reason });
         }
-        return n;
+        return newItems.length;
     }
 
     /**
@@ -222,29 +243,29 @@ export class FeedManager {
         return this.createFeed(new TrackedRSSfeed(feedXML, "https://localhost/" + xml.path), location);
     }
 
-     /**
-     * Create an RSS feed Markdown representaiton from a hyperlink.
-     *
-     * The Markdown representation consists of
-     * - a feed dashboard
-     * - a directory whic has the same name as the dashboard (without the .md extension)
-     *   containingthe RSS items of the feed,
-     *
-     * The file system layout of an Obsidian RSS feed looks like this:
-     * ~~~
-     * 📂
-     *  ├─ <feedname>.md ← dashboard
-     *  ╰─ 📂<feedname>
-     *        ├─ <item-1>.md
-     *        ├─ …
-     *        ╰─ <item-n>.md
-     * ~~~
-     *
-     * @param url - A hyperlink pointing to an RSS feed on the web.
-     * @param location - The obsidian folder where to create the Markdown files
-     *                   representing the feed.
-     * @returns The dashboard Markdown file.
-     */
+    /**
+    * Create an RSS feed Markdown representaiton from a hyperlink.
+    *
+    * The Markdown representation consists of
+    * - a feed dashboard
+    * - a directory whic has the same name as the dashboard (without the .md extension)
+    *   containingthe RSS items of the feed,
+    *
+    * The file system layout of an Obsidian RSS feed looks like this:
+    * ~~~
+    * 📂
+    *  ├─ <feedname>.md ← dashboard
+    *  ╰─ 📂<feedname>
+    *        ├─ <item-1>.md
+    *        ├─ …
+    *        ╰─ <item-n>.md
+    * ~~~
+    *
+    * @param url - A hyperlink pointing to an RSS feed on the web.
+    * @param location - The obsidian folder where to create the Markdown files
+    *                   representing the feed.
+    * @returns The dashboard Markdown file.
+    */
     async createFeedFromUrl(url: string, location: TFolder): Promise<TFile> {
         const feedXML = await request({
             url: url,
