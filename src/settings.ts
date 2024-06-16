@@ -50,7 +50,7 @@ tags: {{tags}}
 
 🔗Read article [online]({{link}}). For other items in this feed see [[{{feedName}}]].
 
-- [ ] [[{{fileName}}]] - {{publishDate}}
+- [ ] [[{{fileName}}]]
 - - -
 {{content}}
 `,
