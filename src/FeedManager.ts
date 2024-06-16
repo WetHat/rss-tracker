@@ -195,8 +195,8 @@ export class FeedManager {
         const
             knownIDs = new Set<string>(items.map(it => it.id ?? "?")),
             newItems = feed.items
-                .slice(0,itemLimit) // do not exceed limit
-                .filter(it => !knownIDs.has(it.id)); // assuming newest items first
+                .filter(it => !knownIDs.has(it.id)) // assuming newest items first
+                .slice(0,itemLimit); // do not exceed limit
         // determine how many items needs to be purged
         const deleteCount = Math.min(items.length + newItems.length - itemLimit, items.length);
 

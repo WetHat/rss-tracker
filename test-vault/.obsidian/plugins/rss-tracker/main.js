@@ -3537,7 +3537,7 @@ var _FeedManager = class {
     const knownIDs = new Set(items.map((it) => {
       var _a2;
       return (_a2 = it.id) != null ? _a2 : "?";
-    })), newItems = feed.items.slice(0, itemLimit).filter((it) => !knownIDs.has(it.id));
+    })), newItems = feed.items.filter((it) => !knownIDs.has(it.id)).slice(0, itemLimit);
     const deleteCount = Math.min(items.length + newItems.length - itemLimit, items.length);
     for (let index = 0; index < deleteCount; index++) {
       const item = items[index];
