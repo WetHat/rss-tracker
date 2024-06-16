@@ -3263,7 +3263,7 @@ function assembleCreator(elem) {
   var _a2;
   const creator = elem.creator || elem["dc:creator"];
   if (creator) {
-    return creator;
+    return typeof creator === "string" ? creator : creator["#text"];
   }
   return ((_a2 = elem.author) == null ? void 0 : _a2.name) || elem.author;
 }

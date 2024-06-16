@@ -226,7 +226,7 @@ function assembleImage(elem) {
 function assembleCreator(elem) {
     const creator = elem.creator || elem["dc:creator"];
     if (creator) {
-        return creator;
+        return typeof creator === "string" ? creator : creator["#text"];
     }
     return elem.author?.name || elem.author;
 }
