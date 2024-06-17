@@ -3479,13 +3479,14 @@ var _FeedManager = class {
     title = this.formatHashTags(title);
     const byline = author ? ` by ${author}` : "";
     let abstract = `> [!abstract] ${title}${byline} - ${published}`;
-    if (description && item.content) {
-      abstract += "\n> " + description;
+    if (description) {
+      const teaser = description.length > 500 ? description.substring(0, 500) + "\u22EF" : description;
+      abstract += "\n> " + teaser.replaceAll("\n", "\n> ");
     }
     if (image) {
       abstract += "\n>\n> " + this.formatImage(image);
     }
-    if (!content) {
+    if (!content && description && description.length > 500) {
       content = description;
     }
     const basename = item.fileName;
