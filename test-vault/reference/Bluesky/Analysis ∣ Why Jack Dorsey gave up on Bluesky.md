@@ -7,6 +7,7 @@ feed: "Bluesky"
 tags: [rss/Jack_Dorsey,rss/Artificial_Intelligence,rss/Computer_Science,rss/Technology,rss/Bluesky]
 ---
 > [!abstract] Analysis | Why Jack Dorsey gave up on Bluesky by Will Oremus - 2024-05-14T13:18:56.000Z
+> Happy Tuesday! If OpenAI’s latest model is so smart, why couldn’t it come up with a better name for itself than GPT-4o? Send news tips and catchier chatbot monikers to: will.oremus@washpost.com. Why Jack Dorsey gave up on Bluesky One of the more interesting spinoffs from Twitter, in the wake of Elon …
 >
 > ![image|1440x987](https://ic-cdn.flipboard.com/washingtonpost.com/4dab25eb545f2ed428c4cbcdb7414a382cdf66d0/_xlarge.jpeg)
 
@@ -14,4 +15,4 @@ tags: [rss/Jack_Dorsey,rss/Artificial_Intelligence,rss/Computer_Science,rss/Tech
 
 - [ ] [[Analysis ∣ Why Jack Dorsey gave up on Bluesky]] - 2024-05-14T13:18:56.000Z
 - - -
-Happy Tuesday! If OpenAI’s latest model is so smart, why couldn’t it come up with a better name for itself than GPT-4o? Send news tips and catchier chatbot monikers to: will.oremus@washpost.com. Why Jack Dorsey gave up on Bluesky One of the more interesting spinoffs from Twitter, in the wake of Elon …
+{{content}}

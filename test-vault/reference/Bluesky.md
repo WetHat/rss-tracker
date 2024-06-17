@@ -2,7 +2,7 @@
 feedurl: https://localhost/reference/Bluesky/assets/feed.xml
 site: https://flipboard.com/topic/blueskysocial
 itemlimit: 10
-updated: 2024-06-15T16:38:37.743Z
+updated: 2024-06-17T14:23:18.703Z
 status: OK
 tags:
   - rss

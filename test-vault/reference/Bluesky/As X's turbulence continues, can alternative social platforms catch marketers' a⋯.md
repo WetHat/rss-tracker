@@ -7,6 +7,7 @@ feed: "Bluesky"
 tags: [rss/Internet_Marketing,rss/Digital_Marketing,rss/Viral_Marketing,rss/Advertising,rss/Bluesky]
 ---
 > [!abstract] As X's turbulence continues, can alternative social platforms catch marketers' attention? by By Kimeko McCoy and Sam Bradley - 2024-05-29T04:01:00.000Z
+> As a Digiday+ member, you were able to access this article early through the Digiday+ Story Preview email. See other exclusives or manage your …
 >
 > ![image|1030x600](https://ic-cdn.flipboard.com/digiday.com/4f91701e979d754f166c46084485cdecd78872b0/_xlarge.jpeg)
 
@@ -14,4 +15,4 @@ tags: [rss/Internet_Marketing,rss/Digital_Marketing,rss/Viral_Marketing,rss/Adve
 
 - [ ] [[As X's turbulence continues, can alternative social platforms catch marketers' a⋯]] - 2024-05-29T04:01:00.000Z
 - - -
-As a Digiday+ member, you were able to access this article early through the Digiday+ Story Preview email. See other exclusives or manage your …
+{{content}}

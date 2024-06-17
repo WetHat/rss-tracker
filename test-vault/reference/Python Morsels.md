@@ -1,8 +1,8 @@
 ---
-feedurl: reference/Python Morsels/assets/feed.xml
+feedurl: https://localhost/reference/Python Morsels/assets/feed.xml
 site: https://www.pythonmorsels.com/topics/
 itemlimit: 10
-updated: 2024-06-08T16:36:37.108Z
+updated: 2024-06-17T14:23:09.847Z
 status: OK
 tags:
   - rss

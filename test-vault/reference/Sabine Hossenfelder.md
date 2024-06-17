@@ -1,8 +1,8 @@
 ---
-feedurl: reference/Sabine Hossenfelder/assets/feed.xml
+feedurl: https://localhost/reference/Sabine Hossenfelder/assets/feed.xml
 site: https://www.youtube.com/channel/UC1yNl2E66ZzKApQdRuTQ4tw
 itemlimit: 10
-updated: 2024-05-29T18:23:27.829Z
+updated: 2024-06-17T14:23:07.618Z
 status: OK
 tags:
   - rss

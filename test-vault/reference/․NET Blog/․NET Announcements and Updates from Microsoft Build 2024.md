@@ -8,8 +8,8 @@ tags: [rss/〭NET,rss/〭NET_Aspire,rss/〭NET_Internals,rss/〭NET_MAUI,rss/AI,
 ---
 > [!abstract] .NET Announcements and Updates from Microsoft Build 2024 by .NET Team - 2024-05-21T17:05:00.000Z
 > Our latest updates and announcements from Microsoft Build including .NET Aspire, .NET 9 Preview 4, C# 13, Blazor, .NET MAUI, and more!
-
-The post [.NET Announcements and Updates from Microsoft Build 2024](https://devblogs.microsoft.com/dotnet/dotnet-build-2024-announcements/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
+> 
+> The post [.NET Announcements and Updates from Microsoft Build 2024](https://devblogs.microsoft.com/dotnet/dotnet-build-2024-announcements/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 
 🔗Read article [online](https://devblogs.microsoft.com/dotnet/dotnet-build-2024-announcements/). For other items in this feed see [[․NET Blog]].
 

@@ -2,7 +2,7 @@
 feedurl: https://localhost/reference/PyCoder’s Weekly/assets/feed.xml
 site: https://pycoders.com/
 itemlimit: 10
-updated: 2024-06-12T06:53:08.018Z
+updated: 2024-06-17T14:38:36.311Z
 status: OK
 tags:
   - rss

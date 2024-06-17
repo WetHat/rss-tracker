@@ -7,6 +7,7 @@ feed: "The Hacker News"
 tags: []
 ---
 > [!abstract] New XM Cyber Research: 80% of Exposures from Misconfigurations, Less Than 1% from CVEs by info@thehackernews.com (The Hacker News) - 2024-05-17T11:29:00.000Z
+> A new report from XM Cyber has found – among other insights - a dramatic gap between where most organizations focus their security efforts, and where the most serious threats actually reside. The new report, Navigating the Paths of Risk: The State of Exposure Management in 2024, is based on hundreds of thousands of attack path assessments conducted by the XM Cyber
 >
 > ![image](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgyW5tQUIjpctocrlvWbnUcdnROq7YRBoKp5VQEfa97lFMq6oPX_VN0u_eDInWPMdG2cCEcZgH9L8c0MjYSQoGHpGE1pTPos0ihhtK1IuZIYz7X7go2EOMELR9ch2bTiYMY0ffMQ28jSrkM-xv7KmHgbUTyppDuM_xywMtAR6ZyT5UkT8eR3po0JIXTSeo/s1600/main.png)
 
@@ -14,4 +15,4 @@ tags: []
 
 - [ ] [[New XM Cyber Research꞉ 80% of Exposures from Misconfigurations, Less Than 1% fro⋯]] - 2024-05-17T11:29:00.000Z
 - - -
-A new report from XM Cyber has found – among other insights - a dramatic gap between where most organizations focus their security efforts, and where the most serious threats actually reside. The new report, Navigating the Paths of Risk: The State of Exposure Management in 2024, is based on hundreds of thousands of attack path assessments conducted by the XM Cyber
+{{content}}

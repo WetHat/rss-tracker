@@ -1,8 +1,8 @@
 ---
-feedurl: reference/TypeScript TV/assets/feed.xml
+feedurl: https://localhost/reference/TypeScript TV/assets/feed.xml
 site: https://typescript.tv/
 itemlimit: 10
-updated: 2024-05-29T17:17:05.632Z
+updated: 2024-06-17T14:37:24.551Z
 status: OK
 tags:
   - rss

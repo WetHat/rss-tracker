@@ -7,6 +7,13 @@ feed: "Python Morsels"
 tags: []
 ---
 > [!abstract] TextIOWrapper‽ converting files to strings in Python - 2024-02-05T16:00:00.000Z
+> Ever encountered an `_io.TextIOWrapper` object when you wished you had a string? That's Python's version of a "text file" object!
+> 
+> **Table of contents**
+> 
+> 1. [`TextIOWrapper` objects are files](https://www.pythonmorsels.com/TextIOWrapper/#textiowrapper-objects-are-files)
+> 2. [`_io.TextIOWrapper` aren't the _only_ "files"](https://www.pythonmorsels.com/TextIOWrapper/#_iotextiowrapper-arent-the-only-files)
+> 3. [Don't try to pass a file to `str`](https://www.pythonmorsels.com/TextIOWrapper/#dont-try-t⋯
 
 🔗Read article [online](https://www.pythonmorsels.com/TextIOWrapper/). For other items in this feed see [[Python Morsels]].
 

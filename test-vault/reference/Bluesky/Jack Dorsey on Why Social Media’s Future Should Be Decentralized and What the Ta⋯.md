@@ -7,6 +7,7 @@ feed: "Bluesky"
 tags: [rss/Conservative_View,rss/Technology,rss/Jack_Dorsey,rss/Digital_Currency,rss/Bluesky]
 ---
 > [!abstract] Jack Dorsey on Why Social Media’s Future Should Be Decentralized and What the Takeaways Are for Policymakers by By David Inserra - 2024-05-21T13:00:00.000Z
+> Jack Dorsey, the founder and prior leader of Twitter, now X, had a remarkable conversation on how social media companies face massive pressure from …
 >
 > ![image|5285x3516](https://ic-cdn.flipboard.com/cato.org/32c743e2bb2db6293443955896aa012b6ecf7aec/_xlarge.jpeg)
 
@@ -14,4 +15,4 @@ tags: [rss/Conservative_View,rss/Technology,rss/Jack_Dorsey,rss/Digital_Currency
 
 - [ ] [[Jack Dorsey on Why Social Media’s Future Should Be Decentralized and What the Ta⋯]] - 2024-05-21T13:00:00.000Z
 - - -
-Jack Dorsey, the founder and prior leader of Twitter, now X, had a remarkable conversation on how social media companies face massive pressure from …
+{{content}}

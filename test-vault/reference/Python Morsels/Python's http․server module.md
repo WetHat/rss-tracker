@@ -7,6 +7,14 @@ feed: "Python Morsels"
 tags: []
 ---
 > [!abstract] Python's http.server module - 2024-04-05T23:41:43.000Z
+> Use Python's `http.server` module to serve up a static website on your own machine.
+> 
+> ![](https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F1841759405-9da045272fa3ba2c3dafbff1086447bd10609290a8f06c9e3ef300b43cd23fbf-d_1920x1080&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png)
+> 
+> **Table of contents**
+> 
+> 1. [A directory trees of `index.html` files](https://www.pythonmorsels.com/http-server/#a-directory-trees-of-indexhtml-files)
+> 2. [Serving up HTML files⋯
 
 🔗Read article [online](https://www.pythonmorsels.com/http-server/). For other items in this feed see [[Python Morsels]].
 

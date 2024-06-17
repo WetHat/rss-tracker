@@ -2,7 +2,7 @@
 feedurl: https://localhost/reference/@WetHat (WetHat💦)/assets/feed.xml
 site: https://fosstodon.org/@WetHat
 itemlimit: 10
-updated: 2024-06-15T16:54:20.864Z
+updated: 2024-06-17T14:30:40.007Z
 status: OK
 tags:
   - rss

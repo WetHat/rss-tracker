@@ -8,8 +8,8 @@ tags: [rss/〭NET,rss/〭NET_Framework,rss/Maintenance_＆_Updates,rss/〭net_fr
 ---
 > [!abstract] .NET and .NET Framework May 2024 Servicing Updates by Tara Overfield - 2024-05-15T17:05:00.000Z
 > A recap of the latest servicing updates for .NET and .NET Framework for May 2024.
-
-The post [.NET and .NET Framework May 2024 Servicing Updates](https://devblogs.microsoft.com/dotnet/dotnet-and-dotnet-framework-may-2024-servicing-updates/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
+> 
+> The post [.NET and .NET Framework May 2024 Servicing Updates](https://devblogs.microsoft.com/dotnet/dotnet-and-dotnet-framework-may-2024-servicing-updates/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 
 🔗Read article [online](https://devblogs.microsoft.com/dotnet/dotnet-and-dotnet-framework-may-2024-servicing-updates/). For other items in this feed see [[․NET Blog]].
 

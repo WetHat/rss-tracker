@@ -8,8 +8,8 @@ tags: [rss/〭NET,rss/〭NET_Aspire,rss/Azure,rss/Cloud_Native,rss/Containers,rs
 ---
 > [!abstract] General Availability of .NET Aspire: Simplifying .NET Cloud-Native Development by Damian Edwards - 2024-05-21T15:50:00.000Z
 > .NET Aspire, the stack that streamlines development of .NET cloud-native services, is now generally available.
-
-The post [General Availability of .NET Aspire: Simplifying .NET Cloud-Native Development](https://devblogs.microsoft.com/dotnet/dotnet-aspire-general-availability/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
+> 
+> The post [General Availability of .NET Aspire: Simplifying .NET Cloud-Native Development](https://devblogs.microsoft.com/dotnet/dotnet-aspire-general-availability/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 
 🔗Read article [online](https://devblogs.microsoft.com/dotnet/dotnet-aspire-general-availability/). For other items in this feed see [[․NET Blog]].
 

@@ -7,6 +7,7 @@ feed: "Sabine Hossenfelder"
 tags: []
 ---
 > [!abstract] Does "Quark" Rhyme With "Dark"? by Sabine Hossenfelder - 2024-05-13T15:00:35.000Z
+> 💌 Support me on Donorbox ➜ https://donorbox.org/swtg 👉 Support me on Patreon ➜ https://www.patreon.com/Sabine 📩 Free weekly science newsletter ➜ https://sabinehossenfelder.com/newsletter/
 >
 > ![image|480x360](https://i4.ytimg.com/vi/_U3oIWQJqH0/hqdefault.jpg)
 
@@ -14,4 +15,4 @@ tags: []
 
 - [ ] [[Does ″Quark″ Rhyme With ″Dark″❓]] - 2024-05-13T15:00:35.000Z
 - - -
-💌 Support me on Donorbox ➜ https://donorbox.org/swtg 👉 Support me on Patreon ➜ https://www.patreon.com/Sabine 📩 Free weekly science newsletter ➜ https://sabinehossenfelder.com/newsletter/
+{{content}}

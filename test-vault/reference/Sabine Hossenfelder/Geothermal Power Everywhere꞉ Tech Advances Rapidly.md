@@ -7,6 +7,7 @@ feed: "Sabine Hossenfelder"
 tags: []
 ---
 > [!abstract] Geothermal Power Everywhere: Tech Advances Rapidly by Sabine Hossenfelder - 2024-05-14T15:00:22.000Z
+> Learn more about your favourite subjects on Brilliant! First 30 days are free and 20% off the annual premium subscription when you use our link ➜ https://brilliant.org/sabine. Geothermal energy is everywhere, just right under our feet. So could it be the solution to climate change? I used to think it was just too difficult and expensive to make much sense in most places, but some recent advances have made me rethink. Let’s have a look. 🤓 Check out my new quiz app ➜ http://quizwithit.com/ 💌 Sup⋯
 >
 > ![image|480x360](https://i2.ytimg.com/vi/QByk4jJwp9c/hqdefault.jpg)
 

@@ -7,6 +7,7 @@ feed: "Sabine Hossenfelder"
 tags: []
 ---
 > [!abstract] The era of nuclear precision has begun by Sabine Hossenfelder - 2024-05-08T15:00:51.000Z
+> Stay safe with NordVPN. Sign up for a 2 year plan, and get 4 months free here ➼ https://NordVPN.com/sabine Risk-free with Nord’s 30-day money-back guarantee ✌ Scientists finally succeeded in exiting an atomic resonance with a laser in the near ultraviolet. It's a remarkable feat that they've been working on since the 1970s. It could usher in the era of nuclear precision. Let’s have a look. Paper here: https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.132.182501 🤓 Check out my new quiz a⋯
 >
 > ![image|480x360](https://i1.ytimg.com/vi/xTnYS3od6iY/hqdefault.jpg)
 

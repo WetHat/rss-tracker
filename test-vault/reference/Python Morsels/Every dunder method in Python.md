@@ -7,6 +7,14 @@ feed: "Python Morsels"
 tags: []
 ---
 > [!abstract] Every dunder method in Python - 2024-03-19T21:30:00.000Z
+> An explanation of all of Python's 100+ dunder methods and 50+ dunder attributes, including a summary of each one.
+> 
+> **Table of contents**
+> 
+> 1. [The 3 essential dunder methods 🔑](https://www.pythonmorsels.com/every-dunder-method/#the-3-essential-dunder-methods)
+> 2. [Equality and hashability 🟰](https://www.pythonmorsels.com/every-dunder-method/#equality-and-hashability)
+> 3. [Orderability ⚖️](https://www.pythonmorsels.com/every-dunder-method/#orderability)
+> 4. [Type conversions and string formatting ⚗⋯
 
 🔗Read article [online](https://www.pythonmorsels.com/every-dunder-method/). For other items in this feed see [[Python Morsels]].
 
