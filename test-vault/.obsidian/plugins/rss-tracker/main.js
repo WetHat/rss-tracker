@@ -3504,7 +3504,7 @@ var _FeedManager = class {
       "{{publishDate}}": published != null ? published : "",
       "{{tags}}": this.formatTags(tags),
       "{{abstract}}": abstract,
-      "{{content}}": content,
+      "{{content}}": content != null ? content : "",
       "{{feedName}}": itemFolder.name,
       "{{fileName}}": uniqueBasename
     });

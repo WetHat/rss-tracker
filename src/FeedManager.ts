@@ -154,7 +154,7 @@ export class FeedManager {
             "{{publishDate}}": published ?? "",
             "{{tags}}": this.formatTags(tags),
             "{{abstract}}": abstract,
-            "{{content}}": content,
+            "{{content}}": content ?? "",
             "{{feedName}}": itemFolder.name,
             "{{fileName}}": uniqueBasename,
         });
