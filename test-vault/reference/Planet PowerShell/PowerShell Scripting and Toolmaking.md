@@ -13,4 +13,4 @@ tags: [rss/Books,rss/PowerShell,rss/Scripting,rss/LeanPub,rss/toolmaking]
 
 - [ ] [[PowerShell Scripting and Toolmaking]] - 2024-05-24T17:03:43.000Z
 - - -
-{{content}}
+

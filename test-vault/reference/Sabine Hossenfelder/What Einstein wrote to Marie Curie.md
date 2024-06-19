@@ -15,4 +15,4 @@ tags: []
 
 - [ ] [[What Einstein wrote to Marie Curie]] - 2024-05-10T15:00:54.000Z
 - - -
-{{content}}
+

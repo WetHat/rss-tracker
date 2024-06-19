@@ -13,4 +13,4 @@ tags: []
 
 - [ ] [[Pretty GUI in Common Lisp with nodgui's Tk themes]] - 2023-05-26T22:22:04.000Z
 - - -
-{{content}}
+

@@ -13,4 +13,4 @@ tags: []
 
 - [ ] [[The 4 Must-Know TypeScript Compiler Configs]] - 2024-05-15T16:14:32.000Z
 - - -
-{{content}}
+

@@ -13,4 +13,4 @@ tags: []
 
 - [ ] [[I published 17 videos about Common Lisp macros - learn Lisp with a code-first tu⋯]] - 2023-09-15T15:07:23.000Z
 - - -
-{{content}}
+

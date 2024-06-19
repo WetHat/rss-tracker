@@ -11,12 +11,8 @@
             "id": "d890091ea216c1cd",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "output/Bluesky/7 New Buffer Features to Explore in 2024 (+ a Sneak Peek at What's to Come).md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -69,7 +65,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 386.5
+    "width": 382.5
   },
   "right": {
     "id": "4be942c0ca4186ab",
@@ -86,7 +82,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "output/Bluesky/7 New Buffer Features to Explore in 2024 (+ a Sneak Peek at What's to Come).md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +98,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "output/Bluesky/7 New Buffer Features to Explore in 2024 (+ a Sneak Peek at What's to Come).md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,9 +119,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "output/Bluesky/7 New Buffer Features to Explore in 2024 (+ a Sneak Peek at What's to Come).md"
-              }
+              "state": {}
             }
           }
         ]
@@ -143,7 +135,6 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "output/Bluesky/7 New Buffer Features to Explore in 2024 (+ a Sneak Peek at What's to Come).md",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -189,11 +180,8 @@
       "rss-tracker:Update all RSS Feeds": false
     }
   },
-  "active": "d890091ea216c1cd",
+  "active": "676526ecb45c57b5",
   "lastOpenFiles": [
-    "reference/Bluesky/As X's turbulence continues, can alternative social platforms catch marketers' a⋯.md",
-    "reference/Bluesky.md",
-    "reference/․NET Blog.md",
     "output/@WetHat (WetHat💦)/Replied to꞉ @WetHat it's AI-generated․ See comments at⋯.md",
     "output/@WetHat (WetHat💦)/Replied to꞉ @WetHat Newtonsoft,Json is not dead․ It's last release was 14 months⋯.md",
     "output/@WetHat (WetHat💦)/Replied to꞉ @WetHat Thanks for sharing․ Makes me wonder if AoT or PGO might bene⋯.md",
@@ -221,6 +209,9 @@
     "output/@wethat7․bsky․social - WetHat💦.md",
     "output/Azimuth/Well Temperaments (Part 6).md",
     "output/Azimuth/Agent-Based Models (Part 7).md",
+    "output/Azimuth/Nicholas Ludford.md",
+    "output/Azimuth/The Probability of the Law of Excluded Middle.md",
+    "output/Azimuth/The Probability of Undecidability.md",
     "output/Azimuth",
     "output/Blogs on Lisp journey",
     "output/assets/Blogs on Lisp journey.svg",

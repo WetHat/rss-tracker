@@ -21,4 +21,4 @@ tags: []
 
 - [ ] [[Boosted꞉ Series꞉ A Functional Approach To Common Lisp⋯]] - 2024-05-15T05:40:35.000Z
 - - -
-{{content}}
+

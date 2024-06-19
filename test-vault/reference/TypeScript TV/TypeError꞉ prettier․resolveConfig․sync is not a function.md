@@ -13,4 +13,4 @@ tags: []
 
 - [ ] [[TypeError꞉ prettier․resolveConfig․sync is not a function]] - 2023-12-18T22:47:43.000Z
 - - -
-{{content}}
+

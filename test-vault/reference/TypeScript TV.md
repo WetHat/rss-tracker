@@ -2,7 +2,7 @@
 feedurl: https://localhost/reference/TypeScript TV/assets/feed.xml
 site: https://typescript.tv/
 itemlimit: 10
-updated: 2024-06-17T14:37:24.551Z
+updated: 2024-06-19T09:03:25.565Z
 status: OK
 tags:
   - rss

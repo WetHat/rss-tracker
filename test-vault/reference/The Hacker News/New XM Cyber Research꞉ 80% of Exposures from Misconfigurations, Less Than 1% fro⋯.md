@@ -15,4 +15,4 @@ tags: []
 
 - [ ] [[New XM Cyber Research꞉ 80% of Exposures from Misconfigurations, Less Than 1% fro⋯]] - 2024-05-17T11:29:00.000Z
 - - -
-{{content}}
+

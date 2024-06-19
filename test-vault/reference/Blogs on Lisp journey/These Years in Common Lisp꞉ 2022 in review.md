@@ -13,4 +13,4 @@ tags: []
 
 - [ ] [[These Years in Common Lisp꞉ 2022 in review]] - 2023-01-09T18:54:29.000Z
 - - -
-{{content}}
+

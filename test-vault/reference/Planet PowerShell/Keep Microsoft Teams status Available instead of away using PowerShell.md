@@ -13,4 +13,4 @@ tags: [rss/Fun,rss/Microsoft_Teams,rss/PowerShell]
 
 - [ ] [[Keep Microsoft Teams status Available instead of away using PowerShell]] - 2024-05-23T16:41:33.000Z
 - - -
-{{content}}
+

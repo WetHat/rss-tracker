@@ -13,4 +13,4 @@ tags: []
 
 - [ ] [[Celebrating 1001 learners on my Common Lisp course 🥳]] - 2024-02-14T16:05:44.000Z
 - - -
-{{content}}
+
