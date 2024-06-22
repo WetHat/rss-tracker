@@ -30,6 +30,15 @@ WHERE !completed
 SORT published DESC
 ~~~
 
+# Pinned Feed Items 📌
+~~~dataview
+TABLE
+published as Published
+FROM "{{folderPath}}"
+where pinned = true
+SORT published DESC
+~~~
+
 # Read Feed Items
 ~~~dataview
 TASK
