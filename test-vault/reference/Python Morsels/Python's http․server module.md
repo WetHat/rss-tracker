@@ -5,6 +5,7 @@ link: https://www.pythonmorsels.com/http-server/
 id: https://www.pythonmorsels.com/http-server/
 feed: "Python Morsels"
 tags: []
+pinned: false
 ---
 > [!abstract] Python's http.server module - 2024-04-05T23:41:43.000Z
 > Use Python's `http.server` module to serve up a static website on your own machine.
@@ -18,7 +19,7 @@ tags: []
 
 🔗Read article [online](https://www.pythonmorsels.com/http-server/). For other items in this feed see [[Python Morsels]].
 
-- [ ] [[Python's http․server module]] - 2024-04-05T23:41:43.000Z
+- [ ] [[Python's http․server module]]
 - - -
 Use Python's `http.server` module to serve up a static website on your own machine.
 

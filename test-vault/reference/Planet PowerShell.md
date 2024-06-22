@@ -1,11 +1,10 @@
 ---
 feedurl: https://localhost/reference/Planet PowerShell/assets/feed.xml
 site: https://www.planetpowershell.com/
-itemlimit: 10
-updated: 2024-06-19T09:02:13.696Z
+itemlimit: 100
+updated: 2024-06-22T17:44:05.089Z
 status: OK
-tags:
-  - rss
+tags: []
 interval: 102
 ---
 

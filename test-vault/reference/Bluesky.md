@@ -1,11 +1,10 @@
 ---
 feedurl: https://localhost/reference/Bluesky/assets/feed.xml
 site: https://flipboard.com/topic/blueskysocial
-itemlimit: 10
-updated: 2024-06-19T09:02:02.606Z
+itemlimit: 100
+updated: 2024-06-22T17:44:13.133Z
 status: OK
-tags:
-  - rss
+tags: []
 interval: 19
 ---
 

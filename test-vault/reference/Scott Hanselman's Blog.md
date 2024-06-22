@@ -1,11 +1,10 @@
 ---
 feedurl: https://localhost/reference/Scott Hanselman's Blog/assets/feed.xml
 site: https://www.hanselman.com/blog/
-itemlimit: 10
-updated: 2024-06-17T14:38:12.083Z
+itemlimit: 100
+updated: 2024-06-22T17:43:56.082Z
 status: OK
-tags:
-  - rss
+tags: []
 interval: 2138
 ---
 

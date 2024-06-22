@@ -5,6 +5,7 @@ link: https://www.pythonmorsels.com/unnecessary-else-statements/
 id: https://www.pythonmorsels.com/unnecessary-else-statements/
 feed: "Python Morsels"
 tags: []
+pinned: false
 ---
 > [!abstract] Unnecessary else statements - 2024-03-22T22:00:00.000Z
 > When your function ends in an `else` block with a `return` statement in it, should you remove that `else`?
@@ -17,7 +18,7 @@ tags: []
 
 🔗Read article [online](https://www.pythonmorsels.com/unnecessary-else-statements/). For other items in this feed see [[Python Morsels]].
 
-- [ ] [[Unnecessary else statements]] - 2024-03-22T22:00:00.000Z
+- [ ] [[Unnecessary else statements]]
 - - -
 When your function ends in an `else` block with a `return` statement in it, should you remove that `else`?
 

@@ -1,11 +1,10 @@
 ---
 feedurl: https://localhost/reference/PyCoder’s Weekly/assets/feed.xml
 site: https://pycoders.com/
-itemlimit: 10
-updated: 2024-06-17T14:38:36.311Z
+itemlimit: 100
+updated: 2024-06-22T17:44:02.525Z
 status: OK
-tags:
-  - rss
+tags: []
 interval: 168
 ---
 

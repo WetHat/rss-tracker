@@ -1,11 +1,10 @@
 ---
 feedurl: https://localhost/reference/TypeScript TV/assets/feed.xml
 site: https://typescript.tv/
-itemlimit: 10
-updated: 2024-06-19T09:03:25.565Z
+itemlimit: 100
+updated: 2024-06-22T17:43:49.622Z
 status: OK
-tags:
-  - rss
+tags: []
 interval: 809
 ---
 

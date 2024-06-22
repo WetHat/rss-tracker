@@ -5,6 +5,7 @@ link: https://thehackernews.com/2024/05/china-linked-hackers-adopt-two-stage.htm
 id: https://thehackernews.com/2024/05/china-linked-hackers-adopt-two-stage.html
 feed: "The Hacker News"
 tags: []
+pinned: false
 ---
 > [!abstract] China-Linked Hackers Adopt Two-Stage Infection Tactic to Deploy Deuterbear RAT by info@thehackernews.com (The Hacker News) - 2024-05-17T11:20:00.000Z
 > Cybersecurity researchers have shed more light on a remote access trojan (RAT) known as Deuterbear used by the China-linked BlackTech hacking group as part of a cyber espionage campaign targeting the Asia-Pacific region this year. "Deuterbear, while similar to Waterbear in many ways, shows advancements in capabilities such as including support for shellcode plugins, avoiding handshakes
@@ -13,6 +14,6 @@ tags: []
 
 🔗Read article [online](https://thehackernews.com/2024/05/china-linked-hackers-adopt-two-stage.html). For other items in this feed see [[The Hacker News]].
 
-- [ ] [[China-Linked Hackers Adopt Two-Stage Infection Tactic to Deploy Deuterbear RAT]] - 2024-05-17T11:20:00.000Z
+- [ ] [[China-Linked Hackers Adopt Two-Stage Infection Tactic to Deploy Deuterbear RAT]]
 - - -
 

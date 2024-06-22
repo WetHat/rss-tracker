@@ -5,6 +5,7 @@ link: https://feeds.hanselman.com/~/676711904/0/scotthanselman~Using-Home-Assist
 id: https://www.hanselman.com/blog/post/9632ddf9-403c-4319-bba6-4cb98bc7932b
 feed: "Scott Hanselman's Blog"
 tags: [rss/Home_Server,rss/Musings]
+pinned: false
 ---
 > [!abstract] Using Home Assistant to integrate a Unifi Protect G4 Doorbell and Amazon Alexa to announce visitors by Scott Hanselman - 2021-12-14T21:36:00.000Z
 > I am not a [Home Assistant](https://www.home-assistant.io/) expert, but it's clearly a massive and powerful ecosystem. I've interviewed [the creator of Home Assistant on my podcast](https://hanselminutes.com/788/automating-all-the-things-with-home-assistants-paulus-schoutsen) and I encourage you to check out that chat.
@@ -13,7 +14,7 @@ tags: [rss/Home_Server,rss/Musings]
 
 🔗Read article [online](https://feeds.hanselman.com/~/676711904/0/scotthanselman~Using-Home-Assistant-to-integrate-a-Unifi-Protect-G-Doorbell-and-Amazon-Alexa-to-announce-visitors). For other items in this feed see [[Scott Hanselman's Blog]].
 
-- [ ] [[Using Home Assistant to integrate a Unifi Protect G4 Doorbell and Amazon Alexa t⋯]] - 2021-12-14T21:36:00.000Z
+- [ ] [[Using Home Assistant to integrate a Unifi Protect G4 Doorbell and Amazon Alexa t⋯]]
 - - -
 I am not a [Home Assistant](https://feeds.hanselman.com/~/t/0/0/scotthanselman/~https://www.home-assistant.io/) expert, but it's clearly a massive and powerful ecosystem. I've interviewed [the creator of Home Assistant on my podcast](https://feeds.hanselman.com/~/t/0/0/scotthanselman/~https://hanselminutes.com/788/automating-all-the-things-with-home-assistants-paulus-schoutsen) and I encourage you to check out that chat.
 

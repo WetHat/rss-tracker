@@ -5,6 +5,7 @@ link: https://www.pythonmorsels.com/time-complexities/
 id: https://www.pythonmorsels.com/time-complexities/
 feed: "Python Morsels"
 tags: []
+pinned: false
 ---
 > [!abstract] Python Big O: the time complexities of different data structures in Python - 2024-04-16T15:00:00.000Z
 > The time complexity of common operations on Python's many data structures.
@@ -20,7 +21,7 @@ tags: []
 
 🔗Read article [online](https://www.pythonmorsels.com/time-complexities/). For other items in this feed see [[Python Morsels]].
 
-- [ ] [[Python Big O꞉ the time complexities of different data structures in Python]] - 2024-04-16T15:00:00.000Z
+- [ ] [[Python Big O꞉ the time complexities of different data structures in Python]]
 - - -
 The time complexity of common operations on Python's many data structures.
 

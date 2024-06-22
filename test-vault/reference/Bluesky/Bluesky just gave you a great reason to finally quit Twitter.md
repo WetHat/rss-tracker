@@ -5,6 +5,7 @@ link: https://www.t3.com/news/bluesky-just-gave-you-a-great-reason-to-finally-qu
 id: flipboard-vHcnStzORJigtFrI7LAFHA:a:2571318764-1716462053
 feed: "Bluesky"
 tags: [rss/Technology,rss/Apps,rss/Bluesky,rss/Twitter_Blue,rss/Threads_(App)]
+pinned: false
 ---
 > [!abstract] Bluesky just gave you a great reason to finally quit Twitter by By Carrie Marshall - 2024-05-23T11:00:53.000Z
 > Since Elon Musk took over Twitter there's been no shortage of supposed Twitter killers, but so far the renamed X.com remains very much un-dead. And a …
@@ -13,6 +14,6 @@ tags: [rss/Technology,rss/Apps,rss/Bluesky,rss/Twitter_Blue,rss/Threads_(App)]
 
 🔗Read article [online](https://www.t3.com/news/bluesky-just-gave-you-a-great-reason-to-finally-quit-twitter). For other items in this feed see [[Bluesky]].
 
-- [ ] [[Bluesky just gave you a great reason to finally quit Twitter]] - 2024-05-23T11:00:53.000Z
+- [ ] [[Bluesky just gave you a great reason to finally quit Twitter]]
 - - -
 

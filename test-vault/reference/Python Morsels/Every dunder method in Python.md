@@ -5,6 +5,7 @@ link: https://www.pythonmorsels.com/every-dunder-method/
 id: https://www.pythonmorsels.com/every-dunder-method/
 feed: "Python Morsels"
 tags: []
+pinned: false
 ---
 > [!abstract] Every dunder method in Python - 2024-03-19T21:30:00.000Z
 > An explanation of all of Python's 100+ dunder methods and 50+ dunder attributes, including a summary of each one.
@@ -18,7 +19,7 @@ tags: []
 
 🔗Read article [online](https://www.pythonmorsels.com/every-dunder-method/). For other items in this feed see [[Python Morsels]].
 
-- [ ] [[Every dunder method in Python]] - 2024-03-19T21:30:00.000Z
+- [ ] [[Every dunder method in Python]]
 - - -
 An explanation of all of Python's 100+ dunder methods and 50+ dunder attributes, including a summary of each one.
 

@@ -5,6 +5,7 @@ link: https://thehackernews.com/2024/05/kimsuky-apt-deploying-linux-backdoor.htm
 id: https://thehackernews.com/2024/05/kimsuky-apt-deploying-linux-backdoor.html
 feed: "The Hacker News"
 tags: []
+pinned: false
 ---
 > [!abstract] Kimsuky APT Deploying Linux Backdoor Gomir in South Korean Cyber Attacks by info@thehackernews.com (The Hacker News) - 2024-05-17T08:46:00.000Z
 > The Kimsuky (aka Springtail) advanced persistent threat (APT) group, which is linked to North Korea's Reconnaissance General Bureau (RGB), has been observed deploying a Linux version of its GoBear backdoor as part of a campaign targeting South Korean organizations. The backdoor, codenamed Gomir, is "structurally almost identical to GoBear, with extensive sharing of code between
@@ -13,6 +14,6 @@ tags: []
 
 🔗Read article [online](https://thehackernews.com/2024/05/kimsuky-apt-deploying-linux-backdoor.html). For other items in this feed see [[The Hacker News]].
 
-- [ ] [[Kimsuky APT Deploying Linux Backdoor Gomir in South Korean Cyber Attacks]] - 2024-05-17T08:46:00.000Z
+- [ ] [[Kimsuky APT Deploying Linux Backdoor Gomir in South Korean Cyber Attacks]]
 - - -
 

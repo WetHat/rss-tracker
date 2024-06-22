@@ -1,11 +1,10 @@
 ---
 feedurl: https://localhost/reference/The Hacker News/assets/feed.xml
 site: https://thehackernews.com
-itemlimit: 10
-updated: 2024-06-19T09:02:57.439Z
+itemlimit: 100
+updated: 2024-06-22T17:43:52.063Z
 status: OK
-tags:
-  - rss
+tags: []
 interval: 5
 ---
 

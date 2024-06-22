@@ -1,11 +1,10 @@
 ---
 feedurl: https://localhost/reference/The GitHub Blog꞉ Product News and Updates/assets/feed.xml
 site: https://github.blog/category/product/
-itemlimit: 10
-updated: 2024-06-19T09:02:43.609Z
+itemlimit: 100
+updated: 2024-06-22T17:43:54.135Z
 status: OK
-tags:
-  - rss
+tags: []
 interval: 165
 ---
 

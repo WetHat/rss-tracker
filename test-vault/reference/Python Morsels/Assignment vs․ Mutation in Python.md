@@ -5,6 +5,7 @@ link: https://www.pythonmorsels.com/assignment-versus-mutation/
 id: https://www.pythonmorsels.com/assignment-versus-mutation/
 feed: "Python Morsels"
 tags: []
+pinned: false
 ---
 > [!abstract] Assignment vs. Mutation in Python - 2024-05-18T12:13:21.000Z
 > In Python, "change" can mean two different things. Assignment changes which object a variable points to. Mutation, changes the object itself.
@@ -17,7 +18,7 @@ tags: []
 
 🔗Read article [online](https://www.pythonmorsels.com/assignment-versus-mutation/). For other items in this feed see [[Python Morsels]].
 
-- [ ] [[Assignment vs․ Mutation in Python]] - 2024-05-18T12:13:21.000Z
+- [ ] [[Assignment vs․ Mutation in Python]]
 - - -
 In Python, "change" can mean two different things. Assignment changes which object a variable points to. Mutation, changes the object itself.
 

@@ -5,6 +5,7 @@ link: https://feeds.hanselman.com/~/882544025/0/scotthanselman~Open-Sourcing-DOS
 id: https://www.hanselman.com/blog/post/ed4f5c94-07d3-465c-96f1-776ba41b0099
 feed: "Scott Hanselman's Blog"
 tags: [rss/Open_Source]
+pinned: false
 ---
 > [!abstract] Open Sourcing DOS 4 by Scott Hanselman - 2024-04-25T16:46:13.000Z
 > ![Beta DOS Disks](https://www.hanselman.com/blog/content/binary/Windows-Live-Writer/Open-Sourcing-DOS-4_E712/clip_image002_5b6e1c02-95d8-4ee1-87af-ca53a8b0bd56.png "Beta DOS Disks")_See [the canonical version of this blog post at the Microsoft Open Source Blog](https://cloudblogs.microsoft.com/opensource/2024/04/25/open-sourcing-ms-dos-4-0/)!_
@@ -13,7 +14,7 @@ tags: [rss/Open_Source]
 
 🔗Read article [online](https://feeds.hanselman.com/~/882544025/0/scotthanselman~Open-Sourcing-DOS). For other items in this feed see [[Scott Hanselman's Blog]].
 
-- [ ] [[Open Sourcing DOS 4]] - 2024-04-25T16:46:13.000Z
+- [ ] [[Open Sourcing DOS 4]]
 - - -
 ![Beta DOS Disks](https://www.hanselman.com/blog/content/binary/Windows-Live-Writer/Open-Sourcing-DOS-4_E712/clip_image002_5b6e1c02-95d8-4ee1-87af-ca53a8b0bd56.png "Beta DOS Disks")_See [the canonical version of this blog post at the Microsoft Open Source Blog](https://feeds.hanselman.com/~/t/0/0/scotthanselman/~https://cloudblogs.microsoft.com/opensource/2024/04/25/open-sourcing-ms-dos-4-0/)!_
 

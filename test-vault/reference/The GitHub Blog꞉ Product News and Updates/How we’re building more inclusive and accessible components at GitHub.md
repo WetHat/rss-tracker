@@ -5,13 +5,14 @@ link: https://github.blog/2024-05-07-how-were-building-more-inclusive-and-access
 id: https://github.blog/?p=77929
 feed: "The GitHub Blog꞉ Product News and Updates"
 tags: []
+pinned: false
 ---
 > [!abstract] How we’re building more inclusive and accessible components at GitHub by Eric Bailey - 2024-05-07T17:00:20.000Z
 > We've made improvements to the way users of assistive technology can interact with and navigate lists of issues and pull requests and tables across GitHub.com. The post How we’re building more inclusive and accessible components at GitHub appeared first on The GitHub Blog.
 
 🔗Read article [online](https://github.blog/2024-05-07-how-were-building-more-inclusive-and-accessible-components-at-github/). For other items in this feed see [[The GitHub Blog꞉ Product News and Updates]].
 
-- [ ] [[How we’re building more inclusive and accessible components at GitHub]] - 2024-05-07T17:00:20.000Z
+- [ ] [[How we’re building more inclusive and accessible components at GitHub]]
 - - -
 One of GitHub’s core values is **Diverse and Inclusive**. It is a guiding thought for how we operate, reminding us that GitHub serves a developer community that spans a wide range of geography and ability.
 

@@ -1,11 +1,10 @@
 ---
 feedurl: https://localhost/reference/Sabine Hossenfelder/assets/feed.xml
 site: https://www.youtube.com/channel/UC1yNl2E66ZzKApQdRuTQ4tw
-itemlimit: 10
-updated: 2024-06-19T09:02:23.618Z
+itemlimit: 100
+updated: 2024-06-22T17:43:58.158Z
 status: OK
-tags:
-  - rss
+tags: []
 interval: 24
 ---
 

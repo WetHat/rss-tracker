@@ -5,6 +5,7 @@ link: https://johncarlosbaez.wordpress.com/2024/05/13/agent-based-models-part-9/
 id: http://johncarlosbaez.wordpress.com/?p=37840
 feed: "Azimuth"
 tags: [rss/computer_science,rss/epidemiology,rss/mathematics]
+pinned: false
 ---
 > [!abstract] Agent-Based Models (Part 9) by John Baez - 2024-05-13T18:23:03.000Z
 > Since May 1st, Kris Brown, Nathaniel Osgood, Xiaoyan Li, William Waites and I have been meeting daily in James Clerk Maxwell’s childhood home in Edinburgh. We’re hard at work on our project called New Mathematics and Software for Agent-Based models. It’s impossible to explain everything we’re doing while it’s happening. But I want to record […]
@@ -13,7 +14,7 @@ tags: [rss/computer_science,rss/epidemiology,rss/mathematics]
 
 🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/05/13/agent-based-models-part-9/). For other items in this feed see [[Azimuth]].
 
-- [ ] [[Agent-Based Models (Part 9)]] - 2024-05-13T18:23:03.000Z
+- [ ] [[Agent-Based Models (Part 9)]]
 - - -
 Since May 1st, [Kris Brown](https://www.krisb.org/docs/research), [Nathaniel Osgood](https://www.cs.usask.ca/faculty/osgood/), [Xiaoyan Li](https://scholar.google.ca/citations?user=55dzbRgAAAAJ&hl=en), [William Waites](https://scholar.google.com/citations?user=eayiEiwAAAAJ&hl=en) and I have been meeting daily in James Clerk Maxwell’s childhood home in Edinburgh.
 

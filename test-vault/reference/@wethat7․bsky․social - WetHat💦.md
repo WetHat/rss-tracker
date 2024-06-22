@@ -1,11 +1,10 @@
 ---
 feedurl: https://localhost/reference/@wethat7․bsky․social - WetHat💦/assets/feed.xml
 site: https://bsky.app/profile/wethat7.bsky.social
-itemlimit: 10
-updated: 2024-06-19T09:01:28.356Z
+itemlimit: 100
+updated: 2024-06-22T17:44:18.597Z
 status: OK
-tags:
-  - rss
+tags: []
 interval: 19
 ---
 

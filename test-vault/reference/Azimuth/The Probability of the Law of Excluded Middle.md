@@ -5,6 +5,7 @@ link: https://johncarlosbaez.wordpress.com/2024/03/13/the-probability-of-the-law
 id: http://johncarlosbaez.wordpress.com/?p=37675
 feed: "Azimuth"
 tags: [rss/mathematics]
+pinned: false
 ---
 > [!abstract] The Probability of the Law of Excluded Middle by John Baez - 2024-03-13T23:20:10.000Z
 > The Law of Excluded Middle says that for any statement P, “P or not P” is true. Is this law true? In classical logic it is. But in intuitionistic logic it’s not. So, in intuitionistic logic we can ask what’s the probability that a randomly chosen statement obeys the Law of Excluded Middle. And the […]
@@ -13,7 +14,7 @@ tags: [rss/mathematics]
 
 🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/03/13/the-probability-of-the-law-of-excluded-middle/). For other items in this feed see [[Azimuth]].
 
-- [ ] [[The Probability of the Law of Excluded Middle]] - 2024-03-13T23:20:10.000Z
+- [ ] [[The Probability of the Law of Excluded Middle]]
 - - -
 The [Law of Excluded Middle](https://en.wikipedia.org/wiki/Law_of_excluded_middle) says that for any statement P, “P or not P” is true.
 

@@ -5,6 +5,7 @@ link: https://www.pythonmorsels.com/multiline-comments/
 id: https://www.pythonmorsels.com/multiline-comments/
 feed: "Python Morsels"
 tags: []
+pinned: false
 ---
 > [!abstract] Multiline comments in Python - 2024-04-19T23:00:00.000Z
 > Python does not have multiline comments. But you can use alternatives like docstrings, editor shortcuts, and conventional commenting methods, depending on your requirements.
@@ -17,7 +18,7 @@ tags: []
 
 🔗Read article [online](https://www.pythonmorsels.com/multiline-comments/). For other items in this feed see [[Python Morsels]].
 
-- [ ] [[Multiline comments in Python]] - 2024-04-19T23:00:00.000Z
+- [ ] [[Multiline comments in Python]]
 - - -
 Python does not have multiline comments. But you can use alternatives like docstrings, editor shortcuts, and conventional commenting methods, depending on your requirements.
 

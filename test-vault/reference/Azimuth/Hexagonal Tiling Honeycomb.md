@@ -5,6 +5,7 @@ link: https://johncarlosbaez.wordpress.com/2024/05/04/hexagonal-tiling-honeycomb
 id: http://johncarlosbaez.wordpress.com/?p=37783
 feed: "Azimuth"
 tags: [rss/mathematics]
+pinned: false
 ---
 > [!abstract] Hexagonal Tiling Honeycomb by John Baez - 2024-05-04T15:47:17.000Z
 > This picture by Roice Nelson shows a remarkable structure: the hexagonal tiling honeycomb. What is it? Roughly speaking, a honeycomb is a way of filling 3d space with polyhedra. The most symmetrical honeycombs are the ‘regular’ ones. For any honeycomb, we define a flag to be a chosen vertex lying on a chosen edge lying […]
@@ -13,7 +14,7 @@ tags: [rss/mathematics]
 
 🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/05/04/hexagonal-tiling-honeycomb/). For other items in this feed see [[Azimuth]].
 
-- [ ] [[Hexagonal Tiling Honeycomb]] - 2024-05-04T15:47:17.000Z
+- [ ] [[Hexagonal Tiling Honeycomb]]
 - - -
 [  
 ![](https://i0.wp.com/math.ucr.edu/home/baez/mathematical/{6,3,3}_honeycomb_roice_bright.png)  

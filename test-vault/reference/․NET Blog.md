@@ -1,11 +1,10 @@
 ---
 feedurl: https://localhost/reference/․NET Blog/assets/feed.xml
 site: https://devblogs.microsoft.com/dotnet/
-itemlimit: 10
-updated: 2024-06-17T14:35:24.095Z
+itemlimit: 100
+updated: 2024-06-22T17:43:47.602Z
 status: OK
-tags:
-  - rss
+tags: []
 interval: 77
 ---
 

@@ -5,6 +5,7 @@ link: https://thehackernews.com/2024/05/researchers-uncover-11-security-flaws.ht
 id: https://thehackernews.com/2024/05/researchers-uncover-11-security-flaws.html
 feed: "The Hacker News"
 tags: []
+pinned: false
 ---
 > [!abstract] Researchers Uncover 11 Security Flaws in GE HealthCare Ultrasound Machines by info@thehackernews.com (The Hacker News) - 2024-05-16T10:12:00.000Z
 > Security researchers have disclosed almost a dozen security flaws impacting the GE HealthCare Vivid Ultrasound product family that could be exploited by malicious actors to tamper with patient data and even install ransomware under certain circumstances. "The impacts enabled by these flaws are manifold: from the implant of ransomware on the ultrasound machine to the access and manipulation of
@@ -13,6 +14,6 @@ tags: []
 
 🔗Read article [online](https://thehackernews.com/2024/05/researchers-uncover-11-security-flaws.html). For other items in this feed see [[The Hacker News]].
 
-- [ ] [[Researchers Uncover 11 Security Flaws in GE HealthCare Ultrasound Machines]] - 2024-05-16T10:12:00.000Z
+- [ ] [[Researchers Uncover 11 Security Flaws in GE HealthCare Ultrasound Machines]]
 - - -
 

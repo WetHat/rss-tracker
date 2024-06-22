@@ -1,11 +1,10 @@
 ---
 feedurl: https://localhost/reference/Python Morsels/assets/feed.xml
 site: https://www.pythonmorsels.com/topics/
-itemlimit: 10
-updated: 2024-06-17T14:23:09.847Z
+itemlimit: 100
+updated: 2024-06-22T17:44:00.395Z
 status: OK
-tags:
-  - rss
+tags: []
 interval: 425
 ---
 

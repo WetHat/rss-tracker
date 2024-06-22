@@ -1,11 +1,10 @@
 ---
 feedurl: https://localhost/reference/Azimuth/assets/feed.xml
 site: https://johncarlosbaez.wordpress.com
-itemlimit: 10
-updated: 2024-06-17T14:35:41.891Z
+itemlimit: 100
+updated: 2024-06-22T17:44:18.178Z
 status: OK
-tags:
-  - rss
+tags: []
 interval: 206
 ---
 

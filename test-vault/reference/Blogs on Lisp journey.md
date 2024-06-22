@@ -1,11 +1,10 @@
 ---
 feedurl: https://localhost/reference/Blogs on Lisp journey/assets/feed.xml
 site: https://localhost/blog/
-itemlimit: 10
-updated: 2024-06-19T09:01:44.758Z
+itemlimit: 100
+updated: 2024-06-22T17:44:13.151Z
 status: OK
-tags:
-  - rss
+tags: []
 interval: 645
 ---
 

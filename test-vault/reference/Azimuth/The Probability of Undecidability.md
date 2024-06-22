@@ -5,6 +5,7 @@ link: https://johncarlosbaez.wordpress.com/2024/03/15/the-probability-of-undecid
 id: http://johncarlosbaez.wordpress.com/?p=37690
 feed: "Azimuth"
 tags: [rss/mathematics]
+pinned: false
 ---
 > [!abstract] The Probability of Undecidability by John Baez - 2024-03-15T10:10:44.000Z
 > There’s a lot we don’t know. There’s a lot we can’t know. But can we at least know how much we can’t know? What fraction of mathematical statements are undecidable—that is, can be neither proved nor disproved? There are many ways to make this question precise… but it remains a bit mysterious. The best results […]
@@ -13,7 +14,7 @@ tags: [rss/mathematics]
 
 🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/03/15/the-probability-of-undecidability/). For other items in this feed see [[Azimuth]].
 
-- [ ] [[The Probability of Undecidability]] - 2024-03-15T10:10:44.000Z
+- [ ] [[The Probability of Undecidability]]
 - - -
 There’s a lot we don’t know. There’s a lot we _can’t_ know. But can we at least know how _much_ we can’t know?
 

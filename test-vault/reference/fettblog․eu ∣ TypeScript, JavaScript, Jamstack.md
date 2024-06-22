@@ -1,11 +1,10 @@
 ---
 feedurl: https://localhost/reference/fettblog․eu ∣ TypeScript, JavaScript, Jamstack/assets/feed.xml
 site: https://fettblog.eu/
-itemlimit: 10
-updated: 2024-06-17T14:36:08.898Z
+itemlimit: 100
+updated: 2024-06-22T17:44:08.922Z
 status: OK
-tags:
-  - rss
+tags: []
 interval: 593
 ---
 

@@ -5,6 +5,7 @@ link: https://www.pythonmorsels.com/equality-vs-identity/
 id: https://www.pythonmorsels.com/equality-vs-identity/
 feed: "Python Morsels"
 tags: []
+pinned: false
 ---
 > [!abstract] Equality versus identity in Python - 2024-05-28T23:52:24.000Z
 > Equality checks whether two objects **represent the same value**. Identity checks whether two variables **point to the same object**.
@@ -17,7 +18,7 @@ tags: []
 
 🔗Read article [online](https://www.pythonmorsels.com/equality-vs-identity/). For other items in this feed see [[Python Morsels]].
 
-- [ ] [[Equality versus identity in Python]] - 2024-05-28T23:52:24.000Z
+- [ ] [[Equality versus identity in Python]]
 - - -
 Equality checks whether two objects **represent the same value**. Identity checks whether two variables **point to the same object**.
 
