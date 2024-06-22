@@ -15,7 +15,7 @@ site: "{{siteUrl}}"
 itemlimit: 100
 updated: never
 status: unknown
-tags: [rss]
+tags: []
 ---
 
 > [!abstract] {{title}}
@@ -44,7 +44,8 @@ published: {{publishDate}}
 link: {{link}}
 id: {{id}}
 feed: "{{feedName}}"
-tags: {{tags}}
+tags: [{{tags}}]
+pinned: false
 ---
 {{abstract}}
 

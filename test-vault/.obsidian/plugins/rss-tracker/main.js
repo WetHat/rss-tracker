@@ -1903,7 +1903,7 @@ site: "{{siteUrl}}"
 itemlimit: 100
 updated: never
 status: unknown
-tags: [rss]
+tags: []
 ---
 
 > [!abstract] {{title}}
@@ -1932,7 +1932,8 @@ published: {{publishDate}}
 link: {{link}}
 id: {{id}}
 feed: "{{feedName}}"
-tags: {{tags}}
+tags: [{{tags}}]
+pinned: false
 ---
 {{abstract}}
 
@@ -3463,7 +3464,7 @@ var _FeedManager = class {
     return `![image${size}](${src})`;
   }
   formatTags(tags) {
-    return "[" + tags.map((t) => "rss/" + t.replaceAll(" ", "_")).join(",") + "]";
+    return tags.map((t) => "rss/" + t.replaceAll(" ", "_")).join(",");
   }
   formatHashTags(md) {
     return md.replace(_FeedManager.HASH_FINDER, "#rss/");
@@ -3522,7 +3523,7 @@ var _FeedManager = class {
     const meta = this.app.metadataCache;
     let items = itemFolder.children.filter((fof) => fof instanceof import_obsidian2.TFile).map((x) => {
       var _a2;
-      const f = x, fm = (_a2 = meta.getFileCache(f)) == null ? void 0 : _a2.frontmatter, annotated = { item: f };
+      const f = x, fm = (_a2 = meta.getFileCache(f)) == null ? void 0 : _a2.frontmatter, annotated = { item: f, pinned: (fm == null ? void 0 : fm.pinned) === true };
       if (fm) {
         const { id, published } = fm;
         annotated.id = id;
@@ -3539,6 +3540,7 @@ var _FeedManager = class {
       var _a2;
       return (_a2 = it.id) != null ? _a2 : "?";
     })), newItems = feed.items.slice(0, itemLimit).filter((it) => !knownIDs.has(it.id));
+    items = items.filter((it) => !it.pinned);
     const deleteCount = Math.min(items.length + newItems.length - itemLimit, items.length);
     for (let index = 0; index < deleteCount; index++) {
       const item = items[index];

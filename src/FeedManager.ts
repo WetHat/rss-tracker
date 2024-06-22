@@ -49,6 +49,7 @@ export class FeedConfig {
  */
 interface IAnnotatedItem {
     item: TFile;
+    pinned: boolean,
     id?: string;
     published?: number;
 }
@@ -103,7 +104,7 @@ export class FeedManager {
     }
 
     private formatTags(tags: string[]): string {
-        return "[" + tags.map(t => "rss/" + t.replaceAll(" ", "_")).join(",") + "]";
+        return tags.map(t => "rss/" + t.replaceAll(" ", "_")).join(",");
     }
     private formatHashTags(md: string): string {
         return md.replace(FeedManager.HASH_FINDER, "#rss/");
@@ -179,7 +180,7 @@ export class FeedManager {
                 const
                     f = x as TFile,
                     fm = meta.getFileCache(f)?.frontmatter,
-                    annotated: IAnnotatedItem = { item: f };
+                    annotated: IAnnotatedItem = { item: f, pinned: fm?.pinned === true};
                 if (fm) {
                     const { id, published } = fm;
                     annotated.id = id;
@@ -198,6 +199,8 @@ export class FeedManager {
             newItems = feed.items
                 .slice(0,itemLimit) // do not exceed limit
                 .filter(it => !knownIDs.has(it.id)); // assuming newest items first
+        // remove pinned items so that they do not count against the item limit
+        items = items.filter( it => !it.pinned);
         // determine how many items needs to be purged
         const deleteCount = Math.min(items.length + newItems.length - itemLimit, items.length);
 
