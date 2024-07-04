@@ -207,7 +207,7 @@ export class FeedManager {
         // remove feed obsolete items from disk
         for (let index = 0; index < deleteCount; index++) {
             const item = items[index];
-            this.app.vault.delete(item.item);
+            await this.app.vault.delete(item.item);
         }
 
         // save items
