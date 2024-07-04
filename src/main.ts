@@ -55,13 +55,13 @@ export default class RSSTrackerPlugin extends Plugin {
         this.registerEvent(markAsRead.fileMenuHandler);
 
         // protocol handler
-        this.registerObsidianProtocolHandler('newRssFeed',async (params: ObsidianProtocolData) => {
+        this.registerObsidianProtocolHandler('newRssFeed', async (params: ObsidianProtocolData) => {
             const { xml, dir } = params;
             console.log("newRssFeed:xml=" + xml + "\n=>" + dir);
             const xmlFile = this.app.vault.getFileByPath(xml),
                 feedDir = this.app.vault.getFolderByPath(dir);
             if (xmlFile && feedDir) {
-                const dashboard = await this.feedmgr.createFeedFromFile(xmlFile,feedDir);
+                const dashboard = await this.feedmgr.createFeedFromFile(xmlFile, feedDir);
                 new Notice(`New RSS Feed "${dashboard.basename}" created`);
             }
         });
@@ -69,8 +69,12 @@ export default class RSSTrackerPlugin extends Plugin {
         // When registering intervals, this function will automatically clear the interval when the plugin is disabled.
         this.registerInterval(window.setInterval(() => {
             if (this.settings.autoUpdateFeeds) {
-                this.feedmgr.updateAllRSSfeeds(false);
-                console.log("RSS Feed background update complete.")
+                try {
+                    this.feedmgr.updateAllRSSfeeds(false);
+                    console.log("RSS Feed background update complete.")
+                } catch (ex: any) {
+                    console.log(`Background update failed: ${ex.message}`)
+                }
             }
         }, 60 * 60 * 1000));
     }
