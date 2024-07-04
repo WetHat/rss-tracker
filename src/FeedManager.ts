@@ -213,7 +213,7 @@ export class FeedManager {
         // save items
         for (let index = 0; index < newItems.length; index++) {
             const item = newItems[index];
-            this.saveFeedItem(itemFolder, item).catch(reason => { throw reason });
+            await this.saveFeedItem(itemFolder, item).catch(reason => { throw reason });
         }
         return newItems.length;
     }

@@ -3557,7 +3557,7 @@ var _FeedManager = class {
     }
     for (let index = 0; index < newItems.length; index++) {
       const item = newItems[index];
-      this.saveFeedItem(itemFolder, item).catch((reason) => {
+      await this.saveFeedItem(itemFolder, item).catch((reason) => {
         throw reason;
       });
     }
