@@ -11,12 +11,8 @@
             "id": "d890091ea216c1cd",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "output/․NET Blog/Join the ․NET Team at Microsoft Build 2024!.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -86,7 +82,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "output/․NET Blog/Join the ․NET Team at Microsoft Build 2024!.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +98,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "output/․NET Blog/Join the ․NET Team at Microsoft Build 2024!.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,9 +119,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "output/․NET Blog/Join the ․NET Team at Microsoft Build 2024!.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -143,7 +135,6 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "output/․NET Blog/Join the ․NET Team at Microsoft Build 2024!.md",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -191,9 +182,6 @@
   },
   "active": "d890091ea216c1cd",
   "lastOpenFiles": [
-    "output/․NET Blog.md",
-    "output/@wethat7․bsky․social - WetHat💦/28 Apr 2024 17꞉43 +0000.md",
-    "output/@wethat7․bsky․social - WetHat💦/02 May 2024 15꞉32 +0000.md",
     "output/@WetHat (WetHat💦)/Replied to꞉ @WetHat it's AI-generated․ See comments at⋯.md",
     "output/@WetHat (WetHat💦)/Replied to꞉ @WetHat Newtonsoft,Json is not dead․ It's last release was 14 months⋯.md",
     "output/@WetHat (WetHat💦)/Replied to꞉ @WetHat Thanks for sharing․ Makes me wonder if AoT or PGO might bene⋯.md",
@@ -212,6 +200,8 @@
     "output/@wethat7․bsky․social - WetHat💦/24 Apr 2024 09꞉53 +0000.md",
     "output/@wethat7․bsky․social - WetHat💦/24 Apr 2024 10꞉22 +0000.md",
     "output/@wethat7․bsky․social - WetHat💦/25 Apr 2024 08꞉34 +0000.md",
+    "output/@wethat7․bsky․social - WetHat💦/28 Apr 2024 17꞉43 +0000.md",
+    "output/@wethat7․bsky․social - WetHat💦/02 May 2024 15꞉32 +0000.md",
     "output/@wethat7․bsky․social - WetHat💦/02 May 2024 16꞉25 +0000.md",
     "output/@wethat7․bsky․social - WetHat💦/02 May 2024 16꞉41 +0000.md",
     "output/@wethat7․bsky․social - WetHat💦/02 May 2024 18꞉44 +0000.md",
@@ -219,6 +209,7 @@
     "output/@wethat7․bsky․social - WetHat💦/08 May 2024 17꞉48 +0000.md",
     "output/@wethat7․bsky․social - WetHat💦/08 May 2024 18꞉15 +0000.md",
     "output/@wethat7․bsky․social - WetHat💦/08 May 2024 19꞉56 +0000.md",
+    "output/@wethat7․bsky․social - WetHat💦/08 May 2024 20꞉20 +0000.md",
     "output/@wethat7․bsky․social - WetHat💦",
     "output/assets/@wethat7․bsky․social - WetHat💦.svg",
     "output/Azimuth",

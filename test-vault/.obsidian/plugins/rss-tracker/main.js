@@ -1918,7 +1918,7 @@ WHERE !completed
 SORT published DESC
 ~~~
 
-# Pinned Feed Items
+# Pinned Feed Items \u{1F4CC}
 ~~~dataview
 TABLE
 published as Published
@@ -3553,7 +3553,7 @@ var _FeedManager = class {
     const deleteCount = Math.min(items.length + newItems.length - itemLimit, items.length);
     for (let index = 0; index < deleteCount; index++) {
       const item = items[index];
-      this.app.vault.delete(item.item);
+      await this.app.vault.delete(item.item);
     }
     for (let index = 0; index < newItems.length; index++) {
       const item = newItems[index];
@@ -3958,8 +3958,12 @@ var RSSTrackerPlugin = class extends import_obsidian5.Plugin {
     });
     this.registerInterval(window.setInterval(() => {
       if (this.settings.autoUpdateFeeds) {
-        this.feedmgr.updateAllRSSfeeds(false);
-        console.log("RSS Feed background update complete.");
+        try {
+          this.feedmgr.updateAllRSSfeeds(false);
+          console.log("RSS Feed background update complete.");
+        } catch (ex) {
+          console.log(`Background update failed: ${ex.message}`);
+        }
       }
     }, 60 * 60 * 1e3));
   }
