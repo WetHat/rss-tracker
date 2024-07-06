@@ -3,14 +3,17 @@ import { DEFAULT_SETTINGS, RSSTrackerSettingTab, RSSTrackerSettings } from './se
 import { MarkAllRSSitemsReadCommand, NewRSSFeedModalCommand, UpdateRSSfeedCommand } from './commands';
 import { FeedManager } from './FeedManager';
 import { UpdateRSSfeedMenuItem, MarkAllItemsReadMenuItem } from './menus';
+import { DataViewJSTools } from './DataViewJSTools';
 
 export default class RSSTrackerPlugin extends Plugin {
     settings: RSSTrackerSettings = DEFAULT_SETTINGS;
     feedmgr: FeedManager;
+    dvjs: DataViewJSTools;
 
     constructor(app: App, manifest: PluginManifest) {
         super(app, manifest);
         this.feedmgr = new FeedManager(app, this);
+        this.dvjs = new DataViewJSTools(app, this);
     }
 
     async onload() {

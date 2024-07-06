@@ -1910,7 +1910,7 @@ tags: []
 > {{description}}
 >
 > {{image}}
-# Unread Feed Items
+# Unread Feed Items \u{1F4DA}
 ~~~dataview
 TASK
 FROM "{{folderPath}}"
@@ -3923,12 +3923,77 @@ var UpdateRSSfeedMenuItem = class extends RSSTrackerMenuItem {
   }
 };
 
+// src/DataViewJSTools.ts
+var DataViewJSTools = class {
+  static toHashtag(tag) {
+    return tag.startsWith("#") ? tag : "#" + tag;
+  }
+  static toHashtags(fileRecord) {
+    return fileRecord.file.etags.map((t) => DataViewJSTools.toHashtag(t));
+  }
+  constructor(app, plugin) {
+    this.app = app;
+    this.plugin = plugin;
+  }
+  getFileHashtagLine(fileRecord) {
+    return DataViewJSTools.toHashtags(fileRecord).join(" ");
+  }
+  async getFeedItems(dv, feedRecord) {
+    console.log(`getFeedItems for ${feedRecord.file.name}`);
+    const from = '"' + feedRecord.file.folder + "/" + feedRecord.file.name + '"';
+    return await dv.pages(from).distinct((rec) => rec.link);
+  }
+  async getTopicFeeds(dv) {
+    const topicTags = DataViewJSTools.toHashtags(dv.current()), from = topicTags.join(" OR ");
+    return await dv.pages(from).where((rec) => rec.feedurl).sort((rec) => rec.file.name, "asc");
+  }
+  async groupedReadingList(dv) {
+    const topicFeeds = await this.getTopicFeeds(dv);
+    let totalTaskCount = 0;
+    for (const feed of topicFeeds) {
+      const items = await this.getFeedItems(dv, feed), tasks = items.file.tasks.where((t) => !t.completed), taskCount = tasks.length;
+      if (taskCount > 0) {
+        totalTaskCount += taskCount;
+        dv.header(2, dv.fileLink(feed.file.path) + ` (${taskCount})`);
+        dv.taskList(tasks, false);
+      }
+    }
+    if (totalTaskCount === 0) {
+      dv.paragraph("> No unread items.");
+    }
+  }
+  async groupedPinnedItemsTable(dv, columnLabels, rowFactory) {
+    const topicFeeds = await this.getTopicFeeds(dv);
+    let totalItemCount = 0;
+    for (const feed of topicFeeds) {
+      const items = await this.getFeedItems(dv, feed), pinned = items.where((itemRec) => itemRec.pinned), itemCount = pinned.length;
+      console.log(`Pinned ${itemCount}`);
+      if (itemCount > 0) {
+        totalItemCount += itemCount;
+        dv.header(2, dv.fileLink(feed.file.path) + ` (${itemCount})`);
+        dv.table(
+          columnLabels,
+          pinned.map((itemRec) => rowFactory(itemRec))
+        );
+      }
+    }
+    if (totalItemCount === 0) {
+      dv.paragraph("> No items pinned.");
+    }
+  }
+  async topicFeedTable(dv, columnLabels, rowFactory) {
+    const topicFeeds = await this.getTopicFeeds(dv);
+    dv.table(columnLabels, topicFeeds.map((f) => rowFactory(f)));
+  }
+};
+
 // src/main.ts
 var RSSTrackerPlugin = class extends import_obsidian5.Plugin {
   constructor(app, manifest) {
     super(app, manifest);
     this.settings = DEFAULT_SETTINGS;
     this.feedmgr = new FeedManager(app, this);
+    this.dvjs = new DataViewJSTools(app, this);
   }
   async onload() {
     console.log("Loading rss-tracker.");
