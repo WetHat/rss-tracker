@@ -22,7 +22,7 @@ tags: []
 > {{description}}
 >
 > {{image}}
-# Unread Feed Items
+# Unread Feed Items 📚
 ~~~dataview
 TASK
 FROM "{{folderPath}}"
