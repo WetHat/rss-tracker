@@ -28,8 +28,13 @@ export class DataViewJSTools {
     async getFeedItems(feedRecord: TPropertyBag): Promise<TPropertyBag> {
         console.log(`getFeedItems for ${feedRecord.file.name}`);
 
-        const from = '"' + feedRecord.file.folder + "/" + feedRecord.file.name + '"';
-        return (await this.dv.pages(from).distinct((rec: TPropertyBag) => rec.link)) as Array<TPropertyBag>;
+        const
+            from = '"' + feedRecord.file.folder + "/" + feedRecord.file.name + '"',
+            items = await this.dv.pages(from);
+
+        return items
+            .distinct((rec: TPropertyBag) => rec.link)
+            .sort((rec: TPropertyBag) => rec.published,"desc");
     }
 
     async selectTopicFeeds() {

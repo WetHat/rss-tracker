@@ -3939,8 +3939,8 @@ var DataViewJSTools = class {
   }
   async getFeedItems(feedRecord) {
     console.log(`getFeedItems for ${feedRecord.file.name}`);
-    const from = '"' + feedRecord.file.folder + "/" + feedRecord.file.name + '"';
-    return await this.dv.pages(from).distinct((rec) => rec.link);
+    const from = '"' + feedRecord.file.folder + "/" + feedRecord.file.name + '"', items = await this.dv.pages(from);
+    return items.distinct((rec) => rec.link).sort((rec) => rec.published, "desc");
   }
   async selectTopicFeeds() {
     const topicTags = DataViewJSTools.toHashtags(this.dv.current()), from = topicTags.join(" OR ");
