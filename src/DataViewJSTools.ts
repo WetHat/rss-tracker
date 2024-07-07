@@ -25,6 +25,17 @@ export class DataViewJSTools {
         return DataViewJSTools.toHashtags(fileRecord).join(" ");
     }
 
+    fileLink(fileRecord: TPropertyBag): string {
+        return this.dv.fileLink(fileRecord.file.path);
+    }
+
+    datePublished(fileRecord: TPropertyBag): object {
+        return this.dv.date(fileRecord.published)
+    }
+    dateUpdated(fileRecord: TPropertyBag): object {
+        return this.dv.date(fileRecord.updated)
+    }
+
     async getFeedItems(feedRecord: TPropertyBag): Promise<TPropertyBag> {
         console.log(`getFeedItems for ${feedRecord.file.name}`);
 
@@ -34,7 +45,7 @@ export class DataViewJSTools {
 
         return items
             .distinct((rec: TPropertyBag) => rec.link)
-            .sort((rec: TPropertyBag) => rec.published,"desc");
+            .sort((rec: TPropertyBag) => rec.published, "desc");
     }
 
     async selectTopicFeeds() {
@@ -53,7 +64,7 @@ export class DataViewJSTools {
                 taskCount = tasks.length;
             if (taskCount > 0) {
                 totalTaskCount += taskCount;
-                this.dv.header(2, this.dv.fileLink(feed.file.path) + ` (${taskCount})`);
+                this.dv.header(2, this.fileLink(feed) + ` (${taskCount})`);
                 this.dv.taskList(tasks, false);
             }
         }
@@ -73,7 +84,7 @@ export class DataViewJSTools {
             console.log(`Pinned ${itemCount}`);
             if (itemCount > 0) {
                 totalItemCount += itemCount;
-                this.dv.header(2, this.dv.fileLink(feed.file.path) + ` (${itemCount})`);
+                this.dv.header(2, this.fileLink(feed) + ` (${itemCount})`);
                 this.dv.table(
                     columnLabels,
                     pinned.map((itemRec: TPropertyBag) => rowFactory(itemRec)));

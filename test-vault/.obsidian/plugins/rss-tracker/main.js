@@ -3937,6 +3937,15 @@ var DataViewJSTools = class {
   fileHashtags(fileRecord) {
     return DataViewJSTools.toHashtags(fileRecord).join(" ");
   }
+  fileLink(fileRecord) {
+    return this.dv.fileLink(fileRecord.file.path);
+  }
+  datePublished(fileRecord) {
+    return this.dv.date(fileRecord.published);
+  }
+  dateUpdated(fileRecord) {
+    return this.dv.date(fileRecord.updated);
+  }
   async getFeedItems(feedRecord) {
     console.log(`getFeedItems for ${feedRecord.file.name}`);
     const from = '"' + feedRecord.file.folder + "/" + feedRecord.file.name + '"', items = await this.dv.pages(from);
@@ -3953,7 +3962,7 @@ var DataViewJSTools = class {
       const items = await this.getFeedItems(feed), tasks = items.file.tasks.where((t) => !t.completed), taskCount = tasks.length;
       if (taskCount > 0) {
         totalTaskCount += taskCount;
-        this.dv.header(2, this.dv.fileLink(feed.file.path) + ` (${taskCount})`);
+        this.dv.header(2, this.fileLink(feed) + ` (${taskCount})`);
         this.dv.taskList(tasks, false);
       }
     }
@@ -3969,7 +3978,7 @@ var DataViewJSTools = class {
       console.log(`Pinned ${itemCount}`);
       if (itemCount > 0) {
         totalItemCount += itemCount;
-        this.dv.header(2, this.dv.fileLink(feed.file.path) + ` (${itemCount})`);
+        this.dv.header(2, this.fileLink(feed) + ` (${itemCount})`);
         this.dv.table(
           columnLabels,
           pinned.map((itemRec) => rowFactory(itemRec))
