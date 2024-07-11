@@ -1,27 +1,35 @@
-import { copyFileSync, accessSync, constants, renameSync } from 'fs'
+import fs from 'fs-extra'
 import { join } from 'path';
+
+// remove templates
+const templates = "./dist/Templates";
+if (fs.existsSync(templates)) {
+    fs.rmSync(templates,{recursive: true});
+}
 
 // copy assets
 console.log("Copying assets...");
 [
     "manifest.json",
-    "styles.css"
+    "styles.css",
+    "Templates"
 ].forEach(f => {
     const target = join("./dist", f);
     console.log(`${f} => ${target}`);
-    copyFileSync(f, target);
+    fs.copySync(f, target);
 });
+
 
 // configure test code
 console.log("Configuring regression tests...");
 try {
-    accessSync("./test/scripts/FeedAssembler.js", constants.F_OK);
+    fs.exists("./test/scripts/FeedAssembler.js");
 } catch (err) {
     process.exit(0);
 }
 
 try {
-    renameSync("./test/scripts/FeedAssembler.js", "./test/scripts/FeedAssembler.mjs");
+    fs.renameSync("./test/scripts/FeedAssembler.js", "./test/scripts/FeedAssembler.mjs");
     console.log("src/FeedAssembler.ts => test/scripts/FeedAssembler.mjs");
 } catch (err) {
     console.error(err);

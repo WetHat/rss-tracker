@@ -1,5 +1,14 @@
 import {execFileSync} from "child_process";
-import { copyFileSync } from 'fs';
+import fs from 'fs-extra';
 
-copyFileSync("dist/main.js","C:\\Users\\Peter\\OneDrive\\Documents\\ObsidianVaults\\Sandbox\\.obsidian\\plugins\\rss-tracker\\main.js");
+const
+    targetDir = "C:/Users/Peter/OneDrive/Documents/ObsidianVaults/Sandbox/.obsidian/plugins/rss-tracker",
+    templates = targetDir + "/Templates";
+
+if (fs.existsSync(templates)) {
+    fs.rmSync(templates,{recursive: true});
+}
+
+fs.copySync("./dist", targetDir);
+
 execFileSync("cmd",["/C","start","obsidian://open?vault=Sandbox^&file=%C2%A7%20About%20this%20Vault"]);
