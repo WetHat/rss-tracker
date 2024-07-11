@@ -1,167 +1,203 @@
+import { TPropertyBag } from './FeedAssembler';
 import RSSTrackerPlugin from './main';
-import { PluginSettingTab, Setting, App } from 'obsidian';
+import { PluginSettingTab, Setting, App, TFolder } from 'obsidian';
 
-export interface RSSTrackerSettings {
-	feedTemplate: string;
-	itemTemplate: string;
+export interface IRSSTrackerSettings {
+	[key: string]: any;
 	autoUpdateFeeds: boolean;
+	rssHome: string;
 	rssFeedFolder: string;
+	rssTemplateFolder: string;
 }
 
-export const DEFAULT_SETTINGS: RSSTrackerSettings = {
-	feedTemplate: `---
-feedurl: {{feedUrl}}
-site: "{{siteUrl}}"
-itemlimit: 100
-updated: never
-status: unknown
-tags: []
----
-
-> [!abstract] {{title}}
-> {{description}}
->
-> {{image}}
-# Unread Feed Items 📚
-~~~dataview
-TASK
-FROM "{{folderPath}}"
-WHERE !completed
-SORT published DESC
-~~~
-
-# Pinned Feed Items 📌
-~~~dataview
-TABLE
-published as Published
-FROM "{{folderPath}}"
-where pinned = true
-SORT published DESC
-~~~
-
-# Read Feed Items
-~~~dataview
-TASK
-FROM "{{folderPath}}"
-WHERE completed
-SORT published DESC
-~~~
-`,
-	itemTemplate: `---
-author: "{{author}}"
-published: {{publishDate}}
-link: {{link}}
-id: {{id}}
-feed: "{{feedName}}"
-tags: [{{tags}}]
-pinned: false
----
-{{abstract}}
-
-🔗Read article [online]({{link}}). For other items in this feed see [[{{feedName}}]].
-
-- [ ] [[{{fileName}}]]
-- - -
-{{content}}
-`,
+export const DEFAULT_SETTINGS: IRSSTrackerSettings = {
 	autoUpdateFeeds: false,
-	rssFeedFolder: "RSS",
+	rssHome: "RSS",
+	rssFeedFolder: "Feeds",
+	rssTemplateFolder: "Templates",
 }
 
-export class RSSTrackerSettingTab extends PluginSettingTab {
-	plugin: RSSTrackerPlugin;
+export type TTemplateName = "RSS Feed" | "RSS Item";
 
-	constructor(app: App, plugin: RSSTrackerPlugin) {
-		super(app, plugin);
-		this.plugin = plugin;
+const TEMPLATES: TTemplateName[] = ["RSS Feed", "RSS Item"];
+
+export class RSSTrackerSettings implements IRSSTrackerSettings {
+	plugin: RSSTrackerPlugin;
+	app: App;
+
+	static getTemplateFilename(templateName: TTemplateName): string {
+		return templateName + ".md";
 	}
 
-	display(): void {
-		const { containerEl } = this;
-		containerEl.empty();
-		const frag = containerEl.doc.createDocumentFragment()
-		// feed template setting
-		new Setting(containerEl)
-			.setName('Default RSS Feed Template')
-			.setDesc('Template for new RSS feed description markdown files.')
-			.addTextArea(ta => {
-				ta
-					.setValue(this.plugin.settings.feedTemplate)
-				.onChange(async (value) => {
-					this.plugin.settings.feedTemplate = value;
-					await this.plugin.saveSettings();
-				});
-				ta.inputEl.style.width = "100%";
-				ta.inputEl.rows = 10;
-			})
-			.addButton(btn => {
-				btn
-					.setIcon("reset")
-				.setTooltip("Reset feed template to default")
-				.onClick(async evt => {
-					this.plugin.settings.feedTemplate = DEFAULT_SETTINGS.feedTemplate;
-					await this.plugin.saveSettings();
-					this.display();
-				})
-			});
-		// item template setting
-		new Setting(containerEl)
-			.setName('Default RSS Item Template')
-			.setDesc('Template for new RSS item description markdown files.')
-			.addTextArea(ta => {
-				ta
-					.setValue(this.plugin.settings.itemTemplate)
-					.onChange(async (value) => {
-						this.plugin.settings.itemTemplate = value;
-						await this.plugin.saveSettings();
-					});
-				ta.inputEl.style.width = "100%";
-				ta.inputEl.rows = 10;
-			})
-			.addButton(btn => {
-				btn
-					.setIcon("reset")
-					.setTooltip("Reset item template to default")
-					.onClick(async evt => {
-						this.plugin.settings.itemTemplate = DEFAULT_SETTINGS.itemTemplate;
-						await this.plugin.saveSettings();
-						this.display();
-					})
-			});
+	private data: IRSSTrackerSettings = { ...DEFAULT_SETTINGS };
 
-		new Setting(containerEl)
-			.setName('Automatic RSS Updates')
-			.setDesc('Turn on to update RSS feeds periodically in the background.')
-			.addToggle(tg => {
-				tg.setValue(this.plugin.settings.autoUpdateFeeds);
-				tg.onChange(async evt => {
-					this.plugin.settings.autoUpdateFeeds = tg.getValue();
-					await this.plugin.saveSettings();
-				})
-			});
-		new Setting(containerEl)
-			.setName("Feed Location")
-			.setDesc("'.' to create new feeds next to the active note, '/' to create new feeds at vault root or path to a folder for new feeds.")
-			.addText(ta => {
-				ta
-					.setPlaceholder(DEFAULT_SETTINGS.rssFeedFolder)
-					.onChange(async (value) => {
-						this.plugin.settings.rssFeedFolder = value;
-						await this.plugin.saveSettings();
-					});
-				if (this.plugin.settings.rssFeedFolder !== DEFAULT_SETTINGS.rssFeedFolder) {
-					ta.setValue(this.plugin.settings.rssFeedFolder)
-				}
-			})
-		.addButton(btn => {
-			btn
-				.setIcon("reset")
-				.setTooltip("Reset feed location to default")
-				.onClick(async evt => {
-					this.plugin.settings.rssFeedFolder = DEFAULT_SETTINGS.rssFeedFolder;
-					await this.plugin.saveSettings();
-					this.display();
-				})
-			});
+	get autoUpdateFeeds(): boolean {
+		return this.data.autoUpdateFeeds;
+	}
+
+	set autoUpdateFeeds(value: boolean) {
+		this.data.autoUpdateFeeds = value;
+	}
+
+	private _rssHome: string | null;
+	private _rssFeedFolder: string | null;
+	private _rssTemplateFolder: string | null;
+
+	get rssHome(): string {
+		return this.data.rssHome ?? DEFAULT_SETTINGS.rssHome;
+	}
+
+	set rssHome(value: string) {
+		this._rssHome = value;
+	}
+
+	get rssFeedFolder(): string {
+		return this.data.rssFeedFolder ?? DEFAULT_SETTINGS.rssFeedFolder;
+	}
+
+	set rssFeedFolder(value: string) {
+		this._rssFeedFolder = value;
+	}
+
+	get rssTemplateFolder(): string {
+		return this.data.rssTemplateFolder ?? DEFAULT_SETTINGS.rssTemplateFolder;
+	}
+
+	set rssTemplateFolder(value: string) {
+		this._rssTemplateFolder = value;
+	}
+
+	private async rename(oldFolderPath: string, newFolderPath: string): Promise<boolean> {
+		if (oldFolderPath === newFolderPath) {
+			return false;
+		}
+
+		const
+			vault = this.app.vault,
+			oldFolder = vault.getFolderByPath(oldFolderPath);
+
+		if (oldFolder) {
+			await vault.rename(oldFolder, newFolderPath);
+			return true;
+		}
+		return false;
+	}
+
+	async commit() {
+		let success = true;
+
+		if (this._rssHome && this._rssHome !== this.rssHome) {
+			if (await this.rename(this.rssHome, this._rssHome)) {
+				this.data.rssHome = this._rssHome;
+			} else {
+				success = false;
+			}
+			this._rssHome = null;
+		}
+
+		if (this._rssFeedFolder && this._rssFeedFolder !== this.rssFeedFolder) {
+			if (await this.rename(this.rssFeedFolderPath, this.rssHome + "/" + this._rssFeedFolder)) {
+				this.data.rssFeedFolder = this._rssFeedFolder;
+			} else {
+				success = false;
+			}
+			this._rssFeedFolder = null;
+		}
+
+		if (this._rssTemplateFolder && this._rssTemplateFolder !== this.rssTemplateFolder) {
+			if (await this.rename(this.rssTemplateFolderPath, this.rssHome + "/" + this._rssTemplateFolder)) {
+				this.data.rssTemplateFolder = this._rssTemplateFolder;
+			} else {
+				success = false;
+			}
+
+			this._rssTemplateFolder = null;
+		}
+
+		await this.saveData();
+
+		if (!success) {
+			this.install();
+		}
+
+	}
+
+	constructor(app: App, plugin: RSSTrackerPlugin) {
+		this.app = app;
+		this.plugin = plugin;
+
+		this._rssHome = this._rssFeedFolder = this._rssTemplateFolder = null;
+	}
+
+	async loadData(): Promise<void> {
+		const data: TPropertyBag = await this.plugin.loadData();
+		for (const propertyName in this.data) {
+			if (propertyName in data) {
+				this.data[propertyName] = data[propertyName];
+			}
+		}
+		return this.saveData();
+	}
+
+	async saveData(): Promise<void> {
+		return this.plugin.saveData(this.data);
+	}
+
+	async install() {
+		const
+			vault = this.app.vault,
+			fs = vault.adapter;
+
+		if (!await fs.exists(this.rssHome)) {
+			await vault.createFolder(this.rssHome);
+		}
+
+		if (!await fs.exists(this.rssFeedFolderPath)) {
+			await vault.createFolder(this.rssFeedFolderPath);
+		}
+
+		const templatePath = this.rssTemplateFolderPath;
+		if (!await fs.exists(templatePath)) {
+			await vault.createFolder(templatePath);
+		}
+		// install factory templates if necessary
+		for (const tpl of TEMPLATES) {
+			const tplPath = this.getTemplatePath(tpl);
+			if (!await fs.exists(tplPath)) {
+				const factoryPath = this.plugin.manifest.dir + "/Templates/" + RSSTrackerSettings.getTemplateFilename(tpl);
+				fs.copy(factoryPath, tplPath);
+			}
+		}
+
+		console.log(`RSS directory structure created/updated at '${this.rssHome}'.`);
+	}
+
+	get rssFeedFolderPath(): string {
+		return this.rssHome + "/" + this.rssFeedFolder;
+	}
+
+	get rssTemplateFolderPath(): string {
+		return this.rssHome + "/" + this.rssTemplateFolder;
+	}
+
+	getTemplatePath(templateName: TTemplateName): string {
+		return this.rssTemplateFolderPath + "/" + RSSTrackerSettings.getTemplateFilename(templateName);
+	}
+
+	async readTemplate(templateName: TTemplateName): Promise<string> {
+		const
+			vault = this.app.vault,
+			fs = vault.adapter,
+			templatePath = this.getTemplatePath(templateName);
+
+		if (!fs.exists(this.rssTemplateFolderPath) || !fs.exists(templatePath)) {
+			await this.install();
+		}
+
+		const tplFile = vault.getFileByPath(templatePath);
+		if (!tplFile) {
+			throw new Error(`Template ${templatePath} unavailable!`);
+		}
+		return vault.cachedRead(tplFile);
 	}
 }

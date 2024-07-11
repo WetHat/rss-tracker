@@ -110,7 +110,7 @@ export class FeedManager {
         return md.replace(FeedManager.HASH_FINDER, "#rss/");
     }
 
-    private async saveFeedItem(itemFolder: TFolder, item: TrackedRSSitem): Promise<TFile> {
+    private async saveFeedItem(itemFolder: TFolder, item: TrackedRSSitem, itemTemplate: string): Promise<TFile> {
         let { id, tags, title, link, description, published, author, image, content } = item;
 
         if (description) {
@@ -125,8 +125,8 @@ export class FeedManager {
         let abstract = `> [!abstract] ${title}${byline} - ${published}`;
 
         if (description) {
-            const teaser = (description.length > 500 ? (description.substring(0,500) + "⋯") : description);
-            abstract += "\n> " + teaser.replaceAll("\n","\n> ");
+            const teaser = (description.length > 500 ? (description.substring(0, 500) + "⋯") : description);
+            abstract += "\n> " + teaser.replaceAll("\n", "\n> ");
         }
         if (image) {
             abstract += "\n>\n> " + this.formatImage(image);
@@ -148,7 +148,7 @@ export class FeedManager {
         }
 
         // fill in the template
-        const itemContent = this.expandTemplate(this.plugin.settings.itemTemplate, {
+        const itemContent = this.expandTemplate(itemTemplate, {
             "{{id}}": id,
             "{{author}}": author ?? itemFolder.name,
             "{{link}}": link ?? "",
@@ -180,7 +180,7 @@ export class FeedManager {
                 const
                     f = x as TFile,
                     fm = meta.getFileCache(f)?.frontmatter,
-                    annotated: IAnnotatedItem = { item: f, pinned: fm?.pinned === true};
+                    annotated: IAnnotatedItem = { item: f, pinned: fm?.pinned === true };
                 if (fm) {
                     const { id, published } = fm;
                     annotated.id = id;
@@ -197,10 +197,10 @@ export class FeedManager {
         const
             knownIDs = new Set<string>(items.map(it => it.id ?? "?")),
             newItems = feed.items
-                .slice(0,itemLimit) // do not exceed limit
+                .slice(0, itemLimit) // do not exceed limit
                 .filter(it => !knownIDs.has(it.id)); // assuming newest items first
         // remove pinned items so that they do not count against the item limit
-        items = items.filter( it => !it.pinned);
+        items = items.filter(it => !it.pinned);
         // determine how many items needs to be purged
         const deleteCount = Math.min(items.length + newItems.length - itemLimit, items.length);
 
@@ -211,9 +211,13 @@ export class FeedManager {
         }
 
         // save items
-        for (let index = 0; index < newItems.length; index++) {
-            const item = newItems[index];
-            await this.saveFeedItem(itemFolder, item).catch(reason => { throw reason });
+        if (newItems.length > 0) {
+            const itemTemplate: string = await this.plugin.settings.readTemplate("RSS Item");
+
+            for (let index = 0; index < newItems.length; index++) {
+                const item = newItems[index];
+                await this.saveFeedItem(itemFolder, item, itemTemplate).catch(reason => { throw reason });
+            }
         }
         return newItems.length;
     }
@@ -283,7 +287,7 @@ export class FeedManager {
             { title, site, description } = feed,
             basename = feed.fileName,
             itemfolderPath = normalizePath(path.join(location.path, basename)),
-            tpl = this.plugin.settings.feedTemplate,
+            tpl = await this.plugin.settings.readTemplate("RSS Feed"),
             dashboardPath = normalizePath(path.join(location.path, `${basename}.md`)),
             defaultImage = basename + ".svg";
         let image: IRssMedium | string | undefined = feed.image;

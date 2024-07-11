@@ -1,6 +1,12 @@
 import { TPropertyBag } from './FeedAssembler';
 
+
 export type TItemRowFactory = (feedItem: TPropertyBag) => object[];
+
+/**
+ * A callback function type to create a dataview table row for an RSS
+ * feed file.
+ */
 export type TFeedRowFactory = (feed: TPropertyBag) => object[];
 
 export class DataViewJSTools {
@@ -48,19 +54,20 @@ export class DataViewJSTools {
             .sort((rec: TPropertyBag) => rec.published, "desc");
     }
 
-    async selectTopicFeeds() {
+    async selectFeeds() {
         const
             topicTags: string[] = DataViewJSTools.toHashtags(this.dv.current()),
             from = topicTags.join(" OR ");
         return await this.dv.pages(from).where((rec: TPropertyBag) => rec.feedurl).sort((rec: TPropertyBag) => rec.file.name, "asc");
     }
-    async groupedReadingList() {
-        const topicFeeds = await this.selectTopicFeeds();
+
+    async groupedReadingList(read = false) {
+        const topicFeeds = await this.selectFeeds();
         let totalTaskCount = 0;
         for (const feed of topicFeeds) {
             const
                 items = await this.getFeedItems(feed),
-                tasks = items.file.tasks.where((t: TPropertyBag) => !t.completed),
+                tasks = items.file.tasks.where((t: TPropertyBag) => t.completed == read ),
                 taskCount = tasks.length;
             if (taskCount > 0) {
                 totalTaskCount += taskCount;
@@ -74,7 +81,7 @@ export class DataViewJSTools {
     }
 
     async groupedPinnedItemsTable(columnLabels: string[], rowFactory: TItemRowFactory) {
-        const topicFeeds = await this.selectTopicFeeds();
+        const topicFeeds = await this.selectFeeds();
         let totalItemCount = 0
         for (const feed of topicFeeds) {
             const
@@ -96,7 +103,7 @@ export class DataViewJSTools {
     }
 
     async topicFeedTable(columnLabels: string[], rowFactory: TFeedRowFactory) {
-        const topicFeeds = await this.selectTopicFeeds();
+        const topicFeeds = await this.selectFeeds();
         this.dv.table(columnLabels, topicFeeds.map((f: TPropertyBag) => rowFactory(f)));
     }
 }

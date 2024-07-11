@@ -1,18 +1,20 @@
 import { Notice, Plugin, PluginManifest, App, ObsidianProtocolData } from 'obsidian';
-import { DEFAULT_SETTINGS, RSSTrackerSettingTab, RSSTrackerSettings } from './settings';
+import { RSSTrackerSettings } from './settings';
 import { MarkAllRSSitemsReadCommand, NewRSSFeedModalCommand, UpdateRSSfeedCommand } from './commands';
 import { FeedManager } from './FeedManager';
 import { UpdateRSSfeedMenuItem, MarkAllItemsReadMenuItem } from './menus';
 import { DataViewJSTools } from './DataViewJSTools';
 import { TPropertyBag } from './FeedAssembler';
+import { RSSTrackerSettingTab } from './settingsUI';
 
 export default class RSSTrackerPlugin extends Plugin {
-    settings: RSSTrackerSettings = DEFAULT_SETTINGS;
+    settings: RSSTrackerSettings;
     feedmgr: FeedManager;
 
     constructor(app: App, manifest: PluginManifest) {
         super(app, manifest);
         this.feedmgr = new FeedManager(app, this);
+        this.settings = new RSSTrackerSettings(app,this);
     }
 
     getDVJSTools(dv: TPropertyBag) {
@@ -22,7 +24,7 @@ export default class RSSTrackerPlugin extends Plugin {
     async onload() {
         console.log('Loading rss-tracker.');
 
-        await this.loadSettings();
+        await this.settings.loadData();
 
         // This creates an icon in the left ribbon.
         const ribbonIconEl = this.addRibbonIcon('rss', 'Update all RSS Feeds', (evt: MouseEvent) => {
@@ -43,7 +45,7 @@ export default class RSSTrackerPlugin extends Plugin {
         this.addCommand(new NewRSSFeedModalCommand(this.app, this));
         this.addCommand(new MarkAllRSSitemsReadCommand(this.app, this));
         // This adds a settings tab so the user can configure various aspects of the plugin
-        this.addSettingTab(new RSSTrackerSettingTab(this.app, this));
+        this.addSettingTab(new RSSTrackerSettingTab(this.settings));
 
         // If the plugin hooks up any global DOM events (on parts of the app that doesn't belong to this plugin)
         // Using this function will automatically remove the event listener when this plugin is disabled.
@@ -83,17 +85,11 @@ export default class RSSTrackerPlugin extends Plugin {
                 }
             }
         }, 60 * 60 * 1000));
+        await this.settings.install();
     }
 
     onunload() {
         console.log('Unloading rss-tracker.');
-    }
-
-    async loadSettings() {
-        this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
-    }
-
-    async saveSettings() {
-        await this.saveData(this.settings);
+        this.settings.saveData();
     }
 }

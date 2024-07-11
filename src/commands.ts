@@ -58,7 +58,7 @@ export class InputUrlModal extends Modal {
 }
 
 /**
- * A command that can update an RSS feed uf the current file is a RSS feed dashboard.
+ * A command that can update an RSS feed if the current file is a RSS feed dashboard.
  */
 export class UpdateRSSfeedCommand implements Command {
     id = 'rss-tracker-update-feed-checked';
@@ -143,7 +143,7 @@ export class NewRSSFeedModalCommand implements Command {
     callback(): any {
         // Conditions to check
         const modal = new InputUrlModal(this.app, async result => {
-            const locationSetting = this.plugin.settings.rssFeedFolder ?? DEFAULT_SETTINGS.rssFeedFolder;
+            const locationSetting = this.plugin.settings.rssFeedFolder;
             let feedFolder: TFolder | null;
             if (locationSetting === ".") {
                 // add feed in same folder as furrent note
