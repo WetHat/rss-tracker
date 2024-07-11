@@ -1,0 +1,260 @@
+{
+    "title": "@wethat7.bsky.social - WetHat💦",
+    "description": "I enjoy programming computers",
+    "site": "https://bsky.app/profile/wethat7.bsky.social",
+    "items": [
+        {
+            "id": "at://did:plc:yvdlpmjapztrbruhdk7e7ran/app.bsky.feed.post/3ksegfm5tx52z",
+            "tags": [],
+            "description": "Lisp allows for the creation of code that generates more code, offering a\n                unique twist to programming methodologies favored by many\n                developers.&#xA;&#xA;https://marketsplash.com/lisp-metaprogramming/&#xA;&#xA;#Lisp\n                #LispLang #Programming #MetaProgramming",
+            "title": "13 May 2024 10:10 +0000",
+            "link": "https://bsky.app/profile/wethat7.bsky.social/post/3ksegfm5tx52z",
+            "published": "2024-05-13T10:10:00.000Z",
+            "media": []
+        },
+        {
+            "id": "at://did:plc:yvdlpmjapztrbruhdk7e7ran/app.bsky.feed.post/3ksefrvr7ii2d",
+            "tags": [],
+            "description": "Spoiler: If there is any performance benefit to using readonly fields, it\n                is negligible in almost all cases.&#xA;\n                &#xA;https://steven-giesel.com/blogPost/50b84029-4f1e-4e6d-8fd1-0311b0605562&#xA;&#xA;https://steven-giesel.com/blogPost/50b84029-4f1e-4e6d-8fd1-0311b0605562?utm_source=newsletter.csharpdigest.net&utm_medium=newsletter&utm_campaign=refactor-your-code-with-c-collection-expressions&#xA;&#xA;#Programming\n                #Csharp #DotNet",
+            "title": "13 May 2024 09:59 +0000",
+            "link": "https://bsky.app/profile/wethat7.bsky.social/post/3ksefrvr7ii2d",
+            "published": "2024-05-13T09:59:00.000Z",
+            "media": []
+        },
+        {
+            "id": "at://did:plc:yvdlpmjapztrbruhdk7e7ran/app.bsky.feed.post/3kseeigwc3c2e",
+            "tags": [],
+            "description": "A fantastic journey porting Newtonsoft.Json (a very cool and dead library)\n                to System.Text.Json (C# now built-in\n                serialization).&#xA;&#xA;https://isadorasophia.com/articles/serialization/&#xA;&#xA;#DotNet\n                #CSharp #Programming #JSON",
+            "title": "13 May 2024 09:35 +0000",
+            "link": "https://bsky.app/profile/wethat7.bsky.social/post/3kseeigwc3c2e",
+            "published": "2024-05-13T09:35:00.000Z",
+            "media": []
+        },
+        {
+            "id": "at://did:plc:yvdlpmjapztrbruhdk7e7ran/app.bsky.feed.post/3ksedzl673u2i",
+            "tags": [],
+            "description": "The best new features and fixes in Python 3.13\n                &#xA;&#xA;https://www.infoworld.com/article/3715449/the-best-new-features-and-fixes-in-python-313.html?utm_source=flipboard&utm_content=topic%2Fprogramming&#xA;&#xA;#Python\n                #Programming",
+            "title": "13 May 2024 09:27 +0000",
+            "link": "https://bsky.app/profile/wethat7.bsky.social/post/3ksedzl673u2i",
+            "published": "2024-05-13T09:27:00.000Z",
+            "media": []
+        },
+        {
+            "id": "at://did:plc:yvdlpmjapztrbruhdk7e7ran/app.bsky.feed.post/3ksedcrlxym2l",
+            "tags": [],
+            "description": "10 Advanced C# Tricks for Developers 🔥 | Medium&#xA;&#xA;Ten methods to\n                boost code efficiency and readability for experienced\n                developers.&#xA;&#xA;https://medium.com/@kmorpex/10-advanced-c-tricks-for-experienced-developers-26a48c6a8c9c&#xA;&#xA;#HowTo\n                #CSharp #Programming #DotNet",
+            "title": "13 May 2024 09:14 +0000",
+            "link": "https://bsky.app/profile/wethat7.bsky.social/post/3ksedcrlxym2l",
+            "published": "2024-05-13T09:14:00.000Z",
+            "media": []
+        },
+        {
+            "id": "at://did:plc:yvdlpmjapztrbruhdk7e7ran/app.bsky.feed.post/3ksacm3a3p727",
+            "tags": [],
+            "description": "Computer Science Roadmap: Curriculum for the self taught developer&#xA;A\n                study plan with free resources for the self-taught and bootcamp grads wanting to\n                learn Computer\n                Science&#xA;&#xA;https://roadmap.sh/computer-science&#xA;&#xA;#ComputerScience\n                #ComputerScienceCurriculum #Curriculum #CompSci #SelfTaught",
+            "title": "11 May 2024 18:51 +0000",
+            "link": "https://bsky.app/profile/wethat7.bsky.social/post/3ksacm3a3p727",
+            "published": "2024-05-11T18:51:00.000Z",
+            "media": []
+        },
+        {
+            "id": "at://did:plc:yvdlpmjapztrbruhdk7e7ran/app.bsky.feed.post/3ksabjyerk42w",
+            "tags": [],
+            "description": "Algorithms and Data Structures implemented in #JavaScript and #TypeScript\n                for beginners, following best\n                practices.&#xA;&#xA;https://github.com/TheAlgorithms/Javascript&#xA;&#xA;#Programming\n                #Tutorials #Algorithms #DataStructures #SampleCode #GitHub",
+            "title": "11 May 2024 18:32 +0000",
+            "link": "https://bsky.app/profile/wethat7.bsky.social/post/3ksabjyerk42w",
+            "published": "2024-05-11T18:32:00.000Z",
+            "media": []
+        },
+        {
+            "id": "at://did:plc:yvdlpmjapztrbruhdk7e7ran/app.bsky.feed.post/3ksa7jr42v727",
+            "tags": [],
+            "description": "A comprehensive list of free APIs in various categories such as:&#xA;➡️\n                Animal Pictures&#xA;➡️Anime&#xA;➡️Art & Design&#xA;➡️Authentication &\n                Authorization&#xA;➡️Blockchain&#xA;➡️Business&#xA;➡️Currency\n                Exchange&#xA;➡️Social&#xA;&#xA;https://github.com/public-apis/public-apis&#xA;&#xA;#GitHub\n                #OpenSource #Programming",
+            "title": "11 May 2024 17:56 +0000",
+            "link": "https://bsky.app/profile/wethat7.bsky.social/post/3ksa7jr42v727",
+            "published": "2024-05-11T17:56:00.000Z",
+            "media": []
+        },
+        {
+            "id": "at://did:plc:yvdlpmjapztrbruhdk7e7ran/app.bsky.feed.post/3ks77rfqnxs2e",
+            "tags": [],
+            "description": "Programming Resources In Many Languages:&#xA;➡️Books&#xA;➡️Cheat\n                Sheets&#xA;➡️Online Courses&#xA;➡️Interactive Programming Resources&#xA;➡️Problem\n                Sets and Competitive Programming&#xA;➡️Podcasts/Screencasts&#xA;➡️Programming\n                Playgrounds-Write, compile, run code in a\n                browser&#xA;&#xA;https://github.com/EbookFoundation/free-programming-books&#xA;&#xA;#programming\n                #GitHub\n                #tutorial&#xA;https://ebookfoundation.github.io/free-programming-books-search/",
+            "title": "11 May 2024 08:28 +0000",
+            "link": "https://bsky.app/profile/wethat7.bsky.social/post/3ks77rfqnxs2e",
+            "published": "2024-05-11T08:28:00.000Z",
+            "media": []
+        },
+        {
+            "id": "at://did:plc:yvdlpmjapztrbruhdk7e7ran/app.bsky.feed.post/3ks76u36yst2q",
+            "tags": [],
+            "description": "This #GitHub repository aids in understanding #JavaScript concepts through\n                examples and thoroughly explains how they function. for beginners and professional\n                developers.&#xA;https://github.com/denysdovhan/wtfjs&#xA;&#xA;#programming #tutorial",
+            "title": "11 May 2024 08:11 +0000",
+            "link": "https://bsky.app/profile/wethat7.bsky.social/post/3ks76u36yst2q",
+            "published": "2024-05-11T08:11:00.000Z",
+            "media": []
+        },
+        {
+            "id": "at://did:plc:yvdlpmjapztrbruhdk7e7ran/app.bsky.feed.post/3ks3f4ssuk32f",
+            "tags": [],
+            "description": "Chain of Responsibility Pattern in C# - A Simplified How-To\n                &#xA;&#xA;https://www.devleader.ca/2024/01/05/chain-of-responsibility-pattern-in-c-simplified-how-to-guide/&#xA;&#xA;#DotNet\n                #Csharp #Programming #DesignPattern #SoftwareDesign",
+            "title": "09 May 2024 19:53 +0000",
+            "link": "https://bsky.app/profile/wethat7.bsky.social/post/3ks3f4ssuk32f",
+            "published": "2024-05-09T19:53:00.000Z",
+            "media": []
+        },
+        {
+            "id": "at://did:plc:yvdlpmjapztrbruhdk7e7ran/app.bsky.feed.post/3ks3ed2lnqp2g",
+            "tags": [],
+            "description": "Neuralink says its first in-human brain implant malfunctioned.&#xA;😕 Who\n                would be mad enough to allow #ElonMusk to put anything in anyones\n                brain.&#xA;&#xA;https://nypost.com/2024/05/09/business/neuralink-says-its-first-in-human-brain-implant-malfunctioned/?utm_source=flipboard&utm_campaign=nypost&utm_medium=social&#xA;&#xA;#FaFo\n                #Neuralink",
+            "title": "09 May 2024 19:38 +0000",
+            "link": "https://bsky.app/profile/wethat7.bsky.social/post/3ks3ed2lnqp2g",
+            "published": "2024-05-09T19:38:00.000Z",
+            "media": []
+        },
+        {
+            "id": "at://did:plc:yvdlpmjapztrbruhdk7e7ran/app.bsky.feed.post/3kryw5ibffe2i",
+            "tags": [],
+            "description": "CSS\n                Examples&#xA;&#xA;https://www.positronx.io/css-code-examples/&#xA;&#xA;#WebDevelopment\n                #CSS #HowTo #WebDesign",
+            "title": "08 May 2024 20:20 +0000",
+            "link": "https://bsky.app/profile/wethat7.bsky.social/post/3kryw5ibffe2i",
+            "published": "2024-05-08T20:20:00.000Z",
+            "media": []
+        },
+        {
+            "id": "at://did:plc:yvdlpmjapztrbruhdk7e7ran/app.bsky.feed.post/3kryutdxhju2u",
+            "tags": [],
+            "description": "A Guide to __contains__ and __iter__ Magic Methods -\n                &#xA;&#xA;https://www.kdnuggets.com/understanding-pythons-iteration-and-membership-a-guide-to-__contains__-and-__iter__-magic-methods&#xA;&#xA;\"iteration\"\n                and \"membership\" are fundamental concepts to understanding how Python\n                handles collections of data, such as lists, tuples, and\n                dictionaries.&#xA;&#xA;#Python #Programming\n                #dunder&#xA;https://www.kdnuggets.com/understanding-pythons-iteration-and-membership-a-guide-to-__contains__-and-__iter__-magic-methods?utm_source=flipboard&utm_content=topic%2Fobjectorientedprogramming",
+            "title": "08 May 2024 19:56 +0000",
+            "link": "https://bsky.app/profile/wethat7.bsky.social/post/3kryutdxhju2u",
+            "published": "2024-05-08T19:56:00.000Z",
+            "media": []
+        },
+        {
+            "id": "at://did:plc:yvdlpmjapztrbruhdk7e7ran/app.bsky.feed.post/3kryp6bwt6u2x",
+            "tags": [],
+            "description": "⚠️ Bridging from #Bluesky to the #fediverse is currently in early beta\n                testing. &#xA;&#xA;To bridge your Bluesky account into the fediverse and interact\n                with people there, follow @ap.brid.gy on Bluesky.&#xA;&#xA;Your Bluesky account will\n                appear in the fediverse as @[handle]@bsky.brid.gy.&#xA;&#xA;See also:\n                fed.brid.gy/docs&#xA;https://fed.brid.gy/docs",
+            "title": "08 May 2024 18:15 +0000",
+            "link": "https://bsky.app/profile/wethat7.bsky.social/post/3kryp6bwt6u2x",
+            "published": "2024-05-08T18:15:00.000Z",
+            "media": []
+        },
+        {
+            "id": "at://did:plc:yvdlpmjapztrbruhdk7e7ran/app.bsky.feed.post/3krynoxvt532g",
+            "tags": [],
+            "description": "Follow @bsky.brid.gy@bsky.brid.gy in the #Fediverse to bridge your account\n                to #BlueSky.&#xA;&#xA;⚠️The 300 char limit for BlueSky posts causes data loss.\n                &#xA;&#xA;A directory of shared #Fediverse accounts is at:&#xA;&#xA;🔗\n                blue.mackuba.eu/directory/fedi&#xA;&#xA;#MicroBlogging\n                #Federation&#xA;&#xA;[contains quote post or other embedded content]",
+            "title": "08 May 2024 17:48 +0000",
+            "link": "https://bsky.app/profile/wethat7.bsky.social/post/3krynoxvt532g",
+            "published": "2024-05-08T17:48:00.000Z",
+            "media": []
+        },
+        {
+            "id": "at://did:plc:yvdlpmjapztrbruhdk7e7ran/app.bsky.feed.post/3krjokf45hm24",
+            "tags": [],
+            "description": "Writing Unit Tests for Python Code&#xA;&#xA;The Python standard library\n                ships with a testing framework named unittest, which you can use to write automated\n                tests. f&#xA;&#xA;https://realpython.com/python-unittest/&#xA;&#xA;#Python\n                #UnitTesting #Programming #DevOps",
+            "title": "02 May 2024 18:54 +0000",
+            "link": "https://bsky.app/profile/wethat7.bsky.social/post/3krjokf45hm24",
+            "published": "2024-05-02T18:54:00.000Z",
+            "media": []
+        },
+        {
+            "id": "at://did:plc:yvdlpmjapztrbruhdk7e7ran/app.bsky.feed.post/3krjnzdxd5v2u",
+            "tags": [],
+            "description": "Totally Valid - The Daily WTF &#xA;&#xA;The real WTF is that in languages\n                with truthiness, this code may actually be useful- converting a falsey value to a\n                literal false. But in C#, this is both useless and\n                stupid.&#xA;&#xA;https://thedailywtf.com/articles/totally-valid&#xA;&#xA;#programming\n                #wtf #AntiPattern",
+            "title": "02 May 2024 18:44 +0000",
+            "link": "https://bsky.app/profile/wethat7.bsky.social/post/3krjnzdxd5v2u",
+            "published": "2024-05-02T18:44:00.000Z",
+            "media": []
+        },
+        {
+            "id": "at://did:plc:yvdlpmjapztrbruhdk7e7ran/app.bsky.feed.post/3krjh4zsxbe24",
+            "tags": [],
+            "description": "What's Lazy Evaluation in Python?&#xA;&#xA;Python lazy evaluation is\n                when Python takes the lazy option and delays working out the value returned by an\n                expression until that value is actually\n                needed.&#xA;&#xA;https://realpython.com/python-lazy-evaluation/&#xA;&#xA;#Python\n                #Tutorial #Programming",
+            "title": "02 May 2024 16:41 +0000",
+            "link": "https://bsky.app/profile/wethat7.bsky.social/post/3krjh4zsxbe24",
+            "published": "2024-05-02T16:41:00.000Z",
+            "media": []
+        },
+        {
+            "id": "at://did:plc:yvdlpmjapztrbruhdk7e7ran/app.bsky.feed.post/3krjgbdjwjf22",
+            "tags": [],
+            "description": "5 Social Engineering Techniques and How to Mitigate Them &#xA;&#xA;Social\n                engineering attempts to manipulate people into providing access to valuable data or\n                systems. The manipulation typically happens in\n                stages.&#xA;&#xA;https://www.computer.org/publications/tech-news/trends/advanced-social-engineering-techniques&#xA;&#xA;#SocialEngineering\n                #CyberSecurity #Hacking",
+            "title": "02 May 2024 16:25 +0000",
+            "link": "https://bsky.app/profile/wethat7.bsky.social/post/3krjgbdjwjf22",
+            "published": "2024-05-02T16:25:00.000Z",
+            "media": []
+        },
+        {
+            "id": "at://did:plc:yvdlpmjapztrbruhdk7e7ran/app.bsky.feed.post/3krjdcdpoa42y",
+            "tags": [],
+            "description": "Python Cheatsheet &#xA;&#xA;This #Python #cheatsheet tries to provide basic\n                reference for beginner and advanced developers, lower the entry barrier for\n                newcomers and help veterans refresh the old\n                tricks.&#xA;&#xA;www.pythoncheatsheet.org&#xA;&#xA;#programming&#xA;https://www.pythoncheatsheet.org/",
+            "title": "02 May 2024 15:32 +0000",
+            "link": "https://bsky.app/profile/wethat7.bsky.social/post/3krjdcdpoa42y",
+            "published": "2024-05-02T15:32:00.000Z",
+            "media": []
+        },
+        {
+            "id": "at://did:plc:yvdlpmjapztrbruhdk7e7ran/app.bsky.feed.post/3kr7iqw3y3y2z",
+            "tags": [],
+            "description": "Bluesky backs a project that would let Mastodon apps, like Ivory, work with\n                its network&#xA;&#xA;Social networks Bluesky and Mastodon may soon be accessible\n                from within a single\n                app.&#xA;&#xA;https://techcrunch.com/2024/04/25/bluesky-backs-a-project-that-would-let-mastodon-apps-like-ivory-work-with-its-network/&#xA;&#xA;#SkyBridge\n                #BlueSky #Fediverse #Mastodon #Federation #Microblogging",
+            "title": "28 Apr 2024 17:43 +0000",
+            "link": "https://bsky.app/profile/wethat7.bsky.social/post/3kr7iqw3y3y2z",
+            "published": "2024-04-28T17:43:00.000Z",
+            "media": []
+        },
+        {
+            "id": "at://did:plc:yvdlpmjapztrbruhdk7e7ran/app.bsky.feed.post/3kqwynrmw6z2i",
+            "tags": [],
+            "description": "Researchers have unlocked the \"Holy Grail\" of memory\n                technology&#xA;&#xA;Phase change memory, or PCM for short, works by shifting between\n                two physical states: crystallized (with low resistance) and amorphous (with high\n                resistance).\n                &#xA;&#xA;https://www.techspot.com/news/102731-researchers-have-unlocked-holy-grail-memory-technology.html?utm_source=flipboard&utm_content=WetHat%2Fmagazine%2FComputer+Science&#xA;&#xA;#CompSci\n                #Hardware #PCM #ComputerScience",
+            "title": "25 Apr 2024 08:34 +0000",
+            "link": "https://bsky.app/profile/wethat7.bsky.social/post/3kqwynrmw6z2i",
+            "published": "2024-04-25T08:34:00.000Z",
+            "media": []
+        },
+        {
+            "id": "at://did:plc:yvdlpmjapztrbruhdk7e7ran/app.bsky.feed.post/3kquo7xgzea23",
+            "tags": [],
+            "description": ".slnx The New .NET Solution XML File Format - NDepend Blog&#xA;&#xA;Visual\n                Studio 2022 17.10 will propose the new .NET solution file format with improvement\n                handling solution file merge conflicts.&#xA;&#xA;\n                https://blog.ndepend.com/slnx-the-new-net-solution-xml-file-format/?utm_source=flipboard&utm_content=lbrgriffith%2Fmagazine%2FPC+DEVELOPER&#xA;&#xA;#VisualStudio\n                #programming #DotNet",
+            "title": "24 Apr 2024 10:22 +0000",
+            "link": "https://bsky.app/profile/wethat7.bsky.social/post/3kquo7xgzea23",
+            "published": "2024-04-24T10:22:00.000Z",
+            "media": []
+        },
+        {
+            "id": "at://did:plc:yvdlpmjapztrbruhdk7e7ran/app.bsky.feed.post/3kqumlonxmg2l",
+            "tags": [],
+            "description": "Mastering SOLID Principles in C#: A Practical Guide&#xA;&#xA;They guide\n                developers to build robust systems through Single Responsibility, Open-Closed,\n                Liskov Substitution, Interface Segregation, and Dependency Inversion\n                principles.&#xA;&#xA;\n                https://www.syncfusion.com/blogs/post/mastering-solid-principles-csharp?utm_source=flipboard&utm_content=lbrgriffith%2Fmagazine%2FPC+DEVELOPER&#xA;&#xA;#Csharp\n                #programming #SoftwareDesign",
+            "title": "24 Apr 2024 09:53 +0000",
+            "link": "https://bsky.app/profile/wethat7.bsky.social/post/3kqumlonxmg2l",
+            "published": "2024-04-24T09:53:00.000Z",
+            "media": []
+        },
+        {
+            "id": "at://did:plc:yvdlpmjapztrbruhdk7e7ran/app.bsky.feed.post/3kqq43fe7sa2t",
+            "tags": [],
+            "description": "Concrapenate Strings - The Daily #WTF &#xA;&#xA;The code in the article is\n                responsible for opening a file dialog, and the key goal of the code is to configure\n                the file filter in that\n                dialog.&#xA;&#xA;https://thedailywtf.com/articles/concrapenate-strings&#xA;&#xA;#clang\n                #programming #ProgrammingMemes",
+            "title": "22 Apr 2024 14:47 +0000",
+            "link": "https://bsky.app/profile/wethat7.bsky.social/post/3kqq43fe7sa2t",
+            "published": "2024-04-22T14:47:00.000Z",
+            "media": []
+        },
+        {
+            "id": "at://did:plc:yvdlpmjapztrbruhdk7e7ran/app.bsky.feed.post/3kqq3gqm4gt23",
+            "tags": [],
+            "description": "The Most Embarrassing Blunders From Elon Musk’s Attempt at AI-Generated\n                News &#xA;&#xA;The feature has a disclaimer that Grok “can make mistakes,” and it’s\n                made quite a few of\n                them.&#xA;&#xA;https://gizmodo.com/most-embarrassing-blunders-elon-musks-grok-ai-news-1851416945?utm_source=flipboard&utm_content=topic%2Fartificialintelligence&#xA;&#xA;#Grok\n                #AI #ArtificialIntelligence #Twitter #TwitterX",
+            "title": "22 Apr 2024 14:35 +0000",
+            "link": "https://bsky.app/profile/wethat7.bsky.social/post/3kqq3gqm4gt23",
+            "published": "2024-04-22T14:35:00.000Z",
+            "media": []
+        },
+        {
+            "id": "at://did:plc:yvdlpmjapztrbruhdk7e7ran/app.bsky.feed.post/3kqpbirktgj2i",
+            "tags": [],
+            "description": "Loki: Open-source fact checking.&#xA;&#xA;⚠️ Requires an API keys to\n                run:&#xA;➡️local #LLM key&#xA;➡️#OpenAI: #GPT&#xA;➡️#Anthropic:\n                #Claude AI&#xA;➡️#Serper low-cost Google Search\n                API&#xA;&#xA;https://github.com/Libr-AI/OpenFactVerification&#xA;&#xA;#GitHub\n                #FactChecking #Python #AI #ArtificialIntelligence",
+            "title": "22 Apr 2024 06:51 +0000",
+            "link": "https://bsky.app/profile/wethat7.bsky.social/post/3kqpbirktgj2i",
+            "published": "2024-04-22T06:51:00.000Z",
+            "media": []
+        }
+    ],
+    "source": "https://openrss.org/bsky.app/profile/did:plc:yvdlpmjapztrbruhdk7e7ran"
+}
