@@ -39,7 +39,8 @@ async function generateFeedReference(feed) {
     }
 
     // clear out the markdown files, if any
-    globSync(`${fsFeedDir}/*.md`).forEach(md => fs.unlinkSync(md));
+    console.log(`cleaning up ${fsFeedDir}/*.md`);
+    globSync(`${fsFeedDir}/*.md`).forEach(md => fs.rmSync(md));
 
     // regenerate the feed markdown files
     const xmlAsset = encodeURIComponent(`RSS/reference/${feedName}/assets/feed.xml`);
