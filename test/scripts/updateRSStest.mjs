@@ -31,7 +31,7 @@ async function generateFeedReference(feed) {
     // cleanup the markdown files
     const
         feedName = feed.fileName,
-        fsFeedDir = "./test-vault/reference/" + feedName,
+        fsFeedDir = "./test-vault/RSS/reference/" + feedName,
         feedDashboard = fsFeedDir + ".md";
 
     if (fs.existsSync(feedDashboard)) {
@@ -42,7 +42,7 @@ async function generateFeedReference(feed) {
     globSync(`${fsFeedDir}/*.md`).forEach(md => fs.unlinkSync(md));
 
     // regenerate the feed markdown files
-    const xmlAsset = encodeURIComponent(`reference/${feedName}/assets/feed.xml`);
+    const xmlAsset = encodeURIComponent(`RSS/reference/${feedName}/assets/feed.xml`);
     execFileSync("cmd", ["/C", "start", `obsidian://newRssFeed?xml=${xmlAsset}^&dir=RSS%2Freference`]);
 
     await new Promise(resolve => setTimeout(resolve,2000));
