@@ -2,7 +2,7 @@
 role: rssfeed
 feedurl: {{feedUrl}}
 site: "{{siteUrl}}"
-itemlimit: 100
+itemlimit: 10
 updated: never
 status: unknown
 tags: []
