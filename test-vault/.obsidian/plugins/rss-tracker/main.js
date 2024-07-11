@@ -1895,133 +1895,152 @@ module.exports = __toCommonJS(main_exports);
 var import_obsidian5 = require("obsidian");
 
 // src/settings.ts
-var import_obsidian = require("obsidian");
 var DEFAULT_SETTINGS = {
-  feedTemplate: `---
-feedurl: {{feedUrl}}
-site: "{{siteUrl}}"
-itemlimit: 100
-updated: never
-status: unknown
-tags: []
----
-
-> [!abstract] {{title}}
-> {{description}}
->
-> {{image}}
-# Unread Feed Items \u{1F4DA}
-~~~dataview
-TASK
-FROM "{{folderPath}}"
-WHERE !completed
-SORT published DESC
-~~~
-
-# Pinned Feed Items \u{1F4CC}
-~~~dataview
-TABLE
-published as Published
-FROM "{{folderPath}}"
-where pinned = true
-SORT published DESC
-~~~
-
-# Read Feed Items
-~~~dataview
-TASK
-FROM "{{folderPath}}"
-WHERE completed
-SORT published DESC
-~~~
-`,
-  itemTemplate: `---
-author: "{{author}}"
-published: {{publishDate}}
-link: {{link}}
-id: {{id}}
-feed: "{{feedName}}"
-tags: [{{tags}}]
-pinned: false
----
-{{abstract}}
-
-\u{1F517}Read article [online]({{link}}). For other items in this feed see [[{{feedName}}]].
-
-- [ ] [[{{fileName}}]]
-- - -
-{{content}}
-`,
   autoUpdateFeeds: false,
-  rssFeedFolder: "RSS"
+  rssHome: "RSS",
+  rssFeedFolder: "Feeds",
+  rssTemplateFolder: "Templates"
 };
-var RSSTrackerSettingTab = class extends import_obsidian.PluginSettingTab {
+var TEMPLATES = ["RSS Feed", "RSS Item"];
+var RSSTrackerSettings = class {
   constructor(app, plugin) {
-    super(app, plugin);
+    this.data = { ...DEFAULT_SETTINGS };
+    this.app = app;
     this.plugin = plugin;
+    this._rssHome = this._rssFeedFolder = this._rssTemplateFolder = null;
   }
-  display() {
-    const { containerEl } = this;
-    containerEl.empty();
-    const frag = containerEl.doc.createDocumentFragment();
-    new import_obsidian.Setting(containerEl).setName("Default RSS Feed Template").setDesc("Template for new RSS feed description markdown files.").addTextArea((ta) => {
-      ta.setValue(this.plugin.settings.feedTemplate).onChange(async (value) => {
-        this.plugin.settings.feedTemplate = value;
-        await this.plugin.saveSettings();
-      });
-      ta.inputEl.style.width = "100%";
-      ta.inputEl.rows = 10;
-    }).addButton((btn) => {
-      btn.setIcon("reset").setTooltip("Reset feed template to default").onClick(async (evt) => {
-        this.plugin.settings.feedTemplate = DEFAULT_SETTINGS.feedTemplate;
-        await this.plugin.saveSettings();
-        this.display();
-      });
-    });
-    new import_obsidian.Setting(containerEl).setName("Default RSS Item Template").setDesc("Template for new RSS item description markdown files.").addTextArea((ta) => {
-      ta.setValue(this.plugin.settings.itemTemplate).onChange(async (value) => {
-        this.plugin.settings.itemTemplate = value;
-        await this.plugin.saveSettings();
-      });
-      ta.inputEl.style.width = "100%";
-      ta.inputEl.rows = 10;
-    }).addButton((btn) => {
-      btn.setIcon("reset").setTooltip("Reset item template to default").onClick(async (evt) => {
-        this.plugin.settings.itemTemplate = DEFAULT_SETTINGS.itemTemplate;
-        await this.plugin.saveSettings();
-        this.display();
-      });
-    });
-    new import_obsidian.Setting(containerEl).setName("Automatic RSS Updates").setDesc("Turn on to update RSS feeds periodically in the background.").addToggle((tg) => {
-      tg.setValue(this.plugin.settings.autoUpdateFeeds);
-      tg.onChange(async (evt) => {
-        this.plugin.settings.autoUpdateFeeds = tg.getValue();
-        await this.plugin.saveSettings();
-      });
-    });
-    new import_obsidian.Setting(containerEl).setName("Feed Location").setDesc("'.' to create new feeds next to the active note, '/' to create new feeds at vault root or path to a folder for new feeds.").addText((ta) => {
-      ta.setPlaceholder(DEFAULT_SETTINGS.rssFeedFolder).onChange(async (value) => {
-        this.plugin.settings.rssFeedFolder = value;
-        await this.plugin.saveSettings();
-      });
-      if (this.plugin.settings.rssFeedFolder !== DEFAULT_SETTINGS.rssFeedFolder) {
-        ta.setValue(this.plugin.settings.rssFeedFolder);
+  static getTemplateFilename(templateName) {
+    return templateName + ".md";
+  }
+  get autoUpdateFeeds() {
+    return this.data.autoUpdateFeeds;
+  }
+  set autoUpdateFeeds(value) {
+    this.data.autoUpdateFeeds = value;
+  }
+  get rssHome() {
+    var _a2;
+    return (_a2 = this.data.rssHome) != null ? _a2 : DEFAULT_SETTINGS.rssHome;
+  }
+  set rssHome(value) {
+    this._rssHome = value;
+  }
+  get rssFeedFolder() {
+    var _a2;
+    return (_a2 = this.data.rssFeedFolder) != null ? _a2 : DEFAULT_SETTINGS.rssFeedFolder;
+  }
+  set rssFeedFolder(value) {
+    this._rssFeedFolder = value;
+  }
+  get rssTemplateFolder() {
+    var _a2;
+    return (_a2 = this.data.rssTemplateFolder) != null ? _a2 : DEFAULT_SETTINGS.rssTemplateFolder;
+  }
+  set rssTemplateFolder(value) {
+    this._rssTemplateFolder = value;
+  }
+  async rename(oldFolderPath, newFolderPath) {
+    if (oldFolderPath === newFolderPath) {
+      return false;
+    }
+    const vault = this.app.vault, oldFolder = vault.getFolderByPath(oldFolderPath);
+    if (oldFolder) {
+      await vault.rename(oldFolder, newFolderPath);
+      return true;
+    }
+    return false;
+  }
+  async commit() {
+    let success = true;
+    if (this._rssHome && this._rssHome !== this.rssHome) {
+      if (await this.rename(this.rssHome, this._rssHome)) {
+        this.data.rssHome = this._rssHome;
+      } else {
+        success = false;
       }
-    }).addButton((btn) => {
-      btn.setIcon("reset").setTooltip("Reset feed location to default").onClick(async (evt) => {
-        this.plugin.settings.rssFeedFolder = DEFAULT_SETTINGS.rssFeedFolder;
-        await this.plugin.saveSettings();
-        this.display();
-      });
-    });
+      this._rssHome = null;
+    }
+    if (this._rssFeedFolder && this._rssFeedFolder !== this.rssFeedFolder) {
+      if (await this.rename(this.rssFeedFolderPath, this.rssHome + "/" + this._rssFeedFolder)) {
+        this.data.rssFeedFolder = this._rssFeedFolder;
+      } else {
+        success = false;
+      }
+      this._rssFeedFolder = null;
+    }
+    if (this._rssTemplateFolder && this._rssTemplateFolder !== this.rssTemplateFolder) {
+      if (await this.rename(this.rssTemplateFolderPath, this.rssHome + "/" + this._rssTemplateFolder)) {
+        this.data.rssTemplateFolder = this._rssTemplateFolder;
+      } else {
+        success = false;
+      }
+      this._rssTemplateFolder = null;
+    }
+    await this.saveData();
+    if (!success) {
+      this.install();
+    }
+  }
+  async loadData() {
+    const data = await this.plugin.loadData();
+    for (const propertyName in this.data) {
+      if (propertyName in data) {
+        this.data[propertyName] = data[propertyName];
+      }
+    }
+    return this.saveData();
+  }
+  async saveData() {
+    return this.plugin.saveData(this.data);
+  }
+  async install() {
+    const vault = this.app.vault, fs = vault.adapter;
+    if (!await fs.exists(this.rssHome)) {
+      await vault.createFolder(this.rssHome);
+    }
+    if (!await fs.exists(this.rssFeedFolderPath)) {
+      await vault.createFolder(this.rssFeedFolderPath);
+    }
+    const templatePath = this.rssTemplateFolderPath;
+    if (!await fs.exists(templatePath)) {
+      await vault.createFolder(templatePath);
+    }
+    for (const tpl of TEMPLATES) {
+      const tplPath = this.getTemplatePath(tpl);
+      if (!await fs.exists(tplPath)) {
+        const factoryPath = this.plugin.manifest.dir + "/Templates/" + RSSTrackerSettings.getTemplateFilename(tpl);
+        fs.copy(factoryPath, tplPath);
+      }
+    }
+    console.log(`RSS directory structure created/updated at '${this.rssHome}'.`);
+  }
+  get rssFeedFolderPath() {
+    return this.rssHome + "/" + this.rssFeedFolder;
+  }
+  get rssTemplateFolderPath() {
+    return this.rssHome + "/" + this.rssTemplateFolder;
+  }
+  getTemplatePath(templateName) {
+    return this.rssTemplateFolderPath + "/" + RSSTrackerSettings.getTemplateFilename(templateName);
+  }
+  async readTemplate(templateName) {
+    const vault = this.app.vault, fs = vault.adapter, templatePath = this.getTemplatePath(templateName);
+    if (!fs.exists(this.rssTemplateFolderPath) || !fs.exists(templatePath)) {
+      await this.install();
+    }
+    const tplFile = vault.getFileByPath(templatePath);
+    if (!tplFile) {
+      throw new Error(`Template ${templatePath} unavailable!`);
+    }
+    return vault.cachedRead(tplFile);
   }
 };
 
 // src/commands.ts
-var import_obsidian3 = require("obsidian");
+var import_obsidian2 = require("obsidian");
 
 // src/FeedManager.ts
-var import_obsidian2 = require("obsidian");
+var import_obsidian = require("obsidian");
 
 // node_modules/@extractus/feed-extractor/src/utils/linker.js
 var isValid = (url = "") => {
@@ -3447,7 +3466,7 @@ var _FeedManager = class {
   }
   getItemFolderPath(feed) {
     var _a2, _b;
-    return (0, import_obsidian2.normalizePath)(path.join((_b = (_a2 = feed.parent) == null ? void 0 : _a2.path) != null ? _b : "", feed.basename));
+    return (0, import_obsidian.normalizePath)(path.join((_b = (_a2 = feed.parent) == null ? void 0 : _a2.path) != null ? _b : "", feed.basename));
   }
   /**
    * Expand `{{mustache}}` placeholders with data from a property bag.
@@ -3478,13 +3497,13 @@ var _FeedManager = class {
   formatHashTags(md) {
     return md.replace(_FeedManager.HASH_FINDER, "#rss/");
   }
-  async saveFeedItem(itemFolder, item) {
+  async saveFeedItem(itemFolder, item, itemTemplate) {
     let { id, tags, title, link, description, published, author, image, content } = item;
     if (description) {
-      description = this.formatHashTags((0, import_obsidian2.htmlToMarkdown)(description));
+      description = this.formatHashTags((0, import_obsidian.htmlToMarkdown)(description));
     }
     if (content) {
-      content = this.formatHashTags((0, import_obsidian2.htmlToMarkdown)(content));
+      content = this.formatHashTags((0, import_obsidian.htmlToMarkdown)(content));
     }
     title = this.formatHashTags(title);
     const byline = author ? ` by ${author}` : "";
@@ -3500,14 +3519,14 @@ var _FeedManager = class {
       content = description;
     }
     const basename = item.fileName;
-    let itemPath = (0, import_obsidian2.normalizePath)(path.join(itemFolder.path, `${basename}.md`));
+    let itemPath = (0, import_obsidian.normalizePath)(path.join(itemFolder.path, `${basename}.md`));
     let uniqueBasename = basename, counter = 1;
     while (this.app.vault.getFileByPath(itemPath)) {
       uniqueBasename = `${basename} (${counter})`;
-      itemPath = (0, import_obsidian2.normalizePath)(path.join(itemFolder.path, `${uniqueBasename}.md`));
+      itemPath = (0, import_obsidian.normalizePath)(path.join(itemFolder.path, `${uniqueBasename}.md`));
       counter++;
     }
-    const itemContent = this.expandTemplate(this.plugin.settings.itemTemplate, {
+    const itemContent = this.expandTemplate(itemTemplate, {
       "{{id}}": id,
       "{{author}}": author != null ? author : itemFolder.name,
       "{{link}}": link != null ? link : "",
@@ -3530,7 +3549,7 @@ var _FeedManager = class {
       itemFolder = await this.app.vault.createFolder(itemFolderPath);
     }
     const meta = this.app.metadataCache;
-    let items = itemFolder.children.filter((fof) => fof instanceof import_obsidian2.TFile).map((x) => {
+    let items = itemFolder.children.filter((fof) => fof instanceof import_obsidian.TFile).map((x) => {
       var _a2;
       const f = x, fm = (_a2 = meta.getFileCache(f)) == null ? void 0 : _a2.frontmatter, annotated = { item: f, pinned: (fm == null ? void 0 : fm.pinned) === true };
       if (fm) {
@@ -3555,11 +3574,14 @@ var _FeedManager = class {
       const item = items[index];
       await this.app.vault.delete(item.item);
     }
-    for (let index = 0; index < newItems.length; index++) {
-      const item = newItems[index];
-      await this.saveFeedItem(itemFolder, item).catch((reason) => {
-        throw reason;
-      });
+    if (newItems.length > 0) {
+      const itemTemplate = await this.plugin.settings.readTemplate("RSS Item");
+      for (let index = 0; index < newItems.length; index++) {
+        const item = newItems[index];
+        await this.saveFeedItem(itemFolder, item, itemTemplate).catch((reason) => {
+          throw reason;
+        });
+      }
     }
     return newItems.length;
   }
@@ -3615,7 +3637,7 @@ var _FeedManager = class {
   * @returns The dashboard Markdown file.
   */
   async createFeedFromUrl(url, location) {
-    const feedXML = await (0, import_obsidian2.request)({
+    const feedXML = await (0, import_obsidian.request)({
       url,
       method: "GET"
     });
@@ -3623,13 +3645,13 @@ var _FeedManager = class {
   }
   async createFeed(feed, location) {
     var _a2, _b;
-    const { title, site, description } = feed, basename = feed.fileName, itemfolderPath = (0, import_obsidian2.normalizePath)(path.join(location.path, basename)), tpl = this.plugin.settings.feedTemplate, dashboardPath = (0, import_obsidian2.normalizePath)(path.join(location.path, `${basename}.md`)), defaultImage = basename + ".svg";
+    const { title, site, description } = feed, basename = feed.fileName, itemfolderPath = (0, import_obsidian.normalizePath)(path.join(location.path, basename)), tpl = await this.plugin.settings.readTemplate("RSS Feed"), dashboardPath = (0, import_obsidian.normalizePath)(path.join(location.path, `${basename}.md`)), defaultImage = basename + ".svg";
     let image = feed.image;
     const content = this.expandTemplate(tpl, {
       "{{feedUrl}}": feed.source,
       "{{siteUrl}}": site != null ? site : "",
-      "{{title}}": (0, import_obsidian2.htmlToMarkdown)(title != null ? title : ""),
-      "{{description}}": description ? this.formatHashTags((0, import_obsidian2.htmlToMarkdown)(description)) : "",
+      "{{title}}": (0, import_obsidian.htmlToMarkdown)(title != null ? title : ""),
+      "{{description}}": description ? this.formatHashTags((0, import_obsidian.htmlToMarkdown)(description)) : "",
       "{{folderPath}}": itemfolderPath,
       "{{image}}": image ? this.formatImage(image) : `![[${defaultImage}|200x200]]`
     });
@@ -3674,7 +3696,7 @@ var _FeedManager = class {
     let interval = 1;
     let status = "OK";
     try {
-      const feedXML = await (0, import_obsidian2.request)({
+      const feedXML = await (0, import_obsidian.request)({
         url: feedConfig.feedUrl,
         method: "GET"
       }), feed = new TrackedRSSfeed(feedXML, feedConfig.feedUrl);
@@ -3695,7 +3717,7 @@ var _FeedManager = class {
     const itemFolder = this.app.vault.getFolderByPath(this.getItemFolderPath(feed));
     if (itemFolder) {
       const meta = this.app.metadataCache;
-      let items = itemFolder.children.filter((fof) => fof instanceof import_obsidian2.TFile).map((f) => f).filter((f) => {
+      let items = itemFolder.children.filter((fof) => fof instanceof import_obsidian.TFile).map((f) => f).filter((f) => {
         var _a3;
         const fm = (_a3 = meta.getFileCache(f)) == null ? void 0 : _a3.frontmatter;
         return (fm == null ? void 0 : fm["id"]) && (fm == null ? void 0 : fm["feed"]);
@@ -3720,7 +3742,7 @@ var _FeedManager = class {
       }
     }
     if (n > 0) {
-      new import_obsidian2.Notice(`${n} RSS feeds updated`);
+      new import_obsidian.Notice(`${n} RSS feeds updated`);
     }
   }
 };
@@ -3731,7 +3753,7 @@ FeedManager.ITEMLIMIT_FINDER = /(?<=itemlimit:\s*)\d+/;
 FeedManager.RSS_IMAGE_SVG = '<svg height="300px" width="300px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 398.668 398.668" xml:space="preserve"> <g> <g> <path style="fill:none;" d="M98.107,275.498c-13.789,0-25.006,11.264-25.006,25.107c0,13.777,11.217,24.986,25.006,24.986 c13.834,0,25.09-11.209,25.09-24.986C123.197,286.762,111.941,275.498,98.107,275.498z"/> <path style="fill:none;" d="M360.057,24H38.613C30.555,24,24,30.557,24,38.613v321.443c0,8.057,6.555,14.611,14.613,14.611 h321.443c8.057,0,14.611-6.555,14.611-14.611V38.613C374.668,30.557,368.113,24,360.057,24z M98.107,349.592 c-27.021,0-49.006-21.975-49.006-48.986c0-27.078,21.984-49.107,49.006-49.107c27.068,0,49.09,22.029,49.09,49.107 C147.197,327.617,125.176,349.592,98.107,349.592z M242.715,347.516c0,0-0.008,0.002-0.016,0h-48.729 c-6.541,0-11.877-5.238-11.998-11.777c-0.584-31.625-13.164-61.316-35.424-83.604c-22.275-22.338-51.846-34.953-83.27-35.527 c-6.541-0.119-11.781-5.457-11.781-11.998v-48.582c0-3.211,1.287-6.287,3.572-8.543c2.248-2.217,5.275-3.457,8.428-3.457 c0.055,0,0.107,0,0.162,0c50.654,0.686,98.338,20.883,134.271,56.873c35.758,35.814,55.896,83.281,56.756,133.732 c0.021,0.291,0.031,0.586,0.031,0.883C254.719,342.143,249.348,347.516,242.715,347.516z M337.582,347.516 c0,0-0.008,0.002-0.016,0h-48.648c-6.578,0-11.93-5.295-12-11.871c-1.254-116.738-97.008-212.74-213.451-214.002 c-6.576-0.072-11.871-5.424-11.871-12V61.078c0-3.201,1.279-6.269,3.553-8.521c2.273-2.254,5.367-3.512,8.555-3.477 c75.951,0.68,147.441,30.768,201.303,84.723c53.689,53.779,83.699,125.096,84.553,200.891c0.02,0.272,0.029,0.547,0.029,0.822 C349.588,342.143,344.215,347.516,337.582,347.516z"/> <path style="fill:#3D6889;" d="M98.107,251.498c-27.021,0-49.006,22.029-49.006,49.107c0,27.012,21.984,48.986,49.006,48.986 c27.068,0,49.09-21.975,49.09-48.986C147.197,273.527,125.176,251.498,98.107,251.498z M98.107,325.592 c-13.789,0-25.006-11.209-25.006-24.986c0-13.844,11.217-25.107,25.006-25.107c13.834,0,25.09,11.264,25.09,25.107 C123.197,314.383,111.941,325.592,98.107,325.592z"/> <path style="fill:#73D0F4;" d="M75.498,168.633v24.668c33.244,3.301,64.15,17.926,88.037,41.881 c23.879,23.906,38.459,54.922,41.746,88.334h24.816C223.066,241.893,156.986,175.689,75.498,168.633z"/> <path style="fill:#3D6889;" d="M197.932,200.9c-35.934-35.99-83.617-56.188-134.271-56.873c-0.055,0-0.107,0-0.162,0 c-3.152,0-6.18,1.24-8.428,3.457c-2.285,2.256-3.572,5.332-3.572,8.543v48.582c0,6.541,5.24,11.879,11.781,11.998 c31.424,0.574,60.994,13.189,83.27,35.527c22.26,22.287,34.84,51.979,35.424,83.604c0.121,6.539,5.457,11.777,11.998,11.777 h48.729c0.008,0.002,0.016,0,0.016,0c6.633,0,12.004-5.373,12.004-12c0-0.297-0.01-0.592-0.031-0.883 C253.828,284.182,233.689,236.715,197.932,200.9z M205.281,323.516c-3.287-33.412-17.867-64.428-41.746-88.334 c-23.887-23.955-54.793-38.58-88.037-41.881v-24.668c81.488,7.057,147.568,73.26,154.6,154.883H205.281z"/> <path style="fill:#73D0F4;" d="M75.596,73.465v24.598c58.516,3.502,113.188,28.121,155.029,70.064 c41.838,41.943,66.391,96.742,69.877,155.389h24.682C317.852,189.59,209.293,80.834,75.596,73.465z"/> <path style="fill:#3D6889;" d="M265.006,133.803C211.145,79.848,139.654,49.76,63.703,49.08c-3.188-0.035-6.281,1.223-8.555,3.477 c-2.273,2.252-3.553,5.32-3.553,8.521v48.565c0,6.576,5.295,11.928,11.871,12c116.443,1.262,212.197,97.264,213.451,214.002 c0.07,6.576,5.422,11.871,12,11.871h48.648c0.008,0.002,0.016,0,0.016,0c6.633,0,12.006-5.373,12.006-12 c0-0.275-0.01-0.551-0.029-0.822C348.705,258.898,318.695,187.582,265.006,133.803z M300.502,323.516 c-3.486-58.646-28.039-113.445-69.877-155.389c-41.842-41.943-96.514-66.563-155.029-70.064V73.465 c133.697,7.369,242.256,116.125,249.588,250.051H300.502z"/> <path style="fill:#3D6889;" d="M360.057,0H38.613C17.322,0,0,17.322,0,38.613v321.443c0,21.291,17.322,38.611,38.613,38.611 h321.443c21.291,0,38.611-17.32,38.611-38.611V38.613C398.668,17.322,381.348,0,360.057,0z M374.668,360.057 c0,8.057-6.555,14.611-14.611,14.611H38.613c-8.059,0-14.613-6.555-14.613-14.611V38.613C24,30.557,30.555,24,38.613,24h321.443 c8.057,0,14.611,6.557,14.611,14.613V360.057z"/> </g> </g> </svg>';
 
 // src/commands.ts
-var InputUrlModal = class extends import_obsidian3.Modal {
+var InputUrlModal = class extends import_obsidian2.Modal {
   constructor(app, onSubmit) {
     super(app);
     this.result = "";
@@ -3739,7 +3761,7 @@ var InputUrlModal = class extends import_obsidian3.Modal {
   }
   onOpen() {
     const { contentEl } = this;
-    new import_obsidian3.Setting(contentEl).setName("Feed Url:").setDesc("Enter the url of the rss feed:").setHeading().addText((text) => {
+    new import_obsidian2.Setting(contentEl).setName("Feed Url:").setDesc("Enter the url of the rss feed:").setHeading().addText((text) => {
       text.inputEl.addEventListener("keyup", (evt) => {
         var _a2;
         var keyCode = (_a2 = evt.code) != null ? _a2 : evt.key;
@@ -3756,7 +3778,7 @@ var InputUrlModal = class extends import_obsidian3.Modal {
         this.result = value;
       });
     });
-    new import_obsidian3.Setting(contentEl).addButton(
+    new import_obsidian2.Setting(contentEl).addButton(
       (btn) => btn.setButtonText("Submit").setCta().onClick(() => {
         this.close();
         this.onSubmit(this.result);
@@ -3783,7 +3805,7 @@ var UpdateRSSfeedCommand = class {
         return cfg;
       }
       if (cfg) {
-        this.plugin.feedmgr.updateFeed(cfg, true).then(() => new import_obsidian3.Notice(`${cfg.source.basename} updated!`));
+        this.plugin.feedmgr.updateFeed(cfg, true).then(() => new import_obsidian2.Notice(`${cfg.source.basename} updated!`));
         return true;
       }
     }
@@ -3805,7 +3827,7 @@ var MarkAllRSSitemsReadCommand = class {
         return cfg;
       }
       if (cfg) {
-        this.plugin.feedmgr.markFeedItemsRead(cfg.source).then(() => new import_obsidian3.Notice(`${cfg.source.basename} updated!`));
+        this.plugin.feedmgr.markFeedItemsRead(cfg.source).then(() => new import_obsidian2.Notice(`${cfg.source.basename} updated!`));
         return true;
       }
     }
@@ -3821,8 +3843,7 @@ var NewRSSFeedModalCommand = class {
   }
   callback() {
     const modal = new InputUrlModal(this.app, async (result) => {
-      var _a2;
-      const locationSetting = (_a2 = this.plugin.settings.rssFeedFolder) != null ? _a2 : DEFAULT_SETTINGS.rssFeedFolder;
+      const locationSetting = this.plugin.settings.rssFeedFolder;
       let feedFolder;
       if (locationSetting === ".") {
         const f = this.app.workspace.getActiveFile();
@@ -3842,7 +3863,7 @@ var NewRSSFeedModalCommand = class {
         try {
           leaf.openFile(await mgr.createFeedFromUrl(result, feedFolder));
         } catch (err) {
-          new import_obsidian3.Notice(err.message);
+          new import_obsidian2.Notice(err.message);
         }
       }
     });
@@ -3851,7 +3872,7 @@ var NewRSSFeedModalCommand = class {
 };
 
 // src/menus.ts
-var import_obsidian4 = require("obsidian");
+var import_obsidian3 = require("obsidian");
 var RSSTrackerMenuItem = class {
   constructor(app, plugin) {
     this.app = app;
@@ -3870,7 +3891,7 @@ var RSSTrackerMenuItem = class {
    */
   get fileMenuHandler() {
     return this.app.workspace.on("file-menu", (menu, file) => {
-      this.addItem(menu, file instanceof import_obsidian4.TFile ? file : null);
+      this.addItem(menu, file instanceof import_obsidian3.TFile ? file : null);
     });
   }
 };
@@ -3886,7 +3907,7 @@ var MarkAllItemsReadMenuItem = class extends RSSTrackerMenuItem {
           item.setTitle("Mark all RSS items as read").setIcon("list-checks").onClick(async () => {
             var _a2;
             this.plugin.feedmgr.markFeedItemsRead(dashboard);
-            new import_obsidian4.Notice(`All items of "${(_a2 = dashboard == null ? void 0 : dashboard.basename) != null ? _a2 : "unavailable"}" marked read.`);
+            new import_obsidian3.Notice(`All items of "${(_a2 = dashboard == null ? void 0 : dashboard.basename) != null ? _a2 : "unavailable"}" marked read.`);
           });
         });
       }
@@ -3915,7 +3936,7 @@ var UpdateRSSfeedMenuItem = class extends RSSTrackerMenuItem {
           item.setTitle("Update RSS feed").setIcon("rss").onClick(async () => {
             var _a2;
             this.plugin.feedmgr.updateFeed(feedconfig, true);
-            new import_obsidian4.Notice(`${(_a2 = file == null ? void 0 : file.name) != null ? _a2 : "unavailable"} updated`);
+            new import_obsidian3.Notice(`${(_a2 = file == null ? void 0 : file.name) != null ? _a2 : "unavailable"} updated`);
           });
         });
       }
@@ -3951,15 +3972,15 @@ var DataViewJSTools = class {
     const from = '"' + feedRecord.file.folder + "/" + feedRecord.file.name + '"', items = await this.dv.pages(from);
     return items.distinct((rec) => rec.link).sort((rec) => rec.published, "desc");
   }
-  async selectTopicFeeds() {
+  async selectFeeds() {
     const topicTags = DataViewJSTools.toHashtags(this.dv.current()), from = topicTags.join(" OR ");
     return await this.dv.pages(from).where((rec) => rec.feedurl).sort((rec) => rec.file.name, "asc");
   }
-  async groupedReadingList() {
-    const topicFeeds = await this.selectTopicFeeds();
+  async groupedReadingList(read = false) {
+    const topicFeeds = await this.selectFeeds();
     let totalTaskCount = 0;
     for (const feed of topicFeeds) {
-      const items = await this.getFeedItems(feed), tasks = items.file.tasks.where((t) => !t.completed), taskCount = tasks.length;
+      const items = await this.getFeedItems(feed), tasks = items.file.tasks.where((t) => t.completed == read), taskCount = tasks.length;
       if (taskCount > 0) {
         totalTaskCount += taskCount;
         this.dv.header(2, this.fileLink(feed) + ` (${taskCount})`);
@@ -3971,7 +3992,7 @@ var DataViewJSTools = class {
     }
   }
   async groupedPinnedItemsTable(columnLabels, rowFactory) {
-    const topicFeeds = await this.selectTopicFeeds();
+    const topicFeeds = await this.selectFeeds();
     let totalItemCount = 0;
     for (const feed of topicFeeds) {
       const items = await this.getFeedItems(feed), pinned = items.where((itemRec) => itemRec.pinned), itemCount = pinned.length;
@@ -3990,8 +4011,85 @@ var DataViewJSTools = class {
     }
   }
   async topicFeedTable(columnLabels, rowFactory) {
-    const topicFeeds = await this.selectTopicFeeds();
+    const topicFeeds = await this.selectFeeds();
     this.dv.table(columnLabels, topicFeeds.map((f) => rowFactory(f)));
+  }
+};
+
+// src/settingsUI.ts
+var import_obsidian4 = require("obsidian");
+var RSSTrackerSettingBase = class extends import_obsidian4.Setting {
+  constructor(settingsTab) {
+    super(settingsTab.containerEl);
+    this.settingsTab = settingsTab;
+  }
+  get plugin() {
+    return this.settingsTab.settings.plugin;
+  }
+  get settings() {
+    return this.settingsTab.settings;
+  }
+};
+var RSSautoUpdateSetting = class extends RSSTrackerSettingBase {
+  constructor(settingsTab) {
+    super(settingsTab);
+    this.setName("Automatic RSS Updates").setDesc("Turn on to update RSS feeds periodically in the background.").addToggle((tg) => {
+      tg.setValue(this.settings.autoUpdateFeeds);
+      tg.onChange((evt) => {
+        this.settings.autoUpdateFeeds = tg.getValue();
+      });
+    });
+  }
+};
+var RSSHomeSetting = class extends RSSTrackerSettingBase {
+  constructor(settingsTab) {
+    super(settingsTab);
+    this.setName("RSS feed base (home) location").setDesc("The base folder containing RSS feeds and assets.").addText((ta) => {
+      ta.setPlaceholder(DEFAULT_SETTINGS.rssHome).onChange((value) => {
+        this.settings.rssHome = value;
+      });
+      if (this.settings.rssHome !== DEFAULT_SETTINGS.rssHome) {
+        ta.setValue(this.settings.rssHome);
+      }
+    }).addButton((btn) => {
+      btn.setIcon("reset").setTooltip("Reset the RSS home location to default").onClick((evt) => {
+        this.settings.rssHome = DEFAULT_SETTINGS.rssHome;
+      });
+    });
+  }
+};
+var RSSFeedFolderSetting = class extends RSSTrackerSettingBase {
+  constructor(settingsTab) {
+    super(settingsTab);
+    this.setName("RSS feed location").setDesc("The folder containing all RSS feeds.").addText((ta) => {
+      ta.setPlaceholder(DEFAULT_SETTINGS.rssFeedFolder).onChange((value) => {
+        this.settings.rssFeedFolder = value;
+      });
+      if (this.settings.rssFeedFolder !== DEFAULT_SETTINGS.rssFeedFolder) {
+        ta.setValue(this.settings.rssFeedFolder);
+      }
+    }).addButton((btn) => {
+      btn.setIcon("reset").setTooltip("Reset the RSS feed location to default").onClick((evt) => {
+        this.settings.rssFeedFolder = DEFAULT_SETTINGS.rssFeedFolder;
+      });
+    });
+  }
+};
+var RSSTrackerSettingTab = class extends import_obsidian4.PluginSettingTab {
+  constructor(settings) {
+    super(settings.app, settings.plugin);
+    this.settings = settings;
+  }
+  display() {
+    const { containerEl } = this;
+    containerEl.empty();
+    const frag = containerEl.doc.createDocumentFragment();
+    new RSSHomeSetting(this);
+    new RSSFeedFolderSetting(this);
+    new RSSautoUpdateSetting(this);
+  }
+  hide() {
+    this.settings.commit();
   }
 };
 
@@ -3999,15 +4097,15 @@ var DataViewJSTools = class {
 var RSSTrackerPlugin = class extends import_obsidian5.Plugin {
   constructor(app, manifest) {
     super(app, manifest);
-    this.settings = DEFAULT_SETTINGS;
     this.feedmgr = new FeedManager(app, this);
+    this.settings = new RSSTrackerSettings(app, this);
   }
   getDVJSTools(dv) {
     return new DataViewJSTools(dv);
   }
   async onload() {
     console.log("Loading rss-tracker.");
-    await this.loadSettings();
+    await this.settings.loadData();
     const ribbonIconEl = this.addRibbonIcon("rss", "Update all RSS Feeds", (evt) => {
       this.feedmgr.updateAllRSSfeeds(true);
     });
@@ -4015,7 +4113,7 @@ var RSSTrackerPlugin = class extends import_obsidian5.Plugin {
     this.addCommand(new UpdateRSSfeedCommand(this.app, this));
     this.addCommand(new NewRSSFeedModalCommand(this.app, this));
     this.addCommand(new MarkAllRSSitemsReadCommand(this.app, this));
-    this.addSettingTab(new RSSTrackerSettingTab(this.app, this));
+    this.addSettingTab(new RSSTrackerSettingTab(this.settings));
     const updateFeedItem = new UpdateRSSfeedMenuItem(this.app, this);
     this.registerEvent(updateFeedItem.editorMenuHandler);
     this.registerEvent(updateFeedItem.fileMenuHandler);
@@ -4041,14 +4139,10 @@ var RSSTrackerPlugin = class extends import_obsidian5.Plugin {
         }
       }
     }, 60 * 60 * 1e3));
+    await this.settings.install();
   }
   onunload() {
     console.log("Unloading rss-tracker.");
-  }
-  async loadSettings() {
-    this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
-  }
-  async saveSettings() {
-    await this.saveData(this.settings);
+    this.settings.saveData();
   }
 };

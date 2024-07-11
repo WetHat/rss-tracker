@@ -1,5 +1,5 @@
 
-import * as fs from 'fs';
+import fs from 'fs-extra';
 import * as path from 'path';
 import fetch from 'node-fetch';
 import { TrackedRSSfeed } from './FeedAssembler.mjs'
@@ -24,7 +24,7 @@ if (process.argv.length < 3) {
 
 const
     feedSource = process.argv[2], // url or relative directory path or --all
-    referencePath = "./test-vault/reference";
+    referencePath = "./test-vault/RSS/reference";
 
 async function generateFeedReference(feed) {
 
@@ -43,7 +43,7 @@ async function generateFeedReference(feed) {
 
     // regenerate the feed markdown files
     const xmlAsset = encodeURIComponent(`reference/${feedName}/assets/feed.xml`);
-    execFileSync("cmd", ["/C", "start", `obsidian://newRssFeed?xml=${xmlAsset}^&dir=reference`]);
+    execFileSync("cmd", ["/C", "start", `obsidian://newRssFeed?xml=${xmlAsset}^&dir=RSS%2Freference`]);
 
     await new Promise(resolve => setTimeout(resolve,2000));
     console.log(`Reference data for "${feedName}" updated!`)

@@ -1,21 +1,21 @@
 import * as path from 'path';
-import * as fs from 'fs';
+import fs from 'fs-extra';
 import { globSync } from "glob";
 import assert from "assert";
 import { execFileSync } from "child_process";
 import * as Diff from "diff";
 
-describe('FeedAssembler ', function () {
+describe('FeedManager ', function () {
     // collect all reference RSS feeds.
     const
-        tests = globSync("./test-vault/reference/*/assets/feed.xml")
+        tests = globSync("./test-vault/RSS/reference/*/assets/feed.xml")
             .map(xmlPath => {
                 const assets = path.dirname(xmlPath),
                     feedName = path.basename(path.dirname(assets)),
-                    vaultXmlPath = `reference/${feedName}/assets/feed.xml`;
+                    vaultXmlPath = `RSS/reference/${feedName}/assets/feed.xml`;
                 return { args: [vaultXmlPath, feedName], expected: false };
             }),
-        assets = `./test-vault/output/assets`;
+        assets = `./test-vault/RSS/output/assets`;
     // remove output assets
     if (fs.existsSync(assets)) {
         fs.rmSync(assets, { recursive: true, force: true });
@@ -25,7 +25,7 @@ describe('FeedAssembler ', function () {
     for (let testData of tests) {
         const
             [vaultXmlPath, feedName] = testData.args,
-            feedDir = `./test-vault/output/${feedName}`,
+            feedDir = `./test-vault/RSS/output/${feedName}`,
             feedDashboard = `${feedDir}.md`;
         describe(`RSS Feed ${feedName}`, function () {
             it(`"${feedName}" cleaned up`, async function () {
@@ -37,7 +37,7 @@ describe('FeedAssembler ', function () {
                     fs.unlinkSync(feedDashboard);
                 }
                 assert.equal(fs.existsSync(feedDir) || fs.existsSync(feedDashboard), false);
-                execFileSync("cmd", ["/C", "start", "/B", `obsidian://newRssFeed?xml=${encodeURIComponent(vaultXmlPath)}^&dir=output`]);
+                execFileSync("cmd", ["/C", "start", "/B", `obsidian://newRssFeed?xml=${encodeURIComponent(vaultXmlPath)}^&dir=RSS%2Foutput`]);
                 await new Promise(resolve => setTimeout(resolve, 1500)); // give Obsidian some breathing room
             });
 
@@ -46,7 +46,7 @@ describe('FeedAssembler ', function () {
             });
             const
                 actualFiles = globSync(feedDir + "/*.md").sort(),
-                refFiles = globSync(`./test-vault/reference/${feedName}/*.md`).sort();
+                refFiles = globSync(`./test-vault/RSS/reference/${feedName}/*.md`).sort();
             it(`feed has  ${refFiles.length} items`, function () {
                 assert.strictEqual(actualFiles.length, refFiles.length);
             });
@@ -92,4 +92,5 @@ ${JSON.stringify(diff, { encoding: "utf8" }, 4)}
             });
         });
     }
+
 });

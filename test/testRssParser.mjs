@@ -1,7 +1,7 @@
 import { diff } from "json-diff";
 import * as path from 'path';
 import { TrackedRSSfeed } from './scripts/FeedAssembler.mjs'
-import * as fs from 'fs';
+import fs from 'fs-extra';
 import { globSync } from "glob";
 import assert from "assert";
 import exp from "constants";
@@ -12,7 +12,7 @@ import exp from "constants";
  */
 describe('Test FeedAssembler ', function () {
     // collect all reference RSS feeds.
-    const tests = globSync("./test-vault/reference/*/assets/feed.xml")
+    const tests = globSync("./test-vault/RSS/reference/*/assets/feed.xml")
         .map(xmlPath => ({ args: [xmlPath], expected: false }));
 
     // Run the parsing test for each reference RSS feed.
