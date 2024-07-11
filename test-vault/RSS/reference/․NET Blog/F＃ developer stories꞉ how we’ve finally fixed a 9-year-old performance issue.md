@@ -1,4 +1,5 @@
 ---
+role: rssitem
 author: "Petr Semkin"
 published: 2024-05-29T17:05:00.000Z
 link: https://devblogs.microsoft.com/dotnet/fsharp-developer-stories-how-weve-finally-fixed-a-9yearold-performance-issue/
@@ -12,8 +13,8 @@ pinned: false
 > 
 > The post [F# developer stories: how we’ve finally fixed a 9-year-old performance issue](https://devblogs.microsoft.com/dotnet/fsharp-developer-stories-how-weve-finally-fixed-a-9yearold-performance-issue/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 
-🔗Read article [online](https://devblogs.microsoft.com/dotnet/fsharp-developer-stories-how-weve-finally-fixed-a-9yearold-performance-issue/). For other items in this feed see [[../․NET Blog]].
-
+🔗Read article [online](https://devblogs.microsoft.com/dotnet/fsharp-developer-stories-how-weve-finally-fixed-a-9yearold-performance-issue/). For other items in this feed see [[../․NET Blog|․NET Blog]].
+․NET Blog
 - [ ] [[F＃ developer stories꞉ how we’ve finally fixed a 9-year-old performance issue]]
 - - -
 Programming language authors have to think about many things at once: overall language design, runtime dangers, possible feature misuse, backward compatibility, forward compatibility, and so on. All these aspects, together with communication hiccups and time constraints, might get in the way of some seemingly clear and manageable problems.

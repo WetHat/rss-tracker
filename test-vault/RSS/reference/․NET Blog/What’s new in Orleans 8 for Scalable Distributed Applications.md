@@ -1,4 +1,5 @@
 ---
+role: rssitem
 author: "Mike Kistler"
 published: 2024-05-13T17:05:00.000Z
 link: https://devblogs.microsoft.com/dotnet/whats-new-in-orleans-8/
@@ -12,8 +13,8 @@ pinned: false
 > 
 > The post [What’s new in Orleans 8 for Scalable Distributed Applications](https://devblogs.microsoft.com/dotnet/whats-new-in-orleans-8/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 
-🔗Read article [online](https://devblogs.microsoft.com/dotnet/whats-new-in-orleans-8/). For other items in this feed see [[../․NET Blog]].
-
+🔗Read article [online](https://devblogs.microsoft.com/dotnet/whats-new-in-orleans-8/). For other items in this feed see [[../․NET Blog|․NET Blog]].
+․NET Blog
 - [ ] [[What’s new in Orleans 8 for Scalable Distributed Applications]]
 - - -
 Orleans is a cross-platform framework for building robust, scalable distributed applications. A lot has happened in Orleans for since our last blog on new features in [Orleans 7.0](https://devblogs.microsoft.com/dotnet/whats-new-in-orleans-7/) including new integration with [.NET Aspire](https://aka.ms/dotnet-aspire). Let’s take a look at what’s new!

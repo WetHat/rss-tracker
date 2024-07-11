@@ -10,8 +10,8 @@ pinned: false
 ---
 {{abstract}}
 
-🔗Read article [online]({{link}}). For other items in this feed see [[../{{feedName}}]].
-
+🔗Read article [online]({{link}}). For other items in this feed see [[../{{feedName}}|{{feedName}}]].
+{{feedName}}
 - [ ] [[{{fileName}}]]
 - - -
 {{content}}
