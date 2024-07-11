@@ -5,8 +5,9 @@
 node_modules
 # the generated output for comparison with the reference
 
-test-vault/output/*
-
+test-vault/RSS/output
+test-vault/.obsidian/workspace.json
+test-vault/reports
 # Exclude sourcemaps
 *.map
 
