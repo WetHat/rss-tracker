@@ -405,15 +405,23 @@ export class FeedManager {
     }
 
     async updateAllRSSfeeds(force: boolean) {
-        const updates = this.app.vault.getMarkdownFiles()
-            .map(md => FeedConfig.fromFile(this.app, md))
-            .filter(cfg => cfg)
-            .map(async cfg => await this.updateFeed(cfg, force));
+        const feeds = this.app.vault.getFolderByPath(this.plugin.settings.rssFeedFolderPath);
+        if (!feeds) {
+            return;
+        }
+
+        const updateConfigs = feeds.children
+            .filter(child => child instanceof TFile)
+            .map(md => FeedConfig.fromFile(this.app, md as TFile))
+            .filter(cfg => cfg);
         let n: number = 0;
-        for (let u of updates) {
-            let r = await u;
-            if (r) {
-                n++;
+        for (let u of updateConfigs) {
+            try {
+                if (await this.updateFeed(u, force)) {
+                    n++;
+                }
+            } catch (ex: any) {
+                new Notice(`Feed update failed: ${ex.message}`);
             }
         }
         if (n > 0) {

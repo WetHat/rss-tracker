@@ -3733,12 +3733,19 @@ var _FeedManager = class {
     }
   }
   async updateAllRSSfeeds(force) {
-    const updates = this.app.vault.getMarkdownFiles().map((md) => FeedConfig.fromFile(this.app, md)).filter((cfg) => cfg).map(async (cfg) => await this.updateFeed(cfg, force));
+    const feeds = this.app.vault.getFolderByPath(this.plugin.settings.rssFeedFolderPath);
+    if (!feeds) {
+      return;
+    }
+    const updateConfigs = feeds.children.filter((child) => child instanceof import_obsidian.TFile).map((md) => FeedConfig.fromFile(this.app, md)).filter((cfg) => cfg);
     let n = 0;
-    for (let u of updates) {
-      let r = await u;
-      if (r) {
-        n++;
+    for (let u of updateConfigs) {
+      try {
+        if (await this.updateFeed(u, force)) {
+          n++;
+        }
+      } catch (ex) {
+        new import_obsidian.Notice(`Feed update failed: ${ex.message}`);
       }
     }
     if (n > 0) {
