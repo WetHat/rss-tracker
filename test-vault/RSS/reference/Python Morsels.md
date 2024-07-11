@@ -1,29 +1,39 @@
 ---
-feedurl: https://localhost/reference/Python Morsels/assets/feed.xml
+role: rssfeed
+feedurl: https://localhost/RSS/reference/Python Morsels/assets/feed.xml
 site: https://www.pythonmorsels.com/topics/
-itemlimit: 100
-updated: 2024-07-10T15:31:24.402Z
-status: net::ERR_CONNECTION_REFUSED
+itemlimit: 10
+updated: 2024-07-11T11:39:23.994Z
+status: OK
 tags: []
-interval: 1
+interval: 425
 ---
 
 > [!abstract] Python Morsels
 > Python Morsels
 >
-> ![[assets/Python Morsels.svg|200x200]]
-# Unread Feed Items
+> ![[Python Morsels.svg|200x200]]
+# Unread Feed Items 📚
 ~~~dataview
 TASK
-FROM "reference/Python Morsels"
+FROM "RSS/reference/Python Morsels"
 WHERE !completed
+SORT published DESC
+~~~
+
+# Pinned Feed Items 📌
+~~~dataview
+TABLE
+published as Published
+FROM "RSS/reference/Python Morsels"
+where pinned = true
 SORT published DESC
 ~~~
 
 # Read Feed Items
 ~~~dataview
 TASK
-FROM "reference/Python Morsels"
+FROM "RSS/reference/Python Morsels"
 WHERE completed
 SORT published DESC
 ~~~

@@ -1,4 +1,5 @@
 ---
+role: rssitem
 author: "@WetHat"
 published: 2024-05-13T12:20:10.000Z
 link: https://fosstodon.org/@WetHat/112433745762841309
@@ -14,8 +15,8 @@ pinned: false
 > 
 > - WetHat💦 (@WetHat) [May 13, 2024](https://fosstodon.org/@WetHat/112433745⋯
 
-🔗Read article [online](https://fosstodon.org/@WetHat/112433745762841309). For other items in this feed see [[../@WetHat (WetHat💦)]].
-
+🔗Read article [online](https://fosstodon.org/@WetHat/112433745762841309). For other items in this feed see [[../@WetHat (WetHat💦)|@WetHat (WetHat💦)]].
+@WetHat (WetHat💦)
 - [ ] [[Replied to꞉ @WetHat it's AI-generated․ See comments at⋯]]
 - - -
 [@phoe](https://functional.cafe/@phoe) Thanks for pointing this out. I do agree that some of the examples would be better written as functions. As the reddit article points out the coverage of metapogramming is rather shalllow demonstrating just the basics.

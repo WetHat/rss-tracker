@@ -1,4 +1,5 @@
 ---
+role: rssitem
 author: "Will Oremus"
 published: 2024-05-14T13:18:56.000Z
 link: https://www.washingtonpost.com/politics/2024/05/14/why-jack-dorsey-gave-up-bluesky/
@@ -12,8 +13,7 @@ pinned: false
 >
 > ![image|1440x987](https://ic-cdn.flipboard.com/washingtonpost.com/4dab25eb545f2ed428c4cbcdb7414a382cdf66d0/_xlarge.jpeg)
 
-🔗Read article [online](https://www.washingtonpost.com/politics/2024/05/14/why-jack-dorsey-gave-up-bluesky/). For other items in this feed see [[../Bluesky]].
-
+🔗Read article [online](https://www.washingtonpost.com/politics/2024/05/14/why-jack-dorsey-gave-up-bluesky/). For other items in this feed see [[../Bluesky|Bluesky]].
+Bluesky
 - [ ] [[Analysis ∣ Why Jack Dorsey gave up on Bluesky]]
 - - -
-

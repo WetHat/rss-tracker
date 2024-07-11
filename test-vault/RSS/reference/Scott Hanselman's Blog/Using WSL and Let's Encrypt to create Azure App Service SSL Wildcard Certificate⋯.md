@@ -1,4 +1,5 @@
 ---
+role: rssitem
 author: "Scott Hanselman"
 published: 2023-06-27T17:17:25.000Z
 link: https://feeds.hanselman.com/~/749206136/0/scotthanselman~Using-WSL-and-Lets-Encrypt-to-create-Azure-App-Service-SSL-Wildcard-Certificates
@@ -14,8 +15,8 @@ pinned: false
 > 
 > Per the docs, App Service private certificates must meet [the following requirements](https://learn.microsoft.com/en-us/azure/ap⋯
 
-🔗Read article [online](https://feeds.hanselman.com/~/749206136/0/scotthanselman~Using-WSL-and-Lets-Encrypt-to-create-Azure-App-Service-SSL-Wildcard-Certificates). For other items in this feed see [[../Scott Hanselman's Blog]].
-
+🔗Read article [online](https://feeds.hanselman.com/~/749206136/0/scotthanselman~Using-WSL-and-Lets-Encrypt-to-create-Azure-App-Service-SSL-Wildcard-Certificates). For other items in this feed see [[../Scott Hanselman's Blog|Scott Hanselman's Blog]].
+Scott Hanselman's Blog
 - [ ] [[Using WSL and Let's Encrypt to create Azure App Service SSL Wildcard Certificate⋯]]
 - - -
 There are many let's encrypt automatic tools for azure but I also wanted to see if I could use certbot in wsl to generate a wildcard certificate for the azure Friday website and then upload the resulting certificates to azure app service.

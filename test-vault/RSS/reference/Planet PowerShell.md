@@ -1,29 +1,39 @@
 ---
-feedurl: https://localhost/reference/Planet PowerShell/assets/feed.xml
+role: rssfeed
+feedurl: https://localhost/RSS/reference/Planet PowerShell/assets/feed.xml
 site: https://www.planetpowershell.com/
-itemlimit: 100
-updated: 2024-07-10T15:31:24.435Z
-status: net::ERR_CONNECTION_REFUSED
+itemlimit: 10
+updated: 2024-07-11T11:57:34.424Z
+status: OK
 tags: []
-interval: 1
+interval: 102
 ---
 
 > [!abstract] Planet PowerShell
 > An aggregated feed from the PowerShell community
 >
 > ![image](https://www.planetpowershell.com/Content/Logo.png)
-# Unread Feed Items
+# Unread Feed Items 📚
 ~~~dataview
 TASK
-FROM "reference/Planet PowerShell"
+FROM "RSS/reference/Planet PowerShell"
 WHERE !completed
+SORT published DESC
+~~~
+
+# Pinned Feed Items 📌
+~~~dataview
+TABLE
+published as Published
+FROM "RSS/reference/Planet PowerShell"
+where pinned = true
 SORT published DESC
 ~~~
 
 # Read Feed Items
 ~~~dataview
 TASK
-FROM "reference/Planet PowerShell"
+FROM "RSS/reference/Planet PowerShell"
 WHERE completed
 SORT published DESC
 ~~~

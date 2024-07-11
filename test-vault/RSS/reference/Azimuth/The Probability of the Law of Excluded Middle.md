@@ -1,4 +1,5 @@
 ---
+role: rssitem
 author: "John Baez"
 published: 2024-03-13T23:20:10.000Z
 link: https://johncarlosbaez.wordpress.com/2024/03/13/the-probability-of-the-law-of-excluded-middle/
@@ -12,8 +13,8 @@ pinned: false
 >
 > ![image](https://johncarlosbaez.files.wordpress.com/2024/03/free_heyting_algebra_on_one_generator.jpg)
 
-🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/03/13/the-probability-of-the-law-of-excluded-middle/). For other items in this feed see [[../Azimuth]].
-
+🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/03/13/the-probability-of-the-law-of-excluded-middle/). For other items in this feed see [[../Azimuth|Azimuth]].
+Azimuth
 - [ ] [[The Probability of the Law of Excluded Middle]]
 - - -
 The [Law of Excluded Middle](https://en.wikipedia.org/wiki/Law_of_excluded_middle) says that for any statement P, “P or not P” is true.

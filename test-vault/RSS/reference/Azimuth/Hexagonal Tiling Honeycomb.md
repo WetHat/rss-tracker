@@ -1,4 +1,5 @@
 ---
+role: rssitem
 author: "John Baez"
 published: 2024-05-04T15:47:17.000Z
 link: https://johncarlosbaez.wordpress.com/2024/05/04/hexagonal-tiling-honeycomb/
@@ -12,8 +13,8 @@ pinned: false
 >
 > ![image](https://johncarlosbaez.files.wordpress.com/2024/05/633_honeycomb_roice_bright.png)
 
-🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/05/04/hexagonal-tiling-honeycomb/). For other items in this feed see [[../Azimuth]].
-
+🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/05/04/hexagonal-tiling-honeycomb/). For other items in this feed see [[../Azimuth|Azimuth]].
+Azimuth
 - [ ] [[Hexagonal Tiling Honeycomb]]
 - - -
 [  

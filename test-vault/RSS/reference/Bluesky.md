@@ -1,29 +1,39 @@
 ---
-feedurl: https://localhost/reference/Bluesky/assets/feed.xml
+role: rssfeed
+feedurl: https://localhost/RSS/reference/Bluesky/assets/feed.xml
 site: https://flipboard.com/topic/blueskysocial
-itemlimit: 100
-updated: 2024-07-10T15:31:24.442Z
-status: net::ERR_CONNECTION_REFUSED
+itemlimit: 10
+updated: 2024-07-11T11:39:33.065Z
+status: OK
 tags: []
-interval: 1
+interval: 19
 ---
 
 > [!abstract] Bluesky
 > 
 >
-> ![[assets/Bluesky.svg|200x200]]
-# Unread Feed Items
+> ![[Bluesky.svg|200x200]]
+# Unread Feed Items 📚
 ~~~dataview
 TASK
-FROM "reference/Bluesky"
+FROM "RSS/reference/Bluesky"
 WHERE !completed
+SORT published DESC
+~~~
+
+# Pinned Feed Items 📌
+~~~dataview
+TABLE
+published as Published
+FROM "RSS/reference/Bluesky"
+where pinned = true
 SORT published DESC
 ~~~
 
 # Read Feed Items
 ~~~dataview
 TASK
-FROM "reference/Bluesky"
+FROM "RSS/reference/Bluesky"
 WHERE completed
 SORT published DESC
 ~~~

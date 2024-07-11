@@ -1,4 +1,5 @@
 ---
+role: rssitem
 author: "Sherin Shibu"
 published: 2024-05-23T19:51:00.000Z
 link: https://www.entrepreneur.com/business-news/jack-dorsey-says-corporate-ai-has-surpassed-twitter-x/474595
@@ -12,8 +13,7 @@ pinned: false
 >
 > ![image|2000x1333](https://ic-cdn.flipboard.com/entrepreneur.com/91d2cd6af4c2b6cc9bf09afc68c36e21a40755ca/_xlarge.jpeg)
 
-🔗Read article [online](https://www.entrepreneur.com/business-news/jack-dorsey-says-corporate-ai-has-surpassed-twitter-x/474595). For other items in this feed see [[../Bluesky]].
-
+🔗Read article [online](https://www.entrepreneur.com/business-news/jack-dorsey-says-corporate-ai-has-surpassed-twitter-x/474595). For other items in this feed see [[../Bluesky|Bluesky]].
+Bluesky
 - [ ] [[Jack Dorsey Says 'the Closest Form of Global Consciousness' Used to Be Twitter —⋯]]
 - - -
-

@@ -1,4 +1,5 @@
 ---
+role: rssitem
 author: "@WetHat"
 published: 2024-05-15T05:40:35.000Z
 link: https://mastodon.social/@lisp_discussions/112442474804563136
@@ -18,8 +19,7 @@ pinned: false
 > 
 > - Lisp & Scheme Weekly (@lisp_discussions) [May 14, 2024](https://mastodon.social/@lisp_discussions/112442474804563136)
 
-🔗Read article [online](https://mastodon.social/@lisp_discussions/112442474804563136). For other items in this feed see [[../@WetHat (WetHat💦)]].
-
+🔗Read article [online](https://mastodon.social/@lisp_discussions/112442474804563136). For other items in this feed see [[../@WetHat (WetHat💦)|@WetHat (WetHat💦)]].
+@WetHat (WetHat💦)
 - [ ] [[Boosted꞉ Series꞉ A Functional Approach To Common Lisp⋯]]
 - - -
-

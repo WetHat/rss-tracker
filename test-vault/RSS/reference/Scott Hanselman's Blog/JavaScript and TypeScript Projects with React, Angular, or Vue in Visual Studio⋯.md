@@ -1,4 +1,5 @@
 ---
+role: rssitem
 author: "Scott Hanselman"
 published: 2021-11-25T20:50:00.000Z
 link: https://feeds.hanselman.com/~/674283520/0/scotthanselman~JavaScript-and-TypeScript-Projects-with-React-Angular-or-Vue-in-Visual-Studio-with-or-without-NET
@@ -12,8 +13,8 @@ pinned: false
 > 
 > If you're used to ASP.NET apps when you think about apps that are JavaScript heavy, "front end apps" or Typ⋯
 
-🔗Read article [online](https://feeds.hanselman.com/~/674283520/0/scotthanselman~JavaScript-and-TypeScript-Projects-with-React-Angular-or-Vue-in-Visual-Studio-with-or-without-NET). For other items in this feed see [[../Scott Hanselman's Blog]].
-
+🔗Read article [online](https://feeds.hanselman.com/~/674283520/0/scotthanselman~JavaScript-and-TypeScript-Projects-with-React-Angular-or-Vue-in-Visual-Studio-with-or-without-NET). For other items in this feed see [[../Scott Hanselman's Blog|Scott Hanselman's Blog]].
+Scott Hanselman's Blog
 - [ ] [[JavaScript and TypeScript Projects with React, Angular, or Vue in Visual Studio⋯]]
 - - -
 I was reading [Gabby's blog post about the new TypeScript/JavaScript project experience in Visual Studio 2022](https://feeds.hanselman.com/~/t/0/0/scotthanselman/~https://devblogs.microsoft.com/visualstudio/the-new-javascript-typescript-experience-in-vs-2022-preview-3/). You should read the docs on [JavaScript and TypeScript in Visual Studio 2022](https://feeds.hanselman.com/~/t/0/0/scotthanselman/~https://docs.microsoft.com/en-us/visualstudio/javascript/javascript-in-vs-2022?view=vs-2022).

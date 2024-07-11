@@ -1,4 +1,5 @@
 ---
+role: rssitem
 author: "Python Morsels"
 published: 2024-03-19T21:30:00.000Z
 link: https://www.pythonmorsels.com/every-dunder-method/
@@ -17,8 +18,8 @@ pinned: false
 > 3. [Orderability ⚖️](https://www.pythonmorsels.com/every-dunder-method/#orderability)
 > 4. [Type conversions and string formatting ⚗⋯
 
-🔗Read article [online](https://www.pythonmorsels.com/every-dunder-method/). For other items in this feed see [[../Python Morsels]].
-
+🔗Read article [online](https://www.pythonmorsels.com/every-dunder-method/). For other items in this feed see [[../Python Morsels|Python Morsels]].
+Python Morsels
 - [ ] [[Every dunder method in Python]]
 - - -
 An explanation of all of Python's 100+ dunder methods and 50+ dunder attributes, including a summary of each one.

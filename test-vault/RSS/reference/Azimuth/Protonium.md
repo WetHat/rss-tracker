@@ -1,4 +1,5 @@
 ---
+role: rssitem
 author: "John Baez"
 published: 2024-04-14T10:57:14.000Z
 link: https://johncarlosbaez.wordpress.com/2024/04/14/protonium/
@@ -12,8 +13,8 @@ pinned: false
 >
 > ![image](https://johncarlosbaez.files.wordpress.com/2024/04/protonium.jpg)
 
-🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/04/14/protonium/). For other items in this feed see [[../Azimuth]].
-
+🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/04/14/protonium/). For other items in this feed see [[../Azimuth|Azimuth]].
+Azimuth
 - [ ] [[Protonium]]
 - - -
 [![](http:math.ucr.edu/home/baez/physical/protonium.jpg)](https://en.wikipedia.org/wiki/Protonium)

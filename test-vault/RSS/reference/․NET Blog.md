@@ -2,8 +2,8 @@
 role: rssfeed
 feedurl: https://localhost/RSS/reference/․NET Blog/assets/feed.xml
 site: https://devblogs.microsoft.com/dotnet/
-itemlimit: 100
-updated: 2024-07-11T10:43:35.346Z
+itemlimit: 10
+updated: 2024-07-11T11:39:10.745Z
 status: OK
 tags: []
 interval: 77

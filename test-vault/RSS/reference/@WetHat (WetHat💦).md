@@ -1,11 +1,12 @@
 ---
-feedurl: https://localhost/reference/@WetHat (WetHat💦)/assets/feed.xml
+role: rssfeed
+feedurl: https://localhost/RSS/reference/@WetHat (WetHat💦)/assets/feed.xml
 site: https://fosstodon.org/@WetHat
-itemlimit: 100
-updated: 2024-07-10T15:31:24.456Z
-status: net::ERR_CONNECTION_REFUSED
+itemlimit: 10
+updated: 2024-07-11T11:39:41.962Z
+status: OK
 tags: []
-interval: 1
+interval: 5
 ---
 
 > [!abstract] @WetHat (WetHat💦)
@@ -13,19 +14,28 @@ interval: 1
 
 [#rss/fedi22](https://fosstodon.org/tags/fedi22) [#rss/Mastodon](https://fosstodon.org/tags/Mastodon) [#rss/Fediverse](https://fosstodon.org/tags/Fediverse) [#rss/Programming](https://fosstodon.org/tags/Programming) [#rss/OpenSource](https://fosstodon.org/tags/OpenSource) [#rss/FOSS](https://fosstodon.org/tags/FOSS) [#rss/MachineLearning](https://fosstodon.org/tags/MachineLearning) [#rss/ArtificialIntelligence](https://fosstodon.org/tags/ArtificialIntelligence) [#rss/AI](https://fosstodon.org/tags/AI) [#rss/Python](https://fosstodon.org/tags/Python) [#rss/Lisp](https://fosstodon.org/tags/Lisp) [#rss/Dotnet](https://fosstodon.org/tags/Dotnet) [#rss/JupyterNotebooks](https://fosstodon.org/tags/JupyterNotebooks) [#rss/JupyterLab](https://fosstodon.org/tags/JupyterLab)
 >
-> ![[assets/@WetHat (WetHat💦).svg|200x200]]
-# Unread Feed Items
+> ![[@WetHat (WetHat💦).svg|200x200]]
+# Unread Feed Items 📚
 ~~~dataview
 TASK
-FROM "reference/@WetHat (WetHat💦)"
+FROM "RSS/reference/@WetHat (WetHat💦)"
 WHERE !completed
+SORT published DESC
+~~~
+
+# Pinned Feed Items 📌
+~~~dataview
+TABLE
+published as Published
+FROM "RSS/reference/@WetHat (WetHat💦)"
+where pinned = true
 SORT published DESC
 ~~~
 
 # Read Feed Items
 ~~~dataview
 TASK
-FROM "reference/@WetHat (WetHat💦)"
+FROM "RSS/reference/@WetHat (WetHat💦)"
 WHERE completed
 SORT published DESC
 ~~~

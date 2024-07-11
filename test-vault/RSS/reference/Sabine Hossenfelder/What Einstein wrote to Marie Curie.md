@@ -1,4 +1,5 @@
 ---
+role: rssitem
 author: "Sabine Hossenfelder"
 published: 2024-05-10T15:00:54.000Z
 link: https://www.youtube.com/watch?v=yPDo7S-EGCE
@@ -12,8 +13,7 @@ pinned: false
 >
 > ![image|480x360](https://i2.ytimg.com/vi/yPDo7S-EGCE/hqdefault.jpg)
 
-🔗Read article [online](https://www.youtube.com/watch?v=yPDo7S-EGCE). For other items in this feed see [[../Sabine Hossenfelder]].
-
+🔗Read article [online](https://www.youtube.com/watch?v=yPDo7S-EGCE). For other items in this feed see [[../Sabine Hossenfelder|Sabine Hossenfelder]].
+Sabine Hossenfelder
 - [ ] [[What Einstein wrote to Marie Curie]]
 - - -
-

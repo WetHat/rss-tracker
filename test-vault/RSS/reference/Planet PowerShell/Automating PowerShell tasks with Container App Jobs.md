@@ -1,4 +1,5 @@
 ---
+role: rssitem
 author: "Matthew Dowst"
 published: 2024-05-24T12:23:54.000Z
 link: https://www.jannemattila.com/azure/2024/05/20/automating-powershell-tasks-with-container-apps.html
@@ -14,8 +15,8 @@ pinned: false
 > 
 > (+)(-)
 
-🔗Read article [online](https://www.jannemattila.com/azure/2024/05/20/automating-powershell-tasks-with-container-apps.html). For other items in this feed see [[../Planet PowerShell]].
-
+🔗Read article [online](https://www.jannemattila.com/azure/2024/05/20/automating-powershell-tasks-with-container-apps.html). For other items in this feed see [[../Planet PowerShell|Planet PowerShell]].
+Planet PowerShell
 - [ ] [[Automating PowerShell tasks with Container App Jobs]]
 - - -
 I previously wrote about Automating maintenance tasks with Azure Functions and PowerShell. That

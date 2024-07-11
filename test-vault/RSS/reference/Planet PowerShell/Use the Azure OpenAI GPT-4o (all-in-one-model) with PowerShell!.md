@@ -1,4 +1,5 @@
 ---
+role: rssitem
 author: "Matthew Dowst"
 published: 2024-05-24T12:23:43.000Z
 link: https://alexholmeset.blog/2024/05/22/use-the-azure-openai-gpt-4o-all-in-one-model-with-powershell/
@@ -14,8 +15,8 @@ pinned: false
 > 
 > (+)(-)
 
-🔗Read article [online](https://alexholmeset.blog/2024/05/22/use-the-azure-openai-gpt-4o-all-in-one-model-with-powershell/). For other items in this feed see [[../Planet PowerShell]].
-
+🔗Read article [online](https://alexholmeset.blog/2024/05/22/use-the-azure-openai-gpt-4o-all-in-one-model-with-powershell/). For other items in this feed see [[../Planet PowerShell|Planet PowerShell]].
+Planet PowerShell
 - [ ] [[Use the Azure OpenAI GPT-4o (all-in-one-model) with PowerShell!]]
 - - -
 On May 13th GPT-4o was released in preview in the Azure OpenAI Playground. No API access, only
