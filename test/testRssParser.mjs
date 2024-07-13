@@ -4,7 +4,6 @@ import { TrackedRSSfeed } from './scripts/FeedAssembler.mjs'
 import fs from 'fs-extra';
 import { globSync } from "glob";
 import assert from "assert";
-import exp from "constants";
 
 /**
  * A dynamic test to collect all `feed.xml` files found in `test-vault/reference`,
