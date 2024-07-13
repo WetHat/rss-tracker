@@ -17,9 +17,9 @@ export const DEFAULT_SETTINGS: IRSSTrackerSettings = {
 	rssTemplateFolder: "Templates",
 }
 
-export type TTemplateName = "RSS Feed" | "RSS Item";
+export type TTemplateName = "RSS Feed" | "RSS Item" | "RSS Feed Collection";
 
-const TEMPLATES: TTemplateName[] = ["RSS Feed", "RSS Item"];
+const TEMPLATES: TTemplateName[] = ["RSS Feed", "RSS Item", "RSS Feed Collection"];
 
 export class RSSTrackerSettings implements IRSSTrackerSettings {
 	plugin: RSSTrackerPlugin;

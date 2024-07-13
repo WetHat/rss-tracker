@@ -1901,7 +1901,7 @@ var DEFAULT_SETTINGS = {
   rssFeedFolder: "Feeds",
   rssTemplateFolder: "Templates"
 };
-var TEMPLATES = ["RSS Feed", "RSS Item"];
+var TEMPLATES = ["RSS Feed", "RSS Item", "RSS Feed Collection"];
 var RSSTrackerSettings = class {
   constructor(app, plugin) {
     this.data = { ...DEFAULT_SETTINGS };
@@ -3956,14 +3956,16 @@ var DataViewJSTools = class {
   static toHashtag(tag) {
     return tag.startsWith("#") ? tag : "#" + tag;
   }
-  static toHashtags(fileRecord) {
+  static getHashtags(fileRecord) {
     return fileRecord.file.etags.map((t) => DataViewJSTools.toHashtag(t));
   }
-  constructor(dv) {
+  constructor(dv, settings) {
     this.dv = dv;
+    this.settings = settings;
   }
+  // computed properties
   fileHashtags(fileRecord) {
-    return DataViewJSTools.toHashtags(fileRecord).join(" ");
+    return DataViewJSTools.getHashtags(fileRecord).join(" ");
   }
   fileLink(fileRecord) {
     return this.dv.fileLink(fileRecord.file.path);
@@ -3974,52 +3976,69 @@ var DataViewJSTools = class {
   dateUpdated(fileRecord) {
     return this.dv.date(fileRecord.updated);
   }
-  async getFeedItems(feedRecord) {
-    console.log(`getFeedItems for ${feedRecord.file.name}`);
-    const from = '"' + feedRecord.file.folder + "/" + feedRecord.file.name + '"', items = await this.dv.pages(from);
-    return items.distinct((rec) => rec.link).sort((rec) => rec.published, "desc");
+  ////////////////////////
+  fromFeedsExpression(fileRecord) {
+    var _a2, _b, _c;
+    const anyTags = (_a2 = fileRecord.file.etags) == null ? void 0 : _a2.map((t) => DataViewJSTools.toHashtag(t)), allTags = (_b = fileRecord == null ? void 0 : fileRecord.allof) == null ? void 0 : _b.map((t) => DataViewJSTools.toHashtag(t)), noneTags = (_c = fileRecord == null ? void 0 : fileRecord.noneof) == null ? void 0 : _c.map((t) => DataViewJSTools.toHashtag(t));
+    let from = [
+      '"' + this.settings.rssFeedFolderPath + '"',
+      anyTags ? "( " + anyTags.join(" OR ") + " )" : null,
+      allTags ? allTags.join(" AND ") : null,
+      noneTags ? "-( " + noneTags.join(" OR ") + " )" : null
+    ].filter((expr) => expr);
+    return from.join(" AND ");
   }
-  async selectFeeds() {
-    const topicTags = DataViewJSTools.toHashtags(this.dv.current()), from = topicTags.join(" OR ");
-    return await this.dv.pages(from).where((rec) => rec.feedurl).sort((rec) => rec.file.name, "asc");
+  async getCollectionFeeds(collection) {
+    const from = this.fromFeedsExpression(collection), pages = await this.dv.pages(from);
+    return pages.where((rec) => rec.role == "rssfeed").sort((rec) => rec.file.name, "asc");
   }
-  async groupedReadingList(read = false) {
-    const topicFeeds = await this.selectFeeds();
+  async getFeedItems(feed) {
+    const from = '"' + feed.file.folder + "/" + feed.file.name + '"', pages = await this.dv.pages(from);
+    return pages.where((rec) => rec.role == "rssitem").distinct((rec) => rec.link);
+  }
+  async readingList(feed, read, header) {
+    const items = await this.getFeedItems(feed), tasks = items.file.tasks.where((t) => t.completed == read), taskCount = tasks.length;
+    if (taskCount > 0) {
+      if (header) {
+        this.dv.header(2, header + " (" + taskCount + ")");
+      }
+      this.dv.taskList(tasks, false);
+    }
+    return taskCount;
+  }
+  async groupedReadingList(feeds, read = false) {
     let totalTaskCount = 0;
-    for (const feed of topicFeeds) {
-      const items = await this.getFeedItems(feed), tasks = items.file.tasks.where((t) => t.completed == read), taskCount = tasks.length;
-      if (taskCount > 0) {
-        totalTaskCount += taskCount;
-        this.dv.header(2, this.fileLink(feed) + ` (${taskCount})`);
-        this.dv.taskList(tasks, false);
-      }
+    for (const feed of feeds) {
+      totalTaskCount += await this.readingList(feed, read, this.fileLink(feed));
     }
-    if (totalTaskCount === 0) {
-      this.dv.paragraph("> No unread items.");
-    }
+    return totalTaskCount;
   }
-  async groupedPinnedItemsTable(columnLabels, rowFactory) {
-    const topicFeeds = await this.selectFeeds();
+  async itemTable(feed, predicate, columnLabels, rowBuilder, header) {
+    const items = (await this.getFeedItems(feed)).where((item) => predicate(item)), itemCount = items.length;
+    if (itemCount > 0) {
+      if (header) {
+        this.dv.header(2, header + " (" + itemCount + ")");
+      }
+      this.dv.table(
+        columnLabels,
+        items.map((itemRec) => rowBuilder(itemRec))
+      );
+    }
+    return itemCount;
+  }
+  async groupedItemTable(feeds, predicate, columnLabels, rowBuilder) {
     let totalItemCount = 0;
-    for (const feed of topicFeeds) {
-      const items = await this.getFeedItems(feed), pinned = items.where((itemRec) => itemRec.pinned), itemCount = pinned.length;
-      console.log(`Pinned ${itemCount}`);
-      if (itemCount > 0) {
-        totalItemCount += itemCount;
-        this.dv.header(2, this.fileLink(feed) + ` (${itemCount})`);
-        this.dv.table(
-          columnLabels,
-          pinned.map((itemRec) => rowFactory(itemRec))
-        );
-      }
+    for (const feed of feeds) {
+      totalItemCount += await this.itemTable(feed, predicate, columnLabels, rowBuilder, this.fileLink(feed));
     }
-    if (totalItemCount === 0) {
-      this.dv.paragraph("> No items pinned.");
-    }
+    return totalItemCount;
   }
-  async topicFeedTable(columnLabels, rowFactory) {
-    const topicFeeds = await this.selectFeeds();
-    this.dv.table(columnLabels, topicFeeds.map((f) => rowFactory(f)));
+  async feedTable(collection, columnLabels, rowBuilder) {
+    const feeds = await this.getCollectionFeeds(collection), feedCount = feeds.length;
+    if (feedCount > 0) {
+      this.dv.table(columnLabels, feeds.map((f) => rowBuilder(f)));
+    }
+    return feedCount;
   }
 };
 
@@ -4108,7 +4127,7 @@ var RSSTrackerPlugin = class extends import_obsidian5.Plugin {
     this.settings = new RSSTrackerSettings(app, this);
   }
   getDVJSTools(dv) {
-    return new DataViewJSTools(dv);
+    return new DataViewJSTools(dv, this.settings);
   }
   async onload() {
     console.log("Loading rss-tracker.");
