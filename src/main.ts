@@ -18,7 +18,7 @@ export default class RSSTrackerPlugin extends Plugin {
     }
 
     getDVJSTools(dv: TPropertyBag) {
-        return new DataViewJSTools(dv);
+        return new DataViewJSTools(dv,this.settings);
     }
 
     async onload() {

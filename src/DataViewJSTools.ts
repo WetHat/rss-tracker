@@ -1,109 +1,154 @@
-import { TPropertyBag } from './FeedAssembler';
+import { TPropertyBag, TrackedRSSfeed } from './FeedAssembler';
+import { RSSTrackerSettings } from './settings';
 
-
-export type TItemRowFactory = (feedItem: TPropertyBag) => object[];
+type TItemrowBuilder = (feedItem: TPropertyBag) => object[];
 
 /**
  * A callback function type to create a dataview table row for an RSS
  * feed file.
  */
-export type TFeedRowFactory = (feed: TPropertyBag) => object[];
+type TFeedRowBuilder = (feed: TPropertyBag) => object[];
+
+type TFileRecord = {
+    [key: string]: any;
+    file: any
+}
+
+type TFileRecordList = {
+    /** Map indexes to values. */
+    [index: number]: any;
+    /** Automatic flattening of fields. Equivalent to implicitly calling `array.to("field")` */
+    [field: string]: any;
+
+    [Symbol.iterator](): Iterator<TFileRecord>;
+    file: any
+}
+
+type TItemPredicate = (fileRecord: TFileRecord) => boolean;
 
 export class DataViewJSTools {
     private dv: TPropertyBag;
-
-    private current?: TPropertyBag;
-    private feedCache: any;
+    private settings: RSSTrackerSettings;
 
     static toHashtag(tag: string): string {
         return tag.startsWith("#") ? tag : "#" + tag;
     }
 
-    static toHashtags(fileRecord: TPropertyBag): string[] {
+    static getHashtags(fileRecord: TFileRecord): string[] {
         return fileRecord.file.etags.map((t: string) => DataViewJSTools.toHashtag(t))
     }
 
-    constructor(dv: TPropertyBag) {
+    constructor(dv: TPropertyBag, settings: RSSTrackerSettings) {
         this.dv = dv;
+        this.settings = settings;
     }
 
-    fileHashtags(fileRecord: TPropertyBag): string {
-        return DataViewJSTools.toHashtags(fileRecord).join(" ");
+    // computed properties
+    fileHashtags(fileRecord: TFileRecord): string {
+        return DataViewJSTools.getHashtags(fileRecord).join(" ");
     }
 
-    fileLink(fileRecord: TPropertyBag): string {
+    fileLink(fileRecord: TFileRecord): string {
         return this.dv.fileLink(fileRecord.file.path);
     }
 
-    datePublished(fileRecord: TPropertyBag): object {
+    datePublished(fileRecord: TFileRecord): object {
         return this.dv.date(fileRecord.published)
     }
-    dateUpdated(fileRecord: TPropertyBag): object {
+    dateUpdated(fileRecord: TFileRecord): object {
         return this.dv.date(fileRecord.updated)
     }
 
-    async getFeedItems(feedRecord: TPropertyBag): Promise<TPropertyBag> {
-        console.log(`getFeedItems for ${feedRecord.file.name}`);
+    ////////////////////////
 
+    fromFeedsExpression(fileRecord: TFileRecord): string {
         const
-            from = '"' + feedRecord.file.folder + "/" + feedRecord.file.name + '"',
-            items = await this.dv.pages(from);
+            anyTags = fileRecord.file.etags?.map((t: string) => DataViewJSTools.toHashtag(t)),
+            allTags = fileRecord?.allof?.map((t: string) => DataViewJSTools.toHashtag(t)),
+            noneTags = fileRecord?.noneof?.map((t: string) => DataViewJSTools.toHashtag(t));
 
-        return items
-            .distinct((rec: TPropertyBag) => rec.link)
-            .sort((rec: TPropertyBag) => rec.published, "desc");
+        let from = [
+            '"' + this.settings.rssFeedFolderPath + '"',
+            anyTags ? "( " + anyTags.join(" OR ") + " )" : null,
+            allTags ? allTags.join(" AND ") : null,
+            noneTags ? "-( " + noneTags.join(" OR ") + " )" : null
+        ].filter(expr => expr);
+        return from.join(" AND ");
     }
 
-    async selectFeeds() {
+    async getCollectionFeeds(collection: TFileRecord): Promise<TFileRecordList> {
         const
-            topicTags: string[] = DataViewJSTools.toHashtags(this.dv.current()),
-            from = topicTags.join(" OR ");
-        return await this.dv.pages(from).where((rec: TPropertyBag) => rec.feedurl).sort((rec: TPropertyBag) => rec.file.name, "asc");
+            from = this.fromFeedsExpression(collection),
+            pages = await this.dv.pages(from);
+        return pages
+            .where((rec: TFileRecord) => rec.role == "rssfeed")
+            .sort((rec: TFileRecord) => rec.file.name, "asc");
     }
 
-    async groupedReadingList(read = false) {
-        const topicFeeds = await this.selectFeeds();
+    async getFeedItems(feed: TFileRecord): Promise<TFileRecordList> {
+        const
+            from = '"' + feed.file.folder + "/" + feed.file.name + '"',
+            pages = await this.dv.pages(from);
+        return pages
+            .where((rec: TFileRecord) => rec.role == "rssitem")
+            .distinct((rec: TFileRecord) => rec.link);
+    }
+
+    async readingList(feed: TFileRecord, read: boolean, header?: string): Promise<number> {
+        const
+            items = await this.getFeedItems(feed),
+            tasks = items.file.tasks.where((t: TPropertyBag) => t.completed == read),
+            taskCount = tasks.length;
+        if (taskCount > 0) {
+            if (header) {
+                this.dv.header(2, header + " (" + taskCount + ")");
+            }
+            this.dv.taskList(tasks, false);
+        }
+        return taskCount;
+    }
+
+    async groupedReadingList(feeds: TFileRecordList, read: boolean = false): Promise<number> {
         let totalTaskCount = 0;
-        for (const feed of topicFeeds) {
-            const
-                items = await this.getFeedItems(feed),
-                tasks = items.file.tasks.where((t: TPropertyBag) => t.completed == read ),
-                taskCount = tasks.length;
-            if (taskCount > 0) {
-                totalTaskCount += taskCount;
-                this.dv.header(2, this.fileLink(feed) + ` (${taskCount})`);
-                this.dv.taskList(tasks, false);
-            }
+
+        for (const feed of feeds) {
+            totalTaskCount += await this.readingList(feed, read, this.fileLink(feed));
         }
-        if (totalTaskCount === 0) {
-            this.dv.paragraph("> No unread items.")
-        }
+        return totalTaskCount;
     }
 
-    async groupedPinnedItemsTable(columnLabels: string[], rowFactory: TItemRowFactory) {
-        const topicFeeds = await this.selectFeeds();
-        let totalItemCount = 0
-        for (const feed of topicFeeds) {
-            const
-                items = await this.getFeedItems(feed),
-                pinned = items.where((itemRec: TPropertyBag) => itemRec.pinned),
-                itemCount = pinned.length;
-            console.log(`Pinned ${itemCount}`);
-            if (itemCount > 0) {
-                totalItemCount += itemCount;
-                this.dv.header(2, this.fileLink(feed) + ` (${itemCount})`);
-                this.dv.table(
-                    columnLabels,
-                    pinned.map((itemRec: TPropertyBag) => rowFactory(itemRec)));
+    async itemTable(feed: TFileRecord, predicate: TItemPredicate, columnLabels: string[], rowBuilder: TItemrowBuilder, header?: string): Promise<number> {
+        const
+            items = (await this.getFeedItems(feed)).where((item: TFileRecord) => predicate(item)),
+            itemCount = items.length;
+        if (itemCount > 0) {
+            if (header) {
+                this.dv.header(2, header + " (" + itemCount + ")");
             }
+            this.dv.table(
+                columnLabels,
+                items.map((itemRec: TPropertyBag) => rowBuilder(itemRec)));
         }
-        if (totalItemCount === 0) {
-            this.dv.paragraph("> No items pinned.")
-        }
+
+        return itemCount
     }
 
-    async topicFeedTable(columnLabels: string[], rowFactory: TFeedRowFactory) {
-        const topicFeeds = await this.selectFeeds();
-        this.dv.table(columnLabels, topicFeeds.map((f: TPropertyBag) => rowFactory(f)));
+    async groupedItemTable(feeds: TFileRecordList, predicate: TItemPredicate, columnLabels: string[], rowBuilder: TItemrowBuilder): Promise<number> {
+        let totalItemCount = 0;
+        for (const feed of feeds) {
+            totalItemCount += await this.itemTable(feed, predicate, columnLabels, rowBuilder, this.fileLink(feed));
+        }
+        return totalItemCount;
+    }
+
+    async feedTable(collection: TFileRecord, columnLabels: string[], rowBuilder: TFeedRowBuilder): Promise<number> {
+        const
+            feeds = await this.getCollectionFeeds(collection),
+            feedCount = feeds.length;
+
+        if (feedCount > 0) {
+            this.dv.table(columnLabels, feeds.map((f: TFileRecord) => rowBuilder(f)));
+        }
+        return feedCount;
     }
 }
