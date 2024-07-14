@@ -410,14 +410,15 @@ export class FeedManager {
             return;
         }
 
-        const updateConfigs = feeds.children
+        const promises: Promise<boolean>[] = feeds.children
             .filter(child => child instanceof TFile)
             .map(md => FeedConfig.fromFile(this.app, md as TFile))
-            .filter(cfg => cfg);
+            .filter(cfg => cfg)
+            .map (cfg => this.updateFeed(cfg, force));
         let n: number = 0;
-        for (let u of updateConfigs) {
+        for (let promise of promises) {
             try {
-                if (await this.updateFeed(u, force)) {
+                if (await promise) {
                     n++;
                 }
             } catch (ex: any) {
