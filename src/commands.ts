@@ -57,20 +57,29 @@ export class InputUrlModal extends Modal {
     }
 }
 
+abstract class RSSTrackerCommandBase implements Command {
+    protected app: App;
+    protected plugin: RSSTrackerPlugin;
+    readonly id: string;
+    readonly name: string;
+
+    constructor(plugin: RSSTrackerPlugin, id: string, name: string) {
+        this.app = plugin.app;
+        this.plugin = plugin;
+        this.id = id;
+        this.name = name
+    }
+}
+
 /**
  * A command that can update an RSS feed if the current file is a RSS feed dashboard.
  */
-export class UpdateRSSfeedCommand implements Command {
-    id = 'rss-tracker-update-feed-checked';
-    name = 'Update RSS feed';
-    private app: App;
-    private plugin: RSSTrackerPlugin;
-    constructor(app: App, plugin: RSSTrackerPlugin) {
-        this.app = app;
-        this.plugin = plugin;
+export class UpdateRSSfeedCommand extends RSSTrackerCommandBase {
+    constructor(plugin: RSSTrackerPlugin) {
+        super(plugin,'rss-tracker-update-feed-checked','Update RSS feed');
     }
 
-    checkCallback(checking: boolean): any {
+     checkCallback(checking: boolean): boolean {
         // Conditions to check
         const active = this.app.workspace.getActiveFile();
 
@@ -81,7 +90,7 @@ export class UpdateRSSfeedCommand implements Command {
             if (checking) {
                 // This command will only show up in Command Palette when the check function returns true
                 // check if active file is a rss feed dashboard.
-                return cfg;
+                return !!cfg;
             }
             if (cfg) {
                 this.plugin.feedmgr.updateFeed(cfg, true).then(() => new Notice(`${cfg.source.basename} updated!`));
@@ -92,17 +101,13 @@ export class UpdateRSSfeedCommand implements Command {
     }
 }
 
+
 /**
- * A command that can update an RSS feed uf the current file is a RSS feed dashboard.
+ * A command that can update an RSS feed of the current file is a RSS feed dashboard.
  */
-export class MarkAllRSSitemsReadCommand implements Command {
-    id = 'tracked-rss-mark-items-read-checked';
-    name = 'Mark all RSS feed items as read';
-    private app: App;
-    private plugin: RSSTrackerPlugin;
-    constructor(app: App, plugin: RSSTrackerPlugin) {
-        this.app = app;
-        this.plugin = plugin;
+export class MarkAllRSSitemsReadCommand extends RSSTrackerCommandBase {
+    constructor(plugin: RSSTrackerPlugin) {
+        super(plugin,'tracked-rss-mark-items-read-checked','Mark all RSS feed items as read');
     }
 
     checkCallback(checking: boolean): any {
@@ -127,39 +132,52 @@ export class MarkAllRSSitemsReadCommand implements Command {
     }
 }
 
+export class NewRSSFeedCollectionCommand extends RSSTrackerCommandBase {
+    constructor(plugin: RSSTrackerPlugin) {
+        super(plugin,'rss-tracker-new-feed-collection','New RSS feed collection');
+    }
+
+    callback(): any {
+        const
+            settings = this.plugin.settings,
+            collectionPath = this.plugin.settings.rssHome + "/📑New Feed Collection.md";
+
+            settings.readTemplate("RSS Feed Collection")
+                .then(async content => {
+                    const collection = await this.app.vault.create(collectionPath,content);
+                    if (collection) {
+                        const
+                            mgr = this.plugin.feedmgr,
+                            leaf = this.app.workspace.getLeaf(false);
+                        try {
+                            await leaf.openFile(collection);
+                        } catch (err: any) {
+                            new Notice(err.message);
+                        }
+                    }
+                    else {
+                        new Notice("RSS feed colelction could not be created!");
+                    }
+                });
+    }
+}
+
 /**
  * A complex command that can check whether the current state of the app allows execution of the command.
  */
-export class NewRSSFeedModalCommand implements Command {
-    id = 'rss-tracker-new-feed-url-input-modal';
-    name = 'New RSS feed';
-    private app: App;
-    private plugin: RSSTrackerPlugin;
-    constructor(app: App, plugin: RSSTrackerPlugin) {
-        this.app = app;
-        this.plugin = plugin;
+export class NewRSSFeedModalCommand extends RSSTrackerCommandBase{
+    constructor(plugin: RSSTrackerPlugin) {
+        super(plugin,'rss-tracker-new-feed-url-input-modal','New RSS feed');
     }
 
     callback(): any {
         // Conditions to check
         const modal = new InputUrlModal(this.app, async result => {
-            const locationSetting = this.plugin.settings.rssFeedFolder;
-            let feedFolder: TFolder | null;
-            if (locationSetting === ".") {
-                // add feed in same folder as furrent note
-                const f: TFile | null = this.app.workspace.getActiveFile();
-                if (f) {
-                    feedFolder = this.app.fileManager.getNewFileParent(f.path);
-                } else {
-                    feedFolder = this.app.vault.getFolderByPath("/");
-                }
-            } else {
-                // use folder path
-                feedFolder = this.app.vault.getFolderByPath(locationSetting);
-                if (!feedFolder) {
-                    // try creating the folder
-                    feedFolder = await this.app.vault.createFolder(locationSetting);
-                }
+            const feedFolderPath = this.plugin.settings.rssFeedFolderPath;
+            let feedFolder = this.app.vault.getFolderByPath(feedFolderPath);
+            if (!feedFolder) {
+                // try creating that folder
+                feedFolder = await this.app.vault.createFolder(feedFolderPath);
             }
 
             // create the new feed

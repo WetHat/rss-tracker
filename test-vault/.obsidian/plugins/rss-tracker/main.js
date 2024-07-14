@@ -3737,11 +3737,11 @@ var _FeedManager = class {
     if (!feeds) {
       return;
     }
-    const updateConfigs = feeds.children.filter((child) => child instanceof import_obsidian.TFile).map((md) => FeedConfig.fromFile(this.app, md)).filter((cfg) => cfg);
+    const promises = feeds.children.filter((child) => child instanceof import_obsidian.TFile).map((md) => FeedConfig.fromFile(this.app, md)).filter((cfg) => cfg).map((cfg) => this.updateFeed(cfg, force));
     let n = 0;
-    for (let u of updateConfigs) {
+    for (let promise of promises) {
       try {
-        if (await this.updateFeed(u, force)) {
+        if (await promise) {
           n++;
         }
       } catch (ex) {
@@ -3797,19 +3797,24 @@ var InputUrlModal = class extends import_obsidian2.Modal {
     contentEl.empty();
   }
 };
-var UpdateRSSfeedCommand = class {
-  constructor(app, plugin) {
-    this.id = "rss-tracker-update-feed-checked";
-    this.name = "Update RSS feed";
-    this.app = app;
+var RSSTrackerCommandBase = class {
+  constructor(plugin, id, name) {
+    this.app = plugin.app;
     this.plugin = plugin;
+    this.id = id;
+    this.name = name;
+  }
+};
+var UpdateRSSfeedCommand = class extends RSSTrackerCommandBase {
+  constructor(plugin) {
+    super(plugin, "rss-tracker-update-feed-checked", "Update RSS feed");
   }
   checkCallback(checking) {
     const active = this.app.workspace.getActiveFile();
     if (active) {
       const cfg = FeedConfig.fromFile(this.app, active);
       if (checking) {
-        return cfg;
+        return !!cfg;
       }
       if (cfg) {
         this.plugin.feedmgr.updateFeed(cfg, true).then(() => new import_obsidian2.Notice(`${cfg.source.basename} updated!`));
@@ -3819,12 +3824,9 @@ var UpdateRSSfeedCommand = class {
     return false;
   }
 };
-var MarkAllRSSitemsReadCommand = class {
-  constructor(app, plugin) {
-    this.id = "tracked-rss-mark-items-read-checked";
-    this.name = "Mark all RSS feed items as read";
-    this.app = app;
-    this.plugin = plugin;
+var MarkAllRSSitemsReadCommand = class extends RSSTrackerCommandBase {
+  constructor(plugin) {
+    super(plugin, "tracked-rss-mark-items-read-checked", "Mark all RSS feed items as read");
   }
   checkCallback(checking) {
     const active = this.app.workspace.getActiveFile();
@@ -3841,29 +3843,37 @@ var MarkAllRSSitemsReadCommand = class {
     return false;
   }
 };
-var NewRSSFeedModalCommand = class {
-  constructor(app, plugin) {
-    this.id = "rss-tracker-new-feed-url-input-modal";
-    this.name = "New RSS feed";
-    this.app = app;
-    this.plugin = plugin;
+var NewRSSFeedCollectionCommand = class extends RSSTrackerCommandBase {
+  constructor(plugin) {
+    super(plugin, "rss-tracker-new-feed-collection", "New RSS feed collection");
+  }
+  callback() {
+    const settings = this.plugin.settings, collectionPath = this.plugin.settings.rssHome + "/\u{1F4D1}New Feed Collection.md";
+    settings.readTemplate("RSS Feed Collection").then(async (content) => {
+      const collection = await this.app.vault.create(collectionPath, content);
+      if (collection) {
+        const mgr = this.plugin.feedmgr, leaf = this.app.workspace.getLeaf(false);
+        try {
+          await leaf.openFile(collection);
+        } catch (err) {
+          new import_obsidian2.Notice(err.message);
+        }
+      } else {
+        new import_obsidian2.Notice("RSS feed colelction could not be created!");
+      }
+    });
+  }
+};
+var NewRSSFeedModalCommand = class extends RSSTrackerCommandBase {
+  constructor(plugin) {
+    super(plugin, "rss-tracker-new-feed-url-input-modal", "New RSS feed");
   }
   callback() {
     const modal = new InputUrlModal(this.app, async (result) => {
-      const locationSetting = this.plugin.settings.rssFeedFolder;
-      let feedFolder;
-      if (locationSetting === ".") {
-        const f = this.app.workspace.getActiveFile();
-        if (f) {
-          feedFolder = this.app.fileManager.getNewFileParent(f.path);
-        } else {
-          feedFolder = this.app.vault.getFolderByPath("/");
-        }
-      } else {
-        feedFolder = this.app.vault.getFolderByPath(locationSetting);
-        if (!feedFolder) {
-          feedFolder = await this.app.vault.createFolder(locationSetting);
-        }
+      const feedFolderPath = this.plugin.settings.rssFeedFolderPath;
+      let feedFolder = this.app.vault.getFolderByPath(feedFolderPath);
+      if (!feedFolder) {
+        feedFolder = await this.app.vault.createFolder(feedFolderPath);
       }
       if (feedFolder) {
         const mgr = this.plugin.feedmgr, leaf = this.app.workspace.getLeaf(false);
@@ -3978,13 +3988,13 @@ var DataViewJSTools = class {
   }
   ////////////////////////
   fromFeedsExpression(fileRecord) {
-    var _a2, _b, _c;
-    const anyTags = (_a2 = fileRecord.file.etags) == null ? void 0 : _a2.map((t) => DataViewJSTools.toHashtag(t)), allTags = (_b = fileRecord == null ? void 0 : fileRecord.allof) == null ? void 0 : _b.map((t) => DataViewJSTools.toHashtag(t)), noneTags = (_c = fileRecord == null ? void 0 : fileRecord.noneof) == null ? void 0 : _c.map((t) => DataViewJSTools.toHashtag(t));
+    var _a2, _b, _c, _d, _e, _f;
+    const anyTags = (_b = (_a2 = fileRecord.file.etags) == null ? void 0 : _a2.map((t) => DataViewJSTools.toHashtag(t))) != null ? _b : [], allTags = (_d = (_c = fileRecord == null ? void 0 : fileRecord.allof) == null ? void 0 : _c.map((t) => DataViewJSTools.toHashtag(t))) != null ? _d : [], noneTags = (_f = (_e = fileRecord == null ? void 0 : fileRecord.noneof) == null ? void 0 : _e.map((t) => DataViewJSTools.toHashtag(t))) != null ? _f : [];
     let from = [
       '"' + this.settings.rssFeedFolderPath + '"',
-      anyTags ? "( " + anyTags.join(" OR ") + " )" : null,
-      allTags ? allTags.join(" AND ") : null,
-      noneTags ? "-( " + noneTags.join(" OR ") + " )" : null
+      anyTags.length > 0 ? "( " + anyTags.join(" OR ") + " )" : null,
+      allTags.length > 0 ? allTags.join(" AND ") : null,
+      noneTags.length > 0 ? "-( " + noneTags.join(" OR ") + " )" : null
     ].filter((expr) => expr);
     return from.join(" AND ");
   }
@@ -4136,9 +4146,10 @@ var RSSTrackerPlugin = class extends import_obsidian5.Plugin {
       this.feedmgr.updateAllRSSfeeds(true);
     });
     ribbonIconEl.addClass("rss-tracker-plugin-ribbon-class");
-    this.addCommand(new UpdateRSSfeedCommand(this.app, this));
-    this.addCommand(new NewRSSFeedModalCommand(this.app, this));
-    this.addCommand(new MarkAllRSSitemsReadCommand(this.app, this));
+    this.addCommand(new UpdateRSSfeedCommand(this));
+    this.addCommand(new NewRSSFeedModalCommand(this));
+    this.addCommand(new MarkAllRSSitemsReadCommand(this));
+    this.addCommand(new NewRSSFeedCollectionCommand(this));
     this.addSettingTab(new RSSTrackerSettingTab(this.settings));
     const updateFeedItem = new UpdateRSSfeedMenuItem(this.app, this);
     this.registerEvent(updateFeedItem.editorMenuHandler);

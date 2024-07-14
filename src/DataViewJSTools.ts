@@ -63,15 +63,15 @@ export class DataViewJSTools {
 
     fromFeedsExpression(fileRecord: TFileRecord): string {
         const
-            anyTags = fileRecord.file.etags?.map((t: string) => DataViewJSTools.toHashtag(t)),
-            allTags = fileRecord?.allof?.map((t: string) => DataViewJSTools.toHashtag(t)),
-            noneTags = fileRecord?.noneof?.map((t: string) => DataViewJSTools.toHashtag(t));
+            anyTags: string[] = fileRecord.file.etags?.map((t: string) => DataViewJSTools.toHashtag(t)) ?? [],
+            allTags: string[] = fileRecord?.allof?.map((t: string) => DataViewJSTools.toHashtag(t)) ?? [],
+            noneTags: string[] = fileRecord?.noneof?.map((t: string) => DataViewJSTools.toHashtag(t)) ?? [];
 
         let from = [
             '"' + this.settings.rssFeedFolderPath + '"',
-            anyTags ? "( " + anyTags.join(" OR ") + " )" : null,
-            allTags ? allTags.join(" AND ") : null,
-            noneTags ? "-( " + noneTags.join(" OR ") + " )" : null
+            anyTags.length > 0 ? "( " + anyTags.join(" OR ") + " )" : null,
+            allTags.length > 0 ? allTags.join(" AND ") : null,
+            noneTags.length > 0 ? "-( " + noneTags.join(" OR ") + " )" : null
         ].filter(expr => expr);
         return from.join(" AND ");
     }
