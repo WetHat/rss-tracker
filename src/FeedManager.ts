@@ -156,7 +156,7 @@ export class FeedManager {
             "{{tags}}": this.formatTags(tags),
             "{{abstract}}": abstract,
             "{{content}}": content ?? "",
-            "{{feedName}}": itemFolder.name,
+            "{{feedFileName}}": itemFolder.name,
             "{{fileName}}": uniqueBasename,
         });
 
@@ -286,9 +286,9 @@ export class FeedManager {
         const
             { title, site, description } = feed,
             basename = feed.fileName,
-            itemfolderPath = normalizePath(path.join(location.path, basename)),
+            fileName = basename + ".md", // name of the feed dashboard
             tpl = await this.plugin.settings.readTemplate("RSS Feed"),
-            dashboardPath = normalizePath(path.join(location.path, `${basename}.md`)),
+            dashboardPath = normalizePath(path.join(location.path, fileName)),
             defaultImage = basename + ".svg";
         let image: IRssMedium | string | undefined = feed.image;
         const content = this.expandTemplate(tpl, {
@@ -296,7 +296,7 @@ export class FeedManager {
             "{{siteUrl}}": site ?? "",
             "{{title}}": htmlToMarkdown(title ?? ""),
             "{{description}}": description ? this.formatHashTags(htmlToMarkdown(description)) : "",
-            "{{folderPath}}": itemfolderPath,
+            "{{fileName}}": fileName,
             "{{image}}": image ? this.formatImage(image) : `![[${defaultImage}|200x200]]`
         });
 
@@ -307,7 +307,7 @@ export class FeedManager {
             cfg = new FeedConfig(feed.source ?? "", itemlimit ?? "100", dashboard);
 
         if (dashboard && cfg) {
-            // suppy a defaultl image if needed
+            // suppy a default image if needed
             if (!image) {
                 // to find the location of the default image we need to wait until the dasboard exists
                 const imagePath = await this.app.fileManager.getAvailablePathForAttachment(defaultImage, dashboardPath);

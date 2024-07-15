@@ -3534,7 +3534,7 @@ var _FeedManager = class {
       "{{tags}}": this.formatTags(tags),
       "{{abstract}}": abstract,
       "{{content}}": content != null ? content : "",
-      "{{feedName}}": itemFolder.name,
+      "{{feedFileName}}": itemFolder.name,
       "{{fileName}}": uniqueBasename
     });
     return this.app.vault.create(itemPath, itemContent).catch((reason) => {
@@ -3645,14 +3645,14 @@ var _FeedManager = class {
   }
   async createFeed(feed, location) {
     var _a2, _b;
-    const { title, site, description } = feed, basename = feed.fileName, itemfolderPath = (0, import_obsidian.normalizePath)(path.join(location.path, basename)), tpl = await this.plugin.settings.readTemplate("RSS Feed"), dashboardPath = (0, import_obsidian.normalizePath)(path.join(location.path, `${basename}.md`)), defaultImage = basename + ".svg";
+    const { title, site, description } = feed, basename = feed.fileName, fileName = basename + ".md", tpl = await this.plugin.settings.readTemplate("RSS Feed"), dashboardPath = (0, import_obsidian.normalizePath)(path.join(location.path, fileName)), defaultImage = basename + ".svg";
     let image = feed.image;
     const content = this.expandTemplate(tpl, {
       "{{feedUrl}}": feed.source,
       "{{siteUrl}}": site != null ? site : "",
       "{{title}}": (0, import_obsidian.htmlToMarkdown)(title != null ? title : ""),
       "{{description}}": description ? this.formatHashTags((0, import_obsidian.htmlToMarkdown)(description)) : "",
-      "{{folderPath}}": itemfolderPath,
+      "{{fileName}}": fileName,
       "{{image}}": image ? this.formatImage(image) : `![[${defaultImage}|200x200]]`
     });
     const dashboard = await this.app.vault.create(dashboardPath, content), itemlimit = (_a2 = tpl.match(_FeedManager.ITEMLIMIT_FINDER)) == null ? void 0 : _a2[0], cfg = new FeedConfig((_b = feed.source) != null ? _b : "", itemlimit != null ? itemlimit : "100", dashboard);
