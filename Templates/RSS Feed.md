@@ -1,13 +1,12 @@
 ---
 role: rssfeed
-feedurl: {{feedUrl}}
+feedurl: "{{feedUrl}}"
 site: "{{siteUrl}}"
 itemlimit: 100
 updated: never
 status: unknown
 tags: []
 ---
-
 > [!abstract] {{title}}
 > {{description}}
 >
@@ -15,8 +14,8 @@ tags: []
 # Unread Feed Items 📚
 ~~~dataview
 TASK
-FROM "{{folderPath}}"
-WHERE !completed
+FROM [[{{fileName}}]]
+WHERE !completed AND role = "rssitem"
 SORT published DESC
 ~~~
 
@@ -24,15 +23,15 @@ SORT published DESC
 ~~~dataview
 TABLE
 published as Published
-FROM "{{folderPath}}"
-where pinned = true
+FROM [[{{fileName}}]]
+WHERE pinned = true AND role = "rssitem"
 SORT published DESC
 ~~~
 
 # Read Feed Items
 ~~~dataview
 TASK
-FROM "{{folderPath}}"
-WHERE completed
+FROM [[{{fileName}}]]
+WHERE completed AND role = "rssitem"
 SORT published DESC
 ~~~
