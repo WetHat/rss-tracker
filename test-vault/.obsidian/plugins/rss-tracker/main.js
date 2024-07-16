@@ -4004,11 +4004,10 @@ var DataViewJSTools = class {
   }
   async getFeedItems(feed) {
     const from = "[[" + feed.file.path + "]]", pages = await this.dv.pages(from);
-    console.log("self: " + from);
     return pages.where((rec) => rec.role == "rssitem").distinct((rec) => rec.link);
   }
   async readingList(feed, read, header) {
-    const items = await this.getFeedItems(feed), tasks = items.file.tasks.where((t) => t.completed == read), taskCount = tasks.length;
+    const items = await this.getFeedItems(feed), tasks = items.file.tasks.where((t) => t.completed === read), taskCount = tasks.length;
     if (taskCount > 0) {
       if (header) {
         this.dv.header(2, header + " (" + taskCount + ")");

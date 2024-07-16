@@ -98,7 +98,7 @@ export class DataViewJSTools {
     async readingList(feed: TFileRecord, read: boolean, header?: string): Promise<number> {
         const
             items = await this.getFeedItems(feed),
-            tasks = items.file.tasks.where((t: TPropertyBag) => t.completed == read),
+            tasks = items.file.tasks.where((t: TPropertyBag) => t.completed === read),
             taskCount = tasks.length;
         if (taskCount > 0) {
             if (header) {
