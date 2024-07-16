@@ -1,5 +1,6 @@
 import { TPropertyBag, TrackedRSSfeed } from './FeedAssembler';
 import { RSSTrackerSettings } from './settings';
+import { Plugin } from 'obsidian';
 
 type TItemrowBuilder = (feedItem: TPropertyBag) => object[];
 
@@ -87,7 +88,7 @@ export class DataViewJSTools {
 
     async getFeedItems(feed: TFileRecord): Promise<TFileRecordList> {
         const
-            from = '"' + feed.file.folder + "/" + feed.file.name + '"',
+            from = "[[" + feed.file.path + "]]",
             pages = await this.dv.pages(from);
         return pages
             .where((rec: TFileRecord) => rec.role == "rssitem")
