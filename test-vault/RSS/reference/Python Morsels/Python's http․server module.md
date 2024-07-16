@@ -4,7 +4,7 @@ author: "Python Morsels"
 published: 2024-04-05T23:41:43.000Z
 link: https://www.pythonmorsels.com/http-server/
 id: https://www.pythonmorsels.com/http-server/
-feed: "Python Morsels"
+feed: "[[Python Morsels]]"
 tags: []
 pinned: false
 ---
@@ -18,8 +18,8 @@ pinned: false
 > 1. [A directory trees of `index.html` files](https://www.pythonmorsels.com/http-server/#a-directory-trees-of-indexhtml-files)
 > 2. [Serving up HTML files⋯
 
-🔗Read article [online](https://www.pythonmorsels.com/http-server/). For other items in this feed see [[../Python Morsels|Python Morsels]].
-Python Morsels
+🔗Read article [online](https://www.pythonmorsels.com/http-server/). For other items in this feed see [[Python Morsels]].
+
 - [ ] [[Python's http․server module]]
 - - -
 Use Python's `http.server` module to serve up a static website on your own machine.

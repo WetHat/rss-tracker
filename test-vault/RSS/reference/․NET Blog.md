@@ -3,12 +3,11 @@ role: rssfeed
 feedurl: https://localhost/RSS/reference/․NET Blog/assets/feed.xml
 site: https://devblogs.microsoft.com/dotnet/
 itemlimit: 10
-updated: 2024-07-11T11:39:10.745Z
+updated: 2024-07-16T10:43:49.716Z
 status: OK
-tags: []
+tags: 
 interval: 77
 ---
-
 > [!abstract] .NET Blog
 > Free. Cross-platform. Open source. A developer platform for building all your apps.
 >
@@ -16,8 +15,8 @@ interval: 77
 # Unread Feed Items 📚
 ~~~dataview
 TASK
-FROM "RSS/reference/․NET Blog"
-WHERE !completed
+FROM [[․NET Blog.md]]
+WHERE !completed AND role = "rssitem"
 SORT published DESC
 ~~~
 
@@ -25,15 +24,15 @@ SORT published DESC
 ~~~dataview
 TABLE
 published as Published
-FROM "RSS/reference/․NET Blog"
-where pinned = true
+FROM [[․NET Blog.md]]
+WHERE pinned = true AND role = "rssitem"
 SORT published DESC
 ~~~
 
 # Read Feed Items
 ~~~dataview
 TASK
-FROM "RSS/reference/․NET Blog"
-WHERE completed
+FROM [[․NET Blog.md]]
+WHERE completed AND role = "rssitem"
 SORT published DESC
 ~~~

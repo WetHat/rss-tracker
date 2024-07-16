@@ -4,7 +4,7 @@ author: "@WetHat"
 published: 2024-05-14T07:34:27.000Z
 link: https://fosstodon.org/@WetHat/112438284637950197
 id: https://fosstodon.org/@WetHat/112438284637950197
-feed: "@WetHat (WetHat💦)"
+feed: "[[@WetHat (WetHat💦)]]"
 tags: []
 pinned: false
 ---
@@ -16,8 +16,8 @@ pinned: false
 > Apparently, there is an advantage with **static readonly** in [#rss/dotnet](https://fosstodon.org/tags/dotnet) profile guided optimization ([#rss/PGO](https://fosstodon.org/tags/PGO)) according to:  
 > ➡️[https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-8/#tiering-and-dynamic-pgo](h⋯
 
-🔗Read article [online](https://fosstodon.org/@WetHat/112438284637950197). For other items in this feed see [[../@WetHat (WetHat💦)|@WetHat (WetHat💦)]].
-@WetHat (WetHat💦)
+🔗Read article [online](https://fosstodon.org/@WetHat/112438284637950197). For other items in this feed see [[@WetHat (WetHat💦)]].
+
 - [ ] [[Replied to꞉ @WetHat I recall several stack overflow libraries had compiler switc⋯]]
 - - -
 [@cambirch](https://infosec.exchange/@cambirch)

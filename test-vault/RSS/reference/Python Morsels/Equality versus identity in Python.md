@@ -4,7 +4,7 @@ author: "Python Morsels"
 published: 2024-05-28T23:52:24.000Z
 link: https://www.pythonmorsels.com/equality-vs-identity/
 id: https://www.pythonmorsels.com/equality-vs-identity/
-feed: "Python Morsels"
+feed: "[[Python Morsels]]"
 tags: []
 pinned: false
 ---
@@ -17,8 +17,8 @@ pinned: false
 > 
 > 1. [The equality operator in Python](https://www.pythonmorsels.com/equality-vs-identity/#the-equality⋯
 
-🔗Read article [online](https://www.pythonmorsels.com/equality-vs-identity/). For other items in this feed see [[../Python Morsels|Python Morsels]].
-Python Morsels
+🔗Read article [online](https://www.pythonmorsels.com/equality-vs-identity/). For other items in this feed see [[Python Morsels]].
+
 - [ ] [[Equality versus identity in Python]]
 - - -
 Equality checks whether two objects **represent the same value**. Identity checks whether two variables **point to the same object**.

@@ -4,15 +4,15 @@ author: "Scott Hanselman"
 published: 2021-11-23T20:02:00.000Z
 link: https://feeds.hanselman.com/~/673947624/0/scotthanselman~A-Nightscout-Segment-for-OhMyPosh-shows-my-realtime-Blood-Sugar-readings-in-my-Git-Prompt
 id: https://www.hanselman.com/blog/post/495513ca-ca88-421f-8ade-50e4cf17d747
-feed: "Scott Hanselman's Blog"
+feed: "[[Scott Hanselman's Blog]]"
 tags: [rss/Diabetes,rss/Open_Source]
 pinned: false
 ---
 > [!abstract] A Nightscout Segment for OhMyPosh shows my realtime Blood Sugar readings in my Git Prompt by Scott Hanselman - 2021-11-23T20:02:00.000Z
 > I've talked about [how I love a nice pretty prompt in my Windows Terminal](https://www.hanselman.com/blog/my-ultimate-powershell-prompt-with-oh-my-posh-and-the-windows-terminal) and [made videos showing in detail how to do it](https://www.youtube.com/watch?v=VT2L1SXFq9U). I've also worked with my buddy [TooTallNate to put my real-time blood sugar into a bash or PowerShell prompt](https://www.hanselman.com/blog/visualizing-your-realtime-blood-sugar-values-and-a-git-prompt-on-windows-powershell-an⋯
 
-🔗Read article [online](https://feeds.hanselman.com/~/673947624/0/scotthanselman~A-Nightscout-Segment-for-OhMyPosh-shows-my-realtime-Blood-Sugar-readings-in-my-Git-Prompt). For other items in this feed see [[../Scott Hanselman's Blog|Scott Hanselman's Blog]].
-Scott Hanselman's Blog
+🔗Read article [online](https://feeds.hanselman.com/~/673947624/0/scotthanselman~A-Nightscout-Segment-for-OhMyPosh-shows-my-realtime-Blood-Sugar-readings-in-my-Git-Prompt). For other items in this feed see [[Scott Hanselman's Blog]].
+
 - [ ] [[A Nightscout Segment for OhMyPosh shows my realtime Blood Sugar readings in my G⋯]]
 - - -
 I've talked about [how I love a nice pretty prompt in my Windows Terminal](https://feeds.hanselman.com/~/t/0/0/scotthanselman/~https://www.hanselman.com/blog/my-ultimate-powershell-prompt-with-oh-my-posh-and-the-windows-terminal) and [made videos showing in detail how to do it](https://feeds.hanselman.com/~/t/0/0/scotthanselman/~https://www.youtube.com/watch?v=VT2L1SXFq9U). I've also worked with my buddy [TooTallNate to put my real-time blood sugar into a bash or PowerShell prompt](https://feeds.hanselman.com/~/t/0/0/scotthanselman/~https://www.hanselman.com/blog/visualizing-your-realtime-blood-sugar-values-and-a-git-prompt-on-windows-powershell-and-linux-bash), but this was back in 2017.

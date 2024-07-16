@@ -4,7 +4,7 @@ author: "John Baez"
 published: 2024-02-28T21:09:29.000Z
 link: https://johncarlosbaez.wordpress.com/2024/02/28/agent-based-models-part-7/
 id: http://johncarlosbaez.wordpress.com/?p=37547
-feed: "Azimuth"
+feed: "[[Azimuth]]"
 tags: [rss/computer_science,rss/epidemiology,rss/mathematics]
 pinned: false
 ---
@@ -13,8 +13,8 @@ pinned: false
 >
 > ![image](https://johncarlosbaez.files.wordpress.com/2023/07/state_diagram.png)
 
-🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/02/28/agent-based-models-part-7/). For other items in this feed see [[../Azimuth|Azimuth]].
-Azimuth
+🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/02/28/agent-based-models-part-7/). For other items in this feed see [[Azimuth]].
+
 - [ ] [[Agent-Based Models (Part 7)]]
 - - -
 [Last time](https://johncarlosbaez.wordpress.com/2024/02/21/agent-based-models-part-6/) I presented a simple, limited class of agent-based models where each agent independently hops around a graph. I wrote:

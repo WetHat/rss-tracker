@@ -3,12 +3,11 @@ role: rssfeed
 feedurl: https://localhost/RSS/reference/Sabine Hossenfelder/assets/feed.xml
 site: https://www.youtube.com/channel/UC1yNl2E66ZzKApQdRuTQ4tw
 itemlimit: 10
-updated: 2024-07-11T11:39:21.728Z
+updated: 2024-07-16T10:44:00.415Z
 status: OK
-tags: []
+tags: 
 interval: 24
 ---
-
 > [!abstract] Sabine Hossenfelder
 > 
 >
@@ -16,8 +15,8 @@ interval: 24
 # Unread Feed Items 📚
 ~~~dataview
 TASK
-FROM "RSS/reference/Sabine Hossenfelder"
-WHERE !completed
+FROM [[Sabine Hossenfelder.md]]
+WHERE !completed AND role = "rssitem"
 SORT published DESC
 ~~~
 
@@ -25,15 +24,15 @@ SORT published DESC
 ~~~dataview
 TABLE
 published as Published
-FROM "RSS/reference/Sabine Hossenfelder"
-where pinned = true
+FROM [[Sabine Hossenfelder.md]]
+WHERE pinned = true AND role = "rssitem"
 SORT published DESC
 ~~~
 
 # Read Feed Items
 ~~~dataview
 TASK
-FROM "RSS/reference/Sabine Hossenfelder"
-WHERE completed
+FROM [[Sabine Hossenfelder.md]]
+WHERE completed AND role = "rssitem"
 SORT published DESC
 ~~~

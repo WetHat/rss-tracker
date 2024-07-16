@@ -3,12 +3,11 @@ role: rssfeed
 feedurl: https://localhost/RSS/reference/@wethat7․bsky․social - WetHat💦/assets/feed.xml
 site: https://bsky.app/profile/wethat7.bsky.social
 itemlimit: 10
-updated: 2024-07-11T11:39:39.733Z
+updated: 2024-07-16T10:44:20.254Z
 status: OK
-tags: []
+tags: 
 interval: 19
 ---
-
 > [!abstract] @wethat7.bsky.social - WetHat💦
 > I enjoy programming computers
 >
@@ -16,8 +15,8 @@ interval: 19
 # Unread Feed Items 📚
 ~~~dataview
 TASK
-FROM "RSS/reference/@wethat7․bsky․social - WetHat💦"
-WHERE !completed
+FROM [[@wethat7․bsky․social - WetHat💦.md]]
+WHERE !completed AND role = "rssitem"
 SORT published DESC
 ~~~
 
@@ -25,15 +24,15 @@ SORT published DESC
 ~~~dataview
 TABLE
 published as Published
-FROM "RSS/reference/@wethat7․bsky․social - WetHat💦"
-where pinned = true
+FROM [[@wethat7․bsky․social - WetHat💦.md]]
+WHERE pinned = true AND role = "rssitem"
 SORT published DESC
 ~~~
 
 # Read Feed Items
 ~~~dataview
 TASK
-FROM "RSS/reference/@wethat7․bsky․social - WetHat💦"
-WHERE completed
+FROM [[@wethat7․bsky․social - WetHat💦.md]]
+WHERE completed AND role = "rssitem"
 SORT published DESC
 ~~~

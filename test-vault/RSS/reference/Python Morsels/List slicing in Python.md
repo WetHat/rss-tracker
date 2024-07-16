@@ -4,7 +4,7 @@ author: "Python Morsels"
 published: 2024-03-08T22:16:58.000Z
 link: https://www.pythonmorsels.com/slicing/
 id: https://www.pythonmorsels.com/slicing/
-feed: "Python Morsels"
+feed: "[[Python Morsels]]"
 tags: []
 pinned: false
 ---
@@ -17,8 +17,8 @@ pinned: false
 > 
 > 1. [Getting the first N elements from a list](https://www.pythonm⋯
 
-🔗Read article [online](https://www.pythonmorsels.com/slicing/). For other items in this feed see [[../Python Morsels|Python Morsels]].
-Python Morsels
+🔗Read article [online](https://www.pythonmorsels.com/slicing/). For other items in this feed see [[Python Morsels]].
+
 - [ ] [[List slicing in Python]]
 - - -
 In Python, slicing looks like indexing with colons (`:`). You can slice a list (or any sequence) to get the first few items, the last few items, or all items in reverse.

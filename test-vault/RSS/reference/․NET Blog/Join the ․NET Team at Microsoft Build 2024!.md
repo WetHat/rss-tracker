@@ -4,7 +4,7 @@ author: "Mehul Harry"
 published: 2024-05-09T17:05:00.000Z
 link: https://devblogs.microsoft.com/dotnet/join-the-dotnet-team-microsoft-build-2024/
 id: https://devblogs.microsoft.com/dotnet/?p=51773
-feed: "․NET Blog"
+feed: "[[․NET Blog]]"
 tags: [rss/〭NET,rss/〭NET_Core,rss/AI,rss/ASP〭NET,rss/ASP〭NET_Core,rss/C＃,rss/Machine_Learning,rss/azure,rss/event,rss/microsoft_build]
 pinned: false
 ---
@@ -13,8 +13,8 @@ pinned: false
 > 
 > The post [Join the .NET Team at Microsoft Build 2024!](https://devblogs.microsoft.com/dotnet/join-the-dotnet-team-microsoft-build-2024/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 
-🔗Read article [online](https://devblogs.microsoft.com/dotnet/join-the-dotnet-team-microsoft-build-2024/). For other items in this feed see [[../․NET Blog|․NET Blog]].
-․NET Blog
+🔗Read article [online](https://devblogs.microsoft.com/dotnet/join-the-dotnet-team-microsoft-build-2024/). For other items in this feed see [[․NET Blog]].
+
 - [ ] [[Join the ․NET Team at Microsoft Build 2024!]]
 - - -
 The countdown has begun! Microsoft Build 2024 is just around the corner, and if you’re a .NET enthusiast, get ready for a great lineup of sessions. Whether you’re a seasoned developer or just starting your journey, there’s something for everyone.

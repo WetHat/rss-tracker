@@ -4,15 +4,15 @@ author: "Thomas Dohmke"
 published: 2024-05-29T13:15:54.000Z
 link: https://github.blog/2024-05-29-github-and-jfrog/
 id: https://github.blog/?p=78206
-feed: "The GitHub Blog꞉ Product News and Updates"
+feed: "[[The GitHub Blog꞉ Product News and Updates]]"
 tags: []
 pinned: false
 ---
 > [!abstract] GitHub and JFrog partner to unify code and binaries for DevSecOps by Thomas Dohmke - 2024-05-29T13:15:54.000Z
 > This partnership between GitHub and JFrog enables developers to manage code and binaries more efficiently on two of the most widely used developer platforms in the world. The post GitHub and JFrog partner to unify code and binaries for DevSecOps appeared first on The GitHub Blog.
 
-🔗Read article [online](https://github.blog/2024-05-29-github-and-jfrog/). For other items in this feed see [[../The GitHub Blog꞉ Product News and Updates|The GitHub Blog꞉ Product News and Updates]].
-The GitHub Blog꞉ Product News and Updates
+🔗Read article [online](https://github.blog/2024-05-29-github-and-jfrog/). For other items in this feed see [[The GitHub Blog꞉ Product News and Updates]].
+
 - [ ] [[GitHub and JFrog partner to unify code and binaries for DevSecOps]]
 - - -
 As the volume of code continues to grow exponentially, software developers, DevOps engineers, operations teams, security specialists, and everyone else who touches code are increasingly spending their time in the weeds of securing, delivering, and scaling software. This bottles up creativity and ultimately slows software development for every organization.

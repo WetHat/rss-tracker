@@ -4,7 +4,7 @@ author: "Python Morsels"
 published: 2024-03-22T22:00:00.000Z
 link: https://www.pythonmorsels.com/unnecessary-else-statements/
 id: https://www.pythonmorsels.com/unnecessary-else-statements/
-feed: "Python Morsels"
+feed: "[[Python Morsels]]"
 tags: []
 pinned: false
 ---
@@ -17,8 +17,8 @@ pinned: false
 > 
 > 1. [A function where both `if` and `else` return](https://www.pythonmorsels.com/unnecessary-else-statements/#a-function-where-bo⋯
 
-🔗Read article [online](https://www.pythonmorsels.com/unnecessary-else-statements/). For other items in this feed see [[../Python Morsels|Python Morsels]].
-Python Morsels
+🔗Read article [online](https://www.pythonmorsels.com/unnecessary-else-statements/). For other items in this feed see [[Python Morsels]].
+
 - [ ] [[Unnecessary else statements]]
 - - -
 When your function ends in an `else` block with a `return` statement in it, should you remove that `else`?

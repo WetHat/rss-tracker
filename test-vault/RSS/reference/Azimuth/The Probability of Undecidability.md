@@ -4,7 +4,7 @@ author: "John Baez"
 published: 2024-03-15T10:10:44.000Z
 link: https://johncarlosbaez.wordpress.com/2024/03/15/the-probability-of-undecidability/
 id: http://johncarlosbaez.wordpress.com/?p=37690
-feed: "Azimuth"
+feed: "[[Azimuth]]"
 tags: [rss/mathematics]
 pinned: false
 ---
@@ -13,8 +13,8 @@ pinned: false
 >
 > ![image](https://johncarlosbaez.files.wordpress.com/2024/03/unprovability_michael_freedman.png)
 
-🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/03/15/the-probability-of-undecidability/). For other items in this feed see [[../Azimuth|Azimuth]].
-Azimuth
+🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/03/15/the-probability-of-undecidability/). For other items in this feed see [[Azimuth]].
+
 - [ ] [[The Probability of Undecidability]]
 - - -
 There’s a lot we don’t know. There’s a lot we _can’t_ know. But can we at least know how _much_ we can’t know?

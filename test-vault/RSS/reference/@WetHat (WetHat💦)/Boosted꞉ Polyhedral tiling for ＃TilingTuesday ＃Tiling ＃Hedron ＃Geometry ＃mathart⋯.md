@@ -4,7 +4,7 @@ author: "@WetHat"
 published: 2024-05-15T05:36:22.000Z
 link: https://mathstodon.xyz/@ngons/112440813968194589
 id: https://mathstodon.xyz/@ngons/112440813968194589
-feed: "@WetHat (WetHat💦)"
+feed: "[[@WetHat (WetHat💦)]]"
 tags: []
 pinned: false
 ---
@@ -15,8 +15,8 @@ pinned: false
 > 
 > [#rss/Tiling](https://mathstodon.xyz/tags/Tiling) [#rss/Hedron](https://mathstodon.xyz/tags/Hedron) [#rss/Geometry](https://mathstodon.xyz/tags/Geometry) [#rss/mathart](https://mathstodon.xyz/tags/mathart) [#rss/mathsart](https://mathstodon.xyz/tags/mathsart) [#rss/mastoart](https://mathstodon.xy⋯
 
-🔗Read article [online](https://mathstodon.xyz/@ngons/112440813968194589). For other items in this feed see [[../@WetHat (WetHat💦)|@WetHat (WetHat💦)]].
-@WetHat (WetHat💦)
+🔗Read article [online](https://mathstodon.xyz/@ngons/112440813968194589). For other items in this feed see [[@WetHat (WetHat💦)]].
+
 - [ ] [[Boosted꞉ Polyhedral tiling for ＃TilingTuesday ＃Tiling ＃Hedron ＃Geometry ＃mathart⋯]]
 - - -
 ![](https://cdn.fosstodon.org/cache/media_attachments/files/112/440/814/082/576/222/original/b5bd02dcafece97f.mp4)

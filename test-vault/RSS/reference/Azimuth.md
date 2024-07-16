@@ -3,12 +3,11 @@ role: rssfeed
 feedurl: https://localhost/RSS/reference/Azimuth/assets/feed.xml
 site: https://johncarlosbaez.wordpress.com
 itemlimit: 10
-updated: 2024-07-11T11:39:37.543Z
+updated: 2024-07-16T10:44:18.035Z
 status: OK
-tags: []
+tags: 
 interval: 206
 ---
-
 > [!abstract] Azimuth
 > 
 >
@@ -16,8 +15,8 @@ interval: 206
 # Unread Feed Items 📚
 ~~~dataview
 TASK
-FROM "RSS/reference/Azimuth"
-WHERE !completed
+FROM [[Azimuth.md]]
+WHERE !completed AND role = "rssitem"
 SORT published DESC
 ~~~
 
@@ -25,15 +24,15 @@ SORT published DESC
 ~~~dataview
 TABLE
 published as Published
-FROM "RSS/reference/Azimuth"
-where pinned = true
+FROM [[Azimuth.md]]
+WHERE pinned = true AND role = "rssitem"
 SORT published DESC
 ~~~
 
 # Read Feed Items
 ~~~dataview
 TASK
-FROM "RSS/reference/Azimuth"
-WHERE completed
+FROM [[Azimuth.md]]
+WHERE completed AND role = "rssitem"
 SORT published DESC
 ~~~

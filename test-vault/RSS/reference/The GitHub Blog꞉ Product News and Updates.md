@@ -3,12 +3,11 @@ role: rssfeed
 feedurl: https://localhost/RSS/reference/The GitHub Blog꞉ Product News and Updates/assets/feed.xml
 site: https://github.blog/category/product/
 itemlimit: 10
-updated: 2024-07-11T11:39:17.244Z
+updated: 2024-07-16T10:43:56.331Z
 status: OK
-tags: []
+tags: 
 interval: 165
 ---
-
 > [!abstract] The GitHub Blog: Product News and Updates
 > Updates, ideas, and inspiration from GitHub to help developers build and design software.
 >
@@ -16,8 +15,8 @@ interval: 165
 # Unread Feed Items 📚
 ~~~dataview
 TASK
-FROM "RSS/reference/The GitHub Blog꞉ Product News and Updates"
-WHERE !completed
+FROM [[The GitHub Blog꞉ Product News and Updates.md]]
+WHERE !completed AND role = "rssitem"
 SORT published DESC
 ~~~
 
@@ -25,15 +24,15 @@ SORT published DESC
 ~~~dataview
 TABLE
 published as Published
-FROM "RSS/reference/The GitHub Blog꞉ Product News and Updates"
-where pinned = true
+FROM [[The GitHub Blog꞉ Product News and Updates.md]]
+WHERE pinned = true AND role = "rssitem"
 SORT published DESC
 ~~~
 
 # Read Feed Items
 ~~~dataview
 TASK
-FROM "RSS/reference/The GitHub Blog꞉ Product News and Updates"
-WHERE completed
+FROM [[The GitHub Blog꞉ Product News and Updates.md]]
+WHERE completed AND role = "rssitem"
 SORT published DESC
 ~~~

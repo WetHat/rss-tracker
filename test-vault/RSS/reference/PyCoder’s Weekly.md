@@ -3,12 +3,11 @@ role: rssfeed
 feedurl: https://localhost/RSS/reference/PyCoder’s Weekly/assets/feed.xml
 site: https://pycoders.com/
 itemlimit: 10
-updated: 2024-07-11T11:39:25.894Z
+updated: 2024-07-16T10:44:04.610Z
 status: OK
-tags: []
+tags: 
 interval: 168
 ---
-
 > [!abstract] PyCoder’s Weekly
 > 
 >
@@ -16,8 +15,8 @@ interval: 168
 # Unread Feed Items 📚
 ~~~dataview
 TASK
-FROM "RSS/reference/PyCoder’s Weekly"
-WHERE !completed
+FROM [[PyCoder’s Weekly.md]]
+WHERE !completed AND role = "rssitem"
 SORT published DESC
 ~~~
 
@@ -25,15 +24,15 @@ SORT published DESC
 ~~~dataview
 TABLE
 published as Published
-FROM "RSS/reference/PyCoder’s Weekly"
-where pinned = true
+FROM [[PyCoder’s Weekly.md]]
+WHERE pinned = true AND role = "rssitem"
 SORT published DESC
 ~~~
 
 # Read Feed Items
 ~~~dataview
 TASK
-FROM "RSS/reference/PyCoder’s Weekly"
-WHERE completed
+FROM [[PyCoder’s Weekly.md]]
+WHERE completed AND role = "rssitem"
 SORT published DESC
 ~~~

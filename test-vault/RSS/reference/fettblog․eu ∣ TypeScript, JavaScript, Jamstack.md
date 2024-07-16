@@ -3,12 +3,11 @@ role: rssfeed
 feedurl: https://localhost/RSS/reference/fettblog․eu ∣ TypeScript, JavaScript, Jamstack/assets/feed.xml
 site: https://fettblog.eu/
 itemlimit: 10
-updated: 2024-07-11T11:56:34.075Z
+updated: 2024-07-16T10:44:09.247Z
 status: OK
-tags: []
+tags: 
 interval: 593
 ---
-
 > [!abstract] fettblog.eu | TypeScript, JavaScript, Jamstack
 > 
 >
@@ -16,8 +15,8 @@ interval: 593
 # Unread Feed Items 📚
 ~~~dataview
 TASK
-FROM "RSS/reference/fettblog․eu ∣ TypeScript, JavaScript, Jamstack"
-WHERE !completed
+FROM [[fettblog․eu ∣ TypeScript, JavaScript, Jamstack.md]]
+WHERE !completed AND role = "rssitem"
 SORT published DESC
 ~~~
 
@@ -25,15 +24,15 @@ SORT published DESC
 ~~~dataview
 TABLE
 published as Published
-FROM "RSS/reference/fettblog․eu ∣ TypeScript, JavaScript, Jamstack"
-where pinned = true
+FROM [[fettblog․eu ∣ TypeScript, JavaScript, Jamstack.md]]
+WHERE pinned = true AND role = "rssitem"
 SORT published DESC
 ~~~
 
 # Read Feed Items
 ~~~dataview
 TASK
-FROM "RSS/reference/fettblog․eu ∣ TypeScript, JavaScript, Jamstack"
-WHERE completed
+FROM [[fettblog․eu ∣ TypeScript, JavaScript, Jamstack.md]]
+WHERE completed AND role = "rssitem"
 SORT published DESC
 ~~~

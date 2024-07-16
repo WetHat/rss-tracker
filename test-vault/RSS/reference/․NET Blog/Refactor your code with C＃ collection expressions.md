@@ -4,7 +4,7 @@ author: "David Pine"
 published: 2024-05-08T17:05:00.000Z
 link: https://devblogs.microsoft.com/dotnet/refactor-your-code-with-collection-expressions/
 id: https://devblogs.microsoft.com/dotnet/?p=51745
-feed: "․NET Blog"
+feed: "[[․NET Blog]]"
 tags: [rss/〭NET,rss/C＃,rss/〭net_8,rss/c＃_12]
 pinned: false
 ---
@@ -13,8 +13,8 @@ pinned: false
 > 
 > The post [Refactor your code with C# collection expressions](https://devblogs.microsoft.com/dotnet/refactor-your-code-with-collection-expressions/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 
-🔗Read article [online](https://devblogs.microsoft.com/dotnet/refactor-your-code-with-collection-expressions/). For other items in this feed see [[../․NET Blog|․NET Blog]].
-․NET Blog
+🔗Read article [online](https://devblogs.microsoft.com/dotnet/refactor-your-code-with-collection-expressions/). For other items in this feed see [[․NET Blog]].
+
 - [ ] [[Refactor your code with C＃ collection expressions]]
 - - -
 This post is the second in a series of posts covering various refactoring scenarios that explore C# 12 features. In this post, we’ll look at how you can refactor your code using collection expressions, we’ll learn about collection initializers, various expression usages, supported collection target types, and the spread syntax. Here’s how the series is shaping up:

@@ -4,7 +4,7 @@ author: "Scott Hanselman"
 published: 2023-04-25T15:31:49.000Z
 link: https://feeds.hanselman.com/~/737271731/0/scotthanselman~GitHub-Copilot-for-CLI-for-PowerShell
 id: https://www.hanselman.com/blog/post/aa1cc05f-3910-471d-8686-68c749ec90ff
-feed: "Scott Hanselman's Blog"
+feed: "[[Scott Hanselman's Blog]]"
 tags: [rss/AI,rss/PowerShell]
 pinned: false
 ---
@@ -15,8 +15,8 @@ pinned: false
 > 
 > This is cool and all, but I use PowerShell. Turns out these ?? commands are just router commands to a larger EXE called github-copilot-cli. So if you go "?? something" you're really going "github-copilot-cli what-the⋯
 
-🔗Read article [online](https://feeds.hanselman.com/~/737271731/0/scotthanselman~GitHub-Copilot-for-CLI-for-PowerShell). For other items in this feed see [[../Scott Hanselman's Blog|Scott Hanselman's Blog]].
-Scott Hanselman's Blog
+🔗Read article [online](https://feeds.hanselman.com/~/737271731/0/scotthanselman~GitHub-Copilot-for-CLI-for-PowerShell). For other items in this feed see [[Scott Hanselman's Blog]].
+
 - [ ] [[GitHub Copilot for CLI for PowerShell]]
 - - -
 GitHub Next has this cool project that is basically Copilot for the CLI (command line interface). You can sign up for their waitlist at the [Copilot for CLI site](https://feeds.hanselman.com/~/t/0/0/scotthanselman/~https://githubnext.com/projects/copilot-cli/).

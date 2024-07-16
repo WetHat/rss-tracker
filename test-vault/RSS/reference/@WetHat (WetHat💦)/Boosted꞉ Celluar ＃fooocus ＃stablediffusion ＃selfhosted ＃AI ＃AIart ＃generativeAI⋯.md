@@ -4,7 +4,7 @@ author: "@WetHat"
 published: 2024-05-14T17:21:59.000Z
 link: https://fosstodon.org/@eddyizm/112440587071746764
 id: https://fosstodon.org/@eddyizm/112440587071746764
-feed: "@WetHat (WetHat💦)"
+feed: "[[@WetHat (WetHat💦)]]"
 tags: []
 pinned: false
 ---
@@ -13,8 +13,8 @@ pinned: false
 > 
 > Celluar [#rss/fooocus](https://fosstodon.org/tags/fooocus) [#rss/stablediffusion](https://fosstodon.org/tags/stablediffusion) [#rss/selfhosted](https://fosstodon.org/tags/selfhosted) [#rss/AI](https://fosstodon.org/tags/AI) [#rss/AIart](https://fosstodon.org/tags/AIart) [#rss/generativeAI](https://fosstodon.org/tags/generativeAI) [#rss/generativeArt](https://fosstodon.org/tags/generative⋯
 
-🔗Read article [online](https://fosstodon.org/@eddyizm/112440587071746764). For other items in this feed see [[../@WetHat (WetHat💦)|@WetHat (WetHat💦)]].
-@WetHat (WetHat💦)
+🔗Read article [online](https://fosstodon.org/@eddyizm/112440587071746764). For other items in this feed see [[@WetHat (WetHat💦)]].
+
 - [ ] [[Boosted꞉ Celluar ＃fooocus ＃stablediffusion ＃selfhosted ＃AI ＃AIart ＃generativeAI⋯]]
 - - -
 ![](https://cdn.fosstodon.org/media_attachments/files/112/440/586/486/395/031/original/dffbab31e3a50a29.jpg)

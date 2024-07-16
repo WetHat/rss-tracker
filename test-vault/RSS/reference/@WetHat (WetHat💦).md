@@ -3,12 +3,11 @@ role: rssfeed
 feedurl: https://localhost/RSS/reference/@WetHat (WetHat💦)/assets/feed.xml
 site: https://fosstodon.org/@WetHat
 itemlimit: 10
-updated: 2024-07-11T11:39:41.962Z
+updated: 2024-07-16T10:44:22.405Z
 status: OK
-tags: []
+tags: 
 interval: 5
 ---
-
 > [!abstract] @WetHat (WetHat💦)
 > I enjoy programming computers.
 
@@ -18,8 +17,8 @@ interval: 5
 # Unread Feed Items 📚
 ~~~dataview
 TASK
-FROM "RSS/reference/@WetHat (WetHat💦)"
-WHERE !completed
+FROM [[@WetHat (WetHat💦).md]]
+WHERE !completed AND role = "rssitem"
 SORT published DESC
 ~~~
 
@@ -27,15 +26,15 @@ SORT published DESC
 ~~~dataview
 TABLE
 published as Published
-FROM "RSS/reference/@WetHat (WetHat💦)"
-where pinned = true
+FROM [[@WetHat (WetHat💦).md]]
+WHERE pinned = true AND role = "rssitem"
 SORT published DESC
 ~~~
 
 # Read Feed Items
 ~~~dataview
 TASK
-FROM "RSS/reference/@WetHat (WetHat💦)"
-WHERE completed
+FROM [[@WetHat (WetHat💦).md]]
+WHERE completed AND role = "rssitem"
 SORT published DESC
 ~~~

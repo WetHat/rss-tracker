@@ -4,7 +4,7 @@ author: "John Baez"
 published: 2024-05-13T18:23:03.000Z
 link: https://johncarlosbaez.wordpress.com/2024/05/13/agent-based-models-part-9/
 id: http://johncarlosbaez.wordpress.com/?p=37840
-feed: "Azimuth"
+feed: "[[Azimuth]]"
 tags: [rss/computer_science,rss/epidemiology,rss/mathematics]
 pinned: false
 ---
@@ -13,8 +13,8 @@ pinned: false
 >
 > ![image](https://johncarlosbaez.files.wordpress.com/2023/07/state_diagram.png)
 
-🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/05/13/agent-based-models-part-9/). For other items in this feed see [[../Azimuth|Azimuth]].
-Azimuth
+🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/05/13/agent-based-models-part-9/). For other items in this feed see [[Azimuth]].
+
 - [ ] [[Agent-Based Models (Part 9)]]
 - - -
 Since May 1st, [Kris Brown](https://www.krisb.org/docs/research), [Nathaniel Osgood](https://www.cs.usask.ca/faculty/osgood/), [Xiaoyan Li](https://scholar.google.ca/citations?user=55dzbRgAAAAJ&hl=en), [William Waites](https://scholar.google.com/citations?user=eayiEiwAAAAJ&hl=en) and I have been meeting daily in James Clerk Maxwell’s childhood home in Edinburgh.

@@ -4,7 +4,7 @@ author: "@WetHat"
 published: 2024-05-13T16:15:50.000Z
 link: https://fosstodon.org/@WetHat/112434672435437631
 id: https://fosstodon.org/@WetHat/112434672435437631
-feed: "@WetHat (WetHat💦)"
+feed: "[[@WetHat (WetHat💦)]]"
 tags: []
 pinned: false
 ---
@@ -13,7 +13,7 @@ pinned: false
 > 
 > - WetHat💦 (@WetHat) [May 13, 2024](https://fosstodon.org/@WetHat/112434672435437631)
 
-🔗Read article [online](https://fosstodon.org/@WetHat/112434672435437631). For other items in this feed see [[../@WetHat (WetHat💦)|@WetHat (WetHat💦)]].
-@WetHat (WetHat💦)
+🔗Read article [online](https://fosstodon.org/@WetHat/112434672435437631). For other items in this feed see [[@WetHat (WetHat💦)]].
+
 - [ ] [[Replied to꞉ @WetHat There can be significant benefits with static readonly field⋯]]
 - - -

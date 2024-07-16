@@ -4,7 +4,7 @@ author: "John Baez"
 published: 2024-04-14T10:57:14.000Z
 link: https://johncarlosbaez.wordpress.com/2024/04/14/protonium/
 id: http://johncarlosbaez.wordpress.com/?p=37742
-feed: "Azimuth"
+feed: "[[Azimuth]]"
 tags: [rss/physics]
 pinned: false
 ---
@@ -13,8 +13,8 @@ pinned: false
 >
 > ![image](https://johncarlosbaez.files.wordpress.com/2024/04/protonium.jpg)
 
-🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/04/14/protonium/). For other items in this feed see [[../Azimuth|Azimuth]].
-Azimuth
+🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/04/14/protonium/). For other items in this feed see [[Azimuth]].
+
 - [ ] [[Protonium]]
 - - -
 [![](http:math.ucr.edu/home/baez/physical/protonium.jpg)](https://en.wikipedia.org/wiki/Protonium)

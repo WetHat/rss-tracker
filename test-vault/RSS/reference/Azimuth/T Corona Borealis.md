@@ -4,7 +4,7 @@ author: "John Baez"
 published: 2024-03-27T18:32:47.000Z
 link: https://johncarlosbaez.wordpress.com/2024/03/27/t-corona-borealis/
 id: http://johncarlosbaez.wordpress.com/?p=37700
-feed: "Azimuth"
+feed: "[[Azimuth]]"
 tags: [rss/uncategorized]
 pinned: false
 ---
@@ -13,8 +13,8 @@ pinned: false
 >
 > ![image](https://johncarlosbaez.files.wordpress.com/2024/03/corona_borealis.jpg)
 
-🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/03/27/t-corona-borealis/). For other items in this feed see [[../Azimuth|Azimuth]].
-Azimuth
+🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/03/27/t-corona-borealis/). For other items in this feed see [[Azimuth]].
+
 - [ ] [[T Corona Borealis]]
 - - -
 [![](https://johncarlosbaez.files.wordpress.com/2024/03/corona_borealis.jpg?w=450&h=227)](https://johncarlosbaez.files.wordpress.com/2024/03/corona_borealis.jpg)

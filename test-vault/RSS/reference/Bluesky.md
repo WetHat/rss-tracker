@@ -3,12 +3,11 @@ role: rssfeed
 feedurl: https://localhost/RSS/reference/Bluesky/assets/feed.xml
 site: https://flipboard.com/topic/blueskysocial
 itemlimit: 10
-updated: 2024-07-11T11:39:33.065Z
+updated: 2024-07-16T10:44:13.689Z
 status: OK
-tags: []
+tags: 
 interval: 19
 ---
-
 > [!abstract] Bluesky
 > 
 >
@@ -16,8 +15,8 @@ interval: 19
 # Unread Feed Items 📚
 ~~~dataview
 TASK
-FROM "RSS/reference/Bluesky"
-WHERE !completed
+FROM [[Bluesky.md]]
+WHERE !completed AND role = "rssitem"
 SORT published DESC
 ~~~
 
@@ -25,15 +24,15 @@ SORT published DESC
 ~~~dataview
 TABLE
 published as Published
-FROM "RSS/reference/Bluesky"
-where pinned = true
+FROM [[Bluesky.md]]
+WHERE pinned = true AND role = "rssitem"
 SORT published DESC
 ~~~
 
 # Read Feed Items
 ~~~dataview
 TASK
-FROM "RSS/reference/Bluesky"
-WHERE completed
+FROM [[Bluesky.md]]
+WHERE completed AND role = "rssitem"
 SORT published DESC
 ~~~

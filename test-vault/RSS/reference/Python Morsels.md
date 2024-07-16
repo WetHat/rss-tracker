@@ -3,12 +3,11 @@ role: rssfeed
 feedurl: https://localhost/RSS/reference/Python Morsels/assets/feed.xml
 site: https://www.pythonmorsels.com/topics/
 itemlimit: 10
-updated: 2024-07-11T11:39:23.994Z
+updated: 2024-07-16T10:44:02.654Z
 status: OK
-tags: []
+tags: 
 interval: 425
 ---
-
 > [!abstract] Python Morsels
 > Python Morsels
 >
@@ -16,8 +15,8 @@ interval: 425
 # Unread Feed Items 📚
 ~~~dataview
 TASK
-FROM "RSS/reference/Python Morsels"
-WHERE !completed
+FROM [[Python Morsels.md]]
+WHERE !completed AND role = "rssitem"
 SORT published DESC
 ~~~
 
@@ -25,15 +24,15 @@ SORT published DESC
 ~~~dataview
 TABLE
 published as Published
-FROM "RSS/reference/Python Morsels"
-where pinned = true
+FROM [[Python Morsels.md]]
+WHERE pinned = true AND role = "rssitem"
 SORT published DESC
 ~~~
 
 # Read Feed Items
 ~~~dataview
 TASK
-FROM "RSS/reference/Python Morsels"
-WHERE completed
+FROM [[Python Morsels.md]]
+WHERE completed AND role = "rssitem"
 SORT published DESC
 ~~~

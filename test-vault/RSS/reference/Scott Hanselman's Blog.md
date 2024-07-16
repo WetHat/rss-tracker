@@ -3,12 +3,11 @@ role: rssfeed
 feedurl: https://localhost/RSS/reference/Scott Hanselman's Blog/assets/feed.xml
 site: https://www.hanselman.com/blog/
 itemlimit: 10
-updated: 2024-07-11T11:39:19.541Z
+updated: 2024-07-16T10:43:58.307Z
 status: OK
-tags: []
+tags: 
 interval: 2138
 ---
-
 > [!abstract] Scott Hanselman's Blog
 > Scott Hanselman on Programming, User Experience, The Zen of Computers and Life in General
 >
@@ -16,8 +15,8 @@ interval: 2138
 # Unread Feed Items 📚
 ~~~dataview
 TASK
-FROM "RSS/reference/Scott Hanselman's Blog"
-WHERE !completed
+FROM [[Scott Hanselman's Blog.md]]
+WHERE !completed AND role = "rssitem"
 SORT published DESC
 ~~~
 
@@ -25,15 +24,15 @@ SORT published DESC
 ~~~dataview
 TABLE
 published as Published
-FROM "RSS/reference/Scott Hanselman's Blog"
-where pinned = true
+FROM [[Scott Hanselman's Blog.md]]
+WHERE pinned = true AND role = "rssitem"
 SORT published DESC
 ~~~
 
 # Read Feed Items
 ~~~dataview
 TASK
-FROM "RSS/reference/Scott Hanselman's Blog"
-WHERE completed
+FROM [[Scott Hanselman's Blog.md]]
+WHERE completed AND role = "rssitem"
 SORT published DESC
 ~~~

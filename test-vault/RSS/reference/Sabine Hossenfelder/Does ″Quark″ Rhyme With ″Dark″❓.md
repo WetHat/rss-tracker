@@ -4,7 +4,7 @@ author: "Sabine Hossenfelder"
 published: 2024-05-13T15:00:35.000Z
 link: https://www.youtube.com/watch?v=_U3oIWQJqH0
 id: yt:video:_U3oIWQJqH0
-feed: "Sabine Hossenfelder"
+feed: "[[Sabine Hossenfelder]]"
 tags: []
 pinned: false
 ---
@@ -13,7 +13,7 @@ pinned: false
 >
 > ![image|480x360](https://i4.ytimg.com/vi/_U3oIWQJqH0/hqdefault.jpg)
 
-🔗Read article [online](https://www.youtube.com/watch?v=_U3oIWQJqH0). For other items in this feed see [[../Sabine Hossenfelder|Sabine Hossenfelder]].
-Sabine Hossenfelder
+🔗Read article [online](https://www.youtube.com/watch?v=_U3oIWQJqH0). For other items in this feed see [[Sabine Hossenfelder]].
+
 - [ ] [[Does ″Quark″ Rhyme With ″Dark″❓]]
 - - -

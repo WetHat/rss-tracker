@@ -4,7 +4,7 @@ author: "Python Morsels"
 published: 2024-05-02T15:00:00.000Z
 link: https://www.pythonmorsels.com/variables-are-pointers/
 id: https://www.pythonmorsels.com/variables-are-pointers/
-feed: "Python Morsels"
+feed: "[[Python Morsels]]"
 tags: []
 pinned: false
 ---
@@ -17,8 +17,8 @@ pinned: false
 > 
 > 1. [Changing two lists at once...?](h⋯
 
-🔗Read article [online](https://www.pythonmorsels.com/variables-are-pointers/). For other items in this feed see [[../Python Morsels|Python Morsels]].
-Python Morsels
+🔗Read article [online](https://www.pythonmorsels.com/variables-are-pointers/). For other items in this feed see [[Python Morsels]].
+
 - [ ] [[Variables are pointers in Python]]
 - - -
 Python's variables are not buckets that contain objects; they're pointers. Assignment statements don't copy: they point a variable to a value (and multiple variables can "point" to the same value).

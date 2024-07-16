@@ -4,7 +4,7 @@ author: "John Baez"
 published: 2024-05-04T15:47:17.000Z
 link: https://johncarlosbaez.wordpress.com/2024/05/04/hexagonal-tiling-honeycomb/
 id: http://johncarlosbaez.wordpress.com/?p=37783
-feed: "Azimuth"
+feed: "[[Azimuth]]"
 tags: [rss/mathematics]
 pinned: false
 ---
@@ -13,8 +13,8 @@ pinned: false
 >
 > ![image](https://johncarlosbaez.files.wordpress.com/2024/05/633_honeycomb_roice_bright.png)
 
-🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/05/04/hexagonal-tiling-honeycomb/). For other items in this feed see [[../Azimuth|Azimuth]].
-Azimuth
+🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/05/04/hexagonal-tiling-honeycomb/). For other items in this feed see [[Azimuth]].
+
 - [ ] [[Hexagonal Tiling Honeycomb]]
 - - -
 [  

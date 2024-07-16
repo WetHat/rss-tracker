@@ -4,7 +4,7 @@ author: "Richard Lander"
 published: 2024-04-30T17:05:00.000Z
 link: https://devblogs.microsoft.com/dotnet/secure-your-container-build-and-publish-with-dotnet-8/
 id: https://devblogs.microsoft.com/dotnet/?p=51654
-feed: "․NET Blog"
+feed: "[[․NET Blog]]"
 tags: [rss/〭NET,rss/Cloud_Native,rss/Containers,rss/〭net_sdk,rss/CLI,rss/dotnet_cli,rss/sdk]
 pinned: false
 ---
@@ -13,8 +13,8 @@ pinned: false
 > 
 > The post [Secure your container build and publish with .NET 8](https://devblogs.microsoft.com/dotnet/secure-your-container-build-and-publish-with-dotnet-8/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 
-🔗Read article [online](https://devblogs.microsoft.com/dotnet/secure-your-container-build-and-publish-with-dotnet-8/). For other items in this feed see [[../․NET Blog|․NET Blog]].
-․NET Blog
+🔗Read article [online](https://devblogs.microsoft.com/dotnet/secure-your-container-build-and-publish-with-dotnet-8/). For other items in this feed see [[․NET Blog]].
+
 - [ ] [[Secure your container build and publish with ․NET 8]]
 - - -
 .NET 8 raises the bar for container security for .NET container images and SDK tools. The SDK produces application images that align with [industry best practices and standards](https://kubernetes.io/docs/concepts/security/pod-security-standards/#restricted), by default. We also offer additional security hardening with [Chiseled images](https://devblogs.microsoft.com/dotnet/announcing-dotnet-chiseled-containers/) for an extra layer of protection.

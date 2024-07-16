@@ -3,12 +3,11 @@ role: rssfeed
 feedurl: https://localhost/RSS/reference/TypeScript TV/assets/feed.xml
 site: https://typescript.tv/
 itemlimit: 10
-updated: 2024-07-11T11:39:12.981Z
+updated: 2024-07-16T10:43:51.742Z
 status: OK
-tags: []
+tags: 
 interval: 809
 ---
-
 > [!abstract] TypeScript TV
 > 🚀 Ideal for beginners or advanced TypeScript programmers, our coding course guarantees something new for everyone.
 >
@@ -16,8 +15,8 @@ interval: 809
 # Unread Feed Items 📚
 ~~~dataview
 TASK
-FROM "RSS/reference/TypeScript TV"
-WHERE !completed
+FROM [[TypeScript TV.md]]
+WHERE !completed AND role = "rssitem"
 SORT published DESC
 ~~~
 
@@ -25,15 +24,15 @@ SORT published DESC
 ~~~dataview
 TABLE
 published as Published
-FROM "RSS/reference/TypeScript TV"
-where pinned = true
+FROM [[TypeScript TV.md]]
+WHERE pinned = true AND role = "rssitem"
 SORT published DESC
 ~~~
 
 # Read Feed Items
 ~~~dataview
 TASK
-FROM "RSS/reference/TypeScript TV"
-WHERE completed
+FROM [[TypeScript TV.md]]
+WHERE completed AND role = "rssitem"
 SORT published DESC
 ~~~

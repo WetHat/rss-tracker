@@ -4,15 +4,15 @@ author: "PyCoder’s Weekly"
 published: 2024-04-30T19:30:00.000Z
 link: https://pycoders.com/issues/627
 id: https://pycoders.com/issues/627
-feed: "PyCoder’s Weekly"
+feed: "[[PyCoder’s Weekly]]"
 tags: []
 pinned: false
 ---
 > [!abstract] Issue #627 (April 30, 2024) - 2024-04-30T19:30:00.000Z
 > #627 – APRIL 30, 2024 View in Browser » PEP 686: Make UTF-8 Mode Default This Python Enhancement Proposal outlines making UTF-8 the default throughout Python. This takes the addition of Unicode introduced in Python 3 to its full extent, applying it to file encoding, pipes, and more. Mechanisms for other encoding are still supported. This PEP is targeted for Python 3.15. PEPS What’s Lazy Evaluation in Python? This tutorial explores lazy evaluation in Python and looks at the advantages and disadva⋯
 
-🔗Read article [online](https://pycoders.com/issues/627). For other items in this feed see [[../PyCoder’s Weekly|PyCoder’s Weekly]].
-PyCoder’s Weekly
+🔗Read article [online](https://pycoders.com/issues/627). For other items in this feed see [[PyCoder’s Weekly]].
+
 - [ ] [[Issue ＃627 (April 30, 2024)]]
 - - -
 #627 – APRIL 30, 2024  

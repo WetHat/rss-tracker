@@ -4,15 +4,15 @@ author: "Ya Gao"
 published: 2024-05-13T18:27:34.000Z
 link: https://github.blog/2024-05-13-research-quantifying-github-copilots-impact-in-the-enterprise-with-accenture/
 id: https://github.blog/?p=78014
-feed: "The GitHub Blog꞉ Product News and Updates"
+feed: "[[The GitHub Blog꞉ Product News and Updates]]"
 tags: []
 pinned: false
 ---
 > [!abstract] Research: Quantifying GitHub Copilot’s impact in the enterprise with Accenture by Ya Gao - 2024-05-13T18:27:34.000Z
 > We conducted research with developers at Accenture to understand GitHub Copilot’s real-world impact in enterprise organizations. The post Research: Quantifying GitHub Copilot’s impact in the enterprise with Accenture appeared first on The GitHub Blog.
 
-🔗Read article [online](https://github.blog/2024-05-13-research-quantifying-github-copilots-impact-in-the-enterprise-with-accenture/). For other items in this feed see [[../The GitHub Blog꞉ Product News and Updates|The GitHub Blog꞉ Product News and Updates]].
-The GitHub Blog꞉ Product News and Updates
+🔗Read article [online](https://github.blog/2024-05-13-research-quantifying-github-copilots-impact-in-the-enterprise-with-accenture/). For other items in this feed see [[The GitHub Blog꞉ Product News and Updates]].
+
 - [ ] [[Research꞉ Quantifying GitHub Copilot’s impact in the enterprise with Accenture]]
 - - -
 Since bringing GitHub Copilot to market, we’ve conducted several lab studies to discover its impact on developer efficiency, developer satisfaction, and overall code quality. We found that our AI pair programmer helps developers code up to [55% faster](https://github.blog/2022-09-07-research-quantifying-github-copilots-impact-on-developer-productivity-and-happiness/) and that it made [85% of developers](https://github.blog/2023-10-10-research-quantifying-github-copilots-impact-on-code-quality/) feel more confident in their code quality. With the introduction of our first [GitHub Copilot offering for businesses and organizations in 2023](https://github.blog/2023-02-14-github-copilot-for-business-is-now-available/)—and more recently [GitHub Copilot Enterprise](https://github.blog/2024-02-27-github-copilot-enterprise-is-now-generally-available/#:~:text=Our%20most%20advanced%20AI%20offering,throughout%20the%20software%20development%20lifecycle.)—it’s become increasingly important for us to measure the impact of GitHub Copilot across real-world, large engineering organizations.

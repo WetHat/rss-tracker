@@ -4,7 +4,7 @@ author: "John Baez"
 published: 2024-02-29T10:00:24.000Z
 link: https://johncarlosbaez.wordpress.com/2024/02/29/nicholas-ludford/
 id: http://johncarlosbaez.wordpress.com/?p=37567
-feed: "Azimuth"
+feed: "[[Azimuth]]"
 tags: [rss/music]
 pinned: false
 ---
@@ -13,8 +13,8 @@ pinned: false
 >
 > ![image](https://johncarlosbaez.files.wordpress.com/2024/02/blue_heron_peterhouse_partbooks.jpg)
 
-🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/02/29/nicholas-ludford/). For other items in this feed see [[../Azimuth|Azimuth]].
-Azimuth
+🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/02/29/nicholas-ludford/). For other items in this feed see [[Azimuth]].
+
 - [ ] [[Nicholas Ludford]]
 - - -
 [![](https://i0.wp.com/math.ucr.edu/home/baez/cultural/blue_heron_peterhouse_partbooks.jpg)](https://www.blueheron.org/learn-more/the-peterhouse-partbooks/)

@@ -4,7 +4,7 @@ author: "info@thehackernews.com (The Hacker News)"
 published: 2024-05-17T08:46:00.000Z
 link: https://thehackernews.com/2024/05/kimsuky-apt-deploying-linux-backdoor.html
 id: https://thehackernews.com/2024/05/kimsuky-apt-deploying-linux-backdoor.html
-feed: "The Hacker News"
+feed: "[[The Hacker News]]"
 tags: []
 pinned: false
 ---
@@ -13,7 +13,7 @@ pinned: false
 >
 > ![image](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgKkkd9TlpBH69SJ2A5la8Bres_d4l53vzANAK7W2RVh3HJoJjX9PuIhhtiYhO5YlDnu8RuFrT8bAyj_0DwcjPB4tSIcLglj7N2PGus3G1cYnF29ytBkUvgf_DuGCsD5wc7c9NZ-Y5WoSifZzg5ZcNs2nbhRgepHlfcURgaVUvEu_6OQwZktjWfr-did40B/s1600/linux.png)
 
-🔗Read article [online](https://thehackernews.com/2024/05/kimsuky-apt-deploying-linux-backdoor.html). For other items in this feed see [[../The Hacker News|The Hacker News]].
-The Hacker News
+🔗Read article [online](https://thehackernews.com/2024/05/kimsuky-apt-deploying-linux-backdoor.html). For other items in this feed see [[The Hacker News]].
+
 - [ ] [[Kimsuky APT Deploying Linux Backdoor Gomir in South Korean Cyber Attacks]]
 - - -

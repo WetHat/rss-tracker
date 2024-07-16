@@ -4,15 +4,15 @@ author: "Mario Rodriguez"
 published: 2024-05-21T15:27:46.000Z
 link: https://github.blog/2024-05-21-introducing-github-copilot-extensions/
 id: https://github.blog/?p=78012
-feed: "The GitHub Blog꞉ Product News and Updates"
+feed: "[[The GitHub Blog꞉ Product News and Updates]]"
 tags: []
 pinned: false
 ---
 > [!abstract] Introducing GitHub Copilot Extensions: Unlocking unlimited possibilities with our ecosystem of partners by Mario Rodriguez - 2024-05-21T15:27:46.000Z
 > The world of Copilot is getting bigger, improving the developer experience by keeping developers in the flow longer and allowing them to do more in natural language. The post Introducing GitHub Copilot Extensions: Unlocking unlimited possibilities with our ecosystem of partners appeared first on The GitHub Blog.
 
-🔗Read article [online](https://github.blog/2024-05-21-introducing-github-copilot-extensions/). For other items in this feed see [[../The GitHub Blog꞉ Product News and Updates|The GitHub Blog꞉ Product News and Updates]].
-The GitHub Blog꞉ Product News and Updates
+🔗Read article [online](https://github.blog/2024-05-21-introducing-github-copilot-extensions/). For other items in this feed see [[The GitHub Blog꞉ Product News and Updates]].
+
 - [ ] [[Introducing GitHub Copilot Extensions꞉ Unlocking unlimited possibilities with ou⋯]]
 - - -
 Today, we’re introducing GitHub Copilot Extensions to bring the world’s knowledge into the most widely adopted AI developer tool. Through a growing partner ecosystem, Copilot Extensions enables developers to build and deploy to the cloud in their natural language with their preferred tools and services, all without leaving the IDE or GitHub.com. With Copilot and now Copilot Extensions, developers can stay in the flow longer, uplevel their skills, and innovate faster.

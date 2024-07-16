@@ -4,7 +4,7 @@ author: "Matthew Dowst"
 published: 2024-05-24T12:23:30.000Z
 link: https://powershellisfun.com/2024/05/23/keep-microsoft-teams-status-available-instead-of-away-using-powershell/
 id: https://psweekly.dowst.dev/?post_type=link_library_links&p=6890
-feed: "Planet PowerShell"
+feed: "[[Planet PowerShell]]"
 tags: []
 pinned: false
 ---
@@ -15,8 +15,8 @@ pinned: false
 > 
 > (+)(-)
 
-🔗Read article [online](https://powershellisfun.com/2024/05/23/keep-microsoft-teams-status-available-instead-of-away-using-powershell/). For other items in this feed see [[../Planet PowerShell|Planet PowerShell]].
-Planet PowerShell
+🔗Read article [online](https://powershellisfun.com/2024/05/23/keep-microsoft-teams-status-available-instead-of-away-using-powershell/). For other items in this feed see [[Planet PowerShell]].
+
 - [ ] [[Keep Microsoft Teams status Available instead of away using PowerShell]]
 - - -
 It is one of the things I hear my colleagues, and even my girlfriend, mention regularly... Why does
