@@ -228,7 +228,14 @@ function assembleCreator(elem) {
     if (creator) {
         return typeof creator === "string" ? creator : creator["#text"];
     }
-    return elem.author?.name || elem.author;
+    const author = elem.author;
+    if (!author || typeof author === "string") {
+        return author;
+    }
+    if (Array.isArray(author)) {
+        return author.map((a) => a.name).join(", ");
+    }
+    return author?.name || author;
 }
 function assembleDescription(elem) {
     let description = elem["media:description"];

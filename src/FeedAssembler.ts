@@ -306,7 +306,14 @@ function assembleCreator(elem: TPropertyBag): string | null {
     if (creator) {
         return typeof creator === "string" ? creator : creator["#text"];
     }
-    return elem.author?.name || elem.author;
+    const author = elem.author;
+    if (!author || typeof author === "string") {
+        return author;
+    }
+    if (Array.isArray(author)) {
+        return author.map((a : TPropertyBag) => a.name).join(", ");
+    }
+    return author?.name || author;
 }
 
 function assembleDescription(elem: TPropertyBag): string | null {
