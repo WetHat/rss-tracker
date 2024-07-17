@@ -12,9 +12,10 @@ noneof: []
 ~~~dataviewjs
 const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	collection = dv.current();
-if (await dvjs.feedTable(
-		collection,
+	collection = dv.current(),
+	feeds = await dvjs.rssFeedsOfCollection(collection);
+if (await dvjs.rssFeedTable(
+		feeds,
 		[
 			"Feed",
 			"Status",
@@ -24,12 +25,12 @@ if (await dvjs.feedTable(
 		f => [
 				dvjs.fileLink(f),
 				f.status,
-				dvjs.dateUpdated(f),
-				dvjs.fileHashtags(f)
+				dvjs.rssFeedUpdateDate(f),
+				dvjs.hashtagLine(f)
 			]) === 0) {
 	dv.paragraph("No feeds in this collection")
 }
-dv.paragraph("From: " + dvjs.fromFeedsExpression(collection));
+dv.paragraph("From: " + dvjs.fromTags(collection));
 ~~~
 
 # Reading List 📚
@@ -38,21 +39,21 @@ dv.paragraph("From: " + dvjs.fromFeedsExpression(collection));
 const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	collection = dv.current(),
-	feeds = await dvjs.getCollectionFeeds(collection);
+	feeds = await dvjs.rssFeedsOfCollection(collection);
 await dvjs.groupedReadingList(feeds,false);
 ~~~
 
 # Pinned Items 📌
+
 ~~~dataviewjs
 const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	collection = dv.current(),
-	feeds = await dvjs.getCollectionFeeds(collection);
-await dvjs.groupedItemTable(
+	feeds = await dvjs.rssFeedsOfCollection(collection);
+await dvjs.groupedRssItemTable(
 	feeds,
 	(feed => feed.pinned === true),
 	["Item", "Published"],
-	itm => [dvjs.fileLink(itm), dvjs.datePublished(itm)]
+	itm => [dvjs.fileLink(itm), dvjs.rssItemPublishDate(itm)]
 );
 ~~~
-

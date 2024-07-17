@@ -3969,33 +3969,64 @@ var UpdateRSSfeedMenuItem = class extends RSSTrackerMenuItem {
 
 // src/DataViewJSTools.ts
 var DataViewJSTools = class {
-  static toHashtag(tag) {
+  /**
+   * Turn a tag or category into a hashtag.
+   *
+   * **Note**: The tag or category **must not contain whitespaces**-
+   * @param tag - a Tag or category
+   * @returns A hashtag with a `#` prefix.
+   */
+  static hashtag(tag) {
     return tag.startsWith("#") ? tag : "#" + tag;
   }
-  static getHashtags(fileRecord) {
-    return fileRecord.file.etags.map((t) => DataViewJSTools.toHashtag(t));
+  /**
+   * Get the list of hashtags from a page
+   * @param pageRecord The page record object.
+   * @returns hashtag list
+   */
+  static hashtags(pageRecord) {
+    return pageRecord.file.etags.map((t) => DataViewJSTools.hashtag(t));
   }
   constructor(dv, settings) {
     this.dv = dv;
     this.settings = settings;
   }
-  // computed properties
-  fileHashtags(fileRecord) {
-    return DataViewJSTools.getHashtags(fileRecord).join(" ");
+  /**
+   * Get a space separated list of hashtags from a page,
+   *
+   * This function is typically used in `TRowBuilder` functions.
+   * @param pageRecord - Page object
+   * @returns Space separated tagline.
+   */
+  hashtagLine(pageRecord) {
+    return DataViewJSTools.hashtags(pageRecord).join(" ");
   }
   fileLink(fileRecord) {
     return this.dv.fileLink(fileRecord.file.path);
   }
-  datePublished(fileRecord) {
+  fileLinks(fileRecords) {
+    return fileRecords.map((rec) => this.fileLink(rec)).join(", ");
+  }
+  rssItemPublishDate(fileRecord) {
     return this.dv.date(fileRecord.published);
   }
-  dateUpdated(fileRecord) {
+  rssFeedUpdateDate(fileRecord) {
     return this.dv.date(fileRecord.updated);
   }
   ////////////////////////
-  fromFeedsExpression(fileRecord) {
+  /**
+   * Generate a dataview FROM expressing using 3 tag lists defined in the frontmatter of a page.
+   *
+   * The required frontmatter tag list property names are:
+   * - `tags`: pages with any of these tags are included
+   * - `allof`: pages must have all of these tags to be included
+   * - `noneof` - paged with any of these tags are excluded
+   * @param pageRecord - A page defining 3 tag lists
+   * @returns A FROM expression suitable for `dv.pages`.
+   */
+  fromTags(pageRecord) {
     var _a2, _b, _c, _d, _e, _f;
-    const anyTags = (_b = (_a2 = fileRecord.file.etags) == null ? void 0 : _a2.map((t) => DataViewJSTools.toHashtag(t))) != null ? _b : [], allTags = (_d = (_c = fileRecord == null ? void 0 : fileRecord.allof) == null ? void 0 : _c.map((t) => DataViewJSTools.toHashtag(t))) != null ? _d : [], noneTags = (_f = (_e = fileRecord == null ? void 0 : fileRecord.noneof) == null ? void 0 : _e.map((t) => DataViewJSTools.toHashtag(t))) != null ? _f : [];
+    const anyTags = (_b = (_a2 = pageRecord.file.etags) == null ? void 0 : _a2.map((t) => DataViewJSTools.hashtag(t))) != null ? _b : [], allTags = (_d = (_c = pageRecord == null ? void 0 : pageRecord.allof) == null ? void 0 : _c.map((t) => DataViewJSTools.hashtag(t))) != null ? _d : [], noneTags = (_f = (_e = pageRecord == null ? void 0 : pageRecord.noneof) == null ? void 0 : _e.map((t) => DataViewJSTools.hashtag(t))) != null ? _f : [];
     let from = [
       '"' + this.settings.rssFeedFolderPath + '"',
       anyTags.length > 0 ? "( " + anyTags.join(" OR ") + " )" : null,
@@ -4004,16 +4035,72 @@ var DataViewJSTools = class {
     ].filter((expr) => expr);
     return from.join(" AND ");
   }
-  async getCollectionFeeds(collection) {
-    const from = this.fromFeedsExpression(collection), pages = await this.dv.pages(from);
-    return pages.where((rec) => rec.role == "rssfeed").sort((rec) => rec.file.name, "asc");
+  fromItemsOfFeed(feed) {
+    return "[[" + feed.file.path + "]]";
   }
-  async getFeedItems(feed) {
-    const from = "[[" + feed.file.path + "]]", pages = await this.dv.pages(from);
-    return pages.where((rec) => rec.role == "rssitem").distinct((rec) => rec.link);
+  fromFeedsFolder() {
+    return '"' + this.settings.rssFeedFolderPath + '"';
   }
-  async readingList(feed, read, header) {
-    const items = await this.getFeedItems(feed), tasks = items.file.tasks.where((t) => t.completed === read), taskCount = tasks.length;
+  // obtaining lists of rss related markdown files
+  async rssFeeds() {
+    const feeds = await this.dv.pages(this.fromFeedsFolder());
+    return feeds.where((f) => f.role === "rssfeed").sort((rec) => rec.file.name, "asc");
+  }
+  async rssFeedsOfCollection(collection) {
+    const pages = await this.dv.pages(this.fromTags(collection));
+    return pages.where((rec) => rec.role === "rssfeed").sort((rec) => rec.file.name, "asc");
+  }
+  async rssCollections() {
+    const from = '"' + this.settings.rssHome + '" AND -"' + this.settings.rssFeedFolderPath + '" AND -"' + this.settings.rssTemplateFolderPath + '"', collections = await this.dv.pages(from);
+    console.log("from: " + from + " -> " + collections.length);
+    return collections.where((itm) => itm.role === "rsscollection").sort((rec) => rec.file.name, "asc");
+  }
+  async initializefeedToCollectionMap() {
+    let map = this.feedToCollectionMap;
+    if (map === void 0) {
+      this.feedToCollectionMap = map = /* @__PURE__ */ new Map();
+      const collections = await this.rssCollections();
+      for (const collection of collections) {
+        const feeds = await this.rssFeedsOfCollection(collection);
+        console.log("  feeds: " + feeds.length);
+        for (const feed of feeds) {
+          const key = feed.file.path;
+          let clist = map.get(key);
+          if (clist === void 0) {
+            map.set(key, [collection]);
+          } else {
+            clist.push(collection);
+          }
+        }
+      }
+      console.log("Map size after init: " + (map == null ? void 0 : map.size));
+    }
+  }
+  rssCollectionsOfFeed(feed) {
+    var _a2, _b;
+    return (_b = (_a2 = this.feedToCollectionMap) == null ? void 0 : _a2.get(feed.file.path)) != null ? _b : [];
+  }
+  async rssItemsOfFeed(feed) {
+    const pages = await this.dv.pages(this.fromItemsOfFeed(feed));
+    return pages.where((rec) => rec.role === "rssitem").distinct((rec) => rec.link).sort((rec) => rec.file.name, "asc");
+  }
+  async rssItems() {
+    const pages = await this.dv.pages(this.fromFeedsFolder());
+    return pages.where((rec) => rec.role === "rssitem").distinct((rec) => rec.link).sort((rec) => rec.file.name, "asc");
+  }
+  ///////
+  /**
+   * Create a dataview task list consisting of rss items already read or still to read.
+   *
+   * @param items - List of rss item page records
+   * @param read - `true` to create a list or items read, `false` to create a list of items to read.
+   * @param header - Optional header text for the list
+   * @see this.rssItemPagesOfFeed
+   * @see this.rssItemPages
+   * @returns number of items in the list
+   */
+  readingList(items, read, header) {
+    const tasks = items.file.tasks.where((t) => t.completed === read), taskCount = tasks.length;
     if (taskCount > 0) {
       if (header) {
         this.dv.header(2, header + " (" + taskCount + ")");
@@ -4025,12 +4112,13 @@ var DataViewJSTools = class {
   async groupedReadingList(feeds, read = false) {
     let totalTaskCount = 0;
     for (const feed of feeds) {
-      totalTaskCount += await this.readingList(feed, read, this.fileLink(feed));
+      const items = await this.rssItemsOfFeed(feed);
+      totalTaskCount += await this.readingList(items, read, this.fileLink(feed));
     }
     return totalTaskCount;
   }
-  async itemTable(feed, predicate, columnLabels, rowBuilder, header) {
-    const items = (await this.getFeedItems(feed)).where((item) => predicate(item)), itemCount = items.length;
+  rssItemTable(items, columnLabels, rowBuilder, header) {
+    const itemCount = items.length;
     if (itemCount > 0) {
       if (header) {
         this.dv.header(2, header + " (" + itemCount + ")");
@@ -4042,15 +4130,16 @@ var DataViewJSTools = class {
     }
     return itemCount;
   }
-  async groupedItemTable(feeds, predicate, columnLabels, rowBuilder) {
+  async groupedRssItemTable(feeds, predicate, columnLabels, rowBuilder) {
     let totalItemCount = 0;
     for (const feed of feeds) {
-      totalItemCount += await this.itemTable(feed, predicate, columnLabels, rowBuilder, this.fileLink(feed));
+      const items = (await this.rssItemsOfFeed(feed)).where((item) => predicate(item));
+      totalItemCount += this.rssItemTable(items, columnLabels, rowBuilder, this.fileLink(feed));
     }
     return totalItemCount;
   }
-  async feedTable(collection, columnLabels, rowBuilder) {
-    const feeds = await this.getCollectionFeeds(collection), feedCount = feeds.length;
+  rssFeedTable(feeds, columnLabels, rowBuilder) {
+    const feedCount = feeds.length;
     if (feedCount > 0) {
       this.dv.table(columnLabels, feeds.map((f) => rowBuilder(f)));
     }
