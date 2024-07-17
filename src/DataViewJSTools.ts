@@ -149,7 +149,6 @@ export class DataViewJSTools {
         const
             from = '"' + this.settings.rssHome + '" AND -"' + this.settings.rssFeedFolderPath + '" AND -"' + this.settings.rssTemplateFolderPath + '"',
             collections = await this.dv.pages(from);
-        console.log("from: " + from + " -> " + collections.length);
         return collections
             .where((itm: TPageRecord) => itm.role === "rsscollection")
             .sort((rec: TPageRecord) => rec.file.name, "asc");
@@ -163,7 +162,6 @@ export class DataViewJSTools {
             const collections = await this.rssCollections();
             for (const collection of collections) {
                 const feeds = await this.rssFeedsOfCollection(collection);
-                console.log("  feeds: " + feeds.length);
                 for (const feed of feeds) {
                     const key = feed.file.path;
                     let clist = map.get(key);
@@ -174,7 +172,6 @@ export class DataViewJSTools {
                     }
                 }
             }
-            console.log("Map size after init: " + map?.size);
         }
     }
 
