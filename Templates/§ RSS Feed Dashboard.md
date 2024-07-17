@@ -5,12 +5,12 @@ tags:
   - KnowledgeManagement/Obsidian
 ---
 > [!abstract]  [headline:: RSS feeds Part of the WetHat Lab Knowledge Graph]
-> 
+>
 >  ![[RSS Logo.jpg|400]]
 # Map of Content
 
 ## Feed Collections 📑
- 
+
 ~~~dataview
 TABLE
 headline as Headline
@@ -76,8 +76,4 @@ await dvjs.rssItemTable(
 	]
 );
 ~~~
-
-# Appendix
-
-Drag shortcut to Desktop or Browser bar: [Sandbox - Obsidian](obsidian://open?vault=Sandbox&file=%C2%A7%20About%20this%20Vault)
 
