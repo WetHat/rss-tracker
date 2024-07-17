@@ -86,7 +86,6 @@ export default class RSSTrackerPlugin extends Plugin {
                 }
             }
         }, 60 * 60 * 1000));
-        await this.settings.install();
     }
 
     onunload() {

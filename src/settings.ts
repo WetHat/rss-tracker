@@ -131,12 +131,15 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 
 	async loadData(): Promise<void> {
 		const data: TPropertyBag = await this.plugin.loadData();
-		for (const propertyName in this.data) {
-			if (propertyName in data) {
-				this.data[propertyName] = data[propertyName];
+		if (data) {
+			for (const propertyName in this.data) {
+				if (propertyName in data) {
+					this.data[propertyName] = data[propertyName];
+				}
 			}
+		} else {
+			await this.install();
 		}
-		return this.saveData();
 	}
 
 	async saveData(): Promise<void> {

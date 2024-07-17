@@ -1983,12 +1983,15 @@ var RSSTrackerSettings = class {
   }
   async loadData() {
     const data = await this.plugin.loadData();
-    for (const propertyName in this.data) {
-      if (propertyName in data) {
-        this.data[propertyName] = data[propertyName];
+    if (data) {
+      for (const propertyName in this.data) {
+        if (propertyName in data) {
+          this.data[propertyName] = data[propertyName];
+        }
       }
+    } else {
+      await this.install();
     }
-    return this.saveData();
   }
   async saveData() {
     return this.plugin.saveData(this.data);
@@ -4271,7 +4274,6 @@ var RSSTrackerPlugin = class extends import_obsidian5.Plugin {
         }
       }
     }, 60 * 60 * 1e3));
-    await this.settings.install();
   }
   onunload() {
     console.log("Unloading rss-tracker.");
