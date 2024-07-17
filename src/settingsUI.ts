@@ -19,6 +19,33 @@ abstract class RSSTrackerSettingBase extends Setting {
 	}
 }
 
+class RSSDashboardNameSetting extends RSSTrackerSettingBase {
+	constructor(settingsTab: RSSTrackerSettingTab) {
+		super(settingsTab);
+		this
+			.setName('RSS Dashboard Name')
+			.setDesc('THe name of the dashboard Markdown file in the RSS Home folder which contains a content map of the subscribed RSS feeds.')
+			.addText(ta => {
+				ta
+					.setPlaceholder(DEFAULT_SETTINGS.rssDashboardName)
+					.onChange(value => {
+						this.settings.rssDashboardName = value;
+					});
+				if (this.settings.rssDashboardName !== DEFAULT_SETTINGS.rssDashboardName) {
+					ta.setValue(this.settings.rssDashboardName)
+				}
+			})
+			.addButton(btn => {
+				btn
+					.setIcon("reset")
+					.setTooltip("Reset the RSS dashboard name to default")
+					.onClick(evt => {
+						this.settings.rssDashboardName = DEFAULT_SETTINGS.rssDashboardName;
+					})
+			});
+	}
+}
+
 class RSSautoUpdateSetting extends RSSTrackerSettingBase {
 	constructor(settingsTab: RSSTrackerSettingTab) {
 		super(settingsTab);
@@ -31,7 +58,7 @@ class RSSautoUpdateSetting extends RSSTrackerSettingBase {
 					this.settings.autoUpdateFeeds = tg.getValue();
 				})
 			});
-	}
+		}
 }
 
 class RSSHomeSetting extends RSSTrackerSettingBase {
@@ -104,6 +131,7 @@ export class RSSTrackerSettingTab extends PluginSettingTab {
 		new RSSHomeSetting(this);
 		new RSSFeedFolderSetting(this);
         new RSSautoUpdateSetting(this);
+		new RSSDashboardNameSetting(this);
 	}
 	hide() {
 		this.settings.commit();

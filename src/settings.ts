@@ -8,6 +8,7 @@ export interface IRSSTrackerSettings {
 	rssHome: string;
 	rssFeedFolder: string;
 	rssTemplateFolder: string;
+	rssDashboardName: string;
 }
 
 export const DEFAULT_SETTINGS: IRSSTrackerSettings = {
@@ -15,9 +16,10 @@ export const DEFAULT_SETTINGS: IRSSTrackerSettings = {
 	rssHome: "RSS",
 	rssFeedFolder: "Feeds",
 	rssTemplateFolder: "Templates",
+	rssDashboardName: "§ RSS Feed Dashboard"
 }
 
-export type TTemplateName = "RSS Feed" | "RSS Item" | "RSS Feed Collection";
+export type TTemplateName = "RSS Feed" | "RSS Item" | "RSS Feed Collection" | "§ RSS Feed Dashboard";
 
 const TEMPLATES: TTemplateName[] = ["RSS Feed", "RSS Item", "RSS Feed Collection"];
 
@@ -42,6 +44,7 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 	private _rssHome: string | null;
 	private _rssFeedFolder: string | null;
 	private _rssTemplateFolder: string | null;
+	private _rssDashboardName: string | null;
 
 	get rssHome(): string {
 		return this.data.rssHome ?? DEFAULT_SETTINGS.rssHome;
@@ -67,7 +70,15 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 		this._rssTemplateFolder = value;
 	}
 
-	private async rename(oldFolderPath: string, newFolderPath: string): Promise<boolean> {
+	get rssDashboardName() : string {
+		return this.data.rssDashboardName || DEFAULT_SETTINGS.rssDashboardName;
+	}
+
+	set rssDashboardName(value: string) {
+		this._rssDashboardName = value;
+	}
+
+	private async renameFolder(oldFolderPath: string, newFolderPath: string): Promise<boolean> {
 		if (oldFolderPath === newFolderPath) {
 			return false;
 		}
@@ -83,50 +94,64 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 		return false;
 	}
 
+	private async renameFile(oldFilePath: string, newFilePath: string): Promise<boolean> {
+		if (oldFilePath === newFilePath) {
+			return false;
+		}
+
+		const
+			vault = this.app.vault,
+			oldFile = vault.getFileByPath(oldFilePath);
+
+		if (oldFile) {
+			await vault.rename(oldFile, newFilePath);
+			return true;
+		}
+		return false;
+	}
+
 	async commit() {
-		let success = true;
 
 		if (this._rssHome && this._rssHome !== this.rssHome) {
-			if (await this.rename(this.rssHome, this._rssHome)) {
+			if (await this.renameFolder(this.rssHome, this._rssHome)) {
 				this.data.rssHome = this._rssHome;
-			} else {
-				success = false;
 			}
 			this._rssHome = null;
 		}
 
 		if (this._rssFeedFolder && this._rssFeedFolder !== this.rssFeedFolder) {
-			if (await this.rename(this.rssFeedFolderPath, this.rssHome + "/" + this._rssFeedFolder)) {
+			if (await this.renameFolder(this.rssFeedFolderPath, this.rssHome + "/" + this._rssFeedFolder)) {
 				this.data.rssFeedFolder = this._rssFeedFolder;
-			} else {
-				success = false;
 			}
 			this._rssFeedFolder = null;
 		}
 
 		if (this._rssTemplateFolder && this._rssTemplateFolder !== this.rssTemplateFolder) {
-			if (await this.rename(this.rssTemplateFolderPath, this.rssHome + "/" + this._rssTemplateFolder)) {
+			if (await this.renameFolder(this.rssTemplateFolderPath, this.rssHome + "/" + this._rssTemplateFolder)) {
 				this.data.rssTemplateFolder = this._rssTemplateFolder;
-			} else {
-				success = false;
 			}
 
 			this._rssTemplateFolder = null;
 		}
 
-		await this.saveData();
+		if (this._rssDashboardName && this._rssDashboardName !== this.rssDashboardName) {
+			if (await this.renameFile(this.rssTemplateFolderPath, this.rssHome + "/" + this._rssTemplateFolder)) {
+				this.data.rssDashboardName = this._rssDashboardName;
+			}
 
-		if (!success) {
-			this.install();
+			this._rssDashboardName = null;
 		}
 
+		await this.saveData();
+
+		this.install(); // always assure integrity
 	}
 
 	constructor(app: App, plugin: RSSTrackerPlugin) {
 		this.app = app;
 		this.plugin = plugin;
 
-		this._rssHome = this._rssFeedFolder = this._rssTemplateFolder = null;
+		this._rssHome = this._rssFeedFolder = this._rssTemplateFolder = this._rssDashboardName = null;
 	}
 
 	async loadData(): Promise<void> {
@@ -138,7 +163,7 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 				}
 			}
 		} else {
-			await this.install();
+			await this.install(); // first time install
 		}
 	}
 
@@ -172,6 +197,13 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 			}
 		}
 
+		// dashboard is a special case
+		const dashboardPath = this.rssDashboardName;
+		if (!await fs.exists(dashboardPath)) {
+			const factoryPath = this.plugin.manifest.dir + "/Templates/" + RSSTrackerSettings.getTemplateFilename("§ RSS Feed Dashboard");
+			fs.copy(factoryPath, this.rssDashboardPath);
+		}
+
 		console.log(`RSS directory structure created/updated at '${this.rssHome}'.`);
 	}
 
@@ -183,7 +215,11 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 		return this.rssHome + "/" + this.rssTemplateFolder;
 	}
 
-	getTemplatePath(templateName: TTemplateName): string {
+	get rssDashboardPath() : string {
+		return this.rssHome + "/" + this.rssDashboardName + ".md";
+	}
+
+	private getTemplatePath(templateName: TTemplateName): string {
 		return this.rssTemplateFolderPath + "/" + RSSTrackerSettings.getTemplateFilename(templateName);
 	}
 
