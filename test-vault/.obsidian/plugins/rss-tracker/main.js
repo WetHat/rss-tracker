@@ -1969,6 +1969,7 @@ var RSSTrackerSettings = class {
     return false;
   }
   async commit() {
+    console.log("Commiting changes in settings");
     if (this._rssHome && this._rssHome !== this.rssHome) {
       if (await this.renameFolder(this.rssHome, this._rssHome)) {
         this.data.rssHome = this._rssHome;
@@ -2005,6 +2006,7 @@ var RSSTrackerSettings = class {
         }
       }
     } else {
+      console.log("rss-tracker first time load");
       await this.install();
     }
   }
@@ -2030,10 +2032,10 @@ var RSSTrackerSettings = class {
         fs.copy(factoryPath, tplPath);
       }
     }
-    const dashboardPath = this.rssDashboardName;
+    const dashboardPath = this.rssDashboardPath;
     if (!await fs.exists(dashboardPath)) {
       const factoryPath = this.plugin.manifest.dir + "/Templates/" + RSSTrackerSettings.getTemplateFilename("\xA7 RSS Feed Dashboard");
-      fs.copy(factoryPath, this.rssDashboardPath);
+      fs.copy(factoryPath, dashboardPath);
     }
     console.log(`RSS directory structure created/updated at '${this.rssHome}'.`);
   }
@@ -4078,7 +4080,6 @@ var DataViewJSTools = class {
   }
   async rssCollections() {
     const from = '"' + this.settings.rssHome + '" AND -"' + this.settings.rssFeedFolderPath + '" AND -"' + this.settings.rssTemplateFolderPath + '"', collections = await this.dv.pages(from);
-    console.log("from: " + from + " -> " + collections.length);
     return collections.where((itm) => itm.role === "rsscollection").sort((rec) => rec.file.name, "asc");
   }
   async initializefeedToCollectionMap() {
@@ -4088,7 +4089,6 @@ var DataViewJSTools = class {
       const collections = await this.rssCollections();
       for (const collection of collections) {
         const feeds = await this.rssFeedsOfCollection(collection);
-        console.log("  feeds: " + feeds.length);
         for (const feed of feeds) {
           const key = feed.file.path;
           let clist = map.get(key);
@@ -4099,7 +4099,6 @@ var DataViewJSTools = class {
           }
         }
       }
-      console.log("Map size after init: " + (map == null ? void 0 : map.size));
     }
   }
   rssCollectionsOfFeed(feed) {
@@ -4190,7 +4189,7 @@ var RSSTrackerSettingBase = class extends import_obsidian4.Setting {
 var RSSDashboardNameSetting = class extends RSSTrackerSettingBase {
   constructor(settingsTab) {
     super(settingsTab);
-    this.setName("RSS Dashboard Name").setDesc("THe name of the dashboard Markdown file in the RSS Home folder which contains a content map of the subscribed RSS feeds.").addText((ta) => {
+    this.setName("RSS Dashboard iName").setDesc("THe name of the dashboard Markdown file in the RSS Home folder which contains a content map of the subscribed RSS feeds.").addText((ta) => {
       ta.setPlaceholder(DEFAULT_SETTINGS.rssDashboardName).onChange((value) => {
         this.settings.rssDashboardName = value;
       });

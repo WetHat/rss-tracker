@@ -111,7 +111,7 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 	}
 
 	async commit() {
-
+		console.log("Commiting changes in settings");
 		if (this._rssHome && this._rssHome !== this.rssHome) {
 			if (await this.renameFolder(this.rssHome, this._rssHome)) {
 				this.data.rssHome = this._rssHome;
@@ -144,7 +144,7 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 
 		await this.saveData();
 
-		this.install(); // always assure integrity
+		this.install(); // always assure integrity after commit
 	}
 
 	constructor(app: App, plugin: RSSTrackerPlugin) {
@@ -163,6 +163,7 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 				}
 			}
 		} else {
+			console.log("rss-tracker first time load");
 			await this.install(); // first time install
 		}
 	}
@@ -198,10 +199,10 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 		}
 
 		// dashboard is a special case
-		const dashboardPath = this.rssDashboardName;
+		const dashboardPath = this.rssDashboardPath;
 		if (!await fs.exists(dashboardPath)) {
 			const factoryPath = this.plugin.manifest.dir + "/Templates/" + RSSTrackerSettings.getTemplateFilename("§ RSS Feed Dashboard");
-			fs.copy(factoryPath, this.rssDashboardPath);
+			fs.copy(factoryPath, dashboardPath);
 		}
 
 		console.log(`RSS directory structure created/updated at '${this.rssHome}'.`);
@@ -230,7 +231,7 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 			templatePath = this.getTemplatePath(templateName);
 
 		if (!fs.exists(this.rssTemplateFolderPath) || !fs.exists(templatePath)) {
-			await this.install();
+			await this.install(); // recovering from missing template
 		}
 
 		const tplFile = vault.getFileByPath(templatePath);
