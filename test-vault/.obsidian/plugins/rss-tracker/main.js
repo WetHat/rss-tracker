@@ -4158,33 +4158,26 @@ var DataViewJSTools = class {
     }
     return totalTaskCount;
   }
-  rssItemTable(items, columnLabels, rowBuilder, header) {
-    const itemCount = items.length;
-    if (itemCount > 0) {
+  rssTable(pages, columnLabels, rowBuilder, header) {
+    const pageCount = pages.length;
+    if (pageCount > 0) {
       if (header) {
-        this.dv.header(2, header + " (" + itemCount + ")");
+        this.dv.header(2, header + " (" + pageCount + ")");
       }
       this.dv.table(
         columnLabels,
-        items.map((itemRec) => rowBuilder(itemRec))
+        pages.map((rec) => rowBuilder(rec))
       );
     }
-    return itemCount;
+    return pageCount;
   }
   async groupedRssItemTable(feeds, predicate, columnLabels, rowBuilder) {
     let totalItemCount = 0;
     for (const feed of feeds) {
       const items = (await this.rssItemsOfFeed(feed)).where((item) => predicate(item));
-      totalItemCount += this.rssItemTable(items, columnLabels, rowBuilder, this.fileLink(feed));
+      totalItemCount += this.rssTable(items, columnLabels, rowBuilder, this.fileLink(feed));
     }
     return totalItemCount;
-  }
-  rssFeedTable(feeds, columnLabels, rowBuilder) {
-    const feedCount = feeds.length;
-    if (feedCount > 0) {
-      this.dv.table(columnLabels, feeds.map((f) => rowBuilder(f)));
-    }
-    return feedCount;
   }
 };
 

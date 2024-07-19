@@ -11,12 +11,24 @@ tags:
 
 ## Feed Collections 📑
 
-~~~dataview
-TABLE
-headline as Headline
-FROM "RSS" AND -"RSS/Templates"
-WHERE role = "rsscollection"
-SORT file.name ASC
+~~~dataviewjs
+const
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	collections = await dvjs.rssCollections();
+dvjs.rssTable(
+	collections,
+	[
+		"Collection",
+		"Headline",
+		"Tags"
+	],
+	c =>
+	[
+		dvjs.fileLink(c),
+		c.headline,
+		dvjs.hashtagLine(c)
+	]
+);
 ~~~
 
 ## Feed Status
@@ -26,7 +38,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	feeds = await dvjs.rssFeeds(),
 	map = await dvjs.mapFeedsToCollections();
-if (dvjs.rssFeedTable(
+if (dvjs.rssTable(
 		feeds,
 		[
 			"Feed",
@@ -58,9 +70,9 @@ await dvjs.groupedReadingList(feeds,false);
 ~~~dataviewjs
 const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	feeds = await dvjs.rssItems();
-await dvjs.rssItemTable(
-	feeds.where(rec => rec.pinned === true),
+	items = await dvjs.rssItems();
+if (dvjs.rssTable(
+	items.where(rec => rec.pinned === true),
 	[
 		"Item",
 		"Published",
@@ -73,7 +85,8 @@ await dvjs.rssItemTable(
 		dvjs.rssItemPublishDate(f),
 		f.feed,
 		dvjs.hashtagLine(f)
-	]
-);
+	]) === 0) {
+		dv.paragraph("No items pinned")
+	}
 ~~~
 
