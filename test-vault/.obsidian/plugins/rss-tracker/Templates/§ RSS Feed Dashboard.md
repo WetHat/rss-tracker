@@ -5,12 +5,12 @@ tags:
   - KnowledgeManagement/Obsidian
 ---
 > [!abstract]  [headline:: RSS feeds Part of the WetHat Lab Knowledge Graph]
-> 
+>
 >  ![[RSS Logo.jpg|400]]
 # Map of Content
 
 ## Feed Collections 📑
- 
+
 ~~~dataview
 TABLE
 headline as Headline
@@ -24,8 +24,8 @@ SORT file.name ASC
 ~~~dataviewjs
 const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	feeds = await dvjs.rssFeeds();
-	await dvjs.initializefeedToCollectionMap();
+	feeds = await dvjs.rssFeeds(),
+	map = await dvjs.mapFeedsToCollections();
 if (dvjs.rssFeedTable(
 		feeds,
 		[
@@ -38,7 +38,7 @@ if (dvjs.rssFeedTable(
 				dvjs.fileLink(f),
 				f.status,
 				dvjs.rssFeedUpdateDate(f),
-				dvjs.fileLinks(dvjs.rssCollectionsOfFeed(f))
+				dvjs.fileLinks(map.rssFeedToCollections(f))
 			]) === 0) {
 	dv.paragraph("No feeds subscribed")
 }
@@ -76,8 +76,4 @@ await dvjs.rssItemTable(
 	]
 );
 ~~~
-
-# Appendix
-
-Drag shortcut to Desktop or Browser bar: [Sandbox - Obsidian](obsidian://open?vault=Sandbox&file=%C2%A7%20About%20this%20Vault)
 

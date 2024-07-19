@@ -24,8 +24,8 @@ SORT file.name ASC
 ~~~dataviewjs
 const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	feeds = await dvjs.rssFeeds();
-	await dvjs.initializefeedToCollectionMap();
+	feeds = await dvjs.rssFeeds(),
+	map = await dvjs.mapFeedsToCollections();
 if (dvjs.rssFeedTable(
 		feeds,
 		[
@@ -38,7 +38,7 @@ if (dvjs.rssFeedTable(
 				dvjs.fileLink(f),
 				f.status,
 				dvjs.rssFeedUpdateDate(f),
-				dvjs.fileLinks(dvjs.rssCollectionsOfFeed(f))
+				dvjs.fileLinks(map.rssFeedToCollections(f))
 			]) === 0) {
 	dv.paragraph("No feeds subscribed")
 }

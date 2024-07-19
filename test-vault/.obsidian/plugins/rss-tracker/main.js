@@ -3996,6 +3996,42 @@ var UpdateRSSfeedMenuItem = class extends RSSTrackerMenuItem {
 };
 
 // src/DataViewJSTools.ts
+var FeedToCollectionMap = class {
+  /**
+   * Get all collections the given feed is a member of.
+   * @returns a list of collections.
+   */
+  rssFeedToCollections(feed) {
+    var _a2;
+    return (_a2 = this.map.get(feed.file.path)) != null ? _a2 : [];
+  }
+  constructor(map) {
+    this.map = map;
+  }
+  /**
+   *
+   * @param dvjs Factory method to build a map of RSS feeds to RSS Collections
+   * where they are a member of.
+   * @returns a fully initialized instance of this class.
+   */
+  static async initialize(dvjs) {
+    const map = /* @__PURE__ */ new Map();
+    const collections = await dvjs.rssCollections();
+    for (const collection of collections) {
+      const feeds = await dvjs.rssFeedsOfCollection(collection);
+      for (const feed of feeds) {
+        const key = feed.file.path;
+        let clist = map.get(key);
+        if (clist === void 0) {
+          this, map.set(key, [collection]);
+        } else {
+          clist.push(collection);
+        }
+      }
+    }
+    return new FeedToCollectionMap(map);
+  }
+};
 var DataViewJSTools = class {
   /**
    * Turn a tag or category into a hashtag.
@@ -4082,28 +4118,8 @@ var DataViewJSTools = class {
     const from = '"' + this.settings.rssHome + '" AND -"' + this.settings.rssFeedFolderPath + '" AND -"' + this.settings.rssTemplateFolderPath + '"', collections = await this.dv.pages(from);
     return collections.where((itm) => itm.role === "rsscollection").sort((rec) => rec.file.name, "asc");
   }
-  async initializefeedToCollectionMap() {
-    let map = this.feedToCollectionMap;
-    if (map === void 0) {
-      this.feedToCollectionMap = map = /* @__PURE__ */ new Map();
-      const collections = await this.rssCollections();
-      for (const collection of collections) {
-        const feeds = await this.rssFeedsOfCollection(collection);
-        for (const feed of feeds) {
-          const key = feed.file.path;
-          let clist = map.get(key);
-          if (clist === void 0) {
-            map.set(key, [collection]);
-          } else {
-            clist.push(collection);
-          }
-        }
-      }
-    }
-  }
-  rssCollectionsOfFeed(feed) {
-    var _a2, _b;
-    return (_b = (_a2 = this.feedToCollectionMap) == null ? void 0 : _a2.get(feed.file.path)) != null ? _b : [];
+  async mapFeedsToCollections() {
+    return FeedToCollectionMap.initialize(this);
   }
   async rssItemsOfFeed(feed) {
     const pages = await this.dv.pages(this.fromItemsOfFeed(feed));
@@ -4189,7 +4205,7 @@ var RSSTrackerSettingBase = class extends import_obsidian4.Setting {
 var RSSDashboardNameSetting = class extends RSSTrackerSettingBase {
   constructor(settingsTab) {
     super(settingsTab);
-    this.setName("RSS Dashboard iName").setDesc("THe name of the dashboard Markdown file in the RSS Home folder which contains a content map of the subscribed RSS feeds.").addText((ta) => {
+    this.setName("RSS Dashboard Name").setDesc("THe name of the dashboard Markdown file in the RSS Home folder which contains a content map of the subscribed RSS feeds.").addText((ta) => {
       ta.setPlaceholder(DEFAULT_SETTINGS.rssDashboardName).onChange((value) => {
         this.settings.rssDashboardName = value;
       });

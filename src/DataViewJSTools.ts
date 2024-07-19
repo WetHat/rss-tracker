@@ -27,6 +27,52 @@ type TPageRecordList = {
 type TItemPredicate = (fileRecord: TPageRecord) => boolean;
 
 /**
+ * Utility class to map RSS feeds to RSS collections where they are a member of.
+ */
+export class FeedToCollectionMap {
+    private map: Map<string, TPageRecord[]>;
+
+    /**
+     * Get all collections the given feed is a member of.
+     * @returns a list of collections.
+     */
+    rssFeedToCollections(feed: TPageRecord): TPageRecord[] {
+        // now lookup the collections
+        return this.map.get(feed.file.path) ?? [];
+    }
+
+    private constructor(map: Map<string, TPageRecord[]>) {
+        this.map = map;
+    }
+
+    /**
+     *
+     * @param dvjs Factory method to build a map of RSS feeds to RSS Collections
+     * where they are a member of.
+     * @returns a fully initialized instance of this class.
+     */
+    static async initialize(dvjs: DataViewJSTools): Promise<FeedToCollectionMap> {
+        // create a map
+        const map = new Map<string, TPageRecord[]>();
+
+        const collections = await dvjs.rssCollections();
+        for (const collection of collections) {
+            const feeds = await dvjs.rssFeedsOfCollection(collection);
+            for (const feed of feeds) {
+                const key = feed.file.path;
+                let clist = map.get(key);
+                if (clist === undefined) {
+                    this, map.set(key, [collection]);
+                } else {
+                    clist.push(collection);
+                }
+            }
+        }
+        return new FeedToCollectionMap(map);
+    }
+}
+
+/**
  * Utility class providing methods to worg with rss related Markdown pages.
  */
 export class DataViewJSTools {
@@ -38,8 +84,6 @@ export class DataViewJSTools {
      * THe settings object describing the RSS related golder structure
      */
     private settings: RSSTrackerSettings;
-
-    private feedToCollectionMap?: Map<string, TPageRecord[]>;
 
     /**
      * Turn a tag or category into a hashtag.
@@ -125,8 +169,8 @@ export class DataViewJSTools {
         return "[[" + feed.file.path + "]]";
     }
 
-    fromFeedsFolder() : string {
-        return  '"' + this.settings.rssFeedFolderPath + '"';
+    fromFeedsFolder(): string {
+        return '"' + this.settings.rssFeedFolderPath + '"';
     }
 
     // obtaining lists of rss related markdown files
@@ -154,30 +198,8 @@ export class DataViewJSTools {
             .sort((rec: TPageRecord) => rec.file.name, "asc");
     }
 
-    async initializefeedToCollectionMap() {
-        let map = this.feedToCollectionMap;
-        if (map === undefined) {
-            // create a map
-            this.feedToCollectionMap = map = new Map<string, TPageRecord[]>();
-            const collections = await this.rssCollections();
-            for (const collection of collections) {
-                const feeds = await this.rssFeedsOfCollection(collection);
-                for (const feed of feeds) {
-                    const key = feed.file.path;
-                    let clist = map.get(key);
-                    if (clist === undefined) {
-                        map.set(key, [collection]);
-                    } else {
-                        clist.push(collection);
-                    }
-                }
-            }
-        }
-    }
-
-    rssCollectionsOfFeed(feed: TPageRecord): TPageRecord[] {
-        // now lookup the collections
-        return this.feedToCollectionMap?.get(feed.file.path) ?? [];
+    async mapFeedsToCollections() : Promise<FeedToCollectionMap> {
+        return FeedToCollectionMap.initialize(this);
     }
 
     async rssItemsOfFeed(feed: TPageRecord): Promise<TPageRecordList> {
