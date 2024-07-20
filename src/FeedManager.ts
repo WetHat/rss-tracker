@@ -449,9 +449,9 @@ export class FeedManager {
                 article: ArticleData | null = await extractFromHtml(itemHTML);
             if (article) {
                 const {title,content} = article;
-                let articleContent : string = "\n- - -";
+                let articleContent : string = "\n";
                 if (title) {
-                    articleContent += "\n# " + title;
+                    articleContent += "# " + title;
                 }
 
                 if (content) {

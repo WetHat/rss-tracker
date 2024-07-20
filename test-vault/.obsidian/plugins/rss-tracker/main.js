@@ -15117,9 +15117,9 @@ var _FeedManager = class {
       }), article = await extractFromHtml(itemHTML);
       if (article) {
         const { title, content } = article;
-        let articleContent = "\n- - -";
+        let articleContent = "\n";
         if (title) {
-          articleContent += "\n# " + title;
+          articleContent += "# " + title;
         }
         if (content) {
           articleContent += "\n\n" + (0, import_obsidian.htmlToMarkdown)(content);
