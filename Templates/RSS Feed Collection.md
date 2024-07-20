@@ -14,7 +14,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	collection = dv.current(),
 	feeds = await dvjs.rssFeedsOfCollection(collection);
-if (await dvjs.rssFeedTable(
+if (await dvjs.rssTable(
 		feeds,
 		[
 			"Feed",
