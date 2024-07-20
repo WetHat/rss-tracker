@@ -120,7 +120,7 @@ export class DownloadRSSitemArticleCommand extends RSSTrackerCommandBase {
                 // check if active file is a rss feed dashboard.
                 return feedmgr.canDownloadArticle(active);
             }
-            feedmgr.downloadArticle(active);
+            feedmgr.downloadArticle(active).then(v => new Notice(`Article content of "${active.basename}" downloaded`));
             return true;
         }
         return false;

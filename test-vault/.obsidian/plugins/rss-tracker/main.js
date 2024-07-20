@@ -15212,7 +15212,7 @@ var DownloadRSSitemArticleCommand = class extends RSSTrackerCommandBase {
       if (checking) {
         return feedmgr.canDownloadArticle(active);
       }
-      feedmgr.downloadArticle(active);
+      feedmgr.downloadArticle(active).then((v) => new import_obsidian2.Notice(`Article content of "${active.basename}" downloaded`));
       return true;
     }
     return false;
