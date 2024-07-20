@@ -79,7 +79,7 @@ export class DownloadArticleContentMenuItem extends RSSTrackerMenuItem {
                     .setIcon('download')
                     .onClick(async () => {
                         await feedmgr.downloadArticle(rssitem);
-                        new Notice(`Article content of "${rssitem.basename}" appended`);
+                        new Notice(`Article content of "${rssitem.basename}" downloaded`);
                     });
             });
         }

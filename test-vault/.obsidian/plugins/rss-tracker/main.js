@@ -15335,7 +15335,7 @@ var DownloadArticleContentMenuItem = class extends RSSTrackerMenuItem {
       menu.addItem((item) => {
         item.setTitle("Download RSS Item article").setIcon("download").onClick(async () => {
           await feedmgr.downloadArticle(rssitem);
-          new import_obsidian3.Notice(`Article content of "${rssitem.basename}" appended`);
+          new import_obsidian3.Notice(`Article content of "${rssitem.basename}" downloaded`);
         });
       });
     }
