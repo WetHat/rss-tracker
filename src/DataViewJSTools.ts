@@ -215,7 +215,7 @@ export class DataViewJSTools {
         return pages
             .where((rec: TPageRecord) => rec.role === "rssitem")
             .distinct((rec: TPageRecord) => rec.link)
-            .sort((rec: TPageRecord) => rec.file.name, "asc");
+            .sort((rec: TPageRecord) => rec.published, "desc"); // newest first
     }
 
     ///////

@@ -15503,7 +15503,7 @@ var DataViewJSTools = class {
   }
   async rssItems() {
     const pages = await this.dv.pages(this.fromFeedsFolder());
-    return pages.where((rec) => rec.role === "rssitem").distinct((rec) => rec.link).sort((rec) => rec.file.name, "asc");
+    return pages.where((rec) => rec.role === "rssitem").distinct((rec) => rec.link).sort((rec) => rec.published, "desc");
   }
   ///////
   /**
