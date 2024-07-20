@@ -45,13 +45,12 @@ abstract class RSSTrackerMenuItem {
  *
  * The menu action marks all items of the RSS feed, described by the current file, as read.
  */
-
-export class MarkAllItemsReadMenuItem extends  RSSTrackerMenuItem {
+export class MarkAllItemsReadMenuItem extends RSSTrackerMenuItem {
     constructor(app: App, plugin: RSSTrackerPlugin) {
-        super(app,plugin);
-     }
+        super(app, plugin);
+    }
 
-     protected addItem(menu: Menu, dashboard: TFile | null) {
+    protected addItem(menu: Menu, dashboard: TFile | null) {
         if (dashboard) {
             const feedconfig = FeedConfig.fromFile(this.app, dashboard);
             if (feedconfig) {
@@ -68,15 +67,34 @@ export class MarkAllItemsReadMenuItem extends  RSSTrackerMenuItem {
     }
 }
 
+export class DownloadArticleContentMenuItem extends RSSTrackerMenuItem {
+    constructor(app: App, plugin: RSSTrackerPlugin) {
+        super(app, plugin);
+    }
+    protected addItem(menu: Menu, rssitem: TFile | null) {
+        const feedmgr = this.plugin.feedmgr;
+        if (rssitem && feedmgr.canDownloadArticle(rssitem)) {
+            menu.addItem(item => {
+                item.setTitle("Download RSS Item article")
+                    .setIcon('download')
+                    .onClick(async () => {
+                        await feedmgr.downloadArticle(rssitem);
+                        new Notice(`Article content of "${rssitem.basename}" appended`);
+                    });
+            });
+        }
+    }
+}
+
 /**
  * Utility class to add a menu item to Obsidian one of the supported Obsidian context menus
  * if the current file is a RSS feed dashboard.
  *
  * The menu action updates the RSS feed described by the current file.
  */
-export class UpdateRSSfeedMenuItem extends  RSSTrackerMenuItem{
+export class UpdateRSSfeedMenuItem extends RSSTrackerMenuItem {
     constructor(app: App, plugin: RSSTrackerPlugin) {
-       super(app,plugin);
+        super(app, plugin);
     }
 
     /**
@@ -97,7 +115,7 @@ export class UpdateRSSfeedMenuItem extends  RSSTrackerMenuItem{
                     item.setTitle('Update RSS feed')
                         .setIcon('rss')
                         .onClick(async () => {
-                            this.plugin.feedmgr.updateFeed(feedconfig,true);
+                            this.plugin.feedmgr.updateFeed(feedconfig, true);
                             new Notice(`${file?.name ?? 'unavailable'} updated`);
                         });
                 });

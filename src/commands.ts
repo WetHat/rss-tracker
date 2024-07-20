@@ -101,6 +101,31 @@ export class UpdateRSSfeedCommand extends RSSTrackerCommandBase {
     }
 }
 
+export class DownloadRSSitemArticleCommand extends RSSTrackerCommandBase {
+    constructor(plugin: RSSTrackerPlugin) {
+        super(plugin,'rss-tracker-download-article-checked','Download RSS item article');
+    }
+
+     checkCallback(checking: boolean): boolean {
+        // Conditions to check
+        const
+            active = this.app.workspace.getActiveFile(),
+            feedmgr = this.plugin.feedmgr;
+
+        if (active) {
+            // If checking is true, we're simply "checking" if the command can be run.
+            // If checking is false, then we want to actually perform the operation.
+            if (checking) {
+                // This command will only show up in Command Palette when the check function returns true
+                // check if active file is a rss feed dashboard.
+                return feedmgr.canDownloadArticle(active);
+            }
+            feedmgr.downloadArticle(active);
+            return true;
+        }
+        return false;
+    }
+}
 
 /**
  * A command that can update an RSS feed of the current file is a RSS feed dashboard.

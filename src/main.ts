@@ -1,8 +1,8 @@
 import { Notice, Plugin, PluginManifest, App, ObsidianProtocolData } from 'obsidian';
 import { RSSTrackerSettings } from './settings';
-import { MarkAllRSSitemsReadCommand, NewRSSFeedCollectionCommand, NewRSSFeedModalCommand, UpdateRSSfeedCommand } from './commands';
+import { DownloadRSSitemArticleCommand, MarkAllRSSitemsReadCommand, NewRSSFeedCollectionCommand, NewRSSFeedModalCommand, UpdateRSSfeedCommand } from './commands';
 import { FeedManager } from './FeedManager';
-import { UpdateRSSfeedMenuItem, MarkAllItemsReadMenuItem } from './menus';
+import { UpdateRSSfeedMenuItem, MarkAllItemsReadMenuItem, DownloadArticleContentMenuItem } from './menus';
 import { DataViewJSTools } from './DataViewJSTools';
 import { TPropertyBag } from './FeedAssembler';
 import { RSSTrackerSettingTab } from './settingsUI';
@@ -45,6 +45,7 @@ export default class RSSTrackerPlugin extends Plugin {
         this.addCommand(new NewRSSFeedModalCommand(this));
         this.addCommand(new MarkAllRSSitemsReadCommand(this));
         this.addCommand(new NewRSSFeedCollectionCommand(this));
+        this.addCommand(new DownloadRSSitemArticleCommand(this));
         // This adds a settings tab so the user can configure various aspects of the plugin
         this.addSettingTab(new RSSTrackerSettingTab(this.settings));
 
@@ -62,6 +63,10 @@ export default class RSSTrackerPlugin extends Plugin {
         const markAsRead = new MarkAllItemsReadMenuItem(this.app, this);
         this.registerEvent(markAsRead.editorMenuHandler);
         this.registerEvent(markAsRead.fileMenuHandler);
+
+        const downloadArticle = new DownloadArticleContentMenuItem(this.app,this);
+        this.registerEvent(downloadArticle.editorMenuHandler);
+        this.registerEvent(downloadArticle.fileMenuHandler);
 
         // protocol handler
         this.registerObsidianProtocolHandler('newRssFeed', async (params: ObsidianProtocolData) => {

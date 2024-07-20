@@ -1,8 +1,8 @@
-import { App, request, TFile, TFolder, htmlToMarkdown, normalizePath, ListItemCache, Notice } from 'obsidian';
+import { App, request, TFile, TFolder, htmlToMarkdown, normalizePath, ListItemCache, Notice, FrontMatterCache } from 'obsidian';
 import RSSTrackerPlugin from './main';
 import { TrackedRSSfeed, TrackedRSSitem, IRssMedium, TPropertyBag } from './FeedAssembler';
 import * as path from 'path';
-
+import { extractFromHtml, ArticleData } from '@extractus/article-extractor'
 /**
  * RSS feed configuration data.
  */
@@ -414,7 +414,7 @@ export class FeedManager {
             .filter(child => child instanceof TFile)
             .map(md => FeedConfig.fromFile(this.app, md as TFile))
             .filter(cfg => cfg)
-            .map (cfg => this.updateFeed(cfg, force));
+            .map(cfg => this.updateFeed(cfg, force));
         let n: number = 0;
         for (let promise of promises) {
             try {
@@ -427,6 +427,40 @@ export class FeedManager {
         }
         if (n > 0) {
             new Notice(`${n} RSS feeds updated`);
+        }
+    }
+
+    canDownloadArticle(item: TFile): boolean {
+        const fm: FrontMatterCache | undefined = this.app.metadataCache.getFileCache(item)?.frontmatter;
+        return fm !== undefined && fm["role"] === "rssitem";
+    }
+
+    async downloadArticle(item: TFile) {
+        const
+            fm: FrontMatterCache | undefined = this.app.metadataCache.getFileCache(item)?.frontmatter,
+            link: string | undefined = fm?.["link"];
+        if (link) {
+            // download the article
+            const
+                itemHTML = await request({
+                    url: link,
+                    method: "GET"
+                    }),
+                article: ArticleData | null = await extractFromHtml(itemHTML);
+            if (article) {
+                const {title,content} = article;
+                let articleContent : string = "\n- - -";
+                if (title) {
+                    articleContent += "\n# " + title;
+                }
+
+                if (content) {
+                    articleContent += "\n\n" + htmlToMarkdown(content);
+                }
+                if (articleContent.length > 0) {
+                    return this.app.vault.append(item,articleContent);
+                }
+            }
         }
     }
 }
