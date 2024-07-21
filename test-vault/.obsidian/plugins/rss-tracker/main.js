@@ -14885,6 +14885,22 @@ var _FeedManager = class {
   formatHashTags(md) {
     return md.replace(_FeedManager.HASH_FINDER, "#rss/");
   }
+  /**
+   * Generate a unique file basename by appending a numeric postfile if necessary.
+   *
+   * @param folder - An Obsidian folder path providing the context
+   * @param basename filename without extension
+   */
+  async uniqueBasename(folder, basename) {
+    const fs = this.app.vault.adapter;
+    let uniqueBasename = basename, filepath = folder.path + "/" + basename + ".md", index = 1;
+    while (await fs.exists(filepath)) {
+      uniqueBasename = `${basename} (${index})`;
+      filepath = folder.path + "/" + uniqueBasename + "-md";
+      index++;
+    }
+    return uniqueBasename;
+  }
   async saveFeedItem(itemFolder, item, itemTemplate) {
     let { id, tags, title, link, description, published, author, image, content } = item;
     if (description) {
@@ -14906,14 +14922,8 @@ var _FeedManager = class {
     if (!content && description && description.length > 500) {
       content = description;
     }
-    const basename = item.fileName;
-    let itemPath = (0, import_obsidian.normalizePath)(path.join(itemFolder.path, `${basename}.md`));
-    let uniqueBasename = basename, counter = 1;
-    while (this.app.vault.getFileByPath(itemPath)) {
-      uniqueBasename = `${basename} (${counter})`;
-      itemPath = (0, import_obsidian.normalizePath)(path.join(itemFolder.path, `${uniqueBasename}.md`));
-      counter++;
-    }
+    const basename = await this.uniqueBasename(itemFolder, item.fileName);
+    let itemPath = itemFolder.path + "/" + basename + ".md";
     const itemContent = this.expandTemplate(itemTemplate, {
       "{{id}}": id,
       "{{author}}": author != null ? author : itemFolder.name,
@@ -14923,10 +14933,10 @@ var _FeedManager = class {
       "{{abstract}}": abstract,
       "{{content}}": content != null ? content : "",
       "{{feedFileName}}": itemFolder.name,
-      "{{fileName}}": uniqueBasename
+      "{{fileName}}": basename
     });
     return this.app.vault.create(itemPath, itemContent).catch((reason) => {
-      throw new Error(reason.message + ` for ${uniqueBasename}`);
+      throw new Error(reason.message + ` for ${basename}`);
     });
   }
   async updateFeedItems(feedConfig, feed) {
@@ -15033,14 +15043,14 @@ var _FeedManager = class {
   }
   async createFeed(feed, location) {
     var _a2, _b;
-    const { title, site, description } = feed, basename = feed.fileName, fileName = basename + ".md", tpl = await this.plugin.settings.readTemplate("RSS Feed"), dashboardPath = (0, import_obsidian.normalizePath)(path.join(location.path, fileName)), defaultImage = basename + ".svg";
+    const { title, site, description } = feed, basename = await this.uniqueBasename(location, feed.fileName), tpl = await this.plugin.settings.readTemplate("RSS Feed"), dashboardPath = (0, import_obsidian.normalizePath)(location.path + "/" + basename + ".md"), defaultImage = basename + ".svg";
     let image = feed.image;
     const content = this.expandTemplate(tpl, {
       "{{feedUrl}}": feed.source,
       "{{siteUrl}}": site != null ? site : "",
       "{{title}}": (0, import_obsidian.htmlToMarkdown)(title != null ? title : ""),
       "{{description}}": description ? this.formatHashTags((0, import_obsidian.htmlToMarkdown)(description)) : "",
-      "{{fileName}}": fileName,
+      "{{fileName}}": basename,
       "{{image}}": image ? this.formatImage(image) : `![[${defaultImage}|200x200]]`
     });
     const dashboard = await this.app.vault.create(dashboardPath, content), itemlimit = (_a2 = tpl.match(_FeedManager.ITEMLIMIT_FINDER)) == null ? void 0 : _a2[0], cfg = new FeedConfig((_b = feed.source) != null ? _b : "", itemlimit != null ? itemlimit : "100", dashboard);

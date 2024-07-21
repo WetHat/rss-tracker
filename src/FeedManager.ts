@@ -137,6 +137,26 @@ export class FeedManager {
         return md.replace(FeedManager.HASH_FINDER, "#rss/");
     }
 
+    /**
+     * Generate a unique file basename by appending a numeric postfile if necessary.
+     *
+     * @param folder - An Obsidian folder path providing the context
+     * @param basename filename without extension
+     */
+    private async uniqueBasename(folder: TFolder, basename : string) : Promise<string> {
+        const fs = this.app.vault.adapter;
+        let
+            uniqueBasename = basename,
+            filepath = folder.path + "/" + basename + ".md",
+            index = 1;
+        while (await fs.exists(filepath)) {
+            uniqueBasename = `${basename} (${index})`;
+            filepath = folder.path + "/" + uniqueBasename + "-md";
+            index++;
+        }
+        return uniqueBasename;
+    }
+
     private async saveFeedItem(itemFolder: TFolder, item: TrackedRSSitem, itemTemplate: string): Promise<TFile> {
         let { id, tags, title, link, description, published, author, image, content } = item;
 
@@ -162,17 +182,8 @@ export class FeedManager {
         if (!content && description && description.length > 500) {
             content = description
         }
-        const basename = item.fileName;
-        let itemPath = normalizePath(path.join(itemFolder.path, `${basename}.md`));
-
-        // make sure the name is unique
-        let uniqueBasename = basename,
-            counter: number = 1;
-        while (this.app.vault.getFileByPath(itemPath)) {
-            uniqueBasename = `${basename} (${counter})`;
-            itemPath = normalizePath(path.join(itemFolder.path, `${uniqueBasename}.md`));
-            counter++;
-        }
+        const basename = await this.uniqueBasename(itemFolder,item.fileName);
+        let itemPath = itemFolder.path + "/" + basename + ".md";
 
         // fill in the template
         const itemContent = this.expandTemplate(itemTemplate, {
@@ -184,10 +195,10 @@ export class FeedManager {
             "{{abstract}}": abstract,
             "{{content}}": content ?? "",
             "{{feedFileName}}": itemFolder.name,
-            "{{fileName}}": uniqueBasename,
+            "{{fileName}}": basename,
         });
 
-        return this.app.vault.create(itemPath, itemContent).catch(reason => { throw new Error(reason.message + ` for ${uniqueBasename}`) });
+        return this.app.vault.create(itemPath, itemContent).catch(reason => { throw new Error(reason.message + ` for ${basename}`) });
     }
 
     private async updateFeedItems(feedConfig: FeedConfig, feed: TrackedRSSfeed): Promise<number> {
@@ -312,10 +323,9 @@ export class FeedManager {
     private async createFeed(feed: TrackedRSSfeed, location: TFolder): Promise<TFile> {
         const
             { title, site, description } = feed,
-            basename = feed.fileName,
-            fileName = basename + ".md", // name of the feed dashboard
+            basename = await this.uniqueBasename(location,feed.fileName),
             tpl = await this.plugin.settings.readTemplate("RSS Feed"),
-            dashboardPath = normalizePath(path.join(location.path, fileName)),
+            dashboardPath = normalizePath(location.path + "/" + basename + ".md"),
             defaultImage = basename + ".svg";
         let image: IRssMedium | string | undefined = feed.image;
         const content = this.expandTemplate(tpl, {
@@ -323,7 +333,7 @@ export class FeedManager {
             "{{siteUrl}}": site ?? "",
             "{{title}}": htmlToMarkdown(title ?? ""),
             "{{description}}": description ? this.formatHashTags(htmlToMarkdown(description)) : "",
-            "{{fileName}}": fileName,
+            "{{fileName}}": basename,
             "{{image}}": image ? this.formatImage(image) : `![[${defaultImage}|200x200]]`
         });
 

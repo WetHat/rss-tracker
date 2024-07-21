@@ -3,7 +3,7 @@ import { decode, DecodingMode, EntityLevel } from "entities";
 /**
  * Utility to convert a string into a valid filename.
  * @param name - A string, such as a title, to create a filename for.
- * @returns valid filename
+ * @returns valid filename without file extension.
  */
 function toFilename(name) {
     let fname = name
