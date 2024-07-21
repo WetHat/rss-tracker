@@ -87,11 +87,13 @@ export class FeedManager {
                 const pres = document.body.getElementsByTagName("pre");
                 for (let i = 0; i < pres.length; i++) {
                     const pre = pres[i];
-                    if (pre.firstChild?.nodeName !== "code"){
+                    let firstChild = pre.firstChild;
+                    if (firstChild && firstChild.nodeName !== "code"){
                         const code = document.createElement("code");
                         let child;
-                        while (child = pre.firstChild) {
-                            code.append(child);
+                        while (firstChild) {
+                            code.append(firstChild);
+                            firstChild = pre.firstChild;
                         }
                         pre.append(code);
                     }
