@@ -6409,8 +6409,8 @@ var require_node2 = __commonJS({
         }
         return error;
       }
-      after(add) {
-        this.parent.insertAfter(this, add);
+      after(add2) {
+        this.parent.insertAfter(this, add2);
         return this;
       }
       assign(overrides = {}) {
@@ -6419,8 +6419,8 @@ var require_node2 = __commonJS({
         }
         return this;
       }
-      before(add) {
-        this.parent.insertBefore(this, add);
+      before(add2) {
+        this.parent.insertBefore(this, add2);
         return this;
       }
       cleanRaws(keepBetween) {
@@ -7548,9 +7548,9 @@ var require_container = __commonJS({
           child = child.proxyOf;
         return this.proxyOf.nodes.indexOf(child);
       }
-      insertAfter(exist, add) {
+      insertAfter(exist, add2) {
         let existIndex = this.index(exist);
-        let nodes = this.normalize(add, this.proxyOf.nodes[existIndex]).reverse();
+        let nodes = this.normalize(add2, this.proxyOf.nodes[existIndex]).reverse();
         existIndex = this.index(exist);
         for (let node of nodes)
           this.proxyOf.nodes.splice(existIndex + 1, 0, node);
@@ -7564,10 +7564,10 @@ var require_container = __commonJS({
         this.markDirty();
         return this;
       }
-      insertBefore(exist, add) {
+      insertBefore(exist, add2) {
         let existIndex = this.index(exist);
         let type = existIndex === 0 ? "prepend" : false;
-        let nodes = this.normalize(add, this.proxyOf.nodes[existIndex], type).reverse();
+        let nodes = this.normalize(add2, this.proxyOf.nodes[existIndex], type).reverse();
         existIndex = this.index(exist);
         for (let node of nodes)
           this.proxyOf.nodes.splice(existIndex, 0, node);
@@ -9108,7 +9108,7 @@ var require_lazy_result = __commonJS({
       }
       prepareVisitors() {
         this.listeners = {};
-        let add = (plugin, type, cb) => {
+        let add2 = (plugin, type, cb) => {
           if (!this.listeners[type])
             this.listeners[type] = [];
           this.listeners[type].push([plugin, cb]);
@@ -9125,9 +9125,9 @@ var require_lazy_result = __commonJS({
                 if (typeof plugin[event] === "object") {
                   for (let filter in plugin[event]) {
                     if (filter === "*") {
-                      add(plugin, event, plugin[event][filter]);
+                      add2(plugin, event, plugin[event][filter]);
                     } else {
-                      add(
+                      add2(
                         plugin,
                         event + "-" + filter.toLowerCase(),
                         plugin[event][filter]
@@ -9135,7 +9135,7 @@ var require_lazy_result = __commonJS({
                     }
                   }
                 } else if (typeof plugin[event] === "function") {
-                  add(plugin, event, plugin[event]);
+                  add2(plugin, event, plugin[event]);
                 }
               }
             }
@@ -14653,6 +14653,20 @@ function extractTitleWithReadability(html) {
 
 // node_modules/@extractus/article-extractor/src/utils/transformation.js
 var transformations = [];
+var add = (tn) => {
+  const { patterns } = tn;
+  if (!patterns || !isArray(patterns) || !patterns.length) {
+    return 0;
+  }
+  transformations.push(tn);
+  return 1;
+};
+var addTransformations = (tfms) => {
+  if (isArray(tfms)) {
+    return tfms.map((tfm) => add(tfm)).filter((result) => result === 1).length;
+  }
+  return add(tfms);
+};
 var findTransformations = (links) => {
   const urls = !isArray(links) ? [links] : links;
   const tfms = [];
@@ -14813,6 +14827,29 @@ var _FeedManager = class {
   constructor(app, plugin) {
     this.app = app;
     this.plugin = plugin;
+    const tm = {
+      patterns: [
+        /-*/
+        // apply to all websites
+      ],
+      post: (document) => {
+        var _a2;
+        const pres = document.body.getElementsByTagName("pre");
+        for (let i = 0; i < pres.length; i++) {
+          const pre = pres[i];
+          if (((_a2 = pre.firstChild) == null ? void 0 : _a2.nodeName) !== "code") {
+            const code = document.createElement("code");
+            let child;
+            while (child = pre.firstChild) {
+              code.append(child);
+            }
+            pre.append(code);
+          }
+        }
+        return document;
+      }
+    };
+    addTransformations([tm]);
   }
   getItemFolderPath(feed) {
     var _a2, _b;

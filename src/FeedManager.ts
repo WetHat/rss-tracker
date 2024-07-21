@@ -2,7 +2,7 @@ import { App, request, TFile, TFolder, htmlToMarkdown, normalizePath, ListItemCa
 import RSSTrackerPlugin from './main';
 import { TrackedRSSfeed, TrackedRSSitem, IRssMedium, TPropertyBag } from './FeedAssembler';
 import * as path from 'path';
-import { extractFromHtml, ArticleData } from '@extractus/article-extractor'
+import { extractFromHtml, ArticleData, Transformation,addTransformations } from '@extractus/article-extractor'
 /**
  * RSS feed configuration data.
  */
@@ -75,6 +75,31 @@ export class FeedManager {
     constructor(app: App, plugin: RSSTrackerPlugin) {
         this.app = app;
         this.plugin = plugin;
+
+        // configure the article extractor to make the returned content
+        // more Obsidian friendly
+        const tm : Transformation = {
+            patterns: [
+                /-*/ // apply to all websites
+            ],
+            post: document => {
+                // look for <pre> tags and make sure their first child is always a <code> tag.
+                const pres = document.body.getElementsByTagName("pre");
+                for (let i = 0; i < pres.length; i++) {
+                    const pre = pres[i];
+                    if (pre.firstChild?.nodeName !== "code"){
+                        const code = document.createElement("code");
+                        let child;
+                        while (child = pre.firstChild) {
+                            code.append(child);
+                        }
+                        pre.append(code);
+                    }
+                }
+                return document;
+            }
+        };
+        addTransformations([tm]);
     }
 
     private getItemFolderPath(feed: TFile) {
