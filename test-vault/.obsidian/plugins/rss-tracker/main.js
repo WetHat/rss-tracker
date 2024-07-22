@@ -12519,7 +12519,7 @@ __export(main_exports, {
   default: () => RSSTrackerPlugin
 });
 module.exports = __toCommonJS(main_exports);
-var import_obsidian5 = require("obsidian");
+var import_obsidian6 = require("obsidian");
 
 // src/settings.ts
 var DEFAULT_SETTINGS = {
@@ -15420,6 +15420,7 @@ var UpdateRSSfeedMenuItem = class extends RSSTrackerMenuItem {
 };
 
 // src/DataViewJSTools.ts
+var import_obsidian4 = require("obsidian");
 var FeedToCollectionMap = class {
   /**
    * Get all collections the given feed is a member of.
@@ -15524,18 +15525,26 @@ var DataViewJSTools = class {
     return from.join(" AND ");
   }
   fromItemsOfFeed(feed) {
-    return "[[" + feed.file.path + "]]";
+    return '"' + feed.file.folder + "/" + feed.file.name + '"';
+  }
+  fromFeedsFolderFiles() {
+    const settings = this.settings, feedsFolder = settings.app.vault.getFolderByPath(settings.rssFeedFolderPath);
+    if (feedsFolder) {
+      return feedsFolder.children.filter((fof) => fof instanceof import_obsidian4.TFile).map((f) => '"' + f.path + '"').join(" OR ");
+    } else {
+      return '"' + this.settings.rssFeedFolderPath + '"';
+    }
   }
   fromFeedsFolder() {
     return '"' + this.settings.rssFeedFolderPath + '"';
   }
   // obtaining lists of rss related markdown files
   async rssFeeds() {
-    const feeds = await this.dv.pages(this.fromFeedsFolder());
+    const feeds = await this.dv.pages(this.fromFeedsFolderFiles());
     return feeds.where((f) => f.role === "rssfeed").sort((rec) => rec.file.name, "asc");
   }
   async rssFeedsOfCollection(collection) {
-    const pages = await this.dv.pages(this.fromTags(collection));
+    const fromFeeds = "(" + this.fromFeedsFolderFiles() + ")", fromTags = this.fromTags(collection), pages = await this.dv.pages(fromFeeds + " AND " + fromTags);
     return pages.where((rec) => rec.role === "rssfeed").sort((rec) => rec.file.name, "asc");
   }
   async rssCollections() {
@@ -15549,6 +15558,10 @@ var DataViewJSTools = class {
     const pages = await this.dv.pages(this.fromItemsOfFeed(feed));
     return pages.where((rec) => rec.role === "rssitem").distinct((rec) => rec.link).sort((rec) => rec.published, "desc");
   }
+  /**
+   * Get all RSS items.
+   * @returns List of all RSS items across all RSS feeds.
+   */
   async rssItems() {
     const pages = await this.dv.pages(this.fromFeedsFolder());
     return pages.where((rec) => rec.role === "rssitem").distinct((rec) => rec.link).sort((rec) => rec.published, "desc");
@@ -15606,8 +15619,8 @@ var DataViewJSTools = class {
 };
 
 // src/settingsUI.ts
-var import_obsidian4 = require("obsidian");
-var RSSTrackerSettingBase = class extends import_obsidian4.Setting {
+var import_obsidian5 = require("obsidian");
+var RSSTrackerSettingBase = class extends import_obsidian5.Setting {
   constructor(settingsTab) {
     super(settingsTab.containerEl);
     this.settingsTab = settingsTab;
@@ -15681,7 +15694,7 @@ var RSSFeedFolderSetting = class extends RSSTrackerSettingBase {
     });
   }
 };
-var RSSTrackerSettingTab = class extends import_obsidian4.PluginSettingTab {
+var RSSTrackerSettingTab = class extends import_obsidian5.PluginSettingTab {
   constructor(settings) {
     super(settings.app, settings.plugin);
     this.settings = settings;
@@ -15701,7 +15714,7 @@ var RSSTrackerSettingTab = class extends import_obsidian4.PluginSettingTab {
 };
 
 // src/main.ts
-var RSSTrackerPlugin = class extends import_obsidian5.Plugin {
+var RSSTrackerPlugin = class extends import_obsidian6.Plugin {
   constructor(app, manifest) {
     super(app, manifest);
     this.feedmgr = new FeedManager(app, this);
@@ -15738,7 +15751,7 @@ var RSSTrackerPlugin = class extends import_obsidian5.Plugin {
       const xmlFile = this.app.vault.getFileByPath(xml), feedDir = this.app.vault.getFolderByPath(dir);
       if (xmlFile && feedDir) {
         const dashboard = await this.feedmgr.createFeedFromFile(xmlFile, feedDir);
-        new import_obsidian5.Notice(`New RSS Feed "${dashboard.basename}" created`);
+        new import_obsidian6.Notice(`New RSS Feed "${dashboard.basename}" created`);
       }
     });
     this.registerInterval(window.setInterval(() => {

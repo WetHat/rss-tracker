@@ -1,5 +1,7 @@
 import { TPropertyBag } from './FeedAssembler';
 import { RSSTrackerSettings } from './settings';
+import { TFile } from "obsidian";
+import * as path from 'path';
 
 /**
  * A lambda function type to build a dataview table row for an RSS
@@ -166,7 +168,21 @@ export class DataViewJSTools {
     }
 
     fromItemsOfFeed(feed: TPageRecord): string {
-        return "[[" + feed.file.path + "]]";
+        return '"' + feed.file.folder + "/" + feed.file.name  + '"';
+    }
+
+    fromFeedsFolderFiles():string {
+        const
+            settings = this.settings,
+            feedsFolder = settings.app.vault.getFolderByPath(settings.rssFeedFolderPath);
+        if (feedsFolder) {
+            return feedsFolder.children
+                .filter(fof => fof instanceof TFile)
+                .map(f => '"' + f.path + '"')
+                .join(" OR ");
+        } else {
+            return '"' + this.settings.rssFeedFolderPath + '"';
+        }
     }
 
     fromFeedsFolder(): string {
@@ -176,14 +192,17 @@ export class DataViewJSTools {
     // obtaining lists of rss related markdown files
 
     async rssFeeds(): Promise<TPageRecordList> {
-        const feeds = await this.dv.pages(this.fromFeedsFolder());
+        const feeds = await this.dv.pages(this.fromFeedsFolderFiles());
         return feeds
             .where((f: TPageRecord) => f.role === "rssfeed")
             .sort((rec: TPageRecord) => rec.file.name, "asc");
     }
 
     async rssFeedsOfCollection(collection: TPageRecord): Promise<TPageRecordList> {
-        const pages = await this.dv.pages(this.fromTags(collection));
+        const
+            fromFeeds = "(" + this.fromFeedsFolderFiles() + ")",
+            fromTags = this.fromTags(collection),
+            pages = await this.dv.pages(fromFeeds + " AND " + fromTags);
         return pages
             .where((rec: TPageRecord) => rec.role === "rssfeed")
             .sort((rec: TPageRecord) => rec.file.name, "asc");
@@ -198,7 +217,7 @@ export class DataViewJSTools {
             .sort((rec: TPageRecord) => rec.file.name, "asc");
     }
 
-    async mapFeedsToCollections() : Promise<FeedToCollectionMap> {
+    async mapFeedsToCollections(): Promise<FeedToCollectionMap> {
         return FeedToCollectionMap.initialize(this);
     }
 
@@ -210,6 +229,10 @@ export class DataViewJSTools {
             .sort((rec: TPageRecord) => rec.published, "desc");
     }
 
+    /**
+     * Get all RSS items.
+     * @returns List of all RSS items across all RSS feeds.
+     */
     async rssItems(): Promise<TPageRecordList> {
         const pages = await this.dv.pages(this.fromFeedsFolder());
         return pages

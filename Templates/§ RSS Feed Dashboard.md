@@ -56,15 +56,6 @@ if (dvjs.rssTable(
 }
 ~~~
 
-## Reading List 📚
-
-~~~dataviewjs
-const
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	feeds = await dvjs.rssFeeds();
-await dvjs.groupedReadingList(feeds,false);
-~~~
-
 ## All Pinned Items  📌
 
 ~~~dataviewjs
