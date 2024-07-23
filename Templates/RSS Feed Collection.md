@@ -4,8 +4,9 @@ tags: []
 allof: []
 noneof: []
 ---
-> [!abstract] [headline:: What is this collection about?]
-> - [ ] Summarize the purpose of this collection and provide a headline.
+> [!abstract] [headline:: A curated collection of RSS feeds about ???]
+> - [ ] Create a headline
+> - [ ] Summarize the purpose of this collection.
 
 # Feeds in this Collection
 
