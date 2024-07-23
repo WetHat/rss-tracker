@@ -140,18 +140,18 @@ export class FeedManager {
     /**
      * Generate a unique file basename by appending a numeric postfile if necessary.
      *
-     * @param folder - An Obsidian folder path providing the context
+     * @param folderPath - An Obsidian folder path providing the context
      * @param basename filename without extension
      */
-    private async uniqueBasename(folder: TFolder, basename : string) : Promise<string> {
-        const fs = this.app.vault.adapter;
+    uniqueBasename(folderPath: string, basename : string) : string {
+        const vault = this.app.vault;
         let
             uniqueBasename = basename,
-            filepath = folder.path + "/" + basename + ".md",
+            filepath = folderPath + "/" + basename + ".md",
             index = 1;
-        while (await fs.exists(filepath)) {
+        while (vault.getFileByPath(filepath)) {
             uniqueBasename = `${basename} (${index})`;
-            filepath = folder.path + "/" + uniqueBasename + "-md";
+            filepath = folderPath + "/" + uniqueBasename + "-md";
             index++;
         }
         return uniqueBasename;
@@ -182,7 +182,7 @@ export class FeedManager {
         if (!content && description && description.length > 500) {
             content = description
         }
-        const basename = await this.uniqueBasename(itemFolder,item.fileName);
+        const basename = this.uniqueBasename(itemFolder.path,item.fileName);
         let itemPath = itemFolder.path + "/" + basename + ".md";
 
         // fill in the template
@@ -323,7 +323,7 @@ export class FeedManager {
     private async createFeed(feed: TrackedRSSfeed, location: TFolder): Promise<TFile> {
         const
             { title, site, description } = feed,
-            basename = await this.uniqueBasename(location,feed.fileName),
+            basename = this.uniqueBasename(location.path,feed.fileName),
             tpl = await this.plugin.settings.readTemplate("RSS Feed"),
             dashboardPath = normalizePath(location.path + "/" + basename + ".md"),
             defaultImage = basename + ".svg";
