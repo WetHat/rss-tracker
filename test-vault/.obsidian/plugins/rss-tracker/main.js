@@ -14897,15 +14897,15 @@ var _FeedManager = class {
   /**
    * Generate a unique file basename by appending a numeric postfile if necessary.
    *
-   * @param folder - An Obsidian folder path providing the context
+   * @param folderPath - An Obsidian folder path providing the context
    * @param basename filename without extension
    */
-  async uniqueBasename(folder, basename) {
-    const fs = this.app.vault.adapter;
-    let uniqueBasename = basename, filepath = folder.path + "/" + basename + ".md", index = 1;
-    while (await fs.exists(filepath)) {
+  uniqueBasename(folderPath, basename) {
+    const vault = this.app.vault;
+    let uniqueBasename = basename, filepath = folderPath + "/" + basename + ".md", index = 1;
+    while (vault.getFileByPath(filepath)) {
       uniqueBasename = `${basename} (${index})`;
-      filepath = folder.path + "/" + uniqueBasename + "-md";
+      filepath = folderPath + "/" + uniqueBasename + "-md";
       index++;
     }
     return uniqueBasename;
@@ -14931,7 +14931,7 @@ var _FeedManager = class {
     if (!content && description && description.length > 500) {
       content = description;
     }
-    const basename = await this.uniqueBasename(itemFolder, item.fileName);
+    const basename = this.uniqueBasename(itemFolder.path, item.fileName);
     let itemPath = itemFolder.path + "/" + basename + ".md";
     const itemContent = this.expandTemplate(itemTemplate, {
       "{{id}}": id,
@@ -15052,7 +15052,7 @@ var _FeedManager = class {
   }
   async createFeed(feed, location) {
     var _a2, _b;
-    const { title, site, description } = feed, basename = await this.uniqueBasename(location, feed.fileName), tpl = await this.plugin.settings.readTemplate("RSS Feed"), dashboardPath = (0, import_obsidian.normalizePath)(location.path + "/" + basename + ".md"), defaultImage = basename + ".svg";
+    const { title, site, description } = feed, basename = this.uniqueBasename(location.path, feed.fileName), tpl = await this.plugin.settings.readTemplate("RSS Feed"), dashboardPath = (0, import_obsidian.normalizePath)(location.path + "/" + basename + ".md"), defaultImage = basename + ".svg";
     let image = feed.image;
     const content = this.expandTemplate(tpl, {
       "{{feedUrl}}": feed.source,
@@ -15294,12 +15294,33 @@ var MarkAllRSSitemsReadCommand = class extends RSSTrackerCommandBase {
     return false;
   }
 };
+var NewRSSTopicCommand = class extends RSSTrackerCommandBase {
+  constructor(plugin) {
+    super(plugin, "rss-tracker-new-topic", "New RSS topic");
+  }
+  callback() {
+    const settings = this.plugin.settings, rssHome = this.plugin.settings.rssHome, collectionName = this.plugin.feedmgr.uniqueBasename(rssHome, "\u{1F4DC}New Topic"), collectionPath = rssHome + "/" + collectionName + ".md";
+    settings.readTemplate("RSS Topic").then(async (content) => {
+      const collection = await this.app.vault.create(collectionPath, content);
+      if (collection) {
+        const mgr = this.plugin.feedmgr, leaf = this.app.workspace.getLeaf(false);
+        try {
+          await leaf.openFile(collection);
+        } catch (err) {
+          new import_obsidian2.Notice(err.message);
+        }
+      } else {
+        new import_obsidian2.Notice("RSS topic could not be created!");
+      }
+    });
+  }
+};
 var NewRSSFeedCollectionCommand = class extends RSSTrackerCommandBase {
   constructor(plugin) {
     super(plugin, "rss-tracker-new-feed-collection", "New RSS feed collection");
   }
   callback() {
-    const settings = this.plugin.settings, collectionPath = this.plugin.settings.rssHome + "/\u{1F4D1}New Feed Collection.md";
+    const settings = this.plugin.settings, rssHome = this.plugin.settings.rssHome, collectionName = this.plugin.feedmgr.uniqueBasename(rssHome, "\u{1F4D1}New Feed Collection"), collectionPath = rssHome + "/" + collectionName + ".md";
     settings.readTemplate("RSS Feed Collection").then(async (content) => {
       const collection = await this.app.vault.create(collectionPath, content);
       if (collection) {
@@ -15533,7 +15554,7 @@ var DataViewJSTools = class {
     return from.join(" AND ");
   }
   fromItemsOfFeed(feed) {
-    return "[[" + feed.file.folder + "]]";
+    return "[[" + feed.file.path + "]]";
   }
   get fromFeedsFolderFiles() {
     const settings = this.settings, feedsFolder = settings.app.vault.getFolderByPath(settings.rssFeedFolderPath);
@@ -15603,7 +15624,7 @@ var DataViewJSTools = class {
     let totalTaskCount = 0;
     for (const feed of feeds) {
       const items = await this.rssItemsOfFeed(feed);
-      totalTaskCount += await this.readingList(items, read, this.fileLink(feed));
+      totalTaskCount += this.readingList(items, read, this.fileLink(feed));
     }
     return totalTaskCount;
   }
@@ -15747,6 +15768,7 @@ var RSSTrackerPlugin = class extends import_obsidian6.Plugin {
     this.addCommand(new MarkAllRSSitemsReadCommand(this));
     this.addCommand(new NewRSSFeedCollectionCommand(this));
     this.addCommand(new DownloadRSSitemArticleCommand(this));
+    this.addCommand(new NewRSSTopicCommand(this));
     this.addSettingTab(new RSSTrackerSettingTab(this.settings));
     const updateFeedItem = new UpdateRSSfeedMenuItem(this.app, this);
     this.registerEvent(updateFeedItem.editorMenuHandler);

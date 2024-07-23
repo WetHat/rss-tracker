@@ -167,7 +167,7 @@ export class DataViewJSTools {
     }
 
     fromItemsOfFeed(feed: TPageRecord): string {
-        return '[[' + feed.file.folder + ']]';
+        return '[[' + feed.file.path + ']]';
     }
 
     get fromFeedsFolderFiles(): string {
@@ -271,7 +271,7 @@ export class DataViewJSTools {
 
         for (const feed of feeds) {
             const items = await this.rssItemsOfFeed(feed);
-            totalTaskCount += await this.readingList(items, read, this.fileLink(feed));
+            totalTaskCount += this.readingList(items, read, this.fileLink(feed));
         }
         return totalTaskCount;
     }

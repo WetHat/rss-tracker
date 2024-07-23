@@ -157,6 +157,38 @@ export class MarkAllRSSitemsReadCommand extends RSSTrackerCommandBase {
     }
 }
 
+export class NewRSSTopicCommand extends RSSTrackerCommandBase {
+    constructor(plugin: RSSTrackerPlugin) {
+        super(plugin,'rss-tracker-new-topic','New RSS topic');
+    }
+
+    callback(): any {
+        const
+            settings = this.plugin.settings,
+            rssHome = this.plugin.settings.rssHome,
+            collectionName = this.plugin.feedmgr.uniqueBasename(rssHome, "📜New Topic"),
+            collectionPath = rssHome + "/" + collectionName + ".md";
+
+            settings.readTemplate("RSS Topic")
+                .then(async content => {
+                    const collection = await this.app.vault.create(collectionPath,content);
+                    if (collection) {
+                        const
+                            mgr = this.plugin.feedmgr,
+                            leaf = this.app.workspace.getLeaf(false);
+                        try {
+                            await leaf.openFile(collection);
+                        } catch (err: any) {
+                            new Notice(err.message);
+                        }
+                    }
+                    else {
+                        new Notice("RSS topic could not be created!");
+                    }
+                });
+    }
+}
+
 export class NewRSSFeedCollectionCommand extends RSSTrackerCommandBase {
     constructor(plugin: RSSTrackerPlugin) {
         super(plugin,'rss-tracker-new-feed-collection','New RSS feed collection');
@@ -165,7 +197,9 @@ export class NewRSSFeedCollectionCommand extends RSSTrackerCommandBase {
     callback(): any {
         const
             settings = this.plugin.settings,
-            collectionPath = this.plugin.settings.rssHome + "/📑New Feed Collection.md";
+            rssHome = this.plugin.settings.rssHome,
+            collectionName = this.plugin.feedmgr.uniqueBasename(rssHome, "📑New Feed Collection"),
+            collectionPath = rssHome + "/" + collectionName + ".md";
 
             settings.readTemplate("RSS Feed Collection")
                 .then(async content => {

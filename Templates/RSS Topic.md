@@ -4,6 +4,9 @@ tags: []
 allof: []
 noneof: []
 ---
+> [!abstract] [headline:: What is this collection about?]
+> - [ ] Create a headline
+> - [ ] Summarize the purpose of this topic.
 
 # Items in this Topic
 ~~~dataviewjs
@@ -16,6 +19,7 @@ if (dvjs.rssTable(
 	[
 		"Item",
 		"Published",
+        "Pinned",
 		"Feed",
 		"Tags"
 	],
@@ -23,6 +27,7 @@ if (dvjs.rssTable(
 	[
 		dvjs.fileLink(f),
 		dvjs.rssItemPublishDate(f),
+        f.pinned ? "☑️" : "",
 		f.feed,
 		dvjs.hashtagLine(f)
 	]) === 0) {
