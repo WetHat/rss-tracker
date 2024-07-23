@@ -168,6 +168,8 @@ var require_validator = __commonJS({
                 return getErrorObject("InvalidTag", "Closing tag '" + tagName + "' doesn't have proper closing.", getLineNumberForPosition(xmlData, i));
               } else if (attrStr.trim().length > 0) {
                 return getErrorObject("InvalidTag", "Closing tag '" + tagName + "' can't have attributes or invalid starting.", getLineNumberForPosition(xmlData, tagStartPos));
+              } else if (tags.length === 0) {
+                return getErrorObject("InvalidTag", "Closing tag '" + tagName + "' has not been opened.", getLineNumberForPosition(xmlData, tagStartPos));
               } else {
                 const otg = tags.pop();
                 if (tagName !== otg.tagName) {
@@ -949,6 +951,13 @@ var require_OrderedObjParser = __commonJS({
             if (this.isItStopNode(this.options.stopNodes, jPath, tagName)) {
               let tagContent = "";
               if (tagExp.length > 0 && tagExp.lastIndexOf("/") === tagExp.length - 1) {
+                if (tagName[tagName.length - 1] === "/") {
+                  tagName = tagName.substr(0, tagName.length - 1);
+                  jPath = jPath.substr(0, jPath.length - 1);
+                  tagExp = tagName;
+                } else {
+                  tagExp = tagExp.substr(0, tagExp.length - 1);
+                }
                 i = result.closeIndex;
               } else if (this.options.unpairedTags.indexOf(tagName) !== -1) {
                 i = result.closeIndex;
@@ -12529,7 +12538,7 @@ var DEFAULT_SETTINGS = {
   rssTemplateFolder: "Templates",
   rssDashboardName: "\xA7 RSS Feed Dashboard"
 };
-var TEMPLATES = ["RSS Feed", "RSS Item", "RSS Feed Collection"];
+var TEMPLATES = ["RSS Feed", "RSS Item", "RSS Topic", "RSS Feed Collection"];
 var RSSTrackerSettings = class {
   constructor(app, plugin) {
     this.data = { ...DEFAULT_SETTINGS };
@@ -15441,9 +15450,9 @@ var FeedToCollectionMap = class {
    */
   static async initialize(dvjs) {
     const map = /* @__PURE__ */ new Map();
-    const collections = await dvjs.rssCollections();
+    const collections = await dvjs.rssDashboards("rsscollection");
     for (const collection of collections) {
-      const feeds = await dvjs.rssFeedsOfCollection(collection);
+      const feeds = await dvjs.rssFeeds(collection);
       for (const feed of feeds) {
         const key = feed.file.path;
         let clist = map.get(key);
@@ -15517,7 +15526,6 @@ var DataViewJSTools = class {
     var _a2, _b, _c, _d, _e, _f;
     const anyTags = (_b = (_a2 = pageRecord.file.etags) == null ? void 0 : _a2.map((t) => DataViewJSTools.hashtag(t))) != null ? _b : [], allTags = (_d = (_c = pageRecord == null ? void 0 : pageRecord.allof) == null ? void 0 : _c.map((t) => DataViewJSTools.hashtag(t))) != null ? _d : [], noneTags = (_f = (_e = pageRecord == null ? void 0 : pageRecord.noneof) == null ? void 0 : _e.map((t) => DataViewJSTools.hashtag(t))) != null ? _f : [];
     let from = [
-      '"' + this.settings.rssFeedFolderPath + '"',
       anyTags.length > 0 ? "( " + anyTags.join(" OR ") + " )" : null,
       allTags.length > 0 ? allTags.join(" AND ") : null,
       noneTags.length > 0 ? "-( " + noneTags.join(" OR ") + " )" : null
@@ -15525,9 +15533,9 @@ var DataViewJSTools = class {
     return from.join(" AND ");
   }
   fromItemsOfFeed(feed) {
-    return '"' + feed.file.folder + "/" + feed.file.name + '"';
+    return "[[" + feed.file.folder + "]]";
   }
-  fromFeedsFolderFiles() {
+  get fromFeedsFolderFiles() {
     const settings = this.settings, feedsFolder = settings.app.vault.getFolderByPath(settings.rssFeedFolderPath);
     if (feedsFolder) {
       return feedsFolder.children.filter((fof) => fof instanceof import_obsidian4.TFile).map((f) => '"' + f.path + '"').join(" OR ");
@@ -15535,35 +15543,39 @@ var DataViewJSTools = class {
       return '"' + this.settings.rssFeedFolderPath + '"';
     }
   }
-  fromFeedsFolder() {
+  get fromFeedsFolder() {
     return '"' + this.settings.rssFeedFolderPath + '"';
   }
   // obtaining lists of rss related markdown files
-  async rssFeeds() {
-    const feeds = await this.dv.pages(this.fromFeedsFolderFiles());
+  /**
+   * Get RSS feeds matching an optional selection criterion.
+   * @param dashboard A dashboard file specifying 'tags', 'allof', and `noneof` tag list properties in its frontmatter.
+   *                  If omitted all feeds are returnd.
+   * @returns List of all RSS feeds matching the optional selector.
+   */
+  async rssFeeds(dashboard) {
+    const from = dashboard ? "(" + this.fromFeedsFolderFiles + ") AND " + this.fromTags(dashboard) : this.fromFeedsFolderFiles, feeds = await this.dv.pages(from);
     return feeds.where((f) => f.role === "rssfeed").sort((rec) => rec.file.name, "asc");
   }
-  async rssFeedsOfCollection(collection) {
-    const fromFeeds = "(" + this.fromFeedsFolderFiles() + ")", fromTags = this.fromTags(collection), pages = await this.dv.pages(fromFeeds + " AND " + fromTags);
-    return pages.where((rec) => rec.role === "rssfeed").sort((rec) => rec.file.name, "asc");
+  /**
+   * Get RSS items matching an optional selection criterion.
+   * @param dashboard A dashboard file specifying 'tags', 'allof', and `noneof` tag list properties in its frontmatter.
+   *                  If omitted all items across all feeds are returnd.
+   * @returns List of all RSS items across all RSS feeds matching the optional selector.
+   */
+  async rssItems(dashboard) {
+    const from = this.fromFeedsFolder + (dashboard ? " AND " + this.fromTags(dashboard) : ""), pages = await this.dv.pages(from);
+    return pages.where((rec) => rec.role === "rssitem").distinct((rec) => rec.link).sort((rec) => rec.published, "desc");
   }
-  async rssCollections() {
+  async rssDashboards(role) {
     const from = '"' + this.settings.rssHome + '" AND -"' + this.settings.rssFeedFolderPath + '" AND -"' + this.settings.rssTemplateFolderPath + '"', collections = await this.dv.pages(from);
-    return collections.where((itm) => itm.role === "rsscollection").sort((rec) => rec.file.name, "asc");
+    return collections.where((itm) => itm.role === role).sort((rec) => rec.file.name, "asc");
   }
   async mapFeedsToCollections() {
     return FeedToCollectionMap.initialize(this);
   }
   async rssItemsOfFeed(feed) {
     const pages = await this.dv.pages(this.fromItemsOfFeed(feed));
-    return pages.where((rec) => rec.role === "rssitem").distinct((rec) => rec.link).sort((rec) => rec.published, "desc");
-  }
-  /**
-   * Get all RSS items.
-   * @returns List of all RSS items across all RSS feeds.
-   */
-  async rssItems() {
-    const pages = await this.dv.pages(this.fromFeedsFolder());
     return pages.where((rec) => rec.role === "rssitem").distinct((rec) => rec.link).sort((rec) => rec.published, "desc");
   }
   ///////

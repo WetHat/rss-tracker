@@ -19,9 +19,9 @@ export const DEFAULT_SETTINGS: IRSSTrackerSettings = {
 	rssDashboardName: "§ RSS Feed Dashboard"
 }
 
-export type TTemplateName = "RSS Feed" | "RSS Item" | "RSS Feed Collection" | "§ RSS Feed Dashboard";
+export type TTemplateName = "RSS Feed" | "RSS Item" | "RSS Topic" | "RSS Feed Collection" | "§ RSS Feed Dashboard";
 
-const TEMPLATES: TTemplateName[] = ["RSS Feed", "RSS Item", "RSS Feed Collection"];
+const TEMPLATES: TTemplateName[] = ["RSS Feed", "RSS Item", "RSS Topic", "RSS Feed Collection"];
 
 export class RSSTrackerSettings implements IRSSTrackerSettings {
 	plugin: RSSTrackerPlugin;

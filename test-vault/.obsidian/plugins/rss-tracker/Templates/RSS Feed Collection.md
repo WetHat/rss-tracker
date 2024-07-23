@@ -5,7 +5,7 @@ allof: []
 noneof: []
 ---
 > [!abstract] [headline:: What is this collection about?]
-> The purpose of this collection is ...
+> - [ ] Summarize the purpose of this collection and provide a headline.
 
 # Feeds in this Collection
 
@@ -13,7 +13,7 @@ noneof: []
 const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	collection = dv.current(),
-	feeds = await dvjs.rssFeedsOfCollection(collection);
+	feeds = await dvjs.rssFeeds(collection);
 if (await dvjs.rssTable(
 		feeds,
 		[

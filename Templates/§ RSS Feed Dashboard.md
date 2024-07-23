@@ -1,62 +1,50 @@
 ---
-type: about
-tags:
-  - Programming
-  - KnowledgeManagement/Obsidian
+type: rssdashboard
+tags: []
 ---
-> [!abstract]  [headline:: RSS feeds Part of the WetHat Lab Knowledge Graph]
->
->  ![[RSS Logo.jpg|400]]
-# Map of Content
+> [!abstract]  [headline:: RSS feed Dashboard]
+> - [ ] Describe the purpose of this dashboard.
 
-## Feed Collections 📑
+# Feed Collections 📑
 
 ~~~dataviewjs
 const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	collections = await dvjs.rssCollections();
+	collections = await dvjs.rssDashboards("rsscollection");
 dvjs.rssTable(
 	collections,
 	[
 		"Collection",
-		"Headline",
-		"Tags"
+		"Headline"
 	],
 	c =>
 	[
 		dvjs.fileLink(c),
-		c.headline,
-		dvjs.hashtagLine(c)
+		c.headline
 	]
 );
 ~~~
 
-## Feed Status
-
+# Topics
 ~~~dataviewjs
 const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	feeds = await dvjs.rssFeeds(),
-	map = await dvjs.mapFeedsToCollections();
-if (dvjs.rssTable(
-		feeds,
-		[
-			"Feed",
-			"Status",
-			"Updated",
-			"Collections"
-		],
-		f => [
-				dvjs.fileLink(f),
-				f.status,
-				dvjs.rssFeedUpdateDate(f),
-				dvjs.fileLinks(map.rssFeedToCollections(f))
-			]) === 0) {
-	dv.paragraph("No feeds subscribed")
-}
+	collections = await dvjs.rssDashboards("rsstopic");
+dvjs.rssTable(
+	collections,
+	[
+		"Topic",
+		"Headline",
+	],
+	c =>
+	[
+		dvjs.fileLink(c),
+		c.headline
+	]
+);
 ~~~
 
-## All Pinned Items  📌
+# Pinned Items  📌
 
 ~~~dataviewjs
 const
@@ -81,3 +69,27 @@ if (dvjs.rssTable(
 	}
 ~~~
 
+# Feed Status
+
+~~~dataviewjs
+const
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	feeds = await dvjs.rssFeeds(),
+	map = await dvjs.mapFeedsToCollections();
+if (dvjs.rssTable(
+		feeds,
+		[
+			"Feed",
+			"Status",
+			"Updated",
+			"Collections"
+		],
+		f => [
+				dvjs.fileLink(f),
+				f.status,
+				dvjs.rssFeedUpdateDate(f),
+				dvjs.fileLinks(map.rssFeedToCollections(f))
+			]) === 0) {
+	dv.paragraph("No feeds subscribed")
+}
+~~~
