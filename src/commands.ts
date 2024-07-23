@@ -199,7 +199,7 @@ export class NewRSSFeedCollectionCommand extends RSSTrackerCommandBase {
             collectionName = this.plugin.feedmgr.uniqueBasename(folderPath, "New Feed Collection"),
             collectionPath = folderPath + "/" + collectionName + ".md";
 
-            settings.readTemplate("RSS Feed Collection")
+            settings.readTemplate("RSS Collection")
                 .then(async content => {
                     const collection = await this.app.vault.create(collectionPath,content);
                     if (collection) {
@@ -211,7 +211,7 @@ export class NewRSSFeedCollectionCommand extends RSSTrackerCommandBase {
                         }
                     }
                     else {
-                        new Notice("RSS feed colelction could not be created!");
+                        new Notice("RSS feed collection could not be created!");
                     }
                 });
     }

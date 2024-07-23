@@ -66,7 +66,7 @@ class RSSHomeSetting extends RSSTrackerSettingBase {
 		super(settingsTab);
 		this
 			.setName("RSS feed base (home) location")
-			.setDesc("The base folder containing RSS feeds and assets.")
+			.setDesc("The base folder containing RSS feeds, dashboards and assets.")
 			.addText(ta => {
 				ta
 					.setPlaceholder(DEFAULT_SETTINGS.rssHome)

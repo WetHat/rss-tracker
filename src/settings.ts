@@ -17,15 +17,15 @@ export const DEFAULT_SETTINGS: IRSSTrackerSettings = {
 	autoUpdateFeeds: false,
 	rssHome: "RSS",
 	rssFeedFolder: "Feeds",
-	rssCollectionsFolder: "Feed Collections",
+	rssCollectionsFolder: "Collections",
 	rssTopicsFolder: "Topics",
 	rssTemplateFolder: "Templates",
 	rssDashboardName: "RSS Dashboard"
 }
 
-export type TTemplateName = "RSS Feed" | "RSS Item" | "RSS Topic" | "RSS Feed Collection" | "RSS Dashboard";
+export type TTemplateName = "RSS Feed" | "RSS Item" | "RSS Topic" | "RSS Collection" | "RSS Dashboard";
 
-const TEMPLATES: TTemplateName[] = ["RSS Feed", "RSS Item", "RSS Topic", "RSS Feed Collection"];
+const TEMPLATES: TTemplateName[] = ["RSS Feed", "RSS Item", "RSS Topic", "RSS Collection"];
 
 export class RSSTrackerSettings implements IRSSTrackerSettings {
 	plugin: RSSTrackerPlugin;

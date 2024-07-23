@@ -12535,12 +12535,12 @@ var DEFAULT_SETTINGS = {
   autoUpdateFeeds: false,
   rssHome: "RSS",
   rssFeedFolder: "Feeds",
-  rssCollectionsFolder: "Feed Collections",
+  rssCollectionsFolder: "Collections",
   rssTopicsFolder: "Topics",
   rssTemplateFolder: "Templates",
   rssDashboardName: "RSS Dashboard"
 };
-var TEMPLATES = ["RSS Feed", "RSS Item", "RSS Topic", "RSS Feed Collection"];
+var TEMPLATES = ["RSS Feed", "RSS Item", "RSS Topic", "RSS Collection"];
 var RSSTrackerSettings = class {
   constructor(app, plugin) {
     this.data = { ...DEFAULT_SETTINGS };
@@ -15356,7 +15356,7 @@ var NewRSSFeedCollectionCommand = class extends RSSTrackerCommandBase {
   }
   callback() {
     const settings = this.plugin.settings, folderPath = this.plugin.settings.rssCollectionsFolderPath, collectionName = this.plugin.feedmgr.uniqueBasename(folderPath, "New Feed Collection"), collectionPath = folderPath + "/" + collectionName + ".md";
-    settings.readTemplate("RSS Feed Collection").then(async (content) => {
+    settings.readTemplate("RSS Collection").then(async (content) => {
       const collection = await this.app.vault.create(collectionPath, content);
       if (collection) {
         const leaf = this.app.workspace.getLeaf(false);
@@ -15366,7 +15366,7 @@ var NewRSSFeedCollectionCommand = class extends RSSTrackerCommandBase {
           new import_obsidian2.Notice(err.message);
         }
       } else {
-        new import_obsidian2.Notice("RSS feed colelction could not be created!");
+        new import_obsidian2.Notice("RSS feed collection could not be created!");
       }
     });
   }
@@ -15739,7 +15739,7 @@ var RSSautoUpdateSetting = class extends RSSTrackerSettingBase {
 var RSSHomeSetting = class extends RSSTrackerSettingBase {
   constructor(settingsTab) {
     super(settingsTab);
-    this.setName("RSS feed base (home) location").setDesc("The base folder containing RSS feeds and assets.").addText((ta) => {
+    this.setName("RSS feed base (home) location").setDesc("The base folder containing RSS feeds, dashboards and assets.").addText((ta) => {
       ta.setPlaceholder(DEFAULT_SETTINGS.rssHome).onChange((value) => {
         this.settings.rssHome = value;
       });
