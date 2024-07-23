@@ -165,17 +165,15 @@ export class NewRSSTopicCommand extends RSSTrackerCommandBase {
     callback(): any {
         const
             settings = this.plugin.settings,
-            rssHome = this.plugin.settings.rssHome,
-            collectionName = this.plugin.feedmgr.uniqueBasename(rssHome, "📜New Topic"),
-            collectionPath = rssHome + "/" + collectionName + ".md";
+            folderPath = this.plugin.settings.rssTopicsFolderPath,
+            collectionName = this.plugin.feedmgr.uniqueBasename(folderPath, "New Topic"),
+            collectionPath = folderPath + "/" + collectionName + ".md";
 
             settings.readTemplate("RSS Topic")
                 .then(async content => {
                     const collection = await this.app.vault.create(collectionPath,content);
                     if (collection) {
-                        const
-                            mgr = this.plugin.feedmgr,
-                            leaf = this.app.workspace.getLeaf(false);
+                        const leaf = this.app.workspace.getLeaf(false);
                         try {
                             await leaf.openFile(collection);
                         } catch (err: any) {
@@ -197,17 +195,15 @@ export class NewRSSFeedCollectionCommand extends RSSTrackerCommandBase {
     callback(): any {
         const
             settings = this.plugin.settings,
-            rssHome = this.plugin.settings.rssHome,
-            collectionName = this.plugin.feedmgr.uniqueBasename(rssHome, "📑New Feed Collection"),
-            collectionPath = rssHome + "/" + collectionName + ".md";
+            folderPath = this.plugin.settings.rssCollectionsFolderPath,
+            collectionName = this.plugin.feedmgr.uniqueBasename(folderPath, "New Feed Collection"),
+            collectionPath = folderPath + "/" + collectionName + ".md";
 
             settings.readTemplate("RSS Feed Collection")
                 .then(async content => {
                     const collection = await this.app.vault.create(collectionPath,content);
                     if (collection) {
-                        const
-                            mgr = this.plugin.feedmgr,
-                            leaf = this.app.workspace.getLeaf(false);
+                        const leaf = this.app.workspace.getLeaf(false);
                         try {
                             await leaf.openFile(collection);
                         } catch (err: any) {

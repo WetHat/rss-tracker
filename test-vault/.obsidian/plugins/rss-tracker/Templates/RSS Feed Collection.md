@@ -7,6 +7,8 @@ noneof: []
 > [!abstract] [headline:: A curated collection of RSS feeds about ???]
 > - [ ] Create a headline
 > - [ ] Summarize the purpose of this collection.
+> - [ ] Specify tags in the `tags`, `allof`, 'noneof' frontmatter properties
+
 
 # Feeds in this Collection
 

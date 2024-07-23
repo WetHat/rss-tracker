@@ -115,6 +115,60 @@ class RSSFeedFolderSetting extends RSSTrackerSettingBase {
 	}
 }
 
+class RSSCollectionsFolderSetting extends RSSTrackerSettingBase {
+	constructor(settingsTab: RSSTrackerSettingTab) {
+		super(settingsTab);
+		this
+			.setName("RSS feed collections location")
+			.setDesc("The folder containing all RSS feed collections.")
+			.addText(ta => {
+				ta
+					.setPlaceholder(DEFAULT_SETTINGS.rssCollectionsFolder)
+					.onChange(value => {
+						this.settings.rssCollectionsFolder = value;
+					});
+				if (this.settings.rssCollectionsFolder !== DEFAULT_SETTINGS.rssCollectionsFolder) {
+					ta.setValue(this.settings.rssCollectionsFolder)
+				}
+			})
+			.addButton(btn => {
+				btn
+					.setIcon("reset")
+					.setTooltip("Reset the RSS feed collections location to default")
+					.onClick(evt => {
+						this.settings.rssCollectionsFolder = DEFAULT_SETTINGS.rssCollectionsFolder;
+					})
+			});
+	}
+}
+
+class RSSTopicsFolderSetting extends RSSTrackerSettingBase {
+	constructor(settingsTab: RSSTrackerSettingTab) {
+		super(settingsTab);
+		this
+			.setName("RSS topics location")
+			.setDesc("The folder containing all RSS topics.")
+			.addText(ta => {
+				ta
+					.setPlaceholder(DEFAULT_SETTINGS.rssTopicsFolder)
+					.onChange(value => {
+						this.settings.rssTopicsFolder = value;
+					});
+				if (this.settings.rssTopicsFolder !== DEFAULT_SETTINGS.rssTopicsFolder) {
+					ta.setValue(this.settings.rssTopicsFolder)
+				}
+			})
+			.addButton(btn => {
+				btn
+					.setIcon("reset")
+					.setTooltip("Reset the RSS topics location to default")
+					.onClick(evt => {
+						this.settings.rssTopicsFolder = DEFAULT_SETTINGS.rssTopicsFolder;
+					})
+			});
+	}
+}
+
 export class RSSTrackerSettingTab extends PluginSettingTab {
 	settings: RSSTrackerSettings;
 
@@ -130,6 +184,8 @@ export class RSSTrackerSettingTab extends PluginSettingTab {
 
 		new RSSHomeSetting(this);
 		new RSSFeedFolderSetting(this);
+		new RSSCollectionsFolderSetting(this);
+		new RSSTopicsFolderSetting(this);
         new RSSautoUpdateSetting(this);
 		new RSSDashboardNameSetting(this);
 	}

@@ -221,8 +221,16 @@ export class DataViewJSTools {
     }
 
     async rssDashboards(role: TDashboardRole): Promise<TPageRecordList> {
+        let dashboardFolderPath = this.settings.rssHome;
+        switch (role) {
+            case "rsscollection":
+                dashboardFolderPath = this.settings.rssCollectionsFolderPath;
+                break;
+            case "rsstopic":
+                dashboardFolderPath = this.settings.rssTopicsFolderPath;
+        }
         const
-            from = '"' + this.settings.rssHome + '" AND -"' + this.settings.rssFeedFolderPath + '" AND -"' + this.settings.rssTemplateFolderPath + '"',
+            from = '"' + dashboardFolderPath + '"',
             collections = await this.dv.pages(from);
         return collections
             .where((itm: TPageRecord) => itm.role === role)

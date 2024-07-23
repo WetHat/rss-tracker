@@ -12535,8 +12535,10 @@ var DEFAULT_SETTINGS = {
   autoUpdateFeeds: false,
   rssHome: "RSS",
   rssFeedFolder: "Feeds",
+  rssCollectionsFolder: "Feed Collections",
+  rssTopicsFolder: "Topics",
   rssTemplateFolder: "Templates",
-  rssDashboardName: "\xA7 RSS Feed Dashboard"
+  rssDashboardName: "RSS Dashboard"
 };
 var TEMPLATES = ["RSS Feed", "RSS Item", "RSS Topic", "RSS Feed Collection"];
 var RSSTrackerSettings = class {
@@ -12544,7 +12546,7 @@ var RSSTrackerSettings = class {
     this.data = { ...DEFAULT_SETTINGS };
     this.app = app;
     this.plugin = plugin;
-    this._rssHome = this._rssFeedFolder = this._rssTemplateFolder = this._rssDashboardName = null;
+    this._rssHome = this._rssFeedFolder = this._rssCollectionsFolder = this._rssTopicsFolder = this._rssTemplateFolder = this._rssDashboardName = null;
   }
   static getTemplateFilename(templateName) {
     return templateName + ".md";
@@ -12568,6 +12570,20 @@ var RSSTrackerSettings = class {
   }
   set rssFeedFolder(value) {
     this._rssFeedFolder = value;
+  }
+  get rssCollectionsFolder() {
+    var _a2;
+    return (_a2 = this.data.rssCollectionsFolder) != null ? _a2 : DEFAULT_SETTINGS.rssCollectionsFolder;
+  }
+  set rssCollectionsFolder(value) {
+    this._rssCollectionsFolder = value;
+  }
+  get rssTopicsFolder() {
+    var _a2;
+    return (_a2 = this.data.rssTopicsFolder) != null ? _a2 : DEFAULT_SETTINGS.rssTopicsFolder;
+  }
+  set rssTopicsFolder(value) {
+    this._rssCollectionsFolder = value;
   }
   get rssTemplateFolder() {
     var _a2;
@@ -12618,6 +12634,18 @@ var RSSTrackerSettings = class {
       }
       this._rssFeedFolder = null;
     }
+    if (this._rssCollectionsFolder && this._rssCollectionsFolder !== this.rssCollectionsFolder) {
+      if (await this.renameFolder(this.rssCollectionsFolderPath, this.rssHome + "/" + this._rssCollectionsFolder)) {
+        this.data.rssCollectionsFolder = this._rssCollectionsFolder;
+      }
+      this._rssCollectionsFolder = null;
+    }
+    if (this._rssTopicsFolder && this._rssTopicsFolder !== this.rssTopicsFolder) {
+      if (await this.renameFolder(this.rssTopicsFolderPath, this.rssHome + "/" + this._rssTopicsFolder)) {
+        this.data.rssTopicsFolder = this._rssTopicsFolder;
+      }
+      this._rssTopicsFolder = null;
+    }
     if (this._rssTemplateFolder && this._rssTemplateFolder !== this.rssTemplateFolder) {
       if (await this.renameFolder(this.rssTemplateFolderPath, this.rssHome + "/" + this._rssTemplateFolder)) {
         this.data.rssTemplateFolder = this._rssTemplateFolder;
@@ -12651,15 +12679,16 @@ var RSSTrackerSettings = class {
   }
   async install() {
     const vault = this.app.vault, fs = vault.adapter;
-    if (!await fs.exists(this.rssHome)) {
-      await vault.createFolder(this.rssHome);
-    }
-    if (!await fs.exists(this.rssFeedFolderPath)) {
-      await vault.createFolder(this.rssFeedFolderPath);
-    }
-    const templatePath = this.rssTemplateFolderPath;
-    if (!await fs.exists(templatePath)) {
-      await vault.createFolder(templatePath);
+    for (const folderPath of [
+      this.rssHome,
+      this.rssTemplateFolderPath,
+      this.rssFeedFolderPath,
+      this.rssCollectionsFolderPath,
+      this.rssTopicsFolderPath
+    ]) {
+      if (!await fs.exists(folderPath)) {
+        await vault.createFolder(folderPath);
+      }
     }
     for (const tpl of TEMPLATES) {
       const tplPath = this.getTemplatePath(tpl);
@@ -12670,13 +12699,19 @@ var RSSTrackerSettings = class {
     }
     const dashboardPath = this.rssDashboardPath;
     if (!await fs.exists(dashboardPath)) {
-      const factoryPath = this.plugin.manifest.dir + "/Templates/" + RSSTrackerSettings.getTemplateFilename("\xA7 RSS Feed Dashboard");
+      const factoryPath = this.plugin.manifest.dir + "/Templates/" + RSSTrackerSettings.getTemplateFilename("RSS Dashboard");
       fs.copy(factoryPath, dashboardPath);
     }
     console.log(`RSS directory structure created/updated at '${this.rssHome}'.`);
   }
   get rssFeedFolderPath() {
     return this.rssHome + "/" + this.rssFeedFolder;
+  }
+  get rssCollectionsFolderPath() {
+    return this.rssHome + "/" + this.rssCollectionsFolder;
+  }
+  get rssTopicsFolderPath() {
+    return this.rssHome + "/" + this.rssTopicsFolder;
   }
   get rssTemplateFolderPath() {
     return this.rssHome + "/" + this.rssTemplateFolder;
@@ -15299,11 +15334,11 @@ var NewRSSTopicCommand = class extends RSSTrackerCommandBase {
     super(plugin, "rss-tracker-new-topic", "New RSS topic");
   }
   callback() {
-    const settings = this.plugin.settings, rssHome = this.plugin.settings.rssHome, collectionName = this.plugin.feedmgr.uniqueBasename(rssHome, "\u{1F4DC}New Topic"), collectionPath = rssHome + "/" + collectionName + ".md";
+    const settings = this.plugin.settings, folderPath = this.plugin.settings.rssTopicsFolderPath, collectionName = this.plugin.feedmgr.uniqueBasename(folderPath, "New Topic"), collectionPath = folderPath + "/" + collectionName + ".md";
     settings.readTemplate("RSS Topic").then(async (content) => {
       const collection = await this.app.vault.create(collectionPath, content);
       if (collection) {
-        const mgr = this.plugin.feedmgr, leaf = this.app.workspace.getLeaf(false);
+        const leaf = this.app.workspace.getLeaf(false);
         try {
           await leaf.openFile(collection);
         } catch (err) {
@@ -15320,11 +15355,11 @@ var NewRSSFeedCollectionCommand = class extends RSSTrackerCommandBase {
     super(plugin, "rss-tracker-new-feed-collection", "New RSS feed collection");
   }
   callback() {
-    const settings = this.plugin.settings, rssHome = this.plugin.settings.rssHome, collectionName = this.plugin.feedmgr.uniqueBasename(rssHome, "\u{1F4D1}New Feed Collection"), collectionPath = rssHome + "/" + collectionName + ".md";
+    const settings = this.plugin.settings, folderPath = this.plugin.settings.rssCollectionsFolderPath, collectionName = this.plugin.feedmgr.uniqueBasename(folderPath, "New Feed Collection"), collectionPath = folderPath + "/" + collectionName + ".md";
     settings.readTemplate("RSS Feed Collection").then(async (content) => {
       const collection = await this.app.vault.create(collectionPath, content);
       if (collection) {
-        const mgr = this.plugin.feedmgr, leaf = this.app.workspace.getLeaf(false);
+        const leaf = this.app.workspace.getLeaf(false);
         try {
           await leaf.openFile(collection);
         } catch (err) {
@@ -15589,7 +15624,15 @@ var DataViewJSTools = class {
     return pages.where((rec) => rec.role === "rssitem").distinct((rec) => rec.link).sort((rec) => rec.published, "desc");
   }
   async rssDashboards(role) {
-    const from = '"' + this.settings.rssHome + '" AND -"' + this.settings.rssFeedFolderPath + '" AND -"' + this.settings.rssTemplateFolderPath + '"', collections = await this.dv.pages(from);
+    let dashboardFolderPath = this.settings.rssHome;
+    switch (role) {
+      case "rsscollection":
+        dashboardFolderPath = this.settings.rssCollectionsFolderPath;
+        break;
+      case "rsstopic":
+        dashboardFolderPath = this.settings.rssTopicsFolderPath;
+    }
+    const from = '"' + dashboardFolderPath + '"', collections = await this.dv.pages(from);
     return collections.where((itm) => itm.role === role).sort((rec) => rec.file.name, "asc");
   }
   async mapFeedsToCollections() {
@@ -15727,6 +15770,40 @@ var RSSFeedFolderSetting = class extends RSSTrackerSettingBase {
     });
   }
 };
+var RSSCollectionsFolderSetting = class extends RSSTrackerSettingBase {
+  constructor(settingsTab) {
+    super(settingsTab);
+    this.setName("RSS feed collections location").setDesc("The folder containing all RSS feed collections.").addText((ta) => {
+      ta.setPlaceholder(DEFAULT_SETTINGS.rssCollectionsFolder).onChange((value) => {
+        this.settings.rssCollectionsFolder = value;
+      });
+      if (this.settings.rssCollectionsFolder !== DEFAULT_SETTINGS.rssCollectionsFolder) {
+        ta.setValue(this.settings.rssCollectionsFolder);
+      }
+    }).addButton((btn) => {
+      btn.setIcon("reset").setTooltip("Reset the RSS feed collections location to default").onClick((evt) => {
+        this.settings.rssCollectionsFolder = DEFAULT_SETTINGS.rssCollectionsFolder;
+      });
+    });
+  }
+};
+var RSSTopicsFolderSetting = class extends RSSTrackerSettingBase {
+  constructor(settingsTab) {
+    super(settingsTab);
+    this.setName("RSS topics location").setDesc("The folder containing all RSS topics.").addText((ta) => {
+      ta.setPlaceholder(DEFAULT_SETTINGS.rssTopicsFolder).onChange((value) => {
+        this.settings.rssTopicsFolder = value;
+      });
+      if (this.settings.rssTopicsFolder !== DEFAULT_SETTINGS.rssTopicsFolder) {
+        ta.setValue(this.settings.rssTopicsFolder);
+      }
+    }).addButton((btn) => {
+      btn.setIcon("reset").setTooltip("Reset the RSS topics location to default").onClick((evt) => {
+        this.settings.rssTopicsFolder = DEFAULT_SETTINGS.rssTopicsFolder;
+      });
+    });
+  }
+};
 var RSSTrackerSettingTab = class extends import_obsidian5.PluginSettingTab {
   constructor(settings) {
     super(settings.app, settings.plugin);
@@ -15738,6 +15815,8 @@ var RSSTrackerSettingTab = class extends import_obsidian5.PluginSettingTab {
     const frag = containerEl.doc.createDocumentFragment();
     new RSSHomeSetting(this);
     new RSSFeedFolderSetting(this);
+    new RSSCollectionsFolderSetting(this);
+    new RSSTopicsFolderSetting(this);
     new RSSautoUpdateSetting(this);
     new RSSDashboardNameSetting(this);
   }

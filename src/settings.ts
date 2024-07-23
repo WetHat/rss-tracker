@@ -1,12 +1,14 @@
 import { TPropertyBag } from './FeedAssembler';
 import RSSTrackerPlugin from './main';
-import { PluginSettingTab, Setting, App, TFolder } from 'obsidian';
+import { App } from 'obsidian';
 
 export interface IRSSTrackerSettings {
 	[key: string]: any;
 	autoUpdateFeeds: boolean;
 	rssHome: string;
 	rssFeedFolder: string;
+	rssCollectionsFolder: string;
+	rssTopicsFolder: string;
 	rssTemplateFolder: string;
 	rssDashboardName: string;
 }
@@ -15,11 +17,13 @@ export const DEFAULT_SETTINGS: IRSSTrackerSettings = {
 	autoUpdateFeeds: false,
 	rssHome: "RSS",
 	rssFeedFolder: "Feeds",
+	rssCollectionsFolder: "Feed Collections",
+	rssTopicsFolder: "Topics",
 	rssTemplateFolder: "Templates",
-	rssDashboardName: "§ RSS Feed Dashboard"
+	rssDashboardName: "RSS Dashboard"
 }
 
-export type TTemplateName = "RSS Feed" | "RSS Item" | "RSS Topic" | "RSS Feed Collection" | "§ RSS Feed Dashboard";
+export type TTemplateName = "RSS Feed" | "RSS Item" | "RSS Topic" | "RSS Feed Collection" | "RSS Dashboard";
 
 const TEMPLATES: TTemplateName[] = ["RSS Feed", "RSS Item", "RSS Topic", "RSS Feed Collection"];
 
@@ -43,6 +47,8 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 
 	private _rssHome: string | null;
 	private _rssFeedFolder: string | null;
+	private _rssCollectionsFolder: string | null;
+	private _rssTopicsFolder: string | null;
 	private _rssTemplateFolder: string | null;
 	private _rssDashboardName: string | null;
 
@@ -62,6 +68,22 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 		this._rssFeedFolder = value;
 	}
 
+	get rssCollectionsFolder(): string {
+		return this.data.rssCollectionsFolder ?? DEFAULT_SETTINGS.rssCollectionsFolder;
+	}
+
+	set rssCollectionsFolder(value: string) {
+		this._rssCollectionsFolder = value;
+	}
+
+	get rssTopicsFolder(): string {
+		return this.data.rssTopicsFolder ?? DEFAULT_SETTINGS.rssTopicsFolder;
+	}
+
+	set rssTopicsFolder(value: string) {
+		this._rssCollectionsFolder = value;
+	}
+
 	get rssTemplateFolder(): string {
 		return this.data.rssTemplateFolder ?? DEFAULT_SETTINGS.rssTemplateFolder;
 	}
@@ -70,7 +92,7 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 		this._rssTemplateFolder = value;
 	}
 
-	get rssDashboardName() : string {
+	get rssDashboardName(): string {
 		return this.data.rssDashboardName || DEFAULT_SETTINGS.rssDashboardName;
 	}
 
@@ -126,6 +148,20 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 			this._rssFeedFolder = null;
 		}
 
+		if (this._rssCollectionsFolder && this._rssCollectionsFolder !== this.rssCollectionsFolder) {
+			if (await this.renameFolder(this.rssCollectionsFolderPath, this.rssHome + "/" + this._rssCollectionsFolder)) {
+				this.data.rssCollectionsFolder = this._rssCollectionsFolder;
+			}
+			this._rssCollectionsFolder = null;
+		}
+
+		if (this._rssTopicsFolder && this._rssTopicsFolder !== this.rssTopicsFolder) {
+			if (await this.renameFolder(this.rssTopicsFolderPath, this.rssHome + "/" + this._rssTopicsFolder)) {
+				this.data.rssTopicsFolder = this._rssTopicsFolder;
+			}
+			this._rssTopicsFolder = null;
+		}
+
 		if (this._rssTemplateFolder && this._rssTemplateFolder !== this.rssTemplateFolder) {
 			if (await this.renameFolder(this.rssTemplateFolderPath, this.rssHome + "/" + this._rssTemplateFolder)) {
 				this.data.rssTemplateFolder = this._rssTemplateFolder;
@@ -151,7 +187,13 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 		this.app = app;
 		this.plugin = plugin;
 
-		this._rssHome = this._rssFeedFolder = this._rssTemplateFolder = this._rssDashboardName = null;
+		this._rssHome
+			= this._rssFeedFolder
+			= this._rssCollectionsFolder
+			= this._rssTopicsFolder
+			= this._rssTemplateFolder
+			= this._rssDashboardName
+			= null;
 	}
 
 	async loadData(): Promise<void> {
@@ -177,18 +219,19 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 			vault = this.app.vault,
 			fs = vault.adapter;
 
-		if (!await fs.exists(this.rssHome)) {
-			await vault.createFolder(this.rssHome);
+		// create folders
+		for (const folderPath of [
+			this.rssHome,
+			this.rssTemplateFolderPath,
+			this.rssFeedFolderPath,
+			this.rssCollectionsFolderPath,
+			this.rssTopicsFolderPath,
+		]) {
+			if (!await fs.exists(folderPath)) {
+				await vault.createFolder(folderPath);
+			}
 		}
 
-		if (!await fs.exists(this.rssFeedFolderPath)) {
-			await vault.createFolder(this.rssFeedFolderPath);
-		}
-
-		const templatePath = this.rssTemplateFolderPath;
-		if (!await fs.exists(templatePath)) {
-			await vault.createFolder(templatePath);
-		}
 		// install factory templates if necessary
 		for (const tpl of TEMPLATES) {
 			const tplPath = this.getTemplatePath(tpl);
@@ -198,10 +241,10 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 			}
 		}
 
-		// dashboard is a special case
+		// the RSS dashboard is a special case
 		const dashboardPath = this.rssDashboardPath;
 		if (!await fs.exists(dashboardPath)) {
-			const factoryPath = this.plugin.manifest.dir + "/Templates/" + RSSTrackerSettings.getTemplateFilename("§ RSS Feed Dashboard");
+			const factoryPath = this.plugin.manifest.dir + "/Templates/" + RSSTrackerSettings.getTemplateFilename("RSS Dashboard");
 			fs.copy(factoryPath, dashboardPath);
 		}
 
@@ -212,11 +255,19 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 		return this.rssHome + "/" + this.rssFeedFolder;
 	}
 
+	get rssCollectionsFolderPath(): string {
+		return this.rssHome + "/" + this.rssCollectionsFolder;
+	}
+
+	get rssTopicsFolderPath(): string {
+		return this.rssHome + "/" + this.rssTopicsFolder;
+	}
+
 	get rssTemplateFolderPath(): string {
 		return this.rssHome + "/" + this.rssTemplateFolder;
 	}
 
-	get rssDashboardPath() : string {
+	get rssDashboardPath(): string {
 		return this.rssHome + "/" + this.rssDashboardName + ".md";
 	}
 

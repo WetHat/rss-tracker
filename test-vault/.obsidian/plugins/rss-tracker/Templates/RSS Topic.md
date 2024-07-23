@@ -4,9 +4,10 @@ tags: []
 allof: []
 noneof: []
 ---
-> [!abstract] [headline:: A curated collection of RSS items about ???]
+> [!abstract] [headline:: A curated list of RSS items about ???]
 > - [ ] Create a headline
 > - [ ] Summarize the purpose of this topic.
+> - [ ] Specify tags in the `tags`, `allof`, 'noneof' frontmatter properties
 
 # Items in this Topic
 ~~~dataviewjs
@@ -31,7 +32,7 @@ if (dvjs.rssTable(
 		f.feed,
 		dvjs.hashtagLine(f)
 	]) === 0) {
-		dv.paragraph("No items for this topic.")
+		dv.paragraph("No articles for this topic.")
 	}
 dv.paragraph("From: " + dvjs.fromTags(topic));
 ~~~
