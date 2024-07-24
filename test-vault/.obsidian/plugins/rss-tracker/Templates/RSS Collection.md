@@ -57,6 +57,6 @@ await dvjs.groupedRssItemTable(
 	feeds,
 	(feed => feed.pinned === true),
 	["Item", "Published", "Tags"],
-	itm => [dvjs.fileLink(itm), dvjs.rssItemPublishDate(itm),dvjs.hashtagLine(itm)]
+	itm => [dvjs.fileLink(itm), dvjs.rssItemPublishDate(itm),dvjs.hashtagLine(f)]
 );
 ~~~
