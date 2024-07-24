@@ -42,7 +42,7 @@ dv.paragraph("From: " + dvjs.fromTags(collection));
 const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	collection = dv.current(),
-	feeds = await dvjs.rssFeedsOfCollection(collection);
+	feeds = await dvjs.rssFeeds(collection);
 await dvjs.groupedReadingList(feeds,false);
 ~~~
 
@@ -52,11 +52,11 @@ await dvjs.groupedReadingList(feeds,false);
 const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	collection = dv.current(),
-	feeds = await dvjs.rssFeedsOfCollection(collection);
+	feeds = await dvjs.rssFeeds(collection);
 await dvjs.groupedRssItemTable(
 	feeds,
 	(feed => feed.pinned === true),
 	["Item", "Published", "Tags"],
-	itm => [dvjs.fileLink(itm), dvjs.rssItemPublishDate(itm),dvjs.hashtagLine(f)]
+	itm => [dvjs.fileLink(itm), dvjs.rssItemPublishDate(itm),dvjs.hashtagLine(itm)]
 );
 ~~~
