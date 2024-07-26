@@ -2,7 +2,7 @@ import { App, request, TFile, TFolder, htmlToMarkdown, normalizePath, ListItemCa
 import RSSTrackerPlugin from './main';
 import { TrackedRSSfeed, TrackedRSSitem, IRssMedium, TPropertyBag } from './FeedAssembler';
 import * as path from 'path';
-import { extractFromHtml, ArticleData, Transformation,addTransformations } from '@extractus/article-extractor'
+import { extractFromHtml, ArticleData, Transformation, addTransformations } from '@extractus/article-extractor'
 /**
  * RSS feed configuration data.
  */
@@ -78,7 +78,7 @@ export class FeedManager {
 
         // configure the article extractor to make the returned content
         // more Obsidian friendly
-        const tm : Transformation = {
+        const tm: Transformation = {
             patterns: [
                 /-*/ // apply to all websites
             ],
@@ -88,7 +88,7 @@ export class FeedManager {
                 for (let i = 0; i < pres.length; i++) {
                     const pre = pres[i];
                     let firstChild = pre.firstChild;
-                    if (firstChild && firstChild.nodeName !== "code"){
+                    if (firstChild && firstChild.nodeName !== "code") {
                         const code = document.createElement("code");
                         let child;
                         while (firstChild) {
@@ -143,7 +143,7 @@ export class FeedManager {
      * @param folderPath - An Obsidian folder path providing the context
      * @param basename filename without extension
      */
-    uniqueBasename(folderPath: string, basename : string) : string {
+    uniqueBasename(folderPath: string, basename: string): string {
         const vault = this.app.vault;
         let
             uniqueBasename = basename,
@@ -182,7 +182,7 @@ export class FeedManager {
         if (!content && description && description.length > 500) {
             content = description
         }
-        const basename = this.uniqueBasename(itemFolder.path,item.fileName);
+        const basename = this.uniqueBasename(itemFolder.path, item.fileName);
         let itemPath = itemFolder.path + "/" + basename + ".md";
 
         // fill in the template
@@ -254,7 +254,12 @@ export class FeedManager {
 
             for (let index = 0; index < newItems.length; index++) {
                 const item = newItems[index];
-                await this.saveFeedItem(itemFolder, item, itemTemplate).catch(reason => { throw reason });
+                try {
+                    await this.saveFeedItem(itemFolder, item, itemTemplate);
+                } catch (err: any) {
+                    console.log(`Could not save RSS item '${item.title}' of feed '${feedConfig.source.name}'; error: ${err.message}`);
+                    new Notice(`Update of item '${item.fileName}' in feed '${feedConfig.source.name}' failed: ${err.message}`);
+                }
             }
         }
         return newItems.length;
@@ -323,7 +328,7 @@ export class FeedManager {
     private async createFeed(feed: TrackedRSSfeed, location: TFolder): Promise<TFile> {
         const
             { title, site, description } = feed,
-            basename = this.uniqueBasename(location.path,feed.fileName),
+            basename = this.uniqueBasename(location.path, feed.fileName),
             tpl = await this.plugin.settings.readTemplate("RSS Feed"),
             dashboardPath = normalizePath(location.path + "/" + basename + ".md"),
             defaultImage = basename + ".svg";
@@ -482,11 +487,11 @@ export class FeedManager {
                 itemHTML = await request({
                     url: link,
                     method: "GET"
-                    }),
+                }),
                 article: ArticleData | null = await extractFromHtml(itemHTML);
             if (article) {
-                const {title,content} = article;
-                let articleContent : string = "\n";
+                const { title, content } = article;
+                let articleContent: string = "\n";
                 if (title) {
                     articleContent += "# " + title;
                 }
@@ -495,7 +500,7 @@ export class FeedManager {
                     articleContent += "\n\n" + htmlToMarkdown(content);
                 }
                 if (articleContent.length > 0) {
-                    return this.app.vault.append(item,articleContent);
+                    return this.app.vault.append(item, articleContent);
                 }
             }
         }

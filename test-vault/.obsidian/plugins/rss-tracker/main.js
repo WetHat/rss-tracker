@@ -15020,9 +15020,12 @@ var _FeedManager = class {
       const itemTemplate = await this.plugin.settings.readTemplate("RSS Item");
       for (let index = 0; index < newItems.length; index++) {
         const item = newItems[index];
-        await this.saveFeedItem(itemFolder, item, itemTemplate).catch((reason) => {
-          throw reason;
-        });
+        try {
+          await this.saveFeedItem(itemFolder, item, itemTemplate);
+        } catch (err) {
+          console.log(`Could not save RSS item '${item.title}' of feed '${feedConfig.source.name}'; error: ${err.message}`);
+          new import_obsidian.Notice(`Update of item '${item.fileName}' in feed '${feedConfig.source.name}' failed: ${err.message}`);
+        }
       }
     }
     return newItems.length;
