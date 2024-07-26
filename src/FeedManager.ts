@@ -151,7 +151,7 @@ export class FeedManager {
             index = 1;
         while (vault.getFileByPath(filepath)) {
             uniqueBasename = `${basename} (${index})`;
-            filepath = folderPath + "/" + uniqueBasename + "-md";
+            filepath = folderPath + "/" + uniqueBasename + ".md";
             index++;
         }
         return uniqueBasename;
