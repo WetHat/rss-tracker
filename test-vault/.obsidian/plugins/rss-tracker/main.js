@@ -14177,7 +14177,7 @@ var TrackedRSSfeed = class {
     let pubdateMillies = this.items.map((it) => new Date(it.published).valueOf()).sort();
     const n = pubdateMillies.length - 1;
     if (n > 0) {
-      return Math.round((pubdateMillies[n] - pubdateMillies[0]) / (n * 60 * 60 * 1e3));
+      return Math.abs(Math.round(pubdateMillies[n] - pubdateMillies[0]) / (n * 60 * 60 * 1e3));
     }
     return 1;
   }
