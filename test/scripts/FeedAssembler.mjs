@@ -374,7 +374,7 @@ export class TrackedRSSfeed {
         let pubdateMillies = this.items.map(it => new Date(it.published).valueOf()).sort();
         const n = pubdateMillies.length - 1; // number of intervals between posts
         if (n > 0) {
-            return Math.abs(Math.round((pubdateMillies[n] - pubdateMillies[0])) / (n * 60 * 60 * 1000));
+            return Math.abs(Math.round((pubdateMillies[n] - pubdateMillies[0]) / (n * 60 * 60 * 1000)));
         }
         return 1;
     }
