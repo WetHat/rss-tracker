@@ -80,7 +80,7 @@ export class FeedManager {
         // more Obsidian friendly
         const tm: Transformation = {
             patterns: [
-                /-*/ // apply to all websites
+                /.*/ // apply to all websites
             ],
             pre: document => {
                 // remove all weird attributes
@@ -511,7 +511,7 @@ export class FeedManager {
                     url: link,
                     method: "GET"
                 }),
-                article: ArticleData | null = await extractFromHtml(itemHTML);
+                article: ArticleData | null = await extractFromHtml(itemHTML,link);
             if (article) {
                 const { title, content } = article;
                 let articleContent: string = "\n";

@@ -1600,6 +1600,7 @@ var require_json2xml = __commonJS({
         } else if (Array.isArray(jObj[key])) {
           const arrLen = jObj[key].length;
           let listTagVal = "";
+          let listTagAttr = "";
           for (let j = 0; j < arrLen; j++) {
             const item = jObj[key][j];
             if (typeof item === "undefined") {
@@ -1610,16 +1611,26 @@ var require_json2xml = __commonJS({
                 val2 += this.indentate(level) + "<" + key + "/" + this.tagEndChar;
             } else if (typeof item === "object") {
               if (this.options.oneListGroup) {
-                listTagVal += this.j2x(item, level + 1).val;
+                const result = this.j2x(item, level + 1);
+                listTagVal += result.val;
+                if (this.options.attributesGroupName && item.hasOwnProperty(this.options.attributesGroupName)) {
+                  listTagAttr += result.attrStr;
+                }
               } else {
                 listTagVal += this.processTextOrObjNode(item, key, level);
               }
             } else {
-              listTagVal += this.buildTextValNode(item, key, "", level);
+              if (this.options.oneListGroup) {
+                let textValue = this.options.tagValueProcessor(key, item);
+                textValue = this.replaceEntitiesValue(textValue);
+                listTagVal += textValue;
+              } else {
+                listTagVal += this.buildTextValNode(item, key, "", level);
+              }
             }
           }
           if (this.options.oneListGroup) {
-            listTagVal = this.buildObjectNode(listTagVal, key, "", level);
+            listTagVal = this.buildObjectNode(listTagVal, key, listTagAttr, level);
           }
           val2 += listTagVal;
         } else {
@@ -7451,11 +7462,11 @@ var require_container = __commonJS({
         return i;
       });
     }
-    function markDirtyUp(node) {
+    function markTreeDirty(node) {
       node[isClean] = false;
       if (node.proxyOf.nodes) {
         for (let i of node.proxyOf.nodes) {
-          markDirtyUp(i);
+          markTreeDirty(i);
         }
       }
     }
@@ -7576,7 +7587,11 @@ var require_container = __commonJS({
       insertBefore(exist, add2) {
         let existIndex = this.index(exist);
         let type = existIndex === 0 ? "prepend" : false;
-        let nodes = this.normalize(add2, this.proxyOf.nodes[existIndex], type).reverse();
+        let nodes = this.normalize(
+          add2,
+          this.proxyOf.nodes[existIndex],
+          type
+        ).reverse();
         existIndex = this.index(exist);
         for (let node of nodes)
           this.proxyOf.nodes.splice(existIndex, 0, node);
@@ -7632,7 +7647,7 @@ var require_container = __commonJS({
           if (i.parent)
             i.parent.removeChild(i);
           if (i[isClean])
-            markDirtyUp(i);
+            markTreeDirty(i);
           if (typeof i.raws.before === "undefined") {
             if (sample && typeof sample.raws.before !== "undefined") {
               i.raws.before = sample.raws.before.replace(/\S/g, "");
@@ -9548,7 +9563,7 @@ var require_processor = __commonJS({
     var Root = require_root();
     var Processor = class {
       constructor(plugins = []) {
-        this.version = "8.4.39";
+        this.version = "8.4.40";
         this.plugins = this.normalize(plugins);
       }
       normalize(plugins) {
@@ -14873,7 +14888,7 @@ var _FeedManager = class {
     this.plugin = plugin;
     const tm = {
       patterns: [
-        /-*/
+        /.*/
         // apply to all websites
       ],
       pre: (document) => {
@@ -15224,7 +15239,7 @@ var _FeedManager = class {
       const itemHTML = await (0, import_obsidian.request)({
         url: link,
         method: "GET"
-      }), article = await extractFromHtml(itemHTML);
+      }), article = await extractFromHtml(itemHTML, link);
       if (article) {
         const { title, content } = article;
         let articleContent = "\n";
