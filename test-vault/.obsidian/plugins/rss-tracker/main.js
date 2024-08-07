@@ -15045,7 +15045,7 @@ var _FeedManager = class {
       try {
         await this.app.vault.delete(item.item);
       } catch (err) {
-        console.log(`Failed to delete '${item.item.basename}': ${err.message}`);
+        console.error(`Failed to delete '${item.item.basename}': ${err.message}`);
       }
     }
     if (newItems.length > 0) {
@@ -15055,7 +15055,7 @@ var _FeedManager = class {
         try {
           await this.saveFeedItem(itemFolder, item, itemTemplate);
         } catch (err) {
-          console.log(`Failed to save RSS item '${item.title}' in feed '${feedConfig.source.name}'; error: ${err.message}`);
+          console.error(`Failed to save RSS item '${item.title}' in feed '${feedConfig.source.name}'; error: ${err.message}`);
           new import_obsidian.Notice(`Could not save '${item.fileName}' in feed '${feedConfig.source.name}' failed: ${err.message}`);
         }
       }
@@ -15224,7 +15224,7 @@ var _FeedManager = class {
           notice.setMessage(`${n}/${promises.length} RSS feeds updated`);
         }
       } catch (ex) {
-        console.log(`Feed update failed: ${ex.message}`);
+        console.error(`Feed update failed: ${ex.message}`);
       }
     }
     console.log(`Update of ${n}/${promises.length} feeds complete.`);
