@@ -489,7 +489,7 @@ export class FeedManager {
             .filter(cfg => cfg)
             .map(cfg => this.updateFeed(cfg, force));
         let n: number = 0;
-        const notice = new Notice(`0/${promises.length} feeds updated`,10000);
+        const notice = new Notice(`0/${promises.length} feeds updated`,0);
         for (let promise of promises) {
             try {
                 if ((await promise) >= 0) {
@@ -500,6 +500,7 @@ export class FeedManager {
                 console.error(`Feed update failed: ${ex.message}`);
             }
         }
+        notice.hide();
         console.log(`Update of ${n}/${promises.length} feeds complete.`)
         new Notice(`${n}/${promises.length} RSS feeds successfully updated`,30000);
     }

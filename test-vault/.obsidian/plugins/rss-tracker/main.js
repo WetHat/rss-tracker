@@ -15216,7 +15216,7 @@ var _FeedManager = class {
     }
     const promises = feeds.children.filter((child) => child instanceof import_obsidian.TFile).map((md) => FeedConfig.fromFile(this.app, md)).filter((cfg) => cfg).map((cfg) => this.updateFeed(cfg, force));
     let n = 0;
-    const notice = new import_obsidian.Notice(`0/${promises.length} feeds updated`, 1e4);
+    const notice = new import_obsidian.Notice(`0/${promises.length} feeds updated`, 0);
     for (let promise of promises) {
       try {
         if (await promise >= 0) {
@@ -15227,6 +15227,7 @@ var _FeedManager = class {
         console.error(`Feed update failed: ${ex.message}`);
       }
     }
+    notice.hide();
     console.log(`Update of ${n}/${promises.length} feeds complete.`);
     new import_obsidian.Notice(`${n}/${promises.length} RSS feeds successfully updated`, 3e4);
   }
