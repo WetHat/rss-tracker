@@ -15009,9 +15009,7 @@ var _FeedManager = class {
       "{{feedFileName}}": itemFolder.name,
       "{{fileName}}": basename
     });
-    return this.app.vault.create(itemPath, itemContent).catch((reason) => {
-      throw new Error(reason.message + ` for ${basename}`);
-    });
+    return this.app.vault.create(itemPath, itemContent);
   }
   async updateFeedItems(feedConfig, feed) {
     const { itemLimit, source } = feedConfig;
@@ -15044,7 +15042,11 @@ var _FeedManager = class {
     const deleteCount = Math.min(items.length + newItems.length - itemLimit, items.length);
     for (let index = 0; index < deleteCount; index++) {
       const item = items[index];
-      await this.app.vault.delete(item.item);
+      try {
+        await this.app.vault.delete(item.item);
+      } catch (err) {
+        console.log(`Failed to delete '${item.item.basename}': ${err.message}`);
+      }
     }
     if (newItems.length > 0) {
       const itemTemplate = await this.plugin.settings.readTemplate("RSS Item");
@@ -15053,8 +15055,8 @@ var _FeedManager = class {
         try {
           await this.saveFeedItem(itemFolder, item, itemTemplate);
         } catch (err) {
-          console.log(`Could not save RSS item '${item.title}' of feed '${feedConfig.source.name}'; error: ${err.message}`);
-          new import_obsidian.Notice(`Update of item '${item.fileName}' in feed '${feedConfig.source.name}' failed: ${err.message}`);
+          console.log(`Failed to save RSS item '${item.title}' in feed '${feedConfig.source.name}'; error: ${err.message}`);
+          new import_obsidian.Notice(`Could not save '${item.fileName}' in feed '${feedConfig.source.name}' failed: ${err.message}`);
         }
       }
     }
@@ -15157,26 +15159,25 @@ var _FeedManager = class {
    */
   async updateFeed(feedConfig, force) {
     if (!feedConfig) {
-      return false;
+      return -1;
     }
     if (!force) {
       const meta = this.app.metadataCache.getFileCache(feedConfig.source), fm = meta == null ? void 0 : meta.frontmatter;
       if ((fm == null ? void 0 : fm.updated) && (fm == null ? void 0 : fm.interval)) {
         const now = new Date().valueOf(), lastUpdate = new Date(fm.updated).valueOf(), span = parseInt(fm.interval) * 60 * 60 * 1e3;
         if (lastUpdate + span > now) {
-          return false;
+          return 0;
         }
       }
     }
-    let interval = 1;
-    let status = "OK";
+    let interval = 1, status = "OK", promise;
     try {
       const feedXML = await (0, import_obsidian.request)({
         url: feedConfig.feedUrl,
         method: "GET"
       }), feed = new TrackedRSSfeed(feedXML, feedConfig.feedUrl);
       interval = feed.avgPostInterval;
-      this.updateFeedItems(feedConfig, feed);
+      promise = this.updateFeedItems(feedConfig, feed);
     } catch (err) {
       status = err.message;
     }
@@ -15185,7 +15186,8 @@ var _FeedManager = class {
       fm.updated = new Date().toISOString();
       fm.interval = interval;
     });
-    return true;
+    console.log(`Feed ${feedConfig.source.name} update status: ${status}`);
+    return promise != null ? promise : -1;
   }
   async markFeedItemsRead(feed) {
     var _a2, _b;
@@ -15214,18 +15216,19 @@ var _FeedManager = class {
     }
     const promises = feeds.children.filter((child) => child instanceof import_obsidian.TFile).map((md) => FeedConfig.fromFile(this.app, md)).filter((cfg) => cfg).map((cfg) => this.updateFeed(cfg, force));
     let n = 0;
+    const notice = new import_obsidian.Notice(`0/${promises.length} feeds updated`, 1e4);
     for (let promise of promises) {
       try {
-        if (await promise) {
+        if (await promise >= 0) {
           n++;
+          notice.setMessage(`${n}/${promises.length} RSS feeds updated`);
         }
       } catch (ex) {
-        new import_obsidian.Notice(`Feed update failed: ${ex.message}`);
+        console.log(`Feed update failed: ${ex.message}`);
       }
     }
-    if (n > 0) {
-      new import_obsidian.Notice(`${n} RSS feeds updated`);
-    }
+    console.log(`Update of ${n}/${promises.length} feeds complete.`);
+    new import_obsidian.Notice(`${n}/${promises.length} RSS feeds successfully updated`, 3e4);
   }
   canDownloadArticle(item) {
     var _a2;

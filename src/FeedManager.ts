@@ -221,7 +221,7 @@ export class FeedManager {
             "{{fileName}}": basename,
         });
 
-        return this.app.vault.create(itemPath, itemContent).catch(reason => { throw new Error(reason.message + ` for ${basename}`) });
+        return this.app.vault.create(itemPath, itemContent);
     }
 
     private async updateFeedItems(feedConfig: FeedConfig, feed: TrackedRSSfeed): Promise<number> {
@@ -268,7 +268,11 @@ export class FeedManager {
         // remove feed obsolete items from disk
         for (let index = 0; index < deleteCount; index++) {
             const item = items[index];
-            await this.app.vault.delete(item.item);
+            try {
+                await this.app.vault.delete(item.item);
+            } catch (err: any) {
+                console.log(`Failed to delete '${item.item.basename}': ${err.message}`);
+            }
         }
 
         // save items
@@ -280,8 +284,8 @@ export class FeedManager {
                 try {
                     await this.saveFeedItem(itemFolder, item, itemTemplate);
                 } catch (err: any) {
-                    console.log(`Could not save RSS item '${item.title}' of feed '${feedConfig.source.name}'; error: ${err.message}`);
-                    new Notice(`Update of item '${item.fileName}' in feed '${feedConfig.source.name}' failed: ${err.message}`);
+                    console.log(`Failed to save RSS item '${item.title}' in feed '${feedConfig.source.name}'; error: ${err.message}`);
+                    new Notice(`Could not save '${item.fileName}' in feed '${feedConfig.source.name}' failed: ${err.message}`);
                 }
             }
         }
@@ -399,9 +403,9 @@ export class FeedManager {
     /**
      *
      */
-    async updateFeed(feedConfig: FeedConfig | null, force: boolean): Promise<boolean> {
+    async updateFeed(feedConfig: FeedConfig | null, force: boolean): Promise<number> {
         if (!feedConfig) {
-            return false;
+            return -1;
         }
 
         if (!force) {
@@ -413,23 +417,25 @@ export class FeedManager {
                     lastUpdate = new Date(fm.updated).valueOf(),
                     span = parseInt(fm.interval) * 60 * 60 * 1000;
                 if ((lastUpdate + span) > now) {
-                    return false; // time has not come
+                    return 0; // time has not come
                 }
             }
         }
 
-        let interval = 1; // default 1h
-        let status = "OK";
+        let
+            interval = 1, // default 1h
+            status = "OK",
+            promise;
         try {
-            const feedXML = await request({
-                url: feedConfig.feedUrl,
-                method: "GET"
-            }),
+            const
+                feedXML = await request({
+                    url: feedConfig.feedUrl,
+                    method: "GET"
+                }),
                 feed = new TrackedRSSfeed(feedXML, feedConfig.feedUrl);
             // compute the new update interval in hours
             interval = feed.avgPostInterval;
-            this.updateFeedItems(feedConfig, feed);
-
+            promise = this.updateFeedItems(feedConfig, feed);
         } catch (err: any) {
             status = err.message;
         }
@@ -439,7 +445,9 @@ export class FeedManager {
             fm.updated = new Date().toISOString();
             fm.interval = interval
         });
-        return true;
+
+        console.log(`Feed ${feedConfig.source.name} update status: ${status}`);
+        return promise ?? -1;
     }
 
     async markFeedItemsRead(feed: TFile) {
@@ -475,24 +483,25 @@ export class FeedManager {
             return;
         }
 
-        const promises: Promise<boolean>[] = feeds.children
+        const promises: Promise<number>[] = feeds.children
             .filter(child => child instanceof TFile)
             .map(md => FeedConfig.fromFile(this.app, md as TFile))
             .filter(cfg => cfg)
             .map(cfg => this.updateFeed(cfg, force));
         let n: number = 0;
+        const notice = new Notice(`0/${promises.length} feeds updated`,10000);
         for (let promise of promises) {
             try {
-                if (await promise) {
+                if ((await promise) >= 0) {
                     n++;
+                    notice.setMessage(`${n}/${promises.length} RSS feeds updated`);
                 }
             } catch (ex: any) {
-                new Notice(`Feed update failed: ${ex.message}`);
+                console.log(`Feed update failed: ${ex.message}`);
             }
         }
-        if (n > 0) {
-            new Notice(`${n} RSS feeds updated`);
-        }
+        console.log(`Update of ${n}/${promises.length} feeds complete.`)
+        new Notice(`${n}/${promises.length} RSS feeds successfully updated`,30000);
     }
 
     canDownloadArticle(item: TFile): boolean {
