@@ -15009,7 +15009,7 @@ var _FeedManager = class {
       "{{feedFileName}}": itemFolder.name,
       "{{fileName}}": basename
     });
-    return this.app.vault.create(itemPath, itemContent);
+    return await this.app.vault.create(itemPath, itemContent);
   }
   async updateFeedItems(feedConfig, feed) {
     const { itemLimit, source } = feedConfig;
@@ -15037,30 +15037,31 @@ var _FeedManager = class {
     const knownIDs = new Set(items.map((it) => {
       var _a2;
       return (_a2 = it.id) != null ? _a2 : "?";
-    })), newItems = feed.items.slice(0, itemLimit).filter((it) => !knownIDs.has(it.id));
+    })), newItems = feed.items.filter((it) => !knownIDs.has(it.id));
     items = items.filter((it) => !it.pinned);
     const deleteCount = Math.min(items.length + newItems.length - itemLimit, items.length);
     for (let index = 0; index < deleteCount; index++) {
       const item = items[index];
       try {
-        await this.app.vault.delete(item.item);
+        await this.app.vault.trash(item.item, true);
       } catch (err) {
         console.error(`Failed to delete '${item.item.basename}': ${err.message}`);
       }
     }
     if (newItems.length > 0) {
-      const itemTemplate = await this.plugin.settings.readTemplate("RSS Item");
-      for (let index = 0; index < newItems.length; index++) {
+      const itemTemplate = await this.plugin.settings.readTemplate("RSS Item"), newItemCount = Math.min(itemLimit, newItems.length);
+      for (let index = 0; index < newItemCount; index++) {
         const item = newItems[index];
         try {
           await this.saveFeedItem(itemFolder, item, itemTemplate);
         } catch (err) {
           console.error(`Failed to save RSS item '${item.title}' in feed '${feedConfig.source.name}'; error: ${err.message}`);
-          new import_obsidian.Notice(`Could not save '${item.fileName}' in feed '${feedConfig.source.name}' failed: ${err.message}`);
+          new import_obsidian.Notice(`Could not save '${item.fileName}' in feed '${feedConfig.source.name}': ${err.message}`);
         }
       }
+      return newItemCount;
     }
-    return newItems.length;
+    return 0;
   }
   /**
    * Create an RSS feed Markdown representaiton from a local XML file.

@@ -172,7 +172,7 @@ export class FeedManager {
             uniqueBasename = basename,
             filepath = folderPath + "/" + basename + ".md",
             index = 1;
-        while (vault.getFileByPath(filepath)) {
+        while (vault.getAbstractFileByPath(filepath)) {
             uniqueBasename = `${basename} (${index})`;
             filepath = folderPath + "/" + uniqueBasename + ".md";
             index++;
@@ -221,7 +221,7 @@ export class FeedManager {
             "{{fileName}}": basename,
         });
 
-        return this.app.vault.create(itemPath, itemContent);
+        return await this.app.vault.create(itemPath, itemContent);
     }
 
     private async updateFeedItems(feedConfig: FeedConfig, feed: TrackedRSSfeed): Promise<number> {
@@ -256,11 +256,10 @@ export class FeedManager {
 
         // find new items
         const
-            knownIDs = new Set<string>(items.map(it => it.id ?? "?")),
+            knownIDs = new Set<string>(items.map(it => it.id ?? "?")), // includes pinned items
             newItems = feed.items
-                .slice(0, itemLimit) // do not exceed limit
-                .filter(it => !knownIDs.has(it.id)); // assuming newest items first
-        // remove pinned items so that they do not count against the item limit
+                .filter(it => !knownIDs.has(it.id)); // new items only
+        // now remove pinned items so that they do not count against the item limit
         items = items.filter(it => !it.pinned);
         // determine how many items needs to be purged
         const deleteCount = Math.min(items.length + newItems.length - itemLimit, items.length);
@@ -269,7 +268,7 @@ export class FeedManager {
         for (let index = 0; index < deleteCount; index++) {
             const item = items[index];
             try {
-                await this.app.vault.delete(item.item);
+                await this.app.vault.trash(item.item,true);
             } catch (err: any) {
                 console.error(`Failed to delete '${item.item.basename}': ${err.message}`);
             }
@@ -277,19 +276,22 @@ export class FeedManager {
 
         // save items
         if (newItems.length > 0) {
-            const itemTemplate: string = await this.plugin.settings.readTemplate("RSS Item");
+            const
+                itemTemplate: string = await this.plugin.settings.readTemplate("RSS Item"),
+                newItemCount = Math.min(itemLimit,newItems.length); // do not exceed limit
 
-            for (let index = 0; index < newItems.length; index++) {
+            for (let index = 0; index < newItemCount; index++) {
                 const item = newItems[index];
                 try {
                     await this.saveFeedItem(itemFolder, item, itemTemplate);
                 } catch (err: any) {
                     console.error(`Failed to save RSS item '${item.title}' in feed '${feedConfig.source.name}'; error: ${err.message}`);
-                    new Notice(`Could not save '${item.fileName}' in feed '${feedConfig.source.name}' failed: ${err.message}`);
+                    new Notice(`Could not save '${item.fileName}' in feed '${feedConfig.source.name}': ${err.message}`);
                 }
             }
+            return newItemCount;
         }
-        return newItems.length;
+        return 0;
     }
 
     /**
