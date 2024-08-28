@@ -163,27 +163,12 @@ export class NewRSSTopicCommand extends RSSTrackerCommandBase {
     }
 
     callback(): any {
-        const
-            settings = this.plugin.settings,
-            folderPath = this.plugin.settings.rssTopicsFolderPath,
-            collectionName = this.plugin.feedmgr.uniqueBasename(folderPath, "New Topic"),
-            collectionPath = folderPath + "/" + collectionName + ".md";
-
-            settings.readTemplate("RSS Topic")
-                .then(async content => {
-                    const collection = await this.app.vault.create(collectionPath,content);
-                    if (collection) {
-                        const leaf = this.app.workspace.getLeaf(false);
-                        try {
-                            await leaf.openFile(collection);
-                        } catch (err: any) {
-                            new Notice(err.message);
-                        }
-                    }
-                    else {
-                        new Notice("RSS topic could not be created!");
-                    }
-                });
+        this.plugin.filemgr.createFile(this.plugin.settings.rssTopicsFolderPath,"New Topic","RSS Topic")
+            .then(topic => {
+                const leaf = this.app.workspace.getLeaf(false);
+                leaf.openFile(topic).catch(reason => new Notice(reason.message))
+            })
+            .catch (reason => new Notice(`RSS topic could not be created! ${reason.message}`));
     }
 }
 
@@ -193,32 +178,17 @@ export class NewRSSFeedCollectionCommand extends RSSTrackerCommandBase {
     }
 
     callback(): any {
-        const
-            settings = this.plugin.settings,
-            folderPath = this.plugin.settings.rssCollectionsFolderPath,
-            collectionName = this.plugin.feedmgr.uniqueBasename(folderPath, "New Feed Collection"),
-            collectionPath = folderPath + "/" + collectionName + ".md";
-
-            settings.readTemplate("RSS Collection")
-                .then(async content => {
-                    const collection = await this.app.vault.create(collectionPath,content);
-                    if (collection) {
-                        const leaf = this.app.workspace.getLeaf(false);
-                        try {
-                            await leaf.openFile(collection);
-                        } catch (err: any) {
-                            new Notice(err.message);
-                        }
-                    }
-                    else {
-                        new Notice("RSS feed collection could not be created!");
-                    }
-                });
+        this.plugin.filemgr.createFile(this.plugin.settings.rssCollectionsFolderPath,"New Feed Collection", "RSS Collection")
+            .then (collection => {
+                const leaf = this.app.workspace.getLeaf(false);
+                leaf.openFile(collection).catch(reason => new Notice(reason.message))
+            })
+            .catch (reason => new Notice(`RSS feed collection could not be created! ${reason.message}`));
     }
 }
 
 /**
- * A complex command that can check whether the current state of the app allows execution of the command.
+ * A complex command that checks whether the current state of the app allows execution of the command.
  */
 export class NewRSSFeedModalCommand extends RSSTrackerCommandBase{
     constructor(plugin: RSSTrackerPlugin) {

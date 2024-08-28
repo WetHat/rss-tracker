@@ -6,30 +6,45 @@ import { UpdateRSSfeedMenuItem, MarkAllItemsReadMenuItem, DownloadArticleContent
 import { DataViewJSTools } from './DataViewJSTools';
 import { TPropertyBag } from './FeedAssembler';
 import { RSSTrackerSettingTab } from './settingsUI';
+import { RSSfileManager } from './RSSFileManager';
 
 export default class RSSTrackerPlugin extends Plugin {
-    settings: RSSTrackerSettings;
-    feedmgr: FeedManager;
+    private _settings: RSSTrackerSettings;
+    private _feedmgr: FeedManager;
+    private _filemgr: RSSfileManager;
+
+    get settings() : RSSTrackerSettings {
+        return this._settings;
+    }
+
+    get feedmgr() : FeedManager{
+        return this._feedmgr;
+    }
+
+    get filemgr() : RSSfileManager {
+        return this._filemgr;
+    }
 
     constructor(app: App, manifest: PluginManifest) {
         super(app, manifest);
-        this.feedmgr = new FeedManager(app, this);
-        this.settings = new RSSTrackerSettings(app,this);
+        this._filemgr = new RSSfileManager(app,this);
+        this._feedmgr = new FeedManager(app, this);
+        this._settings = new RSSTrackerSettings(app,this);
     }
 
     getDVJSTools(dv: TPropertyBag) {
-        return new DataViewJSTools(dv,this.settings);
+        return new DataViewJSTools(dv,this._settings);
     }
 
     async onload() {
         console.log('Loading rss-tracker.');
 
-        await this.settings.loadData();
+        await this._settings.loadData();
 
         // This creates an icon in the left ribbon.
         const ribbonIconEl = this.addRibbonIcon('rss', 'Update all RSS Feeds', (evt: MouseEvent) => {
             // Called when the user clicks the icon.
-            this.feedmgr.updateAllRSSfeeds(true);
+            this._feedmgr.updateAllRSSfeeds(true);
         });
 
         // Perform additional things with the ribbon
@@ -48,7 +63,7 @@ export default class RSSTrackerPlugin extends Plugin {
         this.addCommand(new DownloadRSSitemArticleCommand(this));
         this.addCommand(new NewRSSTopicCommand(this));
         // This adds a settings tab so the user can configure various aspects of the plugin
-        this.addSettingTab(new RSSTrackerSettingTab(this.settings));
+        this.addSettingTab(new RSSTrackerSettingTab(this._settings));
 
         // If the plugin hooks up any global DOM events (on parts of the app that doesn't belong to this plugin)
         // Using this function will automatically remove the event listener when this plugin is disabled.
@@ -76,16 +91,16 @@ export default class RSSTrackerPlugin extends Plugin {
             const xmlFile = this.app.vault.getFileByPath(xml),
                 feedDir = this.app.vault.getFolderByPath(dir);
             if (xmlFile && feedDir) {
-                const dashboard = await this.feedmgr.createFeedFromFile(xmlFile, feedDir);
+                const dashboard = await this._feedmgr.createFeedFromFile(xmlFile, feedDir);
                 new Notice(`New RSS Feed "${dashboard.basename}" created`);
             }
         });
 
         // When registering intervals, this function will automatically clear the interval when the plugin is disabled.
         this.registerInterval(window.setInterval(() => {
-            if (this.settings.autoUpdateFeeds) {
+            if (this._settings.autoUpdateFeeds) {
                 try {
-                    this.feedmgr.updateAllRSSfeeds(false);
+                    this._feedmgr.updateAllRSSfeeds(false);
                     console.log("RSS Feed background update complete.")
                 } catch (ex: any) {
                     console.log(`Background update failed: ${ex.message}`)
@@ -96,6 +111,6 @@ export default class RSSTrackerPlugin extends Plugin {
 
     onunload() {
         console.log('Unloading rss-tracker.');
-        this.settings.saveData();
+        this._settings.saveData();
     }
 }

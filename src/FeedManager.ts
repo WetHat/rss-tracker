@@ -3,6 +3,9 @@ import RSSTrackerPlugin from './main';
 import { TrackedRSSfeed, TrackedRSSitem, IRssMedium, TPropertyBag } from './FeedAssembler';
 import * as path from 'path';
 import { extractFromHtml, ArticleData, Transformation, addTransformations } from '@extractus/article-extractor'
+import { RSSfileManager } from './RSSFileManager';
+
+
 /**
  * RSS feed configuration data.
  */
@@ -13,7 +16,7 @@ export class FeedConfig {
 
     /**
      * Factory method to parse the feed configuration from a
-     * RSS feed dashboard (AMrkdown file).
+     * RSS feed dashboard (Markdown file).
      * @param app - The Obsidian application object
      * @param file - Dashboard file
      * @returns The RSS feed configuration. `null` if the
@@ -64,17 +67,19 @@ interface IAnnotatedItem {
  * - Setting all items on a feed as _read_. see {@link markFeedItemsRead}
  */
 export class FeedManager {
-    private static readonly TOKEN_SPLITTER = /(?<={{[^{}]+}})|(?={{[^{}]+}})/g;
     private static readonly HASH_FINDER = /(?<!\]\([^\s]*|\[\[[^\s]*|[\w&/#$])#(?![\da-fA-F]+\b|\W)/gu;
-    private static ITEMLIMIT_FINDER = /(?<=itemlimit:\s*)\d+/;
     private static VALIDATTR = /^[a-zA-Z_-]*$/; // match valid attribute names
     private static RSS_IMAGE_SVG = '<svg height="300px" width="300px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 398.668 398.668" xml:space="preserve"> <g> <g> <path style="fill:none;" d="M98.107,275.498c-13.789,0-25.006,11.264-25.006,25.107c0,13.777,11.217,24.986,25.006,24.986 c13.834,0,25.09-11.209,25.09-24.986C123.197,286.762,111.941,275.498,98.107,275.498z"/> <path style="fill:none;" d="M360.057,24H38.613C30.555,24,24,30.557,24,38.613v321.443c0,8.057,6.555,14.611,14.613,14.611 h321.443c8.057,0,14.611-6.555,14.611-14.611V38.613C374.668,30.557,368.113,24,360.057,24z M98.107,349.592 c-27.021,0-49.006-21.975-49.006-48.986c0-27.078,21.984-49.107,49.006-49.107c27.068,0,49.09,22.029,49.09,49.107 C147.197,327.617,125.176,349.592,98.107,349.592z M242.715,347.516c0,0-0.008,0.002-0.016,0h-48.729 c-6.541,0-11.877-5.238-11.998-11.777c-0.584-31.625-13.164-61.316-35.424-83.604c-22.275-22.338-51.846-34.953-83.27-35.527 c-6.541-0.119-11.781-5.457-11.781-11.998v-48.582c0-3.211,1.287-6.287,3.572-8.543c2.248-2.217,5.275-3.457,8.428-3.457 c0.055,0,0.107,0,0.162,0c50.654,0.686,98.338,20.883,134.271,56.873c35.758,35.814,55.896,83.281,56.756,133.732 c0.021,0.291,0.031,0.586,0.031,0.883C254.719,342.143,249.348,347.516,242.715,347.516z M337.582,347.516 c0,0-0.008,0.002-0.016,0h-48.648c-6.578,0-11.93-5.295-12-11.871c-1.254-116.738-97.008-212.74-213.451-214.002 c-6.576-0.072-11.871-5.424-11.871-12V61.078c0-3.201,1.279-6.269,3.553-8.521c2.273-2.254,5.367-3.512,8.555-3.477 c75.951,0.68,147.441,30.768,201.303,84.723c53.689,53.779,83.699,125.096,84.553,200.891c0.02,0.272,0.029,0.547,0.029,0.822 C349.588,342.143,344.215,347.516,337.582,347.516z"/> <path style="fill:#3D6889;" d="M98.107,251.498c-27.021,0-49.006,22.029-49.006,49.107c0,27.012,21.984,48.986,49.006,48.986 c27.068,0,49.09-21.975,49.09-48.986C147.197,273.527,125.176,251.498,98.107,251.498z M98.107,325.592 c-13.789,0-25.006-11.209-25.006-24.986c0-13.844,11.217-25.107,25.006-25.107c13.834,0,25.09,11.264,25.09,25.107 C123.197,314.383,111.941,325.592,98.107,325.592z"/> <path style="fill:#73D0F4;" d="M75.498,168.633v24.668c33.244,3.301,64.15,17.926,88.037,41.881 c23.879,23.906,38.459,54.922,41.746,88.334h24.816C223.066,241.893,156.986,175.689,75.498,168.633z"/> <path style="fill:#3D6889;" d="M197.932,200.9c-35.934-35.99-83.617-56.188-134.271-56.873c-0.055,0-0.107,0-0.162,0 c-3.152,0-6.18,1.24-8.428,3.457c-2.285,2.256-3.572,5.332-3.572,8.543v48.582c0,6.541,5.24,11.879,11.781,11.998 c31.424,0.574,60.994,13.189,83.27,35.527c22.26,22.287,34.84,51.979,35.424,83.604c0.121,6.539,5.457,11.777,11.998,11.777 h48.729c0.008,0.002,0.016,0,0.016,0c6.633,0,12.004-5.373,12.004-12c0-0.297-0.01-0.592-0.031-0.883 C253.828,284.182,233.689,236.715,197.932,200.9z M205.281,323.516c-3.287-33.412-17.867-64.428-41.746-88.334 c-23.887-23.955-54.793-38.58-88.037-41.881v-24.668c81.488,7.057,147.568,73.26,154.6,154.883H205.281z"/> <path style="fill:#73D0F4;" d="M75.596,73.465v24.598c58.516,3.502,113.188,28.121,155.029,70.064 c41.838,41.943,66.391,96.742,69.877,155.389h24.682C317.852,189.59,209.293,80.834,75.596,73.465z"/> <path style="fill:#3D6889;" d="M265.006,133.803C211.145,79.848,139.654,49.76,63.703,49.08c-3.188-0.035-6.281,1.223-8.555,3.477 c-2.273,2.252-3.553,5.32-3.553,8.521v48.565c0,6.576,5.295,11.928,11.871,12c116.443,1.262,212.197,97.264,213.451,214.002 c0.07,6.576,5.422,11.871,12,11.871h48.648c0.008,0.002,0.016,0,0.016,0c6.633,0,12.006-5.373,12.006-12 c0-0.275-0.01-0.551-0.029-0.822C348.705,258.898,318.695,187.582,265.006,133.803z M300.502,323.516 c-3.486-58.646-28.039-113.445-69.877-155.389c-41.842-41.943-96.514-66.563-155.029-70.064V73.465 c133.697,7.369,242.256,116.125,249.588,250.051H300.502z"/> <path style="fill:#3D6889;" d="M360.057,0H38.613C17.322,0,0,17.322,0,38.613v321.443c0,21.291,17.322,38.611,38.613,38.611 h321.443c21.291,0,38.611-17.32,38.611-38.611V38.613C398.668,17.322,381.348,0,360.057,0z M374.668,360.057 c0,8.057-6.555,14.611-14.611,14.611H38.613c-8.059,0-14.613-6.555-14.613-14.611V38.613C24,30.557,30.555,24,38.613,24h321.443 c8.057,0,14.611,6.557,14.611,14.613V360.057z"/> </g> </g> </svg>';
-    private app: App;
-    private plugin: RSSTrackerPlugin;
+
+    private _app: App;
+    private _plugin: RSSTrackerPlugin;
+    private get _filemgr(): RSSfileManager {
+        return this._plugin.filemgr;
+    }
 
     constructor(app: App, plugin: RSSTrackerPlugin) {
-        this.app = app;
-        this.plugin = plugin;
+        this._app = app;
+        this._plugin = plugin;
 
         // configure the article extractor to make the returned content
         // more Obsidian friendly
@@ -131,15 +136,6 @@ export class FeedManager {
         return normalizePath(path.join(feed.parent?.path ?? "", feed.basename));
     }
 
-    /**
-     * Expand `{{mustache}}` placeholders with data from a property bag.
-     * @param template - A template string with `{{mustache}}` placeholders.
-     * @param properties - A property bag replacing `{{mustache}}` placeholdes with data.
-     * @returns template with `{{mustache}}` placeholders substituted.
-     */
-    private expandTemplate(template: string, properties: TPropertyBag): string {
-        return template.split(FeedManager.TOKEN_SPLITTER).map(s => s.startsWith("{{") ? (properties[s] ?? s) : s).join("");
-    }
 
     private formatImage(image: IRssMedium): string {
         const { src, width, height } = image as IRssMedium;
@@ -160,27 +156,7 @@ export class FeedManager {
         return md.replace(FeedManager.HASH_FINDER, "#rss/");
     }
 
-    /**
-     * Generate a unique file basename by appending a numeric postfile if necessary.
-     *
-     * @param folderPath - An Obsidian folder path providing the context
-     * @param basename filename without extension
-     */
-    uniqueBasename(folderPath: string, basename: string): string {
-        const vault = this.app.vault;
-        let
-            uniqueBasename = basename,
-            filepath = folderPath + "/" + basename + ".md",
-            index = 1;
-        while (vault.getAbstractFileByPath(filepath)) {
-            uniqueBasename = `${basename} (${index})`;
-            filepath = folderPath + "/" + uniqueBasename + ".md";
-            index++;
-        }
-        return uniqueBasename;
-    }
-
-    private async saveFeedItem(itemFolder: TFolder, item: TrackedRSSitem, itemTemplate: string): Promise<TFile> {
+    private saveFeedItem(itemFolder: TFolder, item: TrackedRSSitem): Promise<TFile> {
         let { id, tags, title, link, description, published, author, image, content } = item;
 
         if (description) {
@@ -205,11 +181,8 @@ export class FeedManager {
         if (!content && description && description.length > 500) {
             content = description
         }
-        const basename = this.uniqueBasename(itemFolder.path, item.fileName);
-        let itemPath = itemFolder.path + "/" + basename + ".md";
-
         // fill in the template
-        const itemContent = this.expandTemplate(itemTemplate, {
+        const dataMap = {
             "{{id}}": id,
             "{{author}}": author ?? itemFolder.name,
             "{{link}}": link ?? "",
@@ -218,10 +191,9 @@ export class FeedManager {
             "{{abstract}}": abstract,
             "{{content}}": content ?? "",
             "{{feedFileName}}": itemFolder.name,
-            "{{fileName}}": basename,
-        });
+        };
 
-        return await this.app.vault.create(itemPath, itemContent);
+        return this._filemgr.createFile(itemFolder.path,item.fileName,"RSS Item",dataMap);
     }
 
     private async updateFeedItems(feedConfig: FeedConfig, feed: TrackedRSSfeed): Promise<number> {
@@ -229,12 +201,12 @@ export class FeedManager {
 
         // create the folder for the feed items (if needed)
         const itemFolderPath = this.getItemFolderPath(source);
-        let itemFolder = this.app.vault.getFolderByPath(itemFolderPath);
+        let itemFolder = this._app.vault.getFolderByPath(itemFolderPath);
         if (!itemFolder) {
-            itemFolder = await this.app.vault.createFolder(itemFolderPath);
+            itemFolder = await this._app.vault.createFolder(itemFolderPath);
         }
 
-        const meta = this.app.metadataCache;
+        const meta = this._app.metadataCache;
         // get all existing items from the items directory. Oldest items first.
         let items: IAnnotatedItem[] = itemFolder.children.filter((fof) => fof instanceof TFile)
             .map(x => { // annotate the file
@@ -268,7 +240,7 @@ export class FeedManager {
         for (let index = 0; index < deleteCount; index++) {
             const item = items[index];
             try {
-                await this.app.vault.trash(item.item,true);
+                await this._app.vault.trash(item.item, true);
             } catch (err: any) {
                 console.error(`Failed to delete '${item.item.basename}': ${err.message}`);
             }
@@ -276,14 +248,12 @@ export class FeedManager {
 
         // save items
         if (newItems.length > 0) {
-            const
-                itemTemplate: string = await this.plugin.settings.readTemplate("RSS Item"),
-                newItemCount = Math.min(itemLimit,newItems.length); // do not exceed limit
+            const newItemCount = Math.min(itemLimit, newItems.length); // do not exceed limit
 
             for (let index = 0; index < newItemCount; index++) {
                 const item = newItems[index];
                 try {
-                    await this.saveFeedItem(itemFolder, item, itemTemplate);
+                    await this.saveFeedItem(itemFolder, item);
                 } catch (err: any) {
                     console.error(`Failed to save RSS item '${item.title}' in feed '${feedConfig.source.name}'; error: ${err.message}`);
                     new Notice(`Could not save '${item.fileName}' in feed '${feedConfig.source.name}': ${err.message}`);
@@ -319,7 +289,7 @@ export class FeedManager {
      * @returns The dashboard Markdown file.
      */
     async createFeedFromFile(xml: TFile, location: TFolder): Promise<TFile> {
-        const feedXML = await this.app.vault.read(xml);
+        const feedXML = await this._app.vault.read(xml);
         return this.createFeed(new TrackedRSSfeed(feedXML, "https://localhost/" + xml.path), location);
     }
 
@@ -357,32 +327,28 @@ export class FeedManager {
     private async createFeed(feed: TrackedRSSfeed, location: TFolder): Promise<TFile> {
         const
             { title, site, description } = feed,
-            basename = this.uniqueBasename(location.path, feed.fileName),
-            tpl = await this.plugin.settings.readTemplate("RSS Feed"),
-            dashboardPath = normalizePath(location.path + "/" + basename + ".md"),
-            defaultImage = basename + ".svg";
-        let image: IRssMedium | string | undefined = feed.image;
-        const content = this.expandTemplate(tpl, {
+            defaultImage = "defaultFeedImage.svg",
+            image: IRssMedium | string | undefined = feed.image;
+        const dataMap = {
             "{{feedUrl}}": feed.source,
             "{{siteUrl}}": site ?? "",
             "{{title}}": htmlToMarkdown(title ?? ""),
             "{{description}}": description ? this.formatHashTags(htmlToMarkdown(description)) : "",
-            "{{fileName}}": basename,
             "{{image}}": image ? this.formatImage(image) : `![[${defaultImage}|200x200]]`
-        });
+        };
 
         // create the feed dashboard file
         const
-            dashboard = await this.app.vault.create(dashboardPath, content),
-            itemlimit = tpl.match(FeedManager.ITEMLIMIT_FINDER)?.[0],
+            dashboard = await this._filemgr.createFile(location.path,feed.fileName,"RSS Feed",dataMap),
+            itemlimit = this._app.metadataCache.getFileCache(dashboard)?.frontmatter?.itemlimit,
             cfg = new FeedConfig(feed.source ?? "", itemlimit ?? "100", dashboard);
 
         if (dashboard && cfg) {
             // suppy a default image if needed
             if (!image) {
                 // to find the location of the default image we need to wait until the dasboard exists
-                const imagePath = await this.app.fileManager.getAvailablePathForAttachment(defaultImage, dashboardPath);
-                await this.app.vault.create(imagePath, FeedManager.RSS_IMAGE_SVG);
+                const imagePath = await this._app.fileManager.getAvailablePathForAttachment(defaultImage, dashboard.path);
+                await this._app.vault.create(imagePath, FeedManager.RSS_IMAGE_SVG);
             }
             let status: string;
             try {
@@ -393,7 +359,8 @@ export class FeedManager {
                 status = err.message;
             }
 
-            this.app.fileManager.processFrontMatter(dashboard, frontmatter => {
+            let itemLimit;
+            this._app.fileManager.processFrontMatter(dashboard, frontmatter => {
                 frontmatter.status = status;
                 frontmatter.updated = new Date().toISOString();
                 frontmatter.interval = feed.avgPostInterval;
@@ -412,7 +379,7 @@ export class FeedManager {
 
         if (!force) {
             // check if it time to update
-            const meta = this.app.metadataCache.getFileCache(feedConfig.source),
+            const meta = this._app.metadataCache.getFileCache(feedConfig.source),
                 fm = meta?.frontmatter;
             if (fm?.updated && fm?.interval) {
                 const now = new Date().valueOf(),
@@ -442,7 +409,7 @@ export class FeedManager {
             status = err.message;
         }
 
-        this.app.fileManager.processFrontMatter(feedConfig.source, fm => {
+        this._app.fileManager.processFrontMatter(feedConfig.source, fm => {
             fm.status = status;
             fm.updated = new Date().toISOString();
             fm.interval = interval
@@ -453,9 +420,9 @@ export class FeedManager {
     }
 
     async markFeedItemsRead(feed: TFile) {
-        const itemFolder: TFolder | null = this.app.vault.getFolderByPath(this.getItemFolderPath(feed));
+        const itemFolder: TFolder | null = this._app.vault.getFolderByPath(this.getItemFolderPath(feed));
         if (itemFolder) {
-            const meta = this.app.metadataCache;
+            const meta = this._app.metadataCache;
             let items: TFile[] = itemFolder.children.filter((fof) => fof instanceof TFile)
                 .map(f => f as TFile)
                 .filter(f => {
@@ -469,29 +436,29 @@ export class FeedManager {
                     ?.filter((li: ListItemCache) => li.task === " ");
                 const first = tasks?.first();
                 if (first) {
-                    const data = await this.app.vault.read(item),
+                    const data = await this._app.vault.read(item),
                         s = first.position.start.offset,
                         e = first.position.end.offset,
                         newdata = data.substring(0, s) + "- [x]" + data.substring(s + 5);
-                    this.app.vault.modify(item, newdata);
+                    this._app.vault.modify(item, newdata);
                 }
             }
         }
     }
 
     async updateAllRSSfeeds(force: boolean) {
-        const feeds = this.app.vault.getFolderByPath(this.plugin.settings.rssFeedFolderPath);
+        const feeds = this._app.vault.getFolderByPath(this._plugin.settings.rssFeedFolderPath);
         if (!feeds) {
             return;
         }
 
         const promises: Promise<number>[] = feeds.children
             .filter(child => child instanceof TFile)
-            .map(md => FeedConfig.fromFile(this.app, md as TFile))
+            .map(md => FeedConfig.fromFile(this._app, md as TFile))
             .filter(cfg => cfg)
             .map(cfg => this.updateFeed(cfg, force));
         let n: number = 0;
-        const notice = new Notice(`0/${promises.length} feeds updated`,0);
+        const notice = new Notice(`0/${promises.length} feeds updated`, 0);
         for (let promise of promises) {
             try {
                 if ((await promise) >= 0) {
@@ -504,17 +471,17 @@ export class FeedManager {
         }
         notice.hide();
         console.log(`Update of ${n}/${promises.length} feeds complete.`)
-        new Notice(`${n}/${promises.length} RSS feeds successfully updated`,30000);
+        new Notice(`${n}/${promises.length} RSS feeds successfully updated`, 30000);
     }
 
     canDownloadArticle(item: TFile): boolean {
-        const fm: FrontMatterCache | undefined = this.app.metadataCache.getFileCache(item)?.frontmatter;
+        const fm: FrontMatterCache | undefined = this._app.metadataCache.getFileCache(item)?.frontmatter;
         return fm !== undefined && fm["role"] === "rssitem";
     }
 
     async downloadArticle(item: TFile) {
         const
-            fm: FrontMatterCache | undefined = this.app.metadataCache.getFileCache(item)?.frontmatter,
+            fm: FrontMatterCache | undefined = this._app.metadataCache.getFileCache(item)?.frontmatter,
             link: string | undefined = fm?.["link"];
         if (link) {
             // download the article
@@ -523,7 +490,7 @@ export class FeedManager {
                     url: link,
                     method: "GET"
                 }),
-                article: ArticleData | null = await extractFromHtml(itemHTML,link);
+                article: ArticleData | null = await extractFromHtml(itemHTML, link);
             if (article) {
                 const { title, content } = article;
                 let articleContent: string = "\n";
@@ -535,7 +502,7 @@ export class FeedManager {
                     articleContent += "\n\n" + htmlToMarkdown(content);
                 }
                 if (articleContent.length > 0) {
-                    return this.app.vault.append(item, articleContent);
+                    return this._app.vault.append(item, articleContent);
                 }
             }
         }
