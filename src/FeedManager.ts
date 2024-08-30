@@ -240,7 +240,7 @@ export class FeedManager {
         for (let index = 0; index < deleteCount; index++) {
             const item = items[index];
             try {
-                await this._app.vault.trash(item.item, true);
+                await this._app.vault.delete(item.item);
             } catch (err: any) {
                 console.error(`Failed to delete '${item.item.basename}': ${err.message}`);
             }
