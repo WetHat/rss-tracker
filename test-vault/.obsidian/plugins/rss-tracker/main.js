@@ -14987,7 +14987,7 @@ var _FeedManager = class {
     for (let index = 0; index < deleteCount; index++) {
       const item = items[index];
       try {
-        await this._app.vault.trash(item.item, true);
+        await this._app.vault.delete(item.item);
       } catch (err) {
         console.error(`Failed to delete '${item.item.basename}': ${err.message}`);
       }
@@ -15856,10 +15856,10 @@ var _RSSfileManager = class {
    * Create a file from an RSS template.
    *
    * If a file with the same basename already exists in the given folder location, a new unique basename
-   * is generated
+   * is generated.
    *
-   * ❗An automatic mustache token `{{fileName}}` added to the data object. This token maps to the unique
-   * basename of the generated file.
+   * ❗The mustache token `{{fileName}}` is automatically added to the data object. This token maps to the unique
+   * basename of the generated file (no file extension) and can be used to create wiki-links.
    *
    * @param folderPath THe location of the new file
    * @param basename The basename of the new file (without fie extension)

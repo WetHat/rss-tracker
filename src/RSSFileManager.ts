@@ -96,9 +96,9 @@ export class RSSfileManager {
 	 * Create a file from an RSS template.
 	 *
 	 * If a file with the same basename already exists in the given folder location, a new unique basename
-	 * is generated
+	 * is generated.
 	 *
-	 * ❗An automatic mustache token `{{fileName}}` is automatically added to the data object. This token maps to the unique
+	 * ❗The mustache token `{{fileName}}` is automatically added to the data object. This token maps to the unique
 	 * basename of the generated file (no file extension) and can be used to create wiki-links.
 	 *
 	 * @param folderPath THe location of the new file
