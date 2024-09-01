@@ -8,9 +8,9 @@ status: unknown
 tags: []
 ---
 > [!abstract] {{title}}
-> {{description}}
->
 > {{image}}
+> {{description}}
+
 # Unread Feed Items 📚
 ~~~dataview
 TASK
