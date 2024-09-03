@@ -44,7 +44,7 @@ dvjs.rssTable(
 );
 ~~~
 
-# Pinned Items  📌
+# Pinned Items  📍
 
 ~~~dataviewjs
 const

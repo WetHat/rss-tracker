@@ -9,13 +9,21 @@ type TDashboardRole = "rsscollection" | "rsstopic" | "rssdashboard";
  */
 type TRowBuilder = (rec: TPageRecord) => object[];
 
-/** Type describing a page object returned from dataviewl */
-type TPageRecord = {
+/** Type describing an object returned from dataview */
+type TRecord = {
     [key: string]: any;
-    file: any
+
 }
 
-type TPageRecordList = {
+type TPageRecord = TRecord & {
+    file: TPropertyBag
+};
+
+type TTaskRecord = TRecord & {
+    completed: boolean
+};
+
+type TRecordList = {
     /** Map indexes to values. */
     [index: number]: any;
     /** Automatic flattening of fields. Equivalent to implicitly calling `array.to("field")` */
@@ -24,6 +32,8 @@ type TPageRecordList = {
     [Symbol.iterator](): Iterator<TPageRecord>;
     file: any
 }
+type TPageRecordList = TRecordList;
+type TTaskRecordList = TRecordList;
 
 /** A lambda function type to filter a pagge list */
 type TItemPredicate = (fileRecord: TPageRecord) => boolean;
@@ -197,7 +207,7 @@ export class DataViewJSTools {
      */
     async rssFeeds(dashboard?: TPageRecord): Promise<TPageRecordList> {
         const
-            from: string = dashboard ? ("(" +  this.fromFeedsFolderFiles + ") AND " + this.fromTags(dashboard)) : this.fromFeedsFolderFiles ,
+            from: string = dashboard ? ("(" + this.fromFeedsFolderFiles + ") AND " + this.fromTags(dashboard)) : this.fromFeedsFolderFiles,
             feeds = await this.dv.pages(from);
         return feeds
             .where((f: TPageRecord) => f.role === "rssfeed")
@@ -206,18 +216,74 @@ export class DataViewJSTools {
 
     /**
      * Get RSS items matching an optional selection criterion.
-     * @param dashboard A dashboard file specifying 'tags', 'allof', and `noneof` tag list properties in its frontmatter.
+     * @param page A page specifying 'tags', 'allof', and `noneof` tag list properties in its frontmatter.
      *                  If omitted all items across all feeds are returnd.
-     * @returns List of all RSS items across all RSS feeds matching the optional selector.
+     * @returns List of all RSS items across all RSS feeds matching the optional dashboard selector.
      */
-    async rssItems(dashboard?: TPageRecord): Promise<TPageRecordList> {
+    async rssItems(page?: TPageRecord): Promise<TPageRecordList> {
         const
-            from: string = this.fromFeedsFolder + (dashboard ? (" AND " + this.fromTags(dashboard)) : ""),
+            from: string = this.fromFeedsFolder + (page ? (" AND " + this.fromTags(page)) : ""),
             pages = await this.dv.pages(from);
         return pages
             .where((rec: TPageRecord) => rec.role === "rssitem")
-            .distinct((rec: TPageRecord) => rec.link)
             .sort((rec: TPageRecord) => rec.published, "desc"); // newest first
+    }
+
+    private itemReadingTask(item: TPageRecord): TTaskRecord | null {
+        const tasks = item.file.tasks;
+        return tasks.length > 0 ? tasks[0] : null;
+    }
+
+    /**
+     * Get a list of reading tasks for the given RSS items.
+     * @param items list of RSS items to get the reading tasks for
+     * @param read `false` to return unread items; `true` to return read items. If `undefined`
+     *             all reading tasks are returned
+     * @returns reading tasks matching the given reading status
+     */
+    rssReadingTasks(items: TPageRecordList, read?: boolean): TTaskRecordList {
+        return items
+            .map((item: TPageRecord) => this.itemReadingTask(item))
+            .where((t: TTaskRecord | null) => t && (read === undefined || t.completed === read));
+    }
+
+    /**
+     * Get duplicate items which link to the same article
+     * @param item The RSS item to get publicates for
+     * @returns List of duplicates, if any.
+     */
+    async rssDuplicateItems(item: TPageRecord): Promise<TPageRecordList> {
+        const
+            link = item.link,
+            path = item.file.path,
+            pages = await this.rssItems();
+        return pages.where((rec: TPageRecord) => rec.link === link && rec.file.path !== path);
+    }
+
+    /**
+     * get a task list for items which refer to the same article.
+     * @param item RSS item to get the duplicates of
+     * @returns List of reading tasks of the duplicate items
+     */
+    async rssDuplicateItemsTasks(item: TPageRecord): Promise<TTaskRecordList> {
+        const duplicates = await this.rssDuplicateItems(item);
+        return duplicates
+            .map((rec: TPageRecord): TTaskRecord | null => {
+                const
+                    feed = rec.feed,
+                    pinned = rec.pinned ? " 📍 " : " 📌 ",
+                    task = this.itemReadingTask(rec);
+                if (task) {
+                    task.visual = this.fileLink(rec)
+                        + pinned
+                        + "**∈** "
+                        + feed;
+                } else {
+                    return null;
+                }
+                return task;
+            })
+            .where((t: TTaskRecord) => t);
     }
 
     async rssDashboards(role: TDashboardRole): Promise<TPageRecordList> {
@@ -263,7 +329,7 @@ export class DataViewJSTools {
      */
     readingList(items: TPageRecordList, read: boolean, header?: string): number {
         const
-            tasks = items.file.tasks.where((t: TPropertyBag) => t.completed === read),
+            tasks = this.rssReadingTasks(items,read),
             taskCount = tasks.length;
         if (taskCount > 0) {
             if (header) {

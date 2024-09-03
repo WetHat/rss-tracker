@@ -14,16 +14,16 @@ tags: []
 # Unread Feed Items 📚
 ~~~dataview
 TASK
-FROM [[{{fileName}}]]
+FROM [[]]
 WHERE !completed AND role = "rssitem"
 SORT published DESC
 ~~~
 
-# Pinned Feed Items 📌
+# Pinned Feed Items 📍
 ~~~dataview
 TABLE
 published as Published
-FROM [[{{fileName}}]]
+FROM [[]]
 WHERE pinned = true AND role = "rssitem"
 SORT published DESC
 ~~~
@@ -31,7 +31,7 @@ SORT published DESC
 # Read Feed Items
 ~~~dataview
 TASK
-FROM [[{{fileName}}]]
+FROM [[]]
 WHERE completed AND role = "rssitem"
 SORT published DESC
 ~~~

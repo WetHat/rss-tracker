@@ -46,7 +46,7 @@ const
 await dvjs.groupedReadingList(feeds,false);
 ~~~
 
-# Pinned Items 📌
+# Pinned Items 📍
 
 ~~~dataviewjs
 const
