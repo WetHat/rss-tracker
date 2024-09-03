@@ -15567,7 +15567,7 @@ var DataViewJSTools = class {
       allTags.length > 0 ? allTags.join(" AND ") : null,
       noneTags.length > 0 ? "-( " + noneTags.join(" OR ") + " )" : null
     ].filter((expr) => expr);
-    return from.join(" AND ");
+    return from ? from.join(" AND ") : "#000000";
   }
   fromItemsOfFeed(feed) {
     return "[[" + feed.file.path + "]]";
@@ -15605,7 +15605,7 @@ var DataViewJSTools = class {
     return pages.where((rec) => rec.role === "rssitem").sort((rec) => rec.published, "desc");
   }
   itemReadingTask(item) {
-    const tasks = item.file.tasks;
+    const tasks = item.file.tasks.where((t) => t.text.startsWith("[["));
     return tasks.length > 0 ? tasks[0] : null;
   }
   /**

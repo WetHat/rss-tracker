@@ -15,7 +15,7 @@ tags: []
 ~~~dataview
 TASK
 FROM [[]]
-WHERE !completed AND role = "rssitem"
+WHERE !completed AND startswith(text,"[[") AND role = "rssitem"
 SORT published DESC
 ~~~
 
@@ -32,6 +32,6 @@ SORT published DESC
 ~~~dataview
 TASK
 FROM [[]]
-WHERE completed AND role = "rssitem"
+WHERE completed AND startswith(text,"[[") AND role = "rssitem"
 SORT published DESC
 ~~~
