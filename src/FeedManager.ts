@@ -484,7 +484,7 @@ export class FeedManager {
                 const { title, content } = article;
                 let articleContent: string = "\n";
                 if (title) {
-                    articleContent += "# " + title;
+                    articleContent += "# " + title + " ⬇️" ;
                 }
 
                 if (content) {
