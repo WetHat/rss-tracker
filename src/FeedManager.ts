@@ -1,9 +1,10 @@
 import { App, request, TFile, TFolder, htmlToMarkdown, normalizePath, ListItemCache, Notice, FrontMatterCache } from 'obsidian';
 import RSSTrackerPlugin from './main';
-import { TrackedRSSfeed, TrackedRSSitem, IRssMedium, TPropertyBag } from './FeedAssembler';
+import { TrackedRSSfeed, TrackedRSSitem, IRssMedium } from './FeedAssembler';
 import * as path from 'path';
 import { extractFromHtml, ArticleData, Transformation, addTransformations } from '@extractus/article-extractor'
 import { RSSfileManager } from './RSSFileManager';
+import { InputUrlModal } from './commands';
 
 
 /**
@@ -50,11 +51,10 @@ export class FeedConfig {
 /**
  * Annotated RSS item with selected Frontmatter properties.
  */
-interface IAnnotatedItem {
+type TAnnotatedItem = {
     item: TFile;
     pinned: boolean,
-    id?: string;
-    published?: number;
+    published: number;
 }
 
 /**
@@ -142,23 +142,20 @@ export class FeedManager {
     }
 
     private formatTags(tags: string[]): string {
-        return tags.map(t => "rss/" + t.replaceAll(" ", "_")).join(",");
-    }
-    private formatHashTags(md: string): string {
-        return md.replace(FeedManager.HASH_FINDER, "#rss/");
+        const tagmgr = this._plugin.tagmgr;
+        // add `#` for mapping and remove it afterwards
+        return tags.map(t => tagmgr.mapHashtag("#" + t.replaceAll(" ", "_")).slice(1)).join(",");
     }
 
     private async saveFeedItem(itemFolder: TFolder, item: TrackedRSSitem): Promise<TFile> {
         let { id, tags, title, link, description, published, author, image, content } = item;
 
         if (description) {
-            description = this.formatHashTags(htmlToMarkdown(description));
+            description = htmlToMarkdown(description);
         }
         if (content) {
-            content = this.formatHashTags(htmlToMarkdown(content));
+            content = htmlToMarkdown(content);
         }
-
-        title = this.formatHashTags(title);
 
         const byline = author ? ` by ${author}` : "";
         title = `${title}${byline} - ${published}`;
@@ -182,18 +179,18 @@ export class FeedManager {
             "{{publishDate}}": published ?? "",
             "{{tags}}": this.formatTags(tags),
             "{{title}}": title ?? "",
-            "{{image}}": image ? this.formatImage(image) : `![[${defaultImage}|200x200]]{.rss-image}` ,
+            "{{image}}": image ? this.formatImage(image) : `![[${defaultImage}|200x200]]{.rss-image}`,
             "{{description}}": description ?? "",
             "{{content}}": content ?? "",
             "{{feedFileName}}": itemFolder.name,
         };
-
-        return this._filemgr.createFile(itemFolder.path, item.fileName, "RSS Item", dataMap);
+        return this._filemgr.createFile(itemFolder.path, item.fileName, "RSS Item", dataMap, true);
     }
 
     private async updateFeedItems(feedConfig: FeedConfig, feed: TrackedRSSfeed): Promise<number> {
         const { itemLimit, source } = feedConfig;
 
+        // TODO: move that to FileManager
         // create the folder for the feed items (if needed)
         const itemFolderPath = this.getItemFolderPath(source);
         let itemFolder = this._app.vault.getFolderByPath(itemFolderPath);
@@ -201,62 +198,64 @@ export class FeedManager {
             itemFolder = await this._app.vault.createFolder(itemFolderPath);
         }
 
-        const meta = this._app.metadataCache;
-        // get all existing items from the items directory. Oldest items first.
-        let items: IAnnotatedItem[] = itemFolder.children.filter((fof) => fof instanceof TFile)
-            .map(x => { // annotate the file
-                const
-                    f = x as TFile,
-                    fm = meta.getFileCache(f)?.frontmatter,
-                    annotated: IAnnotatedItem = { item: f, pinned: fm?.pinned === true };
-                if (fm) {
-                    const { id, published } = fm;
-                    annotated.id = id;
-                    if (published) {
-                        annotated.published = new Date(published).valueOf();
-                    }
-                }
-                return annotated;
-            })
-            .filter(itm => itm.published && itm.id)
-            .sort((a: IAnnotatedItem, b: IAnnotatedItem) => (a.published ?? 0) - (b.published ?? 0)); // oldest first
-
-        // find new items
+        // build a map of RSS items already existing in the feed follder
         const
-            knownIDs = new Set<string>(items.map(it => it.id ?? "?")), // includes pinned items
-            newItems = feed.items
-                .filter(it => !knownIDs.has(it.id)); // new items only
-        // now remove pinned items so that they do not count against the item limit
-        items = items.filter(it => !it.pinned);
-        // determine how many items needs to be purged
-        const deleteCount = Math.min(items.length + newItems.length - itemLimit, items.length);
-
-        // remove feed obsolete items from disk
-        for (let index = 0; index < deleteCount; index++) {
-            const item = items[index];
-            try {
-                await this._app.vault.delete(item.item);
-            } catch (err: any) {
-                console.error(`Failed to delete '${item.item.basename}': ${err.message}`);
+            meta = this._app.metadataCache,
+            oldItemsMap = new Map<string, TAnnotatedItem>(); // mapping item ID -> annotated item
+        for (const itemFile of itemFolder.children.filter((fof) => fof instanceof TFile).map(f => f as TFile)) {
+            const frontmatter = meta.getFileCache(itemFile)?.frontmatter;
+            if (frontmatter) {
+                const { pinned, published, id } = frontmatter;
+                if (published && id) {
+                    oldItemsMap.set(id, { item: itemFile, published: published, pinned: !!pinned });
+                } else {
+                    console.log(`${itemFile.path} missing property 'id' or 'published'`);
+                }
+            } else {
+                console.log(`${itemFile.path} has no frontmatter`);
             }
         }
 
-        // save items
-        if (newItems.length > 0) {
-            const newItemCount = Math.min(itemLimit, newItems.length); // do not exceed limit
+        // Inspect the downloaded feed and determine which of its items are not already present
+        // and need to be saved to disk.
+        const newRSSitems: TrackedRSSitem[] = feed.items
+            .slice(0,itemLimit) // do not use anything beyond the item limit
+            .filter(itm => !oldItemsMap.has(itm.id));
 
-            for (let index = 0; index < newItemCount; index++) {
-                const item = newItems[index];
+        if (newRSSitems.length === 0) {
+            return 0; // nothing new
+        }
+
+        // optain an oldest-first list of remainong RSS item files
+        const oldItems: TAnnotatedItem[] = Array.from(oldItemsMap.values())
+            .filter(it => !it.pinned) // do not consider pinned items for deletion
+            .sort((a, b) => a.published - b.published); // oldest first
+
+        // remove item files which are too much with respect to the folder limit
+        const deleteCount = oldItems.length + newRSSitems.length - itemLimit;
+        if (deleteCount > 0) {
+            // we have to delete these many of the old items from the feed folder
+            for (let i = 0; i < deleteCount; i++) {
+                const itm = oldItems[i];
                 try {
-                    await this.saveFeedItem(itemFolder, item);
+                    await this._app.vault.delete(itm.item);
                 } catch (err: any) {
-                    console.error(`Failed to save RSS item '${item.title}' in feed '${feedConfig.source.name}'; error: ${err.message}`);
-                    new Notice(`Could not save '${item.fileName}' in feed '${feedConfig.source.name}': ${err.message}`);
+                    console.error(`Failed to delete '${itm.item.basename}': ${err.message}`);
                 }
             }
-            return newItemCount;
         }
-        return 0;
+
+        // create new files for new items
+        for (const newItem of newRSSitems) {
+            try {
+                await this.saveFeedItem(itemFolder, newItem);
+            } catch (err: any) {
+                console.error(`Failed to save RSS item '${newItem.title}' in feed '${feedConfig.source.name}'; error: ${err.message}`);
+                new Notice(`Could not save '${newItem.fileName}' in feed '${feedConfig.source.name}': ${err.message}`);
+            }
+        }
+
+        return newRSSitems.length;
     }
 
     /**
@@ -328,7 +327,7 @@ export class FeedManager {
             "{{feedUrl}}": feed.source,
             "{{siteUrl}}": site ?? "",
             "{{title}}": htmlToMarkdown(title ?? ""),
-            "{{description}}": description ? this.formatHashTags(htmlToMarkdown(description)) : "",
+            "{{description}}": description ? htmlToMarkdown(description) : "",
             "{{image}}": image ? this.formatImage(image) : `![[${defaultImage}|200x200]]{.rss-image}`
         };
 
@@ -436,14 +435,9 @@ export class FeedManager {
     }
 
     async updateAllRSSfeeds(force: boolean) {
-        const feeds = this._app.vault.getFolderByPath(this._plugin.settings.rssFeedFolderPath);
-        if (!feeds) {
-            return;
-        }
-
-        const promises: Promise<number>[] = feeds.children
-            .filter(child => child instanceof TFile)
-            .map(md => FeedConfig.fromFile(this._app, md as TFile))
+        await this._plugin.tagmgr.updateTagMap();
+        const promises: Promise<number>[] = this._plugin.filemgr.getFeeds()
+            .map(feed => FeedConfig.fromFile(this._app, feed))
             .filter(cfg => cfg)
             .map(cfg => this.updateFeed(cfg, force));
         let n: number = 0;
@@ -484,13 +478,14 @@ export class FeedManager {
                 const { title, content } = article;
                 let articleContent: string = "\n";
                 if (title) {
-                    articleContent += "# " + title + " ⬇️" ;
+                    articleContent += "# " + title + " ⬇️";
                 }
 
                 if (content) {
                     articleContent += "\n\n" + htmlToMarkdown(content);
                 }
                 if (articleContent.length > 0) {
+                    this._plugin.tagmgr.registerFileForPostProcessing(item.path);
                     return this._app.vault.append(item, articleContent);
                 }
             }
