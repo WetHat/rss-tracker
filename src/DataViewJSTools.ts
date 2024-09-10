@@ -109,7 +109,7 @@ export class DataViewJSTools {
     }
 
     /**
-     * Get the list of hashtags from a page
+     * Get the list of hashtags from a page (frontmatter nad content)
      * @param pageRecord The page record object.
      * @returns hashtag list
      */
