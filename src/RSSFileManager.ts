@@ -1,8 +1,9 @@
 
-import { App, TFile, Vault } from "obsidian";
+import { App, CachedMetadata, EventRef, TAbstractFile, TFile, Vault } from "obsidian";
 import { TPropertyBag } from "./FeedAssembler";
 import { RSSTrackerSettings, TTemplateName } from "./settings";
 import RSSTrackerPlugin from "./main";
+import { RSSTagManager } from "./TagManager";
 
 /**
  * A utility class to manage RSS related files.
@@ -14,15 +15,15 @@ export class RSSfileManager {
 	 * own slot.
 	 */
 	private static readonly TOKEN_SPLITTER = /(?<={{[^{}]+}})|(?={{[^{}]+}})/g;
-
+	private _app: App;
 	private _vault: Vault;
-	private _plugin : RSSTrackerPlugin;
-
+	private _plugin: RSSTrackerPlugin;
 	private get _settings(): RSSTrackerSettings {
 		return this._plugin.settings;
 	}
 
 	constructor(app: App, plugin: RSSTrackerPlugin) {
+		this._app = app;
 		this._vault = app.vault;
 		this._plugin = plugin;
 	}
@@ -37,7 +38,15 @@ export class RSSfileManager {
 		return template.split(RSSfileManager.TOKEN_SPLITTER).map(s => s.startsWith("{{") ? (properties[s] ?? s) : s).join("");
 	}
 
-	private async readTemplate(templateName: TTemplateName): Promise<string> {
+	/**
+	 * Read the content of a template from the RSS template folder.
+	 *
+	 * If the template does not esist, it is installed,
+	 *
+	 * @param templateName Name of the template to read
+	 * @returns Template contents
+	 */
+	async readTemplate(templateName: TTemplateName): Promise<string> {
 		const
 			fs = this._vault.adapter,
 			templatePath = this._settings.getTemplatePath(templateName);
@@ -50,8 +59,10 @@ export class RSSfileManager {
 		if (!tplFile) {
 			throw new Error(`Template ${templatePath} unavailable!`);
 		}
+
 		return this._vault.cachedRead(tplFile);
 	}
+
 	/**
 	 * Rename a folder
 	 * @param oldFolderPath path to an existing folder
@@ -104,10 +115,11 @@ export class RSSfileManager {
 	 * @param folderPath THe location of the new file
 	 * @param basename The basename of the new file (without fie extension)
 	 * @param templateName The template to use
-	 * @param data Optional data map for replacing the mustache tokens in the template with custom data,
+	 * @param data Optional data map for replacing the mustache tokens in the template with custom data.
+	 * @param postProcess Flag indicating if this file requires post processing
 	 * @returns The new file created
 	 */
-	async createFile(folderPath: string, basename: string, templateName: TTemplateName, data: TPropertyBag = {}): Promise<TFile> {
+	async createFile(folderPath: string, basename: string, templateName: TTemplateName, data: TPropertyBag = {}, postProcess: boolean = false): Promise<TFile> {
 		// 1. generate a unique filename based on the given desired file system location info.
 		let
 			uniqueBasename = basename,
@@ -120,14 +132,35 @@ export class RSSfileManager {
 			index++;
 		}
 		// 2. augment the data map with the unique basename
-		data[`{{fileName}}`] = uniqueBasename;
+		data["{{fileName}}"] = uniqueBasename;
 
 		// 3. read and expand the template
 		const
 			tpl = await this.readTemplate(templateName),
 			content = this.expandTemplate(tpl, data);
 
-		// 4. Save the expanded templkate into a file at the given location
+		// 4. Save the expanded template into a file at the given location
+		if (postProcess) {
+			this._plugin.tagmgr.registerFileForPostProcessing(uniqueFilepath);
+		}
+
 		return this._vault.create(uniqueFilepath, content);
+	}
+
+	getFeeds() : TFile[] {
+		const feedFolder = this._vault.getFolderByPath(this._plugin.settings.rssFeedFolderPath);
+		if (!feedFolder) {
+			return [];
+		}
+
+		return feedFolder.children
+			.filter(it => {
+				if (!(it instanceof TFile) || (it as TFile).extension !== "md") {
+					return false;
+				}
+
+				return true;
+			})
+			.map((f: TAbstractFile) => f as TFile);
 	}
 }
