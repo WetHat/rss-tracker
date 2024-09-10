@@ -12,6 +12,7 @@ export interface IRSSTrackerSettings {
 	rssTopicsFolder: string;
 	rssTemplateFolder: string;
 	rssDashboardName: string;
+	rssTagmapName: string;
 	rssDefaultImage: string;
 }
 
@@ -23,13 +24,14 @@ export const DEFAULT_SETTINGS: IRSSTrackerSettings = {
 	rssTopicsFolder: "Topics",
 	rssTemplateFolder: "Templates",
 	rssDashboardName: "RSS Dashboard",
+	rssTagmapName: "RSS Tagmap",
 	rssDefaultImage: ""
 }
 
 /**
  * The basenames of templates used for RSS content.
  */
-export type TTemplateName = "RSS Feed" | "RSS Item" | "RSS Topic" | "RSS Collection" | "RSS Dashboard";
+export type TTemplateName = "RSS Feed" | "RSS Item" | "RSS Topic" | "RSS Collection" | "RSS Dashboard" | "RSS Tagmap";
 
 /**
  * List of basenames of templates to be installed into the `Templates` folder.
@@ -49,6 +51,9 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 		return templateName + ".md";
 	}
 
+	/**
+	 * The persisted settings settings
+	 */
 	private _data: IRSSTrackerSettings = { ...DEFAULT_SETTINGS };
 
 	get autoUpdateFeeds(): boolean {
@@ -65,6 +70,7 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 	private _rssTopicsFolder: string | null;
 	private _rssTemplateFolder: string | null;
 	private _rssDashboardName: string | null;
+	private _rssTagmapName: string | null;
 
 	get rssHome(): string {
 		return this._data.rssHome ?? DEFAULT_SETTINGS.rssHome;
@@ -112,6 +118,14 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 
 	set rssDashboardName(value: string) {
 		this._rssDashboardName = value;
+	}
+
+	get rssTagmapName(): string {
+		return this._data.rssTagmapName || DEFAULT_SETTINGS.rssTagmapName;
+	}
+
+	set rssTagmapName(value: string) {
+		this._rssTagmapName = value;
 	}
 
 	/**
@@ -182,6 +196,14 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 			this._rssDashboardName = null;
 		}
 
+		if (this._rssTagmapName && this._rssTagmapName !== this.rssTagmapName) {
+			if (await this._filemgr.renameFile(this.rssTemplateFolderPath, this.rssHome + "/" + this._rssTemplateFolder)) {
+				this._data._rssTagmapName = this._rssTagmapName;
+			}
+
+			this._rssDashboardName = null;
+		}
+
 		await this.saveData();
 
 		this.install(); // always assure integrity after commit
@@ -197,6 +219,7 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 			= this._rssTopicsFolder
 			= this._rssTemplateFolder
 			= this._rssDashboardName
+			= this._rssTagmapName
 			= null;
 	}
 
@@ -252,6 +275,13 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 			fs.copy(factoryPath, dashboardPath);
 		}
 
+		// the RSS tag map is a special case too
+		const tagmapPath = this.rssTagmapPath;
+		if (!await fs.exists(tagmapPath)) {
+			const factoryPath = this.plugin.manifest.dir + "/Templates/" + RSSTrackerSettings.getTemplateFilename("RSS Tagmap");
+			fs.copy(factoryPath, tagmapPath);
+		}
+
 		console.log(`RSS directory structure created/updated at '${this.rssHome}'.`);
 	}
 
@@ -273,6 +303,10 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 
 	get rssDashboardPath(): string {
 		return this.rssHome + "/" + this.rssDashboardName + ".md";
+	}
+
+	get rssTagmapPath(): string {
+		return this.rssHome + "/" + this.rssTagmapName + ".md";
 	}
 
 	getTemplatePath(templateName: TTemplateName): string {

@@ -19,6 +19,33 @@ abstract class RSSTrackerSettingBase extends Setting {
 	}
 }
 
+class RSSTagmapNameSetting extends RSSTrackerSettingBase {
+	constructor(settingsTab: RSSTrackerSettingTab) {
+		super(settingsTab);
+		this
+			.setName('RSS Tag MapName')
+			.setDesc('THe name of the tag map Markdown file in the RSS Home folder which contains a table whic defines the mapping of RSS tags to tags in the local knowledge graph.')
+			.addText(ta => {
+				ta
+					.setPlaceholder(DEFAULT_SETTINGS.rssTagmapName)
+					.onChange(value => {
+						this.settings.rssTagmapName = value;
+					});
+				if (this.settings.rssTagmapName !== DEFAULT_SETTINGS.rssTagmapName) {
+					ta.setValue(this.settings.rssTagmapName)
+				}
+			})
+			.addButton(btn => {
+				btn
+					.setIcon("reset")
+					.setTooltip("Reset the RSS Tag Map name to default")
+					.onClick(evt => {
+						this.settings.rssTagmapName = DEFAULT_SETTINGS.rssTagmapName;
+					})
+			});
+	}
+}
+
 class RSSDashboardNameSetting extends RSSTrackerSettingBase {
 	constructor(settingsTab: RSSTrackerSettingTab) {
 		super(settingsTab);
@@ -188,6 +215,7 @@ export class RSSTrackerSettingTab extends PluginSettingTab {
 		new RSSTopicsFolderSetting(this);
         new RSSautoUpdateSetting(this);
 		new RSSDashboardNameSetting(this);
+		new RSSTagmapNameSetting(this);
 	}
 	hide() {
 		this.settings.commit();
