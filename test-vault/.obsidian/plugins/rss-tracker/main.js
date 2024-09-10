@@ -12558,7 +12558,7 @@ __export(main_exports, {
   default: () => RSSTrackerPlugin
 });
 module.exports = __toCommonJS(main_exports);
-var import_obsidian6 = require("obsidian");
+var import_obsidian7 = require("obsidian");
 
 // src/settings.ts
 var DEFAULT_SETTINGS = {
@@ -12569,15 +12569,19 @@ var DEFAULT_SETTINGS = {
   rssTopicsFolder: "Topics",
   rssTemplateFolder: "Templates",
   rssDashboardName: "RSS Dashboard",
+  rssTagmapName: "RSS Tagmap",
   rssDefaultImage: ""
 };
 var TEMPLATES = ["RSS Feed", "RSS Item", "RSS Topic", "RSS Collection"];
 var _RSSTrackerSettings = class {
   constructor(app, plugin) {
+    /**
+     * The persisted settings settings
+     */
     this._data = { ...DEFAULT_SETTINGS };
     this.app = app;
     this.plugin = plugin;
-    this._rssHome = this._rssFeedFolder = this._rssCollectionsFolder = this._rssTopicsFolder = this._rssTemplateFolder = this._rssDashboardName = null;
+    this._rssHome = this._rssFeedFolder = this._rssCollectionsFolder = this._rssTopicsFolder = this._rssTemplateFolder = this._rssDashboardName = this._rssTagmapName = null;
   }
   get _filemgr() {
     return this.plugin.filemgr;
@@ -12631,6 +12635,12 @@ var _RSSTrackerSettings = class {
   }
   set rssDashboardName(value) {
     this._rssDashboardName = value;
+  }
+  get rssTagmapName() {
+    return this._data.rssTagmapName || DEFAULT_SETTINGS.rssTagmapName;
+  }
+  set rssTagmapName(value) {
+    this._rssTagmapName = value;
   }
   /**
    * Get the path to the RSS default image
@@ -12687,6 +12697,12 @@ var _RSSTrackerSettings = class {
       }
       this._rssDashboardName = null;
     }
+    if (this._rssTagmapName && this._rssTagmapName !== this.rssTagmapName) {
+      if (await this._filemgr.renameFile(this.rssTemplateFolderPath, this.rssHome + "/" + this._rssTemplateFolder)) {
+        this._data._rssTagmapName = this._rssTagmapName;
+      }
+      this._rssDashboardName = null;
+    }
     await this.saveData();
     this.install();
   }
@@ -12731,6 +12747,11 @@ var _RSSTrackerSettings = class {
       const factoryPath = this.plugin.manifest.dir + "/Templates/" + _RSSTrackerSettings.getTemplateFilename("RSS Dashboard");
       fs.copy(factoryPath, dashboardPath);
     }
+    const tagmapPath = this.rssTagmapPath;
+    if (!await fs.exists(tagmapPath)) {
+      const factoryPath = this.plugin.manifest.dir + "/Templates/" + _RSSTrackerSettings.getTemplateFilename("RSS Tagmap");
+      fs.copy(factoryPath, tagmapPath);
+    }
     console.log(`RSS directory structure created/updated at '${this.rssHome}'.`);
   }
   get rssFeedFolderPath() {
@@ -12747,6 +12768,9 @@ var _RSSTrackerSettings = class {
   }
   get rssDashboardPath() {
     return this.rssHome + "/" + this.rssDashboardName + ".md";
+  }
+  get rssTagmapPath() {
+    return this.rssHome + "/" + this.rssTagmapName + ".md";
   }
   getTemplatePath(templateName) {
     return this.rssTemplateFolderPath + "/" + _RSSTrackerSettings.getTemplateFilename(templateName);
@@ -14943,20 +14967,17 @@ var _FeedManager = class {
     return `![image|400](${src}){.rss-image}`;
   }
   formatTags(tags) {
-    return tags.map((t) => "rss/" + t.replaceAll(" ", "_")).join(",");
-  }
-  formatHashTags(md) {
-    return md.replace(_FeedManager.HASH_FINDER, "#rss/");
+    const tagmgr = this._plugin.tagmgr;
+    return tags.map((t) => tagmgr.mapHashtag("#" + t.replaceAll(" ", "_")).slice(1)).join(",");
   }
   async saveFeedItem(itemFolder, item) {
     let { id, tags, title, link, description, published, author, image, content } = item;
     if (description) {
-      description = this.formatHashTags((0, import_obsidian.htmlToMarkdown)(description));
+      description = (0, import_obsidian.htmlToMarkdown)(description);
     }
     if (content) {
-      content = this.formatHashTags((0, import_obsidian.htmlToMarkdown)(content));
+      content = (0, import_obsidian.htmlToMarkdown)(content);
     }
-    title = this.formatHashTags(title);
     const byline = author ? ` by ${author}` : "";
     title = `${title}${byline} - ${published}`;
     if (!content && description && description.length > 500) {
@@ -14979,59 +15000,55 @@ var _FeedManager = class {
       "{{content}}": content != null ? content : "",
       "{{feedFileName}}": itemFolder.name
     };
-    return this._filemgr.createFile(itemFolder.path, item.fileName, "RSS Item", dataMap);
+    return this._filemgr.createFile(itemFolder.path, item.fileName, "RSS Item", dataMap, true);
   }
   async updateFeedItems(feedConfig, feed) {
+    var _a2;
     const { itemLimit, source } = feedConfig;
     const itemFolderPath = this.getItemFolderPath(source);
     let itemFolder = this._app.vault.getFolderByPath(itemFolderPath);
     if (!itemFolder) {
       itemFolder = await this._app.vault.createFolder(itemFolderPath);
     }
-    const meta = this._app.metadataCache;
-    let items = itemFolder.children.filter((fof) => fof instanceof import_obsidian.TFile).map((x) => {
-      var _a2;
-      const f = x, fm = (_a2 = meta.getFileCache(f)) == null ? void 0 : _a2.frontmatter, annotated = { item: f, pinned: (fm == null ? void 0 : fm.pinned) === true };
-      if (fm) {
-        const { id, published } = fm;
-        annotated.id = id;
-        if (published) {
-          annotated.published = new Date(published).valueOf();
+    const meta = this._app.metadataCache, oldItemsMap = /* @__PURE__ */ new Map();
+    for (const itemFile of itemFolder.children.filter((fof) => fof instanceof import_obsidian.TFile).map((f) => f)) {
+      const frontmatter = (_a2 = meta.getFileCache(itemFile)) == null ? void 0 : _a2.frontmatter;
+      if (frontmatter) {
+        const { pinned, published, id } = frontmatter;
+        if (published && id) {
+          oldItemsMap.set(id, { item: itemFile, published, pinned: !!pinned });
+        } else {
+          console.log(`${itemFile.path} missing property 'id' or 'published'`);
         }
-      }
-      return annotated;
-    }).filter((itm) => itm.published && itm.id).sort((a, b) => {
-      var _a2, _b;
-      return ((_a2 = a.published) != null ? _a2 : 0) - ((_b = b.published) != null ? _b : 0);
-    });
-    const knownIDs = new Set(items.map((it) => {
-      var _a2;
-      return (_a2 = it.id) != null ? _a2 : "?";
-    })), newItems = feed.items.filter((it) => !knownIDs.has(it.id));
-    items = items.filter((it) => !it.pinned);
-    const deleteCount = Math.min(items.length + newItems.length - itemLimit, items.length);
-    for (let index = 0; index < deleteCount; index++) {
-      const item = items[index];
-      try {
-        await this._app.vault.delete(item.item);
-      } catch (err) {
-        console.error(`Failed to delete '${item.item.basename}': ${err.message}`);
+      } else {
+        console.log(`${itemFile.path} has no frontmatter`);
       }
     }
-    if (newItems.length > 0) {
-      const newItemCount = Math.min(itemLimit, newItems.length);
-      for (let index = 0; index < newItemCount; index++) {
-        const item = newItems[index];
+    const newRSSitems = feed.items.slice(0, itemLimit).filter((itm) => !oldItemsMap.has(itm.id));
+    if (newRSSitems.length === 0) {
+      return 0;
+    }
+    const oldItems = Array.from(oldItemsMap.values()).filter((it) => !it.pinned).sort((a, b) => a.published - b.published);
+    const deleteCount = oldItems.length + newRSSitems.length - itemLimit;
+    if (deleteCount > 0) {
+      for (let i = 0; i < deleteCount; i++) {
+        const itm = oldItems[i];
         try {
-          await this.saveFeedItem(itemFolder, item);
+          await this._app.vault.delete(itm.item);
         } catch (err) {
-          console.error(`Failed to save RSS item '${item.title}' in feed '${feedConfig.source.name}'; error: ${err.message}`);
-          new import_obsidian.Notice(`Could not save '${item.fileName}' in feed '${feedConfig.source.name}': ${err.message}`);
+          console.error(`Failed to delete '${itm.item.basename}': ${err.message}`);
         }
       }
-      return newItemCount;
     }
-    return 0;
+    for (const newItem of newRSSitems) {
+      try {
+        await this.saveFeedItem(itemFolder, newItem);
+      } catch (err) {
+        console.error(`Failed to save RSS item '${newItem.title}' in feed '${feedConfig.source.name}'; error: ${err.message}`);
+        new import_obsidian.Notice(`Could not save '${newItem.fileName}' in feed '${feedConfig.source.name}': ${err.message}`);
+      }
+    }
+    return newRSSitems.length;
   }
   /**
    * Create an RSS feed Markdown representaiton from a local XML file.
@@ -15098,7 +15115,7 @@ var _FeedManager = class {
       "{{feedUrl}}": feed.source,
       "{{siteUrl}}": site != null ? site : "",
       "{{title}}": (0, import_obsidian.htmlToMarkdown)(title != null ? title : ""),
-      "{{description}}": description ? this.formatHashTags((0, import_obsidian.htmlToMarkdown)(description)) : "",
+      "{{description}}": description ? (0, import_obsidian.htmlToMarkdown)(description) : "",
       "{{image}}": image ? this.formatImage(image) : `![[${defaultImage}|200x200]]{.rss-image}`
     };
     const dashboard = await this._filemgr.createFile(location.path, feed.fileName, "RSS Feed", dataMap), itemlimit = (_b = (_a2 = this._app.metadataCache.getFileCache(dashboard)) == null ? void 0 : _a2.frontmatter) == null ? void 0 : _b.itemlimit, cfg = new FeedConfig((_c = feed.source) != null ? _c : "", itemlimit != null ? itemlimit : "100", dashboard);
@@ -15176,11 +15193,8 @@ var _FeedManager = class {
     }
   }
   async updateAllRSSfeeds(force) {
-    const feeds = this._app.vault.getFolderByPath(this._plugin.settings.rssFeedFolderPath);
-    if (!feeds) {
-      return;
-    }
-    const promises = feeds.children.filter((child) => child instanceof import_obsidian.TFile).map((md) => FeedConfig.fromFile(this._app, md)).filter((cfg) => cfg).map((cfg) => this.updateFeed(cfg, force));
+    await this._plugin.tagmgr.updateTagMap();
+    const promises = this._plugin.filemgr.getFeeds().map((feed) => FeedConfig.fromFile(this._app, feed)).filter((cfg) => cfg).map((cfg) => this.updateFeed(cfg, force));
     let n = 0;
     const notice = new import_obsidian.Notice(`0/${promises.length} feeds updated`, 0);
     for (let promise of promises) {
@@ -15220,6 +15234,7 @@ var _FeedManager = class {
           articleContent += "\n\n" + (0, import_obsidian.htmlToMarkdown)(content);
         }
         if (articleContent.length > 0) {
+          this._plugin.tagmgr.registerFileForPostProcessing(item.path);
           return this._app.vault.append(item, articleContent);
         }
       }
@@ -15288,7 +15303,7 @@ var UpdateRSSfeedCommand = class extends RSSTrackerCommandBase {
         return !!cfg;
       }
       if (cfg) {
-        this.plugin.feedmgr.updateFeed(cfg, true).then(() => new import_obsidian2.Notice(`${cfg.source.basename} updated!`));
+        this.plugin.tagmgr.updateTagMap().then((x) => this.plugin.feedmgr.updateFeed(cfg, true).then(() => new import_obsidian2.Notice(`${cfg.source.basename} updated!`)));
         return true;
       }
     }
@@ -15456,8 +15471,9 @@ var UpdateRSSfeedMenuItem = class extends RSSTrackerMenuItem {
         menu.addItem((item) => {
           item.setTitle("Update RSS feed").setIcon("rss").onClick(async () => {
             var _a2;
-            this.plugin.feedmgr.updateFeed(feedconfig, true);
-            new import_obsidian3.Notice(`${(_a2 = file == null ? void 0 : file.name) != null ? _a2 : "unavailable"} updated`);
+            await this.plugin.tagmgr.updateTagMap();
+            await this.plugin.feedmgr.updateFeed(feedconfig, true);
+            new import_obsidian3.Notice(`${(_a2 = file == null ? void 0 : file.name) != null ? _a2 : "???"} updated`);
           });
         });
       }
@@ -15515,7 +15531,7 @@ var DataViewJSTools = class {
     return tag.startsWith("#") ? tag : "#" + tag;
   }
   /**
-   * Get the list of hashtags from a page
+   * Get the list of hashtags from a page (frontmatter nad content)
    * @param pageRecord The page record object.
    * @returns hashtag list
    */
@@ -15729,6 +15745,23 @@ var RSSTrackerSettingBase = class extends import_obsidian5.Setting {
     return this.settingsTab.settings;
   }
 };
+var RSSTagmapNameSetting = class extends RSSTrackerSettingBase {
+  constructor(settingsTab) {
+    super(settingsTab);
+    this.setName("RSS Tag MapName").setDesc("THe name of the tag map Markdown file in the RSS Home folder which contains a table whic defines the mapping of RSS tags to tags in the local knowledge graph.").addText((ta) => {
+      ta.setPlaceholder(DEFAULT_SETTINGS.rssTagmapName).onChange((value) => {
+        this.settings.rssTagmapName = value;
+      });
+      if (this.settings.rssTagmapName !== DEFAULT_SETTINGS.rssTagmapName) {
+        ta.setValue(this.settings.rssTagmapName);
+      }
+    }).addButton((btn) => {
+      btn.setIcon("reset").setTooltip("Reset the RSS Tag Map name to default").onClick((evt) => {
+        this.settings.rssTagmapName = DEFAULT_SETTINGS.rssTagmapName;
+      });
+    });
+  }
+};
 var RSSDashboardNameSetting = class extends RSSTrackerSettingBase {
   constructor(settingsTab) {
     super(settingsTab);
@@ -15840,6 +15873,7 @@ var RSSTrackerSettingTab = class extends import_obsidian5.PluginSettingTab {
     new RSSTopicsFolderSetting(this);
     new RSSautoUpdateSetting(this);
     new RSSDashboardNameSetting(this);
+    new RSSTagmapNameSetting(this);
   }
   hide() {
     this.settings.commit();
@@ -15847,11 +15881,13 @@ var RSSTrackerSettingTab = class extends import_obsidian5.PluginSettingTab {
 };
 
 // src/RSSFileManager.ts
+var import_obsidian6 = require("obsidian");
 var _RSSfileManager = class {
   get _settings() {
     return this._plugin.settings;
   }
   constructor(app, plugin) {
+    this._app = app;
     this._vault = app.vault;
     this._plugin = plugin;
   }
@@ -15867,6 +15903,14 @@ var _RSSfileManager = class {
       return s.startsWith("{{") ? (_a2 = properties[s]) != null ? _a2 : s : s;
     }).join("");
   }
+  /**
+   * Read the content of a template from the RSS template folder.
+   *
+   * If the template does not esist, it is installed,
+   *
+   * @param templateName Name of the template to read
+   * @returns Template contents
+   */
   async readTemplate(templateName) {
     const fs = this._vault.adapter, templatePath = this._settings.getTemplatePath(templateName);
     if (!fs.exists(this._settings.rssTemplateFolderPath) || !fs.exists(templatePath)) {
@@ -15924,10 +15968,11 @@ var _RSSfileManager = class {
    * @param folderPath THe location of the new file
    * @param basename The basename of the new file (without fie extension)
    * @param templateName The template to use
-   * @param data Optional data map for replacing the mustache tokens in the template with custom data,
+   * @param data Optional data map for replacing the mustache tokens in the template with custom data.
+   * @param postProcess Flag indicating if this file requires post processing
    * @returns The new file created
    */
-  async createFile(folderPath, basename, templateName, data = {}) {
+  async createFile(folderPath, basename, templateName, data = {}, postProcess = false) {
     let uniqueBasename = basename, uniqueFilepath = folderPath + "/" + basename + ".md", index = 1;
     const fs = this._vault.adapter;
     while (await fs.exists(uniqueFilepath)) {
@@ -15935,9 +15980,24 @@ var _RSSfileManager = class {
       uniqueFilepath = folderPath + "/" + uniqueBasename + ".md";
       index++;
     }
-    data[`{{fileName}}`] = uniqueBasename;
+    data["{{fileName}}"] = uniqueBasename;
     const tpl = await this.readTemplate(templateName), content = this.expandTemplate(tpl, data);
+    if (postProcess) {
+      this._plugin.tagmgr.registerFileForPostProcessing(uniqueFilepath);
+    }
     return this._vault.create(uniqueFilepath, content);
+  }
+  getFeeds() {
+    const feedFolder = this._vault.getFolderByPath(this._plugin.settings.rssFeedFolderPath);
+    if (!feedFolder) {
+      return [];
+    }
+    return feedFolder.children.filter((it) => {
+      if (!(it instanceof import_obsidian6.TFile) || it.extension !== "md") {
+        return false;
+      }
+      return true;
+    }).map((f) => f);
   }
 };
 var RSSfileManager = _RSSfileManager;
@@ -15948,13 +16008,158 @@ var RSSfileManager = _RSSfileManager;
  */
 RSSfileManager.TOKEN_SPLITTER = /(?<={{[^{}]+}})|(?={{[^{}]+}})/g;
 
+// src/TagManager.ts
+var RSSTagManager = class {
+  constructor(app, plugin) {
+    this._knownTagsCache = {};
+    this._postProcessingRegistry = /* @__PURE__ */ new Set();
+    this._tagmap = {};
+    this._pendingMappings = [];
+    this._app = app;
+    this._plugin = plugin;
+    this._metadataCache = app.metadataCache;
+    this._vault = app.vault;
+  }
+  registerFileForPostProcessing(path2) {
+    this._postProcessingRegistry.add(path2);
+    console.log(`Queue ${this._postProcessingRegistry.size} for post processing`);
+    return path2;
+  }
+  async getTagmapFile() {
+    let tagmap = this._vault.getFileByPath(this._plugin.settings.rssTagmapPath);
+    if (!tagmap) {
+      await this._plugin.settings.install();
+    }
+    return this._vault.getFileByPath(this._plugin.settings.rssTagmapPath);
+  }
+  async updateTagMap() {
+    await this.loadTagmap();
+    await this.commit();
+    this._knownTagsCache = this._metadataCache.getTags();
+    for (const tag in this._knownTagsCache) {
+      this.mapHashtag(tag);
+    }
+    await this.commit();
+  }
+  /**
+   * Commit pending changes to the tag map file.
+   */
+  async commit() {
+    if (this._pendingMappings.length > 0) {
+      console.log(`Adding ${this._pendingMappings.length} entries to tag map file`);
+      const file = await this.getTagmapFile();
+      if (file) {
+        const mappings = "\n" + this._pendingMappings.join("\n");
+        console.log(`Tag map updated with: "${mappings}"`);
+        this._pendingMappings = [];
+        await this._vault.append(file, mappings);
+      }
+    } else {
+      console.log("Noting added to tag map.");
+    }
+  }
+  /**
+   * Map a tag found in an rss item to a local domain tag.
+   *
+   * @param rssHashtag A hashtag foond in RSS item content.
+   * @returns mapped tag
+   */
+  mapHashtag(rssHashtag) {
+    if (!rssHashtag.startsWith("#rss/")) {
+      if (this._knownTagsCache[rssHashtag]) {
+        return rssHashtag;
+      }
+      rssHashtag = "#rss/" + rssHashtag.slice(1);
+    }
+    let mapped = this._tagmap[rssHashtag];
+    if (!mapped) {
+      mapped = rssHashtag;
+      this._tagmap[rssHashtag] = mapped;
+      this._pendingMappings.push(`| ${rssHashtag.slice(1)} | ${mapped} |`);
+    }
+    return mapped;
+  }
+  async loadTagmap() {
+    const mapfile = await this.getTagmapFile();
+    if (!mapfile) {
+      return;
+    }
+    console.log(`loading tag map from ${mapfile.path}`);
+    const metadata = this._metadataCache.getFileCache(mapfile), sections = metadata == null ? void 0 : metadata.sections;
+    if (!sections) {
+      return;
+    }
+    const content = await this._vault.read(mapfile);
+    for (const section of sections) {
+      if (section.type === "table") {
+        let errorCount = 0;
+        const rows = content.slice(section.position.start.offset).split("\n"), rowCount = rows.length;
+        for (let i = 2; i < rowCount; i++) {
+          const row = rows[i], [_, rssTagname, mappedTag] = row.split("|");
+          if (rssTagname && mappedTag) {
+            const trimmedTagname = rssTagname.trim(), trimmedMappedTag = mappedTag.trim();
+            if (trimmedTagname && trimmedMappedTag) {
+              this._tagmap["#" + trimmedTagname] = trimmedMappedTag;
+            } else {
+              console.log(`ERROR rssTagname: "${rssTagname}"; mappedTag: "${mappedTag}"`);
+              errorCount++;
+            }
+          } else {
+            console.log(`ERROR rssTagname: "${rssTagname}"; mappedTag: "${mappedTag}"`);
+            errorCount++;
+          }
+        }
+        if (errorCount > 0) {
+          console.log(`${errorCount} detected whilc pasing the tag map.`);
+        }
+        break;
+      }
+    }
+  }
+  /**
+   * Get the event handler to post-process RSS items.
+   *
+   * In order fo a RSS item file to be postprocessed it has to be registered with
+   * {@link registerFileForPostProcessing} first.
+   *
+   * @returns Event handler reference object
+   */
+  get rssTagPostProcessor() {
+    return this._app.metadataCache.on("changed", async (item, content, metaData) => {
+      if (!this._postProcessingRegistry.delete(item.path)) {
+        return;
+      }
+      console.log(`Post Processing "${item.path}"`);
+      const tags = metaData.tags;
+      if (tags) {
+        const tagCount = tags.length, parts = new Array(tagCount * 2 + 1);
+        let j = 0, lastOffset = 0, modified = false;
+        for (let i = 0; i < tagCount; i++) {
+          const tag = tags[i], pos = tag.position, s = pos.start.offset, e = pos.end.offset;
+          parts[j++] = content.slice(lastOffset, s);
+          const hashtag = content.slice(s, e), mappedTag = this.mapHashtag(hashtag);
+          modified || (modified = hashtag !== mappedTag);
+          parts[j++] = mappedTag;
+          lastOffset = e;
+        }
+        parts[j++] = content.slice(lastOffset).trimEnd();
+        if (modified) {
+          await item.vault.modify(item, parts.join(""));
+        }
+        await this.commit();
+      }
+    });
+  }
+};
+
 // src/main.ts
-var RSSTrackerPlugin = class extends import_obsidian6.Plugin {
+var RSSTrackerPlugin = class extends import_obsidian7.Plugin {
   constructor(app, manifest) {
     super(app, manifest);
+    this._settings = new RSSTrackerSettings(app, this);
     this._filemgr = new RSSfileManager(app, this);
     this._feedmgr = new FeedManager(app, this);
-    this._settings = new RSSTrackerSettings(app, this);
+    this._tagmgr = new RSSTagManager(app, this);
   }
   get settings() {
     return this._settings;
@@ -15964,6 +16169,9 @@ var RSSTrackerPlugin = class extends import_obsidian6.Plugin {
   }
   get filemgr() {
     return this._filemgr;
+  }
+  get tagmgr() {
+    return this._tagmgr;
   }
   getDVJSTools(dv) {
     return new DataViewJSTools(dv, this._settings);
@@ -15991,13 +16199,14 @@ var RSSTrackerPlugin = class extends import_obsidian6.Plugin {
     const downloadArticle = new DownloadArticleContentMenuItem(this.app, this);
     this.registerEvent(downloadArticle.editorMenuHandler);
     this.registerEvent(downloadArticle.fileMenuHandler);
+    this.registerEvent(this._tagmgr.rssTagPostProcessor);
     this.registerObsidianProtocolHandler("newRssFeed", async (params) => {
       const { xml, dir } = params;
       console.log("newRssFeed:xml=" + xml + "\n=>" + dir);
       const xmlFile = this.app.vault.getFileByPath(xml), feedDir = this.app.vault.getFolderByPath(dir);
       if (xmlFile && feedDir) {
         const dashboard = await this._feedmgr.createFeedFromFile(xmlFile, feedDir);
-        new import_obsidian6.Notice(`New RSS Feed "${dashboard.basename}" created`);
+        new import_obsidian7.Notice(`New RSS Feed "${dashboard.basename}" created`);
       }
     });
     this.registerInterval(window.setInterval(() => {
