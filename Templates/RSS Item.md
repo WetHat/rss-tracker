@@ -18,12 +18,17 @@ pinned: false
 - [ ] [[{{fileName}}]]
 
 ~~~dataviewjs
- const
+const
+    current = dv.current(),
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(dv.current());
+	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Found Items in Other Feeds also Referring to This Article");
+	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
     dv.taskList(tasks,false);
+}
+const tags = current.file.tags.join(" ");
+if (current) {
+	dv.span(tags);
 }
 ~~~
 
