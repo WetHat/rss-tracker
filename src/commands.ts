@@ -93,7 +93,10 @@ export class UpdateRSSfeedCommand extends RSSTrackerCommandBase {
                 return !!cfg;
             }
             if (cfg) {
-                this.plugin.feedmgr.updateFeed(cfg, true).then(() => new Notice(`${cfg.source.basename} updated!`));
+                this.plugin.tagmgr.updateTagMap()
+                    .then( x =>
+                        this.plugin.feedmgr.updateFeed(cfg, true)
+                            .then(() => new Notice(`${cfg.source.basename} updated!`)));
                 return true;
             }
         }

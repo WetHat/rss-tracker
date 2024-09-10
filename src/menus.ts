@@ -115,8 +115,9 @@ export class UpdateRSSfeedMenuItem extends RSSTrackerMenuItem {
                     item.setTitle('Update RSS feed')
                         .setIcon('rss')
                         .onClick(async () => {
-                            this.plugin.feedmgr.updateFeed(feedconfig, true);
-                            new Notice(`${file?.name ?? 'unavailable'} updated`);
+                            await this.plugin.tagmgr.updateTagMap()
+                            await this.plugin.feedmgr.updateFeed(feedconfig, true);
+                            new Notice(`${file?.name ?? '???'} updated`);
                         });
                 });
             }
