@@ -7,11 +7,13 @@ import { DataViewJSTools } from './DataViewJSTools';
 import { TPropertyBag } from './FeedAssembler';
 import { RSSTrackerSettingTab } from './settingsUI';
 import { RSSfileManager } from './RSSFileManager';
+import { RSSTagManager } from './TagManager';
 
 export default class RSSTrackerPlugin extends Plugin {
     private _settings: RSSTrackerSettings;
     private _feedmgr: FeedManager;
     private _filemgr: RSSfileManager;
+    private _tagmgr: RSSTagManager;
 
     get settings() : RSSTrackerSettings {
         return this._settings;
@@ -25,11 +27,16 @@ export default class RSSTrackerPlugin extends Plugin {
         return this._filemgr;
     }
 
+    get tagmgr() : RSSTagManager {
+        return this._tagmgr;
+    }
+
     constructor(app: App, manifest: PluginManifest) {
         super(app, manifest);
+        this._settings = new RSSTrackerSettings(app,this);
         this._filemgr = new RSSfileManager(app,this);
         this._feedmgr = new FeedManager(app, this);
-        this._settings = new RSSTrackerSettings(app,this);
+        this._tagmgr = new RSSTagManager(app,this);
     }
 
     getDVJSTools(dv: TPropertyBag) {
@@ -83,6 +90,9 @@ export default class RSSTrackerPlugin extends Plugin {
         const downloadArticle = new DownloadArticleContentMenuItem(this.app,this);
         this.registerEvent(downloadArticle.editorMenuHandler);
         this.registerEvent(downloadArticle.fileMenuHandler);
+
+        // post-processing of RSS related files files
+        this.registerEvent(this._tagmgr.rssTagPostProcessor);
 
         // protocol handler
         this.registerObsidianProtocolHandler('newRssFeed', async (params: ObsidianProtocolData) => {
