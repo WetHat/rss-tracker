@@ -2,20 +2,26 @@ import { EventRef, TFile, CachedMetadata, App, SectionCache, MetadataCache, Vaul
 import RSSTrackerPlugin from "./main";
 import { TPropertyBag } from "./FeedAssembler";
 import { RSSTrackerSettings } from "./settings";
-import { Console } from "console";
 
 type MetadataCacheEx = MetadataCache & {
     getTags(): TPropertyBag; // undocumented non-API method
 }
 
 /**
- * Utility class to manage the mapping of rss tags to tags in the local knowledge graph,
+ * Utility class to orchestrate the mapping of rss tags to tags into the domain
+ * of the local knowledge graph.
  */
 export class RSSTagManager {
     private _app: App;
     private _vault: Vault;
     private _plugin: RSSTrackerPlugin;
     private _metadataCache: MetadataCacheEx;
+
+    /**
+     * A snapshot of the tags cached by Obsidian.
+     * Used by {@link mapHashtag} to hoist tags from RSS items directly
+     * into the domain of the users's knowledge graph.
+     */
     private _knownTagsCache: TPropertyBag = {};
     private _postProcessingRegistry = new Set();
     private _tagmap: TPropertyBag = {};
@@ -28,11 +34,24 @@ export class RSSTagManager {
         this._vault = app.vault;
     }
 
+    /**
+     * Register a file for post processing hashtags in the note body.
+     *
+     * Post processing is performed by the event handler returnd from
+     * {@link rssTagPostProcessor}.
+     *
+     * @param path Vault relative path to file
+     * @returns the registered path
+     */
     registerFileForPostProcessing(path: string): string {
         this._postProcessingRegistry.add(path);
         return path;
     }
 
+    /**
+     * Get or create the tag map file handle.
+     * @returns a valid file handle to the tag map file located at {@link RSSTrackerSettings.rssTagmapPath}.
+     */
     private async getTagmapFile(): Promise<TFile | null> {
         let tagmap = this._vault.getFileByPath(this._plugin.settings.rssTagmapPath);
         if (!tagmap) {
@@ -42,20 +61,27 @@ export class RSSTagManager {
         return this._vault.getFileByPath(this._plugin.settings.rssTagmapPath);
     }
 
+    /**
+     * Update the in-memory tag map.
+     *
+     * The map is update fron:
+     * - The persisted mapping table at {@link RSSTrackerSettings.rssTagmapPath}
+     * - Hashtags in the rss domain from the Obsidian metadata cache.
+     */
     async updateTagMap(): Promise<void> {
         // reload the file to catch external edits
         await this.loadTagmap();
-        await this.commit()// jusr in case
-        // load the known tags
+        // load and register known tags
         this._knownTagsCache = this._metadataCache.getTags();
         for (const tag in this._knownTagsCache) {
             this.mapHashtag(tag);
         }
+        // just in case new tags appeared when we weren't looking.
         await this.commit();
     }
 
     /**
-     * Commit pending changes to the tag map file.
+     * Commit any pending changes to the tag map file.
      */
     private async commit(): Promise<void> {
         if (this._pendingMappings.length > 0) {
@@ -73,9 +99,16 @@ export class RSSTagManager {
     }
 
     /**
-     * Map a tag found in an rss item to a local domain tag.
+     * Map a tag found in an rss item into the domain of the local knowledge graph.
      *
-     * @param rssHashtag A hashtag foond in RSS item content.
+     * Following rules are applied:
+     * - if the tag has already been cached by Obsidian, the hashtag is passed through unchanged
+     * - if the tag is new, it is put into the rss domain and a default mapping is aaded to the tag map
+     *   file located at {@link RSSTrackerSettings.rssTagmapPath}.
+     * - if there is a mapping defined in the map file {@link RSSTrackerSettings.rssTagmapPath},
+     *   the tag is mapped and changed in the text.
+     *
+     * @param rssHashtag A hashtag found in RSS item contents.
      * @returns mapped tag
      */
     mapHashtag(rssHashtag: string): string {
@@ -96,6 +129,14 @@ export class RSSTagManager {
         return mapped;
     }
 
+    /**
+     * Load tg mapping data into memors.
+     *
+     * Mappings are read from:
+     * - the tag map file located at: {@link RSSTrackerSettings.rssTagmapPath}
+     * - the tags cached by Obsidian.
+     *
+     */
     async loadTagmap() {
         const mapfile = await this.getTagmapFile();
         if (!mapfile) {
