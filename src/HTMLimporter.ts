@@ -2,7 +2,7 @@ import { ArticleData, Transformation, addTransformations, extractFromHtml } from
 import { htmlToMarkdown } from "obsidian";
 
 /**
- * A utility class to import HTML as Barkdown
+ * A singleton utility class to import HTML as Markdown
  */
 export class HTMLImporter {
     private static VALIDATTR = /^[a-zA-Z_-]*$/; // match valid attribute names
@@ -72,12 +72,35 @@ export class HTMLImporter {
         addTransformations([tm]);
     }
 
+    private hoistSingleRowTable(doc : Document,table: HTMLTableElement) : boolean {
+        let trs = table.querySelectorAll(":scope > tbody > tr"); // this is static
+        if (trs.length == 0) {
+            trs = table.querySelectorAll(":scope > tr");
+        }
+        if (trs.length == 1) {
+            const
+                tds = trs[0].querySelectorAll(":scope > td"), // not live!
+                tdCount = tds.length;
+            for (let i = 0; i < tdCount; i++) {
+                const td = tds[i],
+                section = doc.createElement("section");
+                table.parentElement?.insertBefore(section,table);
+                // move all children of td
+                while (td.firstChild) {
+                    section.appendChild(td.firstChild);
+                }
+            }
+            table.remove();
+            return true;
+        }
+        return false;
+    }
 
     /**
      * Translate an HTML fragment to Markdown text.
      *
      * Following HTML cleanup rules are currently applied.
-     * - Flatten tables which contain nested tables into a `section` for each `td`
+     * - Flatten tables which contain only a single row into a `section` for each `td`
      *
      * **Notes**:
      * - This addresses nested tables in the 'Node Weekly' feed.
@@ -92,38 +115,10 @@ export class HTMLImporter {
             body = doc.body;
         // unravel nested tables - each td becomes its own div
         const
-            tables = body.getElementsByTagName("table"),
-            tableCount = tables.length,
-            outerTables = [];
+            tables = Array.from<HTMLTableElement>(body.getElementsByTagName("table")),
+            tableCount = tables.length;
         for (let i = 0; i < tableCount; i++) {
-            const
-                outer = tables[i],
-                inner = outer.getElementsByTagName("table");
-            if (inner.length) {
-                outerTables.push(outer);
-            }
-        }
-        // flatten outer tables
-        for (const outer of outerTables) {
-            let tds = outer.querySelectorAll(":scope > tbody > tr > td"); // this is static
-            if (tds.length == 0) {
-                tds = outer.querySelectorAll(":scope > tr > td");
-            }
-
-            const tdCount = tds.length;
-            for (let i = 0; i < tdCount; i++) {
-                // hoist td content indo a section
-                const
-                    td = tds[i],
-                    section = doc.createElement("div");
-                outer.parentElement?.insertBefore(section, outer);
-                // mode all children of td
-                while (td.firstChild) {
-                    section.appendChild(td.firstChild);
-                }
-            }
-            // the outer table is now empty - get rid of it
-            outer.remove();
+            this.hoistSingleRowTable(doc,tables[i]);
         }
         return htmlToMarkdown(doc);
     }

@@ -14933,11 +14933,31 @@ var _HTMLImporter = class {
     };
     addTransformations([tm]);
   }
+  hoistSingleRowTable(doc, table) {
+    var _a2;
+    let trs = table.querySelectorAll(":scope > tbody > tr");
+    if (trs.length == 0) {
+      trs = table.querySelectorAll(":scope > tr");
+    }
+    if (trs.length == 1) {
+      const tds = trs[0].querySelectorAll(":scope > td"), tdCount = tds.length;
+      for (let i = 0; i < tdCount; i++) {
+        const td = tds[i], section = doc.createElement("section");
+        (_a2 = table.parentElement) == null ? void 0 : _a2.insertBefore(section, table);
+        while (td.firstChild) {
+          section.appendChild(td.firstChild);
+        }
+      }
+      table.remove();
+      return true;
+    }
+    return false;
+  }
   /**
    * Translate an HTML fragment to Markdown text.
    *
    * Following HTML cleanup rules are currently applied.
-   * - Flatten tables which contain nested tables into a `section` for each `td`
+   * - Flatten tables which contain only a single row into a `section` for each `td`
    *
    * **Notes**:
    * - This addresses nested tables in the 'Node Weekly' feed.
@@ -14946,29 +14966,10 @@ var _HTMLImporter = class {
    * @return The markdown text generated from the HTML fragment.
    */
   fragmentAsMarkdown(html) {
-    var _a2;
     const parser = new DOMParser(), doc = parser.parseFromString("<html><body>" + html + "</body></html)>", "text/html"), body = doc.body;
-    const tables = body.getElementsByTagName("table"), tableCount = tables.length, outerTables = [];
+    const tables = Array.from(body.getElementsByTagName("table")), tableCount = tables.length;
     for (let i = 0; i < tableCount; i++) {
-      const outer = tables[i], inner = outer.getElementsByTagName("table");
-      if (inner.length) {
-        outerTables.push(outer);
-      }
-    }
-    for (const outer of outerTables) {
-      let tds = outer.querySelectorAll(":scope > tbody > tr > td");
-      if (tds.length == 0) {
-        tds = outer.querySelectorAll(":scope > tr > td");
-      }
-      const tdCount = tds.length;
-      for (let i = 0; i < tdCount; i++) {
-        const td = tds[i], section = doc.createElement("div");
-        (_a2 = outer.parentElement) == null ? void 0 : _a2.insertBefore(section, outer);
-        while (td.firstChild) {
-          section.appendChild(td.firstChild);
-        }
-      }
-      outer.remove();
+      this.hoistSingleRowTable(doc, tables[i]);
     }
     return (0, import_obsidian.htmlToMarkdown)(doc);
   }
