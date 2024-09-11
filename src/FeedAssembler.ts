@@ -129,7 +129,7 @@ export class TrackedRSSitem {
             .split(",") // abd pull it apart again
             .map(c => {
                 //return one cleaned up category
-                return c.replace(/^#(?=\w)|["\[\]\{\}]+/g, "")
+                return c.replace(/^#(?=\w)|["\[\]\{\}\(\)]+/g, "")
                     .replaceAll("#", "＃")
                     .replaceAll(".", "〭")
                     .replaceAll("&", "＆")
