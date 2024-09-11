@@ -12558,7 +12558,7 @@ __export(main_exports, {
   default: () => RSSTrackerPlugin
 });
 module.exports = __toCommonJS(main_exports);
-var import_obsidian7 = require("obsidian");
+var import_obsidian8 = require("obsidian");
 
 // src/settings.ts
 var DEFAULT_SETTINGS = {
@@ -12780,10 +12780,10 @@ var RSSTrackerSettings = _RSSTrackerSettings;
 RSSTrackerSettings.RSS_DEFAULT_IMAGE = '<svg height="300px" width="300px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 398.668 398.668" xml:space="preserve"> <g> <g> <path style="fill:none;" d="M98.107,275.498c-13.789,0-25.006,11.264-25.006,25.107c0,13.777,11.217,24.986,25.006,24.986 c13.834,0,25.09-11.209,25.09-24.986C123.197,286.762,111.941,275.498,98.107,275.498z"/> <path style="fill:none;" d="M360.057,24H38.613C30.555,24,24,30.557,24,38.613v321.443c0,8.057,6.555,14.611,14.613,14.611 h321.443c8.057,0,14.611-6.555,14.611-14.611V38.613C374.668,30.557,368.113,24,360.057,24z M98.107,349.592 c-27.021,0-49.006-21.975-49.006-48.986c0-27.078,21.984-49.107,49.006-49.107c27.068,0,49.09,22.029,49.09,49.107 C147.197,327.617,125.176,349.592,98.107,349.592z M242.715,347.516c0,0-0.008,0.002-0.016,0h-48.729 c-6.541,0-11.877-5.238-11.998-11.777c-0.584-31.625-13.164-61.316-35.424-83.604c-22.275-22.338-51.846-34.953-83.27-35.527 c-6.541-0.119-11.781-5.457-11.781-11.998v-48.582c0-3.211,1.287-6.287,3.572-8.543c2.248-2.217,5.275-3.457,8.428-3.457 c0.055,0,0.107,0,0.162,0c50.654,0.686,98.338,20.883,134.271,56.873c35.758,35.814,55.896,83.281,56.756,133.732 c0.021,0.291,0.031,0.586,0.031,0.883C254.719,342.143,249.348,347.516,242.715,347.516z M337.582,347.516 c0,0-0.008,0.002-0.016,0h-48.648c-6.578,0-11.93-5.295-12-11.871c-1.254-116.738-97.008-212.74-213.451-214.002 c-6.576-0.072-11.871-5.424-11.871-12V61.078c0-3.201,1.279-6.269,3.553-8.521c2.273-2.254,5.367-3.512,8.555-3.477 c75.951,0.68,147.441,30.768,201.303,84.723c53.689,53.779,83.699,125.096,84.553,200.891c0.02,0.272,0.029,0.547,0.029,0.822 C349.588,342.143,344.215,347.516,337.582,347.516z"/> <path style="fill:#3D6889;" d="M98.107,251.498c-27.021,0-49.006,22.029-49.006,49.107c0,27.012,21.984,48.986,49.006,48.986 c27.068,0,49.09-21.975,49.09-48.986C147.197,273.527,125.176,251.498,98.107,251.498z M98.107,325.592 c-13.789,0-25.006-11.209-25.006-24.986c0-13.844,11.217-25.107,25.006-25.107c13.834,0,25.09,11.264,25.09,25.107 C123.197,314.383,111.941,325.592,98.107,325.592z"/> <path style="fill:#73D0F4;" d="M75.498,168.633v24.668c33.244,3.301,64.15,17.926,88.037,41.881 c23.879,23.906,38.459,54.922,41.746,88.334h24.816C223.066,241.893,156.986,175.689,75.498,168.633z"/> <path style="fill:#3D6889;" d="M197.932,200.9c-35.934-35.99-83.617-56.188-134.271-56.873c-0.055,0-0.107,0-0.162,0 c-3.152,0-6.18,1.24-8.428,3.457c-2.285,2.256-3.572,5.332-3.572,8.543v48.582c0,6.541,5.24,11.879,11.781,11.998 c31.424,0.574,60.994,13.189,83.27,35.527c22.26,22.287,34.84,51.979,35.424,83.604c0.121,6.539,5.457,11.777,11.998,11.777 h48.729c0.008,0.002,0.016,0,0.016,0c6.633,0,12.004-5.373,12.004-12c0-0.297-0.01-0.592-0.031-0.883 C253.828,284.182,233.689,236.715,197.932,200.9z M205.281,323.516c-3.287-33.412-17.867-64.428-41.746-88.334 c-23.887-23.955-54.793-38.58-88.037-41.881v-24.668c81.488,7.057,147.568,73.26,154.6,154.883H205.281z"/> <path style="fill:#73D0F4;" d="M75.596,73.465v24.598c58.516,3.502,113.188,28.121,155.029,70.064 c41.838,41.943,66.391,96.742,69.877,155.389h24.682C317.852,189.59,209.293,80.834,75.596,73.465z"/> <path style="fill:#3D6889;" d="M265.006,133.803C211.145,79.848,139.654,49.76,63.703,49.08c-3.188-0.035-6.281,1.223-8.555,3.477 c-2.273,2.252-3.553,5.32-3.553,8.521v48.565c0,6.576,5.295,11.928,11.871,12c116.443,1.262,212.197,97.264,213.451,214.002 c0.07,6.576,5.422,11.871,12,11.871h48.648c0.008,0.002,0.016,0,0.016,0c6.633,0,12.006-5.373,12.006-12 c0-0.275-0.01-0.551-0.029-0.822C348.705,258.898,318.695,187.582,265.006,133.803z M300.502,323.516 c-3.486-58.646-28.039-113.445-69.877-155.389c-41.842-41.943-96.514-66.563-155.029-70.064V73.465 c133.697,7.369,242.256,116.125,249.588,250.051H300.502z"/> <path style="fill:#3D6889;" d="M360.057,0H38.613C17.322,0,0,17.322,0,38.613v321.443c0,21.291,17.322,38.611,38.613,38.611 h321.443c21.291,0,38.611-17.32,38.611-38.611V38.613C398.668,17.322,381.348,0,360.057,0z M374.668,360.057 c0,8.057-6.555,14.611-14.611,14.611H38.613c-8.059,0-14.613-6.555-14.613-14.611V38.613C24,30.557,30.555,24,38.613,24h321.443 c8.057,0,14.611,6.557,14.611,14.613V360.057z"/> </g> </g> </svg>';
 
 // src/commands.ts
-var import_obsidian2 = require("obsidian");
+var import_obsidian3 = require("obsidian");
 
 // src/FeedManager.ts
-var import_obsidian = require("obsidian");
+var import_obsidian2 = require("obsidian");
 
 // node_modules/@extractus/feed-extractor/src/utils/linker.js
 var isValid = (url = "") => {
@@ -14879,6 +14879,124 @@ var extractFromHtml = async (html, url, parserOptions = {}) => {
   return parseFromHtml_default(html, url, parserOptions);
 };
 
+// src/HTMLimporter.ts
+var import_obsidian = require("obsidian");
+var _HTMLImporter = class {
+  /**
+   * Get the singleton instance of the importer.
+   * @returns Importer instance.
+   */
+  static get instance() {
+    if (!_HTMLImporter._instance) {
+      _HTMLImporter._instance = new _HTMLImporter();
+    }
+    return _HTMLImporter._instance;
+  }
+  constructor() {
+    const tm = {
+      patterns: [
+        /.*/
+        // apply to all websites
+      ],
+      pre: (document) => {
+        const allElements = document.body.querySelectorAll("*").forEach((e) => {
+          const illegalNames = [], attribs = e.attributes, attCount = attribs.length;
+          for (let i = 0; i < attCount; i++) {
+            const att = attribs[i], name = att.name;
+            if (!_HTMLImporter.VALIDATTR.test(name)) {
+              illegalNames.push(name);
+            }
+          }
+          for (const name of illegalNames) {
+            e.removeAttribute(name);
+          }
+        });
+        return document;
+      },
+      post: (document) => {
+        const pres = document.body.getElementsByTagName("pre");
+        for (let i = 0; i < pres.length; i++) {
+          const pre = pres[i];
+          let firstChild = pre.firstChild;
+          if (firstChild && firstChild.nodeName !== "code") {
+            const code = document.createElement("code");
+            let child;
+            while (firstChild) {
+              code.append(firstChild);
+              firstChild = pre.firstChild;
+            }
+            pre.append(code);
+          }
+        }
+        return document;
+      }
+    };
+    addTransformations([tm]);
+  }
+  /**
+   * Translate an HTML fragment to Markdown text.
+   *
+   * Following HTML cleanup rules are currently applied.
+   * - Flatten tables which contain nested tables into a `section` for each `td`
+   *
+   * **Notes**:
+   * - This addresses nested tables in the 'Node Weekly' feed.
+   *
+   * @param html A HTML fragment string
+   * @return The markdown text generated from the HTML fragment.
+   */
+  fragmentAsMarkdown(html) {
+    var _a2;
+    const parser = new DOMParser(), doc = parser.parseFromString("<html><body>" + html + "</body></html)>", "text/html"), body = doc.body;
+    const tables = body.getElementsByTagName("table"), tableCount = tables.length, outerTables = [];
+    for (let i = 0; i < tableCount; i++) {
+      const outer = tables[i], inner = outer.getElementsByTagName("table");
+      if (inner.length) {
+        outerTables.push(outer);
+      }
+    }
+    for (const outer of outerTables) {
+      let tds = outer.querySelectorAll(":scope > tbody > tr > td");
+      if (tds.length == 0) {
+        tds = outer.querySelectorAll(":scope > tr > td");
+      }
+      const tdCount = tds.length;
+      for (let i = 0; i < tdCount; i++) {
+        const td = tds[i], section = doc.createElement("div");
+        (_a2 = outer.parentElement) == null ? void 0 : _a2.insertBefore(section, outer);
+        while (td.firstChild) {
+          section.appendChild(td.firstChild);
+        }
+      }
+      outer.remove();
+    }
+    return (0, import_obsidian.htmlToMarkdown)(doc);
+  }
+  /**
+   * Exract the main article from an HTML page
+   * @param html The HTML page
+   * @param baseUrl the base url of the page (needed for processing lofac links).
+   * @returns Article Markdown text.
+   */
+  async articleAsMarkdown(html, baseUrl) {
+    const article = await extractFromHtml(html, baseUrl);
+    if (!article) {
+      return null;
+    }
+    const { title, content } = article;
+    let articleContent = "\n";
+    if (title) {
+      articleContent += "# " + title + " \u2B07\uFE0F";
+    }
+    if (content) {
+      articleContent += "\n\n" + (0, import_obsidian.htmlToMarkdown)(content);
+    }
+    return articleContent;
+  }
+};
+var HTMLImporter = _HTMLImporter;
+HTMLImporter.VALIDATTR = /^[a-zA-Z_-]*$/;
+
 // src/FeedManager.ts
 var FeedConfig = class {
   // The dashboard Markdown file of the feed.
@@ -14911,94 +15029,18 @@ var FeedConfig = class {
     this.source = source;
   }
 };
-var _FeedManager = class {
+var FeedManager = class {
   get _filemgr() {
     return this._plugin.filemgr;
   }
   constructor(app, plugin) {
     this._app = app;
     this._plugin = plugin;
-    const tm = {
-      patterns: [
-        /.*/
-        // apply to all websites
-      ],
-      pre: (document) => {
-        const allElements = document.body.querySelectorAll("*").forEach((e) => {
-          const illegalNames = [], attribs = e.attributes, attCount = attribs.length;
-          for (let i = 0; i < attCount; i++) {
-            const att = attribs[i], name = att.name;
-            if (!_FeedManager.VALIDATTR.test(name)) {
-              illegalNames.push(name);
-            }
-          }
-          for (const name of illegalNames) {
-            e.removeAttribute(name);
-          }
-        });
-        return document;
-      },
-      post: (document) => {
-        const pres = document.body.getElementsByTagName("pre");
-        for (let i = 0; i < pres.length; i++) {
-          const pre = pres[i];
-          let firstChild = pre.firstChild;
-          if (firstChild && firstChild.nodeName !== "code") {
-            const code = document.createElement("code");
-            let child;
-            while (firstChild) {
-              code.append(firstChild);
-              firstChild = pre.firstChild;
-            }
-            pre.append(code);
-          }
-        }
-        return document;
-      }
-    };
-    addTransformations([tm]);
-  }
-  /**
-   * Cleanup htmo to make it more Obsidian friendly.
-   *
-   * Following cleanup rules are currently avaiöable.
-   * - Flattern tables which contain nested tables into a `section` for each `td`
-   *
-   * **Note**: This addresses nested tables in the 'NOde Weekly' feed.
-   * @param html A HTML fragment atring
-   *
-   * @return The sanitized HTML document.
-   */
-  sanitizeHTML(html) {
-    var _a2;
-    const parser = new DOMParser(), doc = parser.parseFromString("<html><body>" + html + "</body></html)>", "text/html"), body = doc.body;
-    const tables = body.getElementsByTagName("table"), tableCount = tables.length, outerTables = [];
-    for (let i = 0; i < tableCount; i++) {
-      const outer = tables[i], inner = outer.getElementsByTagName("table");
-      if (inner.length) {
-        outerTables.push(outer);
-      }
-    }
-    for (const outer of outerTables) {
-      let tds = outer.querySelectorAll(":scope > tbody > tr > td");
-      if (tds.length == 0) {
-        tds = outer.querySelectorAll(":scope > tr > td");
-      }
-      const tdCount = tds.length;
-      for (let i = 0; i < tdCount; i++) {
-        const td = tds[i], section = doc.createElement("div");
-        (_a2 = outer.parentElement) == null ? void 0 : _a2.insertBefore(section, outer);
-        while (td.firstChild) {
-          section.appendChild(td.firstChild);
-        }
-      }
-      outer.remove();
-    }
-    return doc;
+    this._html = HTMLImporter.instance;
   }
   getItemFolderPath(feed) {
     var _a2, _b;
-    return (0, import_obsidian.normalizePath)(path.join((_b = (_a2 = feed.parent) == null ? void 0 : _a2.path) != null ? _b : "", feed.basename));
+    return (0, import_obsidian2.normalizePath)(path.join((_b = (_a2 = feed.parent) == null ? void 0 : _a2.path) != null ? _b : "", feed.basename));
   }
   formatImage(image) {
     const { src, width, height } = image;
@@ -15011,10 +15053,10 @@ var _FeedManager = class {
   async saveFeedItem(itemFolder, item) {
     let { id, tags, title, link, description, published, author, image, content } = item;
     if (description) {
-      description = (0, import_obsidian.htmlToMarkdown)(this.sanitizeHTML(description));
+      description = this._html.fragmentAsMarkdown(description);
     }
     if (content) {
-      content = (0, import_obsidian.htmlToMarkdown)(this.sanitizeHTML(content));
+      content = this._html.fragmentAsMarkdown(content);
     }
     const byline = author ? ` by ${author}` : "";
     title = `${title}${byline} - ${published}`;
@@ -15049,7 +15091,7 @@ var _FeedManager = class {
       itemFolder = await this._app.vault.createFolder(itemFolderPath);
     }
     const meta = this._app.metadataCache, oldItemsMap = /* @__PURE__ */ new Map();
-    for (const itemFile of itemFolder.children.filter((fof) => fof instanceof import_obsidian.TFile).map((f) => f)) {
+    for (const itemFile of itemFolder.children.filter((fof) => fof instanceof import_obsidian2.TFile).map((f) => f)) {
       const frontmatter = (_a2 = meta.getFileCache(itemFile)) == null ? void 0 : _a2.frontmatter;
       if (frontmatter) {
         const { pinned, published, id } = frontmatter;
@@ -15083,7 +15125,7 @@ var _FeedManager = class {
         await this.saveFeedItem(itemFolder, newItem);
       } catch (err) {
         console.error(`Failed to save RSS item '${newItem.title}' in feed '${feedConfig.source.name}'; error: ${err.message}`);
-        new import_obsidian.Notice(`Could not save '${newItem.fileName}' in feed '${feedConfig.source.name}': ${err.message}`);
+        new import_obsidian2.Notice(`Could not save '${newItem.fileName}' in feed '${feedConfig.source.name}': ${err.message}`);
       }
     }
     return newRSSitems.length;
@@ -15140,7 +15182,7 @@ var _FeedManager = class {
   * @returns The dashboard Markdown file.
   */
   async createFeedFromUrl(url, location) {
-    const feedXML = await (0, import_obsidian.request)({
+    const feedXML = await (0, import_obsidian2.request)({
       url,
       method: "GET"
     });
@@ -15152,8 +15194,8 @@ var _FeedManager = class {
     const dataMap = {
       "{{feedUrl}}": feed.source,
       "{{siteUrl}}": site != null ? site : "",
-      "{{title}}": (0, import_obsidian.htmlToMarkdown)(title != null ? title : ""),
-      "{{description}}": description ? (0, import_obsidian.htmlToMarkdown)(description) : "",
+      "{{title}}": (0, import_obsidian2.htmlToMarkdown)(title != null ? title : ""),
+      "{{description}}": description ? (0, import_obsidian2.htmlToMarkdown)(description) : "",
       "{{image}}": image ? this.formatImage(image) : `![[${defaultImage}|200x200]]{.rss-image}`
     };
     const dashboard = await this._filemgr.createFile(location.path, feed.fileName, "RSS Feed", dataMap), itemlimit = (_b = (_a2 = this._app.metadataCache.getFileCache(dashboard)) == null ? void 0 : _a2.frontmatter) == null ? void 0 : _b.itemlimit, cfg = new FeedConfig((_c = feed.source) != null ? _c : "", itemlimit != null ? itemlimit : "100", dashboard);
@@ -15193,7 +15235,7 @@ var _FeedManager = class {
     }
     let interval = 1, status = "OK", promise;
     try {
-      const feedXML = await (0, import_obsidian.request)({
+      const feedXML = await (0, import_obsidian2.request)({
         url: feedConfig.feedUrl,
         method: "GET"
       }), feed = new TrackedRSSfeed(feedXML, feedConfig.feedUrl);
@@ -15215,7 +15257,7 @@ var _FeedManager = class {
     const itemFolder = this._app.vault.getFolderByPath(this.getItemFolderPath(feed));
     if (itemFolder) {
       const meta = this._app.metadataCache;
-      let items = itemFolder.children.filter((fof) => fof instanceof import_obsidian.TFile).map((f) => f).filter((f) => {
+      let items = itemFolder.children.filter((fof) => fof instanceof import_obsidian2.TFile).map((f) => f).filter((f) => {
         var _a3;
         const fm = (_a3 = meta.getFileCache(f)) == null ? void 0 : _a3.frontmatter;
         return (fm == null ? void 0 : fm["id"]) && (fm == null ? void 0 : fm["feed"]);
@@ -15234,7 +15276,7 @@ var _FeedManager = class {
     await this._plugin.tagmgr.updateTagMap();
     const promises = this._plugin.filemgr.getFeeds().map((feed) => FeedConfig.fromFile(this._app, feed)).filter((cfg) => cfg).map((cfg) => this.updateFeed(cfg, force));
     let n = 0;
-    const notice = new import_obsidian.Notice(`0/${promises.length} feeds updated`, 0);
+    const notice = new import_obsidian2.Notice(`0/${promises.length} feeds updated`, 0);
     for (let promise of promises) {
       try {
         if (await promise >= 0) {
@@ -15247,7 +15289,7 @@ var _FeedManager = class {
     }
     notice.hide();
     console.log(`Update of ${n}/${promises.length} feeds complete.`);
-    new import_obsidian.Notice(`${n}/${promises.length} RSS feeds successfully updated`, 3e4);
+    new import_obsidian2.Notice(`${n}/${promises.length} RSS feeds successfully updated`, 3e4);
   }
   canDownloadArticle(item) {
     var _a2;
@@ -15258,33 +15300,23 @@ var _FeedManager = class {
     var _a2;
     const fm = (_a2 = this._app.metadataCache.getFileCache(item)) == null ? void 0 : _a2.frontmatter, link = fm == null ? void 0 : fm["link"];
     if (link) {
-      const itemHTML = await (0, import_obsidian.request)({
+      const itemHTML = await (0, import_obsidian2.request)({
         url: link,
         method: "GET"
-      }), article = await extractFromHtml(itemHTML, link);
+      }), article = await this._html.articleAsMarkdown(itemHTML, link);
       if (article) {
-        const { title, content } = article;
-        let articleContent = "\n";
-        if (title) {
-          articleContent += "# " + title + " \u2B07\uFE0F";
-        }
-        if (content) {
-          articleContent += "\n\n" + (0, import_obsidian.htmlToMarkdown)(content);
-        }
-        if (articleContent.length > 0) {
+        if (article.length > 0) {
           this._plugin.tagmgr.registerFileForPostProcessing(item.path);
-          return this._app.vault.append(item, articleContent);
+          return this._app.vault.append(item, article);
         }
       }
     }
   }
 };
-var FeedManager = _FeedManager;
 FeedManager.HASH_FINDER = /(?<!\]\([^\s]*|\[\[[^\s]*|[\w&/#$])#(?![\da-fA-F]+\b|\W)/gu;
-FeedManager.VALIDATTR = /^[a-zA-Z_-]*$/;
 
 // src/commands.ts
-var InputUrlModal = class extends import_obsidian2.Modal {
+var InputUrlModal = class extends import_obsidian3.Modal {
   constructor(app, onSubmit) {
     super(app);
     this.result = "";
@@ -15292,7 +15324,7 @@ var InputUrlModal = class extends import_obsidian2.Modal {
   }
   onOpen() {
     const { contentEl } = this;
-    new import_obsidian2.Setting(contentEl).setName("Feed Url:").setDesc("Enter the url of the rss feed:").setHeading().addText((text) => {
+    new import_obsidian3.Setting(contentEl).setName("Feed Url:").setDesc("Enter the url of the rss feed:").setHeading().addText((text) => {
       text.inputEl.addEventListener("keyup", (evt) => {
         var _a2;
         var keyCode = (_a2 = evt.code) != null ? _a2 : evt.key;
@@ -15309,7 +15341,7 @@ var InputUrlModal = class extends import_obsidian2.Modal {
         this.result = value;
       });
     });
-    new import_obsidian2.Setting(contentEl).addButton(
+    new import_obsidian3.Setting(contentEl).addButton(
       (btn) => btn.setButtonText("Submit").setCta().onClick(() => {
         this.close();
         this.onSubmit(this.result);
@@ -15341,7 +15373,7 @@ var UpdateRSSfeedCommand = class extends RSSTrackerCommandBase {
         return !!cfg;
       }
       if (cfg) {
-        this.plugin.tagmgr.updateTagMap().then((x) => this.plugin.feedmgr.updateFeed(cfg, true).then(() => new import_obsidian2.Notice(`${cfg.source.basename} updated!`)));
+        this.plugin.tagmgr.updateTagMap().then((x) => this.plugin.feedmgr.updateFeed(cfg, true).then(() => new import_obsidian3.Notice(`${cfg.source.basename} updated!`)));
         return true;
       }
     }
@@ -15358,7 +15390,7 @@ var DownloadRSSitemArticleCommand = class extends RSSTrackerCommandBase {
       if (checking) {
         return feedmgr.canDownloadArticle(active);
       }
-      feedmgr.downloadArticle(active).then((v) => new import_obsidian2.Notice(`Article content of "${active.basename}" downloaded`));
+      feedmgr.downloadArticle(active).then((v) => new import_obsidian3.Notice(`Article content of "${active.basename}" downloaded`));
       return true;
     }
     return false;
@@ -15376,7 +15408,7 @@ var MarkAllRSSitemsReadCommand = class extends RSSTrackerCommandBase {
         return cfg;
       }
       if (cfg) {
-        this.plugin.feedmgr.markFeedItemsRead(cfg.source).then(() => new import_obsidian2.Notice(`${cfg.source.basename} updated!`));
+        this.plugin.feedmgr.markFeedItemsRead(cfg.source).then(() => new import_obsidian3.Notice(`${cfg.source.basename} updated!`));
         return true;
       }
     }
@@ -15390,8 +15422,8 @@ var NewRSSTopicCommand = class extends RSSTrackerCommandBase {
   callback() {
     this.plugin.filemgr.createFile(this.plugin.settings.rssTopicsFolderPath, "New Topic", "RSS Topic").then((topic) => {
       const leaf = this.app.workspace.getLeaf(false);
-      leaf.openFile(topic).catch((reason) => new import_obsidian2.Notice(reason.message));
-    }).catch((reason) => new import_obsidian2.Notice(`RSS topic could not be created! ${reason.message}`));
+      leaf.openFile(topic).catch((reason) => new import_obsidian3.Notice(reason.message));
+    }).catch((reason) => new import_obsidian3.Notice(`RSS topic could not be created! ${reason.message}`));
   }
 };
 var NewRSSFeedCollectionCommand = class extends RSSTrackerCommandBase {
@@ -15401,8 +15433,8 @@ var NewRSSFeedCollectionCommand = class extends RSSTrackerCommandBase {
   callback() {
     this.plugin.filemgr.createFile(this.plugin.settings.rssCollectionsFolderPath, "New Feed Collection", "RSS Collection").then((collection) => {
       const leaf = this.app.workspace.getLeaf(false);
-      leaf.openFile(collection).catch((reason) => new import_obsidian2.Notice(reason.message));
-    }).catch((reason) => new import_obsidian2.Notice(`RSS feed collection could not be created! ${reason.message}`));
+      leaf.openFile(collection).catch((reason) => new import_obsidian3.Notice(reason.message));
+    }).catch((reason) => new import_obsidian3.Notice(`RSS feed collection could not be created! ${reason.message}`));
   }
 };
 var NewRSSFeedModalCommand = class extends RSSTrackerCommandBase {
@@ -15421,7 +15453,7 @@ var NewRSSFeedModalCommand = class extends RSSTrackerCommandBase {
         try {
           leaf.openFile(await mgr.createFeedFromUrl(result, feedFolder));
         } catch (err) {
-          new import_obsidian2.Notice(err.message);
+          new import_obsidian3.Notice(err.message);
         }
       }
     });
@@ -15430,7 +15462,7 @@ var NewRSSFeedModalCommand = class extends RSSTrackerCommandBase {
 };
 
 // src/menus.ts
-var import_obsidian3 = require("obsidian");
+var import_obsidian4 = require("obsidian");
 var RSSTrackerMenuItem = class {
   constructor(app, plugin) {
     this.app = app;
@@ -15449,7 +15481,7 @@ var RSSTrackerMenuItem = class {
    */
   get fileMenuHandler() {
     return this.app.workspace.on("file-menu", (menu, file) => {
-      this.addItem(menu, file instanceof import_obsidian3.TFile ? file : null);
+      this.addItem(menu, file instanceof import_obsidian4.TFile ? file : null);
     });
   }
 };
@@ -15465,7 +15497,7 @@ var MarkAllItemsReadMenuItem = class extends RSSTrackerMenuItem {
           item.setTitle("Mark all RSS items as read").setIcon("list-checks").onClick(async () => {
             var _a2;
             this.plugin.feedmgr.markFeedItemsRead(dashboard);
-            new import_obsidian3.Notice(`All items of "${(_a2 = dashboard == null ? void 0 : dashboard.basename) != null ? _a2 : "unavailable"}" marked read.`);
+            new import_obsidian4.Notice(`All items of "${(_a2 = dashboard == null ? void 0 : dashboard.basename) != null ? _a2 : "unavailable"}" marked read.`);
           });
         });
       }
@@ -15482,7 +15514,7 @@ var DownloadArticleContentMenuItem = class extends RSSTrackerMenuItem {
       menu.addItem((item) => {
         item.setTitle("Download RSS Item article").setIcon("download").onClick(async () => {
           await feedmgr.downloadArticle(rssitem);
-          new import_obsidian3.Notice(`Article content of "${rssitem.basename}" downloaded`);
+          new import_obsidian4.Notice(`Article content of "${rssitem.basename}" downloaded`);
         });
       });
     }
@@ -15511,7 +15543,7 @@ var UpdateRSSfeedMenuItem = class extends RSSTrackerMenuItem {
             var _a2;
             await this.plugin.tagmgr.updateTagMap();
             await this.plugin.feedmgr.updateFeed(feedconfig, true);
-            new import_obsidian3.Notice(`${(_a2 = file == null ? void 0 : file.name) != null ? _a2 : "???"} updated`);
+            new import_obsidian4.Notice(`${(_a2 = file == null ? void 0 : file.name) != null ? _a2 : "???"} updated`);
           });
         });
       }
@@ -15520,7 +15552,7 @@ var UpdateRSSfeedMenuItem = class extends RSSTrackerMenuItem {
 };
 
 // src/DataViewJSTools.ts
-var import_obsidian4 = require("obsidian");
+var import_obsidian5 = require("obsidian");
 var FeedToCollectionMap = class {
   /**
    * Get all collections the given feed is a member of.
@@ -15629,7 +15661,7 @@ var DataViewJSTools = class {
   get fromFeedsFolderFiles() {
     const settings = this.settings, feedsFolder = settings.app.vault.getFolderByPath(settings.rssFeedFolderPath);
     if (feedsFolder) {
-      return feedsFolder.children.filter((fof) => fof instanceof import_obsidian4.TFile).map((f) => '"' + f.path + '"').join(" OR ");
+      return feedsFolder.children.filter((fof) => fof instanceof import_obsidian5.TFile).map((f) => '"' + f.path + '"').join(" OR ");
     } else {
       return '"' + this.settings.rssFeedFolderPath + '"';
     }
@@ -15770,8 +15802,8 @@ var DataViewJSTools = class {
 };
 
 // src/settingsUI.ts
-var import_obsidian5 = require("obsidian");
-var RSSTrackerSettingBase = class extends import_obsidian5.Setting {
+var import_obsidian6 = require("obsidian");
+var RSSTrackerSettingBase = class extends import_obsidian6.Setting {
   constructor(settingsTab) {
     super(settingsTab.containerEl);
     this.settingsTab = settingsTab;
@@ -15896,7 +15928,7 @@ var RSSTopicsFolderSetting = class extends RSSTrackerSettingBase {
     });
   }
 };
-var RSSTrackerSettingTab = class extends import_obsidian5.PluginSettingTab {
+var RSSTrackerSettingTab = class extends import_obsidian6.PluginSettingTab {
   constructor(settings) {
     super(settings.app, settings.plugin);
     this.settings = settings;
@@ -15919,7 +15951,7 @@ var RSSTrackerSettingTab = class extends import_obsidian5.PluginSettingTab {
 };
 
 // src/RSSFileManager.ts
-var import_obsidian6 = require("obsidian");
+var import_obsidian7 = require("obsidian");
 var _RSSfileManager = class {
   get _settings() {
     return this._plugin.settings;
@@ -16031,7 +16063,7 @@ var _RSSfileManager = class {
       return [];
     }
     return feedFolder.children.filter((it) => {
-      if (!(it instanceof import_obsidian6.TFile) || it.extension !== "md") {
+      if (!(it instanceof import_obsidian7.TFile) || it.extension !== "md") {
         return false;
       }
       return true;
@@ -16229,7 +16261,7 @@ var RSSTagManager = class {
 };
 
 // src/main.ts
-var RSSTrackerPlugin = class extends import_obsidian7.Plugin {
+var RSSTrackerPlugin = class extends import_obsidian8.Plugin {
   constructor(app, manifest) {
     super(app, manifest);
     this._settings = new RSSTrackerSettings(app, this);
@@ -16282,7 +16314,7 @@ var RSSTrackerPlugin = class extends import_obsidian7.Plugin {
       const xmlFile = this.app.vault.getFileByPath(xml), feedDir = this.app.vault.getFolderByPath(dir);
       if (xmlFile && feedDir) {
         const dashboard = await this._feedmgr.createFeedFromFile(xmlFile, feedDir);
-        new import_obsidian7.Notice(`New RSS Feed "${dashboard.basename}" created`);
+        new import_obsidian8.Notice(`New RSS Feed "${dashboard.basename}" created`);
       }
     });
     this.registerInterval(window.setInterval(() => {

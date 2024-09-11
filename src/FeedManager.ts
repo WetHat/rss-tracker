@@ -2,9 +2,8 @@ import { App, request, TFile, TFolder, htmlToMarkdown, normalizePath, ListItemCa
 import RSSTrackerPlugin from './main';
 import { TrackedRSSfeed, TrackedRSSitem, IRssMedium } from './FeedAssembler';
 import * as path from 'path';
-import { extractFromHtml, ArticleData, Transformation, addTransformations } from '@extractus/article-extractor'
 import { RSSfileManager } from './RSSFileManager';
-import { InputUrlModal } from './commands';
+import { HTMLImporter } from './HTMLimporter';
 
 
 /**
@@ -68,10 +67,11 @@ type TAnnotatedItem = {
  */
 export class FeedManager {
     private static readonly HASH_FINDER = /(?<!\]\([^\s]*|\[\[[^\s]*|[\w&/#$])#(?![\da-fA-F]+\b|\W)/gu;
-    private static VALIDATTR = /^[a-zA-Z_-]*$/; // match valid attribute names
 
     private _app: App;
     private _plugin: RSSTrackerPlugin;
+    private _html: HTMLImporter;
+
     private get _filemgr(): RSSfileManager {
         return this._plugin.filemgr;
     }
@@ -79,110 +79,7 @@ export class FeedManager {
     constructor(app: App, plugin: RSSTrackerPlugin) {
         this._app = app;
         this._plugin = plugin;
-
-        // configure the article extractor to make the returned content
-        // more Obsidian friendly
-        const tm: Transformation = {
-            patterns: [
-                /.*/ // apply to all websites
-            ],
-            pre: document => {
-                // remove all weird attributes
-                const allElements = document.body.querySelectorAll("*")
-                    .forEach(e => {
-                        const
-                            illegalNames = [],
-                            attribs = e.attributes,
-                            attCount = attribs.length;
-
-                        for (let i = 0; i < attCount; i++) {
-                            const
-                                att = attribs[i],
-                                name = att.name;
-                            if (!FeedManager.VALIDATTR.test(name)) {
-                                illegalNames.push(name);
-                            }
-                        }
-                        for (const name of illegalNames) {
-                            e.removeAttribute(name);
-                        }
-                    });
-                return document;
-            },
-            post: document => {
-                // look for <pre> tags and make sure their first child is always a <code> tag.
-                const pres = document.body.getElementsByTagName("pre");
-                for (let i = 0; i < pres.length; i++) {
-                    const pre = pres[i];
-                    let firstChild = pre.firstChild;
-                    if (firstChild && firstChild.nodeName !== "code") {
-                        const code = document.createElement("code");
-                        let child;
-                        while (firstChild) {
-                            code.append(firstChild);
-                            firstChild = pre.firstChild;
-                        }
-                        pre.append(code);
-                    }
-                }
-                return document;
-            }
-        };
-        addTransformations([tm]);
-    }
-
-    /**
-     * Cleanup htmo to make it more Obsidian friendly.
-     *
-     * Following cleanup rules are currently avaiöable.
-     * - Flattern tables which contain nested tables into a `section` for each `td`
-     *
-     * **Note**: This addresses nested tables in the 'NOde Weekly' feed.
-     * @param html A HTML fragment atring
-     *
-     * @return The sanitized HTML document.
-     */
-    private sanitizeHTML(html: string): Document {
-        const
-            parser = new DOMParser(),
-            doc = parser.parseFromString("<html><body>" + html + "</body></html)>", "text/html"),
-            body = doc.body;
-        // unravel nested tables - each td becomes its own div
-        const
-            tables = body.getElementsByTagName("table"),
-            tableCount = tables.length,
-            outerTables = [];
-        for (let i = 0; i < tableCount; i++) {
-            const
-                outer = tables[i],
-                inner = outer.getElementsByTagName("table");
-            if (inner.length) {
-                outerTables.push(outer);
-            }
-        }
-        // flatten outer tables
-        for (const outer of outerTables) {
-            let tds = outer.querySelectorAll(":scope > tbody > tr > td"); // this is static
-            if (tds.length == 0) {
-                tds = outer.querySelectorAll(":scope > tr > td");
-            }
-
-            const tdCount = tds.length;
-            for (let i = 0; i < tdCount; i++) {
-                // hoist td content indo a section
-                const
-                    td = tds[i],
-                    section = doc.createElement("div");
-                outer.parentElement?.insertBefore(section, outer);
-                // mode all children of td
-                while (td.firstChild) {
-                    section.appendChild(td.firstChild);
-                }
-            }
-            // the outer table is now empty - get rid of it
-            outer.remove();
-        }
-        return doc;
+        this._html = HTMLImporter.instance;
     }
 
     private getItemFolderPath(feed: TFile) {
@@ -205,10 +102,10 @@ export class FeedManager {
         let { id, tags, title, link, description, published, author, image, content } = item;
 
         if (description) {
-            description = htmlToMarkdown(this.sanitizeHTML(description));
+            description = this._html.fragmentAsMarkdown(description);
         }
         if (content) {
-            content = htmlToMarkdown(this.sanitizeHTML(content));
+            content = this._html.fragmentAsMarkdown(content);
         }
 
         const byline = author ? ` by ${author}` : "";
@@ -527,20 +424,11 @@ export class FeedManager {
                     url: link,
                     method: "GET"
                 }),
-                article: ArticleData | null = await extractFromHtml(itemHTML, link);
+                article: string | null = await this._html.articleAsMarkdown(itemHTML,link);
             if (article) {
-                const { title, content } = article;
-                let articleContent: string = "\n";
-                if (title) {
-                    articleContent += "# " + title + " ⬇️";
-                }
-
-                if (content) {
-                    articleContent += "\n\n" + htmlToMarkdown(content);
-                }
-                if (articleContent.length > 0) {
+                if (article.length > 0) {
                     this._plugin.tagmgr.registerFileForPostProcessing(item.path);
-                    return this._app.vault.append(item, articleContent);
+                    return this._app.vault.append(item, article);
                 }
             }
         }
