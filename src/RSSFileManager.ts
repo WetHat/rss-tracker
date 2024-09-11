@@ -1,9 +1,9 @@
 
-import { App, CachedMetadata, EventRef, TAbstractFile, TFile, Vault } from "obsidian";
+import { App, TAbstractFile, TFile, Vault } from "obsidian";
 import { TPropertyBag } from "./FeedAssembler";
 import { RSSTrackerSettings, TTemplateName } from "./settings";
 import RSSTrackerPlugin from "./main";
-import { RSSTagManager } from "./TagManager";
+
 
 /**
  * A utility class to manage RSS related files.
