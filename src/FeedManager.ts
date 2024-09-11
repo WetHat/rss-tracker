@@ -131,6 +131,60 @@ export class FeedManager {
         addTransformations([tm]);
     }
 
+    /**
+     * Cleanup htmo to make it more Obsidian friendly.
+     *
+     * Following cleanup rules are currently avaiöable.
+     * - Flattern tables which contain nested tables into a `section` for each `td`
+     *
+     * **Note**: This addresses nested tables in the 'NOde Weekly' feed.
+     * @param html A HTML fragment atring
+     *
+     * @return The sanitized HTML document.
+     */
+    private sanitizeHTML(html: string): Document {
+        const
+            parser = new DOMParser(),
+            doc = parser.parseFromString("<html><body>" + html + "</body></html)>", "text/html"),
+            body = doc.body;
+        // unravel nested tables - each td becomes its own div
+        const
+            tables = body.getElementsByTagName("table"),
+            tableCount = tables.length,
+            outerTables = [];
+        for (let i = 0; i < tableCount; i++) {
+            const
+                outer = tables[i],
+                inner = outer.getElementsByTagName("table");
+            if (inner.length) {
+                outerTables.push(outer);
+            }
+        }
+        // flatten outer tables
+        for (const outer of outerTables) {
+            let tds = outer.querySelectorAll(":scope > tbody > tr > td"); // this is static
+            if (tds.length == 0) {
+                tds = outer.querySelectorAll(":scope > tr > td");
+            }
+
+            const tdCount = tds.length;
+            for (let i = 0; i < tdCount; i++) {
+                // hoist td content indo a section
+                const
+                    td = tds[i],
+                    section = doc.createElement("div");
+                outer.parentElement?.insertBefore(section, outer);
+                // mode all children of td
+                while (td.firstChild) {
+                    section.appendChild(td.firstChild);
+                }
+            }
+            // the outer table is now empty - get rid of it
+            outer.remove();
+        }
+        return doc;
+    }
+
     private getItemFolderPath(feed: TFile) {
         return normalizePath(path.join(feed.parent?.path ?? "", feed.basename));
     }
@@ -151,10 +205,10 @@ export class FeedManager {
         let { id, tags, title, link, description, published, author, image, content } = item;
 
         if (description) {
-            description = htmlToMarkdown(description);
+            description = htmlToMarkdown(this.sanitizeHTML(description));
         }
         if (content) {
-            content = htmlToMarkdown(content);
+            content = htmlToMarkdown(this.sanitizeHTML(content));
         }
 
         const byline = author ? ` by ${author}` : "";
@@ -219,7 +273,7 @@ export class FeedManager {
         // Inspect the downloaded feed and determine which of its items are not already present
         // and need to be saved to disk.
         const newRSSitems: TrackedRSSitem[] = feed.items
-            .slice(0,itemLimit) // do not use anything beyond the item limit
+            .slice(0, itemLimit) // do not use anything beyond the item limit
             .filter(itm => !oldItemsMap.has(itm.id));
 
         if (newRSSitems.length === 0) {
