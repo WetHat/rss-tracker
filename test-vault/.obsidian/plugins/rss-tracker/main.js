@@ -13959,7 +13959,7 @@ var TrackedRSSitem = class {
     this.id = id;
     this.media = media;
     this.tags = ((_a2 = entry.category) != null ? _a2 : []).map((c) => typeof c === "string" ? c : c["#text"]).join(",").split(",").map((c) => {
-      return c.replace(/^#(?=\w)|["\[\]\{\}]+/g, "").replaceAll("#", "\uFF03").replaceAll(".", "\u302D").replaceAll("&", "\uFF06").replace(/[:;\\/]/g, " ").replace(/\s+/, " ").trim();
+      return c.replace(/^#(?=\w)|["\[\]\{\}\(\)]+/g, "").replaceAll("#", "\uFF03").replaceAll(".", "\u302D").replaceAll("&", "\uFF06").replace(/[:;\\/]/g, " ").replace(/\s+/, " ").trim();
     }).filter((c) => !!c);
     if (description) {
       this.description = typeof description === "string" ? description : description["#text"];
@@ -14231,7 +14231,7 @@ var TrackedRSSfeed = class {
 var path = __toESM(require("path"), 1);
 
 // node_modules/@extractus/article-extractor/src/browser/linkedom.js
-var DOMParser = window.DOMParser;
+var DOMParser2 = window.DOMParser;
 
 // node_modules/@extractus/article-extractor/src/utils/html.js
 var import_sanitize_html = __toESM(require_sanitize_html(), 1);
@@ -14354,7 +14354,7 @@ var stripMultispaces = (str) => {
   return str.replace(WS_REGEXP, " ").trim();
 };
 var cleanify = (inputHtml) => {
-  const doc = new DOMParser().parseFromString(inputHtml, "text/html");
+  const doc = new DOMParser2().parseFromString(inputHtml, "text/html");
   const html = doc.documentElement.innerHTML;
   return pipe(
     (input) => (0, import_sanitize_html.default)(input, getSanitizeHtmlOptions()),
@@ -14501,7 +14501,7 @@ var purify3 = (url) => {
   }
 };
 var normalize = (html, url) => {
-  const doc = new DOMParser().parseFromString(html, "text/html");
+  const doc = new DOMParser2().parseFromString(html, "text/html");
   Array.from(doc.getElementsByTagName("a")).forEach((element) => {
     const href = element.getAttribute("href");
     if (href) {
@@ -14691,7 +14691,7 @@ var extractMetaData_default = (html) => {
     published: publishedTimeAttrs,
     type: typeAttrs
   };
-  const doc = new DOMParser().parseFromString(html, "text/html");
+  const doc = new DOMParser2().parseFromString(html, "text/html");
   entry.title = (_a2 = doc.querySelector("head > title")) == null ? void 0 : _a2.innerText;
   Array.from(doc.getElementsByTagName("link")).forEach((node) => {
     const rel = node.getAttribute("rel");
@@ -14720,7 +14720,7 @@ var extractWithReadability_default = (html, url = "") => {
   if (!isString(html)) {
     return null;
   }
-  const doc = new DOMParser().parseFromString(html, "text/html");
+  const doc = new DOMParser2().parseFromString(html, "text/html");
   const base = doc.createElement("base");
   base.setAttribute("href", url);
   doc.head.appendChild(base);
@@ -14734,7 +14734,7 @@ function extractTitleWithReadability(html) {
   if (!isString(html)) {
     return null;
   }
-  const doc = new DOMParser().parseFromString(html, "text/html");
+  const doc = new DOMParser2().parseFromString(html, "text/html");
   const reader = new import_readability.Readability(doc);
   return reader._getArticleTitle() || null;
 }
@@ -14768,12 +14768,12 @@ var findTransformations = (links) => {
   return tfms;
 };
 var execPreParser = (html, links) => {
-  const doc = new DOMParser().parseFromString(html, "text/html");
+  const doc = new DOMParser2().parseFromString(html, "text/html");
   findTransformations(links).map((tfm) => tfm.pre).filter((fn) => isFunction(fn)).map((fn) => fn(doc));
   return Array.from(doc.childNodes).map((it) => it.outerHTML).join("");
 };
 var execPostParser = (html, links) => {
-  const doc = new DOMParser().parseFromString(html, "text/html");
+  const doc = new DOMParser2().parseFromString(html, "text/html");
   findTransformations(links).map((tfm) => tfm.post).filter((fn) => isFunction(fn)).map((fn) => fn(doc));
   return Array.from(doc.childNodes).map((it) => it.outerHTML).join("");
 };
@@ -14958,6 +14958,44 @@ var _FeedManager = class {
     };
     addTransformations([tm]);
   }
+  /**
+   * Cleanup htmo to make it more Obsidian friendly.
+   *
+   * Following cleanup rules are currently avaiöable.
+   * - Flattern tables which contain nested tables into a `section` for each `td`
+   *
+   * **Note**: This addresses nested tables in the 'NOde Weekly' feed.
+   * @param html A HTML fragment atring
+   *
+   * @return The sanitized HTML document.
+   */
+  sanitizeHTML(html) {
+    var _a2;
+    const parser = new DOMParser(), doc = parser.parseFromString("<html><body>" + html + "</body></html)>", "text/html"), body = doc.body;
+    const tables = body.getElementsByTagName("table"), tableCount = tables.length, outerTables = [];
+    for (let i = 0; i < tableCount; i++) {
+      const outer = tables[i], inner = outer.getElementsByTagName("table");
+      if (inner.length) {
+        outerTables.push(outer);
+      }
+    }
+    for (const outer of outerTables) {
+      let tds = outer.querySelectorAll(":scope > tbody > tr > td");
+      if (tds.length == 0) {
+        tds = outer.querySelectorAll(":scope > tr > td");
+      }
+      const tdCount = tds.length;
+      for (let i = 0; i < tdCount; i++) {
+        const td = tds[i], section = doc.createElement("div");
+        (_a2 = outer.parentElement) == null ? void 0 : _a2.insertBefore(section, outer);
+        while (td.firstChild) {
+          section.appendChild(td.firstChild);
+        }
+      }
+      outer.remove();
+    }
+    return doc;
+  }
   getItemFolderPath(feed) {
     var _a2, _b;
     return (0, import_obsidian.normalizePath)(path.join((_b = (_a2 = feed.parent) == null ? void 0 : _a2.path) != null ? _b : "", feed.basename));
@@ -14973,10 +15011,10 @@ var _FeedManager = class {
   async saveFeedItem(itemFolder, item) {
     let { id, tags, title, link, description, published, author, image, content } = item;
     if (description) {
-      description = (0, import_obsidian.htmlToMarkdown)(description);
+      description = (0, import_obsidian.htmlToMarkdown)(this.sanitizeHTML(description));
     }
     if (content) {
-      content = (0, import_obsidian.htmlToMarkdown)(content);
+      content = (0, import_obsidian.htmlToMarkdown)(this.sanitizeHTML(content));
     }
     const byline = author ? ` by ${author}` : "";
     title = `${title}${byline} - ${published}`;
@@ -15677,7 +15715,7 @@ var DataViewJSTools = class {
   }
   async rssItemsOfFeed(feed) {
     const pages = await this.dv.pages(this.fromItemsOfFeed(feed));
-    return pages.where((rec) => rec.role === "rssitem").distinct((rec) => rec.link).sort((rec) => rec.published, "desc");
+    return pages.where((rec) => rec.role === "rssitem").sort((rec) => rec.published, "desc");
   }
   ///////
   /**
@@ -16011,6 +16049,11 @@ RSSfileManager.TOKEN_SPLITTER = /(?<={{[^{}]+}})|(?={{[^{}]+}})/g;
 // src/TagManager.ts
 var RSSTagManager = class {
   constructor(app, plugin) {
+    /**
+     * A snapshot of the tags cached by Obsidian.
+     * Used by {@link mapHashtag} to hoist tags from RSS items directly
+     * into the domain of the users's knowledge graph.
+     */
     this._knownTagsCache = {};
     this._postProcessingRegistry = /* @__PURE__ */ new Set();
     this._tagmap = {};
@@ -16020,11 +16063,23 @@ var RSSTagManager = class {
     this._metadataCache = app.metadataCache;
     this._vault = app.vault;
   }
+  /**
+   * Register a file for post processing hashtags in the note body.
+   *
+   * Post processing is performed by the event handler returnd from
+   * {@link rssTagPostProcessor}.
+   *
+   * @param path Vault relative path to file
+   * @returns the registered path
+   */
   registerFileForPostProcessing(path2) {
     this._postProcessingRegistry.add(path2);
-    console.log(`Queue ${this._postProcessingRegistry.size} for post processing`);
     return path2;
   }
+  /**
+   * Get or create the tag map file handle.
+   * @returns a valid file handle to the tag map file located at {@link RSSTrackerSettings.rssTagmapPath}.
+   */
   async getTagmapFile() {
     let tagmap = this._vault.getFileByPath(this._plugin.settings.rssTagmapPath);
     if (!tagmap) {
@@ -16032,9 +16087,15 @@ var RSSTagManager = class {
     }
     return this._vault.getFileByPath(this._plugin.settings.rssTagmapPath);
   }
+  /**
+   * Update the in-memory tag map.
+   *
+   * The map is update fron:
+   * - The persisted mapping table at {@link RSSTrackerSettings.rssTagmapPath}
+   * - Hashtags in the rss domain from the Obsidian metadata cache.
+   */
   async updateTagMap() {
     await this.loadTagmap();
-    await this.commit();
     this._knownTagsCache = this._metadataCache.getTags();
     for (const tag in this._knownTagsCache) {
       this.mapHashtag(tag);
@@ -16042,7 +16103,7 @@ var RSSTagManager = class {
     await this.commit();
   }
   /**
-   * Commit pending changes to the tag map file.
+   * Commit any pending changes to the tag map file.
    */
   async commit() {
     if (this._pendingMappings.length > 0) {
@@ -16059,9 +16120,16 @@ var RSSTagManager = class {
     }
   }
   /**
-   * Map a tag found in an rss item to a local domain tag.
+   * Map a tag found in an rss item into the domain of the local knowledge graph.
    *
-   * @param rssHashtag A hashtag foond in RSS item content.
+   * Following rules are applied:
+   * - if the tag has already been cached by Obsidian, the hashtag is passed through unchanged
+   * - if the tag is new, it is put into the rss domain and a default mapping is aaded to the tag map
+   *   file located at {@link RSSTrackerSettings.rssTagmapPath}.
+   * - if there is a mapping defined in the map file {@link RSSTrackerSettings.rssTagmapPath},
+   *   the tag is mapped and changed in the text.
+   *
+   * @param rssHashtag A hashtag found in RSS item contents.
    * @returns mapped tag
    */
   mapHashtag(rssHashtag) {
@@ -16079,6 +16147,14 @@ var RSSTagManager = class {
     }
     return mapped;
   }
+  /**
+   * Load tg mapping data into memors.
+   *
+   * Mappings are read from:
+   * - the tag map file located at: {@link RSSTrackerSettings.rssTagmapPath}
+   * - the tags cached by Obsidian.
+   *
+   */
   async loadTagmap() {
     const mapfile = await this.getTagmapFile();
     if (!mapfile) {
