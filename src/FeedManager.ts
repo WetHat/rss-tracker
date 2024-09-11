@@ -3,7 +3,7 @@ import RSSTrackerPlugin from './main';
 import { TrackedRSSfeed, TrackedRSSitem, IRssMedium } from './FeedAssembler';
 import * as path from 'path';
 import { RSSfileManager } from './RSSFileManager';
-import { HTMLImporter } from './HTMLimporter';
+import { HTMLxlate } from './HTMLxlate';
 
 
 /**
@@ -70,7 +70,7 @@ export class FeedManager {
 
     private _app: App;
     private _plugin: RSSTrackerPlugin;
-    private _html: HTMLImporter;
+    private _html: HTMLxlate;
 
     private get _filemgr(): RSSfileManager {
         return this._plugin.filemgr;
@@ -79,7 +79,7 @@ export class FeedManager {
     constructor(app: App, plugin: RSSTrackerPlugin) {
         this._app = app;
         this._plugin = plugin;
-        this._html = HTMLImporter.instance;
+        this._html = HTMLxlate.instance;
     }
 
     private getItemFolderPath(feed: TFile) {

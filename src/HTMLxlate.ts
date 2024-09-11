@@ -2,22 +2,22 @@ import { ArticleData, Transformation, addTransformations, extractFromHtml } from
 import { htmlToMarkdown } from "obsidian";
 
 /**
- * A singleton utility class to import HTML as Markdown
+ * A singleton utility class to clanup and translate HTML to Markdown.
  */
-export class HTMLImporter {
+export class HTMLxlate {
     private static VALIDATTR = /^[a-zA-Z_-]*$/; // match valid attribute names
 
-    private static _instance?: HTMLImporter;
+    private static _instance?: HTMLxlate;
 
     /**
      * Get the singleton instance of the importer.
      * @returns Importer instance.
      */
-    static get instance(): HTMLImporter {
-        if (!HTMLImporter._instance) {
-            HTMLImporter._instance = new HTMLImporter();
+    static get instance(): HTMLxlate {
+        if (!HTMLxlate._instance) {
+            HTMLxlate._instance = new HTMLxlate();
         }
-        return HTMLImporter._instance;
+        return HTMLxlate._instance;
     }
 
     private constructor() {
@@ -40,7 +40,7 @@ export class HTMLImporter {
                             const
                                 att = attribs[i],
                                 name = att.name;
-                            if (!HTMLImporter.VALIDATTR.test(name)) {
+                            if (!HTMLxlate.VALIDATTR.test(name)) {
                                 illegalNames.push(name);
                             }
                         }

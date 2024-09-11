@@ -14879,18 +14879,18 @@ var extractFromHtml = async (html, url, parserOptions = {}) => {
   return parseFromHtml_default(html, url, parserOptions);
 };
 
-// src/HTMLimporter.ts
+// src/HTMLxlate.ts
 var import_obsidian = require("obsidian");
-var _HTMLImporter = class {
+var _HTMLxlate = class {
   /**
    * Get the singleton instance of the importer.
    * @returns Importer instance.
    */
   static get instance() {
-    if (!_HTMLImporter._instance) {
-      _HTMLImporter._instance = new _HTMLImporter();
+    if (!_HTMLxlate._instance) {
+      _HTMLxlate._instance = new _HTMLxlate();
     }
-    return _HTMLImporter._instance;
+    return _HTMLxlate._instance;
   }
   constructor() {
     const tm = {
@@ -14903,7 +14903,7 @@ var _HTMLImporter = class {
           const illegalNames = [], attribs = e.attributes, attCount = attribs.length;
           for (let i = 0; i < attCount; i++) {
             const att = attribs[i], name = att.name;
-            if (!_HTMLImporter.VALIDATTR.test(name)) {
+            if (!_HTMLxlate.VALIDATTR.test(name)) {
               illegalNames.push(name);
             }
           }
@@ -14995,8 +14995,8 @@ var _HTMLImporter = class {
     return articleContent;
   }
 };
-var HTMLImporter = _HTMLImporter;
-HTMLImporter.VALIDATTR = /^[a-zA-Z_-]*$/;
+var HTMLxlate = _HTMLxlate;
+HTMLxlate.VALIDATTR = /^[a-zA-Z_-]*$/;
 
 // src/FeedManager.ts
 var FeedConfig = class {
@@ -15037,7 +15037,7 @@ var FeedManager = class {
   constructor(app, plugin) {
     this._app = app;
     this._plugin = plugin;
-    this._html = HTMLImporter.instance;
+    this._html = HTMLxlate.instance;
   }
   getItemFolderPath(feed) {
     var _a2, _b;
