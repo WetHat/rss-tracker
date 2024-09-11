@@ -311,7 +311,6 @@ export class DataViewJSTools {
         const pages = await this.dv.pages(this.fromItemsOfFeed(feed));
         return pages
             .where((rec: TPageRecord) => rec.role === "rssitem")
-            .distinct((rec: TPageRecord) => rec.link)
             .sort((rec: TPageRecord) => rec.published, "desc");
     }
 
