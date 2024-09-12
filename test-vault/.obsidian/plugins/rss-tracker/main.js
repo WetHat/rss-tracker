@@ -15668,7 +15668,7 @@ var DataViewJSTools = class {
       allTags.length > 0 ? allTags.join(" AND ") : null,
       noneTags.length > 0 ? "-( " + noneTags.join(" OR ") + " )" : null
     ].filter((expr) => expr);
-    return from ? from.join(" AND ") : "#000000";
+    return from.length > 0 ? from.join(" AND ") : "#nil";
   }
   fromItemsOfFeed(feed) {
     return "[[" + feed.file.path + "]]";
