@@ -72,24 +72,21 @@ export class HTMLxlate {
         addTransformations([tm]);
     }
 
-    private hoistSingleRowTable(doc : Document,table: HTMLTableElement) : boolean {
+    private hoistSingleRowTable(doc: Document, table: HTMLTableElement): boolean {
         let trs = table.querySelectorAll(":scope > tbody > tr"); // this is static
         if (trs.length == 0) {
             trs = table.querySelectorAll(":scope > tr");
         }
         if (trs.length == 1) {
-            const
-                tds = trs[0].querySelectorAll(":scope > td"), // not live!
-                tdCount = tds.length;
-            for (let i = 0; i < tdCount; i++) {
-                const td = tds[i],
-                section = doc.createElement("section");
-                table.parentElement?.insertBefore(section,table);
-                // move all children of td
+            trs[0].querySelectorAll(":scope > td").forEach(td => {
+                // hoist each td before the table
+                const section = doc.createElement("section");
+                table.parentElement?.insertBefore(section, table);
+                // move all children of td into the section
                 while (td.firstChild) {
                     section.appendChild(td.firstChild);
                 }
-            }
+            });
             table.remove();
             return true;
         }
@@ -113,20 +110,20 @@ export class HTMLxlate {
             parser = new DOMParser(),
             doc = parser.parseFromString("<html><body>" + html + "</body></html)>", "text/html"),
             body = doc.body;
-        // unravel nested tables - each td becomes its own div
+        // tidy tables
         const
             tables = Array.from<HTMLTableElement>(body.getElementsByTagName("table")),
             tableCount = tables.length;
         for (let i = 0; i < tableCount; i++) {
-            this.hoistSingleRowTable(doc,tables[i]);
+            this.hoistSingleRowTable(doc, tables[i]);
         }
         return htmlToMarkdown(doc);
     }
 
     /**
-     * Exract the main article from an HTML page
-     * @param html The HTML page
-     * @param baseUrl the base url of the page (needed for processing lofac links).
+     * Exract the main article from an HTML document
+     * @param html The content of an HTML document (including `<html>` and `<body>` elements)
+     * @param baseUrl the base url of the document (needed for processing lofac links).
      * @returns Article Markdown text.
      */
     async articleAsMarkdown(html: string, baseUrl: string): Promise<string | null> {
@@ -136,14 +133,11 @@ export class HTMLxlate {
         }
 
         const { title, content } = article;
-        let articleContent: string = "\n";
-        if (title) {
-            articleContent += "# " + title + " ⬇️";
-        }
 
-        if (content) {
-            articleContent += "\n\n" + htmlToMarkdown(content);
-        }
-        return articleContent;
+        return "\n# "
+            + (title ?? "Downloaded Article")
+            + " ⬇️"
+            + "\n\n"
+            + (content ? htmlToMarkdown(content) : "-");
     }
 }

@@ -14934,20 +14934,19 @@ var _HTMLxlate = class {
     addTransformations([tm]);
   }
   hoistSingleRowTable(doc, table) {
-    var _a2;
     let trs = table.querySelectorAll(":scope > tbody > tr");
     if (trs.length == 0) {
       trs = table.querySelectorAll(":scope > tr");
     }
     if (trs.length == 1) {
-      const tds = trs[0].querySelectorAll(":scope > td"), tdCount = tds.length;
-      for (let i = 0; i < tdCount; i++) {
-        const td = tds[i], section = doc.createElement("section");
+      trs[0].querySelectorAll(":scope > td").forEach((td) => {
+        var _a2;
+        const section = doc.createElement("section");
         (_a2 = table.parentElement) == null ? void 0 : _a2.insertBefore(section, table);
         while (td.firstChild) {
           section.appendChild(td.firstChild);
         }
-      }
+      });
       table.remove();
       return true;
     }
@@ -14974,9 +14973,9 @@ var _HTMLxlate = class {
     return (0, import_obsidian.htmlToMarkdown)(doc);
   }
   /**
-   * Exract the main article from an HTML page
-   * @param html The HTML page
-   * @param baseUrl the base url of the page (needed for processing lofac links).
+   * Exract the main article from an HTML document
+   * @param html The content of an HTML document (including `<html>` and `<body>` elements)
+   * @param baseUrl the base url of the document (needed for processing lofac links).
    * @returns Article Markdown text.
    */
   async articleAsMarkdown(html, baseUrl) {
@@ -14985,14 +14984,7 @@ var _HTMLxlate = class {
       return null;
     }
     const { title, content } = article;
-    let articleContent = "\n";
-    if (title) {
-      articleContent += "# " + title + " \u2B07\uFE0F";
-    }
-    if (content) {
-      articleContent += "\n\n" + (0, import_obsidian.htmlToMarkdown)(content);
-    }
-    return articleContent;
+    return "\n# " + (title != null ? title : "Downloaded Article") + " \u2B07\uFE0F\n\n" + (content ? (0, import_obsidian.htmlToMarkdown)(content) : "-");
   }
 };
 var HTMLxlate = _HTMLxlate;
