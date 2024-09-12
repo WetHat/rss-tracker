@@ -14899,6 +14899,7 @@ var _HTMLxlate = class {
         // apply to all websites
       ],
       pre: (document) => {
+        this.fixImagesWithoutSrc(document);
         const allElements = document.body.querySelectorAll("*").forEach((e) => {
           const illegalNames = [], attribs = e.attributes, attCount = attribs.length;
           for (let i = 0; i < attCount; i++) {
@@ -14933,7 +14934,27 @@ var _HTMLxlate = class {
     };
     addTransformations([tm]);
   }
-  hoistSingleRowTable(doc, table) {
+  /**
+   * Fix `<img>` elemnts without 'src' attribute enclosed in a `<picture>` element.
+   *
+   * The fix is to use an image url from the `srcset` attibute of the enclosing `<picture>`
+   * element and add it to  the `<img>`
+   *
+   * @param doc The HTML document
+   */
+  fixImagesWithoutSrc(doc) {
+    doc.body.querySelectorAll("picture > img:not([src]").forEach((img) => {
+      var _a2;
+      const sources = (_a2 = img.parentElement) == null ? void 0 : _a2.getElementsByTagName("source");
+      if (sources && sources.length > 0) {
+        const srcset = sources[0].getAttribute("srcset");
+        if (srcset) {
+          img.setAttribute("src", srcset.slice(0, srcset.indexOf(" ")));
+        }
+      }
+    });
+  }
+  flattenSingleRowTable(doc, table) {
     let trs = table.querySelectorAll(":scope > tbody > tr");
     if (trs.length == 0) {
       trs = table.querySelectorAll(":scope > tr");
@@ -14952,6 +14973,10 @@ var _HTMLxlate = class {
     }
     return false;
   }
+  flattenTables(doc) {
+    const tables = Array.from(doc.body.getElementsByTagName("table"));
+    tables.forEach((table) => this.flattenSingleRowTable(doc, table));
+  }
   /**
    * Translate an HTML fragment to Markdown text.
    *
@@ -14965,11 +14990,8 @@ var _HTMLxlate = class {
    * @return The markdown text generated from the HTML fragment.
    */
   fragmentAsMarkdown(html) {
-    const parser = new DOMParser(), doc = parser.parseFromString("<html><body>" + html + "</body></html)>", "text/html"), body = doc.body;
-    const tables = Array.from(body.getElementsByTagName("table")), tableCount = tables.length;
-    for (let i = 0; i < tableCount; i++) {
-      this.hoistSingleRowTable(doc, tables[i]);
-    }
+    const parser = new DOMParser(), doc = parser.parseFromString("<html><body>" + html + "</body></html)>", "text/html");
+    this.flattenTables(doc);
     return (0, import_obsidian.htmlToMarkdown)(doc);
   }
   /**

@@ -28,6 +28,7 @@ export class HTMLxlate {
                 /.*/ // apply to all websites
             ],
             pre: document => {
+                this.fixImagesWithoutSrc(document);
                 // remove all weird attributes
                 const allElements = document.body.querySelectorAll("*")
                     .forEach(e => {
@@ -72,7 +73,28 @@ export class HTMLxlate {
         addTransformations([tm]);
     }
 
-    private hoistSingleRowTable(doc: Document, table: HTMLTableElement): boolean {
+    /**
+     * Fix `<img>` elemnts without 'src' attribute enclosed in a `<picture>` element.
+     *
+     * The fix is to use an image url from the `srcset` attibute of the enclosing `<picture>`
+     * element and add it to  the `<img>`
+     *
+     * @param doc The HTML document
+     */
+    private fixImagesWithoutSrc(doc: Document) {
+        doc.body.querySelectorAll("picture > img:not([src]").forEach(img => {
+            const sources = img.parentElement?.getElementsByTagName("source");
+            if (sources && sources.length > 0) {
+                const srcset = sources[0].getAttribute("srcset");
+                if (srcset) {
+                    // inject a src attribute
+                    img.setAttribute("src", srcset.slice(0, srcset.indexOf(" ")));
+                }
+            }
+        });
+    }
+
+    private flattenSingleRowTable(doc: Document, table: HTMLTableElement): boolean {
         let trs = table.querySelectorAll(":scope > tbody > tr"); // this is static
         if (trs.length == 0) {
             trs = table.querySelectorAll(":scope > tr");
@@ -93,6 +115,11 @@ export class HTMLxlate {
         return false;
     }
 
+    private flattenTables(doc: Document) {
+        const tables = Array.from<HTMLTableElement>(doc.body.getElementsByTagName("table"));
+        tables.forEach(table => this.flattenSingleRowTable(doc, table));
+    }
+
     /**
      * Translate an HTML fragment to Markdown text.
      *
@@ -108,15 +135,9 @@ export class HTMLxlate {
     fragmentAsMarkdown(html: string): string {
         const
             parser = new DOMParser(),
-            doc = parser.parseFromString("<html><body>" + html + "</body></html)>", "text/html"),
-            body = doc.body;
-        // tidy tables
-        const
-            tables = Array.from<HTMLTableElement>(body.getElementsByTagName("table")),
-            tableCount = tables.length;
-        for (let i = 0; i < tableCount; i++) {
-            this.hoistSingleRowTable(doc, tables[i]);
-        }
+            doc = parser.parseFromString("<html><body>" + html + "</body></html)>", "text/html");
+        // tidy the docuement
+        this.flattenTables(doc);
         return htmlToMarkdown(doc);
     }
 
