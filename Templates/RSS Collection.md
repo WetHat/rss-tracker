@@ -28,7 +28,7 @@ if (await dvjs.rssTable(
 		f => [
 				dvjs.fileLink(f),
 				f.status,
-				dvjs.rssFeedUpdateDate(f),
+				f.updated,
 				dvjs.hashtagLine(f)
 			]) === 0) {
 	dv.paragraph("No feeds in this collection")
@@ -57,6 +57,6 @@ await dvjs.groupedRssItemTable(
 	feeds,
 	(feed => feed.pinned === true),
 	["Item", "Published", "Tags"],
-	itm => [dvjs.fileLink(itm), dvjs.rssItemPublishDate(itm),dvjs.hashtagLine(itm)]
+	itm => [dvjs.fileLink(itm), collection.published,dvjs.hashtagLine(itm)]
 );
 ~~~

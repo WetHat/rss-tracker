@@ -143,13 +143,6 @@ export class DataViewJSTools {
             .join(", ");
     }
 
-    rssItemPublishDate(fileRecord: TPageRecord): object {
-        return this.dv.date(fileRecord.published)
-    }
-    rssFeedUpdateDate(fileRecord: TPageRecord): object {
-        return this.dv.date(fileRecord.updated)
-    }
-
     ////////////////////////
 
     /**

@@ -15295,7 +15295,7 @@ var FeedManager = class {
     }
     this._app.fileManager.processFrontMatter(feedConfig.source, (fm) => {
       fm.status = status;
-      fm.updated = new Date().toUTCString();
+      fm.updated = new Date().toISOString();
       fm.interval = interval;
     });
     console.log(`Feed ${feedConfig.source.name} update status: ${status}`);
@@ -15717,12 +15717,6 @@ var DataViewJSTools = class {
   }
   fileLinks(fileRecords) {
     return fileRecords.map((rec) => this.fileLink(rec)).join(", ");
-  }
-  rssItemPublishDate(fileRecord) {
-    return this.dv.date(fileRecord.published);
-  }
-  rssFeedUpdateDate(fileRecord) {
-    return this.dv.date(fileRecord.updated);
   }
   ////////////////////////
   /**
