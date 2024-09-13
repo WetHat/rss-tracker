@@ -5,45 +5,79 @@ import * as path from 'path';
 import { RSSfileManager } from './RSSFileManager';
 import { HTMLxlate } from './HTMLxlate';
 
-
 /**
  * RSS feed configuration data.
  */
 export class FeedConfig {
+    static readonly SUSPENDED_STATUS = "⏹️ Suspended";
+    static readonly RESUMED_STATUS = "▶️ Updates Resumed";
+    private _app: App;
+
     feedUrl: string; // rss feed location
     itemLimit: number; // Maximum number of RSS items to cache on the filesystem.
     source: TFile; // The dashboard Markdown file of the feed.
+    private _status: string; // the feed status
 
-    /**
-     * Factory method to parse the feed configuration from a
-     * RSS feed dashboard (Markdown file).
-     * @param app - The Obsidian application object
-     * @param file - Dashboard file
-     * @returns The RSS feed configuration. `null` if the
-     *          file does not exist or is not a feed dashboard.
-     */
-    static fromFile(app: App, file: TFile): FeedConfig | null {
-        if (!file) {
-            return null;
-        }
-        // read file frontmatter to determine if this is a feed dashboard
-        const frontmatter = app.metadataCache.getFileCache(file)?.frontmatter;
-        if (!frontmatter) {
-            return null;
-        }
-        const { feedurl, itemlimit } = frontmatter
-        if (!feedurl || !itemlimit) {
-            return null;
-        }
-
-        return new FeedConfig(feedurl, itemlimit, file);
-
+    get isSuspended(): boolean {
+        return this.status.startsWith("⏹️");
     }
 
-    constructor(feedurl: string, itemlimit: string, source: TFile) {
-        this.feedUrl = feedurl;
-        this.itemLimit = parseInt(itemlimit);
+    get status() {
+        return this._status;
+    }
+
+    private set status(value: string) {
+        this._status = value;
+        this._app.fileManager.processFrontMatter(this.source, (fm) => fm.status = value);
+    }
+
+    suspendUpdates() {
+        this.status = FeedConfig.SUSPENDED_STATUS
+    }
+
+    resumeUpdates() {
+        this.status = FeedConfig.RESUMED_STATUS;
+    }
+
+    get isValid(): boolean {
+        return this.feedUrl.length > 0;
+    }
+
+    /**
+     *  Create the feed configuration for an RSS feed dashboard.
+     *
+     * Uses known or metatdata or the dashboard's frontmatter to
+     * determine the configuration.
+     *
+     * @param app The Obsidian application object
+     * @param source The RSS feed dashboard file
+     * @param feedUrl Optional url to the RSS feed. If not provided the
+     *                frontmatter of the source file is used the determine
+     *                the feed configuration
+     * @param itemLimit Optional item limit; default is 100
+     */
+    constructor(app: App, source: TFile, feedUrl?: string, itemLimit: number = 100) {
+        this._app = app;
         this.source = source;
+        if (feedUrl) {
+            // a newly created feed
+            this.feedUrl = feedUrl;
+            this.itemLimit = itemLimit;
+            this._status = "?";
+        } else {
+            // a feed from the vault
+            const frontmatter = app.metadataCache.getFileCache(source)?.frontmatter;
+            if (frontmatter) {
+                const { itemlimit, status, feedurl } = frontmatter;
+                this.itemLimit = itemlimit ? parseInt(itemlimit) : itemLimit;
+                this._status = status ?? "?";
+                this.feedUrl = feedurl ?? "";
+            } else {
+                this.itemLimit = itemLimit;
+                this._status = "invalid";
+                this.feedUrl = "";
+            }
+        }
     }
 }
 
@@ -86,7 +120,6 @@ export class FeedManager {
         return normalizePath(path.join(feed.parent?.path ?? "", feed.basename));
     }
 
-
     private formatImage(image: IRssMedium): string {
         const { src, width, height } = image as IRssMedium;
         return `![image|400](${src}){.rss-image}`;
@@ -95,7 +128,11 @@ export class FeedManager {
     private formatTags(tags: string[]): string {
         const tagmgr = this._plugin.tagmgr;
         // add `#` for mapping and remove it afterwards
-        return tags.map(t => tagmgr.mapHashtag("#" + t.replaceAll(" ", "_")).slice(1)).join(",");
+        return tags.map(t => {
+            const hashtag = (t.startsWith("#") ? t : "#" + t)
+                .replaceAll(" ", "_");
+            return tagmgr.mapHashtag(hashtag).slice(1);
+        }).join(",");
     }
 
     private async saveFeedItem(itemFolder: TFolder, item: TrackedRSSitem): Promise<TFile> {
@@ -285,14 +322,13 @@ export class FeedManager {
         // create the feed dashboard file
         const
             dashboard = await this._filemgr.createFile(location.path, feed.fileName, "RSS Feed", dataMap),
-            itemlimit = this._app.metadataCache.getFileCache(dashboard)?.frontmatter?.itemlimit,
-            cfg = new FeedConfig(feed.source ?? "", itemlimit ?? "100", dashboard);
+            cfg = new FeedConfig(this._app, dashboard, feed.source, 100);
 
         if (dashboard && cfg) {
             let status: string;
             try {
                 await this.updateFeedItems(cfg, feed);
-                status = "OK";
+                status = "✅";
             } catch (err: any) {
                 console.error(err);
                 status = err.message;
@@ -311,9 +347,12 @@ export class FeedManager {
     /**
      *
      */
-    async updateFeed(feedConfig: FeedConfig | null, force: boolean): Promise<number> {
-        if (!feedConfig) {
+    async updateFeed(feedConfig: FeedConfig, force: boolean): Promise<number> {
+        if (!feedConfig.isValid) {
             return -1;
+        }
+        if (feedConfig.isSuspended) {
+            return 0;
         }
 
         if (!force) {
@@ -332,7 +371,7 @@ export class FeedManager {
 
         let
             interval = 1, // default 1h
-            status = "OK",
+            status = "✅",
             promise;
         try {
             const
@@ -345,7 +384,7 @@ export class FeedManager {
             interval = feed.avgPostInterval;
             promise = this.updateFeedItems(feedConfig, feed);
         } catch (err: any) {
-            status = err.message;
+            status = "❌ " + err.message;
         }
 
         this._app.fileManager.processFrontMatter(feedConfig.source, fm => {
@@ -388,8 +427,8 @@ export class FeedManager {
     async updateAllRSSfeeds(force: boolean) {
         await this._plugin.tagmgr.updateTagMap();
         const promises: Promise<number>[] = this._plugin.filemgr.getFeeds()
-            .map(feed => FeedConfig.fromFile(this._app, feed))
-            .filter(cfg => cfg)
+            .map(feed => new FeedConfig(this._app, feed))
+            .filter(cfg => cfg.isValid)
             .map(cfg => this.updateFeed(cfg, force));
         let n: number = 0;
         const notice = new Notice(`0/${promises.length} feeds updated`, 0);
@@ -424,7 +463,7 @@ export class FeedManager {
                     url: link,
                     method: "GET"
                 }),
-                article: string | null = await this._html.articleAsMarkdown(itemHTML,link);
+                article: string | null = await this._html.articleAsMarkdown(itemHTML, link);
             if (article) {
                 if (article.length > 0) {
                     this._plugin.tagmgr.registerFileForPostProcessing(item.path);

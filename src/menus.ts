@@ -1,5 +1,5 @@
 import RSSTrackerPlugin from './main';
-import { App, Notice, Menu, TFile, EventRef } from 'obsidian';
+import { App, Notice, Menu, TFile, EventRef, Command } from 'obsidian';
 import { FeedConfig } from './FeedManager';
 
 /**
@@ -52,8 +52,8 @@ export class MarkAllItemsReadMenuItem extends RSSTrackerMenuItem {
 
     protected addItem(menu: Menu, dashboard: TFile | null) {
         if (dashboard) {
-            const feedconfig = FeedConfig.fromFile(this.app, dashboard);
-            if (feedconfig) {
+            const feedconfig = new FeedConfig(this.app, dashboard);
+            if (feedconfig.isValid) {
                 menu.addItem(item => {
                     item.setTitle('Mark all RSS items as read')
                         .setIcon('list-checks')
@@ -109,8 +109,8 @@ export class UpdateRSSfeedMenuItem extends RSSTrackerMenuItem {
      */
     protected addItem(menu: Menu, file: TFile | null) {
         if (file) {
-            const feedconfig = FeedConfig.fromFile(this.app, file);
-            if (feedconfig) {
+            const feedconfig = new FeedConfig(this.app, file);
+            if (feedconfig.isValid && !feedconfig.isSuspended) {
                 menu.addItem(item => {
                     item.setTitle('Update RSS feed')
                         .setIcon('rss')
@@ -121,6 +121,52 @@ export class UpdateRSSfeedMenuItem extends RSSTrackerMenuItem {
                         });
                 });
             }
+        }
+    }
+}
+
+export class ToggleRSSfeedActiveStatusMenuItem extends RSSTrackerMenuItem {
+    constructor(app: App, plugin: RSSTrackerPlugin) {
+        super(app, plugin);
+    }
+
+    /**
+     * Add an item to a menu which calls an action to update an RSS feed.
+     *
+     * The condition under which the item is added is that the given file is an
+     * RSS dashboard containing frontmatter defining the properties `itemlimit` and
+     * `feedurl`.
+     *
+     * @param menu - The menu to add the item to
+     * @param file - An Obsidian file which may contain frontmatter describing an RSS feed configuration.
+     */
+    protected addItem(menu: Menu, file: TFile | null) {
+        if (!file) {
+            return;
+        }
+        const feedconfig = new FeedConfig(this.app, file);
+        if (!feedconfig.isValid) {
+            return;
+        }
+
+        if (feedconfig.isSuspended) {
+            menu.addItem(item => {
+                item.setTitle('Resume RSS feed updates')
+                    .setIcon('power')
+                    .onClick(async () => {
+                        feedconfig.resumeUpdates();
+                        new Notice(`${file?.name ?? '???'} updates resumed`);
+                    });
+            });
+        } else {
+            menu.addItem(item => {
+                item.setTitle('Suspend RSS feed updates')
+                    .setIcon('power-off')
+                    .onClick(async () => {
+                        feedconfig.suspendUpdates();
+                        new Notice(`${file?.name ?? '???'} updates suspended`);
+                    });
+            });
         }
     }
 }

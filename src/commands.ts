@@ -86,13 +86,13 @@ export class UpdateRSSfeedCommand extends RSSTrackerCommandBase {
         if (active) {
             // If checking is true, we're simply "checking" if the command can be run.
             // If checking is false, then we want to actually perform the operation.
-            const cfg = FeedConfig.fromFile(this.app, active);
+            const cfg = new FeedConfig(this.app, active);
             if (checking) {
                 // This command will only show up in Command Palette when the check function returns true
                 // check if active file is a rss feed dashboard.
-                return !!cfg;
+                return cfg.isValid && !cfg.isSuspended;
             }
-            if (cfg) {
+            if (cfg.isValid && !cfg.isSuspended) {
                 this.plugin.tagmgr.updateTagMap()
                     .then( x =>
                         this.plugin.feedmgr.updateFeed(cfg, true)
@@ -145,13 +145,13 @@ export class MarkAllRSSitemsReadCommand extends RSSTrackerCommandBase {
         if (active) {
             // If checking is true, we're simply "checking" if the command can be run.
             // If checking is false, then we want to actually perform the operation.
-            const cfg = FeedConfig.fromFile(this.app, active);
+            const cfg = new FeedConfig(this.app, active);
             if (checking) {
                 // This command will only show up in Command Palette when the check function returns true
                 // check if active file is a rss feed dashboard.
-                return cfg;
+                return cfg.isValid;
             }
-            if (cfg) {
+            if (cfg.isValid) {
                 this.plugin.feedmgr.markFeedItemsRead(cfg.source).then(() => new Notice(`${cfg.source.basename} updated!`));
                 return true;
             }
