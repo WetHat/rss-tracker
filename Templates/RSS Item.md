@@ -26,7 +26,7 @@ if (tasks.length > 0) {
 	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
     dv.taskList(tasks,false);
 }
-const tags = current.file.tags.join(" ");
+const tags = current.file.etags.join(" ");
 if (current) {
 	dv.span(tags);
 }
