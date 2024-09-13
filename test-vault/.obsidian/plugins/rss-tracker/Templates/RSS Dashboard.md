@@ -5,6 +5,31 @@ tags: []
 > [!abstract]  [headline:: RSS feed Dashboard]
 > - [ ] Describe the purpose of this dashboard.
 
+# Feed Status
+
+~~~dataviewjs
+const
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	feeds = await dvjs.rssFeeds(),
+	map = await dvjs.mapFeedsToCollections();
+if (dvjs.rssTable(
+		feeds,
+		[
+			"Feed",
+			"Status",
+			"Updated",
+			"Collections"
+		],
+		f => [
+				dvjs.fileLink(f),
+				f.status,
+				dvjs.rssFeedUpdateDate(f),
+				dvjs.fileLinks(map.rssFeedToCollections(f))
+			]) === 0) {
+	dv.paragraph("No feeds subscribed")
+}
+~~~
+
 # Feed Collections 📑
 
 ~~~dataviewjs
@@ -67,29 +92,4 @@ if (dvjs.rssTable(
 	]) === 0) {
 		dv.paragraph("No items pinned")
 	}
-~~~
-
-# Feed Status
-
-~~~dataviewjs
-const
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	feeds = await dvjs.rssFeeds(),
-	map = await dvjs.mapFeedsToCollections();
-if (dvjs.rssTable(
-		feeds,
-		[
-			"Feed",
-			"Status",
-			"Updated",
-			"Collections"
-		],
-		f => [
-				dvjs.fileLink(f),
-				f.status,
-				dvjs.rssFeedUpdateDate(f),
-				dvjs.fileLinks(map.rssFeedToCollections(f))
-			]) === 0) {
-	dv.paragraph("No feeds subscribed")
-}
 ~~~

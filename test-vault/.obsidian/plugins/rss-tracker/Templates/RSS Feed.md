@@ -4,7 +4,7 @@ feedurl: "{{feedUrl}}"
 site: "{{siteUrl}}"
 itemlimit: 100
 updated: never
-status: unknown
+status: ?
 tags: []
 ---
 > [!abstract] {{title}}

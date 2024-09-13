@@ -15013,37 +15013,66 @@ var HTMLxlate = _HTMLxlate;
 HTMLxlate.VALIDATTR = /^[a-zA-Z_-]*$/;
 
 // src/FeedManager.ts
-var FeedConfig = class {
-  // The dashboard Markdown file of the feed.
-  /**
-   * Factory method to parse the feed configuration from a
-   * RSS feed dashboard (Markdown file).
-   * @param app - The Obsidian application object
-   * @param file - Dashboard file
-   * @returns The RSS feed configuration. `null` if the
-   *          file does not exist or is not a feed dashboard.
-   */
-  static fromFile(app, file) {
-    var _a2;
-    if (!file) {
-      return null;
-    }
-    const frontmatter = (_a2 = app.metadataCache.getFileCache(file)) == null ? void 0 : _a2.frontmatter;
-    if (!frontmatter) {
-      return null;
-    }
-    const { feedurl, itemlimit } = frontmatter;
-    if (!feedurl || !itemlimit) {
-      return null;
-    }
-    return new FeedConfig(feedurl, itemlimit, file);
+var _FeedConfig = class {
+  // the feed status
+  get isSuspended() {
+    return this.status.startsWith("\u23F9\uFE0F");
   }
-  constructor(feedurl, itemlimit, source) {
-    this.feedUrl = feedurl;
-    this.itemLimit = parseInt(itemlimit);
+  get status() {
+    return this._status;
+  }
+  set status(value) {
+    this._status = value;
+    this._app.fileManager.processFrontMatter(this.source, (fm) => fm.status = value);
+  }
+  suspendUpdates() {
+    this.status = _FeedConfig.SUSPENDED_STATUS;
+  }
+  resumeUpdates() {
+    this.status = _FeedConfig.RESUMED_STATUS;
+  }
+  get isValid() {
+    return this.feedUrl.length > 0;
+  }
+  /**
+   *  Create the feed configuration for an RSS feed dashboard.
+   *
+   * Uses known or metatdata or the dashboard's frontmatter to
+   * determine the configuration.
+   *
+   * @param app The Obsidian application object
+   * @param source The RSS feed dashboard file
+   * @param feedUrl Optional url to the RSS feed. If not provided the
+   *                frontmatter of the source file is used the determine
+   *                the feed configuration
+   * @param itemLimit Optional item limit; default is 100
+   */
+  constructor(app, source, feedUrl, itemLimit = 100) {
+    var _a2;
+    this._app = app;
     this.source = source;
+    if (feedUrl) {
+      this.feedUrl = feedUrl;
+      this.itemLimit = itemLimit;
+      this._status = "?";
+    } else {
+      const frontmatter = (_a2 = app.metadataCache.getFileCache(source)) == null ? void 0 : _a2.frontmatter;
+      if (frontmatter) {
+        const { itemlimit, status, feedurl } = frontmatter;
+        this.itemLimit = itemlimit ? parseInt(itemlimit) : itemLimit;
+        this._status = status != null ? status : "?";
+        this.feedUrl = feedurl != null ? feedurl : "";
+      } else {
+        this.itemLimit = itemLimit;
+        this._status = "invalid";
+        this.feedUrl = "";
+      }
+    }
   }
 };
+var FeedConfig = _FeedConfig;
+FeedConfig.SUSPENDED_STATUS = "\u23F9\uFE0F Suspended";
+FeedConfig.RESUMED_STATUS = "\u25B6\uFE0F Updates Resumed";
 var FeedManager = class {
   get _filemgr() {
     return this._plugin.filemgr;
@@ -15063,7 +15092,10 @@ var FeedManager = class {
   }
   formatTags(tags) {
     const tagmgr = this._plugin.tagmgr;
-    return tags.map((t) => tagmgr.mapHashtag("#" + t.replaceAll(" ", "_")).slice(1)).join(",");
+    return tags.map((t) => {
+      const hashtag = (t.startsWith("#") ? t : "#" + t).replaceAll(" ", "_");
+      return tagmgr.mapHashtag(hashtag).slice(1);
+    }).join(",");
   }
   async saveFeedItem(itemFolder, item) {
     let { id, tags, title, link, description, published, author, image, content } = item;
@@ -15204,7 +15236,6 @@ var FeedManager = class {
     return this.createFeed(new TrackedRSSfeed(feedXML, url), location);
   }
   async createFeed(feed, location) {
-    var _a2, _b, _c;
     const { title, site, description } = feed, defaultImage = await this._plugin.settings.getRssDefaultImagePath(), image = feed.image;
     const dataMap = {
       "{{feedUrl}}": feed.source,
@@ -15213,12 +15244,12 @@ var FeedManager = class {
       "{{description}}": description ? (0, import_obsidian2.htmlToMarkdown)(description) : "",
       "{{image}}": image ? this.formatImage(image) : `![[${defaultImage}|200x200]]{.rss-image}`
     };
-    const dashboard = await this._filemgr.createFile(location.path, feed.fileName, "RSS Feed", dataMap), itemlimit = (_b = (_a2 = this._app.metadataCache.getFileCache(dashboard)) == null ? void 0 : _a2.frontmatter) == null ? void 0 : _b.itemlimit, cfg = new FeedConfig((_c = feed.source) != null ? _c : "", itemlimit != null ? itemlimit : "100", dashboard);
+    const dashboard = await this._filemgr.createFile(location.path, feed.fileName, "RSS Feed", dataMap), cfg = new FeedConfig(this._app, dashboard, feed.source, 100);
     if (dashboard && cfg) {
       let status;
       try {
         await this.updateFeedItems(cfg, feed);
-        status = "OK";
+        status = "\u2705";
       } catch (err) {
         console.error(err);
         status = err.message;
@@ -15236,8 +15267,11 @@ var FeedManager = class {
    *
    */
   async updateFeed(feedConfig, force) {
-    if (!feedConfig) {
+    if (!feedConfig.isValid) {
       return -1;
+    }
+    if (feedConfig.isSuspended) {
+      return 0;
     }
     if (!force) {
       const meta = this._app.metadataCache.getFileCache(feedConfig.source), fm = meta == null ? void 0 : meta.frontmatter;
@@ -15248,7 +15282,7 @@ var FeedManager = class {
         }
       }
     }
-    let interval = 1, status = "OK", promise;
+    let interval = 1, status = "\u2705", promise;
     try {
       const feedXML = await (0, import_obsidian2.request)({
         url: feedConfig.feedUrl,
@@ -15257,11 +15291,11 @@ var FeedManager = class {
       interval = feed.avgPostInterval;
       promise = this.updateFeedItems(feedConfig, feed);
     } catch (err) {
-      status = err.message;
+      status = "\u274C " + err.message;
     }
     this._app.fileManager.processFrontMatter(feedConfig.source, (fm) => {
       fm.status = status;
-      fm.updated = new Date().toISOString();
+      fm.updated = new Date().toUTCString();
       fm.interval = interval;
     });
     console.log(`Feed ${feedConfig.source.name} update status: ${status}`);
@@ -15289,7 +15323,7 @@ var FeedManager = class {
   }
   async updateAllRSSfeeds(force) {
     await this._plugin.tagmgr.updateTagMap();
-    const promises = this._plugin.filemgr.getFeeds().map((feed) => FeedConfig.fromFile(this._app, feed)).filter((cfg) => cfg).map((cfg) => this.updateFeed(cfg, force));
+    const promises = this._plugin.filemgr.getFeeds().map((feed) => new FeedConfig(this._app, feed)).filter((cfg) => cfg.isValid).map((cfg) => this.updateFeed(cfg, force));
     let n = 0;
     const notice = new import_obsidian2.Notice(`0/${promises.length} feeds updated`, 0);
     for (let promise of promises) {
@@ -15383,11 +15417,11 @@ var UpdateRSSfeedCommand = class extends RSSTrackerCommandBase {
   checkCallback(checking) {
     const active = this.app.workspace.getActiveFile();
     if (active) {
-      const cfg = FeedConfig.fromFile(this.app, active);
+      const cfg = new FeedConfig(this.app, active);
       if (checking) {
-        return !!cfg;
+        return cfg.isValid && !cfg.isSuspended;
       }
-      if (cfg) {
+      if (cfg.isValid && !cfg.isSuspended) {
         this.plugin.tagmgr.updateTagMap().then((x) => this.plugin.feedmgr.updateFeed(cfg, true).then(() => new import_obsidian3.Notice(`${cfg.source.basename} updated!`)));
         return true;
       }
@@ -15418,11 +15452,11 @@ var MarkAllRSSitemsReadCommand = class extends RSSTrackerCommandBase {
   checkCallback(checking) {
     const active = this.app.workspace.getActiveFile();
     if (active) {
-      const cfg = FeedConfig.fromFile(this.app, active);
+      const cfg = new FeedConfig(this.app, active);
       if (checking) {
-        return cfg;
+        return cfg.isValid;
       }
-      if (cfg) {
+      if (cfg.isValid) {
         this.plugin.feedmgr.markFeedItemsRead(cfg.source).then(() => new import_obsidian3.Notice(`${cfg.source.basename} updated!`));
         return true;
       }
@@ -15506,8 +15540,8 @@ var MarkAllItemsReadMenuItem = class extends RSSTrackerMenuItem {
   }
   addItem(menu, dashboard) {
     if (dashboard) {
-      const feedconfig = FeedConfig.fromFile(this.app, dashboard);
-      if (feedconfig) {
+      const feedconfig = new FeedConfig(this.app, dashboard);
+      if (feedconfig.isValid) {
         menu.addItem((item) => {
           item.setTitle("Mark all RSS items as read").setIcon("list-checks").onClick(async () => {
             var _a2;
@@ -15551,8 +15585,8 @@ var UpdateRSSfeedMenuItem = class extends RSSTrackerMenuItem {
    */
   addItem(menu, file) {
     if (file) {
-      const feedconfig = FeedConfig.fromFile(this.app, file);
-      if (feedconfig) {
+      const feedconfig = new FeedConfig(this.app, file);
+      if (feedconfig.isValid && !feedconfig.isSuspended) {
         menu.addItem((item) => {
           item.setTitle("Update RSS feed").setIcon("rss").onClick(async () => {
             var _a2;
@@ -15562,6 +15596,47 @@ var UpdateRSSfeedMenuItem = class extends RSSTrackerMenuItem {
           });
         });
       }
+    }
+  }
+};
+var ToggleRSSfeedActiveStatusMenuItem = class extends RSSTrackerMenuItem {
+  constructor(app, plugin) {
+    super(app, plugin);
+  }
+  /**
+   * Add an item to a menu which calls an action to update an RSS feed.
+   *
+   * The condition under which the item is added is that the given file is an
+   * RSS dashboard containing frontmatter defining the properties `itemlimit` and
+   * `feedurl`.
+   *
+   * @param menu - The menu to add the item to
+   * @param file - An Obsidian file which may contain frontmatter describing an RSS feed configuration.
+   */
+  addItem(menu, file) {
+    if (!file) {
+      return;
+    }
+    const feedconfig = new FeedConfig(this.app, file);
+    if (!feedconfig.isValid) {
+      return;
+    }
+    if (feedconfig.isSuspended) {
+      menu.addItem((item) => {
+        item.setTitle("Resume RSS feed updates").setIcon("power").onClick(async () => {
+          var _a2;
+          feedconfig.resumeUpdates();
+          new import_obsidian4.Notice(`${(_a2 = file == null ? void 0 : file.name) != null ? _a2 : "???"} updates resumed`);
+        });
+      });
+    } else {
+      menu.addItem((item) => {
+        item.setTitle("Suspend RSS feed updates").setIcon("power-off").onClick(async () => {
+          var _a2;
+          feedconfig.suspendUpdates();
+          new import_obsidian4.Notice(`${(_a2 = file == null ? void 0 : file.name) != null ? _a2 : "???"} updates suspended`);
+        });
+      });
     }
   }
 };
@@ -16316,6 +16391,9 @@ var RSSTrackerPlugin = class extends import_obsidian8.Plugin {
     const updateFeedItem = new UpdateRSSfeedMenuItem(this.app, this);
     this.registerEvent(updateFeedItem.editorMenuHandler);
     this.registerEvent(updateFeedItem.fileMenuHandler);
+    const toggleActive = new ToggleRSSfeedActiveStatusMenuItem(this.app, this);
+    this.registerEvent(toggleActive.editorMenuHandler);
+    this.registerEvent(toggleActive.fileMenuHandler);
     const markAsRead = new MarkAllItemsReadMenuItem(this.app, this);
     this.registerEvent(markAsRead.editorMenuHandler);
     this.registerEvent(markAsRead.fileMenuHandler);
