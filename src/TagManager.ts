@@ -1,4 +1,4 @@
-import { EventRef, TFile, CachedMetadata, App, SectionCache, MetadataCache, Vault } from "obsidian";
+import { EventRef, TFile, CachedMetadata, App, MetadataCache, Vault, Notice } from "obsidian";
 import RSSTrackerPlugin from "./main";
 import { TPropertyBag } from "./FeedAssembler";
 import { RSSTrackerSettings } from "./settings";
@@ -85,8 +85,8 @@ export class RSSTagManager {
      */
     private async commit(): Promise<void> {
         if (this._pendingMappings.length > 0) {
-            console.log(`Adding ${this._pendingMappings.length} entries to tag map file`);
             const file = await this.getTagmapFile();
+            new Notice(`${this._pendingMappings.length} new RSS tags added to ${file?.basename}`);
             if (file) {
                 const mappings = "\n" + this._pendingMappings.join("\n");
                 console.log(`Tag map updated with: "${mappings}"`);
