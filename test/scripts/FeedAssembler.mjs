@@ -21,7 +21,7 @@ function toFilename(name) {
         .replaceAll("]", "}")
         .replaceAll("#", "＃")
         .replaceAll("^", "△")
-        .replaceAll("&", "+")
+        .replaceAll("&", "＆")
         .replaceAll("*", "✱");
     if (fname.length > 80) {
         fname = fname

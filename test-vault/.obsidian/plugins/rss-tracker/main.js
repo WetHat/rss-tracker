@@ -12558,7 +12558,7 @@ __export(main_exports, {
   default: () => RSSTrackerPlugin
 });
 module.exports = __toCommonJS(main_exports);
-var import_obsidian8 = require("obsidian");
+var import_obsidian9 = require("obsidian");
 
 // src/settings.ts
 var DEFAULT_SETTINGS = {
@@ -13939,7 +13939,7 @@ function decode2(data, options = EntityLevel.XML) {
 
 // src/FeedAssembler.ts
 function toFilename(name) {
-  let fname = name.replace(/\s*[htps]+:\/\/.*/, "\u22EF").replaceAll("?", "\u2753").replaceAll(".", "\u2024").replaceAll(":", "\uA789").replaceAll('"', "\u2033").replaceAll("<", "\uFF1C").replaceAll(">", "\uFF1E").replaceAll("|", "\u2223").replaceAll("\\", "/").replaceAll("/", "\u2571").replaceAll("[", "{").replaceAll("]", "}").replaceAll("#", "\uFF03").replaceAll("^", "\u25B3").replaceAll("&", "+").replaceAll("*", "\u2731");
+  let fname = name.replace(/\s*[htps]+:\/\/.*/, "\u22EF").replaceAll("?", "\u2753").replaceAll(".", "\u2024").replaceAll(":", "\uA789").replaceAll('"', "\u2033").replaceAll("<", "\uFF1C").replaceAll(">", "\uFF1E").replaceAll("|", "\u2223").replaceAll("\\", "/").replaceAll("/", "\u2571").replaceAll("[", "{").replaceAll("]", "}").replaceAll("#", "\uFF03").replaceAll("^", "\u25B3").replaceAll("&", "\uFF06").replaceAll("*", "\u2731");
   if (fname.length > 80) {
     fname = fname.substring(0, 80).trim() + "\u22EF";
   } else {
@@ -15362,7 +15362,6 @@ var FeedManager = class {
     }
   }
 };
-FeedManager.HASH_FINDER = /(?<!\]\([^\s]*|\[\[[^\s]*|[\w&/#$])#(?![\da-fA-F]+\b|\W)/gu;
 
 // src/commands.ts
 var InputUrlModal = class extends import_obsidian3.Modal {
@@ -16163,6 +16162,7 @@ var RSSfileManager = _RSSfileManager;
 RSSfileManager.TOKEN_SPLITTER = /(?<={{[^{}]+}})|(?={{[^{}]+}})/g;
 
 // src/TagManager.ts
+var import_obsidian8 = require("obsidian");
 var RSSTagManager = class {
   constructor(app, plugin) {
     /**
@@ -16223,8 +16223,8 @@ var RSSTagManager = class {
    */
   async commit() {
     if (this._pendingMappings.length > 0) {
-      console.log(`Adding ${this._pendingMappings.length} entries to tag map file`);
       const file = await this.getTagmapFile();
+      new import_obsidian8.Notice(`${this._pendingMappings.length} new RSS tags added to ${file == null ? void 0 : file.basename}`);
       if (file) {
         const mappings = "\n" + this._pendingMappings.join("\n");
         console.log(`Tag map updated with: "${mappings}"`);
@@ -16345,7 +16345,7 @@ var RSSTagManager = class {
 };
 
 // src/main.ts
-var RSSTrackerPlugin = class extends import_obsidian8.Plugin {
+var RSSTrackerPlugin = class extends import_obsidian9.Plugin {
   constructor(app, manifest) {
     super(app, manifest);
     this._settings = new RSSTrackerSettings(app, this);
@@ -16401,7 +16401,7 @@ var RSSTrackerPlugin = class extends import_obsidian8.Plugin {
       const xmlFile = this.app.vault.getFileByPath(xml), feedDir = this.app.vault.getFolderByPath(dir);
       if (xmlFile && feedDir) {
         const dashboard = await this._feedmgr.createFeedFromFile(xmlFile, feedDir);
-        new import_obsidian8.Notice(`New RSS Feed "${dashboard.basename}" created`);
+        new import_obsidian9.Notice(`New RSS Feed "${dashboard.basename}" created`);
       }
     });
     this.registerInterval(window.setInterval(() => {
