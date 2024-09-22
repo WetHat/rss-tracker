@@ -100,8 +100,6 @@ type TAnnotatedItem = {
  * - Setting all items on a feed as _read_. see {@link markFeedItemsRead}
  */
 export class FeedManager {
-    private static readonly HASH_FINDER = /(?<!\]\([^\s]*|\[\[[^\s]*|[\w&/#$])#(?![\da-fA-F]+\b|\W)/gu;
-
     private _app: App;
     private _plugin: RSSTrackerPlugin;
     private _html: HTMLxlate;
