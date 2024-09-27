@@ -124,20 +124,22 @@ export class TrackedRSSitem {
         this.id = id;
         this.media = media;
         this.tags = (entry.category ?? [])
-            .map(c => (typeof c === "string" ? c : c["#text"]))
+            .map(c => (typeof c === "string" ? c : c["#text"]).replace(/[+&]/g, ","))
             .join(",") // turn everything into a comma separated list to catch internal commas
             .split(",") // abd pull it apart again
             .map(c => {
-                //return one cleaned up category
-                return c.replace(/^#(?=\w)|["\[\]\{\}\(\)]+/g, "")
+                // return one cleaned up category
+                return c.trim()
+                    .replace(/^#|[;"\]\}\)]+/g, "")
                     .replaceAll("#", "＃")
-                    .replaceAll(".", "〭")
-                    .replaceAll("&", "＆")
-                    .replace(/[:;\\/]/g, " ")
-                    .replace(/\s+/, " ")
-                    .trim();
+                    .replaceAll("'","ʼ")
+                    .replace(/[\\.:\{\[\()]}]/g, "/")
+                    .replace(/\s+/g, "_");
             })
             .filter(c => !!c) // remove empty strings;
+
+        // make unique and sort
+        this.tags = Array.from(new Set<string>(this.tags)).sort();
 
         if (description) {
             this.description = typeof description === "string" ? description : (description as TPropertyBag)["#text"];
