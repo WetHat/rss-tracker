@@ -13958,9 +13958,10 @@ var TrackedRSSitem = class {
     let { id, title, description, published, link, creator, image, content, media } = entry;
     this.id = id;
     this.media = media;
-    this.tags = ((_a2 = entry.category) != null ? _a2 : []).map((c) => typeof c === "string" ? c : c["#text"]).join(",").split(",").map((c) => {
-      return c.replace(/^#(?=\w)|["\[\]\{\}\(\)]+/g, "").replaceAll("#", "\uFF03").replaceAll(".", "\u302D").replaceAll("&", "\uFF06").replace(/[:;\\/]/g, " ").replace(/\s+/, " ").trim();
+    this.tags = ((_a2 = entry.category) != null ? _a2 : []).map((c) => (typeof c === "string" ? c : c["#text"]).replace(/[+&]/g, ",")).join(",").split(",").map((c) => {
+      return c.trim().replace(/^#|[;"\]\}\)]+/g, "").replaceAll("#", "\uFF03").replace(/[\\.:\|\{\[\()]}]/g, "/").replace(/[\s\-]+/g, "_");
     }).filter((c) => !!c);
+    this.tags = Array.from(new Set(this.tags)).sort();
     if (description) {
       this.description = typeof description === "string" ? description : description["#text"];
     }
@@ -16223,8 +16224,8 @@ var RSSTagManager = class {
    */
   async commit() {
     if (this._pendingMappings.length > 0) {
-      const file = await this.getTagmapFile();
-      new import_obsidian8.Notice(`${this._pendingMappings.length} new RSS tags added to ${file == null ? void 0 : file.basename}`);
+      const file = await this.getTagmapFile(), taglist = this._pendingMappings.map((row) => `- ${row.split("|")[1]}`).join("\n");
+      new import_obsidian8.Notice(this._pendingMappings.length + " new tags\n" + taglist, 3e4);
       if (file) {
         const mappings = "\n" + this._pendingMappings.join("\n");
         console.log(`Tag map updated with: "${mappings}"`);
