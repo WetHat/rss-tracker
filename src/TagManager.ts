@@ -85,8 +85,10 @@ export class RSSTagManager {
      */
     private async commit(): Promise<void> {
         if (this._pendingMappings.length > 0) {
-            const file = await this.getTagmapFile();
-            new Notice(`${this._pendingMappings.length} new RSS tags added to ${file?.basename}`);
+            const
+                file = await this.getTagmapFile(),
+                taglist = this._pendingMappings.map(row => `- ${row.split("|")[1]}`).join("\n");
+            new Notice(this._pendingMappings.length + " new tags\n" + taglist,30000);
             if (file) {
                 const mappings = "\n" + this._pendingMappings.join("\n");
                 console.log(`Tag map updated with: "${mappings}"`);
