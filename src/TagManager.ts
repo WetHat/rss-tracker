@@ -24,7 +24,7 @@ export class RSSTagManager {
      */
     private _knownTagsCache: TPropertyBag = {};
     private _postProcessingRegistry = new Set();
-    private _tagmap: TPropertyBag = {};
+    private _tagmap = new Map<string, string>(); // pagetag -> mapped hashtag.
     private _pendingMappings: string[] = [];
 
     constructor(app: App, plugin: RSSTrackerPlugin) {
@@ -67,28 +67,57 @@ export class RSSTagManager {
      * The map is update fron:
      * - The persisted mapping table at {@link RSSTrackerSettings.rssTagmapPath}
      * - Hashtags in the rss domain from the Obsidian metadata cache.
+     *
+     * All unused mappings
      */
     async updateTagMap(): Promise<void> {
         // reload the file to catch external edits
-        await this.loadTagmap();
+        const prefix = await this.loadTagmap();
+
+        let removed = 0;
         // load and register known tags
         this._knownTagsCache = this._metadataCache.getTags();
-        for (const tag in this._knownTagsCache) {
-            this.mapHashtag(tag);
+        for (const hashtag in this._knownTagsCache) {
+            const
+                usecount = this._knownTagsCache[hashtag],
+                mapped = this._tagmap.get(hashtag);
+            if (usecount === 1 && mapped === hashtag) {
+                // this tag is unused
+                removed++;
+                this._tagmap.delete(hashtag);
+            } else {
+                this.mapHashtag(hashtag);
+            }
         }
+        if (removed > 0 && prefix) {
+            // write an updated file
+            const mapfile = await this.getTagmapFile();
+            if (mapfile) {
+                await this._vault.modify(mapfile, prefix[0]+"\n");
+                this._pendingMappings = prefix.slice(1);
+                for (let [hashtag,mappedTag] of this._tagmap) {
+                    this._pendingMappings.push(`| ${hashtag.slice(1)} | ${mappedTag} |`);
+                }
+                new Notice(`${removed} unused tags removed`,30000);
+            }
+        }
+        // find itendity mappings in the
         // just in case new tags appeared when we weren't looking.
-        await this.commit();
+        await this.commit(removed === 0);
     }
 
     /**
      * Commit any pending changes to the tag map file.
      */
-    private async commit(): Promise<void> {
+    private async commit(verbose: boolean = true): Promise<void> {
         if (this._pendingMappings.length > 0) {
             const
                 file = await this.getTagmapFile(),
                 taglist = this._pendingMappings.map(row => `- ${row.split("|")[1]}`).join("\n");
-            new Notice(this._pendingMappings.length + " new tags\n" + taglist,30000);
+            if (verbose) {
+                new Notice(this._pendingMappings.length + " new tags\n" + taglist, 30000);
+            }
+
             if (file) {
                 const mappings = "\n" + this._pendingMappings.join("\n");
                 console.log(`Tag map updated with: "${mappings}"`);
@@ -121,35 +150,35 @@ export class RSSTagManager {
             rssHashtag = "#rss/" + rssHashtag.slice(1); // add to rss domain
         }
 
-        let mapped = this._tagmap[rssHashtag];
+        let mapped = this._tagmap.get(rssHashtag);
         if (!mapped) {
             // update the map
             mapped = rssHashtag; // map to the domain tag
-            this._tagmap[rssHashtag] = mapped;
+            this._tagmap.set(rssHashtag, mapped);
             this._pendingMappings.push(`| ${rssHashtag.slice(1)} | ${mapped} |`)
         }
         return mapped;
     }
 
     /**
-     * Load tg mapping data into memors.
+     * Load the mapping data into memors.
      *
      * Mappings are read from:
      * - the tag map file located at: {@link RSSTrackerSettings.rssTagmapPath}
      * - the tags cached by Obsidian.
      *
      */
-    async loadTagmap() {
+    private async loadTagmap(): Promise<string[] | null> {
         const mapfile = await this.getTagmapFile();
         if (!mapfile) {
-            return
+            return null;
         }
         console.log(`loading tag map from ${mapfile.path}`);
         const
             metadata = this._metadataCache.getFileCache(mapfile),
             sections = metadata?.sections;
         if (!sections) {
-            return
+            return null;
         }
 
         // read and parse the mapfile
@@ -160,7 +189,8 @@ export class RSSTagManager {
                 // table
                 let errorCount = 0;
                 const
-                    rows = content.slice(section.position.start.offset).split("\n"),
+                    tableOffset = section.position.start.offset,
+                    rows = content.slice(tableOffset).split("\n"),
                     rowCount = rows.length;
                 for (let i = 2; i < rowCount; i++) { // omit the table header
                     const
@@ -171,7 +201,7 @@ export class RSSTagManager {
                             trimmedTagname = rssTagname.trim(),
                             trimmedMappedTag = mappedTag.trim();
                         if (trimmedTagname && trimmedMappedTag) {
-                            this._tagmap["#" + trimmedTagname] = trimmedMappedTag;
+                            this._tagmap.set("#" + trimmedTagname, trimmedMappedTag);
                         } else {
                             console.log(`ERROR rssTagname: "${rssTagname}"; mappedTag: "${mappedTag}"`);
                             errorCount++;
@@ -183,12 +213,16 @@ export class RSSTagManager {
                     }
                 }
                 if (errorCount > 0) {
-                    console.log(`${errorCount} detected whilc pasing the tag map.`);
+                    console.log(`${errorCount} detected while parsing the tag map.`);
                 }
-
-                break;
+                return [
+                    content.slice(0, tableOffset).trim(),
+                    rows[0],
+                    rows[1]
+                ];
             }
         }
+        return null;
     }
 
     /**
@@ -200,7 +234,6 @@ export class RSSTagManager {
      * @returns Event handler reference object
      */
     get rssTagPostProcessor(): EventRef {
-
         return this._app.metadataCache.on("changed", async (item: TFile, content: string, metaData: CachedMetadata): Promise<void> => {
             if (!this._postProcessingRegistry.delete(item.path)) {
                 // this file is not registered for posprocessing
