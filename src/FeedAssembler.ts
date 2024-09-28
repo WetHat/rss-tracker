@@ -130,11 +130,11 @@ export class TrackedRSSitem {
             .map(c => {
                 // return one cleaned up category
                 return c.trim()
-                    .replace(/^#|[;"\]\}\)]+/g, "")
+                    .replace(/^#|\s*[;"\]\}\)]+\s*/g, "")
                     .replaceAll("#", "＃")
-                    .replaceAll("'","ʼ")
-                    .replace(/[\\.:\{\[\()]}]/g, "/")
-                    .replace(/\s+/g, "_");
+                    .replace(/"'/g, "ʼ")
+                    .replace(/\s*[\\:\{\[\(]+\s*/g, "/")
+                    .replace(/[\s\.]+/g, "_");
             })
             .filter(c => !!c) // remove empty strings;
 
