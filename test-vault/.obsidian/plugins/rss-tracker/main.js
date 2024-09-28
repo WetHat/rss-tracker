@@ -3645,17 +3645,17 @@ var require_node = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.cloneNode = exports.hasChildren = exports.isDocument = exports.isDirective = exports.isComment = exports.isText = exports.isCDATA = exports.isTag = exports.Element = exports.Document = exports.CDATA = exports.NodeWithChildren = exports.ProcessingInstruction = exports.Comment = exports.Text = exports.DataNode = exports.Node = void 0;
     var domelementtype_1 = require_lib2();
-    var Node = (
+    var Node2 = (
       /** @class */
       function() {
-        function Node2() {
+        function Node3() {
           this.parent = null;
           this.prev = null;
           this.next = null;
           this.startIndex = null;
           this.endIndex = null;
         }
-        Object.defineProperty(Node2.prototype, "parentNode", {
+        Object.defineProperty(Node3.prototype, "parentNode", {
           // Read-write aliases for properties
           /**
            * Same as {@link parent}.
@@ -3670,7 +3670,7 @@ var require_node = __commonJS({
           enumerable: false,
           configurable: true
         });
-        Object.defineProperty(Node2.prototype, "previousSibling", {
+        Object.defineProperty(Node3.prototype, "previousSibling", {
           /**
            * Same as {@link prev}.
            * [DOM spec](https://dom.spec.whatwg.org)-compatible alias.
@@ -3684,7 +3684,7 @@ var require_node = __commonJS({
           enumerable: false,
           configurable: true
         });
-        Object.defineProperty(Node2.prototype, "nextSibling", {
+        Object.defineProperty(Node3.prototype, "nextSibling", {
           /**
            * Same as {@link next}.
            * [DOM spec](https://dom.spec.whatwg.org)-compatible alias.
@@ -3698,16 +3698,16 @@ var require_node = __commonJS({
           enumerable: false,
           configurable: true
         });
-        Node2.prototype.cloneNode = function(recursive) {
+        Node3.prototype.cloneNode = function(recursive) {
           if (recursive === void 0) {
             recursive = false;
           }
           return cloneNode(this, recursive);
         };
-        return Node2;
+        return Node3;
       }()
     );
-    exports.Node = Node;
+    exports.Node = Node2;
     var DataNode = (
       /** @class */
       function(_super) {
@@ -3732,7 +3732,7 @@ var require_node = __commonJS({
           configurable: true
         });
         return DataNode2;
-      }(Node)
+      }(Node2)
     );
     exports.DataNode = DataNode;
     var Text = (
@@ -3838,7 +3838,7 @@ var require_node = __commonJS({
           configurable: true
         });
         return NodeWithChildren2;
-      }(Node)
+      }(Node2)
     );
     exports.NodeWithChildren = NodeWithChildren;
     var CDATA = (
@@ -6408,7 +6408,7 @@ var require_node2 = __commonJS({
       }
       return cloned;
     }
-    var Node = class {
+    var Node2 = class {
       constructor(defaults = {}) {
         this.raws = {};
         this[isClean] = false;
@@ -6711,8 +6711,8 @@ var require_node2 = __commonJS({
         return this;
       }
     };
-    module2.exports = Node;
-    Node.default = Node;
+    module2.exports = Node2;
+    Node2.default = Node2;
   }
 });
 
@@ -6720,8 +6720,8 @@ var require_node2 = __commonJS({
 var require_comment = __commonJS({
   "node_modules/postcss/lib/comment.js"(exports, module2) {
     "use strict";
-    var Node = require_node2();
-    var Comment = class extends Node {
+    var Node2 = require_node2();
+    var Comment = class extends Node2 {
       constructor(defaults) {
         super(defaults);
         this.type = "comment";
@@ -6736,8 +6736,8 @@ var require_comment = __commonJS({
 var require_declaration = __commonJS({
   "node_modules/postcss/lib/declaration.js"(exports, module2) {
     "use strict";
-    var Node = require_node2();
-    var Declaration = class extends Node {
+    var Node2 = require_node2();
+    var Declaration = class extends Node2 {
       constructor(defaults) {
         if (defaults && typeof defaults.value !== "undefined" && typeof defaults.value !== "string") {
           defaults = { ...defaults, value: String(defaults.value) };
@@ -6760,7 +6760,7 @@ var require_container = __commonJS({
     "use strict";
     var Comment = require_comment();
     var Declaration = require_declaration();
-    var Node = require_node2();
+    var Node2 = require_node2();
     var { isClean, my } = require_symbols();
     var AtRule;
     var parse;
@@ -6782,7 +6782,7 @@ var require_container = __commonJS({
         }
       }
     }
-    var Container = class extends Node {
+    var Container = class extends Node2 {
       append(...children) {
         for (let child of children) {
           let nodes = this.normalize(child, this.last);
@@ -9697,7 +9697,7 @@ var require_postcss = __commonJS({
     var Input = require_input();
     var LazyResult = require_lazy_result();
     var list = require_list();
-    var Node = require_node2();
+    var Node2 = require_node2();
     var parse = require_parse();
     var Processor = require_processor();
     var Result = require_result();
@@ -9765,7 +9765,7 @@ var require_postcss = __commonJS({
     postcss.Input = Input;
     postcss.Rule = Rule;
     postcss.Root = Root;
-    postcss.Node = Node;
+    postcss.Node = Node2;
     LazyResult.registerPostcss(postcss);
     module2.exports = postcss;
     postcss.default = postcss;
@@ -13959,7 +13959,7 @@ var TrackedRSSitem = class {
     this.id = id;
     this.media = media;
     this.tags = ((_a2 = entry.category) != null ? _a2 : []).map((c) => (typeof c === "string" ? c : c["#text"]).replace(/[+&]/g, ",")).join(",").split(",").map((c) => {
-      return c.trim().replace(/^#|[;"\]\}\)]+/g, "").replaceAll("#", "\uFF03").replace(/[\\.:\|\{\[\()]}]/g, "/").replace(/[\s\-]+/g, "_");
+      return c.trim().replace(/^#|\s*[;"\]\}\)]+\s*/g, "").replaceAll("#", "\uFF03").replace(/"'/g, "\u02BC").replace(/\s*[\\:\{\[\(]+\s*/g, "/").replace(/[\s\.]+/g, "_");
     }).filter((c) => !!c);
     this.tags = Array.from(new Set(this.tags)).sort();
     if (description) {
@@ -14893,6 +14893,36 @@ var _HTMLxlate = class {
     }
     return _HTMLxlate._instance;
   }
+  /**
+   * An HTML transformation looking for `<pre>` tags which are **not** immediately followed by a `<code>` block
+   * and inject one.
+   *
+   * Without that `<code>` element Obsidian will not generate a Markdown code block and obfuscates any code contained in the '<pre>'.
+   *
+   * @param element an element of an HTML document.
+   */
+  static injectCodeBlock(element) {
+    var _a2;
+    const pres = Array.from(element.getElementsByTagName("pre"));
+    for (let i = 0; i < pres.length; i++) {
+      const pre = pres[i];
+      let firstChild = pre.firstChild;
+      while ((firstChild == null ? void 0 : firstChild.nodeType) === Node.TEXT_NODE && ((_a2 = firstChild.textContent) == null ? void 0 : _a2.trim().length) === 0) {
+        firstChild.remove();
+        firstChild = pre.firstChild;
+      }
+      const firstChildelement = pre.firstElementChild;
+      if (!firstChildelement || firstChildelement.localName !== "code") {
+        const code = element.doc.createElement("code");
+        code.className = "language-undefined";
+        while (firstChild) {
+          code.append(firstChild);
+          firstChild = pre.firstChild;
+        }
+        pre.append(code);
+      }
+    }
+  }
   constructor() {
     const tm = {
       patterns: [
@@ -14916,20 +14946,7 @@ var _HTMLxlate = class {
         return document;
       },
       post: (document) => {
-        const pres = document.body.getElementsByTagName("pre");
-        for (let i = 0; i < pres.length; i++) {
-          const pre = pres[i];
-          let firstChild = pre.firstChild;
-          if (firstChild && firstChild.nodeName !== "code") {
-            const code = document.createElement("code");
-            let child;
-            while (firstChild) {
-              code.append(firstChild);
-              firstChild = pre.firstChild;
-            }
-            pre.append(code);
-          }
-        }
+        _HTMLxlate.injectCodeBlock(document.body);
         return document;
       }
     };
@@ -16173,7 +16190,8 @@ var RSSTagManager = class {
      */
     this._knownTagsCache = {};
     this._postProcessingRegistry = /* @__PURE__ */ new Set();
-    this._tagmap = {};
+    this._tagmap = /* @__PURE__ */ new Map();
+    // pagetag -> mapped hashtag.
     this._pendingMappings = [];
     this._app = app;
     this._plugin = plugin;
@@ -16210,22 +16228,44 @@ var RSSTagManager = class {
    * The map is update fron:
    * - The persisted mapping table at {@link RSSTrackerSettings.rssTagmapPath}
    * - Hashtags in the rss domain from the Obsidian metadata cache.
+   *
+   * All unused mappings
    */
   async updateTagMap() {
-    await this.loadTagmap();
+    const prefix = await this.loadTagmap();
+    let removed = 0;
     this._knownTagsCache = this._metadataCache.getTags();
-    for (const tag in this._knownTagsCache) {
-      this.mapHashtag(tag);
+    for (const hashtag in this._knownTagsCache) {
+      const usecount = this._knownTagsCache[hashtag], mapped = this._tagmap.get(hashtag);
+      if (usecount === 1 && mapped === hashtag) {
+        removed++;
+        this._tagmap.delete(hashtag);
+      } else {
+        this.mapHashtag(hashtag);
+      }
     }
-    await this.commit();
+    if (removed > 0 && prefix) {
+      const mapfile = await this.getTagmapFile();
+      if (mapfile) {
+        await this._vault.modify(mapfile, prefix[0] + "\n");
+        this._pendingMappings = prefix.slice(1);
+        for (let [hashtag, mappedTag] of this._tagmap) {
+          this._pendingMappings.push(`| ${hashtag.slice(1)} | ${mappedTag} |`);
+        }
+        new import_obsidian8.Notice(`${removed} unused tags removed`, 3e4);
+      }
+    }
+    await this.commit(removed === 0);
   }
   /**
    * Commit any pending changes to the tag map file.
    */
-  async commit() {
+  async commit(verbose = true) {
     if (this._pendingMappings.length > 0) {
       const file = await this.getTagmapFile(), taglist = this._pendingMappings.map((row) => `- ${row.split("|")[1]}`).join("\n");
-      new import_obsidian8.Notice(this._pendingMappings.length + " new tags\n" + taglist, 3e4);
+      if (verbose) {
+        new import_obsidian8.Notice(this._pendingMappings.length + " new tags\n" + taglist, 3e4);
+      }
       if (file) {
         const mappings = "\n" + this._pendingMappings.join("\n");
         console.log(`Tag map updated with: "${mappings}"`);
@@ -16256,16 +16296,16 @@ var RSSTagManager = class {
       }
       rssHashtag = "#rss/" + rssHashtag.slice(1);
     }
-    let mapped = this._tagmap[rssHashtag];
+    let mapped = this._tagmap.get(rssHashtag);
     if (!mapped) {
       mapped = rssHashtag;
-      this._tagmap[rssHashtag] = mapped;
+      this._tagmap.set(rssHashtag, mapped);
       this._pendingMappings.push(`| ${rssHashtag.slice(1)} | ${mapped} |`);
     }
     return mapped;
   }
   /**
-   * Load tg mapping data into memors.
+   * Load the mapping data into memors.
    *
    * Mappings are read from:
    * - the tag map file located at: {@link RSSTrackerSettings.rssTagmapPath}
@@ -16275,24 +16315,24 @@ var RSSTagManager = class {
   async loadTagmap() {
     const mapfile = await this.getTagmapFile();
     if (!mapfile) {
-      return;
+      return null;
     }
     console.log(`loading tag map from ${mapfile.path}`);
     const metadata = this._metadataCache.getFileCache(mapfile), sections = metadata == null ? void 0 : metadata.sections;
     if (!sections) {
-      return;
+      return null;
     }
     const content = await this._vault.read(mapfile);
     for (const section of sections) {
       if (section.type === "table") {
         let errorCount = 0;
-        const rows = content.slice(section.position.start.offset).split("\n"), rowCount = rows.length;
+        const tableOffset = section.position.start.offset, rows = content.slice(tableOffset).split("\n"), rowCount = rows.length;
         for (let i = 2; i < rowCount; i++) {
           const row = rows[i], [_, rssTagname, mappedTag] = row.split("|");
           if (rssTagname && mappedTag) {
             const trimmedTagname = rssTagname.trim(), trimmedMappedTag = mappedTag.trim();
             if (trimmedTagname && trimmedMappedTag) {
-              this._tagmap["#" + trimmedTagname] = trimmedMappedTag;
+              this._tagmap.set("#" + trimmedTagname, trimmedMappedTag);
             } else {
               console.log(`ERROR rssTagname: "${rssTagname}"; mappedTag: "${mappedTag}"`);
               errorCount++;
@@ -16303,11 +16343,16 @@ var RSSTagManager = class {
           }
         }
         if (errorCount > 0) {
-          console.log(`${errorCount} detected whilc pasing the tag map.`);
+          console.log(`${errorCount} detected while parsing the tag map.`);
         }
-        break;
+        return [
+          content.slice(0, tableOffset).trim(),
+          rows[0],
+          rows[1]
+        ];
       }
     }
+    return null;
   }
   /**
    * Get the event handler to post-process RSS items.
