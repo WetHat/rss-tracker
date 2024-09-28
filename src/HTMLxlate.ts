@@ -20,6 +20,40 @@ export class HTMLxlate {
         return HTMLxlate._instance;
     }
 
+    /**
+     * An HTML transformation looking for `<pre>` tags which are **not** immediately followed by a `<code>` block
+     * and inject one.
+     *
+     * Without that `<code>` element Obsidian will not generate a Markdown code block and obfuscates any code contained in the '<pre>'.
+     *
+     * @param element an element of an HTML document.
+     */
+    private static injectCodeBlock(element: HTMLElement) {
+        const pres = Array.from(element.getElementsByTagName('pre'));
+        for (let i = 0; i < pres.length; i++) {
+            const pre = pres[i];
+            let firstChild = pre.firstChild;
+
+            // remove emptylines
+            while (firstChild?.nodeType === Node.TEXT_NODE && firstChild.textContent?.trim().length === 0) {
+                firstChild.remove();
+                firstChild = pre.firstChild;
+            }
+
+            const firstChildelement = pre.firstElementChild;
+
+            if (!firstChildelement || firstChildelement.localName !== 'code') {
+                const code = element.doc.createElement('code');
+                code.className = 'language-undefined';
+                while (firstChild) {
+                    code.append(firstChild);
+                    firstChild = pre.firstChild;
+                }
+                pre.append(code);
+            }
+        }
+    }
+
     private constructor() {
         // configure the article extractor to make the returned content
         // more Obsidian friendly
@@ -53,20 +87,7 @@ export class HTMLxlate {
             },
             post: document => {
                 // look for <pre> tags and make sure their first child is always a <code> tag.
-                const pres = document.body.getElementsByTagName("pre");
-                for (let i = 0; i < pres.length; i++) {
-                    const pre = pres[i];
-                    let firstChild = pre.firstChild;
-                    if (firstChild && firstChild.nodeName !== "code") {
-                        const code = document.createElement("code");
-                        let child;
-                        while (firstChild) {
-                            code.append(firstChild);
-                            firstChild = pre.firstChild;
-                        }
-                        pre.append(code);
-                    }
-                }
+                HTMLxlate.injectCodeBlock(document.body);
                 return document;
             }
         };
