@@ -43,13 +43,23 @@ export class HTMLxlate {
             const firstChildelement = pre.firstElementChild;
 
             if (!firstChildelement || firstChildelement.localName !== 'code') {
-                const code = element.doc.createElement('code');
+                const
+                    code = element.doc.createElement('code'),
+                    preClasses =Array.from(pre.classList),
+                    lang = preClasses.filter(cl => cl.startsWith("language-"));
+
+                if (lang.length > 0)
+                    code.classList.add(...lang);
+                else {
                 code.className = 'language-undefined';
+                }
+
                 while (firstChild) {
                     code.append(firstChild);
                     firstChild = pre.firstChild;
                 }
                 pre.append(code);
+                pre.removeAttribute("class");
             }
         }
     }
