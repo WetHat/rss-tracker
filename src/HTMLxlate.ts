@@ -51,7 +51,7 @@ export class HTMLxlate {
                 if (lang.length > 0)
                     code.classList.add(...lang);
                 else {
-                code.className = 'language-undefined';
+                    code.className = 'language-undefined';
                 }
 
                 while (firstChild) {

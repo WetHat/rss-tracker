@@ -14145,7 +14145,7 @@ var DEFAULT_OPTIONS = {
     if (!title) {
       title = published;
     }
-    tracked.title = ((_a2 = title["#text"]) != null ? _a2 : title).replace(/[\s\r\n]+/g, " ");
+    tracked.title = ((_a2 = title["#text"]) != null ? _a2 : title).toString().replace(/[\s\r\n]+/g, " ");
     return tracked;
   },
   getExtraFeedFields: (feedData) => {
@@ -14913,13 +14913,18 @@ var _HTMLxlate = class {
       }
       const firstChildelement = pre.firstElementChild;
       if (!firstChildelement || firstChildelement.localName !== "code") {
-        const code = element.doc.createElement("code");
-        code.className = "language-undefined";
+        const code = element.doc.createElement("code"), preClasses = Array.from(pre.classList), lang = preClasses.filter((cl) => cl.startsWith("language-"));
+        if (lang.length > 0)
+          code.classList.add(...lang);
+        else {
+          code.className = "language-undefined";
+        }
         while (firstChild) {
           code.append(firstChild);
           firstChild = pre.firstChild;
         }
         pre.append(code);
+        pre.removeAttribute("class");
       }
     }
   }
@@ -14931,6 +14936,7 @@ var _HTMLxlate = class {
       ],
       pre: (document) => {
         this.fixImagesWithoutSrc(document);
+        _HTMLxlate.injectCodeBlock(document.body);
         const allElements = document.body.querySelectorAll("*").forEach((e) => {
           const illegalNames = [], attribs = e.attributes, attCount = attribs.length;
           for (let i = 0; i < attCount; i++) {
@@ -14946,7 +14952,6 @@ var _HTMLxlate = class {
         return document;
       },
       post: (document) => {
-        _HTMLxlate.injectCodeBlock(document.body);
         return document;
       }
     };
@@ -15008,6 +15013,9 @@ var _HTMLxlate = class {
    * @return The markdown text generated from the HTML fragment.
    */
   fragmentAsMarkdown(html) {
+    if (html.match(/```|~~~|^\s*#+\s+[^#]$/)) {
+      return html;
+    }
     const parser = new DOMParser(), doc = parser.parseFromString("<html><body>" + html + "</body></html)>", "text/html");
     this.flattenTables(doc);
     return (0, import_obsidian.htmlToMarkdown)(doc);

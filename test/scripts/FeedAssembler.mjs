@@ -289,7 +289,7 @@ const DEFAULT_OPTIONS = {
             title = published;
         }
         // remove linefeeds and extra spaces
-        tracked.title = (title["#text"] ?? title).replace(/[\s\r\n]+/g, " ");
+        tracked.title = (title["#text"] ?? title).toString().replace(/[\s\r\n]+/g, " ");
         return tracked;
     },
     getExtraFeedFields: (feedData) => {
