@@ -14936,7 +14936,6 @@ var _HTMLxlate = class {
       ],
       pre: (document) => {
         this.fixImagesWithoutSrc(document);
-        _HTMLxlate.injectCodeBlock(document.body);
         const allElements = document.body.querySelectorAll("*").forEach((e) => {
           const illegalNames = [], attribs = e.attributes, attCount = attribs.length;
           for (let i = 0; i < attCount; i++) {
@@ -14952,6 +14951,7 @@ var _HTMLxlate = class {
         return document;
       },
       post: (document) => {
+        _HTMLxlate.injectCodeBlock(document.body);
         return document;
       }
     };

@@ -54,10 +54,8 @@ export class HTMLxlate {
                     code.className = 'language-undefined';
                 }
 
-                while (firstChild) {
-                    code.append(firstChild);
-                    firstChild = pre.firstChild;
-                }
+                code.textContent=pre.textContent;
+                pre.innerHTML = "";
                 pre.append(code);
                 pre.removeAttribute("class");
             }
