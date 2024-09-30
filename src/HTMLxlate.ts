@@ -154,6 +154,10 @@ export class HTMLxlate {
      * @return The markdown text generated from the HTML fragment.
      */
     fragmentAsMarkdown(html: string): string {
+        // some quick plausibility check to determine if this actually already markdown.
+        if (html.match(/```|~~~|^\s*#+\s+[^#]$/)) {
+            return html;
+        }
         const
             parser = new DOMParser(),
             doc = parser.parseFromString("<html><body>" + html + "</body></html)>", "text/html");
