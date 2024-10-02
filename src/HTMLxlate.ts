@@ -163,7 +163,7 @@ export class HTMLxlate {
         const text = textNode.textContent;
         if (text) {
             const transformed = text // non-greedy matches
-                .replace(/^\\\[\s*(.*?)\s*\\\]$/g, "$$$$ $1 $$$$")
+                .replace(/\\\[\s*([\s\S]+?)\\\]/g, '$$$$ $1 $$$$')
                 .replace(/\\\((.*?)\\\)/g, "$$$1$$");
             if (textNode.textContent !== transformed) {
                 textNode.textContent = transformed;
