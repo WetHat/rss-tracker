@@ -1,6 +1,8 @@
 import { ArticleData, Transformation, addTransformations, extractFromHtml } from "@extractus/article-extractor";
 import { htmlToMarkdown } from "obsidian";
 
+type TTExtTransformer = (textNode: Node) => void;
+
 /**
  * A singleton utility class to clanup and translate HTML to Markdown.
  */
@@ -9,6 +11,7 @@ export class HTMLxlate {
 
     private static _instance?: HTMLxlate;
 
+    private parser = new DOMParser();
     /**
      * Get the singleton instance of the importer.
      * @returns Importer instance.
@@ -45,7 +48,7 @@ export class HTMLxlate {
             if (!firstChildelement || firstChildelement.localName !== 'code') {
                 const
                     code = element.doc.createElement('code'),
-                    preClasses =Array.from(pre.classList),
+                    preClasses = Array.from(pre.classList),
                     lang = preClasses.filter(cl => cl.startsWith("language-"));
 
                 if (lang.length > 0)
@@ -54,7 +57,7 @@ export class HTMLxlate {
                     code.className = 'language-undefined';
                 }
 
-                code.textContent=pre.textContent;
+                code.textContent = pre.textContent;
                 pre.innerHTML = "";
                 pre.append(code);
                 pre.removeAttribute("class");
@@ -96,6 +99,13 @@ export class HTMLxlate {
             post: document => {
                 // look for <pre> tags and make sure their first child is always a <code> tag.
                 HTMLxlate.injectCodeBlock(document.body);
+
+                // enable Obsidian Math and get rid of some special characters
+                HTMLxlate.transformText(document.body,(node:Node) => {
+                    HTMLxlate.mathTransformer(node);
+                    HTMLxlate.entityTransformer(node);
+                });
+
                 return document;
             }
         };
@@ -123,7 +133,7 @@ export class HTMLxlate {
         });
     }
 
-    private flattenSingleRowTable(doc: Document, table: HTMLTableElement): boolean {
+    private static flattenSingleRowTable(element: Element, table: HTMLTableElement): boolean {
         let trs = table.querySelectorAll(":scope > tbody > tr"); // this is static
         if (trs.length == 0) {
             trs = table.querySelectorAll(":scope > tr");
@@ -131,7 +141,7 @@ export class HTMLxlate {
         if (trs.length == 1) {
             trs[0].querySelectorAll(":scope > td").forEach(td => {
                 // hoist each td before the table
-                const section = doc.createElement("section");
+                const section = element.doc.createElement("section");
                 table.parentElement?.insertBefore(section, table);
                 // move all children of td into the section
                 while (td.firstChild) {
@@ -144,9 +154,53 @@ export class HTMLxlate {
         return false;
     }
 
-    private flattenTables(doc: Document) {
-        const tables = Array.from<HTMLTableElement>(doc.body.getElementsByTagName("table"));
-        tables.forEach(table => this.flattenSingleRowTable(doc, table));
+    private static flattenTables(element: Element) {
+        const tables = Array.from<HTMLTableElement>(element.getElementsByTagName("table"));
+        tables.forEach(table => HTMLxlate.flattenSingleRowTable(element, table));
+    }
+
+    private static mathTransformer(textNode: Node) {
+        const text = textNode.textContent;
+        if (text) {
+            const transformed = text // non-greedy matches
+                .replace(/^\\\[\s*(.*?)\s*\\\]$/g, "$$$$ $1 $$$$")
+                .replace(/\\\((.*?)\\\)/g, "$$$1$$");
+            if (textNode.textContent !== transformed) {
+                textNode.textContent = transformed;
+                if (textNode.parentElement) {
+                    textNode.parentElement.className = "math";
+                }
+            }
+        }
+    }
+
+    private static entityTransformer(textNode: Node) {
+        const
+            text = textNode.textContent,
+            parent = textNode.parentElement;
+
+        if (text && parent && parent.localName !== "code" && !parent.classList.contains("math")) {
+            // replace Obsidian unfriendly html entities and characters.
+            const transformed = text
+                .replace(/>/g, '＞')
+                .replace(/</g, '＜')
+                .replace(/\[/g, '［')
+                .replace(/\]/g, '］');
+
+            if (transformed !== text) {
+                textNode.textContent = transformed;
+            }
+        }
+    }
+
+    private static transformText(node: Node, transformer: TTExtTransformer) {
+        node.childNodes.forEach(n => {
+            if (n.nodeType === Node.TEXT_NODE) {
+                transformer(n);
+            } else {
+                HTMLxlate.transformText(n, transformer);
+            }
+        });
     }
 
     /**
@@ -166,12 +220,16 @@ export class HTMLxlate {
         if (html.match(/```|~~~|^\s*#+\s+[^#]$/)) {
             return html;
         }
-        const
-            parser = new DOMParser(),
-            doc = parser.parseFromString("<html><body>" + html + "</body></html)>", "text/html");
+        const doc = this.parser.parseFromString(html, "text/html");
         // tidy the docuement
-        this.flattenTables(doc);
-        return htmlToMarkdown(doc);
+        HTMLxlate.injectCodeBlock((doc.body))
+
+        HTMLxlate.transformText(doc.body,(node:Node) => {
+            HTMLxlate.mathTransformer(node);
+            HTMLxlate.entityTransformer(node);
+        });
+
+        return htmlToMarkdown(doc.body);
     }
 
     /**
