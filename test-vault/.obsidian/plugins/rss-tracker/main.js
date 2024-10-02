@@ -14883,6 +14883,40 @@ var extractFromHtml = async (html, url, parserOptions = {}) => {
 // src/HTMLxlate.ts
 var import_obsidian = require("obsidian");
 var _HTMLxlate = class {
+  constructor() {
+    this.parser = new DOMParser();
+    const tm = {
+      patterns: [
+        /.*/
+        // apply to all websites
+      ],
+      pre: (document) => {
+        this.fixImagesWithoutSrc(document);
+        const allElements = document.body.querySelectorAll("*").forEach((e) => {
+          const illegalNames = [], attribs = e.attributes, attCount = attribs.length;
+          for (let i = 0; i < attCount; i++) {
+            const att = attribs[i], name = att.name;
+            if (!_HTMLxlate.VALIDATTR.test(name)) {
+              illegalNames.push(name);
+            }
+          }
+          for (const name of illegalNames) {
+            e.removeAttribute(name);
+          }
+        });
+        return document;
+      },
+      post: (document) => {
+        _HTMLxlate.injectCodeBlock(document.body);
+        _HTMLxlate.transformText(document.body, (node) => {
+          _HTMLxlate.mathTransformer(node);
+          _HTMLxlate.entityTransformer(node);
+        });
+        return document;
+      }
+    };
+    addTransformations([tm]);
+  }
   /**
    * Get the singleton instance of the importer.
    * @returns Importer instance.
@@ -14919,43 +14953,12 @@ var _HTMLxlate = class {
         else {
           code.className = "language-undefined";
         }
-        while (firstChild) {
-          code.append(firstChild);
-          firstChild = pre.firstChild;
-        }
+        code.textContent = pre.textContent;
+        pre.innerHTML = "";
         pre.append(code);
         pre.removeAttribute("class");
       }
     }
-  }
-  constructor() {
-    const tm = {
-      patterns: [
-        /.*/
-        // apply to all websites
-      ],
-      pre: (document) => {
-        this.fixImagesWithoutSrc(document);
-        const allElements = document.body.querySelectorAll("*").forEach((e) => {
-          const illegalNames = [], attribs = e.attributes, attCount = attribs.length;
-          for (let i = 0; i < attCount; i++) {
-            const att = attribs[i], name = att.name;
-            if (!_HTMLxlate.VALIDATTR.test(name)) {
-              illegalNames.push(name);
-            }
-          }
-          for (const name of illegalNames) {
-            e.removeAttribute(name);
-          }
-        });
-        return document;
-      },
-      post: (document) => {
-        _HTMLxlate.injectCodeBlock(document.body);
-        return document;
-      }
-    };
-    addTransformations([tm]);
   }
   /**
    * Fix `<img>` elemnts without 'src' attribute enclosed in a `<picture>` element.
@@ -14977,7 +14980,7 @@ var _HTMLxlate = class {
       }
     });
   }
-  flattenSingleRowTable(doc, table) {
+  static flattenSingleRowTable(element, table) {
     let trs = table.querySelectorAll(":scope > tbody > tr");
     if (trs.length == 0) {
       trs = table.querySelectorAll(":scope > tr");
@@ -14985,7 +14988,7 @@ var _HTMLxlate = class {
     if (trs.length == 1) {
       trs[0].querySelectorAll(":scope > td").forEach((td) => {
         var _a2;
-        const section = doc.createElement("section");
+        const section = element.doc.createElement("section");
         (_a2 = table.parentElement) == null ? void 0 : _a2.insertBefore(section, table);
         while (td.firstChild) {
           section.appendChild(td.firstChild);
@@ -14996,9 +14999,39 @@ var _HTMLxlate = class {
     }
     return false;
   }
-  flattenTables(doc) {
-    const tables = Array.from(doc.body.getElementsByTagName("table"));
-    tables.forEach((table) => this.flattenSingleRowTable(doc, table));
+  static flattenTables(element) {
+    const tables = Array.from(element.getElementsByTagName("table"));
+    tables.forEach((table) => _HTMLxlate.flattenSingleRowTable(element, table));
+  }
+  static mathTransformer(textNode) {
+    const text = textNode.textContent;
+    if (text) {
+      const transformed = text.replace(/^\\\[\s*(.*?)\s*\\\]$/g, "$$$$ $1 $$$$").replace(/\\\((.*?)\\\)/g, "$$$1$$");
+      if (textNode.textContent !== transformed) {
+        textNode.textContent = transformed;
+        if (textNode.parentElement) {
+          textNode.parentElement.classList.add("math");
+        }
+      }
+    }
+  }
+  static entityTransformer(textNode) {
+    const text = textNode.textContent, parent = textNode.parentElement;
+    if (text && parent && parent.localName !== "code" && !parent.classList.contains("math")) {
+      const transformed = text.replace(/>/g, "\uFF1E").replace(/</g, "\uFF1C").replace(/\[/g, "\uFF3B").replace(/\]/g, "\uFF3D");
+      if (transformed !== text) {
+        textNode.textContent = transformed;
+      }
+    }
+  }
+  static transformText(node, transformer) {
+    node.childNodes.forEach((n) => {
+      if (n.nodeType === Node.TEXT_NODE) {
+        transformer(n);
+      } else {
+        _HTMLxlate.transformText(n, transformer);
+      }
+    });
   }
   /**
    * Translate an HTML fragment to Markdown text.
@@ -15016,9 +15049,13 @@ var _HTMLxlate = class {
     if (html.match(/```|~~~|^\s*#+\s+[^#]$/)) {
       return html;
     }
-    const parser = new DOMParser(), doc = parser.parseFromString("<html><body>" + html + "</body></html)>", "text/html");
-    this.flattenTables(doc);
-    return (0, import_obsidian.htmlToMarkdown)(doc);
+    const doc = this.parser.parseFromString(html, "text/html");
+    _HTMLxlate.injectCodeBlock(doc.body);
+    _HTMLxlate.transformText(doc.body, (node) => {
+      _HTMLxlate.mathTransformer(node);
+      _HTMLxlate.entityTransformer(node);
+    });
+    return (0, import_obsidian.htmlToMarkdown)(doc.body);
   }
   /**
    * Exract the main article from an HTML document
