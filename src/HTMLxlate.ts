@@ -1,7 +1,13 @@
 import { ArticleData, Transformation, addTransformations, extractFromHtml } from "@extractus/article-extractor";
 import { htmlToMarkdown } from "obsidian";
+import { IRssMedium } from "./FeedAssembler";
 
 type TTExtTransformer = (textNode: Node) => void;
+
+export function formatImage(image: IRssMedium): string {
+    const { src, width, height } = image as IRssMedium;
+    return `![image|400](${src}){.rss-image}`;
+}
 
 /**
  * A singleton utility class to clanup and translate HTML to Markdown.
