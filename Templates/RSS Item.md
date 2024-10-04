@@ -1,6 +1,6 @@
 ---
 role: rssitem
-author: "{{author}}"
+author: {{author}}
 published: {{publishDate}}
 link: {{link}}
 id: {{id}}
