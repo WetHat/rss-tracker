@@ -4,19 +4,34 @@ author: John Baez
 published: 2024-03-27T18:32:47.000Z
 link: https://johncarlosbaez.wordpress.com/2024/03/27/t-corona-borealis/
 id: http://johncarlosbaez.wordpress.com/?p=37700
-feed: "[[../Azimuth]]"
-tags:
-  - rss/uncategorized
+feed: "[[Azimuth]]"
+tags: [rss/uncategorized]
 pinned: false
 ---
-> [!abstract] T Corona Borealis by John Baez - 2024-03-27T18:32:47.000Z
->   Sometime this year, the star T Corona Borealis will go nova and become much brighter! At least that’s what a lot of astronomers think. So examine the sky between Arcturus and Vega now—and look again if you hear this event has happened. Normally this star is magnitude 10, too dim to see. When it […]
->
-> ![image](https://johncarlosbaez.files.wordpress.com/2024/03/corona_borealis.jpg)
 
-🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/03/27/t-corona-borealis/). For other items in this feed see [[../Azimuth]].
+> [!abstract] T Corona Borealis by John Baez - 2024-03-27T18:32:47.000Z
+> ![image|400](https://johncarlosbaez.files.wordpress.com/2024/03/corona_borealis.jpg){.rss-image}
+>   Sometime this year, the star T Corona Borealis will go nova and become much brighter! At least that’s what a lot of astronomers think. So examine the sky between Arcturus and Vega now—and look again if you hear this event has happened. Normally this star is magnitude 10, too dim to see. When it ［…］
+
+🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/03/27/t-corona-borealis/). For other items in this feed see [[Azimuth]].
 
 - [ ] [[T Corona Borealis]]
+
+~~~dataviewjs
+const
+    current = dv.current(),
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	tasks = await dvjs.rssDuplicateItemsTasks(current);
+if (tasks.length > 0) {
+	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+    dv.taskList(tasks,false);
+}
+const tags = current.file.etags.join(" ");
+if (current) {
+	dv.span(tags);
+}
+~~~
+
 - - -
 [![](https://johncarlosbaez.files.wordpress.com/2024/03/corona_borealis.jpg?w=450&h=227)](https://johncarlosbaez.files.wordpress.com/2024/03/corona_borealis.jpg)
 

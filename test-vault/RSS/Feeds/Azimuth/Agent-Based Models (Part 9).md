@@ -4,21 +4,34 @@ author: John Baez
 published: 2024-05-13T18:23:03.000Z
 link: https://johncarlosbaez.wordpress.com/2024/05/13/agent-based-models-part-9/
 id: http://johncarlosbaez.wordpress.com/?p=37840
-feed: "[[../Azimuth]]"
-tags:
-  - rss/computer_science
-  - rss/epidemiology
-  - rss/mathematics
+feed: "[[Azimuth]]"
+tags: [rss/computer_science,rss/epidemiology,rss/mathematics]
 pinned: false
 ---
-> [!abstract] Agent-Based Models (Part 9) by John Baez - 2024-05-13T18:23:03.000Z
-> Since May 1st, Kris Brown, Nathaniel Osgood, Xiaoyan Li, William Waites and I have been meeting daily in James Clerk Maxwell’s childhood home in Edinburgh. We’re hard at work on our project called New Mathematics and Software for Agent-Based models. It’s impossible to explain everything we’re doing while it’s happening. But I want to record […]
->
-> ![image](https://johncarlosbaez.files.wordpress.com/2023/07/state_diagram.png)
 
-🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/05/13/agent-based-models-part-9/). For other items in this feed see [[../Azimuth]].
+> [!abstract] Agent-Based Models (Part 9) by John Baez - 2024-05-13T18:23:03.000Z
+> ![image|400](https://johncarlosbaez.files.wordpress.com/2023/07/state_diagram.png){.rss-image}
+> Since May 1st, Kris Brown, Nathaniel Osgood, Xiaoyan Li, William Waites and I have been meeting daily in James Clerk Maxwell’s childhood home in Edinburgh. We’re hard at work on our project called New Mathematics and Software for Agent-Based models. It’s impossible to explain everything we’re doing while it’s happening. But I want to record ［…］
+
+🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/05/13/agent-based-models-part-9/). For other items in this feed see [[Azimuth]].
 
 - [ ] [[Agent-Based Models (Part 9)]]
+
+~~~dataviewjs
+const
+    current = dv.current(),
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	tasks = await dvjs.rssDuplicateItemsTasks(current);
+if (tasks.length > 0) {
+	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+    dv.taskList(tasks,false);
+}
+const tags = current.file.etags.join(" ");
+if (current) {
+	dv.span(tags);
+}
+~~~
+
 - - -
 Since May 1st, [Kris Brown](https://www.krisb.org/docs/research), [Nathaniel Osgood](https://www.cs.usask.ca/faculty/osgood/), [Xiaoyan Li](https://scholar.google.ca/citations?user=55dzbRgAAAAJ&hl=en), [William Waites](https://scholar.google.com/citations?user=eayiEiwAAAAJ&hl=en) and I have been meeting daily in James Clerk Maxwell’s childhood home in Edinburgh.
 
@@ -138,6 +151,6 @@ For example, I computed wait times ![w_i(t)](https://s0.wp.com/latex.php?latex=w
 
 ![T_i \colon [0,\infty) \to [0,\infty] ](https://s0.wp.com/latex.php?latex=T_i+%5Ccolon+%5B0%2C%5Cinfty%29+%5Cto+%5B0%2C%5Cinfty%5D+&bg=ffffff&fg=333333&s=0&c=20201002)
 
-The dependence on ![t \in [0,\infty)](https://s0.wp.com/latex.php?latex=t+%5Cin+%5B0%2C%5Cinfty%29&bg=ffffff&fg=333333&s=0&c=20201002) here means the wait time can depend on when we start the timer. And the fact that this stochastic map takes values in ![[0,\infty]](https://s0.wp.com/latex.php?latex=%5B0%2C%5Cinfty%5D&bg=ffffff&fg=333333&s=0&c=20201002) means the wait time can be _infinite_. This is a way of letting rewrite rules have a probability < 1 of ever being applied. If you don't like these features you can easily limit the formalism to avoid them.
+The dependence on ![t \in [0,\infty)](https://s0.wp.com/latex.php?latex=t+%5Cin+%5B0%2C%5Cinfty%29&bg=ffffff&fg=333333&s=0&c=20201002) here means the wait time can depend on when we start the timer. And the fact that this stochastic map takes values in ![[0,\infty]](https://s0.wp.com/latex.php?latex=%5B0%2C%5Cinfty%5D&bg=ffffff&fg=333333&s=0&c=20201002) means the wait time can be _infinite_. This is a way of letting rewrite rules have a probability ＜ 1 of ever being applied. If you don't like these features you can easily limit the formalism to avoid them.
 
 The more serious subtleties involve whether and how to change wait times as the state of the world changes. For example, we can imagine more general timers that explicitly depend on the current state of the world as well as the time ![t \in [0,\infty).](https://s0.wp.com/latex.php?latex=t+%5Cin+%5B0%2C%5Cinfty%29.&bg=ffffff&fg=333333&s=0&c=20201002) However, in this case I am confused about how we should update our table of wait times as the state of the world changes. So I decided to postpone discussing this generalization!

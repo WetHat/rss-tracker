@@ -4,19 +4,34 @@ author: John Baez
 published: 2024-03-15T10:10:44.000Z
 link: https://johncarlosbaez.wordpress.com/2024/03/15/the-probability-of-undecidability/
 id: http://johncarlosbaez.wordpress.com/?p=37690
-feed: "[[../Azimuth]]"
-tags:
-  - rss/mathematics
+feed: "[[Azimuth]]"
+tags: [rss/mathematics]
 pinned: false
 ---
-> [!abstract] The Probability of Undecidability by John Baez - 2024-03-15T10:10:44.000Z
-> There’s a lot we don’t know. There’s a lot we can’t know. But can we at least know how much we can’t know? What fraction of mathematical statements are undecidable—that is, can be neither proved nor disproved? There are many ways to make this question precise… but it remains a bit mysterious. The best results […]
->
-> ![image](https://johncarlosbaez.files.wordpress.com/2024/03/unprovability_michael_freedman.png)
 
-🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/03/15/the-probability-of-undecidability/). For other items in this feed see [[../Azimuth]].
+> [!abstract] The Probability of Undecidability by John Baez - 2024-03-15T10:10:44.000Z
+> ![image|400](https://johncarlosbaez.files.wordpress.com/2024/03/unprovability_michael_freedman.png){.rss-image}
+> There’s a lot we don’t know. There’s a lot we can’t know. But can we at least know how much we can’t know? What fraction of mathematical statements are undecidable—that is, can be neither proved nor disproved? There are many ways to make this question precise… but it remains a bit mysterious. The best results ［…］
+
+🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/03/15/the-probability-of-undecidability/). For other items in this feed see [[Azimuth]].
 
 - [ ] [[The Probability of Undecidability]]
+
+~~~dataviewjs
+const
+    current = dv.current(),
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	tasks = await dvjs.rssDuplicateItemsTasks(current);
+if (tasks.length > 0) {
+	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+    dv.taskList(tasks,false);
+}
+const tags = current.file.etags.join(" ");
+if (current) {
+	dv.span(tags);
+}
+~~~
+
 - - -
 There’s a lot we don’t know. There’s a lot we _can’t_ know. But can we at least know how _much_ we can’t know?
 

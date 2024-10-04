@@ -1,30 +1,30 @@
 ---
 role: rssfeed
-feedurl: https://localhost/RSS/reference/Azimuth/assets/feed.xml
+feedurl: https://localhost/test/Azimuth/feed.xml
 site: https://johncarlosbaez.wordpress.com
 itemlimit: 10
-updated: 2024-07-16T10:44:18.035Z
-status: OK
-tags: 
+updated: 2024-10-04T16:53:23.709Z
+status: ✅
+tags: []
 interval: 206
 ---
 > [!abstract] Azimuth
+> ![image|400](https://s0.wp.com/i/buttonw-com.png){.rss-image}
 > 
->
-> ![image](https://s0.wp.com/i/buttonw-com.png)
+
 # Unread Feed Items 📚
 ~~~dataview
 TASK
-FROM [[Azimuth.md]]
-WHERE !completed AND role = "rssitem"
+FROM [[]]
+WHERE !completed AND startswith(text,"[[") AND role = "rssitem"
 SORT published DESC
 ~~~
 
-# Pinned Feed Items 📌
+# Pinned Feed Items 📍
 ~~~dataview
 TABLE
 published as Published
-FROM [[Azimuth.md]]
+FROM [[]]
 WHERE pinned = true AND role = "rssitem"
 SORT published DESC
 ~~~
@@ -32,7 +32,7 @@ SORT published DESC
 # Read Feed Items
 ~~~dataview
 TASK
-FROM [[Azimuth.md]]
-WHERE completed AND role = "rssitem"
+FROM [[]]
+WHERE completed AND startswith(text,"[[") AND role = "rssitem"
 SORT published DESC
 ~~~

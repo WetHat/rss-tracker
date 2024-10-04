@@ -4,19 +4,34 @@ author: John Baez
 published: 2024-03-13T23:20:10.000Z
 link: https://johncarlosbaez.wordpress.com/2024/03/13/the-probability-of-the-law-of-excluded-middle/
 id: http://johncarlosbaez.wordpress.com/?p=37675
-feed: "[[../Azimuth]]"
-tags:
-  - rss/mathematics
+feed: "[[Azimuth]]"
+tags: [rss/mathematics]
 pinned: false
 ---
-> [!abstract] The Probability of the Law of Excluded Middle by John Baez - 2024-03-13T23:20:10.000Z
-> The Law of Excluded Middle says that for any statement P, “P or not P” is true. Is this law true? In classical logic it is. But in intuitionistic logic it’s not. So, in intuitionistic logic we can ask what’s the probability that a randomly chosen statement obeys the Law of Excluded Middle. And the […]
->
-> ![image](https://johncarlosbaez.files.wordpress.com/2024/03/free_heyting_algebra_on_one_generator.jpg)
 
-🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/03/13/the-probability-of-the-law-of-excluded-middle/). For other items in this feed see [[../Azimuth]].
+> [!abstract] The Probability of the Law of Excluded Middle by John Baez - 2024-03-13T23:20:10.000Z
+> ![image|400](https://johncarlosbaez.files.wordpress.com/2024/03/free_heyting_algebra_on_one_generator.jpg){.rss-image}
+> The Law of Excluded Middle says that for any statement P, “P or not P” is true. Is this law true? In classical logic it is. But in intuitionistic logic it’s not. So, in intuitionistic logic we can ask what’s the probability that a randomly chosen statement obeys the Law of Excluded Middle. And the ［…］
+
+🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/03/13/the-probability-of-the-law-of-excluded-middle/). For other items in this feed see [[Azimuth]].
 
 - [ ] [[The Probability of the Law of Excluded Middle]]
+
+~~~dataviewjs
+const
+    current = dv.current(),
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	tasks = await dvjs.rssDuplicateItemsTasks(current);
+if (tasks.length > 0) {
+	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+    dv.taskList(tasks,false);
+}
+const tags = current.file.etags.join(" ");
+if (current) {
+	dv.span(tags);
+}
+~~~
+
 - - -
 The [Law of Excluded Middle](https://en.wikipedia.org/wiki/Law_of_excluded_middle) says that for any statement P, “P or not P” is true.
 

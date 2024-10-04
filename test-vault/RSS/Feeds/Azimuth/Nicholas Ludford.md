@@ -4,19 +4,34 @@ author: John Baez
 published: 2024-02-29T10:00:24.000Z
 link: https://johncarlosbaez.wordpress.com/2024/02/29/nicholas-ludford/
 id: http://johncarlosbaez.wordpress.com/?p=37567
-feed: "[[../Azimuth]]"
-tags:
-  - rss/music
+feed: "[[Azimuth]]"
+tags: [rss/music]
 pinned: false
 ---
-> [!abstract] Nicholas Ludford by John Baez - 2024-02-29T10:00:24.000Z
-> At first glance it’s amazing that one of the great British composers of the 1400s largely sank from view until his works were rediscovered in 1850. But the reason is not hard to find. When the Puritans took over England, they burned not only witches and heretics, but also books — and music! They hated […]
->
-> ![image](https://johncarlosbaez.files.wordpress.com/2024/02/blue_heron_peterhouse_partbooks.jpg)
 
-🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/02/29/nicholas-ludford/). For other items in this feed see [[../Azimuth]].
+> [!abstract] Nicholas Ludford by John Baez - 2024-02-29T10:00:24.000Z
+> ![image|400](https://johncarlosbaez.files.wordpress.com/2024/02/blue_heron_peterhouse_partbooks.jpg){.rss-image}
+> At first glance it’s amazing that one of the great British composers of the 1400s largely sank from view until his works were rediscovered in 1850. But the reason is not hard to find. When the Puritans took over England, they burned not only witches and heretics, but also books — and music! They hated ［…］
+
+🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/02/29/nicholas-ludford/). For other items in this feed see [[Azimuth]].
 
 - [ ] [[Nicholas Ludford]]
+
+~~~dataviewjs
+const
+    current = dv.current(),
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	tasks = await dvjs.rssDuplicateItemsTasks(current);
+if (tasks.length > 0) {
+	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+    dv.taskList(tasks,false);
+}
+const tags = current.file.etags.join(" ");
+if (current) {
+	dv.span(tags);
+}
+~~~
+
 - - -
 [![](https://i0.wp.com/math.ucr.edu/home/baez/cultural/blue_heron_peterhouse_partbooks.jpg)](https://www.blueheron.org/learn-more/the-peterhouse-partbooks/)
 
