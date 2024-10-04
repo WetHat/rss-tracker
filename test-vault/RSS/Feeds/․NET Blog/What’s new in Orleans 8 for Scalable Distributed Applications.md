@@ -4,28 +4,36 @@ author: Mike Kistler
 published: 2024-05-13T17:05:00.000Z
 link: https://devblogs.microsoft.com/dotnet/whats-new-in-orleans-8/
 id: https://devblogs.microsoft.com/dotnet/?p=51767
-feed: "[[../․NET Blog]]"
-tags:
-  - rss/〭NET
-  - rss/〭NET_Aspire
-  - rss/ASP〭NET
-  - rss/ASP〭NET_Core
-  - rss/Cloud
-  - rss/Cloud_Native
-  - rss/Orleans
-  - rss/〭net_aspire
-  - rss/cloud_native
-  - rss/orleans
+feed: "[[․NET Blog]]"
+tags: [rss/ASP_NET,rss/ASP_NET_Core,rss/Cloud,rss/Cloud_Native,rss/Orleans,rss/_NET,rss/_NET_Aspire,rss/_net_aspire,rss/cloud_native,rss/orleans]
 pinned: false
 ---
+
 > [!abstract] What&#8217;s new in Orleans 8 for Scalable Distributed Applications by Mike Kistler - 2024-05-13T17:05:00.000Z
+> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
 > Let's take a look at what is new with Orleans for building robust, scalable distribute applications with Orleans 8 and integration with .NET Aspire.
 > 
 > The post [What’s new in Orleans 8 for Scalable Distributed Applications](https://devblogs.microsoft.com/dotnet/whats-new-in-orleans-8/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 
-🔗Read article [online](https://devblogs.microsoft.com/dotnet/whats-new-in-orleans-8/). For other items in this feed see [[../․NET Blog]].
+🔗Read article [online](https://devblogs.microsoft.com/dotnet/whats-new-in-orleans-8/). For other items in this feed see [[․NET Blog]].
 
 - [ ] [[What’s new in Orleans 8 for Scalable Distributed Applications]]
+
+~~~dataviewjs
+const
+    current = dv.current(),
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	tasks = await dvjs.rssDuplicateItemsTasks(current);
+if (tasks.length > 0) {
+	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+    dv.taskList(tasks,false);
+}
+const tags = current.file.etags.join(" ");
+if (current) {
+	dv.span(tags);
+}
+~~~
+
 - - -
 Orleans is a cross-platform framework for building robust, scalable distributed applications. A lot has happened in Orleans for since our last blog on new features in [Orleans 7.0](https://devblogs.microsoft.com/dotnet/whats-new-in-orleans-7/) including new integration with [.NET Aspire](https://aka.ms/dotnet-aspire). Let’s take a look at what’s new!
 

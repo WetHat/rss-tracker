@@ -4,22 +4,36 @@ author: David Pine
 published: 2024-05-08T17:05:00.000Z
 link: https://devblogs.microsoft.com/dotnet/refactor-your-code-with-collection-expressions/
 id: https://devblogs.microsoft.com/dotnet/?p=51745
-feed: "[[../․NET Blog]]"
-tags:
-  - rss/〭NET
-  - rss/C＃
-  - rss/〭net_8
-  - rss/c＃_12
+feed: "[[․NET Blog]]"
+tags: [rss/C＃,rss/_NET,rss/_net_8,rss/c＃_12]
 pinned: false
 ---
+
 > [!abstract] Refactor your code with C# collection expressions by David Pine - 2024-05-08T17:05:00.000Z
+> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
 > Explore various C# 12 refactoring scenarios for a variety of target types using collection expressions, collection initializers, and the spread syntax.
 > 
 > The post [Refactor your code with C# collection expressions](https://devblogs.microsoft.com/dotnet/refactor-your-code-with-collection-expressions/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 
-🔗Read article [online](https://devblogs.microsoft.com/dotnet/refactor-your-code-with-collection-expressions/). For other items in this feed see [[../․NET Blog]].
+🔗Read article [online](https://devblogs.microsoft.com/dotnet/refactor-your-code-with-collection-expressions/). For other items in this feed see [[․NET Blog]].
 
 - [ ] [[Refactor your code with C＃ collection expressions]]
+
+~~~dataviewjs
+const
+    current = dv.current(),
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	tasks = await dvjs.rssDuplicateItemsTasks(current);
+if (tasks.length > 0) {
+	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+    dv.taskList(tasks,false);
+}
+const tags = current.file.etags.join(" ");
+if (current) {
+	dv.span(tags);
+}
+~~~
+
 - - -
 This post is the second in a series of posts covering various refactoring scenarios that explore C# 12 features. In this post, we’ll look at how you can refactor your code using collection expressions, we’ll learn about collection initializers, various expression usages, supported collection target types, and the spread syntax. Here’s how the series is shaping up:
 

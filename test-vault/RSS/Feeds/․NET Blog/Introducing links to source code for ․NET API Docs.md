@@ -4,23 +4,36 @@ author: Min Huang
 published: 2024-05-27T15:00:00.000Z
 link: https://devblogs.microsoft.com/dotnet/dotnet-docs-link-to-source-code/
 id: https://devblogs.microsoft.com/dotnet/?p=51964
-feed: "[[../․NET Blog]]"
-tags:
-  - rss/〭NET
-  - rss/〭NET_Fundamentals
-  - rss/〭NET_Internals
-  - rss/microsoft_learn
-  - rss/Source_Link
+feed: "[[․NET Blog]]"
+tags: [rss/Source_Link,rss/_NET,rss/_NET_Fundamentals,rss/_NET_Internals,rss/microsoft_learn]
 pinned: false
 ---
+
 > [!abstract] Introducing links to source code for .NET API Docs by Min Huang - 2024-05-27T15:00:00.000Z
+> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
 > .NET API reference docs now link directly to the source code! Learn how the links are generated, and some of ideas for future improvements.
 > 
 > The post [Introducing links to source code for .NET API Docs](https://devblogs.microsoft.com/dotnet/dotnet-docs-link-to-source-code/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 
-🔗Read article [online](https://devblogs.microsoft.com/dotnet/dotnet-docs-link-to-source-code/). For other items in this feed see [[../․NET Blog]].
+🔗Read article [online](https://devblogs.microsoft.com/dotnet/dotnet-docs-link-to-source-code/). For other items in this feed see [[․NET Blog]].
 
 - [ ] [[Introducing links to source code for ․NET API Docs]]
+
+~~~dataviewjs
+const
+    current = dv.current(),
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	tasks = await dvjs.rssDuplicateItemsTasks(current);
+if (tasks.length > 0) {
+	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+    dv.taskList(tasks,false);
+}
+const tags = current.file.etags.join(" ");
+if (current) {
+	dv.span(tags);
+}
+~~~
+
 - - -
 When developers read API reference, they sometimes have a need or desire to review the corresponding source code. Until recently, the [.NET API reference docs](https://learn.microsoft.com/dotnet/api/) did not provide a link back to the source code, prompting calls from the community for this addition. In response to this feedback, we are happy to announce links connecting docs to the source code are now available on most of our popular .NET APIs.
 
@@ -50,7 +63,7 @@ To view the `Source Link` entry, you can open the DLL using dotPeek or [ILSpy](h
 
 ![Source Link in PDB](https://devblogs.microsoft.com/dotnet/wp-content/uploads/sites/10/2024/05/sourcelink-pdb.png)
 
-> [!NOTE] To find out the metadata definition about Source Link, go to: [PortablePdb-Metadata](https://github.com/dotnet/runtime/blob/main/docs/design/specs/PortablePdb-Metadata.md#source-link-c-and-vb-compilers).
+> ［!NOTE］ To find out the metadata definition about Source Link, go to: [PortablePdb-Metadata](https://github.com/dotnet/runtime/blob/main/docs/design/specs/PortablePdb-Metadata.md#source-link-c-and-vb-compilers).
 
 ### Building the links
 
@@ -62,7 +75,7 @@ This link can be split into 3 parts:
 
 1. The first part `https://github.com/dotnet/runtime/blob/5535e31a712343a63f5d7d796cd874e563e5ac14` is parsed from Source Link mapping json and is bound to a specific repository commit.
 2. The second part `src/libraries/System.Private.CoreLib/src/System/String.cs` can be found in `Document` table of the PDB.
-3. And the last part `#rss/L388C13-L388C25` is built from `SequencePoints` column of `MethodDebugInformation` table. `SequencePoints` blob will map a range of IL instructions in this method block back to the line numbers of its original source code as demonstrated in below screenshot. For more details, go to [SequencePoints Metadata definition](https://github.com/dotnet/runtime/blob/main/docs/design/specs/PortablePdb-Metadata.md#sequence-points-blob).
+3. And the last part `#L388C13-L388C25` is built from `SequencePoints` column of `MethodDebugInformation` table. `SequencePoints` blob will map a range of IL instructions in this method block back to the line numbers of its original source code as demonstrated in below screenshot. For more details, go to [SequencePoints Metadata definition](https://github.com/dotnet/runtime/blob/main/docs/design/specs/PortablePdb-Metadata.md#sequence-points-blob).
     
     ![SequencePoints](https://devblogs.microsoft.com/dotnet/wp-content/uploads/sites/10/2024/05/SequencePoints.png)
     

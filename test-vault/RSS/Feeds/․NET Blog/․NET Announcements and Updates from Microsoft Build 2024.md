@@ -4,37 +4,36 @@ author: .NET Team
 published: 2024-05-21T17:05:00.000Z
 link: https://devblogs.microsoft.com/dotnet/dotnet-build-2024-announcements/
 id: https://devblogs.microsoft.com/dotnet/?p=51919
-feed: "[[../․NET Blog]]"
-tags:
-  - rss/〭NET
-  - rss/〭NET_Aspire
-  - rss/〭NET_Internals
-  - rss/〭NET_MAUI
-  - rss/AI
-  - rss/ASP〭NET
-  - rss/ASP〭NET_Core
-  - rss/Blazor
-  - rss/C＃
-  - rss/Cloud_Native
-  - rss/Containers
-  - rss/Performance
-  - rss/Visual_Studio
-  - rss/Visual_Studio_Code
-  - rss/〭net_9
-  - rss/〭net_9_preview_4
-  - rss/〭net_aspire
-  - rss/announcement
-  - rss/microsoft_build
+feed: "[[․NET Blog]]"
+tags: [rss/AI,rss/ASP_NET,rss/ASP_NET_Core,rss/Blazor,rss/Cloud_Native,rss/Containers,rss/C＃,rss/Performance,rss/Visual_Studio,rss/Visual_Studio_Code,rss/_NET,rss/_NET_Aspire,rss/_NET_Internals,rss/_NET_MAUI,rss/_net_9,rss/_net_9_preview_4,rss/_net_aspire,rss/announcement,rss/microsoft_build]
 pinned: false
 ---
+
 > [!abstract] .NET Announcements and Updates from Microsoft Build 2024 by .NET Team - 2024-05-21T17:05:00.000Z
+> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
 > Our latest updates and announcements from Microsoft Build including .NET Aspire, .NET 9 Preview 4, C# 13, Blazor, .NET MAUI, and more!
 > 
 > The post [.NET Announcements and Updates from Microsoft Build 2024](https://devblogs.microsoft.com/dotnet/dotnet-build-2024-announcements/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 
-🔗Read article [online](https://devblogs.microsoft.com/dotnet/dotnet-build-2024-announcements/). For other items in this feed see [[../․NET Blog]].
+🔗Read article [online](https://devblogs.microsoft.com/dotnet/dotnet-build-2024-announcements/). For other items in this feed see [[․NET Blog]].
 
 - [ ] [[․NET Announcements and Updates from Microsoft Build 2024]]
+
+~~~dataviewjs
+const
+    current = dv.current(),
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	tasks = await dvjs.rssDuplicateItemsTasks(current);
+if (tasks.length > 0) {
+	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+    dv.taskList(tasks,false);
+}
+const tags = current.file.etags.join(" ");
+if (current) {
+	dv.span(tags);
+}
+~~~
+
 - - -
 At [Microsoft Build 2024](https://build.microsoft.com/), we’re thrilled to unveil a new set of features and tools designed to make .NET development faster and easier.
 

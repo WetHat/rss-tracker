@@ -4,22 +4,36 @@ author: Tara Overfield
 published: 2024-05-15T17:05:00.000Z
 link: https://devblogs.microsoft.com/dotnet/dotnet-and-dotnet-framework-may-2024-servicing-updates/
 id: https://devblogs.microsoft.com/dotnet/?p=51837
-feed: "[[../․NET Blog]]"
-tags:
-  - rss/〭NET
-  - rss/〭NET_Framework
-  - rss/Maintenance_＆_Updates
-  - rss/〭net_framework
+feed: "[[․NET Blog]]"
+tags: [rss/Maintenance,rss/Updates,rss/_NET,rss/_NET_Framework,rss/_net_framework]
 pinned: false
 ---
+
 > [!abstract] .NET and .NET Framework May 2024 Servicing Updates by Tara Overfield - 2024-05-15T17:05:00.000Z
+> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
 > A recap of the latest servicing updates for .NET and .NET Framework for May 2024.
 > 
 > The post [.NET and .NET Framework May 2024 Servicing Updates](https://devblogs.microsoft.com/dotnet/dotnet-and-dotnet-framework-may-2024-servicing-updates/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 
-🔗Read article [online](https://devblogs.microsoft.com/dotnet/dotnet-and-dotnet-framework-may-2024-servicing-updates/). For other items in this feed see [[../․NET Blog]].
+🔗Read article [online](https://devblogs.microsoft.com/dotnet/dotnet-and-dotnet-framework-may-2024-servicing-updates/). For other items in this feed see [[․NET Blog]].
 
 - [ ] [[․NET and ․NET Framework May 2024 Servicing Updates]]
+
+~~~dataviewjs
+const
+    current = dv.current(),
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	tasks = await dvjs.rssDuplicateItemsTasks(current);
+if (tasks.length > 0) {
+	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+    dv.taskList(tasks,false);
+}
+const tags = current.file.etags.join(" ");
+if (current) {
+	dv.span(tags);
+}
+~~~
+
 - - -
 Welcome to our new combined .NET servicing updates for May 2024. To help streamline and help you keep up to date with the latest service releases we have decided to combine together our update posts around both .NET & .NET Framework so you can find all the information in one convenient location on the blog. Don’t forget that you can find updates about .NET previews on [GitHub](https://github.com/dotnet/core/discussions/categories/news), specifically for .NET 9. Let’s get into the latest release of .NET & .NET Framework, here is a quik overview of what’s new in these releases:
 

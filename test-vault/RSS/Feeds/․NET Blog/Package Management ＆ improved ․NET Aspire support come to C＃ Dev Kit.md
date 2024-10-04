@@ -4,26 +4,36 @@ author: Wendy Breiding (SHE/HER)
 published: 2024-05-07T20:05:00.000Z
 link: https://devblogs.microsoft.com/dotnet/may-release-of-csharp-dev-kit/
 id: https://devblogs.microsoft.com/dotnet/?p=51662
-feed: "[[../․NET Blog]]"
-tags:
-  - rss/〭NET
-  - rss/C＃
-  - rss/Cloud_Native
-  - rss/Visual_Studio_Code
-  - rss/C＃_Dev_Kit
-  - rss/Csharp
-  - rss/csharpdevkit
-  - rss/vscode
+feed: "[[․NET Blog]]"
+tags: [rss/Cloud_Native,rss/Csharp,rss/C＃,rss/C＃_Dev_Kit,rss/Visual_Studio_Code,rss/_NET,rss/csharpdevkit,rss/vscode]
 pinned: false
 ---
+
 > [!abstract] Package Management &#038; improved .NET Aspire support come to C# Dev Kit by Wendy Breiding (SHE/HER) - 2024-05-07T20:05:00.000Z
+> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
 > Explore the new features and enhancements in the latest version of C# Dev Kit including NuGet package management, .NET Aspire project support, and much more.
 > 
 > The post [Package Management & improved .NET Aspire support come to C# Dev Kit](https://devblogs.microsoft.com/dotnet/may-release-of-csharp-dev-kit/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 
-🔗Read article [online](https://devblogs.microsoft.com/dotnet/may-release-of-csharp-dev-kit/). For other items in this feed see [[../․NET Blog]].
+🔗Read article [online](https://devblogs.microsoft.com/dotnet/may-release-of-csharp-dev-kit/). For other items in this feed see [[․NET Blog]].
 
-- [ ] [[Package Management + improved ․NET Aspire support come to C＃ Dev Kit]]
+- [ ] [[Package Management ＆ improved ․NET Aspire support come to C＃ Dev Kit]]
+
+~~~dataviewjs
+const
+    current = dv.current(),
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	tasks = await dvjs.rssDuplicateItemsTasks(current);
+if (tasks.length > 0) {
+	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+    dv.taskList(tasks,false);
+}
+const tags = current.file.etags.join(" ");
+if (current) {
+	dv.span(tags);
+}
+~~~
+
 - - -
 We are excited to announce the May release of C# Dev Kit, the official extension for C# development in Visual Studio Code. This release brings you several new features and improvements that will make your C# coding experience more productive and enjoyable. In this blog post, we will go over some of the highlights of this release and show you how to use them in your projects.
 

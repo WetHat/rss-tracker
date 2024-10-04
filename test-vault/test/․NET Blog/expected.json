@@ -12,9 +12,9 @@
         {
             "id": "https://devblogs.microsoft.com/dotnet/?p=51967",
             "tags": [
-                "〭NET",
                 "F＃",
                 "Performance",
+                "_NET",
                 "compilers",
                 "performance"
             ],
@@ -29,11 +29,11 @@
         {
             "id": "https://devblogs.microsoft.com/dotnet/?p=51964",
             "tags": [
-                "〭NET",
-                "〭NET Fundamentals",
-                "〭NET Internals",
-                "microsoft learn",
-                "Source Link"
+                "Source_Link",
+                "_NET",
+                "_NET_Fundamentals",
+                "_NET_Internals",
+                "microsoft_learn"
             ],
             "description": "<p>.NET API reference docs now link directly to the source code! Learn how the links are generated, and some of ideas for future improvements.</p>\n<p>The post <a href=\"https://devblogs.microsoft.com/dotnet/dotnet-docs-link-to-source-code/\">Introducing links to source code for .NET API Docs</a> appeared first on <a href=\"https://devblogs.microsoft.com/dotnet\">.NET Blog</a>.</p>\n",
             "title": "Introducing links to source code for .NET API Docs",
@@ -46,25 +46,25 @@
         {
             "id": "https://devblogs.microsoft.com/dotnet/?p=51919",
             "tags": [
-                "〭NET",
-                "〭NET Aspire",
-                "〭NET Internals",
-                "〭NET MAUI",
                 "AI",
-                "ASP〭NET",
-                "ASP〭NET Core",
+                "ASP_NET",
+                "ASP_NET_Core",
                 "Blazor",
-                "C＃",
-                "Cloud Native",
+                "Cloud_Native",
                 "Containers",
+                "C＃",
                 "Performance",
-                "Visual Studio",
-                "Visual Studio Code",
-                "〭net 9",
-                "〭net 9 preview 4",
-                "〭net aspire",
+                "Visual_Studio",
+                "Visual_Studio_Code",
+                "_NET",
+                "_NET_Aspire",
+                "_NET_Internals",
+                "_NET_MAUI",
+                "_net_9",
+                "_net_9_preview_4",
+                "_net_aspire",
                 "announcement",
-                "microsoft build"
+                "microsoft_build"
             ],
             "description": "<p>Our latest updates and announcements from Microsoft Build including .NET Aspire, .NET 9 Preview 4, C# 13, Blazor, .NET MAUI, and more!</p>\n<p>The post <a href=\"https://devblogs.microsoft.com/dotnet/dotnet-build-2024-announcements/\">.NET Announcements and Updates from Microsoft Build 2024</a> appeared first on <a href=\"https://devblogs.microsoft.com/dotnet\">.NET Blog</a>.</p>\n",
             "title": ".NET Announcements and Updates from Microsoft Build 2024",
@@ -77,18 +77,18 @@
         {
             "id": "https://devblogs.microsoft.com/dotnet/?p=51907",
             "tags": [
-                "〭NET",
-                "〭NET Aspire",
                 "Azure",
-                "Cloud Native",
+                "Cloud_Native",
                 "Containers",
                 "Docker",
+                "OpenTelemetry",
+                "_NET",
+                "_NET_Aspire",
                 "aspire",
                 "azure",
-                "cloud native",
+                "cloud_native",
                 "distribute",
                 "observable",
-                "OpenTelemetry",
                 "otel",
                 "scalable",
                 "stack"
@@ -104,10 +104,11 @@
         {
             "id": "https://devblogs.microsoft.com/dotnet/?p=51837",
             "tags": [
-                "〭NET",
-                "〭NET Framework",
-                "Maintenance ＆ Updates",
-                "〭net framework"
+                "Maintenance",
+                "Updates",
+                "_NET",
+                "_NET_Framework",
+                "_net_framework"
             ],
             "description": "<p>A recap of the latest servicing updates for .NET and .NET Framework for May 2024.</p>\n<p>The post <a href=\"https://devblogs.microsoft.com/dotnet/dotnet-and-dotnet-framework-may-2024-servicing-updates/\">.NET and .NET Framework May 2024 Servicing Updates</a> appeared first on <a href=\"https://devblogs.microsoft.com/dotnet\">.NET Blog</a>.</p>\n",
             "title": ".NET and .NET Framework May 2024 Servicing Updates",
@@ -120,15 +121,15 @@
         {
             "id": "https://devblogs.microsoft.com/dotnet/?p=51767",
             "tags": [
-                "〭NET",
-                "〭NET Aspire",
-                "ASP〭NET",
-                "ASP〭NET Core",
+                "ASP_NET",
+                "ASP_NET_Core",
                 "Cloud",
-                "Cloud Native",
+                "Cloud_Native",
                 "Orleans",
-                "〭net aspire",
-                "cloud native",
+                "_NET",
+                "_NET_Aspire",
+                "_net_aspire",
+                "cloud_native",
                 "orleans"
             ],
             "description": "<p>Let's take a look at what is new with Orleans for building robust, scalable distribute applications with Orleans 8 and integration with .NET Aspire.</p>\n<p>The post <a href=\"https://devblogs.microsoft.com/dotnet/whats-new-in-orleans-8/\">What&#8217;s new in Orleans 8 for Scalable Distributed Applications</a> appeared first on <a href=\"https://devblogs.microsoft.com/dotnet\">.NET Blog</a>.</p>\n",
@@ -142,16 +143,16 @@
         {
             "id": "https://devblogs.microsoft.com/dotnet/?p=51773",
             "tags": [
-                "〭NET",
-                "〭NET Core",
                 "AI",
-                "ASP〭NET",
-                "ASP〭NET Core",
+                "ASP_NET",
+                "ASP_NET_Core",
                 "C＃",
-                "Machine Learning",
+                "Machine_Learning",
+                "_NET",
+                "_NET_Core",
                 "azure",
                 "event",
-                "microsoft build"
+                "microsoft_build"
             ],
             "description": "<p>Get ready for a great lineup of .NET sessions at Microsoft Build 2024. Join us either in Seattle or from the comfort of your own home. With a mix of live and online sessions, you won’t miss a beat.</p>\n<p>The post <a href=\"https://devblogs.microsoft.com/dotnet/join-the-dotnet-team-microsoft-build-2024/\">Join the .NET Team at Microsoft Build 2024!</a> appeared first on <a href=\"https://devblogs.microsoft.com/dotnet\">.NET Blog</a>.</p>\n",
             "title": "Join the .NET Team at Microsoft Build 2024!",
@@ -164,10 +165,10 @@
         {
             "id": "https://devblogs.microsoft.com/dotnet/?p=51745",
             "tags": [
-                "〭NET",
                 "C＃",
-                "〭net 8",
-                "c＃ 12"
+                "_NET",
+                "_net_8",
+                "c＃_12"
             ],
             "description": "<p>Explore various C# 12 refactoring scenarios for a variety of target types using collection expressions, collection initializers, and the spread syntax.</p>\n<p>The post <a href=\"https://devblogs.microsoft.com/dotnet/refactor-your-code-with-collection-expressions/\">Refactor your code with C# collection expressions</a> appeared first on <a href=\"https://devblogs.microsoft.com/dotnet\">.NET Blog</a>.</p>\n",
             "title": "Refactor your code with C# collection expressions",
@@ -180,12 +181,12 @@
         {
             "id": "https://devblogs.microsoft.com/dotnet/?p=51662",
             "tags": [
-                "〭NET",
-                "C＃",
-                "Cloud Native",
-                "Visual Studio Code",
-                "C＃ Dev Kit",
+                "Cloud_Native",
                 "Csharp",
+                "C＃",
+                "C＃_Dev_Kit",
+                "Visual_Studio_Code",
+                "_NET",
                 "csharpdevkit",
                 "vscode"
             ],
@@ -200,12 +201,12 @@
         {
             "id": "https://devblogs.microsoft.com/dotnet/?p=51654",
             "tags": [
-                "〭NET",
-                "Cloud Native",
-                "Containers",
-                "〭net sdk",
                 "CLI",
-                "dotnet cli",
+                "Cloud_Native",
+                "Containers",
+                "_NET",
+                "_net_sdk",
+                "dotnet_cli",
                 "sdk"
             ],
             "description": "<p>.NET 8 has new security features for containers, including non-root images and SDK tools. Discover how to create non-root container images, configure Kubernetes pods, and inspect images and containers for enhanced security.</p>\n<p>The post <a href=\"https://devblogs.microsoft.com/dotnet/secure-your-container-build-and-publish-with-dotnet-8/\">Secure your container build and publish with .NET 8</a> appeared first on <a href=\"https://devblogs.microsoft.com/dotnet\">.NET Blog</a>.</p>\n",

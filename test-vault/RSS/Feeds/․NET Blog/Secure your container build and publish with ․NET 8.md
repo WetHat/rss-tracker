@@ -4,25 +4,36 @@ author: Richard Lander
 published: 2024-04-30T17:05:00.000Z
 link: https://devblogs.microsoft.com/dotnet/secure-your-container-build-and-publish-with-dotnet-8/
 id: https://devblogs.microsoft.com/dotnet/?p=51654
-feed: "[[../․NET Blog]]"
-tags:
-  - rss/〭NET
-  - rss/Cloud_Native
-  - rss/Containers
-  - rss/〭net_sdk
-  - rss/CLI
-  - rss/dotnet_cli
-  - rss/sdk
+feed: "[[․NET Blog]]"
+tags: [rss/CLI,rss/Cloud_Native,rss/Containers,rss/_NET,rss/_net_sdk,rss/dotnet_cli,rss/sdk]
 pinned: false
 ---
+
 > [!abstract] Secure your container build and publish with .NET 8 by Richard Lander - 2024-04-30T17:05:00.000Z
+> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
 > .NET 8 has new security features for containers, including non-root images and SDK tools. Discover how to create non-root container images, configure Kubernetes pods, and inspect images and containers for enhanced security.
 > 
 > The post [Secure your container build and publish with .NET 8](https://devblogs.microsoft.com/dotnet/secure-your-container-build-and-publish-with-dotnet-8/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 
-🔗Read article [online](https://devblogs.microsoft.com/dotnet/secure-your-container-build-and-publish-with-dotnet-8/). For other items in this feed see [[../․NET Blog]].
+🔗Read article [online](https://devblogs.microsoft.com/dotnet/secure-your-container-build-and-publish-with-dotnet-8/). For other items in this feed see [[․NET Blog]].
 
 - [ ] [[Secure your container build and publish with ․NET 8]]
+
+~~~dataviewjs
+const
+    current = dv.current(),
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	tasks = await dvjs.rssDuplicateItemsTasks(current);
+if (tasks.length > 0) {
+	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+    dv.taskList(tasks,false);
+}
+const tags = current.file.etags.join(" ");
+if (current) {
+	dv.span(tags);
+}
+~~~
+
 - - -
 .NET 8 raises the bar for container security for .NET container images and SDK tools. The SDK produces application images that align with [industry best practices and standards](https://kubernetes.io/docs/concepts/security/pod-security-standards/#restricted), by default. We also offer additional security hardening with [Chiseled images](https://devblogs.microsoft.com/dotnet/announcing-dotnet-chiseled-containers/) for an extra layer of protection.
 
@@ -149,7 +160,7 @@ $ docker run --rm --entrypoint bash my-app -c "echo \$APP_UID"
 1654
 ```
 
-We define a user called `app` and give it a UID > 1000 to avoid [reserved ranges](https://en.wikipedia.org/wiki/User_identifier#Reserved_ranges). `1654` is `1000` + the ASCII values of each of the characters in `dotnet`. We also set an environment variable — `APP_UID` — with this same value. That avoids anyone needing to remember or use this value (without the environment variable) for common scenarios.
+We define a user called `app` and give it a UID ＞ 1000 to avoid [reserved ranges](https://en.wikipedia.org/wiki/User_identifier#Reserved_ranges). `1654` is `1000` + the ASCII values of each of the characters in `dotnet`. We also set an environment variable — `APP_UID` — with this same value. That avoids anyone needing to remember or use this value (without the environment variable) for common scenarios.
 
 In a previous post, I included a set of fun [non-root in action](https://devblogs.microsoft.com/dotnet/securing-containers-with-rootless/#non-root-in-action) demos. You can look at that post to go deeper.
 
