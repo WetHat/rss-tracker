@@ -1,30 +1,30 @@
 ---
 role: rssfeed
-feedurl: https://localhost/RSS/reference/Planet PowerShell/assets/feed.xml
+feedurl: https://localhost/test/Planet PowerShell/feed.xml
 site: https://www.planetpowershell.com/
 itemlimit: 10
-updated: 2024-07-16T10:44:07.278Z
-status: OK
-tags: 
+updated: 2024-10-04T16:11:02.362Z
+status: ✅
+tags: []
 interval: 102
 ---
 > [!abstract] Planet PowerShell
+> ![image|400](https://www.planetpowershell.com/Content/Logo.png){.rss-image}
 > An aggregated feed from the PowerShell community
->
-> ![image](https://www.planetpowershell.com/Content/Logo.png)
+
 # Unread Feed Items 📚
 ~~~dataview
 TASK
-FROM [[Planet PowerShell.md]]
-WHERE !completed AND role = "rssitem"
+FROM [[]]
+WHERE !completed AND startswith(text,"[[") AND role = "rssitem"
 SORT published DESC
 ~~~
 
-# Pinned Feed Items 📌
+# Pinned Feed Items 📍
 ~~~dataview
 TABLE
 published as Published
-FROM [[Planet PowerShell.md]]
+FROM [[]]
 WHERE pinned = true AND role = "rssitem"
 SORT published DESC
 ~~~
@@ -32,7 +32,7 @@ SORT published DESC
 # Read Feed Items
 ~~~dataview
 TASK
-FROM [[Planet PowerShell.md]]
-WHERE completed AND role = "rssitem"
+FROM [[]]
+WHERE completed AND startswith(text,"[[") AND role = "rssitem"
 SORT published DESC
 ~~~
