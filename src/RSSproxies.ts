@@ -152,7 +152,7 @@ export class RSSitemProxy extends RSSProxy {
             tagmgr = feed.plugin.tagmgr,
             frontmatter: TFrontmatter = {
                 role: "rssitem",
-                id: "",
+                id: id ?? link,
                 author: author ?? "Unknown",
                 link: link ?? "",
                 published: published ?? new Date().valueOf(),
