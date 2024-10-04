@@ -100,8 +100,8 @@ export default class RSSTrackerPlugin extends Plugin {
 
         // protocol handler
         this.registerObsidianProtocolHandler('newRssFeed', async (params: ObsidianProtocolData) => {
-            const { xml, dir } = params;
-            console.log("newRssFeed:xml=" + xml + "\n=>" + dir);
+            const { xml } = params;
+            console.log("newRssFeed:xml=" + xml);
             const xmlFile = this.app.vault.getFileByPath(xml);
             if (xmlFile) {
                 const dashboard = await this._feedmgr.createFeedFromFile(xmlFile);
