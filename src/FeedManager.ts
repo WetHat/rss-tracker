@@ -53,6 +53,7 @@ export class FeedManager {
      * @returns the feed proxy
      */
     async createFeedFromFile(xml: TFile): Promise<RSSfeedProxy> {
+        await this._plugin.tagmgr.updateTagMap();
         const feedXML = await this._app.vault.read(xml);
         return RSSfeedProxy.create(this._plugin, new TrackedRSSfeed(feedXML, "https://localhost/" + xml.path));
     }
@@ -85,6 +86,7 @@ export class FeedManager {
             url: url,
             method: "GET"
         });
+        await this._plugin.tagmgr.updateTagMap();
         return RSSfeedProxy.create(this._plugin, new TrackedRSSfeed(feedXML, url));
     }
 
