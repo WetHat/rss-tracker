@@ -4,22 +4,38 @@ author: Scott Hanselman
 published: 2023-04-25T15:31:49.000Z
 link: https://feeds.hanselman.com/~/737271731/0/scotthanselman~GitHub-Copilot-for-CLI-for-PowerShell
 id: https://www.hanselman.com/blog/post/aa1cc05f-3910-471d-8686-68c749ec90ff
-feed: "[[../Scott Hanselman's Blog]]"
-tags:
-  - rss/AI
-  - rss/PowerShell
+feed: "[[Scott Hanselman's Blog]]"
+tags: [rss/AI,rss/PowerShell]
 pinned: false
 ---
+
 > [!abstract] GitHub Copilot for CLI for PowerShell by Scott Hanselman - 2023-04-25T15:31:49.000Z
+> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
 > GitHub Next has this cool project that is basically Copilot for the CLI (command line interface). You can sign up for their waitlist at the [Copilot for CLI site](https://githubnext.com/projects/copilot-cli/).
 > 
 > > Copilot for CLI provides three shell commands: `??`, `git?` and `gh?`
 > 
 > This is cool and all, but I use PowerShell. Turns out these ?? commands are just router commands to a larger EXE called github-copilot-cli. So if you go "?? something" you're really going "github-copilot-cli what-the⋯
 
-🔗Read article [online](https://feeds.hanselman.com/~/737271731/0/scotthanselman~GitHub-Copilot-for-CLI-for-PowerShell). For other items in this feed see [[../Scott Hanselman's Blog]].
+🔗Read article [online](https://feeds.hanselman.com/~/737271731/0/scotthanselman~GitHub-Copilot-for-CLI-for-PowerShell). For other items in this feed see [[Scott Hanselman's Blog]].
 
 - [ ] [[GitHub Copilot for CLI for PowerShell]]
+
+~~~dataviewjs
+const
+    current = dv.current(),
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	tasks = await dvjs.rssDuplicateItemsTasks(current);
+if (tasks.length > 0) {
+	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+    dv.taskList(tasks,false);
+}
+const tags = current.file.etags.join(" ");
+if (current) {
+	dv.span(tags);
+}
+~~~
+
 - - -
 GitHub Next has this cool project that is basically Copilot for the CLI (command line interface). You can sign up for their waitlist at the [Copilot for CLI site](https://feeds.hanselman.com/~/t/0/0/scotthanselman/~https://githubnext.com/projects/copilot-cli/).
 
@@ -33,72 +49,42 @@ Now it's not perfect, but hopefully it will make the point to the Copilot CLI te
 
 Here are my aliases. Feel free to suggest if these suck. Note the addition of "user powershell to" for the ?? one. I may make a ?? and a p? where one does bash and one does PowerShell. I could also have it use wsl.exe and shell out to bash. Lots of possibilities.
 
+```undefined
 function ?? { 
-  
     $TmpFile = New-TemporaryFile 
-  
     github-copilot-cli what-the-shell ('use powershell to ' + $args) --shellout $TmpFile 
-  
     if ([System.IO.File]::Exists($TmpFile)) { 
-  
         $TmpFileContents = Get-Content $TmpFile 
-  
             if ($TmpFileContents -ne $nill) {
-  
             Invoke-Expression $TmpFileContents 
-  
             Remove-Item $TmpFile 
-  
         }
-  
     }
-  
 }
-  
-  
+
 function git? {
-  
     $TmpFile = New-TemporaryFile
-  
     github-copilot-cli git-assist $args --shellout $TmpFile
-  
     if ([System.IO.File]::Exists($TmpFile)) {
-  
         $TmpFileContents = Get-Content $TmpFile 
-  
             if ($TmpFileContents -ne $nill) {
-  
             Invoke-Expression $TmpFileContents 
-  
             Remove-Item $TmpFile 
-  
         }
-  
     }
-  
 }
-  
 function gh? {
-  
     $TmpFile = New-TemporaryFile
-  
     github-copilot-cli gh-assist $args --shellout $TmpFile
-  
     if ([System.IO.File]::Exists($TmpFile)) {
-  
         $TmpFileContents = Get-Content $TmpFile 
-  
             if ($TmpFileContents -ne $nill) {
-  
             Invoke-Expression $TmpFileContents 
-  
             Remove-Item $TmpFile 
-  
         }
-  
     }
-  
 } 
+```
 
 It also then offers to run the command. Very smooth.
 

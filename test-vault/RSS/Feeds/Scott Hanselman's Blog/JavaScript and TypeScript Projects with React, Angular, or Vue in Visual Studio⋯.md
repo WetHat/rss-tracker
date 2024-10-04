@@ -4,21 +4,36 @@ author: Scott Hanselman
 published: 2021-11-25T20:50:00.000Z
 link: https://feeds.hanselman.com/~/674283520/0/scotthanselman~JavaScript-and-TypeScript-Projects-with-React-Angular-or-Vue-in-Visual-Studio-with-or-without-NET
 id: https://www.hanselman.com/blog/post/0909e949-cd9a-4867-8e02-6e24660b1856
-feed: "[[../Scott Hanselman's Blog]]"
-tags:
-  - rss/ASP〭NET
-  - rss/Javascript
-  - rss/Web_Services
+feed: "[[Scott Hanselman's Blog]]"
+tags: [rss/ASP_NET,rss/Javascript,rss/Web_Services]
 pinned: false
 ---
+
 > [!abstract] JavaScript and TypeScript Projects with React, Angular, or Vue in Visual Studio 2022 with or without .NET by Scott Hanselman - 2021-11-25T20:50:00.000Z
+> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
 > I was reading [Gabby's blog post about the new TypeScript/JavaScript project experience in Visual Studio 2022](https://devblogs.microsoft.com/visualstudio/the-new-javascript-typescript-experience-in-vs-2022-preview-3/). You should read the docs on [JavaScript and TypeScript in Visual Studio 2022](https://docs.microsoft.com/en-us/visualstudio/javascript/javascript-in-vs-2022?view=vs-2022).
 > 
 > If you're used to ASP.NET apps when you think about apps that are JavaScript heavy, "front end apps" or Typ⋯
 
-🔗Read article [online](https://feeds.hanselman.com/~/674283520/0/scotthanselman~JavaScript-and-TypeScript-Projects-with-React-Angular-or-Vue-in-Visual-Studio-with-or-without-NET). For other items in this feed see [[../Scott Hanselman's Blog]].
+🔗Read article [online](https://feeds.hanselman.com/~/674283520/0/scotthanselman~JavaScript-and-TypeScript-Projects-with-React-Angular-or-Vue-in-Visual-Studio-with-or-without-NET). For other items in this feed see [[Scott Hanselman's Blog]].
 
 - [ ] [[JavaScript and TypeScript Projects with React, Angular, or Vue in Visual Studio⋯]]
+
+~~~dataviewjs
+const
+    current = dv.current(),
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	tasks = await dvjs.rssDuplicateItemsTasks(current);
+if (tasks.length > 0) {
+	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+    dv.taskList(tasks,false);
+}
+const tags = current.file.etags.join(" ");
+if (current) {
+	dv.span(tags);
+}
+~~~
+
 - - -
 I was reading [Gabby's blog post about the new TypeScript/JavaScript project experience in Visual Studio 2022](https://feeds.hanselman.com/~/t/0/0/scotthanselman/~https://devblogs.microsoft.com/visualstudio/the-new-javascript-typescript-experience-in-vs-2022-preview-3/). You should read the docs on [JavaScript and TypeScript in Visual Studio 2022](https://feeds.hanselman.com/~/t/0/0/scotthanselman/~https://docs.microsoft.com/en-us/visualstudio/javascript/javascript-in-vs-2022?view=vs-2022).
 
@@ -28,7 +43,7 @@ You need to consider the responsibilities of your various projects or subsystems
 
 1. [An ASP.NET Web app that renders HTML on the server but uses TS/JS](https://feeds.hanselman.com/~/t/0/0/scotthanselman/~https://docs.microsoft.com/en-us/visualstudio/javascript/tutorial-aspnet-with-typescript?view=vs-2022)
     - This may have a Web API, Razor Pages, with or without the MVC pattern.
-    - You maybe have just added JavaScript via <script> tags
+    - You maybe have just added JavaScript via ＜script＞ tags
     - Maybe you added a script minimizer/minifier task
     - Can be confusing because it can feel like your app needs to 'build both the client and the server' from one project
 2. A mostly JavaScript/TypeScript frontend app where the HTML could be served from any web server (node, kestrel, static web apps, nginx, etc)

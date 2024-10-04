@@ -4,21 +4,38 @@ author: Scott Hanselman
 published: 2023-06-27T17:17:25.000Z
 link: https://feeds.hanselman.com/~/749206136/0/scotthanselman~Using-WSL-and-Lets-Encrypt-to-create-Azure-App-Service-SSL-Wildcard-Certificates
 id: https://www.hanselman.com/blog/post/7fbeba21-edbe-4af4-b909-26b6ba644546
-feed: "[[../Scott Hanselman's Blog]]"
-tags:
-  - rss/Azure
+feed: "[[Scott Hanselman's Blog]]"
+tags: [rss/Azure]
 pinned: false
 ---
+
 > [!abstract] Using WSL and Let's Encrypt to create Azure App Service SSL Wildcard Certificates by Scott Hanselman - 2023-06-27T17:17:25.000Z
+> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
 > There are many let's encrypt automatic tools for azure but I also wanted to see if I could use certbot in wsl to generate a wildcard certificate for the azure Friday website and then upload the resulting certificates to azure app service.
 > 
 > Azure app service ultimately needs a specific format called dot PFX that includes the full certificate path and all intermediates.
 > 
 > Per the docs, App Service private certificates must meet [the following requirements](https://learn.microsoft.com/en-us/azure/ap⋯
 
-🔗Read article [online](https://feeds.hanselman.com/~/749206136/0/scotthanselman~Using-WSL-and-Lets-Encrypt-to-create-Azure-App-Service-SSL-Wildcard-Certificates). For other items in this feed see [[../Scott Hanselman's Blog]].
+🔗Read article [online](https://feeds.hanselman.com/~/749206136/0/scotthanselman~Using-WSL-and-Lets-Encrypt-to-create-Azure-App-Service-SSL-Wildcard-Certificates). For other items in this feed see [[Scott Hanselman's Blog]].
 
 - [ ] [[Using WSL and Let's Encrypt to create Azure App Service SSL Wildcard Certificate⋯]]
+
+~~~dataviewjs
+const
+    current = dv.current(),
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	tasks = await dvjs.rssDuplicateItemsTasks(current);
+if (tasks.length > 0) {
+	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+    dv.taskList(tasks,false);
+}
+const tags = current.file.etags.join(" ");
+if (current) {
+	dv.span(tags);
+}
+~~~
+
 - - -
 There are many let's encrypt automatic tools for azure but I also wanted to see if I could use certbot in wsl to generate a wildcard certificate for the azure Friday website and then upload the resulting certificates to azure app service.
 
@@ -36,44 +53,40 @@ I use WSL and certbot to create the cert, then I import/export in Windows and up
 
 Within WSL, install certbot:
 
+```undefined
 sudo apt update
-  
 sudo apt install python3 python3-venv libaugeas0
-  
 sudo python3 -m venv /opt/certbot/
-  
 sudo /opt/certbot/bin/pip install --upgrade pip
-  
 sudo /opt/certbot/bin/pip install certbot
+```
 
 Then I generate the cert. You'll get a nice text UI from certbot and update your DNS as a verification challenge. Change this to make sure it's **two** lines, and your domains and subdomains are correct and your paths are correct.
 
+```undefined
 sudo certbot certonly --manual --preferred-challenges=dns --email YOUR@EMAIL.COM   
-  
     --server https://acme-v02.api.letsencrypt.org/directory   
-  
     --agree-tos   --manual-public-ip-logging-ok   -d "azurefriday.com"   -d "*.azurefriday.com"
-  
 sudo openssl pkcs12 -export -out AzureFriday2023.pfx 
-  
     -inkey /etc/letsencrypt/live/azurefriday.com/privkey.pem 
-  
     -in /etc/letsencrypt/live/azurefriday.com/fullchain.pem
+```
 
 I then copy the resulting file to my desktop (check your desktop path) so it's now in the Windows world.
 
+```undefined
 sudo cp AzureFriday2023.pfx /mnt/c/Users/Scott/OneDrive/Desktop
+```
 
 Now from Windows, import the PFX, note the thumbprint and export that cert.
 
+```undefined
 Import-PfxCertificate -FilePath "AzureFriday2023.pfx" -CertStoreLocation Cert:\LocalMachine\My 
-  
     -Password (ConvertTo-SecureString -String 'PASSWORDHERE' -AsPlainText -Force) -Exportable
-  
-  
+
 Export-PfxCertificate -Cert Microsoft.PowerShell.Security\Certificate::LocalMachine\My\597THISISTHETHUMBNAILCF1157B8CEBB7CA1 
-  
     -FilePath 'AzureFriday2023-fixed.pfx' -Password (ConvertTo-SecureString -String 'PASSWORDHERE' -AsPlainText -Force) 
+```
 
 Then upload the cert to the Certificates section of your App Service, under Bring Your Own Cert.
 

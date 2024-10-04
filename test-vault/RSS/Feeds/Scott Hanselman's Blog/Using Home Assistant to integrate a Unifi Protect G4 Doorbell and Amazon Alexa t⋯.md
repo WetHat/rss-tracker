@@ -4,20 +4,36 @@ author: Scott Hanselman
 published: 2021-12-14T21:36:00.000Z
 link: https://feeds.hanselman.com/~/676711904/0/scotthanselman~Using-Home-Assistant-to-integrate-a-Unifi-Protect-G-Doorbell-and-Amazon-Alexa-to-announce-visitors
 id: https://www.hanselman.com/blog/post/9632ddf9-403c-4319-bba6-4cb98bc7932b
-feed: "[[../Scott Hanselman's Blog]]"
-tags:
-  - rss/Home_Server
-  - rss/Musings
+feed: "[[Scott Hanselman's Blog]]"
+tags: [rss/Home_Server,rss/Musings]
 pinned: false
 ---
+
 > [!abstract] Using Home Assistant to integrate a Unifi Protect G4 Doorbell and Amazon Alexa to announce visitors by Scott Hanselman - 2021-12-14T21:36:00.000Z
+> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
 > I am not a [Home Assistant](https://www.home-assistant.io/) expert, but it's clearly a massive and powerful ecosystem. I've interviewed [the creator of Home Assistant on my podcast](https://hanselminutes.com/788/automating-all-the-things-with-home-assistants-paulus-schoutsen) and I encourage you to check out that chat.
 > 
 > Home Assistant can quickly become a hobby that overwhelms you. Every object (entity) in your house that is even remotely connected can become programmable. Everything. Even peopl⋯
 
-🔗Read article [online](https://feeds.hanselman.com/~/676711904/0/scotthanselman~Using-Home-Assistant-to-integrate-a-Unifi-Protect-G-Doorbell-and-Amazon-Alexa-to-announce-visitors). For other items in this feed see [[../Scott Hanselman's Blog]].
+🔗Read article [online](https://feeds.hanselman.com/~/676711904/0/scotthanselman~Using-Home-Assistant-to-integrate-a-Unifi-Protect-G-Doorbell-and-Amazon-Alexa-to-announce-visitors). For other items in this feed see [[Scott Hanselman's Blog]].
 
 - [ ] [[Using Home Assistant to integrate a Unifi Protect G4 Doorbell and Amazon Alexa t⋯]]
+
+~~~dataviewjs
+const
+    current = dv.current(),
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	tasks = await dvjs.rssDuplicateItemsTasks(current);
+if (tasks.length > 0) {
+	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+    dv.taskList(tasks,false);
+}
+const tags = current.file.etags.join(" ");
+if (current) {
+	dv.span(tags);
+}
+~~~
+
 - - -
 I am not a [Home Assistant](https://feeds.hanselman.com/~/t/0/0/scotthanselman/~https://www.home-assistant.io/) expert, but it's clearly a massive and powerful ecosystem. I've interviewed [the creator of Home Assistant on my podcast](https://feeds.hanselman.com/~/t/0/0/scotthanselman/~https://hanselminutes.com/788/automating-all-the-things-with-home-assistants-paulus-schoutsen) and I encourage you to check out that chat.
 
@@ -62,12 +78,14 @@ I recommend going into your Alexa app and making a Multi-room Speaker Group call
 
 Go into your Home Assistant UI at [http://homeassistant.local:8123/](https://feeds.hanselman.com/~/t/0/0/scotthanselman/~homeassistant.local:8123/ "http://homeassistant.local:8123/") and into [Developer Tools](https://feeds.hanselman.com/~/t/0/0/scotthanselman/~https://www.home-assistant.io/docs/tools/dev-tools/). Under Services, try pasting in this YAML and clicking "call service."
 
+```undefined
 service: notify.alexa_media_everywhere
 data:
   message: Someone is at the front door, this is a test
   data:
     type: announce
     method: speak
+```
 
 If that works, you know you can automate Alexa and make it say things. Now, go to Configuration, Automation, and Add a new Automation. Here's mine. I used the UI to create it. Note that your Entity names may be different if you give your front doorbell camera a different name.
 
@@ -79,6 +97,7 @@ Notice the format of Data, it's name value pairs within a single field's value.
 
 ...but it also exists in a file called Automations.yaml. Note that the "to: 'on'" trigger is required or you'll get double announcements, one for _each state change_ in the doorbell.
 
+```undefined
 - id: '1640995128073'
   alias: G4 Doorbell Announcement with Alexa
   description: G4 Doorbell Announcement with Alexa
@@ -95,6 +114,7 @@ Notice the format of Data, it's name value pairs within a single field's value.
         method: speak
       message: Someone is at the front door
   mode: single
+```
 
 It works! There's a ton of cool stuff I can automate now!
 

@@ -13888,7 +13888,7 @@ var RSSitemProxy = class extends RSSProxy {
     }
     const itemfolder = await feed.itemFolder(), tagmgr = feed.plugin.tagmgr, frontmatter = {
       role: "rssitem",
-      id: "",
+      id: id != null ? id : link,
       author: author != null ? author : "Unknown",
       link: link != null ? link : "",
       published: published != null ? published : new Date().valueOf(),
@@ -16695,8 +16695,8 @@ var RSSTrackerPlugin = class extends import_obsidian9.Plugin {
     this.registerEvent(downloadArticle.fileMenuHandler);
     this.registerEvent(this._tagmgr.rssTagPostProcessor);
     this.registerObsidianProtocolHandler("newRssFeed", async (params) => {
-      const { xml, dir } = params;
-      console.log("newRssFeed:xml=" + xml + "\n=>" + dir);
+      const { xml } = params;
+      console.log("newRssFeed:xml=" + xml);
       const xmlFile = this.app.vault.getFileByPath(xml);
       if (xmlFile) {
         const dashboard = await this._feedmgr.createFeedFromFile(xmlFile);

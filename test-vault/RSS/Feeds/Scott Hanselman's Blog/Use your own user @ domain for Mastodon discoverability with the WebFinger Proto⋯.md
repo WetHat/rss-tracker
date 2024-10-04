@@ -4,19 +4,36 @@ author: Scott Hanselman
 published: 2022-12-18T22:16:30.000Z
 link: https://feeds.hanselman.com/~/722495722/0/scotthanselman~Use-your-own-user-domain-for-Mastodon-discoverability-with-the-WebFinger-Protocol-without-hosting-a-server
 id: https://www.hanselman.com/blog/post/0c9c9a66-f3db-4e58-a1f3-c692b8ad64af
-feed: "[[../Scott Hanselman's Blog]]"
-tags:
-  - rss/Musings
+feed: "[[Scott Hanselman's Blog]]"
+tags: [rss/Musings]
 pinned: false
 ---
+
 > [!abstract] Use your own user @ domain for Mastodon discoverability with the WebFinger Protocol without hosting a server by Scott Hanselman - 2022-12-18T22:16:30.000Z
+> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
 > Mastodon is a free, open-source social networking service that is decentralized and distributed. It was created in 2016 as an alternative to centralized social media platforms such as Twitter and Facebook.
 > 
 > One of the key features of Mastodon is the use of the WebFinger protocol, which allows users to discover and access information about other users on the Mastodon network. WebFinger is a simple HTTP-based protocol that enables a user to discover information about other users or resources on th⋯
 
-🔗Read article [online](https://feeds.hanselman.com/~/722495722/0/scotthanselman~Use-your-own-user-domain-for-Mastodon-discoverability-with-the-WebFinger-Protocol-without-hosting-a-server). For other items in this feed see [[../Scott Hanselman's Blog]].
+🔗Read article [online](https://feeds.hanselman.com/~/722495722/0/scotthanselman~Use-your-own-user-domain-for-Mastodon-discoverability-with-the-WebFinger-Protocol-without-hosting-a-server). For other items in this feed see [[Scott Hanselman's Blog]].
 
 - [ ] [[Use your own user @ domain for Mastodon discoverability with the WebFinger Proto⋯]]
+
+~~~dataviewjs
+const
+    current = dv.current(),
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	tasks = await dvjs.rssDuplicateItemsTasks(current);
+if (tasks.length > 0) {
+	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+    dv.taskList(tasks,false);
+}
+const tags = current.file.etags.join(" ");
+if (current) {
+	dv.span(tags);
+}
+~~~
+
 - - -
 Mastodon is a free, open-source social networking service that is decentralized and distributed. It was created in 2016 as an alternative to centralized social media platforms such as Twitter and Facebook.
 
@@ -51,133 +68,81 @@ So perhaps _https://www.hanselman.com/.well-known/webfinger?resource=acct:FRED@H
 
 Mine returns
 
+```undefined
 {
-  
     "subject":"acct:shanselman@hachyderm.io",
-  
     "aliases":
-  
     [
-  
         "https://hachyderm.io/@shanselman",
-  
         "https://hachyderm.io/users/shanselman"
-  
     ],
-  
     "links":
-  
     [
-  
         {
-  
             "rel":"http://webfinger.net/rel/profile-page",
-  
             "type":"text/html",
-  
             "href":"https://hachyderm.io/@shanselman"
-  
         },
-  
         {
-  
             "rel":"self",
-  
             "type":"application/activity+json",
-  
             "href":"https://hachyderm.io/users/shanselman"
-  
         },
-  
         {
-  
             "rel":"http://ostatus.org/schema/1.0/subscribe",
-  
             "template":"https://hachyderm.io/authorize_interaction?uri={uri}"
-  
         }
-  
     ]
-  
 }
+```
 
 This file should be returned as a mime type of **application/jrd+json**
 
 My site is an ASP.NET Razor Pages site, so I just did this in Startup.cs to map that well known URL to a page/route that returns the JSON needed.
 
+```undefined
 services.AddRazorPages().AddRazorPagesOptions(options =>
-  
 {
-  
     options.Conventions.AddPageRoute("/robotstxt", "/Robots.Txt"); //i did this before, not needed
-  
     options.Conventions.AddPageRoute("/webfinger", "/.well-known/webfinger");
-  
     options.Conventions.AddPageRoute("/webfinger", "/.well-known/webfinger/{val?}");
-  
 });
+```
 
 then I made a webfinger.cshtml like this. Note I have to double escape the @@ sites because it's Razor.
 
+```undefined
 @page
-  
 @{
-  
     Layout = null;
-  
     this.Response.ContentType = "application/jrd+json";
-  
 }
-  
 {
-  
     "subject":"acct:shanselman@hachyderm.io",
-  
     "aliases":
-  
     [
-  
         "https://hachyderm.io/@@shanselman",
-  
         "https://hachyderm.io/users/shanselman"
-  
     ],
-  
     "links":
-  
     [
-  
         {
-  
             "rel":"http://webfinger.net/rel/profile-page",
-  
             "type":"text/html",
-  
             "href":"https://hachyderm.io/@@shanselman"
-  
         },
-  
         {
-  
             "rel":"self",
-  
             "type":"application/activity+json",
-  
             "href":"https://hachyderm.io/users/shanselman"
-  
         },
-  
         {
-  
             "rel":"http://ostatus.org/schema/1.0/subscribe",
-  
             "template":"https://hachyderm.io/authorize_interaction?uri={uri}"
-  
         }
-  
     ]
-  
 }
+```
 
 This is a static response, but if I was hosting pages for more than one person I'd want to take in the url with the user's name, and then map it to their aliases and return those correctly.
 

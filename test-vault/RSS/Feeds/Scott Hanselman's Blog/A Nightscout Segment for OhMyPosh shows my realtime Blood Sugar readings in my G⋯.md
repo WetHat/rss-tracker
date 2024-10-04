@@ -4,18 +4,34 @@ author: Scott Hanselman
 published: 2021-11-23T20:02:00.000Z
 link: https://feeds.hanselman.com/~/673947624/0/scotthanselman~A-Nightscout-Segment-for-OhMyPosh-shows-my-realtime-Blood-Sugar-readings-in-my-Git-Prompt
 id: https://www.hanselman.com/blog/post/495513ca-ca88-421f-8ade-50e4cf17d747
-feed: "[[../Scott Hanselman's Blog]]"
-tags:
-  - rss/Diabetes
-  - rss/Open_Source
+feed: "[[Scott Hanselman's Blog]]"
+tags: [rss/Diabetes,rss/Open_Source]
 pinned: false
 ---
+
 > [!abstract] A Nightscout Segment for OhMyPosh shows my realtime Blood Sugar readings in my Git Prompt by Scott Hanselman - 2021-11-23T20:02:00.000Z
+> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
 > I've talked about [how I love a nice pretty prompt in my Windows Terminal](https://www.hanselman.com/blog/my-ultimate-powershell-prompt-with-oh-my-posh-and-the-windows-terminal) and [made videos showing in detail how to do it](https://www.youtube.com/watch?v=VT2L1SXFq9U). I've also worked with my buddy [TooTallNate to put my real-time blood sugar into a bash or PowerShell prompt](https://www.hanselman.com/blog/visualizing-your-realtime-blood-sugar-values-and-a-git-prompt-on-windows-powershell-an⋯
 
-🔗Read article [online](https://feeds.hanselman.com/~/673947624/0/scotthanselman~A-Nightscout-Segment-for-OhMyPosh-shows-my-realtime-Blood-Sugar-readings-in-my-Git-Prompt). For other items in this feed see [[../Scott Hanselman's Blog]].
+🔗Read article [online](https://feeds.hanselman.com/~/673947624/0/scotthanselman~A-Nightscout-Segment-for-OhMyPosh-shows-my-realtime-Blood-Sugar-readings-in-my-Git-Prompt). For other items in this feed see [[Scott Hanselman's Blog]].
 
 - [ ] [[A Nightscout Segment for OhMyPosh shows my realtime Blood Sugar readings in my G⋯]]
+
+~~~dataviewjs
+const
+    current = dv.current(),
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	tasks = await dvjs.rssDuplicateItemsTasks(current);
+if (tasks.length > 0) {
+	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+    dv.taskList(tasks,false);
+}
+const tags = current.file.etags.join(" ");
+if (current) {
+	dv.span(tags);
+}
+~~~
+
 - - -
 I've talked about [how I love a nice pretty prompt in my Windows Terminal](https://feeds.hanselman.com/~/t/0/0/scotthanselman/~https://www.hanselman.com/blog/my-ultimate-powershell-prompt-with-oh-my-posh-and-the-windows-terminal) and [made videos showing in detail how to do it](https://feeds.hanselman.com/~/t/0/0/scotthanselman/~https://www.youtube.com/watch?v=VT2L1SXFq9U). I've also worked with my buddy [TooTallNate to put my real-time blood sugar into a bash or PowerShell prompt](https://feeds.hanselman.com/~/t/0/0/scotthanselman/~https://www.hanselman.com/blog/visualizing-your-realtime-blood-sugar-values-and-a-git-prompt-on-windows-powershell-and-linux-bash), but this was back in 2017.
 
@@ -33,52 +49,32 @@ Here is a YouTube of Jan from OhMyPosh and I coding the segment LIVE in Go.
 
 If you have an existing OhMyPosh json config, you can just add another segment like this. Make sure your Nightscout URL includes a secure Token or is public (up to you). Note also that I setup "if/then" rules in my background_templates. These are optional and up to you to change to your taste. I set my background colors to red, yellow, green depending on sugar numbers. I also have a foreground template that is not really used, as you can see it always evaluates to black #000, but it shows you how you could set it to white text on a darker background if you wanted.
 
+```undefined
 {
-  
   "type": "nightscout",
-  
   "style": "diamond",
-  
   "foreground": "#ffffff",
-  
   "background": "#ff0000",
-  
   "background_templates": [
-  
     "{{ if gt .Sgv 150 }}#FFFF00{{ end }}",
-  
     "{{ if lt .Sgv 60 }}#FF0000{{ end }}",
-  
     "#00FF00"
-  
   ],
-  
   "foreground_templates": [
-  
     "{{ if gt .Sgv 150 }}#000000{{ end }}",
-  
     "{{ if lt .Sgv 60 }}#000000{{ end }}",
-  
     "#000000"
-  
   ],
-  
-  
+
   "leading_diamond": "",
-  
   "trailing_diamond": "\uE0B0",
-  
   "properties": {
-  
     "url": "https://YOURNIGHTSCOUTAPP.herokuapp.com/api/v1/entries.json?count=1&token=APITOKENFROMYOURADMIN",
-  
     "http_timeout": 1500,
-  
     "template": " {{.Sgv}}{{.TrendIcon}}"
-  
   }
-  
 },
+```
 
 By default we will only go out and hit your Nightscout instance every 5 min, only when the prompt is repainted, and we'll only wait 1500ms before giving up. You can set that "http_timeout" (how long before we give up) if you feel this slows you down. It'll be cached for 5 min so it's unlikely  to b something you'll notice. The benefit of this new OhMyPosh segment over the previous solution is that it requires no additional services/chron jobs and can be setup extremely quickly. Note also that you can customize your template with [NerdFonts](https://feeds.hanselman.com/~/t/0/0/scotthanselman/~https://www.hanselman.com/blog/how-to-make-a-pretty-prompt-in-windows-terminal-with-powerline-nerd-fonts-cascadia-code-wsl-and-ohmyposh). I've included a tiny syringe!
 

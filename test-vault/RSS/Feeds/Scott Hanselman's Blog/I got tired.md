@@ -4,17 +4,34 @@ author: Scott Hanselman
 published: 2022-12-18T18:27:11.000Z
 link: https://feeds.hanselman.com/~/722495724/0/scotthanselman~I-got-tired
 id: https://www.hanselman.com/blog/post/aba7f282-e752-48e8-8bf5-3c2e8c33c0e6
-feed: "[[../Scott Hanselman's Blog]]"
-tags:
-  - rss/Musings
+feed: "[[Scott Hanselman's Blog]]"
+tags: [rss/Musings]
 pinned: false
 ---
+
 > [!abstract] I got tired by Scott Hanselman - 2022-12-18T18:27:11.000Z
+> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
 > [![I got tired - photo by Elisa Ventur](https://www.hanselman.com/blog/content/binary/Windows-Live-Writer/I-got-tired-and-I-took-a-break_C67F/tired_299ef159-a454-413b-8654-3ec136cf9f79.jpg "I got tired - photo by Elisa Ventur")](https://unsplash.com/photos/bmJAXAz6ads)I have been blogging here for the last 20 years. Every Tuesday and Thursday, quite consistently, for two decades. But last year, without planning it, I got tired and stopped. Not sure why. It didn't correspond with any life events.⋯
 
-🔗Read article [online](https://feeds.hanselman.com/~/722495724/0/scotthanselman~I-got-tired). For other items in this feed see [[../Scott Hanselman's Blog]].
+🔗Read article [online](https://feeds.hanselman.com/~/722495724/0/scotthanselman~I-got-tired). For other items in this feed see [[Scott Hanselman's Blog]].
 
 - [ ] [[I got tired]]
+
+~~~dataviewjs
+const
+    current = dv.current(),
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	tasks = await dvjs.rssDuplicateItemsTasks(current);
+if (tasks.length > 0) {
+	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+    dv.taskList(tasks,false);
+}
+const tags = current.file.etags.join(" ");
+if (current) {
+	dv.span(tags);
+}
+~~~
+
 - - -
 [![I got tired - photo by Elisa Ventur](https://www.hanselman.com/blog/content/binary/Windows-Live-Writer/I-got-tired-and-I-took-a-break_C67F/tired_299ef159-a454-413b-8654-3ec136cf9f79.jpg "I got tired - photo by Elisa Ventur")](https://feeds.hanselman.com/~/t/0/0/scotthanselman/~https://unsplash.com/photos/bmJAXAz6ads)I have been blogging here for the last 20 years. Every Tuesday and Thursday, quite consistently, for two decades. But last year, without planning it, I got tired and stopped. Not sure why. It didn't correspond with any life events. Nothing interesting or notable happened. I just stopped.
 
