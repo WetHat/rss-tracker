@@ -1,7 +1,6 @@
-import { App, request, TFile, TFolder, normalizePath, ListItemCache, Notice, FrontMatterCache } from 'obsidian';
+import { App, request, TFile, Notice, FrontMatterCache } from 'obsidian';
 import RSSTrackerPlugin from './main';
-import { TrackedRSSfeed, IRssMedium } from './FeedAssembler';
-import * as path from 'path';
+import { TrackedRSSfeed } from './FeedAssembler';
 import { RSSfileManager } from './RSSFileManager';
 import { HTMLxlate } from './HTMLxlate';
 import { RSSfeedProxy } from './RSSproxies';
