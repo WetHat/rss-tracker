@@ -3,7 +3,7 @@ role: rssitem
 author: Matthew Dowst
 published: 2024-05-24T12:24:12.000Z
 link: https://www.youtube.com/watch?v=ZqAShden9qA
-id: 
+id: https://psweekly.dowst.dev/?post_type=link_library_links&p=6893
 feed: "[[Planet PowerShell]]"
 tags: []
 pinned: false

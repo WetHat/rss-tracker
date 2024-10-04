@@ -3,7 +3,7 @@ role: rssitem
 author: Matthew Dowst
 published: 2024-05-24T12:25:00.000Z
 link: https://leanpub.com/psprimer
-id: 
+id: https://psweekly.dowst.dev/?post_type=link_library_links&p=6896
 feed: "[[Planet PowerShell]]"
 tags: []
 pinned: false

@@ -3,7 +3,7 @@ role: rssitem
 author: Adam Bertram
 published: 2024-05-22T20:13:52.000Z
 link: https://adamtheautomator.com/intune-powershell-script-upload/
-id: 
+id: https://adamtheautomator.com/?p=26256
 feed: "[[Planet PowerShell]]"
 tags: [rss/IT_Ops,rss/PowerShell]
 pinned: false

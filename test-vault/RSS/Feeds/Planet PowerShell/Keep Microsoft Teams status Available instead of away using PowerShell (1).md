@@ -3,7 +3,7 @@ role: rssitem
 author: Harm Veenstra
 published: 2024-05-23T16:41:33.000Z
 link: https://powershellisfun.com/2024/05/23/keep-microsoft-teams-status-available-instead-of-away-using-powershell/
-id: 
+id: https://powershellisfun.com/?p=7435
 feed: "[[Planet PowerShell]]"
 tags: [rss/Fun,rss/Microsoft_Teams,rss/PowerShell]
 pinned: false

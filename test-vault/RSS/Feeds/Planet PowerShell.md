@@ -3,7 +3,7 @@ role: rssfeed
 feedurl: https://localhost/test/Planet PowerShell/feed.xml
 site: https://www.planetpowershell.com/
 itemlimit: 10
-updated: 2024-10-04T16:11:02.362Z
+updated: 2024-10-04T16:47:51.193Z
 status: ✅
 tags: []
 interval: 102

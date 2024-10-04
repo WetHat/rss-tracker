@@ -3,7 +3,7 @@ role: rssitem
 author: Jeffery Hicks
 published: 2024-05-24T17:03:43.000Z
 link: https://jdhitsolutions.com/blog/books/9389/powershell-scripting-and-toolmaking/
-id: 
+id: https://jdhitsolutions.com/blog/?p=9389
 feed: "[[Planet PowerShell]]"
 tags: [rss/Books,rss/LeanPub,rss/PowerShell,rss/Scripting,rss/toolmaking]
 pinned: false
