@@ -61,7 +61,7 @@ if (dvjs.rssTable(
 	f =>
 	[
 		dvjs.fileLink(f),
-		dvjs.rssItemPublishDate(f),
+		f.published,
 		f.feed,
 		dvjs.hashtagLine(f)
 	]) === 0) {
@@ -87,7 +87,7 @@ if (dvjs.rssTable(
 		f => [
 				dvjs.fileLink(f),
 				f.status,
-				dvjs.rssFeedUpdateDate(f),
+				f.updated,
 				dvjs.fileLinks(map.rssFeedToCollections(f))
 			]) === 0) {
 	dv.paragraph("No feeds subscribed")
