@@ -218,7 +218,7 @@ export class RSSfeedProxy extends RSSProxy {
         // create the feed dashboard file
         const
             filemgr = plugin.filemgr,
-            dashboard = await filemgr.createFile(plugin.settings.rssFeedFolderPath, feed.fileName, "RSS Feed", dataMap),
+            dashboard = await filemgr.createFile(plugin.settings.rssFeedFolderPath, feed.fileName, "RSS Feed", dataMap,true),
             proxy = new RSSfeedProxy(plugin, dashboard, frontmatter);
 
         try {
