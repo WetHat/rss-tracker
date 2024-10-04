@@ -14,6 +14,7 @@ export interface IRSSTrackerSettings {
 	rssDashboardName: string;
 	rssTagmapName: string;
 	rssDefaultImage: string;
+	defaultItemLimit: number
 }
 
 export const DEFAULT_SETTINGS: IRSSTrackerSettings = {
@@ -25,7 +26,8 @@ export const DEFAULT_SETTINGS: IRSSTrackerSettings = {
 	rssTemplateFolder: "Templates",
 	rssDashboardName: "RSS Dashboard",
 	rssTagmapName: "RSS Tagmap",
-	rssDefaultImage: ""
+	rssDefaultImage: "",
+	defaultItemLimit: 100,
 }
 
 /**
@@ -64,13 +66,14 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 		this._data.autoUpdateFeeds = value;
 	}
 
-	private _rssHome: string | null;
-	private _rssFeedFolder: string | null;
-	private _rssCollectionsFolder: string | null;
-	private _rssTopicsFolder: string | null;
-	private _rssTemplateFolder: string | null;
-	private _rssDashboardName: string | null;
-	private _rssTagmapName: string | null;
+	private _rssHome?: string;
+	private _rssFeedFolder?: string;
+	private _rssCollectionsFolder?: string;
+	private _rssTopicsFolder?: string;
+	private _rssTemplateFolder?: string;
+	private _rssDashboardName?: string;
+	private _rssTagmapName?: string;
+	private _defaultItemLimit?: number;
 
 	get rssHome(): string {
 		return this._data.rssHome ?? DEFAULT_SETTINGS.rssHome;
@@ -128,6 +131,13 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 		this._rssTagmapName = value;
 	}
 
+	get defaultItemLimit():number {
+		return this._defaultItemLimit ?? DEFAULT_SETTINGS.defaultItemLimit;
+	}
+
+	set defaultItemLimit(value: number) {
+		this._defaultItemLimit = value;
+	}
 	/**
 	 * Get the path to the RSS default image
 	 */
@@ -156,28 +166,28 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 			if (await this._filemgr.renameFolder(this.rssHome, this._rssHome)) {
 				this._data.rssHome = this._rssHome;
 			}
-			this._rssHome = null;
+			this._rssHome = undefined;
 		}
 
 		if (this._rssFeedFolder && this._rssFeedFolder !== this.rssFeedFolderName) {
 			if (await this._filemgr.renameFolder(this.rssFeedFolderPath, this.rssHome + "/" + this._rssFeedFolder)) {
 				this._data.rssFeedFolderName = this._rssFeedFolder;
 			}
-			this._rssFeedFolder = null;
+			this._rssFeedFolder = undefined;
 		}
 
 		if (this._rssCollectionsFolder && this._rssCollectionsFolder !== this.rssCollectionsFolderName) {
 			if (await this._filemgr.renameFolder(this.rssCollectionsFolderPath, this.rssHome + "/" + this._rssCollectionsFolder)) {
 				this._data.rssCollectionsFolderName = this._rssCollectionsFolder;
 			}
-			this._rssCollectionsFolder = null;
+			this._rssCollectionsFolder = undefined;
 		}
 
 		if (this._rssTopicsFolder && this._rssTopicsFolder !== this.rssTopicsFolderName) {
 			if (await this._filemgr.renameFolder(this.rssTopicsFolderPath, this.rssHome + "/" + this._rssTopicsFolder)) {
 				this._data.rssTopicsFolderName = this._rssTopicsFolder;
 			}
-			this._rssTopicsFolder = null;
+			this._rssTopicsFolder = undefined;
 		}
 
 		if (this._rssTemplateFolder && this._rssTemplateFolder !== this.rssTemplateFolder) {
@@ -185,7 +195,7 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 				this._data.rssTemplateFolder = this._rssTemplateFolder;
 			}
 
-			this._rssTemplateFolder = null;
+			this._rssTemplateFolder = undefined;
 		}
 
 		if (this._rssDashboardName && this._rssDashboardName !== this.rssDashboardName) {
@@ -193,7 +203,7 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 				this._data.rssDashboardName = this._rssDashboardName;
 			}
 
-			this._rssDashboardName = null;
+			this._rssDashboardName = undefined;
 		}
 
 		if (this._rssTagmapName && this._rssTagmapName !== this.rssTagmapName) {
@@ -201,7 +211,13 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 				this._data._rssTagmapName = this._rssTagmapName;
 			}
 
-			this._rssDashboardName = null;
+			this._rssDashboardName = undefined;
+		}
+
+
+		if (this._defaultItemLimit && this._defaultItemLimit !== this.defaultItemLimit) {
+			this._data.defaultItemLimit = this._defaultItemLimit;
+			this._defaultItemLimit = undefined;
 		}
 
 		await this.saveData();
@@ -212,15 +228,6 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 	constructor(app: App, plugin: RSSTrackerPlugin) {
 		this.app = app;
 		this.plugin = plugin;
-
-		this._rssHome
-			= this._rssFeedFolder
-			= this._rssCollectionsFolder
-			= this._rssTopicsFolder
-			= this._rssTemplateFolder
-			= this._rssDashboardName
-			= this._rssTagmapName
-			= null;
 	}
 
 	async loadData(): Promise<void> {

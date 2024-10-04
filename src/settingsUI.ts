@@ -196,6 +196,33 @@ class RSSTopicsFolderSetting extends RSSTrackerSettingBase {
 	}
 }
 
+class RSSDefaultItemLimitSetting extends RSSTrackerSettingBase {
+	constructor(settingsTab: RSSTrackerSettingTab) {
+		super(settingsTab);
+		this
+			.setName("Default RSS item limit")
+			.setDesc("The maximum items per feed.")
+			.addText(ta => {
+				ta
+					.setPlaceholder(DEFAULT_SETTINGS.defaultItemLimit.toString())
+					.onChange(value => {
+						this.settings.defaultItemLimit = parseInt(value);
+					});
+				if (this.settings.defaultItemLimit !== DEFAULT_SETTINGS.defaultItemLimit) {
+					ta.setValue(this.settings.defaultItemLimit.toString())
+				}
+			})
+			.addButton(btn => {
+				btn
+					.setIcon("reset")
+					.setTooltip("Reset the RSS item limit default")
+					.onClick(evt => {
+						this.settings.defaultItemLimit = DEFAULT_SETTINGS.defaultItemLimit;
+					})
+			});
+	}
+}
+
 export class RSSTrackerSettingTab extends PluginSettingTab {
 	settings: RSSTrackerSettings;
 
@@ -216,6 +243,7 @@ export class RSSTrackerSettingTab extends PluginSettingTab {
         new RSSautoUpdateSetting(this);
 		new RSSDashboardNameSetting(this);
 		new RSSTagmapNameSetting(this);
+		new RSSDefaultItemLimitSetting(this);
 	}
 	hide() {
 		this.settings.commit();
