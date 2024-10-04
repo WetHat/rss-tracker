@@ -123,12 +123,12 @@ class RSSFeedFolderSetting extends RSSTrackerSettingBase {
 			.setDesc("The folder containing all RSS feeds.")
 			.addText(ta => {
 				ta
-					.setPlaceholder(DEFAULT_SETTINGS.rssFeedFolder)
+					.setPlaceholder(DEFAULT_SETTINGS.rssFeedFolderName)
 					.onChange(value => {
-						this.settings.rssFeedFolder = value;
+						this.settings.rssFeedFolderName = value;
 					});
-				if (this.settings.rssFeedFolder !== DEFAULT_SETTINGS.rssFeedFolder) {
-					ta.setValue(this.settings.rssFeedFolder)
+				if (this.settings.rssFeedFolderName !== DEFAULT_SETTINGS.rssFeedFolderName) {
+					ta.setValue(this.settings.rssFeedFolderName)
 				}
 			})
 			.addButton(btn => {
@@ -136,7 +136,7 @@ class RSSFeedFolderSetting extends RSSTrackerSettingBase {
 					.setIcon("reset")
 					.setTooltip("Reset the RSS feed location to default")
 					.onClick(evt => {
-						this.settings.rssFeedFolder = DEFAULT_SETTINGS.rssFeedFolder;
+						this.settings.rssFeedFolderName = DEFAULT_SETTINGS.rssFeedFolderName;
 					})
 			});
 	}
@@ -150,12 +150,12 @@ class RSSCollectionsFolderSetting extends RSSTrackerSettingBase {
 			.setDesc("The folder containing all RSS feed collections.")
 			.addText(ta => {
 				ta
-					.setPlaceholder(DEFAULT_SETTINGS.rssCollectionsFolder)
+					.setPlaceholder(DEFAULT_SETTINGS.rssCollectionsFolderName)
 					.onChange(value => {
-						this.settings.rssCollectionsFolder = value;
+						this.settings.rssCollectionsFolderName = value;
 					});
-				if (this.settings.rssCollectionsFolder !== DEFAULT_SETTINGS.rssCollectionsFolder) {
-					ta.setValue(this.settings.rssCollectionsFolder)
+				if (this.settings.rssCollectionsFolderName !== DEFAULT_SETTINGS.rssCollectionsFolderName) {
+					ta.setValue(this.settings.rssCollectionsFolderName)
 				}
 			})
 			.addButton(btn => {
@@ -163,7 +163,7 @@ class RSSCollectionsFolderSetting extends RSSTrackerSettingBase {
 					.setIcon("reset")
 					.setTooltip("Reset the RSS feed collections location to default")
 					.onClick(evt => {
-						this.settings.rssCollectionsFolder = DEFAULT_SETTINGS.rssCollectionsFolder;
+						this.settings.rssCollectionsFolderName = DEFAULT_SETTINGS.rssCollectionsFolderName;
 					})
 			});
 	}
@@ -177,12 +177,12 @@ class RSSTopicsFolderSetting extends RSSTrackerSettingBase {
 			.setDesc("The folder containing all RSS topics.")
 			.addText(ta => {
 				ta
-					.setPlaceholder(DEFAULT_SETTINGS.rssTopicsFolder)
+					.setPlaceholder(DEFAULT_SETTINGS.rssTopicsFolderName)
 					.onChange(value => {
-						this.settings.rssTopicsFolder = value;
+						this.settings.rssTopicsFolderName = value;
 					});
-				if (this.settings.rssTopicsFolder !== DEFAULT_SETTINGS.rssTopicsFolder) {
-					ta.setValue(this.settings.rssTopicsFolder)
+				if (this.settings.rssTopicsFolderName !== DEFAULT_SETTINGS.rssTopicsFolderName) {
+					ta.setValue(this.settings.rssTopicsFolderName)
 				}
 			})
 			.addButton(btn => {
@@ -190,7 +190,7 @@ class RSSTopicsFolderSetting extends RSSTrackerSettingBase {
 					.setIcon("reset")
 					.setTooltip("Reset the RSS topics location to default")
 					.onClick(evt => {
-						this.settings.rssTopicsFolder = DEFAULT_SETTINGS.rssTopicsFolder;
+						this.settings.rssTopicsFolderName = DEFAULT_SETTINGS.rssTopicsFolderName;
 					})
 			});
 	}

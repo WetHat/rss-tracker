@@ -7,9 +7,9 @@ export interface IRSSTrackerSettings {
 	[key: string]: any;
 	autoUpdateFeeds: boolean;
 	rssHome: string;
-	rssFeedFolder: string;
-	rssCollectionsFolder: string;
-	rssTopicsFolder: string;
+	rssFeedFolderName: string;
+	rssCollectionsFolderName: string;
+	rssTopicsFolderName: string;
 	rssTemplateFolder: string;
 	rssDashboardName: string;
 	rssTagmapName: string;
@@ -19,9 +19,9 @@ export interface IRSSTrackerSettings {
 export const DEFAULT_SETTINGS: IRSSTrackerSettings = {
 	autoUpdateFeeds: false,
 	rssHome: "RSS",
-	rssFeedFolder: "Feeds",
-	rssCollectionsFolder: "Collections",
-	rssTopicsFolder: "Topics",
+	rssFeedFolderName: "Feeds",
+	rssCollectionsFolderName: "Collections",
+	rssTopicsFolderName: "Topics",
 	rssTemplateFolder: "Templates",
 	rssDashboardName: "RSS Dashboard",
 	rssTagmapName: "RSS Tagmap",
@@ -80,27 +80,27 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 		this._rssHome = value;
 	}
 
-	get rssFeedFolder(): string {
-		return this._data.rssFeedFolder ?? DEFAULT_SETTINGS.rssFeedFolder;
+	get rssFeedFolderName(): string {
+		return this._data.rssFeedFolderName ?? DEFAULT_SETTINGS.rssFeedFolderName;
 	}
 
-	set rssFeedFolder(value: string) {
+	set rssFeedFolderName(value: string) {
 		this._rssFeedFolder = value;
 	}
 
-	get rssCollectionsFolder(): string {
-		return this._data.rssCollectionsFolder ?? DEFAULT_SETTINGS.rssCollectionsFolder;
+	get rssCollectionsFolderName(): string {
+		return this._data.rssCollectionsFolderName ?? DEFAULT_SETTINGS.rssCollectionsFolderName;
 	}
 
-	set rssCollectionsFolder(value: string) {
+	set rssCollectionsFolderName(value: string) {
 		this._rssCollectionsFolder = value;
 	}
 
-	get rssTopicsFolder(): string {
-		return this._data.rssTopicsFolder ?? DEFAULT_SETTINGS.rssTopicsFolder;
+	get rssTopicsFolderName(): string {
+		return this._data.rssTopicsFolderName ?? DEFAULT_SETTINGS.rssTopicsFolderName;
 	}
 
-	set rssTopicsFolder(value: string) {
+	set rssTopicsFolderName(value: string) {
 		this._rssCollectionsFolder = value;
 	}
 
@@ -159,23 +159,23 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 			this._rssHome = null;
 		}
 
-		if (this._rssFeedFolder && this._rssFeedFolder !== this.rssFeedFolder) {
+		if (this._rssFeedFolder && this._rssFeedFolder !== this.rssFeedFolderName) {
 			if (await this._filemgr.renameFolder(this.rssFeedFolderPath, this.rssHome + "/" + this._rssFeedFolder)) {
-				this._data.rssFeedFolder = this._rssFeedFolder;
+				this._data.rssFeedFolderName = this._rssFeedFolder;
 			}
 			this._rssFeedFolder = null;
 		}
 
-		if (this._rssCollectionsFolder && this._rssCollectionsFolder !== this.rssCollectionsFolder) {
+		if (this._rssCollectionsFolder && this._rssCollectionsFolder !== this.rssCollectionsFolderName) {
 			if (await this._filemgr.renameFolder(this.rssCollectionsFolderPath, this.rssHome + "/" + this._rssCollectionsFolder)) {
-				this._data.rssCollectionsFolder = this._rssCollectionsFolder;
+				this._data.rssCollectionsFolderName = this._rssCollectionsFolder;
 			}
 			this._rssCollectionsFolder = null;
 		}
 
-		if (this._rssTopicsFolder && this._rssTopicsFolder !== this.rssTopicsFolder) {
+		if (this._rssTopicsFolder && this._rssTopicsFolder !== this.rssTopicsFolderName) {
 			if (await this._filemgr.renameFolder(this.rssTopicsFolderPath, this.rssHome + "/" + this._rssTopicsFolder)) {
-				this._data.rssTopicsFolder = this._rssTopicsFolder;
+				this._data.rssTopicsFolderName = this._rssTopicsFolder;
 			}
 			this._rssTopicsFolder = null;
 		}
@@ -286,15 +286,15 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 	}
 
 	get rssFeedFolderPath(): string {
-		return this.rssHome + "/" + this.rssFeedFolder;
+		return this.rssHome + "/" + this.rssFeedFolderName;
 	}
 
 	get rssCollectionsFolderPath(): string {
-		return this.rssHome + "/" + this.rssCollectionsFolder;
+		return this.rssHome + "/" + this.rssCollectionsFolderName;
 	}
 
 	get rssTopicsFolderPath(): string {
-		return this.rssHome + "/" + this.rssTopicsFolder;
+		return this.rssHome + "/" + this.rssTopicsFolderName;
 	}
 
 	get rssTemplateFolderPath(): string {
