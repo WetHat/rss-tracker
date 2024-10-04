@@ -132,7 +132,7 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 	}
 
 	get defaultItemLimit():number {
-		return this._defaultItemLimit ?? DEFAULT_SETTINGS.defaultItemLimit;
+		return this._data.defaultItemLimit ?? DEFAULT_SETTINGS.defaultItemLimit;
 	}
 
 	set defaultItemLimit(value: number) {
