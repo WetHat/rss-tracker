@@ -1,30 +1,30 @@
 ---
 role: rssfeed
-feedurl: https://localhost/RSS/reference/TypeScript TV/assets/feed.xml
+feedurl: https://localhost/test/TypeScript TV/feed.xml
 site: https://typescript.tv/
 itemlimit: 10
-updated: 2024-07-16T10:43:51.742Z
-status: OK
-tags: 
+updated: 2024-10-04T17:14:41.559Z
+status: ✅
+tags: []
 interval: 809
 ---
 > [!abstract] TypeScript TV
+> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
 > 🚀 Ideal for beginners or advanced TypeScript programmers, our coding course guarantees something new for everyone.
->
-> ![[assets/TypeScript TV.svg|200x200]]
+
 # Unread Feed Items 📚
 ~~~dataview
 TASK
-FROM [[TypeScript TV.md]]
-WHERE !completed AND role = "rssitem"
+FROM [[]]
+WHERE !completed AND startswith(text,"[[") AND role = "rssitem"
 SORT published DESC
 ~~~
 
-# Pinned Feed Items 📌
+# Pinned Feed Items 📍
 ~~~dataview
 TABLE
 published as Published
-FROM [[TypeScript TV.md]]
+FROM [[]]
 WHERE pinned = true AND role = "rssitem"
 SORT published DESC
 ~~~
@@ -32,7 +32,7 @@ SORT published DESC
 # Read Feed Items
 ~~~dataview
 TASK
-FROM [[TypeScript TV.md]]
-WHERE completed AND role = "rssitem"
+FROM [[]]
+WHERE completed AND startswith(text,"[[") AND role = "rssitem"
 SORT published DESC
 ~~~

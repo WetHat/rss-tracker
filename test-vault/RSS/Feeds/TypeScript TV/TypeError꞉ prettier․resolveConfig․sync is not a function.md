@@ -1,17 +1,35 @@
 ---
 role: rssitem
-author: TypeScript TV
+author: Unknown
 published: 2023-12-18T22:47:43.000Z
 link: https://typescript.tv/hands-on/typeerror-prettierresolveconfigsync-is-not-a-function/
 id: https://typescript.tv/hands-on/typeerror-prettierresolveconfigsync-is-not-a-function/
-feed: "[[../TypeScript TV]]"
+feed: "[[TypeScript TV]]"
 tags: []
 pinned: false
 ---
+
 > [!abstract] TypeError: prettier.resolveConfig.sync is not a function - 2023-12-18T22:47:43.000Z
+> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
 > Learn how to fix error: prettier.resolveConfig.sync is not a function. Resolve any issues that arise from updating to Prettier v3 and migrate from Husky & pretty-quick to Lefthook.
 
-🔗Read article [online](https://typescript.tv/hands-on/typeerror-prettierresolveconfigsync-is-not-a-function/). For other items in this feed see [[../TypeScript TV]].
+🔗Read article [online](https://typescript.tv/hands-on/typeerror-prettierresolveconfigsync-is-not-a-function/). For other items in this feed see [[TypeScript TV]].
 
 - [ ] [[TypeError꞉ prettier․resolveConfig․sync is not a function]]
+
+~~~dataviewjs
+const
+    current = dv.current(),
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	tasks = await dvjs.rssDuplicateItemsTasks(current);
+if (tasks.length > 0) {
+	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+    dv.taskList(tasks,false);
+}
+const tags = current.file.etags.join(" ");
+if (current) {
+	dv.span(tags);
+}
+~~~
+
 - - -
