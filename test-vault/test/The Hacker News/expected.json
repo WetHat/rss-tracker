@@ -1,0 +1,708 @@
+{
+    "title": "The Hacker News",
+    "description": "Most trusted, widely-read independent cybersecurity news source for everyone;\n            supported by hackers and IT professionals — Send TIPs to admin@thehackernews.com",
+    "site": "https://thehackernews.com",
+    "items": [
+        {
+            "id": "https://thehackernews.com/2024/05/chinese-nationals-arrested-for.html",
+            "tags": [],
+            "description": "The U.S. Department of Justice (DoJ) has charged two arrested Chinese nationals for allegedly orchestrating a pig butchering scam that laundered at least $73 million from victims through shell companies.\nThe individuals, Daren Li, 41, and Yicheng Zhang, 38, were arrested in Atlanta and Los Angeles on April 12 and May 16, respectively.\nThe foreign nationals have been \"charged for leading a scheme",
+            "title": "Chinese Nationals Arrested for Laundering $73 Million in Pig Butchering Crypto Scam",
+            "link": "https://thehackernews.com/2024/05/chinese-nationals-arrested-for.html",
+            "published": "2024-05-19T09:46:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgYY-3t_2tEUCVX41dZcLK7NZIikQ7t63JtNS5jX7NbaaimvXybHsXlveMWPFT7QoHTxI9pM4DTdCije4sDSd7Yt6c46gYuudMKp1Ud0L92UBMhLd_6-0_QldH6ucXCnWnOEbzO52dMTHetk494taJhWkjOi6pows13Ixl-zhXBPBkCiAt8k9kD51LsiNip/s1600/pig.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/grandoreiro-banking-trojan-resurfaces.html",
+            "tags": [],
+            "description": "The threat actors behind the Windows-based&nbsp;Grandoreiro&nbsp;banking trojan have returned in a global campaign since March 2024 following a law enforcement takedown in January.\nThe large-scale phishing attacks, likely facilitated by other cybercriminals via a malware-as-a-service (MaaS) model, target over 1,500 banks across the world, spanning more than 60 countries in Central and South",
+            "title": "Grandoreiro Banking Trojan Resurfaces, Targeting Over 1,500 Banks Worldwide",
+            "link": "https://thehackernews.com/2024/05/grandoreiro-banking-trojan-resurfaces.html",
+            "published": "2024-05-19T07:59:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi5-kZvOVxoh88ywy2pxjyTedNazjZeTetG15AeVqaK0dpeege9CD6e2nGix7xcLI8J5RtixTt0_ADwR6weDe_DL8Zpy5P0W8PgKn5lk0SFi421tllqDPbFLTqy03f-EBXdNDL2FEoIBeqLQcEtMwUf9AH2XFER0KHuzr7EgmKXZEM-6P8C7gydaNIbRKgm/s1600/bank.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/kinsing-hacker-group-exploits-more.html",
+            "tags": [],
+            "description": "The cryptojacking group known as&nbsp;Kinsing&nbsp;has demonstrated an ability to continuously evolve and adapt, proving to be a persistent threat by swiftly integrating newly disclosed vulnerabilities to the exploit arsenal and expand its botnet.\nThe&nbsp;findings&nbsp;come from cloud security firm Aqua, which described the threat actor as actively orchestrating illicit cryptocurrency mining",
+            "title": "Kinsing Hacker Group Exploits More Flaws to Expand Botnet for Cryptojacking",
+            "link": "https://thehackernews.com/2024/05/kinsing-hacker-group-exploits-more.html",
+            "published": "2024-05-17T17:20:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhI4mP8B96EWYEiuIhr6QfWevzBBDrF1MExz8DaxQyyFW5Xi8oI5PbXBXtS9s2pHFVphKGD-17WDofzuHK0yqCr6pZ6wlGEPnWXEpVl8O5bynP0-n-wITgskYUjgHq5TqJp0XGOSm9hW1oAmzlsRdvXHciMXmnCjotvoj0Tugvqgcu4fvm_4WwFVgZxLgaJ/s1600/victim.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/new-xm-cyber-research-80-of-exposures.html",
+            "tags": [],
+            "description": "A new report from XM Cyber has found – among other insights - a&nbsp;dramatic&nbsp;gap between where most organizations focus their security efforts, and where the most serious threats&nbsp;actually&nbsp;reside.\nThe new report, Navigating the Paths of Risk: The State of Exposure Management in 2024, is based on hundreds of thousands of attack path assessments conducted by the&nbsp;XM Cyber",
+            "title": "New XM Cyber Research: 80% of Exposures from Misconfigurations, Less Than 1% from CVEs",
+            "link": "https://thehackernews.com/2024/05/new-xm-cyber-research-80-of-exposures.html",
+            "published": "2024-05-17T11:29:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgyW5tQUIjpctocrlvWbnUcdnROq7YRBoKp5VQEfa97lFMq6oPX_VN0u_eDInWPMdG2cCEcZgH9L8c0MjYSQoGHpGE1pTPos0ihhtK1IuZIYz7X7go2EOMELR9ch2bTiYMY0ffMQ28jSrkM-xv7KmHgbUTyppDuM_xywMtAR6ZyT5UkT8eR3po0JIXTSeo/s1600/main.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/china-linked-hackers-adopt-two-stage.html",
+            "tags": [],
+            "description": "Cybersecurity researchers have shed more light on a remote access trojan (RAT) known as Deuterbear used by the China-linked&nbsp;BlackTech&nbsp;hacking group as part of a cyber espionage campaign targeting the Asia-Pacific region this year.\n\"Deuterbear, while similar to Waterbear in many ways, shows advancements in capabilities such as including support for shellcode plugins, avoiding handshakes",
+            "title": "China-Linked Hackers Adopt Two-Stage Infection Tactic to Deploy Deuterbear RAT",
+            "link": "https://thehackernews.com/2024/05/china-linked-hackers-adopt-two-stage.html",
+            "published": "2024-05-17T11:20:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjd44DTDc43zIEkapTS7x1xzyCuyAq_BI-BiV3FPnh7kVYP1TcsOx6e8Vrbg1HCEfH5WSLrvA5nQqj6MuOxwidV_Z932WsQP4IY4evbsueNrOTCA41v9AK8CSs7sEGvsiLkFMK9y_wVU6sMKHy3ga73CEwIJjnJjLdbfBUD2QihTjVvHBxrbWQXpYfiiNKn/s1600/cyber.jpg",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/kimsuky-apt-deploying-linux-backdoor.html",
+            "tags": [],
+            "description": "The&nbsp;Kimsuky&nbsp;(aka Springtail) advanced persistent threat (APT) group, which is linked to North Korea's Reconnaissance General Bureau (RGB), has been observed deploying a Linux version of its GoBear backdoor as part of a campaign targeting South Korean organizations.\nThe backdoor, codenamed&nbsp;Gomir, is \"structurally almost identical to GoBear, with extensive sharing of code between",
+            "title": "Kimsuky APT Deploying Linux Backdoor Gomir in South Korean Cyber Attacks",
+            "link": "https://thehackernews.com/2024/05/kimsuky-apt-deploying-linux-backdoor.html",
+            "published": "2024-05-17T08:46:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgKkkd9TlpBH69SJ2A5la8Bres_d4l53vzANAK7W2RVh3HJoJjX9PuIhhtiYhO5YlDnu8RuFrT8bAyj_0DwcjPB4tSIcLglj7N2PGus3G1cYnF29ytBkUvgf_DuGCsD5wc7c9NZ-Y5WoSifZzg5ZcNs2nbhRgepHlfcURgaVUvEu_6OQwZktjWfr-did40B/s1600/linux.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/cisa-warns-of-actively-exploited-d-link.html",
+            "tags": [],
+            "description": "The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Thursday&nbsp;added&nbsp;two security flaws impacting D-Link routers to its Known Exploited Vulnerabilities (KEV) catalog, based on evidence of active exploitation.\nThe list of vulnerabilities is as follows -\n\nCVE-2014-100005&nbsp;- A cross-site request forgery (CSRF) vulnerability impacting D-Link DIR-600 routers that allows an",
+            "title": "CISA Warns of Actively Exploited D-Link Router Vulnerabilities - Patch Now",
+            "link": "https://thehackernews.com/2024/05/cisa-warns-of-actively-exploited-d-link.html",
+            "published": "2024-05-17T06:43:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjif0vHPiJpWqSsxYf6_ZftcHyQWnudXK5c0G1j4lk-mM1WJs-TZHhgitfonc7VJBNvCrZMtrAmL0ms_XPCe8LYGpB5CxrIn8xijJTtD98T5hDh7xTWBl5DkzbNmrY8Z2XwrVFa29h2SYwv2Ambz4DKI3fhCFPn3vzfFFcdHUR1NeJUzJfocCIac_SOBlZo/s1600/dlink.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/new-wi-fi-vulnerability-enabling.html",
+            "tags": [],
+            "description": "Researchers have discovered a new security vulnerability stemming from a design flaw in the IEEE 802.11 Wi-Fi standard that tricks victims into connecting to a less secure wireless network and eavesdrop on their network traffic.\nThe&nbsp;SSID Confusion&nbsp;attack,&nbsp;tracked as CVE-2023-52424, impacts all operating systems and Wi-Fi clients, including home and mesh networks that are based on",
+            "title": "New Wi-Fi Vulnerability Enables Network Eavesdropping via Downgrade Attacks",
+            "link": "https://thehackernews.com/2024/05/new-wi-fi-vulnerability-enabling.html",
+            "published": "2024-05-16T16:02:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj6d7Gzb_h-iUyW-ZV9K-72UmwGBH5s6LAObmfDc7t5yM8sjbhw5BiJ1tl6YYaIyz7rDm3A0V6yivf7rF9438dH0cguzgTV821Tn0TbVubAm7qfWQZjXHfyVF2sbH-72wMa6elHZq8sGiW6VomBjgRLgcAersRKeraJa16BdWZkU04X5WSAfRLEsFfjoAKT/s1600/wifi.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/north-korean-hackers-exploit-facebook.html",
+            "tags": [],
+            "description": "The North Korea-linked&nbsp;Kimsuky hacking group&nbsp;has been attributed to a new social engineering attack that employs fictitious Facebook accounts to targets via Messenger and ultimately delivers malware.\n\"The threat actor created a Facebook account with a fake identity disguised as a public official working in the North Korean human rights field,\" South Korean cybersecurity company Genians",
+            "title": "North Korean Hackers Exploit Facebook Messenger in Targeted Malware Campaign",
+            "link": "https://thehackernews.com/2024/05/north-korean-hackers-exploit-facebook.html",
+            "published": "2024-05-16T13:48:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi0CgQjTGmGSfRS1sg_daBIAU-YSbp-JtU2wJUNbsvH_Z7lMjjdGBl1RMbetEr4oFfmuHwcDQFYa6CtTZYbI3UzTjzIs6sqIbAEBIH9VqH1hUdZz9OFPtEpUGXAzEw-6Njmcbngrrx3SoZN5DFEC3txh9Q9GTUkI123G9pXWKuBp7O7DwhMqnuGdf37Mqhm/s1600/hack.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/researchers-uncover-11-security-flaws.html",
+            "tags": [],
+            "description": "Security researchers have disclosed almost a dozen security flaws impacting the GE HealthCare Vivid Ultrasound product family that could be exploited by malicious actors to tamper with patient data and even install ransomware under certain circumstances.\n\"The impacts enabled by these flaws are manifold: from the implant of ransomware on the ultrasound machine to the access and manipulation of",
+            "title": "Researchers Uncover 11 Security Flaws in GE HealthCare Ultrasound Machines",
+            "link": "https://thehackernews.com/2024/05/researchers-uncover-11-security-flaws.html",
+            "published": "2024-05-16T10:12:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj0W6bvR9fzkycXkJJdcnbs_5eE6MI3KteW1cqK4EmjT9CtU3UeHZ9qrBsDt81R0i6Ihyphenhyphen9LKFhwPHDAoHdYzi_rLcg_FZC7x4ddV05oV0ybdTa8rd1Uu-lwxbQbHJeLL2X19HyElBjinJemsN7A8V5cenapqWtdFi0mJjbbAQroZFomNspkugGaARpukihf/s1600/machine.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/cybercriminals-exploiting-microsofts.html",
+            "tags": [],
+            "description": "The Microsoft Threat Intelligence team said it has observed a threat actor it tracks under the name&nbsp;Storm-1811&nbsp;abusing the client management tool Quick Assist to target users in social engineering attacks.\n\"Storm-1811 is a financially motivated cybercriminal group known to deploy&nbsp;Black Basta&nbsp;ransomware,\" the company&nbsp;said&nbsp;in a report published on May 15, 2024.\nThe",
+            "title": "Cybercriminals Exploiting Microsoft’s Quick Assist Feature in Ransomware Attacks",
+            "link": "https://thehackernews.com/2024/05/cybercriminals-exploiting-microsofts.html",
+            "published": "2024-05-16T03:16:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhG-PcUDkVO7cSuiKU_orq2mhb9VqxGYPcQgP4eSUAh4OL_-f_CubxQBn1Htu_Br7xERfpfD3QjIul2LRq6fTa6Iz43Snrla-go6qPN9o-aJJ7o7CxNU2kK4yvj6lPQKwLms8JbgbHX38B-apXbBuPkVN95W_0kdwXHmi1lBS43GDFcOvwEvIuNWFhtRdMo/s1600/ms.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/google-patches-yet-another-actively.html",
+            "tags": [],
+            "description": "Google has rolled out fixes to address&nbsp;a set of&nbsp;nine security issues in its Chrome browser, including a new zero-day that has&nbsp;been exploited&nbsp;in the wild.\nAssigned the CVE identifier&nbsp;CVE-2024-4947, the vulnerability relates to a type confusion bug in the V8 JavaScript and WebAssembly engine. It&nbsp;was reported&nbsp;by Kaspersky researchers Vasily Berdnikov and Boris",
+            "title": "Google Patches Yet Another Actively Exploited Chrome Zero-Day Vulnerability",
+            "link": "https://thehackernews.com/2024/05/google-patches-yet-another-actively.html",
+            "published": "2024-05-16T03:01:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgbF8wx_xuLZ51MTHpCOGdzhN7uoQqeUv9WnoyH1_pZ-84rV1BgjxUr1NQfMiogwJkoUXmvki27jHE-xRC-GwTpFEPuxTASdjeQIpdevA628w8I8Ufh-AHtkuK9jXo7CYdSxpqCjW8pFMP71VTdcutUPOQOZeexKjkzZi5vhypW952FbL8uw07mq-NMQF77/s1600/chrome.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/fbi-seizes-breachforums-again-urges.html",
+            "tags": [],
+            "description": "Law enforcement agencies have officially seized control of the notorious&nbsp;BreachForums&nbsp;platform, an online bazaar known for peddling stolen data, for the second time within a year.\nThe website (\"breachforums[.]st\") has been replaced by a seizure banner stating the clearnet cybercrime forum is under the control of the U.S. Federal Bureau of Investigation (FBI).&nbsp;\nThe operation is the",
+            "title": "FBI Seizes BreachForums Again, Urges Users to Report Criminal Activity",
+            "link": "https://thehackernews.com/2024/05/fbi-seizes-breachforums-again-urges.html",
+            "published": "2024-05-15T17:52:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjCXr2dbbDhMkcRibJUp2K02Qb3JwpOR8ZtazciTs8E36_l_t671ju76x7-P7nePx-sg-zMVzDR3cJ_wbLPcobjXz2nXE4zCAwTDUHgBDf8alqqTYLedg14b5LYjB8OOT4KHWZ5BHQWovYovduLQnIxD2jbs-4aN5XL3IrdWQSo3IBBrebzVLADhjwfeszk/s1600/fbi.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/google-adds-ai-powered-theft-protection.html",
+            "tags": [],
+            "description": "Google has announced a slew of privacy and security features in Android, including a suite of advanced protection features to help secure users' devices and data in the event of a theft.\nThese features aim to help protect data before, during&nbsp;and&nbsp;after a theft attempt, the tech giant said, adding they are expected to be available via an update to Google Play services for devices running",
+            "title": "Google Launches AI-Powered Theft and Data Protection Features for Android Devices",
+            "link": "https://thehackernews.com/2024/05/google-adds-ai-powered-theft-protection.html",
+            "published": "2024-05-15T17:00:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSXArZPLs2xoQsPxEI7dwO9FQhcJD4L2jqdTMYu8bLpIUTLN5aYpp1gbA0ranFijRCTaxENd0Wp94A5ilS7E6gnWbfulmafIwu6WmJ2HclOVy7ltJPtZZeCXGyHMTlwXt5q6dWNUBthyphenhyphentCYwclR35dqV3RwJn57AaolO2S521J57aIArOyTxp8876P-Jda/s1600/theft.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/android-15-introduces-new-features-to.html",
+            "tags": [],
+            "description": "Google is unveiling a set of new features in Android 15 to prevent malicious apps installed on the device from capturing sensitive data.\nThis constitutes an update to the&nbsp;Play Integrity API&nbsp;that third-party app developers can take advantage of to secure their applications against malware.\n\"Developers can check if there are other apps running that could be capturing the screen, creating",
+            "title": "Android 15 Rolls Out Advanced Features to Protect Users from Scams and Malicious Apps",
+            "link": "https://thehackernews.com/2024/05/android-15-introduces-new-features-to.html",
+            "published": "2024-05-15T17:00:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhjzmzJIldOiZh2c4S9W_dAr7OIpkKAYlProKSmMCr0WI30vVIfl9ynDpMLu9_Z-Fr9kIEV0rvm7TZOotA5d79_htMnvCLYW12I_enFTHhlAEfqNnk5_hAaNp6hGqGdr9dIxSX2hVKZcQVuGFb-ajdN_k1pN1VwtZ_ywDtPJnll3oM_dSdz1JXVkdk__agp/s1600/malware.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/turla-group-deploys-lunarweb-and.html",
+            "tags": [],
+            "description": "An unnamed European Ministry of Foreign Affairs (MFA) and its three diplomatic missions in the Middle East were targeted by two previously undocumented backdoors tracked as LunarWeb and LunarMail.\nESET, which identified the activity, attributed it with medium confidence to the Russia-aligned cyberespionage group Turla (aka Iron Hunter, Pensive Ursa, Secret Blizzard, Snake, Uroburos, and Venomous",
+            "title": "Turla Group Deploys LunarWeb and LunarMail Backdoors in Diplomatic Missions",
+            "link": "https://thehackernews.com/2024/05/turla-group-deploys-lunarweb-and.html",
+            "published": "2024-05-15T12:29:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg0cHYoES0UHkeCQhIzrtg0-1PPT-Pd5wjEMvOv8Xs6Coix-T0WYczWTIeJPtTASn03jxqIlTXjgCY3TQlBpshgywr1ORTLltZGa1OyOXAtVLtl5TL9WLGaA5Fl0onRYieAlgE7Lz6OsJBV9B5ChUtpMfNxi0o3yVGc7dsFQZScPQp0jXgxxay5CI69u22e/s1600/malware.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/get-cyber-resilient-with-cvss.html",
+            "tags": [],
+            "description": "Here’s How to Enhance Your Cyber Resilience with CVSS\nIn late 2023, the Common Vulnerability Scoring System (CVSS) v4.0 was unveiled, succeeding the eight-year-old CVSS v3.0,&nbsp;with the aim to&nbsp;enhance vulnerability assessment for both industry and the public. This latest version introduces additional metrics like safety and automation to address criticism of lacking granularity while",
+            "title": "(Cyber) Risk = Probability of Occurrence x Damage",
+            "link": "https://thehackernews.com/2024/05/get-cyber-resilient-with-cvss.html",
+            "published": "2024-05-15T11:38:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhdgCH-Jik1Js52TVIN2kGab7KiF4kumGWoODciZOCHrfEG7sqYmkO4P2lte1JH6gZe7XwWbjGvNWLSfwj-D-7DkHDoh6HFCCrM826P2_1qm9fRfaRYLuTECiDaRkOMZRFllfyQKYJv7twdfLW27ZrrP8JEPTQGuEwUHSt-RDURMM3quAI5mWra9iD5e8k/s1600/2.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/ebury-botnet-malware-compromises-400000.html",
+            "tags": [],
+            "description": "A malware botnet called&nbsp;Ebury&nbsp;is estimated to have compromised 400,000 Linux servers since 2009, out of which more than 100,000 were still compromised as of late 2023.\nThe findings come from Slovak cybersecurity firm ESET, which characterized it as one of the most advanced server-side malware campaigns for financial gain.\n\"Ebury actors have been pursuing monetization activities [...],",
+            "title": "Ebury Botnet Malware Compromises 400,000 Linux Servers Over Past 14 Years",
+            "link": "https://thehackernews.com/2024/05/ebury-botnet-malware-compromises-400000.html",
+            "published": "2024-05-15T10:56:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgFcopCewQJMs6m2QrYmO-yLRWF8j0J1p3RH7nRvUNcxMzeMWla1RVkbi2DlVfqU2wQBYuv0hc9OZPZiC7RMVjlgmJSRYf-SBP2CzzHJZeEeMNbL632oiH9k1Lfqu2IjmVpXxltFVGCZ6PMOGkPBfiSFdz1eC1eiUL1JY3PcZh3_dnK_vm_0uN9cnr6EIA5/s1600/ebury.jpg",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/its-time-to-master-lift-shift-migrating.html",
+            "tags": [],
+            "description": "While cloud adoption has been top of mind for many IT professionals for nearly a decade,&nbsp;it’s&nbsp;only in recent months, with industry changes and announcements from key players, that many recognize the time to&nbsp;make the&nbsp;move is now. It may feel&nbsp;like a daunting task, but tools exist to help you move your virtual machines (VMs) to a public cloud provider – like Microsoft Azure",
+            "title": "It's Time to Master the Lift & Shift: Migrating from VMware vSphere to Microsoft Azure",
+            "link": "https://thehackernews.com/2024/05/its-time-to-master-lift-shift-migrating.html",
+            "published": "2024-05-15T10:55:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjqRxRQHPZw-cjEhbW56EdcQ6QL-NR5uJjk9AYPcym9XjJWJQBj-JmPFSy1Texg4GXNJdN3TUVs53wcWG95ClRrZkhM1gFXZXHiajndG8OSe4WsPFWfo9j4-_yFS-YtPoi85r1ITbhyRy9NH5ar50KSviZMs3ZE2XImdZGj4sKTjL-lUzvsdQIa9eHF5R0/s1600/main.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/dutch-court-sentences-tornado-cash-co.html",
+            "tags": [],
+            "description": "A Dutch court on Tuesday sentenced one of the co-founders of the now-sanctioned&nbsp;Tornado Cash cryptocurrency mixer service&nbsp;to 5 years and&nbsp;4&nbsp;months in prison.\nWhile the name of the defendant&nbsp;was&nbsp;redacted&nbsp;in the verdict, it's known that Alexey Pertsev, a 31-year-old Russian national, had been&nbsp;awaiting trial&nbsp;in the Netherlands on money laundering charges.",
+            "title": "Dutch Court Sentences Tornado Cash Co-Founder to 5 Years in Prison for Money Laundering",
+            "link": "https://thehackernews.com/2024/05/dutch-court-sentences-tornado-cash-co.html",
+            "published": "2024-05-15T08:28:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgBPk-hQq2Zp77E2oPvv_a6v5qZcic-fMnamnazYDiOxRjCDkaBpawAz2aJHS5PDYLOy8LhfFefLGVniZ4QQaISgQuJZuDirj3cYon-WnvQVVaaW63p-EBRZuf-qnoa4i_anIXxGiyJ9C35NEN5b5_qwPYZfVuuzLqN4AyPnzFxA-otoo6obsvcDo7ZHidY/s1600/cash.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/microsoft-patches-61-flaws-including.html",
+            "tags": [],
+            "description": "Microsoft has addressed&nbsp;a total of&nbsp;61 new security flaws&nbsp;in its software as part of its Patch Tuesday updates for May 2024, including two zero-days&nbsp;which&nbsp;have&nbsp;been actively exploited&nbsp;in the wild.\nOf the 61 flaws, one is rated Critical, 59 are rated Important, and one is rated Moderate in severity.&nbsp;This&nbsp;is in&nbsp;addition to&nbsp;30 vulnerabilities&",
+            "title": "Microsoft Patches 61 Flaws, Including Two Actively Exploited Zero-Days",
+            "link": "https://thehackernews.com/2024/05/microsoft-patches-61-flaws-including.html",
+            "published": "2024-05-15T07:17:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjRWyceMEGNjv9gX0r64Da_hcbZmpbkOE-U-sRN8zX5m3iKTPCFAQ3Zc_NsfOM_1Qmf1yjGWcK1bHa0BZv-HAVVNJdWGHID9CIYZNyaYyU_AsoaYnz7iyUmHtBZrlRT78cpQGdTaN1iSQlBW_vV8udl18eRRpI8wV7OvTtsEBuLhwdFgsoe7F4FOqgMe8vM/s1600/windows.jpg",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/vmware-patches-severe-security-flaws-in.html",
+            "tags": [],
+            "description": "Multiple security flaws have been&nbsp;disclosed&nbsp;in VMware Workstation and Fusion products that could be exploited by threat actors to access sensitive information, trigger a denial-of-service (DoS) condition, and execute code under certain circumstances.\nThe four vulnerabilities impact Workstation versions 17.x&nbsp;and Fusion versions 13.x, with fixes available in version 17.5.2 and",
+            "title": "VMware Patches Severe Security Flaws in Workstation and Fusion Products",
+            "link": "https://thehackernews.com/2024/05/vmware-patches-severe-security-flaws-in.html",
+            "published": "2024-05-14T15:49:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh-pzoIE9OnLDHB8KIQVybTE2wnBsTI_1QVCBzh5pnbmIaPdYMHYjnH0mxkSowWMkCqZzsANsz5iKxL96siXr3O04tsO_PEV-j_NA4JKPbuIOaXRJC9fE-CIKOfNOy8TLIawuFf-Q0hTvSGjvKzFxlHNnFsRq_k1bfd7_wfohmNRVtgUXNYGXasYHaSpl3Y/s1600/vmware.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/new-chrome-zero-day-vulnerability-cve.html",
+            "tags": [],
+            "description": "Google on Monday shipped emergency fixes to address a new zero-day flaw in the Chrome web browser that has come under active exploitation in the wild.\nThe high-severity vulnerability,&nbsp;tracked as&nbsp;CVE-2024-4761, is an out-of-bounds write bug impacting the V8 JavaScript and WebAssembly engine. It was reported anonymously on May 9, 2024.\nOut-of-bounds write bugs&nbsp;could be typically",
+            "title": "New Chrome Zero-Day Vulnerability CVE-2024-4761 Under Active Exploitation",
+            "link": "https://thehackernews.com/2024/05/new-chrome-zero-day-vulnerability-cve.html",
+            "published": "2024-05-14T13:51:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibh2nNGZ-2lt1wpR9uYjcE3feawRpDHdC-0unnr9Bfx0E6RMQ1Psb5mtKQQp6fwf91MEEFg5-KGH25MgZBcOUsm-2t1zwLIToKqT-6ayvgBebjkU5WQLZoEosXwsF8YtOfCuPupZK8fFXdjwiOdL-PPAj0TvFJPwekUglRjR_fKgJhewEq6rSQRSFMaUgK/s1600/chrome.jpg",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/critical-flaws-in-cacti-framework-could.html",
+            "tags": [],
+            "description": "The maintainers of the&nbsp;Cacti&nbsp;open-source network monitoring and fault management framework have addressed a dozen security flaws, including two critical issues that could lead to the execution of arbitrary code.\nThe most severe of the vulnerabilities are listed below -\n\nCVE-2024-25641&nbsp;(CVSS score: 9.1) - An arbitrary file write vulnerability in the \"Package Import\" feature that",
+            "title": "Critical Flaws in Cacti Framework Could Let Attackers Execute Malicious Code",
+            "link": "https://thehackernews.com/2024/05/critical-flaws-in-cacti-framework-could.html",
+            "published": "2024-05-14T11:17:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiHLObaDDW6hdIpLGFNDDk2sYbQB81_DFHKufB40rUMtjWDIHnxm6KFsECxwXCMaSXiZNYt11Oqp_5iWn7F6THWOMJPE2HZLD1jjV5t20PcFyEG_IyW9sWX00AsLPlfT-XhA00tSyHjNdwe1NjptEAWja1IH6HUuMGJAihrs6Y9sjQbAeUTH24vfCQ-Medf/s1600/catci.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/6-mistakes-organizations-make-when.html",
+            "tags": [],
+            "description": "Deploying advanced authentication measures is&nbsp;key to&nbsp;helping organizations address their weakest cybersecurity link: their human users. Having some form of 2-factor authentication in place is a great start, but many&nbsp;organizations may not yet be in that spot or have the needed level of authentication sophistication&nbsp;to adequately safeguard organizational data. When deploying",
+            "title": "6 Mistakes Organizations Make When Deploying Advanced Authentication",
+            "link": "https://thehackernews.com/2024/05/6-mistakes-organizations-make-when.html",
+            "published": "2024-05-14T10:51:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjLFi5vwgPwmrKgIafhE-_gG3voXLQC3RGTK0MFU0pxOFmqlOekYX5kOJ2W4RUqmzsSgjQpgnIHbpZJAbZB3L-_8h1bKkDMAy29F47szXCvmzdY1gutG3rqEoD3ETmNDpktqkntOGN7_FRzw-Kh3HogU0g4Rk5k9rurEga5551q3K2pXVGELQwMOPJbyiY/s1600/ONE.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/ongoing-campaign-bombarded-enterprises.html",
+            "tags": [],
+            "description": "Cybersecurity researchers have uncovered an ongoing social engineering campaign that bombards enterprises with spam emails&nbsp;with the goal of obtaining&nbsp;initial access to their environments for follow-on exploitation.\n\"The incident involves a threat actor overwhelming a user's email with junk and calling the user, offering assistance,\" Rapid7 researchers Tyler McGraw, Thomas Elkins, and",
+            "title": "Ongoing Campaign Bombards Enterprises with Spam Emails and Phone Calls",
+            "link": "https://thehackernews.com/2024/05/ongoing-campaign-bombarded-enterprises.html",
+            "published": "2024-05-14T10:44:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi73OKiZQwK_Ile4L79a5ZC2ZHqReLRn0hfIzp96t0SQVa_YKh5L6e7Evy-GG8C8YI_WZ9zh5RkLdPYLWCDcRuxu2WaBhotnL2BiT4EUFnvu5FHVrqddCfG8ocx0R0pmn_piAgDkIkqqdy3CmzJeSB3B-m7lQ9vXfUP8jV7rCPQLXT8jNfoxoo5fGiCsIlZ/s1600/phone-spam.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/apple-and-google-launch-cross-platform.html",
+            "tags": [],
+            "description": "Apple and Google on Monday officially announced the rollout of a new feature that notifies users across both iOS and Android if a Bluetooth tracking device is being used to stealthily keep tabs on them without their knowledge or consent.\n\"This will help mitigate the misuse of devices designed to help keep track of belongings,\" the companies said in a joint statement, adding it aims to address \"",
+            "title": "Apple and Google Launch Cross-Platform Feature to Detect Unwanted Bluetooth Tracking Devices",
+            "link": "https://thehackernews.com/2024/05/apple-and-google-launch-cross-platform.html",
+            "published": "2024-05-14T05:16:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgObKafwXTvS8TkJlQc8yMb4vVEIkZe5OIVC6T1AqpzyrFxsdcmHzDoMTDqd7bGEKxYnGPrx73JhWmFGLuvXCD4mkLpvZwKultOaTQk8VS2BK8pnqpDMjBrRtdVMeZrcwVeA7IJCdDMCz_1NW1AB3NHerl2Moi22iXqw8ZuqWjTUeYGAYqVIRsOKs6FgywW/s1600/google.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/mitre-unveils-emb3d-threat-modeling.html",
+            "tags": [],
+            "description": "The MITRE Corporation has officially made available a new threat-modeling framework called&nbsp;EMB3D&nbsp;for makers of embedded devices used in critical infrastructure environments.\n\n\"The model provides a cultivated knowledge base of cyber threats to embedded devices, providing a common understanding of these threats with the security mechanisms required to mitigate them,\" the non-profit said",
+            "title": "MITRE Unveils EMB3D: A Threat-Modeling Framework for Embedded Devices",
+            "link": "https://thehackernews.com/2024/05/mitre-unveils-emb3d-threat-modeling.html",
+            "published": "2024-05-13T14:29:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi1D1wnx1DJ7Arc47tALIJpvQa-wwjJIS_F5-laBVgVXphQ9vqQvjXzHT_BGrmzNZp8B16UDdxoq4LJygejxxCrEDhIJo1TTXbF_zHVb1oHtIYaEk626-oenl-YNtbbT6iboroTycRoj-ZqIxfumBl21Gne9TjRG1lw_KS3kQ5DNnpV5KBAgOgl1VbKJo9y/s1600/device.jpg",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/the-2024-browser-security-report.html",
+            "tags": [],
+            "description": "With the browser becoming the most prevalent workspace in the enterprise, it is also&nbsp;turning into&nbsp;a popular attack vector for cyber attackers.&nbsp;From account takeovers to malicious extensions to phishing attacks, the browser&nbsp;is a means for stealing sensitive data and accessing&nbsp;organizational systems.\nSecurity leaders&nbsp;who are&nbsp;planning their security architecture",
+            "title": "The 2024 Browser Security Report Uncovers How Every Web Session Could be a Security Minefield",
+            "link": "https://thehackernews.com/2024/05/the-2024-browser-security-report.html",
+            "published": "2024-05-13T12:06:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEijSLFEn8-QfApj4gdNDUFOgQ-2WUKqdp737_4VxzL4xySRYwTXmYvbnVNcSqJeyAh-1nrQQ0ukxawxrTiS43xRjNaHnjAoo4NER14CUws2-alIb7SGE5u1vsW5OysBftZIN1X12cVmPkXrOdGpcU-TGjvF0-8xgkDE7fYMJIljp23hyphenhyphenu9DobEtWoxMaqAh/s1600/2024.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/shq-response-platform-and-risk-centre.html",
+            "tags": [],
+            "description": "In the last decade, there has been a growing disconnect between front-line analysts and senior management in IT and Cybersecurity. Well-documented challenges facing modern analysts revolve around a high volume of alerts, false positives, poor visibility of technical environments, and analysts spending too much time on manual tasks.\nThe Impact of Alert Fatigue and False Positives&nbsp;\nAnalysts",
+            "title": "SHQ Response Platform and Risk Centre to Enable Management and Analysts Alike",
+            "link": "https://thehackernews.com/2024/05/shq-response-platform-and-risk-centre.html",
+            "published": "2024-05-13T10:19:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjnlU1-NhlyNyk19CgLQbkq80WbGg-WNMi9cZvcMu7twTPPrIFJM92a0LTticOq-iGIHr_qG2WBSrqMq1zVBM_Ptn5UG3x6DNXYyOeDRnh6ySoiSHD3l8hOvn1sEUCtm2lhJoNRqrSdlrlNZlg5rwS_8lDvlaEQvEDW4fcOieerKi6p0rD1sd48ArkCIEmw/s1600/shqq.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/severe-vulnerabilities-in-cinterion.html",
+            "tags": [],
+            "description": "Cybersecurity researchers have disclosed multiple security flaws in Cinterion cellular modems that could be potentially exploited by threat actors to access sensitive information and achieve code execution.\n\"These vulnerabilities include critical flaws that permit remote code execution and unauthorized privilege escalation, posing substantial risks to integral communication networks and IoT",
+            "title": "Severe Vulnerabilities in Cinterion Cellular Modems Pose Risks to Various Industries",
+            "link": "https://thehackernews.com/2024/05/severe-vulnerabilities-in-cinterion.html",
+            "published": "2024-05-13T10:12:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiw5Y6QTYy8lc2gfLQmtyC9OD8rg6srhJ1mN3QIUuyhmyOM2pGxYJ4mn6mh8F8oDNBbuCnp28OexbQo9nenllHfQ9KIqw15wEA4BusboyXhujCd8zvUXhiAQuAx1KZn_d476b31KuRnjzOXlSL5QkO2J6NeCuD6a6U99RRVRPZGDTpnMDgxP67wGbg2v1tu/s1600/tel.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/black-basta-ransomware-strikes-500.html",
+            "tags": [],
+            "description": "The Black Basta ransomware-as-a-service (RaaS) operation has targeted more than 500 private industry and critical infrastructure entities in North America, Europe, and Australia since its emergence in April 2022.\nIn a joint advisory published by the Cybersecurity and Infrastructure Security Agency (CISA), the Federal Bureau of Investigation (FBI), the Department of Health and Human Services (HHS",
+            "title": "Black Basta Ransomware Strikes 500+ Entities Across North America, Europe, and Australia",
+            "link": "https://thehackernews.com/2024/05/black-basta-ransomware-strikes-500.html",
+            "published": "2024-05-13T10:01:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiWOHiEN0OtwESEetnjfH3hslYWDThSiGHFocrzKqZP6Uw3kErdgYV3a8xnpiWkPxNyc5M5ZkuTaW_G3Z5GF9V6x1yiDtyVdWG4l4EB5svc6q1fKaBM9TNj-7MQl8d5nLuiMdGRo_qrjdGhPk8ZetizQPSb2We9cH-opXOdDoQ7J2LLMHrMKUiM53JI6D7D/s1600/ransomware.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/malicious-python-package-hides-sliver.html",
+            "tags": [],
+            "description": "Cybersecurity researchers have identified a malicious Python package that purports to be an offshoot of the&nbsp;popular requests library&nbsp;and has been found concealing a&nbsp;Golang-version&nbsp;of the Sliver command-and-control (C2) framework within a PNG image of the project's logo.&nbsp;\nThe package employing this steganographic trickery is&nbsp;requests-darwin-lite, which has been",
+            "title": "Malicious Python Package Hides Sliver C2 Framework in Fake Requests Library Logo",
+            "link": "https://thehackernews.com/2024/05/malicious-python-package-hides-sliver.html",
+            "published": "2024-05-13T06:18:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhMQICHAT2vwAjFq5fO9q_dUX6I4-SONVfpHzNeGUlwZa6dp85TbpU-FEVvT3XTjZMRzz4Og2MCs3ARJwIljRCz1zPZblcXoxyWSrVfKEgR5XcW06Sj_pWk1wr9pFT4t5N6TfJ2Gg8WzRfmYEF0LJbP56ImbLey2hdwg4hr6mQXq2TCT6W3ZkV8w2tzxAoT/s1600/python.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/fin7-hacker-group-leverages-malicious.html",
+            "tags": [],
+            "description": "The financially motivated threat actor known as&nbsp;FIN7&nbsp;has&nbsp;been observed&nbsp;leveraging malicious Google ads spoofing legitimate brands&nbsp;as a means&nbsp;to deliver MSIX installers that culminate in the deployment of&nbsp;NetSupport RAT.\n\"The threat actors used malicious websites to impersonate well-known brands, including AnyDesk, WinSCP, BlackRock, Asana, Concur, The Wall",
+            "title": "FIN7 Hacker Group Leverages Malicious Google Ads to Deliver NetSupport RAT",
+            "link": "https://thehackernews.com/2024/05/fin7-hacker-group-leverages-malicious.html",
+            "published": "2024-05-11T07:29:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEidGxM7ADAzrplKASUpJQ3bzcolJSyabMKaYKT4HClyzRgCOuWCVvr4duu8KJkPW_9Ga8ADrETgYfu0Pwx9QosFgHep34F7jq5lOwmpYTooakEW-L3-1pyG0UDv5s2UEUJ-etPxVPf3FsuaCnRzo-2SfgR6sBYGaiuMLgIfVMCeQ_eylo2l6zR3vJ-i3oYb/s1600/browser.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/north-korean-hackers-deploy-new-golang.html",
+            "tags": [],
+            "description": "The North Korean threat actor tracked as Kimsuky has been observed deploying a previously undocumented Golang-based malware dubbed&nbsp;Durian&nbsp;as part of highly-targeted cyber attacks aimed at two South Korean cryptocurrency firms.\n\"Durian boasts comprehensive backdoor functionality, enabling the execution of delivered commands, additional file downloads, and exfiltration of files,\"",
+            "title": "North Korean Hackers Deploy New Golang Malware 'Durian' Against Crypto Firms",
+            "link": "https://thehackernews.com/2024/05/north-korean-hackers-deploy-new-golang.html",
+            "published": "2024-05-10T14:54:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEidJpCh60Y9OeOx9Vlo9dCf4aW8aHjXqU-MHJt8NBiVPiHKC7wWrDk1vRCuo90pQ3mtyy9t9A3ouhAdU6aUe5MxKQm5Tvt9XRGYYiX5EDVnNXthkbqKLKD-YikG_sWfHjatO8QRZIClAHjB2novZftoHKSkAEs50ZfCDkCDZzrPE_qZgIrvet1tAfPwa4L2/s1600/map.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/censysgpt-ai-powered-threat-hunting-for.html",
+            "tags": [],
+            "description": "Artificial intelligence (AI) is transforming cybersecurity, and those leading the charge are using it to outsmart increasingly advanced cyber threats.\nJoin us for an exciting webinar, \"The Future of Threat Hunting is Powered by Generative AI,\" where you'll explore how AI tools are shaping the future of cybersecurity defenses.\nDuring the session, Censys Security Researcher Aidan Holland will",
+            "title": "CensysGPT: AI-Powered Threat Hunting for Cybersecurity Pros (Webinar)",
+            "link": "https://thehackernews.com/2024/05/censysgpt-ai-powered-threat-hunting-for.html",
+            "published": "2024-05-10T12:52:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgrQzKHxF9wi3LGibNRnANXUG8_15lCG3M1Xufs8A98ul3VXJnGRM_LhxYgNXMMIF6bEVuMk1irdTzogocwMaUQgv6xl34h-r4-TpWtnaV9dpLC3ZsX2XyRYNMvMQTjJmpIZrScfZJdRhQcn0hVrVjH-4EAxWu-EXyDq0ebtYgGX787Xuf40HWe1XQYxVC3/s1600/webinar.jpg",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/chrome-zero-day-alert-update-your.html",
+            "tags": [],
+            "description": "Google on Thursday released security updates to address a zero-day flaw in Chrome that it said has been actively exploited in the wild.\nTracked as&nbsp;CVE-2024-4671, the high-severity vulnerability has&nbsp;been described&nbsp;as a case of use-after-free in the Visuals component.&nbsp;It was reported by an anonymous researcher on May 7, 2024.\nUse-after-free bugs, which arise when a program",
+            "title": "Chrome Zero-Day Alert — Update Your Browser to Patch New Vulnerability",
+            "link": "https://thehackernews.com/2024/05/chrome-zero-day-alert-update-your.html",
+            "published": "2024-05-10T10:23:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgPhSx8fwDELvWKGNqNBlu-6Ndi0sPJb5p7SWiIt3zy9vzwPZSe7riuvdLHazxW6fjyi7S27qv4kzvcF9xE_ftF8djTvTvdEzg1Oh4XMApFiK4rwg7xw_hB5QuQ5S7y76OVPdl2zVCKaS0gHR54fTN805N7NUzdgw-Ivg3EOYBvCPBwOlveakXMpHVZXvAY/s1600/chrome.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/whats-right-edr-for-you.html",
+            "tags": [],
+            "description": "A guide to finding the right endpoint detection and response (EDR) solution for your&nbsp;business’&nbsp;unique needs.\nCybersecurity has become an ongoing battle between hackers and small- and mid-sized businesses. Though perimeter security measures like antivirus and firewalls have traditionally served as the frontlines of defense, the battleground has shifted to endpoints. This is why endpoint",
+            "title": "What's the Right EDR for You?",
+            "link": "https://thehackernews.com/2024/05/whats-right-edr-for-you.html",
+            "published": "2024-05-10T10:22:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgf4ObBPhLrcp9eQ4wBjjsqmgCiTTduqn2Z86NyBvqJIICGm88V2AZbHI3LUgw2V6T2O_Stp9triqnH0DHUM2PlpbZy9cNfIlkbHRMq_H6aQHjOuDTHBQ88jPyn6Lm913dcGTutJLCvyWd4BPWNKYVHQCApwvtTP2wbDwosiP6wzj2L7Yh4HDgCoxNwkHo/s1600/HUNT.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/malicious-android-apps-pose-as-google.html",
+            "tags": [],
+            "description": "Malicious Android apps masquerading as Google, Instagram, Snapchat, WhatsApp, and X (formerly Twitter) have been observed to steal users' credentials from compromised devices.\n\"This malware uses famous Android app icons to mislead users and trick victims into installing the malicious app on their devices,\" the SonicWall Capture Labs threat research team&nbsp;said&nbsp;in a recent report.\nThe",
+            "title": "Malicious Android Apps Pose as Google, Instagram, WhatsApp to Steal Credentials",
+            "link": "https://thehackernews.com/2024/05/malicious-android-apps-pose-as-google.html",
+            "published": "2024-05-10T10:21:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgu7hyphenhyphennU2IYjiz-ihf3HI2sV7T0y8bp02Lny2zKl22QLmn60deJC7JrSYqlkAEihse0cDSvFoTKVWehDNwJHrR4xoMZOMSFkDUTBuDWNqQ6tbDT5Z7hZ784vbqPeKYUv9W9NFIV32gq8n_72bAOq0NcSHKiEtrKHmePuoQcgVdyRddlABJ3R4Q0upkj8NZG/s1600/apps.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/researchers-uncover-llmjacking-scheme.html",
+            "tags": [],
+            "description": "Cybersecurity researchers have discovered a novel attack that employs stolen cloud credentials to target cloud-hosted large language model (LLM) services&nbsp;with the goal of selling&nbsp;access to other threat actors.\nThe attack technique has been codenamed&nbsp;LLMjacking&nbsp;by the Sysdig Threat Research Team.\n\"Once initial access was obtained, they exfiltrated cloud credentials and gained",
+            "title": "Researchers Uncover 'LLMjacking' Scheme Targeting Cloud-Hosted AI Models",
+            "link": "https://thehackernews.com/2024/05/researchers-uncover-llmjacking-scheme.html",
+            "published": "2024-05-10T07:41:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj8sh-XmpsFwYT_aLaIqq4Tzn_W8HiANHxel6Vyy2-hLUvNgqpex97k8qG7SE8xPouPjkPpF-RuctUUeURbv0wg8sR-RUBFStCYplZP56arpce9kZ0rg8rb_bMRMFGV3Q_u5h3PUxznvpjiCljMNt33Yk2IcleXBku1rS0K6saao9m6MTqHsFiMDmcvdkJ-/s1600/app.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/new-tunnelvision-attack-allows.html",
+            "tags": [],
+            "description": "Researchers have detailed a Virtual Private Network (VPN) bypass technique dubbed&nbsp;TunnelVision&nbsp;that allows threat actors to snoop on victim's network traffic by just being on the same local network.\nThe \"decloaking\"&nbsp;method&nbsp;has been assigned the CVE identifier&nbsp;CVE-2024-3661&nbsp;(CVSS score: 7.6). It impacts all operating systems that implement a DHCP client and has",
+            "title": "New TunnelVision Attack Allows Hijacking of VPN Traffic via DHCP Manipulation",
+            "link": "https://thehackernews.com/2024/05/new-tunnelvision-attack-allows.html",
+            "published": "2024-05-09T17:55:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhQlsUsoiYy4aXpmIuXau1TgGOZCD90EijcsFIeenHhC3SbZx0oCAUNX5BXImJJt4h30CotZ6v2szc7nwoa7K1DksiIAUboLQbvpH_7gBFvurgPQd2ANs1v9JieyCVRolbQ3_smQa-p7gM2krtcbqLr0kfuCMhvxGNCjgBb5YqCnTMcCO-PDA_7R96f3VF2/s1600/vpn.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/kremlin-backed-apt28-targets-polish.html",
+            "tags": [],
+            "description": "Polish government institutions have been targeted as part of a large-scale malware campaign orchestrated by a Russia-linked nation-state actor called&nbsp;APT28.\n\"The campaign sent emails with content intended to arouse the recipient's interest and persuade him to click on the link,\" the computer emergency response team, CERT Polska,&nbsp;said&nbsp;in a Wednesday bulletin.\nClicking on the link",
+            "title": "Kremlin-Backed APT28 Targets Polish Institutions in Large-Scale Malware Campaign",
+            "link": "https://thehackernews.com/2024/05/kremlin-backed-apt28-targets-polish.html",
+            "published": "2024-05-09T15:20:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgKaJfnAR5HtIZkrkiZDce4SNgIRTNBO1fYGif-AkvpQCCR-tFBjCuJEzl0ZntSFuIOqSOkNfxt5nddzAggYy2udFTPTl8g_eoAc1PRavjKXJ8rxnFNtW46LsMi8sFKRoIR5mtQZonRLTLVNMn9pWdAmz1Y_kJ6UAoQpqEUoFGSp3Q5waTY2JojNLtOlgjr/s1600/russian-hacker.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/new-guide-how-to-scale-your-vciso.html",
+            "tags": [],
+            "description": "Cybersecurity and compliance guidance are in high demand among SMEs. However, many of them cannot afford to hire a full-time CISO. A&nbsp;vCISO can answer this need by offering on-demand access to top-tier cybersecurity expertise.&nbsp;This&nbsp;is also an opportunity for MSPs and MSSPs to grow their business and bottom line.\nMSPs and MSSPs that expand their offerings and provide vCISO services",
+            "title": "New Guide: How to Scale Your vCISO Services Profitably",
+            "link": "https://thehackernews.com/2024/05/new-guide-how-to-scale-your-vciso.html",
+            "published": "2024-05-09T11:05:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjM1BLP41CBRl5iEZSK9mvuJoYFZVFZalw82yXj3w-5GSvvVu4AZd8eFwQKPE1-L2HrZMo7zGoxAw6XqWa_3UandW1xhaUkh14DIKqTWz1-rZMWx9BLgcs6LXDdLvaS5yONjZAzHvBU14YVUGGWM2TdwPEAaAVv02Cby7DbmJ0ykQ7B3LEm0bCrmuJ18CA/s1600/vciso.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/mirai-botnet-exploits-ivanti-connect.html",
+            "tags": [],
+            "description": "Two recently disclosed security flaws in Ivanti Connect Secure (ICS) devices are being exploited to deploy the infamous&nbsp;Mirai botnet.\nThat's according to&nbsp;findings&nbsp;from Juniper Threat Labs, which said the vulnerabilities&nbsp;CVE-2023-46805 and CVE-2024-21887&nbsp;have been leveraged to deliver the botnet payload.\nWhile CVE-2023-46805 is an authentication bypass flaw,",
+            "title": "Mirai Botnet Exploits Ivanti Connect Secure Flaws for Malicious Payload Delivery",
+            "link": "https://thehackernews.com/2024/05/mirai-botnet-exploits-ivanti-connect.html",
+            "published": "2024-05-09T11:04:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiuC0ui9EG4pPDPZvAfEntUJHehkrx0pkCo9KtjkzGzuk-qZLFMgEAegkw-wyjimRyrDCrLaAc52sd3LtHVaWeCkfpPAgTjLeSFRsyCnsYdR61C1dtkaydj6XmdSIAwrJupGHJheMs5NO3kg4vZdJTJdxERSgDqbXegmxqtE3v-NuqixyQxtQ9Ns5KCCHa6/s1600/botnet.jpg",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/critical-f5-central-manager.html",
+            "tags": [],
+            "description": "Two security vulnerabilities have been discovered in F5 Next Central Manager that could be exploited by a threat actor to seize control of the devices and create hidden rogue administrator accounts for persistence.\nThe remotely exploitable flaws \"can give attackers full administrative control of the device, and subsequently allow attackers to create accounts on any F5 assets managed by the Next",
+            "title": "Critical F5 Central Manager Vulnerabilities Allow Enable Full Device Takeover",
+            "link": "https://thehackernews.com/2024/05/critical-f5-central-manager.html",
+            "published": "2024-05-09T06:11:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj5s6eeVoQhFHOb9Vb_Vk3Rz9njcAmLGjrcKnDXKudv7jB3msdb7D7GCy-PZwg0I7yBZ-xfEjrmFtVxGiQH4wN33t7V5g6YbDs1s1oaPaArP2yRPtoRCAKThOWtdkaZv6iBzjNAxSOm8St97-q5-TNBv3Z5zv3ADd7G2kATs78RlqOGz3QNyJfb5bCXNsF2/s1600/f5.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/a-saas-security-challenge-getting.html",
+            "tags": [],
+            "description": "Permissions in SaaS platforms like Salesforce, Workday, and Microsoft 365 are&nbsp;remarkably precise. They spell out exactly which users have access to which data sets.&nbsp;The terminology differs between apps, but each user’s base permission is determined by their role, while&nbsp;additional permissions may be granted based on tasks or projects they are involved with.&nbsp;Layered on top of",
+            "title": "A SaaS Security Challenge: Getting Permissions All in One Place",
+            "link": "https://thehackernews.com/2024/05/a-saas-security-challenge-getting.html",
+            "published": "2024-05-08T14:18:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjk9_-3ho9CnD6vcmj1tvvCvrvAdmKsFY-cbaja-5pRVV8_mArnYK3PxyRqgJ9nWCe9kovyGsFfO3BjgqUs8dmCsnFcYYxyCaeRSoVuS8kU648juKSN1toRwKGiUSbdvcFxO_AJkqalwScXF49DPxDqz23ZB4mLRQwVYZ7S_smVY-N924qApp-IpZGKvSE/s1600/as.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/new-spectre-style-pathfinder-attack.html",
+            "tags": [],
+            "description": "Researchers have discovered two novel attack methods targeting high-performance Intel CPUs that&nbsp;could be exploited&nbsp;to stage a&nbsp;key&nbsp;recovery attack against the Advanced Encryption Standard (AES) algorithm.\nThe techniques have been collectively dubbed&nbsp;Pathfinder&nbsp;by&nbsp;a group of&nbsp;academics from the University of California San Diego, Purdue University, UNC Chapel",
+            "title": "New Spectre-Style 'Pathfinder' Attack Targets Intel CPU, Leak Encryption Keys and Data",
+            "link": "https://thehackernews.com/2024/05/new-spectre-style-pathfinder-attack.html",
+            "published": "2024-05-08T14:17:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiCsXxKSHjymsIMRDDrahsvY3mz_fB0fJj8ZZiVAsOCuyhG7SsO0WlvM_jMqvLhVvvEAsX0Pi2sbuDgu8ZMlNRaK_OkANH4GzvsL8K7TYEcyI-dvPzbHMC-H-1lYURtObXu8WLtF56ou9HUkmg_6mRikd1gp6KOXuDMgvV-LdLOogFHxVGWx2pOeVchbVx6/s1600/cpu.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/hijack-loader-malware-employs-process.html",
+            "tags": [],
+            "description": "A newer version of a malware loader called&nbsp;Hijack Loader&nbsp;has&nbsp;been observed&nbsp;incorporating an updated set of anti-analysis techniques to fly under the radar.\n\"These enhancements aim to increase the malware's stealthiness, thereby remaining undetected for longer periods of time,\" Zscaler ThreatLabz researcher Muhammed Irfan V A&nbsp;said&nbsp;in a technical report.\n\"Hijack",
+            "title": "Hijack Loader Malware Employs Process Hollowing, UAC Bypass in Latest Version",
+            "link": "https://thehackernews.com/2024/05/hijack-loader-malware-employs-process.html",
+            "published": "2024-05-08T10:58:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgHPvhxGd_HGIF7-1OfNtRETRbpPNP33Y8GrqyC4vMegYiv65ZJxIPQYzHOLQPIf8VctiQ3SZ8FJYyPe4_ymMO3V6YclEEXI_IKFDh9IdPN3qDv7pmfFoiB_TNYple9aJlp_xxX2kj5vOulQ2WUFQ8eVz83fdF98SqYM9aK8H8gGec4MuQIjg86j1M74ahJ/s1600/data.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/the-fundamentals-of-cloud-security.html",
+            "tags": [],
+            "description": "״Defenders think in lists, attackers think in graphs,” said John Lambert from Microsoft, distilling the fundamental difference in mindset between those who defend IT systems and those who try to compromise them.\nThe traditional approach for defenders is to list security gaps directly related to their assets in the network and eliminate as many as possible, starting with the most critical.",
+            "title": "The Fundamentals of Cloud Security Stress Testing",
+            "link": "https://thehackernews.com/2024/05/the-fundamentals-of-cloud-security.html",
+            "published": "2024-05-08T10:58:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi9g0_5hh9yyfiqTDAJeGldQ363-xqM83qZitESxMRryqG8TxZrN0XEBeKwwJvWIzoV_MgNFQSFwlYIw6D-9kvBsLkEQ4x-jwm0W1f2mBfmESM1hyMmnQ1s9rQFzu_5aSyLIrguF0hROMma0LFvJuIr3zsyNyuzWLcR88ebXEzdLdbGffcUxTPy4-Ltzi4/s1600/pen.png",
+                "type": "image"
+            },
+            "media": []
+        },
+        {
+            "id": "https://thehackernews.com/2024/05/hackers-exploiting-litespeed-cache-bug.html",
+            "tags": [],
+            "description": "A high-severity flaw impacting&nbsp;the LiteSpeed Cache plugin for WordPress&nbsp;is being actively exploited by threat actors&nbsp;to create rogue admin accounts on susceptible websites.\nThe&nbsp;findings&nbsp;come from WPScan, which said that the vulnerability (CVE-2023-40000, CVSS score: 8.3)&nbsp;has&nbsp;been leveraged&nbsp;to set up bogus admin users with the names&nbsp;wpsupp‑user&nbsp;",
+            "title": "Hackers Exploiting LiteSpeed Cache Bug to Gain Full Control of WordPress Sites",
+            "link": "https://thehackernews.com/2024/05/hackers-exploiting-litespeed-cache-bug.html",
+            "published": "2024-05-08T07:03:00.000Z",
+            "author": "info@thehackernews.com (The Hacker News)",
+            "image": {
+                "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgwWxqiKarD6EDbef2U4m3_BOnbMMSi3QcX7IRua5mjCkdTXC6Y0w6ZBkv8braHsd8pXPyEt65hxXN_Dlto4UCHiOis3OGtJkxNjG1o4sKiRKwXzumV-4XZ5dEccd109nFBUmPc_kR7FeVWaM1Lg8oT5jq7mEt4-rKc_97tWahO_Pn1u20qHspppHZtw1aQ/s1600/wordpress.png",
+                "type": "image"
+            },
+            "media": []
+        }
+    ],
+    "source": "https://feeds.feedburner.com/TheHackersNews"
+}

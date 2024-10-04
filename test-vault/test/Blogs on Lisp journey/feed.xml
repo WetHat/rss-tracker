@@ -1,0 +1,1054 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blogs on Lisp journey</title>
+    <link>/blog/</link>
+    <description>Recent content in Blogs on Lisp journey</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 14 Mar 2024 13:11:34 +0100</lastBuildDate>
+    
+	<atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Oh no, I started a Magit-like plugin for the Lem editor</title>
+      <link>/blog/oh-no-i-started-a-magit-like-plugin-for-the-lem-editor/</link>
+      <pubDate>Thu, 14 Mar 2024 13:11:34 +0100</pubDate>
+      
+      <guid>/blog/oh-no-i-started-a-magit-like-plugin-for-the-lem-editor/</guid>
+      <description>Lem is an awesome project. It&amp;rsquo;s an editor buit in Common Lisp, ready to use out of the box for Common Lisp, that supports more languages and modes (Python, Rust, Elixir, Go, JavaScript, TypeScript, Haskell, Java, Nim, Dart, OCaml, Scala, Swift, shell, asm, but also markdown, ascii, JSON, HTML and CSS, SQL…) thanks to, in part, its built-in LSP support.
+I took the challenge to add an interactive interface for Git, à la Magit, because you know, despite all its features (good vim mode, project-aware commands, grep, file tree view and directory mode, multiple cursors, tabs…), there&amp;rsquo;s so much an editor should do to be useful all day long.</description>
+    </item>
+    
+    <item>
+      <title>Celebrating 1001 learners on my Common Lisp course 🥳</title>
+      <link>/blog/celebrating-1001-learners-on-my-common-lisp-course/</link>
+      <pubDate>Wed, 14 Feb 2024 17:05:44 +0100</pubDate>
+      
+      <guid>/blog/celebrating-1001-learners-on-my-common-lisp-course/</guid>
+      <description>I just got 1001 learners on my Common Lisp course on Udemy. Thanks everybody for your support, here or elsewhere!
+Starting with CL was honestly not easy. The first thing I did was writing the &amp;ldquo;data structures&amp;rdquo; page on the Cookbook, bewildered that it didn&amp;rsquo;t exist yet. A few years and a few projects later, this course allows me to share more, learn more, have fun, and have some rewards to keep the motivation up.</description>
+    </item>
+    
+    <item>
+      <title>Latest string manipulation functions in the STR library</title>
+      <link>/blog/latest-string-manipulation-functions/</link>
+      <pubDate>Fri, 22 Dec 2023 16:52:51 +0100</pubDate>
+      
+      <guid>/blog/latest-string-manipulation-functions/</guid>
+      <description>We just released cl-str v0.21. It&amp;rsquo;s been a while since the last release, and many enhancements make it more useful than ever. Let&amp;rsquo;s review the changes, the newest first.
+But first, I want to you thank everyone who contributed, by sending pull requests or feedback. Special thanks to @kilianmh who suddenly appeared one day, helped with new features as well as grunt work, and who is now a co-maintainer.</description>
+    </item>
+    
+    <item>
+      <title>Common Lisp on the web: enrich your stacktrace with request and session data</title>
+      <link>/blog/common-lisp-on-the-web-enrich-your-stacktrace-with-request-and-session-data/</link>
+      <pubDate>Fri, 13 Oct 2023 16:51:07 +0200</pubDate>
+      
+      <guid>/blog/common-lisp-on-the-web-enrich-your-stacktrace-with-request-and-session-data/</guid>
+      <description>A short post to show the usefulness of Hunchentoot-errors and to thank Mariano again.
+This library adds the current request and session data to your stacktrace, either in the REPL (base case) or in the browser.
+TLDR;
+Use it like this:
+;; (ql:quickload &amp;quot;hunchentoot-errors) ;; ;; We also use easy-routes: (ql:quickload &amp;quot;easy-routes&amp;quot;) (defclass acceptor (easy-routes:easy-routes-acceptor hunchentoot-errors:errors-acceptor) () (:documentation &amp;quot;Our Hunchentoot acceptor that uses easy-routes and hunchentoot-errors, for easier route definition and enhanced stacktraces with request and session data.</description>
+    </item>
+    
+    <item>
+      <title>I published 17 videos about Common Lisp macros - learn Lisp with a code-first tutorial 🎥 ⭐</title>
+      <link>/blog/17-new-videos-on-common-lisp-macros/</link>
+      <pubDate>Fri, 15 Sep 2023 17:07:23 +0200</pubDate>
+      
+      <guid>/blog/17-new-videos-on-common-lisp-macros/</guid>
+      <description>For those who don&amp;rsquo;t know and who didn&amp;rsquo;t see the banner :D I am creating a Common Lisp course on the Udemy platform (with complementary videos on Youtube). I wanted to do something different and complementary than writing on the Cookbook.
+I worked on new videos this summer and I just finished editing the subtitles. I have added 17 videos (worth 1h30+ of code-driven content) about Common Lisp macros!</description>
+    </item>
+    
+    <item>
+      <title>Pretty GUIs now: nodgui comes with a pre-installed nice looking theme</title>
+      <link>/blog/nodgui-now-has-a-nice-looking-theme-by-default/</link>
+      <pubDate>Thu, 01 Jun 2023 19:03:35 +0200</pubDate>
+      
+      <guid>/blog/nodgui-now-has-a-nice-looking-theme-by-default/</guid>
+      <description>Being able to load a custom theme is great, but it would be even better if we didn&amp;rsquo;t have to manually install one.
+Well, recent changes in nodgui from yesterday and today just dramatically improved the GUI situation for Common Lisp[0].
+nodgui now ships the yaru theme @cage commited the Yaru theme from ttkthemes in nodgui&amp;rsquo;s repository, and we added QoL improvements. To use it, now you can simply do:</description>
+    </item>
+    
+    <item>
+      <title>Pretty GUI in Common Lisp with nodgui&#39;s Tk themes</title>
+      <link>/blog/pretty-gui-in-common-lisp-with-nodgui-tk-themes/</link>
+      <pubDate>Sat, 27 May 2023 00:22:04 +0200</pubDate>
+      
+      <guid>/blog/pretty-gui-in-common-lisp-with-nodgui-tk-themes/</guid>
+      <description>Do you think Tcl/Tk GUIs are doomed to look outdated?
+Fear not!
+A treeview widget:
+The official example of Forest Light:
+The ttkthemes gallery
+Plus, Tk itself has a little choice of built-in themes:
+We can use these themes with nodgui, the Ltk fork.
+In June of 2020, @cage added a little function to load a .tcl file:
+(defun eval-tcl-file (file-path) &amp;quot;This function will feed the TCL interpreter with the contents of the file `path&#39;.</description>
+    </item>
+    
+    <item>
+      <title>i18n in my Lisp web app with Djula templates and gettext</title>
+      <link>/blog/i18n-in-my-lisp-web-app-with-djula-templates-and-gettext/</link>
+      <pubDate>Mon, 08 May 2023 14:01:34 +0200</pubDate>
+      
+      <guid>/blog/i18n-in-my-lisp-web-app-with-djula-templates-and-gettext/</guid>
+      <description>I finally added translations to my Lisp web app \o/
+I wanted to do it with gettext and Djula templates. There seemed to be some support for this, but it turned out… not straightforward. After two failed attempts, I decided to offer a little 90 USD bounty for the task (I announced it on the project&amp;rsquo;s issues and on Discord, watch them out for future bounties ;) ).
+@fstamour took the challenge and is the person I&amp;rsquo;ll be eternally grateful for :D He kindly set up everything, answered my questions and traced down annoying bugs.</description>
+    </item>
+    
+    <item>
+      <title>How to parse command line arguments in Common Lisp (bis)</title>
+      <link>/blog/how-to-parse-command-line-arguments-in-common-lisp/</link>
+      <pubDate>Wed, 19 Apr 2023 11:44:56 +0200</pubDate>
+      
+      <guid>/blog/how-to-parse-command-line-arguments-in-common-lisp/</guid>
+      <description>In 2018, I wrote a blog post and the Cookbook page on how to build Common Lisp binaries, and how to parse command-line arguments with the unix-opts library.
+But since then, new libraries were created an they are pretty good! They are simpler to use, and have much more features. I had a good experience with Clingon: its usage is clear, its documentation is very good, it is very flexible (it has hooks and generic functions waiting to have an :around method) and @dnaeon is not at his first great CL project.</description>
+    </item>
+    
+    <item>
+      <title>These Years in Common Lisp: 2022 in review</title>
+      <link>/blog/these-years-in-common-lisp-2022-in-review/</link>
+      <pubDate>Mon, 09 Jan 2023 19:54:29 +0100</pubDate>
+      
+      <guid>/blog/these-years-in-common-lisp-2022-in-review/</guid>
+      <description>And 2022 is over. The Common Lisp language and environment are solid and stable, yet evolve. Implementations, go-to libraries, best practices, communities evolve. We don&amp;rsquo;t need a &amp;ldquo;State of the Ecosystem&amp;rdquo; every two weeks but still, what happened and what did you miss in 2022?
+This is my pick of the most exciting, fascinating, interesting or just cool projects, tools, libraries and articles that popped-up during that time (with a few exceptions that appeared in late 2021).</description>
+    </item>
+    
+    <item>
+      <title>Debugging Lisp: fix and resume a program from any point in stack 🎥</title>
+      <link>/blog/debugging-lisp-fix-and-resume-a-program-from-any-point-in-stack/</link>
+      <pubDate>Tue, 06 Dec 2022 12:47:04 +0100</pubDate>
+      
+      <guid>/blog/debugging-lisp-fix-and-resume-a-program-from-any-point-in-stack/</guid>
+      <description>You are doing god&amp;rsquo;s work on a time-intensive computation, but your final step errors out :S Are you doomed to start everything from zero, and wait again for this long process? No! Find out.
+I show this with Emacs and Slime, then with the Lem editor (ready-to-use for CL, works with many more languages thanks to its LSP client).
+(This video is so cool :D Sound on)
+ We use the built-in Common Lisp interactive debugger that lets us restart one precise frame from the call stack.</description>
+    </item>
+    
+    <item>
+      <title>Debugging Lisp: trace options, break on conditions</title>
+      <link>/blog/debugging-lisp-trace-options-break-on-conditions/</link>
+      <pubDate>Fri, 02 Dec 2022 11:08:27 +0100</pubDate>
+      
+      <guid>/blog/debugging-lisp-trace-options-break-on-conditions/</guid>
+      <description>Those are useful Common Lisp debugging tricks. Did you know about trace options?
+We see how trace accepts options. Especially, we see how we can break and invoke the interactive debugger before or after a function call, how we can break on a condition (&amp;ldquo;this argument equals 0&amp;rdquo;) and how we can enrich the trace output. But we only scratch the surface, more options are documented on their upstream documentation:</description>
+    </item>
+    
+    <item>
+      <title>Lisp for the web: building one standalone binary with foreign libraries, templates and static assets</title>
+      <link>/blog/lisp-for-the-web-build-standalone-binaries-foreign-libraries-templates-static-assets/</link>
+      <pubDate>Mon, 28 Nov 2022 18:43:43 +0100</pubDate>
+      
+      <guid>/blog/lisp-for-the-web-build-standalone-binaries-foreign-libraries-templates-static-assets/</guid>
+      <description>In our previous entry, we saw how to deploy our web application with Systemd, either from sources or with a binary. Now we&amp;rsquo;ll speak more about this building process to produce one binary that contains everything for our web app. We&amp;rsquo;ll tackle 3 issues:
+ ship foreign libraries alongside your binary, such as libreadline.so or libsqlite3.so, include your Djula templates into your binary, serve static files from your binary, without reading the filesystem, and we&amp;rsquo;ll see my Gitlab CI recipe.</description>
+    </item>
+    
+    <item>
+      <title>Lisp for the web: deploying with Systemd, gotchas and solutions</title>
+      <link>/blog/lisp-for-the-web-deploy-with-systemd/</link>
+      <pubDate>Tue, 30 Aug 2022 16:57:37 +0200</pubDate>
+      
+      <guid>/blog/lisp-for-the-web-deploy-with-systemd/</guid>
+      <description>How do you run your Common Lisp (web) application on your server? Nowadays most GNU/Linux distros have Systemd. I recently used it more, with a mix of applications running from source, from a binary, running locally or on my VPS. I had to bypass a few gotchas, so let&amp;rsquo;s recap&amp;rsquo; what you need to know.
+Also stay tuned: next, we&amp;rsquo;ll see how to build a standalone binary for your Common Lisp application with Deploy (so that we handle foreign libraries like libssl), how to include your Djula HTML templates as well as your static assets.</description>
+    </item>
+    
+    <item>
+      <title>New video: how to request a REST API in Common Lisp: fetching the GitHub API 🎥</title>
+      <link>/blog/new-video-how-to-request-a-web-api-with-common-lisp/</link>
+      <pubDate>Sat, 11 Jun 2022 11:43:31 +0200</pubDate>
+      
+      <guid>/blog/new-video-how-to-request-a-web-api-with-common-lisp/</guid>
+      <description>A few weeks ago, I put together a new Lisp video. It&amp;rsquo;s cool, sound on, &amp;lsquo;til the end ;)
+ I want to show how to (quickly) do practical, real-world stuff in Lisp. Here, how to request a web API. We create a new full-featured project with my project skeleton, we study the GitHub API, and we go ahead.
+I develop in Emacs with Slime, but in the end we also build a binary, so we have a little application that works on the command line (note that I didn&amp;rsquo;t use SBCL&amp;rsquo;s core compression, we could have a lighter binary of around 30MB).</description>
+    </item>
+    
+    <item>
+      <title>Video: Create a Common Lisp project from scratch with our project generator 🎥</title>
+      <link>/blog/video-create-a-lisp-project-with-our-project-generator/</link>
+      <pubDate>Wed, 11 May 2022 11:43:31 +0200</pubDate>
+      
+      <guid>/blog/video-create-a-lisp-project-with-our-project-generator/</guid>
+      <description>In this video I want to demo real-world Lisp stuff I had trouble finding tutorials for:
+ how to create a CL project:  what&amp;rsquo;s in the .asd file? what&amp;rsquo;s a simple package definition? how do we load everything in our editor (Emacs and SLIME here)?  how to set up tests?  and how to run them from the terminal? and (WTF) how to get the correct exit code????  how to build a binary in order to run our app from the terminal?</description>
+    </item>
+    
+    <item>
+      <title>Writing an interactive web app in Common Lisp: Hunchentoot then CLOG</title>
+      <link>/blog/clog-contest/</link>
+      <pubDate>Thu, 28 Apr 2022 15:23:14 +0200</pubDate>
+      
+      <guid>/blog/clog-contest/</guid>
+      <description>We want a web app to display a list of data and have an input field to interactively filter it.
+We&amp;rsquo;ll start with a simple, regular web app built with Hunchentoot. We&amp;rsquo;ll have a search input to filter our data, and we&amp;rsquo;ll see that to be more interactive, typically to filter out the results as the user types, we&amp;rsquo;ll need more than basic HTTP requests. We&amp;rsquo;ll need some JavaScript. But we&amp;rsquo;ll reach this level of interactivity with CLOG (and no JavaScript).</description>
+    </item>
+    
+    <item>
+      <title>I Am Creating a Common Lisp Video Course on Udemy (free video previews) 🎥</title>
+      <link>/blog/i-am-creating-a-common-lisp-video-course-on-udemy/</link>
+      <pubDate>Fri, 15 Apr 2022 15:23:14 +0200</pubDate>
+      
+      <guid>/blog/i-am-creating-a-common-lisp-video-course-on-udemy/</guid>
+      <description>Everyone, let me celebrate a little bit: I am creating a Common Lisp video course on the Udemy platform. I&amp;rsquo;m several dozen hours in already and it&amp;rsquo;s taking a good shape! It is so much more time consuming to create videos than to write a tutorial O_o But I like what&amp;rsquo;s in there already, although there isn&amp;rsquo;t everything I want to teach, of course. I&amp;rsquo;m working on more content. Everything will come in time, and meanwhile you can buy the course: you&amp;rsquo;ll get future content for &amp;ldquo;free&amp;rdquo; ;) Yes the course is to sell, hopefully it will help me concentrate more on my CL activities (BTW, dear reader, here&amp;rsquo;s a 50% off coupon for April, 2022, and if you are a student drop me a line).</description>
+    </item>
+    
+    <item>
+      <title>Lisp Interview: Arnold Noronha of Screenshotbot: from Facebook and Java to Common Lisp.</title>
+      <link>/blog/lisp-interview-screenshotbot/</link>
+      <pubDate>Mon, 06 Dec 2021 19:08:30 +0100</pubDate>
+      
+      <guid>/blog/lisp-interview-screenshotbot/</guid>
+      <description>I have come to like asking questions to people running companies that use CL, and I have Arnold in my radar for quite some time.
+He contributed a while back to my cl-str library, and at that time, I don&amp;rsquo;t recall how many Lisp projects he had in his Github, but not as much as today. Since then, he created ScreenShotBot (an open-source screenshot testing service) and he released a few very useful Lisp (and Elisp) libraries.</description>
+    </item>
+    
+    <item>
+      <title>Lisp for the web: pagination and cleaning up HTML with LQuery</title>
+      <link>/blog/lisp-for-the-web-pagination-and-cleaning-up-html/</link>
+      <pubDate>Thu, 25 Nov 2021 11:39:18 +0100</pubDate>
+      
+      <guid>/blog/lisp-for-the-web-pagination-and-cleaning-up-html/</guid>
+      <description>I maintain a web application written in Common Lisp, used by real world© clients© (incredible I know), and I finally got to finish two little additions:
+ add pagination to the list of products cleanup the HTML I get from webscraping (so we finally fetch a book summary, how cool) (for those who pay for it, we can also use a third-party book database).  The HTML cleanup part is about how to use LQuery for the task.</description>
+    </item>
+    
+    <item>
+      <title>Lisp Interview: questions to  Alex Nygren of Kina Knowledge, using Common Lisp extensively in their document processing stack</title>
+      <link>/blog/lisp-interview-kina/</link>
+      <pubDate>Fri, 22 Oct 2021 12:49:17 +0200</pubDate>
+      
+      <guid>/blog/lisp-interview-kina/</guid>
+      <description>Recently, the awesome-lisp-companies list was posted on HN, more people got to know it (look, this list is fan-cooked and we add companies when we learn about one, often by chance, don&amp;rsquo;t assume it&amp;rsquo;s anything &amp;ldquo;official&amp;rdquo; or exhaustive), and Alex Nygren informed us that his company Kina Knowledge uses Common Lisp in production:
+ We use Common Lisp extensively in our document processing software core for classification, extraction and other aspects of our service delivery and technology stack.</description>
+    </item>
+    
+    <item>
+      <title>Discovering the Lispworks IDE</title>
+      <link>/blog/discovering-the-lispworks-ide/</link>
+      <pubDate>Mon, 24 May 2021 13:57:41 +0200</pubDate>
+      
+      <guid>/blog/discovering-the-lispworks-ide/</guid>
+      <description>LispWorks is a Common Lisp implementation that comes with its own Integrated Development Environment (IDE) and its share of unique features, such as the CAPI GUI toolkit. It is proprietary and provides a free limited version.
+Here, we will mainly explore its IDE, asking ourselves what it can offer to a seasoned lisper used to Emacs and Slime. The short answer is: more graphical tools, such as an easy to use graphical stepper, a tracer, a code coverage browser or again a class browser.</description>
+    </item>
+    
+    <item>
+      <title>Lem can now be started as a full featured Lisp REPL</title>
+      <link>/blog/lem-can-be-started-as-a-full-featured-repl/</link>
+      <pubDate>Wed, 24 Mar 2021 12:43:13 +0100</pubDate>
+      
+      <guid>/blog/lem-can-be-started-as-a-full-featured-repl/</guid>
+      <description>The Lem editor, which supports Common Lisp as well as other languages, works by default in the terminal with a ncurses frontend (it also has an experimental Electron frontend). It ships a nice Lisp REPL: it has good fuzzy completion, enough keyboard shortcuts, an interactive debugger, a completion menu, etc.
+It is now possible to run Lem straight in its Lisp REPL. Run it with:
+lem --eval &amp;quot;(lem-lisp-mode:start-lisp-repl t)&amp;quot;  The optional argument (t) was added recently (thanks, @cxxxr) and allows to start the REPL in fullscreen.</description>
+    </item>
+    
+    <item>
+      <title>State of the Common Lisp ecosystem, 2020  🎉</title>
+      <link>/blog/state-of-the-common-lisp-ecosystem-2020/</link>
+      <pubDate>Mon, 08 Feb 2021 11:29:11 +0200</pubDate>
+      
+      <guid>/blog/state-of-the-common-lisp-ecosystem-2020/</guid>
+      <description>This is a description of the Common Lisp ecosystem, as of January, 2021, from the perspective of a user and contributor.
+The purpose of this article is both to give an overview of the ecosystem, and to help drive consolidation in each domain.
+Each application domain has recommendations for consolidating that part of the ecosystem, and pointers for interesting future work.
+This article is derived from Fernando Borretti&amp;rsquo;s State of the Common Lisp ecosystem from 2015, hence the introduction that sounded familiar.</description>
+    </item>
+    
+    <item>
+      <title>The Common Lisp Cookbook Is Now Available in EPUB and PDF</title>
+      <link>/blog/the-common-lisp-cookbook-is-now-available-in-epub-and-pdf/</link>
+      <pubDate>Tue, 19 Jan 2021 11:32:25 +0100</pubDate>
+      
+      <guid>/blog/the-common-lisp-cookbook-is-now-available-in-epub-and-pdf/</guid>
+      <description>I am glad to announce that the Common Lisp Cookbook is now available in ePub and PDF.
+It is available for free, and you can pay what you want[1] to say a loud &amp;ldquo;thank you&amp;rdquo; and to further support its development. Thanks!
+This EPUB represents the work on the span of three years where I have been constantly reading, experimenting, asking, discovering tips, tools, libraries and best-practices, built-in or not, all of which should have been easily accessible but were not.</description>
+    </item>
+    
+    <item>
+      <title>Another Common Lisp app in production</title>
+      <link>/blog/another-common-lisp-app-in-production/</link>
+      <pubDate>Mon, 14 Dec 2020 22:54:28 +0100</pubDate>
+      
+      <guid>/blog/another-common-lisp-app-in-production/</guid>
+      <description>A quick post to celebrate the birth of another Common Lisp application running in production©. This time, it is not open source, but I can describe it.
+It is used by bookshops in France and Belgium to upload their catalogue to online platforms. And no, they don&amp;rsquo;t know, and don&amp;rsquo;t need to know, the language it is implemented in!
+It is a simple application that reads data from an existing DB, builds a text file with special rules, sends the file to an FTP server, and does it every day.</description>
+    </item>
+    
+    <item>
+      <title>Pro mailing list: on Common Lisp and parallel GC</title>
+      <link>/blog/pro-mailing-list-on-common-lisp-and-parallel-gc/</link>
+      <pubDate>Mon, 14 Dec 2020 22:41:32 +0100</pubDate>
+      
+      <guid>/blog/pro-mailing-list-on-common-lisp-and-parallel-gc/</guid>
+      <description>I recently enjoyed this discussion on the pro mailing list. It started with a call of recommendations on music software, and the discussion evolved in discussing parallel garbage collection. By the way, can you site an implementation that has parallel GC?
+Pascal Costanza:
+«When moving our elPrep software away from Common Lisp, we evaluated C++, Go and Java as potential candidates, and Go turned out to provide the best balance between performance and memory use.</description>
+    </item>
+    
+    <item>
+      <title>Lisp Interview: more questions to CLPM author. Common Lisp at university for temporal reasoning and risk-bounded planning</title>
+      <link>/blog/lisp-interview-more-questions-to-daewok-clpm-author/</link>
+      <pubDate>Sun, 15 Nov 2020 08:22:59 +0100</pubDate>
+      
+      <guid>/blog/lisp-interview-more-questions-to-daewok-clpm-author/</guid>
+      <description>Some days ago on reddit/r/lisp, we got to (re)discover CLPM, the Common Lisp Package Manager.
+Its author, Eric Timmons aka daewok, was kind enough to give more context, and to answer some more questions of mine, about his use of Common Lisp in his university group.
+Below I&amp;rsquo;ll give an overview of CLPM, stress on how it differs from Quicklisp, and then paste the interview.
+/Note/: it&amp;rsquo;s the same content as on reddit, but saved from oblivion!</description>
+    </item>
+    
+    <item>
+      <title>You can buy a preview of the Common Lisp Cookbook in ePub</title>
+      <link>/blog/you-can-buy-a-preview-of-the-common-lisp-cookbook-in-epub/</link>
+      <pubDate>Fri, 13 Nov 2020 22:48:15 +0100</pubDate>
+      
+      <guid>/blog/you-can-buy-a-preview-of-the-common-lisp-cookbook-in-epub/</guid>
+      <description>See here: https://ko-fi.com/s/01fee22a32
+Let me try something: I propose you here to buy the ePub, even though it is meant to be available for free.
+I contributed quite a lot to the Cookbook and I found since the beginning that having an EPUB and/or a PDF version would be very useful. Some years later, nobody did it, and I finally wrote a script to bundle all the pages together and generate an ePub, and then a PDF.</description>
+    </item>
+    
+    <item>
+      <title>Composing queries with Mito, or doing without Django lazy querysets and Q objects</title>
+      <link>/blog/composing-queries-with-mito-aka-replacing-lazy-querysets-and-q-objects/</link>
+      <pubDate>Thu, 24 Sep 2020 18:15:44 +0200</pubDate>
+      
+      <guid>/blog/composing-queries-with-mito-aka-replacing-lazy-querysets-and-q-objects/</guid>
+      <description>When I didn&amp;rsquo;t know Lisp at all, I skimmed at CLSQL&amp;rsquo;s and Mito&amp;rsquo;s documentation and I didn&amp;rsquo;t find a mention of &amp;ldquo;lazy&amp;rdquo;, &amp;ldquo;querysets&amp;rdquo; (a Django term!) nor a mention of any means to compose queries. I had no idea how I would replace querysets, F and Q objects and the many functions for DB queries that were being added into newer Django versions. I concluded that the Lisp ecosystem was lagging behind.</description>
+    </item>
+    
+    <item>
+      <title>How are Lisp REPLs different from Python or Ruby REPLs ? (Hackernews, 2020)</title>
+      <link>/blog/how-are-lisp-repls-different-from-python-or-ruby-repls/</link>
+      <pubDate>Tue, 14 Jul 2020 16:11:43 +0200</pubDate>
+      
+      <guid>/blog/how-are-lisp-repls-different-from-python-or-ruby-repls/</guid>
+      <description>Mikelevins, https://news.ycombinator.com/item?id=23811382, July 2020
+(some more comments on https://www.reddit.com/r/lisp/comments/hqesvp/explaining_the_advantages_of_the_repl/)
+(on terminology: we should maybe call Python&amp;rsquo;s &amp;ldquo;REPL&amp;rdquo; a shell, and put emphasis on image-based development, instead of only saying REPL, for Lisp)
+I&amp;rsquo;ve answered similar questions several times over the past few years, but I don&amp;rsquo;t mind repeating myself. It offers me a glimmer of hope that my preferred way of working may not fade away, after all.
+Consider the standard Common Lisp generic function UPDATE-INSTANCE-FOR-REDEFINED-CLASS (http://clhs.</description>
+    </item>
+    
+    <item>
+      <title>Looking for a Lisp Web Developer (not a real job, but nearly)</title>
+      <link>/blog/looking-for-a-lisp-web-developer/</link>
+      <pubDate>Fri, 05 Jun 2020 21:38:01 +0200</pubDate>
+      
+      <guid>/blog/looking-for-a-lisp-web-developer/</guid>
+      <description>Dear lispers,
+I decided that I can not develop three projects in parallel fast enough, so I&amp;rsquo;m seeking for a fellow programmer to join the effort.
+Disclaimer: this is not a real position, but there is a little budget
+I recently presented my online catalogue for bookshops. You will work on something very similar, but bigger. I need help to re-write the existing free software for bookshops in Common Lisp. The existing one is in Python.</description>
+    </item>
+    
+    <item>
+      <title>A free software for bookshops to show their catalogue online</title>
+      <link>/blog/a-free-software-for-bookshops-to-show-their-catalogue-online/</link>
+      <pubDate>Sat, 30 May 2020 13:15:47 +0200</pubDate>
+      
+      <guid>/blog/a-free-software-for-bookshops-to-show-their-catalogue-online/</guid>
+      <description>I wrote a free software for bookshops to publish their catalogue online. Clients can now browse the available books and order them. It is enough generic so we can show other products too.
+ https://abstock.gitlab.io/#/en/ sources and bug tracker: https://gitlab.com/vindarel/abstock Github mirror: https://github.com/vindarel/ABStock the demo  Here&amp;rsquo;s how a search result looks like:
+Features The website is made generic enough for different clients, and is made totally hackable with pre- and post- configuration files that load your Lisp logic.</description>
+    </item>
+    
+    <item>
+      <title>Today I Realized that to live reload my Lisp web app is straightforward and so convenient</title>
+      <link>/blog/i-realized-that-to-live-reload-my-web-app-is-easy-and-convenient/</link>
+      <pubDate>Tue, 12 May 2020 16:02:05 +0200</pubDate>
+      
+      <guid>/blog/i-realized-that-to-live-reload-my-web-app-is-easy-and-convenient/</guid>
+      <description>We all know that we can start a web server in the REPL and develop a web app as interactively as any other app, we know how to connect to a remote Lisp image by starting a Swank server and how to interact with it from our favorite editor on our machine, we know we can build a self-contained binary of the web app and simply run it, but one thing I had not realized, despite being the basics, is that by starting the web app with sbcl --load app.</description>
+    </item>
+    
+    <item>
+      <title>I Worked Remotely in Common Lisp. Here&#39;s My Incredible Story.</title>
+      <link>/blog/i-worked-remotely-in-common-lisp-heres-my-incredible-story/</link>
+      <pubDate>Tue, 12 May 2020 12:52:57 +0200</pubDate>
+      
+      <guid>/blog/i-worked-remotely-in-common-lisp-heres-my-incredible-story/</guid>
+      <description>Nearly one year ago, I received an email that asked me if I was available to do remote Lisp work. It was the day before the end of a contract and I had to tell my team if I wanted to continue or not. I made a virtual offering to the Lisp god and I started the Lisp job.
+Disclaimer: this post was written on Lisp Advocates&amp;rsquo; reddit. Lisp Advocates is a meme, but it&amp;rsquo;s sort of serious too.</description>
+    </item>
+    
+    <item>
+      <title>Custom Djula filters</title>
+      <link>/blog/custom-djula-filter/</link>
+      <pubDate>Wed, 08 Apr 2020 11:38:17 +0200</pubDate>
+      
+      <guid>/blog/custom-djula-filter/</guid>
+      <description>Djula is a Common Lisp port of the Django templating language. It&amp;rsquo;s good, it&amp;rsquo;s proven (it&amp;rsquo;s one of the most downloaded Quicklisp packages), it is easy to use and it has good documentation.
+It basically looks like this:
+{% extends &amp;quot;base.html&amp;quot; %} {% block title %}Memberlist{% endblock %} {% block content %} &amp;lt;ul&amp;gt; {% for user in users %} &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;{{ user.url }}&amp;quot;&amp;gt;{{ user.username }}&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt; {% endfor %} &amp;lt;/ul&amp;gt; {% endblock %}  What was missing in the documentation was how to create custom filters.</description>
+    </item>
+    
+    <item>
+      <title>GUI Programming in Common Lisp, part 5/5: Nuklear</title>
+      <link>/blog/gui-programming-in-common-lisp-part-5-of-5-nuklear/</link>
+      <pubDate>Fri, 27 Mar 2020 13:19:45 +0100</pubDate>
+      
+      <guid>/blog/gui-programming-in-common-lisp-part-5-of-5-nuklear/</guid>
+      <description>Nuklear is a small immediate-mode GUI toolkit:
+ Nuklear is a minimal-state, immediate-mode graphical user interface toolkit written in ANSI C and licensed under public domain. It was designed as a simple embeddable user interface for application and does not have any dependencies, a default render backend or OS window/input handling but instead provides a highly modular, library-based approach, with simple input state for input and draw commands describing primitive shapes as output.</description>
+    </item>
+    
+    <item>
+      <title>GUI Programming in Common Lisp, part 4/5: IUP</title>
+      <link>/blog/gui-programming-in-common-lisp-part-4-of-5-iup/</link>
+      <pubDate>Fri, 27 Mar 2020 13:11:36 +0100</pubDate>
+      
+      <guid>/blog/gui-programming-in-common-lisp-part-4-of-5-iup/</guid>
+      <description>IUP is a cross-platform GUI toolkit actively developed at the PUC university of Rio de Janeiro, Brazil. It uses native controls: the Windows API for Windows, Gtk3 for GNU/Linux. At the time of writing, it has a Cocoa port in the works (as well as iOS, Android and WASM ones). A particularity of IUP is its small API.
+The Lisp bindings are lispnik/iup. They are nicely done in that they are automatically generated from the C sources.</description>
+    </item>
+    
+    <item>
+      <title>GUI Programming in Common Lisp, part 3/5: Gtk3</title>
+      <link>/blog/gui-programming-in-common-lisp-part-3-of-5-gtk3/</link>
+      <pubDate>Fri, 27 Mar 2020 13:05:22 +0100</pubDate>
+      
+      <guid>/blog/gui-programming-in-common-lisp-part-3-of-5-gtk3/</guid>
+      <description>We continue our tour of GUI toolkits for CL with Gtk+3 and cl-cffi-gtk.
+The previosu posts are:
+ part 1: Ltk part 2: Qt4  This blog post series was initially written for the Common Lisp Cookbook, you can (and should) read it there:
+https://lispcookbook.github.io/cl-cookbook/gui.html
+Gtk+3 (cl-cffi-gtk) Gtk+3 is the primary library used to build GNOME applications. Its (currently most advanced) lisp bindings is cl-cffi-gtk. While primarily created for GNU/Linux, Gtk works fine under macOS and can now also be used on Windows.</description>
+    </item>
+    
+    <item>
+      <title>GUI Programming in Common Lisp, part 2/5: Qt4 with Qtools</title>
+      <link>/blog/gui-programming-in-common-lisp-part-2-of-5-qt4-qtools/</link>
+      <pubDate>Fri, 27 Mar 2020 12:42:59 +0100</pubDate>
+      
+      <guid>/blog/gui-programming-in-common-lisp-part-2-of-5-qt4-qtools/</guid>
+      <description>Here&amp;rsquo;s the second part of our exploration of GUI toolkits for Common Lisp.
+The first part and introduction is accessible here:
+ part 1: Ltk  This blog post series was initially written for the Common Lisp Cookbook, you can (and should) read it there:
+https://lispcookbook.github.io/cl-cookbook/gui.html
+Qt4 (Qtools) Do we need to present Qt and Qt4? Qt is huge and contains everything and the kitchen sink. Qt not only provides UI widgets, but numerous other layers (networking, D-BUS…).</description>
+    </item>
+    
+    <item>
+      <title>GUI Programming in Common Lisp, part 1/5: Tk</title>
+      <link>/blog/gui-programming-in-common-lisp-part-1-of-5-tk/</link>
+      <pubDate>Fri, 27 Mar 2020 12:20:36 +0100</pubDate>
+      
+      <guid>/blog/gui-programming-in-common-lisp-part-1-of-5-tk/</guid>
+      <description>Lisp has a long and rich history and so does the development of Graphical User Interfaces in Lisp. In fact, the first GUI builder was written in Lisp (and sold to Apple. It is now Interface Builder).
+Lisp is also famous and unrivaled for its interactive development capabilities, a feature even more worth having to develop GUI applications. Can you imagine compiling one function and seeing your GUI update instantly?</description>
+    </item>
+    
+    <item>
+      <title>Literate Programming in Lisp With Erudite</title>
+      <link>/blog/literate-programming-in-lisp-with-erudite/</link>
+      <pubDate>Sat, 21 Mar 2020 11:01:57 +0100</pubDate>
+      
+      <guid>/blog/literate-programming-in-lisp-with-erudite/</guid>
+      <description>Erudite is a Common Lisp library to write literate programs. The latest release (march, 2020) brings cool new features, amongst which the ability to capture and print code output.
+This page was created with Erudite. You can follow along with its source here. Blogging about a programming language in the language itself is pretty awesome and convenient (no more copy-pasting of code snippets and manual adjustements of the indentation, yay!</description>
+    </item>
+    
+    <item>
+      <title>Common Lisp Macros By Example Tutorial</title>
+      <link>/blog/common-lisp-macros-by-example-tutorial/</link>
+      <pubDate>Mon, 02 Mar 2020 21:12:53 +0100</pubDate>
+      
+      <guid>/blog/common-lisp-macros-by-example-tutorial/</guid>
+      <description>I have recently edited and somewhat expanded the macros page on the Common Lisp Cookbook. I find it may more legible and reader friendly, so I reproduce it below (however, I cut two parts so than you get the essential).
+You&amp;rsquo;d better read it on the Cookbook: https://lispcookbook.github.io/cl-cookbook/macros.html
+The word macro is used generally in computer science to mean a syntactic extension to a programming language. (Note: The name comes from the word &amp;ldquo;macro-instruction,&amp;rdquo; which was a useful feature of many second-generation assembly languages.</description>
+    </item>
+    
+    <item>
+      <title>Yes Google Uses and Hacks on Common Lisp</title>
+      <link>/blog/yes-google-develops-common-lisp/</link>
+      <pubDate>Mon, 02 Mar 2020 20:47:32 +0100</pubDate>
+      
+      <guid>/blog/yes-google-develops-common-lisp/</guid>
+      <description>ITA Software, owned by Google, the airfare search and pricing system that is still used by companies such as Kayak.com or Orbitz, is a well-known example of a successful industrial and large Common Lisp software.
+We&amp;rsquo;re legitimate to wonder if they still run it (they do), if Google develops more CL software (I don&amp;rsquo;t know), or if they put resources to improve a CL implementation: they do.
+According to https://mstmetent.blogspot.com/2020/01/sbcl20-in-vienna-last-month-i-attended.html:</description>
+    </item>
+    
+    <item>
+      <title>Python VS Common Lisp Workflow and Ecosystem</title>
+      <link>/blog/pythonvslisp-workflow-and-ecosystem/</link>
+      <pubDate>Wed, 06 Nov 2019 15:21:53 +0100</pubDate>
+      
+      <guid>/blog/pythonvslisp-workflow-and-ecosystem/</guid>
+      <description>please see Python VS Common Lisp (it&amp;rsquo;s a static page you can find in the menu).</description>
+    </item>
+    
+    <item>
+      <title>Snippet: Manipulating Rows and Columns With ClAWK</title>
+      <link>/blog/snippet-manipulating-rows-and-columns-with-clawk/</link>
+      <pubDate>Mon, 04 Nov 2019 18:40:52 +0100</pubDate>
+      
+      <guid>/blog/snippet-manipulating-rows-and-columns-with-clawk/</guid>
+      <description>I just discovered clawk, that seems to originate from lispbuilder-clawk. Its last commit dates from 2011, typical from Lisp and that&amp;rsquo;s OK, libraries have the right to be done, it has no useful README nor documentation, but we can see its use in the tests, and the library is easily discoverable.
+This library seems perfect to manipulate data in rows and columns.
+Let&amp;rsquo;s have a quick look with this dummy txt file:</description>
+    </item>
+    
+    <item>
+      <title>Replic v0.12</title>
+      <link>/blog/replic-v0.12-readline-applications-with-custom-completion/</link>
+      <pubDate>Tue, 29 Oct 2019 18:40:07 +0100</pubDate>
+      
+      <guid>/blog/replic-v0.12-readline-applications-with-custom-completion/</guid>
+      <description>We recently pushed our replic library version 0.12, adding a couple of expected features, thanks to the input of our users user:
+ we can TAB-complete sentences (strings inside quotes) we can define a different completion method for each arguments of a command. we added a declarative way to automatically print a function&amp;rsquo;s result. The default function can be overriden by users (in order too, for example, color output).  So we can do something like this: we create a function (that will become a command on the readline command line):</description>
+    </item>
+    
+    <item>
+      <title>Compile Time Type Checking in Common Lisp</title>
+      <link>/blog/compile-time-type-checking-in-common-lisp/</link>
+      <pubDate>Tue, 29 Oct 2019 17:12:33 +0100</pubDate>
+      
+      <guid>/blog/compile-time-type-checking-in-common-lisp/</guid>
+      <description>We often hear that Common Lisp is dynamically typed, which is not wrong, but that leads to the belief that Lisp is as bad as Python concerning types, which is plainly wrong. We don&amp;rsquo;t hear enough that CL is a compiled language, that we can add type annotations, and that SBCL does thorough type checking. Hence, what we have at hand is awesome: we can compile a whole program or compile a single function and get type warnings.</description>
+    </item>
+    
+    <item>
+      <title>Reddit: ABCL Common Lisp vs Clojure</title>
+      <link>/blog/reddit-abcl-common-lisp-vs-clojure/</link>
+      <pubDate>Mon, 23 Sep 2019 01:47:10 +0200</pubDate>
+      
+      <guid>/blog/reddit-abcl-common-lisp-vs-clojure/</guid>
+      <description>Not that I&amp;rsquo;m interested in using the Java platform :D but relevant comparisons between ABCL (Common Lisp on Java) and Clojure are rare. We just had a nice feedback on reddit, so here it is. The question was:
+ After looking at the quite old benchmarks, ABCL seems to perform alright. Can anyone share their experience with ABCL in terms of performance, stability and memory usage?
+ I wish I could give you more concrete numbers with an application you could test and see for yourself.</description>
+    </item>
+    
+    <item>
+      <title>Slime Tips</title>
+      <link>/blog/slime-tips/</link>
+      <pubDate>Mon, 26 Aug 2019 10:40:46 +0200</pubDate>
+      
+      <guid>/blog/slime-tips/</guid>
+      <description>Recently on reddit there was a reminder about lisptips.com and slime-tips. I already knew the two, but this time I fully enjoyed the Slime tips. I copy my favourites.
+As usual, I enhanced the Cookbook/emacs-ide.html at the same time.
+The Slime documentation is here: https://common-lisp.net/project/slime/doc/html/
+Documentation lookup  C-c C-d h looks up documentation in CLHS. But it works only on symbols, so there are two more bindings: C-c C-d # for reader macros C-c C-d ~ for format directives  Other bindings which may be useful:</description>
+    </item>
+    
+    <item>
+      <title>How to Check Slots Types at make-instance</title>
+      <link>/blog/how-to-check-slots-types-at-make-instance/</link>
+      <pubDate>Wed, 10 Jul 2019 15:28:08 +0200</pubDate>
+      
+      <guid>/blog/how-to-check-slots-types-at-make-instance/</guid>
+      <description>In CLOS, a slot can have a :type option, but it doesn&amp;rsquo;t inforce type checking. It is good practice to use it, for documentation and for compiler optimizations and warnings sometimes (with CCL and SBCL when safety is high), but one shouldn&amp;rsquo;t rely on it. To comply this need, we can simply create our own constructor functions.
+However, the sanity-clause library can do it since a couple of days. The validation error messages are pretty good.</description>
+    </item>
+    
+    <item>
+      <title>Web Development in Common Lisp: frameworks overview, templating, deployment</title>
+      <link>/blog/web-development-in-common-lisp/</link>
+      <pubDate>Mon, 08 Jul 2019 01:21:47 +0200</pubDate>
+      
+      <guid>/blog/web-development-in-common-lisp/</guid>
+      <description>We just published a long overdue page on the Cookbook: web development in Common Lisp. We have an ambivalent feeling about it since it isn&amp;rsquo;t really a recipe as in the other pages. Yet it is valuable content that required a certain amount of digging and tryouts. Indeed, it took us about two years to discover and advertise many projects, to learn, try and put a tutorial together. We also wrote a commercial application.</description>
+    </item>
+    
+    <item>
+      <title>Pattern Matching in Common Lisp</title>
+      <link>/blog/pattern-matching-in-common-lisp/</link>
+      <pubDate>Sun, 26 May 2019 16:17:08 +0200</pubDate>
+      
+      <guid>/blog/pattern-matching-in-common-lisp/</guid>
+      <description>New page on the Cookbook: https://lispcookbook.github.io/cl-cookbook/pattern_matching.html All examples come from Trivia&amp;rsquo;s wiki.
+The ANSI Common Lisp standard does not include facilities for pattern matching, but libraries existed for this task and Trivia became a community standard.
+Table of Contents
+ Common destructuring patterns  cons list, list* vector, vector* Class and structure pattern type, satisfies assoc, property, alist, plist Array, simple-array, row-major-array patterns Logic based patterns  and, or not guards  Nesting patterns See more   For an introduction to the concepts of pattern matching, see Trivia&amp;rsquo;s wiki.</description>
+    </item>
+    
+    <item>
+      <title>Functions Tutorial: Arguments, Multiple Values, funcall and apply, closures and more</title>
+      <link>/blog/functions-tutorial-arguments-multiple-values-more/</link>
+      <pubDate>Sun, 26 May 2019 16:08:10 +0200</pubDate>
+      
+      <guid>/blog/functions-tutorial-arguments-multiple-values-more/</guid>
+      <description>Here&amp;rsquo;s an enhanced page for the Cookbook: https://lispcookbook.github.io/cl-cookbook/functions.html
+Only the Currying part was untouched (we enhanced it already), the higher-order functions part existed and was rewritten. The rest is new, and it should help you start writing Common Lisp quicker than ever.
+Happy lisping !
+Table of Contents
+ Named functions: defun Arguments  Base case: required arguments Optional arguments: &amp;amp;optional Named parameters: &amp;amp;key  Mixing optional and key parameters Default values Variable number of arguments: &amp;amp;rest &amp;amp;allow-other-keys  Return values  Multiple return values: values and multiple-value-bind  Anonymous functions: lambda Calling functions programatically: funcall and apply Higher order functions: functions that return functions Closures setf functions Currying  Concept With the Alexandria library  Documentation   Named functions: defun Creating named functions is done with the defun keyword.</description>
+    </item>
+    
+    <item>
+      <title>I Now Work Professionally in Common Lisp O_o</title>
+      <link>/blog/i-now-work-professionally-in-common-lisp/</link>
+      <pubDate>Mon, 20 May 2019 18:48:31 +0200</pubDate>
+      
+      <guid>/blog/i-now-work-professionally-in-common-lisp/</guid>
+      <description>I&amp;rsquo;ve been paid to work on Common Lisp projects for a company for three months already. I didn&amp;rsquo;t expect it :) And we did hire !
+My Github profile shows a good part of what my experience is. I am a regular &amp;ldquo;full stack developper&amp;rdquo;, with 7 years of professional experience. I worked on diverse Python and Javascript projects for huge to small companies, private and public. When I re-discovered Common Lisp, I saw it solved a lot of problems I had developing and deploying medium to large software, and it promised to solve all of them (we&amp;rsquo;re nearly there :D ).</description>
+    </item>
+    
+    <item>
+      <title>TIL how to interactively fix a failing test</title>
+      <link>/blog/til-how-to-interactively-fix-a-failing-test/</link>
+      <pubDate>Tue, 12 Mar 2019 13:10:27 +0200</pubDate>
+      
+      <guid>/blog/til-how-to-interactively-fix-a-failing-test/</guid>
+      <description>I knew it was possible, but I got to try it recently.
+Here I run a test with fiveam. It fails. I tell fiveam to enter the debugger on failures with
+(setf 5am:*on-error* :debug)  so we have an immediate feedback and we can re-run the test from where it left off by choosing the appropriate restart.
+ Other test frameworks like Parachute allow that.
+This is one of the things that make development in Common Lisp enjoyable and faster than with other workflows.</description>
+    </item>
+    
+    <item>
+      <title>These Years in Common Lisp 2018</title>
+      <link>/blog/these-years-in-common-lisp-2018/</link>
+      <pubDate>Thu, 28 Feb 2019 14:42:46 +0100</pubDate>
+      
+      <guid>/blog/these-years-in-common-lisp-2018/</guid>
+      <description>It&amp;rsquo;s been already a little more than a year that I began my Lisp journey. I made quaterly news digests, mainly from reddit&amp;rsquo;s feed:
+ Q1 2018 - Q2 2018 - Q3 2018 - Q4 2018  Time has come for a yearly overview ! What happened in the Common Lisp world ? Are there (or groundbreaking promising useful fun) projects, articles, discussions, tutorials ?
+No need to say, I won&amp;rsquo;t reference everything we find in the quaterly posts, which don&amp;rsquo;t list all new projects appearing on Quicklisp (we can find these in the monthly Quicklisp releases) or Github.</description>
+    </item>
+    
+    <item>
+      <title>These Months in Common Lisp Q4 2018</title>
+      <link>/blog/these-months-in-common-lisp-q4-2018/</link>
+      <pubDate>Tue, 15 Jan 2019 20:01:30 +0200</pubDate>
+      
+      <guid>/blog/these-months-in-common-lisp-q4-2018/</guid>
+      <description>Q1 2018 Q2 2018 Q3 2018  I wanted to do this for a year and here we are ! I don&amp;rsquo;t think I&amp;rsquo;ll carry on, with this format at least.
+If I missed anything crucial: you have comments and PRs: https://gitlab.com/lisp-journey/lisp-journey.gitlab.io/
+Happy (re)discoveries !
+Documentation  Debugging – the Common Lisp Cookbook Loop, iteration, mapping – the Common Lisp Cookbook cl-exercise: Common Lisp Learning System running on browsers  Announcements  various SBCL releases (from 1.</description>
+    </item>
+    
+    <item>
+      <title>Why Deftask Chose Common Lisp</title>
+      <link>/blog/why-deftask-chose-common-lisp/</link>
+      <pubDate>Fri, 11 Jan 2019 12:21:30 +0100</pubDate>
+      
+      <guid>/blog/why-deftask-chose-common-lisp/</guid>
+      <description>We heard about Deftask, a task management app for teams, a few days ago, in an article about the internals of the Chronicity library. Deftask uses Common Lisp for its backend and its command-line app. This reasonates with the fact that Turtl doesn&amp;rsquo;t use CL anymore. So I asked Deftask&amp;rsquo;s author: why did you go with CL ?
+More than anything else, I think its down to fun and productivity. I feel that I am at my most productive when I writing CL in Emacs+SLIME.</description>
+    </item>
+    
+    <item>
+      <title>Why Turtl Switched From CL to Js</title>
+      <link>/blog/why-turtl-switched-from-lisp-to-js/</link>
+      <pubDate>Fri, 11 Jan 2019 10:21:18 +0100</pubDate>
+      
+      <guid>/blog/why-turtl-switched-from-lisp-to-js/</guid>
+      <description>Turtl is a very well done, secure collaborative notebook web app.
+ https://turtlapp.com  Its api backend is built in Common Lisp:
+ https://github.com/turtl/api/  It is based on many async libraries the developer wrote for Turtl, like the Wookie async HTTP server.
+&amp;ldquo;is&amp;rdquo; ? No, was :/ Even though this repository is still maintained (latest commit: 2nd of december 2018), it is deprecated and the new server is written in NodeJS.</description>
+    </item>
+    
+    <item>
+      <title>Introducing Replic: an executable and a library to build a readline app in no time</title>
+      <link>/blog/introducing-replic-a-readline-app-in-no-time/</link>
+      <pubDate>Wed, 09 Jan 2019 14:41:57 +0100</pubDate>
+      
+      <guid>/blog/introducing-replic-a-readline-app-in-no-time/</guid>
+      <description>When I started dabbling in CL, I tried to build a readline application to see how it goes. I found cl-readline (I&amp;rsquo;m only the new maintainer) and it went smoothly. So I built a second and a third app, and found many things to refactor and provide out of the box: now comes replic.
+It comes as a library (now in Quicklisp, since 2018-01) and as an executable. The library does the following for you:</description>
+    </item>
+    
+    <item>
+      <title>Debugging in Common Lisp</title>
+      <link>/blog/debugging-in-common-lisp/</link>
+      <pubDate>Thu, 20 Dec 2018 12:26:02 +0100</pubDate>
+      
+      <guid>/blog/debugging-in-common-lisp/</guid>
+      <description>You entered this new world of Lisp and now wonder: how can we debug what&amp;rsquo;s going on ? How is it more interactive than in other platforms ? What does bring the interactive debugger appart from stacktraces ?
+note: this tutorial is available on the Common Lisp Cookbook and it will receive updates there.
+If you want step-by-step examples of interactive debugging with nice screenshots and gifs, see the blog posts in the References section below.</description>
+    </item>
+    
+    <item>
+      <title>One liner, Git from Lisp: commit every file of this repository</title>
+      <link>/blog/one-liner-git-commit-files/</link>
+      <pubDate>Tue, 04 Dec 2018 21:49:06 +0100</pubDate>
+      
+      <guid>/blog/one-liner-git-commit-files/</guid>
+      <description>Hey, pardon this very short post, it&amp;rsquo;s just for the pleasure of blogging, and to balance the usual lengthy ones.
+I wanted to commit, one by one, every file of the current directory (it&amp;rsquo;s useless, don&amp;rsquo;t ask).
+I use legit as the interface to Git, and this one-liner:
+(dolist (file (uiop:directory-files &amp;quot;./&amp;quot;)) (legit:git-add :paths (pathname file)) (legit:git-commit :files (pathname file) :message (format nil &amp;quot;add ~a&amp;quot; (file-namestring file))))  I guessed the :paths and :files arguments with Slime&amp;rsquo;s command argument list which appears in the modline, I wanted a function to convert a /full/path/file.</description>
+    </item>
+    
+    <item>
+      <title>Overview of Documentation Generators</title>
+      <link>/blog/overview-of-documentation-generators/</link>
+      <pubDate>Wed, 07 Nov 2018 18:34:11 +0100</pubDate>
+      
+      <guid>/blog/overview-of-documentation-generators/</guid>
+      <description>I have a simple need: I&amp;rsquo;d like to generate an html documentation from my code. What options do we have ?
+I searched for &amp;ldquo;documentation tool&amp;rdquo; on Quickdocs: http://quickdocs.org/search?q=documentation%20tool, from which I remove old ones (clod, qbook, manifest).
+I had two pure Lisp solutions working out of the box, two more are of interest, and there&amp;rsquo;s another non-Lisp of interest.
+update: just found out that qbook (github mirror)is used for the documentation of Fiveam, which is pretty nice: https://common-lisp.</description>
+    </item>
+    
+    <item>
+      <title>We now have comments. Thanks, Utterances !</title>
+      <link>/blog/we-now-have-comments-thanks-utterances/</link>
+      <pubDate>Thu, 25 Oct 2018 18:45:20 +0200</pubDate>
+      
+      <guid>/blog/we-now-have-comments-thanks-utterances/</guid>
+      <description>We just installed a comment system, and it isn&amp;rsquo;t Disqus ! We just discovered https://utteranc.es/, a lightweight widget based on Github issues. If it doesn&amp;rsquo;t find an issue corresponding to the current article, it will create one and post your comment there. Simple :) You dreamed of it ? They did it.</description>
+    </item>
+    
+    <item>
+      <title>These Months in Common Lisp: Q3 2018</title>
+      <link>/blog/these-months-in-common-lisp-q3-2018/</link>
+      <pubDate>Sat, 06 Oct 2018 23:47:06 +0200</pubDate>
+      
+      <guid>/blog/these-months-in-common-lisp-q3-2018/</guid>
+      <description>Q1 2018 Q2 2018  Documentation  CLOS – the Common Lisp Cookbook (extensive rewrite) Advanced Use of Lisp’s FORMAT Function (2004) Book: Luger/Stubblefield, 2009; AI Algorithms, Data Structures, and Idioms in Prolog, Lisp, and Java (PDF) GitHub - DalekBaldwin/on-lisp: A modernized and annotated code companion to Paul Graham&amp;rsquo;s &amp;ldquo;On Lisp&amp;rdquo; SLY User Manual, version 1.0.0-beta-2  Announcements  A new version of Common-Lisp.net has been launched! A new quickdist distribution – Ultralisp.</description>
+    </item>
+    
+    <item>
+      <title>CLOS Tutorial</title>
+      <link>/blog/clos-tutorial/</link>
+      <pubDate>Fri, 05 Oct 2018 19:37:35 +0200</pubDate>
+      
+      <guid>/blog/clos-tutorial/</guid>
+      <description>We just updated the CLOS page on the Common Lisp Cookbook. You should refer to it for updates.
+CLOS is the &amp;ldquo;Common Lisp Object System&amp;rdquo;, arguably one of the most powerful object systems available in any language.
+Some of its features include:
+ it is dynamic, making it a joy to work with in a Lisp REPL. For example, changing a class definition will update the existing objects, given certain rules which we have control upon.</description>
+    </item>
+    
+    <item>
+      <title>Shuffletron, a Common Lisp Music Player for the terminal</title>
+      <link>/blog/shuffletron-lisp-music-player-for-the-terminal/</link>
+      <pubDate>Tue, 11 Sep 2018 16:36:23 +0200</pubDate>
+      
+      <guid>/blog/shuffletron-lisp-music-player-for-the-terminal/</guid>
+      <description>Shuffletron is a nice music player for the terminal written in Common Lisp, &amp;ldquo;based on search and tagging&amp;rdquo;, that seduced me with its attention to details. Moreover, its author was very responsive to fix a couple issues.
+The first time you launch it, it will ask for a music repository and will propose to scan it for id3 tags with the scanid3 command. It is optional, but it allows to print colored information:</description>
+    </item>
+    
+    <item>
+      <title>These Months in Common Lisp: Q2 2018</title>
+      <link>/blog/these-months-in-common-lisp-q2-2018/</link>
+      <pubDate>Mon, 02 Jul 2018 14:59:46 +0200</pubDate>
+      
+      <guid>/blog/these-months-in-common-lisp-q2-2018/</guid>
+      <description>Q1 2018
+Documentation  Paradigms of Artificial Intelligence Programming epub Models and Databases, with Mito and SxQL - the Common Lisp Cookbook Awesome Common Lisp learning list  Announcements  ELS2018 proceedings (PDF) SBCL 1.4.6 released SBCL 1.4.7 Released LispWorks 7.1.1 - Patches SBCL method-combination fixes SBCL method tracing $500 Bounty on Clozure/ccl  Jobs  Junior Lisp Developer, RavenPack, Marbella, Spain 3E : Lisp Developer - development, maintenance, design and unit testing of SynaptiQ’s real-time aggregation and alerting engine that processes time-series and events.</description>
+    </item>
+    
+    <item>
+      <title>New Weblocks tutorial: widgets</title>
+      <link>/blog/new-weblocks-tutorial/</link>
+      <pubDate>Mon, 25 Jun 2018 18:51:49 +0100</pubDate>
+      
+      <guid>/blog/new-weblocks-tutorial/</guid>
+      <description>Weblocks is a web framework, created circa 2007, that allows to write dynamic web applications in full Lisp, without a line of Javascript. It is based on so called widgets, that are rendered server-side and updated on the client, and it was also based on continuations (they were removed in this fork, at least for now). It was quietly being forgotten but it is being fixed, refactored, documented and simplified by Alexander &amp;ldquo;svetlyak40wt&amp;rdquo; since a year or so.</description>
+    </item>
+    
+    <item>
+      <title>Models and databases with the Mito ORM and SxQL</title>
+      <link>/blog/models-and-databases-mito-sxql/</link>
+      <pubDate>Tue, 29 May 2018 07:51:49 +0100</pubDate>
+      
+      <guid>/blog/models-and-databases-mito-sxql/</guid>
+      <description>Following is a tutorial on how to use the Mito ORM.
+As usual, this is best read on the Common Lisp Cookbook. It will be updated there.
+The Database section on the Awesome-cl list is a resource listing popular libraries to work with different kind of databases. We can group them roughly in four categories:
+ wrappers to one database engine (cl-sqlite, postmodern, cl-redis,…), interfaces to several DB engines (clsql, sxql,…), persistent object databases (bknr.</description>
+    </item>
+    
+    <item>
+      <title>These months in Common Lisp: Q1 2018</title>
+      <link>/blog/these-months-in-common-lisp-q1-2018/</link>
+      <pubDate>Sun, 01 Apr 2018 07:51:49 +0100</pubDate>
+      
+      <guid>/blog/these-months-in-common-lisp-q1-2018/</guid>
+      <description>Documentation  Multidimensional arrays – the Common Lisp Cookbook Error and condition handling - the Common Lisp Cookbook Scripting: parsing command line arguments, building self-contained executables - the Common Lisp Cookbook ASDF Best Practices for 2018 The Quicklisp local-projects mechanism How to distribute your software, not library, on Quicklisp ala python pip Common Lisp Brazil Community Awesome Lisp companies Announcing Quickref: a global documentation project for Common Lisp  Announcements  European Lisp Symposium 2018 Lisp Game Jam 2018  Projects  Next web browser cl-repl, the Common Lisp ipython-like REPL Emotiq - blockchain in Common Lisp original reddit code from 2005.</description>
+    </item>
+    
+    <item>
+      <title>Tip: capture standard and error output</title>
+      <link>/blog/tip-capture-all-standard-output/</link>
+      <pubDate>Tue, 06 Mar 2018 07:51:49 +0100</pubDate>
+      
+      <guid>/blog/tip-capture-all-standard-output/</guid>
+      <description>What if we want to capture standard (and/or error) output in order to ignore it or post-process it ? It&amp;rsquo;s very simple, a little search and we&amp;rsquo;re good:
+(let ((*standard-output* (make-string-output-stream)) (*error-output* (make-string-output-stream))) (apply function args) ;; anything (setf standard-output (get-output-stream-string *standard-output*))) (print-results standard-output))  and now in print-results we can print to standard output without being intercepted (and in our case, we&amp;rsquo;ll highlight some user-defined keywords).
+Above, just don&amp;rsquo;t forget to get the output content with (get-output-stream-string *standard-output*).</description>
+    </item>
+    
+    <item>
+      <title>Fixing a CL21 error message in an unrelated library after a quicklisp update (it&#39;s about cache)</title>
+      <link>/blog/fixing-a-cl21-error-message-after-quicklisp-update/</link>
+      <pubDate>Mon, 12 Feb 2018 07:51:49 +0100</pubDate>
+      
+      <guid>/blog/fixing-a-cl21-error-message-after-quicklisp-update/</guid>
+      <description>I just updated my Quicklisp dist and suddenly couldn&amp;rsquo;t load some libraries any more. I got an error related to cl21 looking like the one below (I didn&amp;rsquo;t note the exact message sorry), even though the library was unrelate to cl21 (it was about osicat and cffi.grovel):
+ couldn&amp;rsquo;t find adjustable-vectors from CL21.core.arrays
+ If you skip through the restarts you&amp;rsquo;ll see mentions of a cache in ~/.cache/common-lisp/sbclxx-xx/quicklisp/…. It contains the compiled .</description>
+    </item>
+    
+    <item>
+      <title>(bookmark) Get a list of all the dependencies of a lisp system</title>
+      <link>/blog/bookmark-get-a-list-of-dependencies-of-a-lisp-system/</link>
+      <pubDate>Tue, 23 Jan 2018 07:51:49 +0100</pubDate>
+      
+      <guid>/blog/bookmark-get-a-list-of-dependencies-of-a-lisp-system/</guid>
+      <description>I&amp;rsquo;ll save here a reddit discussion, which I find interesting but that will be burried quickly down reddit&amp;rsquo;s history. The goal is to get all the dependencies of a system.
+You&amp;rsquo;d better read the OP&amp;rsquo;s question and the discussion (where the OP is the experimented svetlyak40wt/40ants, at the moment doing a god&amp;rsquo;s work on Weblocks).
+His solution is https://gist.github.com/svetlyak40wt/03bc68c820bb3e45bc7871870379c42e
+(ql:quickload :fset) (defun get-dependencies (system) &amp;quot;Returns a set with all dependencies of a given system.</description>
+    </item>
+    
+    <item>
+      <title>snippets - functional style, sequences, debugging and more utilities</title>
+      <link>/blog/snippets-functional-style-more/</link>
+      <pubDate>Tue, 23 Jan 2018 07:51:49 +0100</pubDate>
+      
+      <guid>/blog/snippets-functional-style-more/</guid>
+      <description>From sjl&amp;rsquo;s utilities (thanks so much for the nice docstrings). The goal here is to read some code and learn about (hidden) gems.
+The following snippets should be copy-pastable. They are the ones I find most interesting, I left some behind.
+To reduce the dependency load, Alexandria or Quickutil functions can be imported one by one with Quickutil.
+Table of Contents
+ Higher order functions Sequences Debugging and logging Profiling (with SBCL)  Higher order functions See also https://github.</description>
+    </item>
+    
+    <item>
+      <title>Print licences used by a given project and its dependencies</title>
+      <link>/blog/print-licences-used-by-a-given-project-and-its-dependencies/</link>
+      <pubDate>Mon, 22 Jan 2018 07:51:49 +0100</pubDate>
+      
+      <guid>/blog/print-licences-used-by-a-given-project-and-its-dependencies/</guid>
+      <description>print-licenses is a little utility found in Steve Losh&amp;rsquo;s gigantic utilities and ported to a stand alone project.
+Example usage:
+(print-licenses &#39;fast-io) =&amp;gt; alexandria | Public Domain / 0-clause MIT babel | MIT cffi | MIT cffi-grovel | MIT cffi-toolchain | MIT fast-io | NewBSD static-vectors | MIT trivial-features | MIT trivial-gray-streams | MIT uiop | Unspecified  It may be available on february, 2018 Quicklisp update (request).
+One potential source of caution (feedback on reddit):</description>
+    </item>
+    
+    <item>
+      <title>Generic, consistent and dotted access of data structures with Access</title>
+      <link>/blog/generice-consistent-access-of-data-structures-dotted-path/</link>
+      <pubDate>Fri, 12 Jan 2018 07:51:49 +0100</pubDate>
+      
+      <guid>/blog/generice-consistent-access-of-data-structures-dotted-path/</guid>
+      <description>A common frustration for (impatient) beginners is to see different function names to access common data structures (alists, plists, hash-tables) and their inconsistencies (the order of arguments).
+Now they are well documented in the… Common Lisp Coobook of course: https://lispcookbook.github.io/cl-cookbook/data-structures.html, but still;
+and it is annoying to try things out with a data structure and refactor the code to use another one.
+The library Access solves those problems, it&amp;rsquo;s always</description>
+    </item>
+    
+    <item>
+      <title>Structures: lightweight records, a step before classes</title>
+      <link>/blog/data-structures-structs/</link>
+      <pubDate>Wed, 03 Jan 2018 07:51:49 +0100</pubDate>
+      
+      <guid>/blog/data-structures-structs/</guid>
+      <description>Structures offer a way to store data in named slots. They support single inheritance.
+Classes provided by the Common Lisp Object System (CLOS) are more flexible however structures may offer better performance (see for example the SBCL manual).
+As usual, this is best read in the Common Lisp Cookbook.
+Structures Creation defstruct
+(defstruct person id name age)  At creation slots are optional and default to nil.
+To set a default value:</description>
+    </item>
+    
+    <item>
+      <title>Error and condition handling</title>
+      <link>/blog/error-and-condition-handling/</link>
+      <pubDate>Tue, 02 Jan 2018 15:51:49 +0100</pubDate>
+      
+      <guid>/blog/error-and-condition-handling/</guid>
+      <description>Common Lisp has mechanisms for error and condition handling as found in other languages, and can do more.
+What is a condition ?
+ Just like in languages that support exception handling (Java, C++, Python, etc.), a condition represents, for the most part, an “exceptional” situation. However, even more so that those languages, a condition in Common Lisp can represent a general situation where some branching in program logic needs to take place, not necessarily due to some error condition.</description>
+    </item>
+    
+    <item>
+      <title> Scripting. Parsing command line arguments, building self-contained executables.</title>
+      <link>/blog/scripting-parsing-command-line-arguments-executables/</link>
+      <pubDate>Tue, 02 Jan 2018 07:51:49 +0100</pubDate>
+      
+      <guid>/blog/scripting-parsing-command-line-arguments-executables/</guid>
+      <description>Using a program from a REPL is fine and well, but if we want to distribute our program easily, we&amp;rsquo;ll want to build an executable.
+Lisp implementations differ in their processes, but they all create self-contained executables, for the architecture they are built on. The final user doesn&amp;rsquo;t need to install a Lisp implementation, he can run the software right away.
+Start-up times are near to zero, specially with SBCL and CCL.</description>
+    </item>
+    
+    <item>
+      <title>cl-torrents, app and (extensive) tutorial: web scraping and building executables</title>
+      <link>/blog/cl-torrents-app-and-tutorial-web-scraping-building-binaries/</link>
+      <pubDate>Wed, 20 Dec 2017 14:21:20 +0100</pubDate>
+      
+      <guid>/blog/cl-torrents-app-and-tutorial-web-scraping-building-binaries/</guid>
+      <description>Lately we exercised our Lisp skills by writing cl-torrents, an app that searches for torrents on several sources (the Pirate Bay through piratebay.to, Kickass torrents and torrent.cd), and we wrote an extensive tutorial in the making (that was actually our primary goal). It comes as a library to use from the REPL and as a self-contained executable (download and run, nothing more to install). You&amp;rsquo;ll find the following topics in the tutorial:</description>
+    </item>
+    
+    <item>
+      <title>Continuous Integration and delivery on Gitlab CI, testing locally with Docker</title>
+      <link>/blog/continuous-integration-delivering-executables-on-gitlab/</link>
+      <pubDate>Fri, 01 Dec 2017 14:21:20 +0100</pubDate>
+      
+      <guid>/blog/continuous-integration-delivering-executables-on-gitlab/</guid>
+      <description>Best read in the Cookbook ! also Travis CI, code coverage, testing with Prove.
+Gitlab CI is part of Gitlab and is available on Gitlab.com, for public and private repositories. Let&amp;rsquo;s see straight away a simple .gitlab-ci.yml:
+image: daewok/lisp-devel before_script: - apt-get update -qy - apt-get install -y git-core - git clone https://github.com/foo/bar ~/quicklisp/local-projects/ test: script: - make test  Gitlab CI is based on Docker. With image we tell it to use the daewok/lisp-devel one.</description>
+    </item>
+    
+    <item>
+      <title>Installing libraries, dependencies management</title>
+      <link>/blog/libraries-dependencies-management/</link>
+      <pubDate>Fri, 27 Oct 2017 11:01:31 +0200</pubDate>
+      
+      <guid>/blog/libraries-dependencies-management/</guid>
+      <description>Common Lisp may have more libraries than you think. See:
+ Quickdocs - the library documentation hosting for CL. the Awesome-cl list, a curated list of libraries. lisp-lang.org&amp;rsquo;s recommended libraries (from State of the CL ecosystem, 2015)  Quicklisp is the de-facto package manager, but not the only tool.
+Some terminology first  In the Common Lisp world, a package is a way of grouping symbols together and of providing encapsulation.</description>
+    </item>
+    
+    <item>
+      <title>Why do we have to wait one month for Quicklisp updates ?</title>
+      <link>/blog/why-do-we-have-to-wait-one-month-before-quicklisp-updates/</link>
+      <pubDate>Thu, 31 Aug 2017 18:14:37 +0200</pubDate>
+      
+      <guid>/blog/why-do-we-have-to-wait-one-month-before-quicklisp-updates/</guid>
+      <description>If you didn&amp;rsquo;t know that, now you do. Quicklisp releases software updates once a month (see Quicklisp&amp;rsquo;s blog). I didn&amp;rsquo;t know why, it isn&amp;rsquo;t explained on its website, so I asked (issue #148). I found the discussion very insightful, everybody being constructive, existing solutions being discussed and architectural choices explained. But it ended up brutally with one more Common Lisp oddity.
+My first impression was that this fact is annoying, because it already prevented me a couple of times to use my own library and its most recent updates into other projects.</description>
+    </item>
+    
+    <item>
+      <title>How to do Functional Programming in Common Lisp ?</title>
+      <link>/blog/functional-programming-in-common-lisp/</link>
+      <pubDate>Fri, 28 Jul 2017 17:38:24 +0200</pubDate>
+      
+      <guid>/blog/functional-programming-in-common-lisp/</guid>
+      <description>or &amp;ldquo;Common Lisp is not very functional-programming oriented&amp;rdquo;. What are the options ?
+I mean, map is uncommon and there is no short words like take etc for functional composition. Right ?
+edit see those snippets.
+edit january, 2019: see this SO answer and the modf library.
+Map and filter Indeed, there are 8 or so map functions. The one we&amp;rsquo;re used to is mapcar. The simple map needs a second argument to specify its return type: (map &#39;list (lambda….</description>
+    </item>
+    
+    <item>
+      <title>Data Structures</title>
+      <link>/blog/data-structures/</link>
+      <pubDate>Thu, 27 Jul 2017 16:48:42 +0200</pubDate>
+      
+      <guid>/blog/data-structures/</guid>
+      <description>What the heck are alists and plists exactly, how do we manipulate data structures ? It seems tedious sometimes, are there helpers ?
+Best read in the Cookbook.
+We hope to give here a clear reference of the common data structures. To really learn the language, you should take the time to read other resources. The following ones, which we relied upon, have many more details:
+ Practical CL, by Peter Seibel CL Recipes, by E.</description>
+    </item>
+    
+    <item>
+      <title>Common Lisp Async Web Scraping</title>
+      <link>/blog/common-lisp-async-web-scraping/</link>
+      <pubDate>Thu, 29 Jun 2017 17:47:41 +0100</pubDate>
+      
+      <guid>/blog/common-lisp-async-web-scraping/</guid>
+      <description>The set of tools to do web scraping in Common Lisp is pretty complete and pleasant. In this short tutorial we&amp;rsquo;ll see how to make http requests, parse html, extract content and do asynchronous requests.
+Our simple task will be to extract the list of links on the CL Cookbook&amp;rsquo;s index page and check if they are reachable.
+Best read in the Cookbook !
+We&amp;rsquo;ll use the following libraries:</description>
+    </item>
+    
+    <item>
+      <title>How to Get a File Size (and others Posix Attributes like its mtime) in Common Lisp</title>
+      <link>/blog/how-to-get-a-file-size-and-posix-file-attributes/</link>
+      <pubDate>Fri, 16 Jun 2017 16:26:00 +0200</pubDate>
+      
+      <guid>/blog/how-to-get-a-file-size-and-posix-file-attributes/</guid>
+      <description>There is nothing built-in since CL predates the posix standard.
+After a look at Awesome CL, the Osicat library was my go-to package to look for such functionnality. There is its osicat-posix package indeed, even though it is undocumented (issue)…
+Now a look at the Cookbook is ok.
+osicat, osicat-posix osicat-posix is included in osicat.
+(ql:quickload :osicat)  (describe (osicat-posix:stat #P&amp;quot;/tmp/file&amp;quot;)) #&amp;lt;OSICAT-POSIX:STAT {1004F20C93}&amp;gt; [standard-object] Slots with :INSTANCE allocation: DEV = 2065 INO = 7349974 MODE = 33204 NLINK = 1 UID = 1000 GID = 1000 RDEV = 0 SIZE = 4304 BLKSIZE = 4096 BLOCKS = 16 ATIME = 1497626097 MTIME = 1497347216 CTIME = 1497347216 ; No value  and so we can access the slots with their related functions:</description>
+    </item>
+    
+    <item>
+      <title>How to access url query parameters in Clack, Lucerne or Caveman</title>
+      <link>/blog/how-to-access-url-query-parameters-in-clack-lucerne-or-caveman/</link>
+      <pubDate>Thu, 04 May 2017 12:59:30 +0200</pubDate>
+      
+      <guid>/blog/how-to-access-url-query-parameters-in-clack-lucerne-or-caveman/</guid>
+      <description>edit: I found Snooze (by Sly and Yasnippet&amp;rsquo;s author) easier and cleaner in this regard. It also has built-in settings to choose where to catch errors: with Slime&amp;rsquo;s debugger, with a full stacktrace in the browser or displaying a custom error page.
+If you&amp;rsquo;re using Lucerne don&amp;rsquo;t search more like I did, its with-params macro works with url query parameters (as well as POST parameters).
+If you&amp;rsquo;re accessing the url hello?</description>
+    </item>
+    
+    <item>
+      <title>Is There Something Like Clojure&#39;s Figwheel for interactive web dev with the browser in Common Lisp ?</title>
+      <link>/blog/is-there-something-like-figwheel-for-common-lisp/</link>
+      <pubDate>Thu, 04 May 2017 12:32:01 +0200</pubDate>
+      
+      <guid>/blog/is-there-something-like-figwheel-for-common-lisp/</guid>
+      <description>Looks like there is: trident-mode, an &amp;ldquo;Emacs minor mode for live Parenscript interaction&amp;rdquo;, based on skewer but: trident-mode doesn&amp;rsquo;t seem to be used in the wild (while skewer-mode is) and I don&amp;rsquo;t know Figwheel so all I can say is that it seems a bit different: instead of letting us selectively evaluate and send code to the browser, Figwheels seems to rebuild the entire project and send the result when we write a file.</description>
+    </item>
+    
+    <item>
+      <title>Getting started: how to install a Common Lisp development environment</title>
+      <link>/blog/getting-started/</link>
+      <pubDate>Wed, 03 May 2017 10:41:33 +0200</pubDate>
+      
+      <guid>/blog/getting-started/</guid>
+      <description>or &amp;ldquo;could not find recent and easy installation steps [fixed]&amp;ldquo;.
+When I started I was a bit confused by old instructions (google is not good at CL), so hopefully this post will help show up recent and easy steps and most of all, help every CL enthousiast discover Portacle.
+(and this post is editable through its Gitlab repository)
+Portable, a multiplatform development environment The productive Shinmera was waiting for the last details to be fixed before showing Portacle but it was already great.</description>
+    </item>
+    
+    <item>
+      <title>String manipulation is frustrating [fixed]</title>
+      <link>/blog/string-manipulation-was-frustrating/</link>
+      <pubDate>Tue, 02 May 2017 11:07:01 +0200</pubDate>
+      
+      <guid>/blog/string-manipulation-was-frustrating/</guid>
+      <description>One of the first things I wanted to do in the REPL was some string manipulation. But it was tedious.
+To trim whitespace, and I mean all whitespaces, we had to define #\Space #\Newline #\Backspace #\Tab #\Linefeed #\Page #\Return #\Rubout.
+To concatenate two strings: either giving an unusual &#39;string argument to concatenate, like this:
+(concatenate &#39;string &amp;quot;fo&amp;quot; &amp;quot;o&amp;quot;)  either we had to use a format construct, which is another source of frustration for (impatient) beginners, and sure isn&amp;rsquo;t straightforward and self-explanatory.</description>
+    </item>
+    
+    <item>
+      <title>Why is there no generic operators ?</title>
+      <link>/blog/why-is-there-no-generic-operators/</link>
+      <pubDate>Fri, 14 Apr 2017 16:27:44 +0200</pubDate>
+      
+      <guid>/blog/why-is-there-no-generic-operators/</guid>
+      <description>TLDR; because the object system came afterwards (and it was not the intention to make CL entirely object oriented).
+As a CL enthousiast coming from Python, I feel the pain not to have generic or polymorphic operators but having to learn about many specialized operators instead. Why is it so and are there solutions ?
+I asked on SO.
+In CL, there are many operators to check for equality that depend on the data type: =, string-equal, char=, then equal, eql and whatnot, so on for other data types, and the same for comparison operators.</description>
+    </item>
+    
+    <item>
+      <title>Example of interactively changing the current executed Lisp code in the debugger</title>
+      <link>/blog/example-of-interactively-changing-the-current-executed-lisp-code-in-the-debugger/</link>
+      <pubDate>Fri, 14 Apr 2017 13:06:27 +0200</pubDate>
+      
+      <guid>/blog/example-of-interactively-changing-the-current-executed-lisp-code-in-the-debugger/</guid>
+      <description>The awesome example we will read comes from a comment by user lispm inside a discussion on this reddit thread: https://www.reddit.com/r/programming/comments/65ct5j/a_pythonist_finds_a_new_home_at_clojure_land/.
+The article it discusses is a &amp;ldquo;Not a monad tutorial&amp;rdquo; post, where the interviewee is experienced in C++, Java, Javascript and Python and turns into Clojure. He wrote about his first impressions with Common Lisp here, where he raises usual concerns that I agree with but IMO that stay supercifial (&amp;ldquo;not readable&amp;rdquo; because of stuff like (format t &amp;quot;~{~{~a:~10t~a~%~}~%~}&amp;quot; *db*), &amp;ldquo;huge operators set&amp;rdquo;, &amp;ldquo;macros look promising&amp;rdquo;…).</description>
+    </item>
+    
+  </channel>
+</rss>
