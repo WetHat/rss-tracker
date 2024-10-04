@@ -146,13 +146,13 @@ to (**including the** `#` prefix).
 | rss/_NET_Framework | #rss/_NET_Framework |
 | rss/programming | #rss/programming |
 | rss/dotnet | #rss/dotnet |
+| rss/Dotnet | #rss/Dotnet |
 | rss/fedi22 | #rss/fedi22 |
 | rss/Mastodon | #rss/Mastodon |
 | rss/Fediverse | #rss/Fediverse |
 | rss/FOSS | #rss/FOSS |
 | rss/MachineLearning | #rss/MachineLearning |
 | rss/ArtificialIntelligence | #rss/ArtificialIntelligence |
-| rss/Dotnet | #rss/Dotnet |
 | rss/JupyterNotebooks | #rss/JupyterNotebooks |
 | rss/JupyterLab | #rss/JupyterLab |
 | rss/TilingTuesday | #rss/TilingTuesday |
