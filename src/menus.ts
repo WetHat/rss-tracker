@@ -1,6 +1,6 @@
 import RSSTrackerPlugin from './main';
-import { App, Notice, Menu, TFile, EventRef, Command } from 'obsidian';
-import { FeedConfig } from './FeedManager';
+import { App, Notice, Menu, TFile, EventRef, Command, Plugin } from 'obsidian';
+import { RSSfeedProxy } from './RSSproxies';
 
 /**
  * Abstract base class to Obsidian menus.
@@ -51,18 +51,21 @@ export class MarkAllItemsReadMenuItem extends RSSTrackerMenuItem {
     }
 
     protected addItem(menu: Menu, dashboard: TFile | null) {
-        if (dashboard) {
-            const feedconfig = new FeedConfig(this.app, dashboard);
-            if (feedconfig.isValid) {
-                menu.addItem(item => {
-                    item.setTitle('Mark all RSS items as read')
-                        .setIcon('list-checks')
-                        .onClick(async () => {
-                            this.plugin.feedmgr.markFeedItemsRead(dashboard);
-                            new Notice(`All items of "${dashboard?.basename ?? 'unavailable'}" marked read.`);
-                        });
-                });
-            }
+        if (!dashboard) {
+            return;
+        }
+
+        const proxy = this.plugin.filemgr.getProxy(dashboard);
+        if (proxy instanceof RSSfeedProxy) {
+            menu.addItem(item => {
+                { }
+                item.setTitle('Mark all RSS items as read')
+                    .setIcon('list-checks')
+                    .onClick(async () => {
+                        this.plugin.feedmgr.markFeedItemsRead(proxy);
+                        new Notice(`All items of "${dashboard?.basename ?? 'unavailable'}" marked read.`);
+                    });
+            });
         }
     }
 }
@@ -108,15 +111,18 @@ export class UpdateRSSfeedMenuItem extends RSSTrackerMenuItem {
      * @param file - An Obsidian file which may contain frontmatter describing an RSS feed configuration.
      */
     protected addItem(menu: Menu, file: TFile | null) {
-        if (file) {
-            const feedconfig = new FeedConfig(this.app, file);
-            if (feedconfig.isValid && !feedconfig.isSuspended) {
+        if (!file) {
+            return;
+        }
+        const proxy = this.plugin.filemgr.getProxy(file);
+        if (proxy instanceof RSSfeedProxy) {
+            if (!proxy.suspended) {
                 menu.addItem(item => {
                     item.setTitle('Update RSS feed')
                         .setIcon('rss')
                         .onClick(async () => {
                             await this.plugin.tagmgr.updateTagMap()
-                            await this.plugin.feedmgr.updateFeed(feedconfig, true);
+                            await this.plugin.feedmgr.updateFeed(proxy, true);
                             new Notice(`${file?.name ?? '???'} updated`);
                         });
                 });
@@ -144,17 +150,18 @@ export class ToggleRSSfeedActiveStatusMenuItem extends RSSTrackerMenuItem {
         if (!file) {
             return;
         }
-        const feedconfig = new FeedConfig(this.app, file);
-        if (!feedconfig.isValid) {
+        const proxy = this.plugin.filemgr.getProxy(file);
+        if (!(proxy instanceof RSSfeedProxy)) {
             return;
         }
 
-        if (feedconfig.isSuspended) {
+        if (proxy.suspended) {
             menu.addItem(item => {
                 item.setTitle('Resume RSS feed updates')
                     .setIcon('power')
                     .onClick(async () => {
-                        feedconfig.resumeUpdates();
+                        proxy.resumeUpdates();
+                        await proxy.commitFrontmatterChanges()
                         new Notice(`${file?.name ?? '???'} updates resumed`);
                     });
             });
@@ -163,7 +170,8 @@ export class ToggleRSSfeedActiveStatusMenuItem extends RSSTrackerMenuItem {
                 item.setTitle('Suspend RSS feed updates')
                     .setIcon('power-off')
                     .onClick(async () => {
-                        feedconfig.suspendUpdates();
+                        proxy.suspendUpdates();
+                        await proxy.commitFrontmatterChanges();
                         new Notice(`${file?.name ?? '???'} updates suspended`);
                     });
             });

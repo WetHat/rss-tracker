@@ -1,7 +1,6 @@
 import { App, Modal, Command, Setting, TFile, TFolder, Notice } from 'obsidian';
-import { FeedConfig } from './FeedManager';
 import RSSTrackerPlugin from './main';
-import { DEFAULT_SETTINGS } from "./settings";
+import { RSSfeedProxy } from './RSSproxies';
 
 /**
  * Modal dialog to request rss url input from the user.
@@ -76,27 +75,27 @@ abstract class RSSTrackerCommandBase implements Command {
  */
 export class UpdateRSSfeedCommand extends RSSTrackerCommandBase {
     constructor(plugin: RSSTrackerPlugin) {
-        super(plugin,'rss-tracker-update-feed-checked','Update RSS feed');
+        super(plugin, 'rss-tracker-update-feed-checked', 'Update RSS feed');
     }
 
-     checkCallback(checking: boolean): boolean {
+    checkCallback(checking: boolean): boolean {
         // Conditions to check
         const active = this.app.workspace.getActiveFile();
 
         if (active) {
             // If checking is true, we're simply "checking" if the command can be run.
             // If checking is false, then we want to actually perform the operation.
-            const cfg = new FeedConfig(this.app, active);
+            const proxy = this.plugin.filemgr.getProxy(active);
             if (checking) {
                 // This command will only show up in Command Palette when the check function returns true
                 // check if active file is a rss feed dashboard.
-                return cfg.isValid && !cfg.isSuspended;
+                return proxy instanceof RSSfeedProxy && !proxy.suspended;
             }
-            if (cfg.isValid && !cfg.isSuspended) {
+            if (proxy instanceof RSSfeedProxy && !proxy.suspended) {
                 this.plugin.tagmgr.updateTagMap()
-                    .then( x =>
-                        this.plugin.feedmgr.updateFeed(cfg, true)
-                            .then(() => new Notice(`${cfg.source.basename} updated!`)));
+                    .then(x =>
+                        this.plugin.feedmgr.updateFeed(proxy, true)
+                            .then(() => new Notice(`${proxy.file.basename} updated!`)));
                 return true;
             }
         }
@@ -106,10 +105,10 @@ export class UpdateRSSfeedCommand extends RSSTrackerCommandBase {
 
 export class DownloadRSSitemArticleCommand extends RSSTrackerCommandBase {
     constructor(plugin: RSSTrackerPlugin) {
-        super(plugin,'rss-tracker-download-article-checked','Download RSS item article');
+        super(plugin, 'rss-tracker-download-article-checked', 'Download RSS item article');
     }
 
-     checkCallback(checking: boolean): boolean {
+    checkCallback(checking: boolean): boolean {
         // Conditions to check
         const
             active = this.app.workspace.getActiveFile(),
@@ -135,7 +134,7 @@ export class DownloadRSSitemArticleCommand extends RSSTrackerCommandBase {
  */
 export class MarkAllRSSitemsReadCommand extends RSSTrackerCommandBase {
     constructor(plugin: RSSTrackerPlugin) {
-        super(plugin,'tracked-rss-mark-items-read-checked','Mark all RSS feed items as read');
+        super(plugin, 'tracked-rss-mark-items-read-checked', 'Mark all RSS feed items as read');
     }
 
     checkCallback(checking: boolean): any {
@@ -145,14 +144,14 @@ export class MarkAllRSSitemsReadCommand extends RSSTrackerCommandBase {
         if (active) {
             // If checking is true, we're simply "checking" if the command can be run.
             // If checking is false, then we want to actually perform the operation.
-            const cfg = new FeedConfig(this.app, active);
+            const proxy = this.plugin.filemgr.getProxy(active);
             if (checking) {
                 // This command will only show up in Command Palette when the check function returns true
                 // check if active file is a rss feed dashboard.
-                return cfg.isValid;
+                return proxy instanceof RSSfeedProxy;
             }
-            if (cfg.isValid) {
-                this.plugin.feedmgr.markFeedItemsRead(cfg.source).then(() => new Notice(`${cfg.source.basename} updated!`));
+            if (proxy instanceof RSSfeedProxy) {
+                this.plugin.feedmgr.markFeedItemsRead(proxy).then(() => new Notice(`${proxy.file.basename} updated!`));
                 return true;
             }
         }
@@ -162,62 +161,52 @@ export class MarkAllRSSitemsReadCommand extends RSSTrackerCommandBase {
 
 export class NewRSSTopicCommand extends RSSTrackerCommandBase {
     constructor(plugin: RSSTrackerPlugin) {
-        super(plugin,'rss-tracker-new-topic','New RSS topic');
+        super(plugin, 'rss-tracker-new-topic', 'New RSS topic');
     }
 
     callback(): any {
-        this.plugin.filemgr.createFile(this.plugin.settings.rssTopicsFolderPath,"New Topic","RSS Topic")
+        this.plugin.filemgr.createFile(this.plugin.settings.rssTopicsFolderPath, "New Topic", "RSS Topic")
             .then(topic => {
                 const leaf = this.app.workspace.getLeaf(false);
                 leaf.openFile(topic).catch(reason => new Notice(reason.message))
             })
-            .catch (reason => new Notice(`RSS topic could not be created! ${reason.message}`));
+            .catch(reason => new Notice(`RSS topic could not be created! ${reason.message}`));
     }
 }
 
 export class NewRSSFeedCollectionCommand extends RSSTrackerCommandBase {
     constructor(plugin: RSSTrackerPlugin) {
-        super(plugin,'rss-tracker-new-feed-collection','New RSS feed collection');
+        super(plugin, 'rss-tracker-new-feed-collection', 'New RSS feed collection');
     }
 
     callback(): any {
-        this.plugin.filemgr.createFile(this.plugin.settings.rssCollectionsFolderPath,"New Feed Collection", "RSS Collection")
-            .then (collection => {
+        this.plugin.filemgr.createFile(this.plugin.settings.rssCollectionsFolderPath, "New Feed Collection", "RSS Collection")
+            .then(collection => {
                 const leaf = this.app.workspace.getLeaf(false);
                 leaf.openFile(collection).catch(reason => new Notice(reason.message))
             })
-            .catch (reason => new Notice(`RSS feed collection could not be created! ${reason.message}`));
+            .catch(reason => new Notice(`RSS feed collection could not be created! ${reason.message}`));
     }
 }
 
 /**
  * A complex command that checks whether the current state of the app allows execution of the command.
  */
-export class NewRSSFeedModalCommand extends RSSTrackerCommandBase{
+export class NewRSSFeedModalCommand extends RSSTrackerCommandBase {
     constructor(plugin: RSSTrackerPlugin) {
-        super(plugin,'rss-tracker-new-feed-url-input-modal','New RSS feed');
+        super(plugin, 'rss-tracker-new-feed-url-input-modal', 'New RSS feed');
     }
 
     callback(): any {
         // Conditions to check
         const modal = new InputUrlModal(this.app, async result => {
-            const feedFolderPath = this.plugin.settings.rssFeedFolderPath;
-            let feedFolder = this.app.vault.getFolderByPath(feedFolderPath);
-            if (!feedFolder) {
-                // try creating that folder
-                feedFolder = await this.app.vault.createFolder(feedFolderPath);
-            }
-
-            // create the new feed
-            if (feedFolder) {
-                const
-                    mgr = this.plugin.feedmgr,
-                    leaf = this.app.workspace.getLeaf(false);
-                try {
-                    leaf.openFile(await mgr.createFeedFromUrl(result, feedFolder));
-                } catch (err: any) {
-                    new Notice(err.message);
-                }
+            const
+                mgr = this.plugin.feedmgr,
+                leaf = this.app.workspace.getLeaf(false);
+            try {
+                leaf.openFile((await mgr.createFeedFromUrl(result)).file);
+            } catch (err: any) {
+                new Notice(err.message);
             }
         });
         modal.open();

@@ -1,8 +1,13 @@
 
-import { App, TAbstractFile, TFile, Vault } from "obsidian";
-import { TPropertyBag } from "./FeedAssembler";
+import { App, TAbstractFile, TFile, Vault, FileManager, MetadataCache, TFolder } from 'obsidian';
+import { TPropertyBag } from './FeedAssembler';
 import { RSSTrackerSettings, TTemplateName } from "./settings";
 import RSSTrackerPlugin from "./main";
+import { RSSfeedProxy, RSSitemProxy } from './RSSproxies';
+
+export type MetadataCacheEx = MetadataCache & {
+	getTags(): TPropertyBag; // undocumented non-API method
+}
 
 
 /**
@@ -18,8 +23,17 @@ export class RSSfileManager {
 	private _app: App;
 	private _vault: Vault;
 	private _plugin: RSSTrackerPlugin;
-	private get _settings(): RSSTrackerSettings {
+
+	get settings(): RSSTrackerSettings {
 		return this._plugin.settings;
+	}
+
+	get app(): App {
+		return this._app;
+	}
+
+	get metadataCache(): MetadataCacheEx {
+		return this._app.metadataCache as MetadataCacheEx;
 	}
 
 	constructor(app: App, plugin: RSSTrackerPlugin) {
@@ -27,7 +41,23 @@ export class RSSfileManager {
 		this._vault = app.vault;
 		this._plugin = plugin;
 	}
-
+	/**
+	 * Factory method to create proxies for RSS files
+	 * @param file An RSS file to create the proxy for.
+	 * @returns The appropriate proxy, if it exists.
+	 */
+	getProxy(file: TFile): RSSfeedProxy | RSSitemProxy | undefined {
+		const frontmatter = this.metadataCache.getFileCache(file)?.frontmatter;
+		if (frontmatter) {
+			switch (frontmatter.role) {
+				case "rssfeed":
+					return new RSSfeedProxy(this._plugin, file, frontmatter);
+				case "rssitem":
+					return new RSSitemProxy(this._plugin, file, frontmatter);
+			}
+		}
+		return undefined;
+	}
 	/**
 	 * Expand `{{mustache}}` placeholders with data from a property bag.
 	 * @param template - A template string with `{{mustache}}` placeholders.
@@ -46,13 +76,13 @@ export class RSSfileManager {
 	 * @param templateName Name of the template to read
 	 * @returns Template contents
 	 */
-	async readTemplate(templateName: TTemplateName): Promise<string> {
+	private async readTemplate(templateName: TTemplateName): Promise<string> {
 		const
 			fs = this._vault.adapter,
-			templatePath = this._settings.getTemplatePath(templateName);
+			templatePath = this.settings.getTemplatePath(templateName);
 
-		if (!fs.exists(this._settings.rssTemplateFolderPath) || !fs.exists(templatePath)) {
-			await this._settings.install(); // recovering from missing template
+		if (!fs.exists(this.settings.rssTemplateFolderPath) || !fs.exists(templatePath)) {
+			await this.settings.install(); // recovering from missing template
 		}
 
 		const tplFile = this._vault.getFileByPath(templatePath);
@@ -103,6 +133,10 @@ export class RSSfileManager {
 		return false;
 	}
 
+	ensureFolderExists(path : string) : Promise<TFolder> | TFolder {
+		return this.app.vault.getFolderByPath(path) ?? this.app.vault.createFolder(path);
+	}
+
 	/**
 	 * Create a file from an RSS template.
 	 *
@@ -120,6 +154,7 @@ export class RSSfileManager {
 	 * @returns The new file created
 	 */
 	async createFile(folderPath: string, basename: string, templateName: TTemplateName, data: TPropertyBag = {}, postProcess: boolean = false): Promise<TFile> {
+		await this.ensureFolderExists(folderPath);
 		// 1. generate a unique filename based on the given desired file system location info.
 		let
 			uniqueBasename = basename,
@@ -146,21 +181,25 @@ export class RSSfileManager {
 
 		return this._vault.create(uniqueFilepath, content);
 	}
-
-	getFeeds() : TFile[] {
-		const feedFolder = this._vault.getFolderByPath(this._plugin.settings.rssFeedFolderPath);
-		if (!feedFolder) {
+/*
+	getFeedsOfCollection(collection: TFile): TFile[] {
+		const collectionFrontmatter = this._app.metadataCache.getFileCache(collection)?.frontmatter;
+		if (collectionFrontmatter?.role !== "rsscollection") {
 			return [];
 		}
-
-		return feedFolder.children
-			.filter(it => {
-				if (!(it instanceof TFile) || (it as TFile).extension !== "md") {
-					return false;
-				}
-
-				return true;
-			})
-			.map((f: TAbstractFile) => f as TFile);
+		// get the conditions
+		const
+			anyofSet = new Set<string>(collectionFrontmatter.tags),
+			noneofSet = new Set<string>(collectionFrontmatter.noneof),
+			allof: string[] = collectionFrontmatter.allof ?? [];
+		return this.getFeeds()
+			.filter(f => {
+				const
+					feedFrontmatter = this._app.metadataCache.getFileCache(f)?.frontmatter,
+					tags: string[] = feedFrontmatter?.tags ?? [],
+					tagSet = new Set<string>(tags);
+				return !tags.some(t => noneofSet.has(t)) && !allof.some(t => !tagSet.has(t)) && tags.some(t => anyofSet.has(t));
+			});
 	}
+			*/
 }
