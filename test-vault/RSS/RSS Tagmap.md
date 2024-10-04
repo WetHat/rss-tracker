@@ -169,6 +169,3 @@ to (**including the** `#` prefix).
 | rss/announcement | #rss/announcement |
 | rss/〭NET_Framework | #rss/〭NET_Framework |
 | rss/Maintenance_＆_Updates | #rss/Maintenance_＆_Updates |
-| rss/NodeToDenoChallenge | #rss/NodeToDenoChallenge |
-| rss/NodeToDenoChallenge | #rss/NodeToDenoChallenge |
-| rss/NodeToDenoChallenge | #rss/NodeToDenoChallenge |
