@@ -67,16 +67,16 @@ export class TrackedRSSitem {
         this.id = id;
         this.media = media;
         this.tags = (entry.category ?? [])
-            .map(c => (typeof c === "string" ? c : c["#text"]).replace(/[+&]/g, ","))
+            .map(c => ((typeof c === "string" ? c : c["#text"]) ?? c.toString()).replace(/[+&]/g, ","))
             .join(",") // turn everything into a comma separated list to catch internal commas
             .split(",") // abd pull it apart again
             .map(c => {
             // return one cleaned up category
             return c.trim()
-                .replace(/^#|\s*[;"\]\}\)]+\s*/g, "")
+                .replace(/^#|\s*[;"\]\}\)\{\[\(]+\s*/g, "")
                 .replaceAll("#", "＃")
                 .replace(/"'/g, "ʼ")
-                .replace(/\s*[\\:\{\[\(]+\s*/g, "/")
+                .replace(/\s*[\\:]+\s*/g, "/")
                 .replace(/[\s\.]+/g, "_");
         })
             .filter(c => !!c); // remove empty strings;

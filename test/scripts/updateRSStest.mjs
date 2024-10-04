@@ -24,14 +24,13 @@ if (process.argv.length < 3) {
 
 const
     feedSource = process.argv[2], // url or relative directory path or --all
-    referencePath = "./test-vault/RSS/reference";
+    referencePath = "";
 
 async function generateFeedReference(feed) {
-
     // cleanup the markdown files
     const
         feedName = feed.fileName,
-        fsFeedDir = "./test-vault/RSS/reference/" + feedName,
+        fsFeedDir = "./test-vault/RSS/Feeds/" + feedName,
         feedDashboard = fsFeedDir + ".md";
 
     if (fs.existsSync(feedDashboard)) {
@@ -43,21 +42,21 @@ async function generateFeedReference(feed) {
     globSync(`${fsFeedDir}/*.md`).forEach(md => fs.rmSync(md));
 
     // regenerate the feed markdown files
-    const xmlAsset = encodeURIComponent(`RSS/reference/${feedName}/assets/feed.xml`);
-    execFileSync("cmd", ["/C", "start", `obsidian://newRssFeed?xml=${xmlAsset}^&dir=RSS%2Freference`]);
+    const xmlAsset = encodeURIComponent(`test/${feedName}/feed.xml`);
+    execFileSync("cmd", ["/C", "start", `obsidian://newRssFeed?xml=${xmlAsset}`]);
 
-    await new Promise(resolve => setTimeout(resolve,2000));
+    await new Promise(resolve => setTimeout(resolve, 2000));
     console.log(`Reference data for "${feedName}" updated!`)
 }
 
-if (feedSource.includes("//")) {
+if (feedSource.includes("://")) {
     // download feed from the web.
     const
         feedXML = await fetch(feedSource)
             .then(response => response.text()),
         feed = new TrackedRSSfeed(feedXML, feedSource),
         feedName = feed.fileName,
-        fsAssets = path.join(referencePath, feedName, "assets");
+        fsAssets = path.join(referencePath, feedName);
     console.log("Downloaded feed " + feedName);
 
     fs.mkdirSync(fsAssets, { recursive: true });
@@ -70,10 +69,10 @@ if (feedSource.includes("//")) {
 
 let feeds;
 if (feedSource === "--all") {
-    feeds = globSync(`${referencePath}/*/assets/feed.xml`);
+    feeds = globSync(`${referencePath}/*/feed.xml`);
     console.log(feeds);
 } else {
-    feeds = [path.join(feedSource, "assets/feed.xml")];
+    feeds = [path.join(referencePath, feedSource, "feed.xml")];
 }
 
 for (let feedXml of feeds) {

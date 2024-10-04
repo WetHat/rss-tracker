@@ -11,7 +11,7 @@ import assert from "assert";
  */
 describe('Test FeedAssembler ', function () {
     // collect all reference RSS feeds.
-    const tests = globSync("./test-vault/RSS/reference/*/assets/feed.xml")
+    const tests = globSync("./test-vault/test/*/feed.xml")
         .map(xmlPath => ({ args: [xmlPath], expected: false }));
 
     // Run the parsing test for each reference RSS feed.
@@ -19,7 +19,7 @@ describe('Test FeedAssembler ', function () {
         // setup some paths and names relevant to the test
         const [xmlPath] = args,
             assets = path.dirname(xmlPath), // location where we find other assets
-            feedName = path.basename(path.dirname(assets)), // directory name is the feed name
+            feedName = path.basename(assets), // directory name is the feed name
             reportFile = path.join("./test-vault/reports", `${feedName} Assembler.md`);
         // run the test
         it(`parsing "${feedName}"`, function () {
