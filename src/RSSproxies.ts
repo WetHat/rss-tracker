@@ -153,7 +153,7 @@ export class RSSitemProxy extends RSSProxy {
             frontmatter: TFrontmatter = {
                 role: "rssitem",
                 id: id ?? link,
-                author: ('"' + author + '"') ?? "Unknown",
+                author:  author ? ('"' + author + '"') : "Unknown",
                 link: link ?? "",
                 published: published ?? new Date().valueOf(),
                 feed: `[[${itemfolder.name}]]`,
