@@ -13889,7 +13889,7 @@ var RSSitemProxy = class extends RSSProxy {
     const itemfolder = await feed.itemFolder(), tagmgr = feed.plugin.tagmgr, frontmatter = {
       role: "rssitem",
       id: id != null ? id : link,
-      author: author != null ? author : "Unknown",
+      author: author ? '"' + author + '"' : "Unknown",
       link: link != null ? link : "",
       published: published != null ? published : new Date().valueOf(),
       feed: `[[${itemfolder.name}]]`,
@@ -13938,7 +13938,7 @@ var _RSSfeedProxy = class extends RSSProxy {
       "{{description}}": description ? (0, import_obsidian2.htmlToMarkdown)(description) : "",
       "{{image}}": image ? formatImage(image) : `![[${defaultImage}|200x200]]{.rss-image}`
     };
-    const filemgr = plugin.filemgr, dashboard = await filemgr.createFile(plugin.settings.rssFeedFolderPath, feed.fileName, "RSS Feed", dataMap), proxy = new _RSSfeedProxy(plugin, dashboard, frontmatter);
+    const filemgr = plugin.filemgr, dashboard = await filemgr.createFile(plugin.settings.rssFeedFolderPath, feed.fileName, "RSS Feed", dataMap, true), proxy = new _RSSfeedProxy(plugin, dashboard, frontmatter);
     try {
       await proxy.update(feed);
     } catch (err) {
@@ -15600,6 +15600,7 @@ var FeedManager = class {
    * @returns the feed proxy
    */
   async createFeedFromFile(xml) {
+    await this._plugin.tagmgr.updateTagMap();
     const feedXML = await this._app.vault.read(xml);
     return RSSfeedProxy.create(this._plugin, new TrackedRSSfeed(feedXML, "https://localhost/" + xml.path));
   }
@@ -15631,6 +15632,7 @@ var FeedManager = class {
       url,
       method: "GET"
     });
+    await this._plugin.tagmgr.updateTagMap();
     return RSSfeedProxy.create(this._plugin, new TrackedRSSfeed(feedXML, url));
   }
   /**

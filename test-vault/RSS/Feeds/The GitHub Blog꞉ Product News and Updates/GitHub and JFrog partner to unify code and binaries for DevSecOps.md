@@ -4,16 +4,34 @@ author: Thomas Dohmke
 published: 2024-05-29T13:15:54.000Z
 link: https://github.blog/2024-05-29-github-and-jfrog/
 id: https://github.blog/?p=78206
-feed: "[[../The GitHub Blog꞉ Product News and Updates]]"
-tags: []
+feed: "[[The GitHub Blog꞉ Product News and Updates]]"
+tags: [rss/object_Object]
 pinned: false
 ---
+
 > [!abstract] GitHub and JFrog partner to unify code and binaries for DevSecOps by Thomas Dohmke - 2024-05-29T13:15:54.000Z
+> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
 > This partnership between GitHub and JFrog enables developers to manage code and binaries more efficiently on two of the most widely used developer platforms in the world. The post GitHub and JFrog partner to unify code and binaries for DevSecOps appeared first on The GitHub Blog.
 
-🔗Read article [online](https://github.blog/2024-05-29-github-and-jfrog/). For other items in this feed see [[../The GitHub Blog꞉ Product News and Updates]].
+🔗Read article [online](https://github.blog/2024-05-29-github-and-jfrog/). For other items in this feed see [[The GitHub Blog꞉ Product News and Updates]].
 
 - [ ] [[GitHub and JFrog partner to unify code and binaries for DevSecOps]]
+
+~~~dataviewjs
+const
+    current = dv.current(),
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	tasks = await dvjs.rssDuplicateItemsTasks(current);
+if (tasks.length > 0) {
+	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+    dv.taskList(tasks,false);
+}
+const tags = current.file.etags.join(" ");
+if (current) {
+	dv.span(tags);
+}
+~~~
+
 - - -
 As the volume of code continues to grow exponentially, software developers, DevOps engineers, operations teams, security specialists, and everyone else who touches code are increasingly spending their time in the weeds of securing, delivering, and scaling software. This bottles up creativity and ultimately slows software development for every organization.
 

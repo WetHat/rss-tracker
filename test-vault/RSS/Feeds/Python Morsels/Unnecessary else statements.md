@@ -1,14 +1,16 @@
 ---
 role: rssitem
-author: Python Morsels
+author: Unknown
 published: 2024-03-22T22:00:00.000Z
 link: https://www.pythonmorsels.com/unnecessary-else-statements/
 id: https://www.pythonmorsels.com/unnecessary-else-statements/
-feed: "[[../Python Morsels]]"
+feed: "[[Python Morsels]]"
 tags: []
 pinned: false
 ---
+
 > [!abstract] Unnecessary else statements - 2024-03-22T22:00:00.000Z
+> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
 > When your function ends in an `else` block with a `return` statement in it, should you remove that `else`?
 > 
 > ![](https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F1819454470-59789a86671b414679eb978d1af70942df16e8d2ea5ca46c1f4eab3ae5e2e0eb-d_1920x1080&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png)
@@ -17,9 +19,25 @@ pinned: false
 > 
 > 1. [A function where both `if` and `else` return](https://www.pythonmorsels.com/unnecessary-else-statements/#a-function-where-bo⋯
 
-🔗Read article [online](https://www.pythonmorsels.com/unnecessary-else-statements/). For other items in this feed see [[../Python Morsels]].
+🔗Read article [online](https://www.pythonmorsels.com/unnecessary-else-statements/). For other items in this feed see [[Python Morsels]].
 
 - [ ] [[Unnecessary else statements]]
+
+~~~dataviewjs
+const
+    current = dv.current(),
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	tasks = await dvjs.rssDuplicateItemsTasks(current);
+if (tasks.length > 0) {
+	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+    dv.taskList(tasks,false);
+}
+const tags = current.file.etags.join(" ");
+if (current) {
+	dv.span(tags);
+}
+~~~
+
 - - -
 When your function ends in an `else` block with a `return` statement in it, should you remove that `else`?
 
@@ -37,13 +55,36 @@ When your function ends in an `else` block with a `return` statement in it, shou
 
 This `earliest_date` function uses the [python-dateutil](https://pypi.org/project/python-dateutil/) third-party library to parse two strings as dates:
 
-`from dateutil.parser import parse                                  def earliest_date(date1,                                 date2):                                 """Return the string representing the                                 earliest date."""                                 if parse(date1,                                 fuzzy=True)                                 < parse(date2,                                 fuzzy=True):                                 return date1                                 else:                                 return date2`
+```undefined
+from dateutil.parser import parse
+
+
+                                def earliest_date(date1,
+                                date2):
+                                """Return the string representing the
+                                earliest date."""
+                                if parse(date1,
+                                fuzzy=True)
+                                < parse(date2,
+                                fuzzy=True):
+                                return date1
+                                else:
+                                return date2
                                 
+```
 
 This function returns the string which represents the earliest given date:
 
-`>>> earliest_date("May 3                                 2024", "June 5 2025")                                 'May 3 2024'                                 >>>                                 earliest_date("Feb 3                                 2026", "June 5 2025")                                 'June 5 2025'`
+```undefined
+>>> earliest_date("May 3
+                                2024", "June 5 2025")
+                                'May 3 2024'
+                                >>>
+                                earliest_date("Feb 3
+                                2026", "June 5 2025")
+                                'June 5 2025'
                                 
+```
 
 Note that this function uses an [if statement](https://www.pythonmorsels.com/if-statements/) that returns, and an `else` that also returns.
 

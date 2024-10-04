@@ -4,16 +4,34 @@ author: Mario Rodriguez
 published: 2024-05-07T16:00:04.000Z
 link: https://github.blog/2024-05-07-github-copilot-chat-in-github-mobile/
 id: https://github.blog/?p=77910
-feed: "[[../The GitHub Blog꞉ Product News and Updates]]"
-tags: []
+feed: "[[The GitHub Blog꞉ Product News and Updates]]"
+tags: [rss/object_Object]
 pinned: false
 ---
+
 > [!abstract] GitHub Copilot Chat in GitHub Mobile is now generally available by Mario Rodriguez - 2024-05-07T16:00:04.000Z
+> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
 > With GitHub Copilot Chat in GitHub Mobile, developers can collaborate, ask coding questions, and gain insights into both public and private repositories anywhere, anytime–all in natural language for users on all GitHub Copilot plans. The post GitHub Copilot Chat in GitHub Mobile is now generally available appeared first on The GitHub Blog.
 
-🔗Read article [online](https://github.blog/2024-05-07-github-copilot-chat-in-github-mobile/). For other items in this feed see [[../The GitHub Blog꞉ Product News and Updates]].
+🔗Read article [online](https://github.blog/2024-05-07-github-copilot-chat-in-github-mobile/). For other items in this feed see [[The GitHub Blog꞉ Product News and Updates]].
 
 - [ ] [[GitHub Copilot Chat in GitHub Mobile is now generally available]]
+
+~~~dataviewjs
+const
+    current = dv.current(),
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	tasks = await dvjs.rssDuplicateItemsTasks(current);
+if (tasks.length > 0) {
+	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+    dv.taskList(tasks,false);
+}
+const tags = current.file.etags.join(" ");
+if (current) {
+	dv.span(tags);
+}
+~~~
+
 - - -
 Developers are constantly coming up with new ideas, exploring new skills, and collaborating with other developers on work and personal projects. At GitHub, we understand that all this collaboration doesn’t always happen from behind desks and computers. Developers increasingly use their mobile devices to learn, understand, and perform important tasks in the software development process. Today, we’re making that easier than ever, empowering developers to build in natural language wherever they may be, with the general availability of GitHub Copilot Chat for GitHub Mobile.
 

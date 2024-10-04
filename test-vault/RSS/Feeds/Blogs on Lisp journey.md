@@ -1,30 +1,30 @@
 ---
 role: rssfeed
-feedurl: https://localhost/RSS/reference/Blogs on Lisp journey/assets/feed.xml
+feedurl: https://localhost/test/Blogs on Lisp journey/feed.xml
 site: https://localhost/blog/
 itemlimit: 10
-updated: 2024-07-16T10:44:15.922Z
-status: OK
-tags: 
+updated: 2024-10-04T17:17:38.917Z
+status: ✅
+tags: []
 interval: 645
 ---
 > [!abstract] Blogs on Lisp journey
+> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
 > Recent content in Blogs on Lisp journey
->
-> ![[assets/Blogs on Lisp journey.svg|200x200]]
+
 # Unread Feed Items 📚
 ~~~dataview
 TASK
-FROM [[Blogs on Lisp journey.md]]
-WHERE !completed AND role = "rssitem"
+FROM [[]]
+WHERE !completed AND startswith(text,"[[") AND role = "rssitem"
 SORT published DESC
 ~~~
 
-# Pinned Feed Items 📌
+# Pinned Feed Items 📍
 ~~~dataview
 TABLE
 published as Published
-FROM [[Blogs on Lisp journey.md]]
+FROM [[]]
 WHERE pinned = true AND role = "rssitem"
 SORT published DESC
 ~~~
@@ -32,7 +32,7 @@ SORT published DESC
 # Read Feed Items
 ~~~dataview
 TASK
-FROM [[Blogs on Lisp journey.md]]
-WHERE completed AND role = "rssitem"
+FROM [[]]
+WHERE completed AND startswith(text,"[[") AND role = "rssitem"
 SORT published DESC
 ~~~

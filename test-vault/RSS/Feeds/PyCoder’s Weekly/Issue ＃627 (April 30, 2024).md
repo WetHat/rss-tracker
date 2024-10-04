@@ -1,19 +1,37 @@
 ---
 role: rssitem
-author: PyCoder’s Weekly
+author: Unknown
 published: 2024-04-30T19:30:00.000Z
 link: https://pycoders.com/issues/627
 id: https://pycoders.com/issues/627
-feed: "[[../PyCoder’s Weekly]]"
+feed: "[[PyCoder’s Weekly]]"
 tags: []
 pinned: false
 ---
+
 > [!abstract] Issue #627 (April 30, 2024) - 2024-04-30T19:30:00.000Z
+> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
 > #627 – APRIL 30, 2024 View in Browser » PEP 686: Make UTF-8 Mode Default This Python Enhancement Proposal outlines making UTF-8 the default throughout Python. This takes the addition of Unicode introduced in Python 3 to its full extent, applying it to file encoding, pipes, and more. Mechanisms for other encoding are still supported. This PEP is targeted for Python 3.15. PEPS What’s Lazy Evaluation in Python? This tutorial explores lazy evaluation in Python and looks at the advantages and disadva⋯
 
-🔗Read article [online](https://pycoders.com/issues/627). For other items in this feed see [[../PyCoder’s Weekly]].
+🔗Read article [online](https://pycoders.com/issues/627). For other items in this feed see [[PyCoder’s Weekly]].
 
 - [ ] [[Issue ＃627 (April 30, 2024)]]
+
+~~~dataviewjs
+const
+    current = dv.current(),
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	tasks = await dvjs.rssDuplicateItemsTasks(current);
+if (tasks.length > 0) {
+	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+    dv.taskList(tasks,false);
+}
+const tags = current.file.etags.join(" ");
+if (current) {
+	dv.span(tags);
+}
+~~~
+
 - - -
 #627 – APRIL 30, 2024  
 [View in Browser »](https://pycoders.com/issues/627/feed)
@@ -192,4 +210,4 @@ This was PyCoder’s Weekly Issue #627.
 
 ---
 
-_[ Subscribe to 🐍 PyCoder’s Weekly 💌 – Get the best Python news, articles, and tutorials delivered to your inbox once a week [>> Click here to learn more](https://pycoders.com/?utm_source=pycoders&utm_medium=feed&utm_campaign=footer) ]_
+_［ Subscribe to 🐍 PyCoder’s Weekly 💌 – Get the best Python news, articles, and tutorials delivered to your inbox once a week [＞＞ Click here to learn more](https://pycoders.com/?utm_source=pycoders&utm_medium=feed&utm_campaign=footer) ］_

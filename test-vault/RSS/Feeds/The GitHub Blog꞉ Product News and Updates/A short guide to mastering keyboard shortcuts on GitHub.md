@@ -4,20 +4,38 @@ author: Sara Verdi
 published: 2024-04-19T16:37:20.000Z
 link: https://github.blog/2024-04-19-a-short-guide-to-mastering-keyboard-shortcuts-on-github/
 id: https://github.blog/?p=77552
-feed: "[[../The GitHub Blog꞉ Product News and Updates]]"
-tags: []
+feed: "[[The GitHub Blog꞉ Product News and Updates]]"
+tags: [rss/object_Object]
 pinned: false
 ---
+
 > [!abstract] A short guide to mastering keyboard shortcuts on GitHub by Sara Verdi - 2024-04-19T16:37:20.000Z
+> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
 > Say goodbye to constant mouse clicking and hello to seamless navigation with GitHub shortcuts. The post A short guide to mastering keyboard shortcuts on GitHub appeared first on The GitHub Blog.
 
-🔗Read article [online](https://github.blog/2024-04-19-a-short-guide-to-mastering-keyboard-shortcuts-on-github/). For other items in this feed see [[../The GitHub Blog꞉ Product News and Updates]].
+🔗Read article [online](https://github.blog/2024-04-19-a-short-guide-to-mastering-keyboard-shortcuts-on-github/). For other items in this feed see [[The GitHub Blog꞉ Product News and Updates]].
 
 - [ ] [[A short guide to mastering keyboard shortcuts on GitHub]]
+
+~~~dataviewjs
+const
+    current = dv.current(),
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	tasks = await dvjs.rssDuplicateItemsTasks(current);
+if (tasks.length > 0) {
+	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+    dv.taskList(tasks,false);
+}
+const tags = current.file.etags.join(" ");
+if (current) {
+	dv.span(tags);
+}
+~~~
+
 - - -
 |   |
 |---|
-|This is abridged content from November 2023’s _Insider_ newsletter. Like what you see? Sign up for the newsletter to receive complete, unabridged content in your inbox twice a month. [Sign up now >](https://resources.github.com/newsletter/)|
+|This is abridged content from November 2023’s _Insider_ newsletter. Like what you see? Sign up for the newsletter to receive complete, unabridged content in your inbox twice a month. [Sign up now ＞](https://resources.github.com/newsletter/)|
 
 Did you know that just about every page on GitHub has a keyboard shortcut? In this blog post, we’ll uncover the world of [GitHub keyboard shortcuts](https://docs.github.com/get-started/using-github/keyboard-shortcuts) and how they can help you navigate and perform actions swiftly. ⌨️
 
@@ -120,6 +138,6 @@ With these keyboard shortcuts under your belt, you’ll become a GitHub power us
 
 Want to know what other GitHub users’ favorite keyboard shortcuts are? Take a look through the comments on this [video](https://www.linkedin.com/posts/github_githubdev-keyboard-shortcut-activity-7108860082779484160-sgap/?utm_source=share&utm_medium=member_desktop). And to further boost your productivity on GitHub, you can explore GitHub Actions—an integrated automation and CI/CD service within your repositories. GitHub Actions streamlines code-related tasks and development by defining event-triggered workflows; check it out today! Get started with [GitHub Actions](https://github.com/features/actions).
 
-Want to receive content like this twice a month, right in your inbox? [Sign up for the newsletter now >](https://resources.github.com/newsletter/)
+Want to receive content like this twice a month, right in your inbox? [Sign up for the newsletter now ＞](https://resources.github.com/newsletter/)
 
 The post [A short guide to mastering keyboard shortcuts on GitHub](https://github.blog/2024-04-19-a-short-guide-to-mastering-keyboard-shortcuts-on-github/) appeared first on [The GitHub Blog](https://github.blog).

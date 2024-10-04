@@ -1,14 +1,16 @@
 ---
 role: rssitem
-author: Python Morsels
+author: Unknown
 published: 2024-03-19T21:30:00.000Z
 link: https://www.pythonmorsels.com/every-dunder-method/
 id: https://www.pythonmorsels.com/every-dunder-method/
-feed: "[[../Python Morsels]]"
+feed: "[[Python Morsels]]"
 tags: []
 pinned: false
 ---
+
 > [!abstract] Every dunder method in Python - 2024-03-19T21:30:00.000Z
+> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
 > An explanation of all of Python's 100+ dunder methods and 50+ dunder attributes, including a summary of each one.
 > 
 > **Table of contents**
@@ -18,9 +20,25 @@ pinned: false
 > 3. [Orderability ⚖️](https://www.pythonmorsels.com/every-dunder-method/#orderability)
 > 4. [Type conversions and string formatting ⚗⋯
 
-🔗Read article [online](https://www.pythonmorsels.com/every-dunder-method/). For other items in this feed see [[../Python Morsels]].
+🔗Read article [online](https://www.pythonmorsels.com/every-dunder-method/). For other items in this feed see [[Python Morsels]].
 
 - [ ] [[Every dunder method in Python]]
+
+~~~dataviewjs
+const
+    current = dv.current(),
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	tasks = await dvjs.rssDuplicateItemsTasks(current);
+if (tasks.length > 0) {
+	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+    dv.taskList(tasks,false);
+}
+const tags = current.file.etags.join(" ");
+if (current) {
+	dv.span(tags);
+}
+~~~
+
 - - -
 An explanation of all of Python's 100+ dunder methods and 50+ dunder attributes, including a summary of each one.
 

@@ -4,16 +4,34 @@ author: Thomas Dohmke
 published: 2024-04-29T16:00:02.000Z
 link: https://github.blog/2024-04-29-github-copilot-workspace/
 id: https://github.blog/?p=77597
-feed: "[[../The GitHub Blog꞉ Product News and Updates]]"
-tags: []
+feed: "[[The GitHub Blog꞉ Product News and Updates]]"
+tags: [rss/object_Object]
 pinned: false
 ---
+
 > [!abstract] GitHub Copilot Workspace: Welcome to the Copilot-native developer environment by Thomas Dohmke - 2024-04-29T16:00:02.000Z
+> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
 > We’re redefining the developer environment with GitHub Copilot Workspace - where any developer can go from idea, to code, to software all in natural language. The post GitHub Copilot Workspace: Welcome to the Copilot-native developer environment appeared first on The GitHub Blog.
 
-🔗Read article [online](https://github.blog/2024-04-29-github-copilot-workspace/). For other items in this feed see [[../The GitHub Blog꞉ Product News and Updates]].
+🔗Read article [online](https://github.blog/2024-04-29-github-copilot-workspace/). For other items in this feed see [[The GitHub Blog꞉ Product News and Updates]].
 
 - [ ] [[GitHub Copilot Workspace꞉ Welcome to the Copilot-native developer environment]]
+
+~~~dataviewjs
+const
+    current = dv.current(),
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	tasks = await dvjs.rssDuplicateItemsTasks(current);
+if (tasks.length > 0) {
+	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+    dv.taskList(tasks,false);
+}
+const tags = current.file.etags.join(" ");
+if (current) {
+	dv.span(tags);
+}
+~~~
+
 - - -
 |   |
 |---|

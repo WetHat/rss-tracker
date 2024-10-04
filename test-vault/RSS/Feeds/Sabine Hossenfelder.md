@@ -1,30 +1,30 @@
 ---
 role: rssfeed
-feedurl: https://localhost/RSS/reference/Sabine Hossenfelder/assets/feed.xml
+feedurl: https://localhost/test/Sabine Hossenfelder/feed.xml
 site: https://www.youtube.com/channel/UC1yNl2E66ZzKApQdRuTQ4tw
 itemlimit: 10
-updated: 2024-07-16T10:44:00.415Z
-status: OK
-tags: 
+updated: 2024-10-04T17:19:15.494Z
+status: ✅
+tags: []
 interval: 24
 ---
 > [!abstract] Sabine Hossenfelder
+> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
 > 
->
-> ![[assets/Sabine Hossenfelder.svg|200x200]]
+
 # Unread Feed Items 📚
 ~~~dataview
 TASK
-FROM [[Sabine Hossenfelder.md]]
-WHERE !completed AND role = "rssitem"
+FROM [[]]
+WHERE !completed AND startswith(text,"[[") AND role = "rssitem"
 SORT published DESC
 ~~~
 
-# Pinned Feed Items 📌
+# Pinned Feed Items 📍
 ~~~dataview
 TABLE
 published as Published
-FROM [[Sabine Hossenfelder.md]]
+FROM [[]]
 WHERE pinned = true AND role = "rssitem"
 SORT published DESC
 ~~~
@@ -32,7 +32,7 @@ SORT published DESC
 # Read Feed Items
 ~~~dataview
 TASK
-FROM [[Sabine Hossenfelder.md]]
-WHERE completed AND role = "rssitem"
+FROM [[]]
+WHERE completed AND startswith(text,"[[") AND role = "rssitem"
 SORT published DESC
 ~~~

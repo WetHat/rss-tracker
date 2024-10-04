@@ -1,30 +1,30 @@
 ---
 role: rssfeed
-feedurl: https://localhost/RSS/reference/fettblog․eu ∣ TypeScript, JavaScript, Jamstack/assets/feed.xml
+feedurl: https://localhost/test/fettblog․eu ∣ TypeScript, JavaScript, Jamstack/feed.xml
 site: https://fettblog.eu/
 itemlimit: 10
-updated: 2024-07-16T10:44:09.247Z
-status: OK
-tags: 
+updated: 2024-10-04T17:34:28.403Z
+status: ✅
+tags: []
 interval: 593
 ---
 > [!abstract] fettblog.eu | TypeScript, JavaScript, Jamstack
+> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
 > 
->
-> ![[assets/fettblog․eu ∣ TypeScript, JavaScript, Jamstack.svg|200x200]]
+
 # Unread Feed Items 📚
 ~~~dataview
 TASK
-FROM [[fettblog․eu ∣ TypeScript, JavaScript, Jamstack.md]]
-WHERE !completed AND role = "rssitem"
+FROM [[]]
+WHERE !completed AND startswith(text,"[[") AND role = "rssitem"
 SORT published DESC
 ~~~
 
-# Pinned Feed Items 📌
+# Pinned Feed Items 📍
 ~~~dataview
 TABLE
 published as Published
-FROM [[fettblog․eu ∣ TypeScript, JavaScript, Jamstack.md]]
+FROM [[]]
 WHERE pinned = true AND role = "rssitem"
 SORT published DESC
 ~~~
@@ -32,7 +32,7 @@ SORT published DESC
 # Read Feed Items
 ~~~dataview
 TASK
-FROM [[fettblog․eu ∣ TypeScript, JavaScript, Jamstack.md]]
-WHERE completed AND role = "rssitem"
+FROM [[]]
+WHERE completed AND startswith(text,"[[") AND role = "rssitem"
 SORT published DESC
 ~~~

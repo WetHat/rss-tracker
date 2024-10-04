@@ -4,16 +4,34 @@ author: Carlin Cherry
 published: 2024-05-02T16:30:32.000Z
 link: https://github.blog/2024-05-02-dependabot-on-github-actions-and-self-hosted-runners-is-now-generally-available/
 id: https://github.blog/?p=77824
-feed: "[[../The GitHub Blog꞉ Product News and Updates]]"
-tags: []
+feed: "[[The GitHub Blog꞉ Product News and Updates]]"
+tags: [rss/object_Object]
 pinned: false
 ---
+
 > [!abstract] Dependabot on GitHub Actions and self-hosted runners is now generally available by Carlin Cherry - 2024-05-02T16:30:32.000Z
+> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
 > A quick guide on the advantages of Dependabot as a GitHub Actions workflow and the benefits this unlocks, including self-hosted runner support. The post Dependabot on GitHub Actions and self-hosted runners is now generally available appeared first on The GitHub Blog.
 
-🔗Read article [online](https://github.blog/2024-05-02-dependabot-on-github-actions-and-self-hosted-runners-is-now-generally-available/). For other items in this feed see [[../The GitHub Blog꞉ Product News and Updates]].
+🔗Read article [online](https://github.blog/2024-05-02-dependabot-on-github-actions-and-self-hosted-runners-is-now-generally-available/). For other items in this feed see [[The GitHub Blog꞉ Product News and Updates]].
 
 - [ ] [[Dependabot on GitHub Actions and self-hosted runners is now generally available]]
+
+~~~dataviewjs
+const
+    current = dv.current(),
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	tasks = await dvjs.rssDuplicateItemsTasks(current);
+if (tasks.length > 0) {
+	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+    dv.taskList(tasks,false);
+}
+const tags = current.file.etags.join(" ");
+if (current) {
+	dv.span(tags);
+}
+~~~
+
 - - -
 Starting today, administrators using `Github.com` accounts can enable their repositories and/or organizations to run Dependabot updates jobs as a GitHub Actions workflow using both hosted and self-hosted runners. **Running Dependabot does not count towards GitHub Actions minutes–meaning that using Dependabot continues to be free for everyone**.
 

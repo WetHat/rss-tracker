@@ -4,18 +4,36 @@ author: "@WetHat"
 published: 2024-05-14T17:21:59.000Z
 link: https://fosstodon.org/@eddyizm/112440587071746764
 id: https://fosstodon.org/@eddyizm/112440587071746764
-feed: "[[../@WetHat (WetHat💦)]]"
+feed: "[[@WetHat (WetHat💦)]]"
 tags: []
 pinned: false
 ---
+
 > [!abstract] Boosted: Celluar #rss/fooocus #rss/stablediffusion #rss/selfhosted #rss/AI #rss/AIart #rss/generativeAI #rss/generativeArt #rss/AIArtwork #rss/stablediffusionart #rss/AiArtCommunity #rss/sdxl #rss/sdxlturbo #rss/feditart #rss/mastoart #rss/digitalart by @WetHat - 2024-05-14T17:21:59.000Z
+> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
 > ![](https://cdn.fosstodon.org/media_attachments/files/112/440/586/486/395/031/original/dffbab31e3a50a29.jpg)
 > 
-> Celluar [#rss/fooocus](https://fosstodon.org/tags/fooocus) [#rss/stablediffusion](https://fosstodon.org/tags/stablediffusion) [#rss/selfhosted](https://fosstodon.org/tags/selfhosted) [#rss/AI](https://fosstodon.org/tags/AI) [#rss/AIart](https://fosstodon.org/tags/AIart) [#rss/generativeAI](https://fosstodon.org/tags/generativeAI) [#rss/generativeArt](https://fosstodon.org/tags/generative⋯
+> Celluar [#rss/fooocus](https://fosstodon.org/tags/fooocus) [#rss/stablediffusion](https://fosstodon.org/tags/stablediffusion) [#rss/selfhosted](https://fosstodon.org/tags/selfhosted) [#rss/AI](https://fosstodon.org/tags/AI) [#rss/AIart](https://fosstodon.org/tags/AIart) [#rss/generativeAI](https://fosstodon.org/tags/generativeAI) [#rss/generativeArt](https://fosstodon.org/tags/generativeArt) [#rss/AIArtwork](https://fo⋯
 
-🔗Read article [online](https://fosstodon.org/@eddyizm/112440587071746764). For other items in this feed see [[../@WetHat (WetHat💦)]].
+🔗Read article [online](https://fosstodon.org/@eddyizm/112440587071746764). For other items in this feed see [[@WetHat (WetHat💦)]].
 
 - [ ] [[Boosted꞉ Celluar ＃fooocus ＃stablediffusion ＃selfhosted ＃AI ＃AIart ＃generativeAI⋯]]
+
+~~~dataviewjs
+const
+    current = dv.current(),
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	tasks = await dvjs.rssDuplicateItemsTasks(current);
+if (tasks.length > 0) {
+	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+    dv.taskList(tasks,false);
+}
+const tags = current.file.etags.join(" ");
+if (current) {
+	dv.span(tags);
+}
+~~~
+
 - - -
 ![](https://cdn.fosstodon.org/media_attachments/files/112/440/586/486/395/031/original/dffbab31e3a50a29.jpg)
 

@@ -4,16 +4,34 @@ author: Mario Rodriguez
 published: 2024-05-21T15:27:46.000Z
 link: https://github.blog/2024-05-21-introducing-github-copilot-extensions/
 id: https://github.blog/?p=78012
-feed: "[[../The GitHub Blog꞉ Product News and Updates]]"
-tags: []
+feed: "[[The GitHub Blog꞉ Product News and Updates]]"
+tags: [rss/object_Object]
 pinned: false
 ---
+
 > [!abstract] Introducing GitHub Copilot Extensions: Unlocking unlimited possibilities with our ecosystem of partners by Mario Rodriguez - 2024-05-21T15:27:46.000Z
+> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
 > The world of Copilot is getting bigger, improving the developer experience by keeping developers in the flow longer and allowing them to do more in natural language. The post Introducing GitHub Copilot Extensions: Unlocking unlimited possibilities with our ecosystem of partners appeared first on The GitHub Blog.
 
-🔗Read article [online](https://github.blog/2024-05-21-introducing-github-copilot-extensions/). For other items in this feed see [[../The GitHub Blog꞉ Product News and Updates]].
+🔗Read article [online](https://github.blog/2024-05-21-introducing-github-copilot-extensions/). For other items in this feed see [[The GitHub Blog꞉ Product News and Updates]].
 
 - [ ] [[Introducing GitHub Copilot Extensions꞉ Unlocking unlimited possibilities with ou⋯]]
+
+~~~dataviewjs
+const
+    current = dv.current(),
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	tasks = await dvjs.rssDuplicateItemsTasks(current);
+if (tasks.length > 0) {
+	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+    dv.taskList(tasks,false);
+}
+const tags = current.file.etags.join(" ");
+if (current) {
+	dv.span(tags);
+}
+~~~
+
 - - -
 Today, we’re introducing GitHub Copilot Extensions to bring the world’s knowledge into the most widely adopted AI developer tool. Through a growing partner ecosystem, Copilot Extensions enables developers to build and deploy to the cloud in their natural language with their preferred tools and services, all without leaving the IDE or GitHub.com. With Copilot and now Copilot Extensions, developers can stay in the flow longer, uplevel their skills, and innovate faster.
 

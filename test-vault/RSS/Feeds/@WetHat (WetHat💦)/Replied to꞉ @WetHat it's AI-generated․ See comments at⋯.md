@@ -4,20 +4,38 @@ author: "@WetHat"
 published: 2024-05-13T12:20:10.000Z
 link: https://fosstodon.org/@WetHat/112433745762841309
 id: https://fosstodon.org/@WetHat/112433745762841309
-feed: "[[../@WetHat (WetHat💦)]]"
+feed: "[[@WetHat (WetHat💦)]]"
 tags: []
 pinned: false
 ---
+
 > [!abstract] Replied to: @WetHat it's AI-generated. See comments at https://old.reddit.com/r/lisp/comments/1cpfljb/how_to_explore_lisp_metaprogramming_techniques/ by @WetHat - 2024-05-13T12:20:10.000Z
+> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
 > [@phoe](https://functional.cafe/@phoe) Thanks for pointing this out. I do agree that some of the examples would be better written as functions. As the reddit article points out the coverage of metapogramming is rather shalllow demonstrating just the basics.
 > 
 > I've checked the contributors of that website. Most of which have skeleton LinkedIn profiles claming they are from South Africa. I believe that site indeed is fake!
 > 
 > - WetHat💦 (@WetHat) [May 13, 2024](https://fosstodon.org/@WetHat/112433745⋯
 
-🔗Read article [online](https://fosstodon.org/@WetHat/112433745762841309). For other items in this feed see [[../@WetHat (WetHat💦)]].
+🔗Read article [online](https://fosstodon.org/@WetHat/112433745762841309). For other items in this feed see [[@WetHat (WetHat💦)]].
 
 - [ ] [[Replied to꞉ @WetHat it's AI-generated․ See comments at⋯]]
+
+~~~dataviewjs
+const
+    current = dv.current(),
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	tasks = await dvjs.rssDuplicateItemsTasks(current);
+if (tasks.length > 0) {
+	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+    dv.taskList(tasks,false);
+}
+const tags = current.file.etags.join(" ");
+if (current) {
+	dv.span(tags);
+}
+~~~
+
 - - -
 [@phoe](https://functional.cafe/@phoe) Thanks for pointing this out. I do agree that some of the examples would be better written as functions. As the reddit article points out the coverage of metapogramming is rather shalllow demonstrating just the basics.
 

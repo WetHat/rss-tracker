@@ -1,14 +1,16 @@
 ---
 role: rssitem
-author: Python Morsels
+author: Unknown
 published: 2024-04-05T23:41:43.000Z
 link: https://www.pythonmorsels.com/http-server/
 id: https://www.pythonmorsels.com/http-server/
-feed: "[[../Python Morsels]]"
+feed: "[[Python Morsels]]"
 tags: []
 pinned: false
 ---
+
 > [!abstract] Python's http.server module - 2024-04-05T23:41:43.000Z
+> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
 > Use Python's `http.server` module to serve up a static website on your own machine.
 > 
 > ![](https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F1841759405-9da045272fa3ba2c3dafbff1086447bd10609290a8f06c9e3ef300b43cd23fbf-d_1920x1080&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png)
@@ -18,9 +20,25 @@ pinned: false
 > 1. [A directory trees of `index.html` files](https://www.pythonmorsels.com/http-server/#a-directory-trees-of-indexhtml-files)
 > 2. [Serving up HTML files⋯
 
-🔗Read article [online](https://www.pythonmorsels.com/http-server/). For other items in this feed see [[../Python Morsels]].
+🔗Read article [online](https://www.pythonmorsels.com/http-server/). For other items in this feed see [[Python Morsels]].
 
 - [ ] [[Python's http․server module]]
+
+~~~dataviewjs
+const
+    current = dv.current(),
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	tasks = await dvjs.rssDuplicateItemsTasks(current);
+if (tasks.length > 0) {
+	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+    dv.taskList(tasks,false);
+}
+const tags = current.file.etags.join(" ");
+if (current) {
+	dv.span(tags);
+}
+~~~
+
 - - -
 Use Python's `http.server` module to serve up a static website on your own machine.
 
@@ -38,13 +56,21 @@ Use Python's `http.server` module to serve up a static website on your own machi
 
 We have a directory here that represents a static website:
 
-`~/comprehensions/_build/dirhtml                                 $ ls index.html                                 index.html`
+```undefined
+~/comprehensions/_build/dirhtml
+                                $ ls index.html
+                                index.html
                                 
+```
 
 We not only have an `index.html` file, but also a bunch of sub-directories, each with their own `index.html` file:
 
-`~/comprehensions/_build/dirhtml                                 $ ls generator-expressions                                 index.html`
+```undefined
+~/comprehensions/_build/dirhtml
+                                $ ls generator-expressions
+                                index.html
                                 
+```
 
 The only way to really navigate this website locally is to **serve up these files** using some sort of HTTP server that is aware of these index files.
 

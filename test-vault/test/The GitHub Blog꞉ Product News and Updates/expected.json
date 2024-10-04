@@ -5,7 +5,9 @@
     "items": [
         {
             "id": "https://github.blog/?p=78262",
-            "tags": [],
+            "tags": [
+                "object_Object"
+            ],
             "description": "GitHub Actions now offers Arm-hosted runners with images built by Arm for developers to begin building on the latest and most sustainable processors on the market. The post Arm64 on GitHub Actions: Powering faster, more efficient build systems appeared first on The GitHub Blog.",
             "title": "Arm64 on GitHub Actions: Powering faster, more efficient build systems",
             "link": "https://github.blog/2024-06-03-arm64-on-github-actions-powering-faster-more-efficient-build-systems/",
@@ -16,7 +18,9 @@
         },
         {
             "id": "https://github.blog/?p=78206",
-            "tags": [],
+            "tags": [
+                "object_Object"
+            ],
             "description": "This partnership between GitHub and JFrog enables developers to manage code and binaries more efficiently on two of the most widely used developer platforms in the world.  The post GitHub and JFrog partner to unify code and binaries for DevSecOps appeared first on The GitHub Blog.",
             "title": "GitHub and JFrog partner to unify code and binaries for DevSecOps",
             "link": "https://github.blog/2024-05-29-github-and-jfrog/",
@@ -27,7 +31,9 @@
         },
         {
             "id": "https://github.blog/?p=78012",
-            "tags": [],
+            "tags": [
+                "object_Object"
+            ],
             "description": "The world of Copilot is getting bigger, improving the developer experience by keeping developers in the flow longer and allowing them to do more in natural language. The post Introducing GitHub Copilot Extensions: Unlocking unlimited possibilities with our ecosystem of partners appeared first on The GitHub Blog.",
             "title": "Introducing GitHub Copilot Extensions: Unlocking unlimited possibilities with our ecosystem of partners",
             "link": "https://github.blog/2024-05-21-introducing-github-copilot-extensions/",
@@ -38,7 +44,9 @@
         },
         {
             "id": "https://github.blog/?p=78014",
-            "tags": [],
+            "tags": [
+                "object_Object"
+            ],
             "description": "We conducted research with developers at Accenture to understand GitHub Copilot’s real-world impact in enterprise organizations.  The post Research: Quantifying GitHub Copilot’s impact in the enterprise with Accenture appeared first on The GitHub Blog.",
             "title": "Research: Quantifying GitHub Copilot’s impact in the enterprise with Accenture",
             "link": "https://github.blog/2024-05-13-research-quantifying-github-copilots-impact-in-the-enterprise-with-accenture/",
@@ -49,7 +57,9 @@
         },
         {
             "id": "https://github.blog/?p=77929",
-            "tags": [],
+            "tags": [
+                "object_Object"
+            ],
             "description": "We've made improvements to the way users of assistive technology can interact with and navigate lists of issues and pull requests and tables across GitHub.com. The post How we’re building more inclusive and accessible components at GitHub appeared first on The GitHub Blog.",
             "title": "How we’re building more inclusive and accessible components at GitHub",
             "link": "https://github.blog/2024-05-07-how-were-building-more-inclusive-and-accessible-components-at-github/",
@@ -60,7 +70,9 @@
         },
         {
             "id": "https://github.blog/?p=77910",
-            "tags": [],
+            "tags": [
+                "object_Object"
+            ],
             "description": "With GitHub Copilot Chat in GitHub Mobile, developers can collaborate, ask coding questions, and gain insights into both public and private repositories anywhere, anytime–all in natural language for users on all GitHub Copilot plans. The post GitHub Copilot Chat in GitHub Mobile is now generally available appeared first on The GitHub Blog.",
             "title": "GitHub Copilot Chat in GitHub Mobile is now generally available",
             "link": "https://github.blog/2024-05-07-github-copilot-chat-in-github-mobile/",
@@ -71,7 +83,9 @@
         },
         {
             "id": "https://github.blog/?p=77824",
-            "tags": [],
+            "tags": [
+                "object_Object"
+            ],
             "description": "A quick guide on the advantages of Dependabot as a GitHub Actions workflow and the benefits this unlocks, including self-hosted runner support. The post Dependabot on GitHub Actions and self-hosted runners is now generally available appeared first on The GitHub Blog.",
             "title": "Dependabot on GitHub Actions and self-hosted runners is now generally available",
             "link": "https://github.blog/2024-05-02-dependabot-on-github-actions-and-self-hosted-runners-is-now-generally-available/",
@@ -82,7 +96,9 @@
         },
         {
             "id": "https://github.blog/?p=77597",
-            "tags": [],
+            "tags": [
+                "object_Object"
+            ],
             "description": "We’re redefining the developer environment with GitHub Copilot Workspace - where any developer can go from idea, to code, to software all in natural language.  The post GitHub Copilot Workspace: Welcome to the Copilot-native developer environment appeared first on The GitHub Blog.",
             "title": "GitHub Copilot Workspace: Welcome to the Copilot-native developer environment",
             "link": "https://github.blog/2024-04-29-github-copilot-workspace/",
@@ -93,7 +109,9 @@
         },
         {
             "id": "https://github.blog/?p=77552",
-            "tags": [],
+            "tags": [
+                "object_Object"
+            ],
             "description": "Say goodbye to constant mouse clicking and hello to seamless navigation with GitHub shortcuts.  The post A short guide to mastering keyboard shortcuts on GitHub appeared first on The GitHub Blog.",
             "title": "A short guide to mastering keyboard shortcuts on GitHub",
             "link": "https://github.blog/2024-04-19-a-short-guide-to-mastering-keyboard-shortcuts-on-github/",
@@ -104,7 +122,9 @@
         },
         {
             "id": "https://github.blog/?p=77210",
-            "tags": [],
+            "tags": [
+                "object_Object"
+            ],
             "description": "GitHub-hosted runners now support Azure private networking. Plus, we've added 2 vCPU Linux, 4 vCPU Windows, macOS L, macOS XL, and GPU hosted runners to our runner fleet. The post Bringing enterprise-level security and even more power to GitHub-hosted runners appeared first on The GitHub Blog.",
             "title": "Bringing enterprise-level security and even more power to GitHub-hosted runners",
             "link": "https://github.blog/2024-04-02-bringing-enterprise-level-security-and-even-more-power-to-github-hosted-runners/",

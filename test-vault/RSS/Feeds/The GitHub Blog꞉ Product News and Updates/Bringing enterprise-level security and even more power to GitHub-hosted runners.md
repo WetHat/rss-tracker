@@ -4,16 +4,34 @@ author: Tanmayee Kamath
 published: 2024-04-02T16:35:24.000Z
 link: https://github.blog/2024-04-02-bringing-enterprise-level-security-and-even-more-power-to-github-hosted-runners/
 id: https://github.blog/?p=77210
-feed: "[[../The GitHub Blog꞉ Product News and Updates]]"
-tags: []
+feed: "[[The GitHub Blog꞉ Product News and Updates]]"
+tags: [rss/object_Object]
 pinned: false
 ---
+
 > [!abstract] Bringing enterprise-level security and even more power to GitHub-hosted runners by Tanmayee Kamath - 2024-04-02T16:35:24.000Z
+> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
 > GitHub-hosted runners now support Azure private networking. Plus, we've added 2 vCPU Linux, 4 vCPU Windows, macOS L, macOS XL, and GPU hosted runners to our runner fleet. The post Bringing enterprise-level security and even more power to GitHub-hosted runners appeared first on The GitHub Blog.
 
-🔗Read article [online](https://github.blog/2024-04-02-bringing-enterprise-level-security-and-even-more-power-to-github-hosted-runners/). For other items in this feed see [[../The GitHub Blog꞉ Product News and Updates]].
+🔗Read article [online](https://github.blog/2024-04-02-bringing-enterprise-level-security-and-even-more-power-to-github-hosted-runners/). For other items in this feed see [[The GitHub Blog꞉ Product News and Updates]].
 
 - [ ] [[Bringing enterprise-level security and even more power to GitHub-hosted runners]]
+
+~~~dataviewjs
+const
+    current = dv.current(),
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	tasks = await dvjs.rssDuplicateItemsTasks(current);
+if (tasks.length > 0) {
+	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+    dv.taskList(tasks,false);
+}
+const tags = current.file.etags.join(" ");
+if (current) {
+	dv.span(tags);
+}
+~~~
+
 - - -
 GitHub’s journey towards enhancing enterprise readiness for GitHub Actions takes a significant leap forward with the introduction of Azure private networking for GitHub-hosted runners on GitHub Actions. This development builds upon our initial offering of [more powerful GitHub-hosted runners](https://github.blog/changelog/2023-06-21-github-hosted-larger-runners-for-actions-are-generally-available/) equipped with Static IPs, marking a strategic move to cater to the complex networking and security needs of enterprise customers.
 

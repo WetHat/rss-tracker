@@ -1,14 +1,16 @@
 ---
 role: rssitem
-author: Python Morsels
+author: Unknown
 published: 2024-04-19T23:00:00.000Z
 link: https://www.pythonmorsels.com/multiline-comments/
 id: https://www.pythonmorsels.com/multiline-comments/
-feed: "[[../Python Morsels]]"
+feed: "[[Python Morsels]]"
 tags: []
 pinned: false
 ---
+
 > [!abstract] Multiline comments in Python - 2024-04-19T23:00:00.000Z
+> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
 > Python does not have multiline comments. But you can use alternatives like docstrings, editor shortcuts, and conventional commenting methods, depending on your requirements.
 > 
 > ![](https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F1841759670-0b28dacb1984f308cc6f5f4b2e1ab6c842bffdd8cce9a544b0097584850ccc6a-d_1920x1080&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png)
@@ -17,9 +19,25 @@ pinned: false
 > 
 > 1. [Does Python have multi-line comments?](https://www.python⋯
 
-🔗Read article [online](https://www.pythonmorsels.com/multiline-comments/). For other items in this feed see [[../Python Morsels]].
+🔗Read article [online](https://www.pythonmorsels.com/multiline-comments/). For other items in this feed see [[Python Morsels]].
 
 - [ ] [[Multiline comments in Python]]
+
+~~~dataviewjs
+const
+    current = dv.current(),
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	tasks = await dvjs.rssDuplicateItemsTasks(current);
+if (tasks.length > 0) {
+	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+    dv.taskList(tasks,false);
+}
+const tags = current.file.etags.join(" ");
+if (current) {
+	dv.span(tags);
+}
+~~~
+
 - - -
 Python does not have multiline comments. But you can use alternatives like docstrings, editor shortcuts, and conventional commenting methods, depending on your requirements.
 
@@ -38,8 +56,13 @@ Python does not have multiline comments. But you can use alternatives like docst
 
 For single-line comments, Python uses the octothorpe character (`#`), also known as pound, number sign, crunch, and of course, the hashtag character:
 
-`# This is a comment                                  this = "is not a                                 comment"`
+```undefined
+# This is a comment
+
+                                this = "is not a
+                                comment"
                                 
+```
 
 But what if you want to comment out **a whole block** of code?
 

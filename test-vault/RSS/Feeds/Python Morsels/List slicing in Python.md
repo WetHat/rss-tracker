@@ -1,14 +1,16 @@
 ---
 role: rssitem
-author: Python Morsels
+author: Unknown
 published: 2024-03-08T22:16:58.000Z
 link: https://www.pythonmorsels.com/slicing/
 id: https://www.pythonmorsels.com/slicing/
-feed: "[[../Python Morsels]]"
+feed: "[[Python Morsels]]"
 tags: []
 pinned: false
 ---
+
 > [!abstract] List slicing in Python - 2024-03-08T22:16:58.000Z
+> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
 > In Python, slicing looks like indexing with colons (`:`). You can slice a list (or any sequence) to get the first few items, the last few items, or all items in reverse.
 > 
 > ![](https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F1809471197-6ac16458794fea7dbf99e06573578d8c7d78c395f13e143d7c899431706a0715-d_1920x1080&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png)
@@ -17,9 +19,25 @@ pinned: false
 > 
 > 1. [Getting the first N elements from a list](https://www.pythonm⋯
 
-🔗Read article [online](https://www.pythonmorsels.com/slicing/). For other items in this feed see [[../Python Morsels]].
+🔗Read article [online](https://www.pythonmorsels.com/slicing/). For other items in this feed see [[Python Morsels]].
 
 - [ ] [[List slicing in Python]]
+
+~~~dataviewjs
+const
+    current = dv.current(),
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	tasks = await dvjs.rssDuplicateItemsTasks(current);
+if (tasks.length > 0) {
+	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+    dv.taskList(tasks,false);
+}
+const tags = current.file.etags.join(" ");
+if (current) {
+	dv.span(tags);
+}
+~~~
+
 - - -
 In Python, slicing looks like indexing with colons (`:`). You can slice a list (or any sequence) to get the first few items, the last few items, or all items in reverse.
 
@@ -43,18 +61,30 @@ In Python, slicing looks like indexing with colons (`:`). You can slice a list (
 
 Let's say we have a `fruits` variable that points to a [list](https://www.pythonmorsels.com/what-are-lists/):
 
-`>>> fruits = ['watermelon', 'apple', 'lime', 'kiwi', 'pear', 'lemon', 'orange']                                 >>>                                 fruits                                 ['watermelon', 'apple', 'lime', 'kiwi',                                 'pear', 'lemon', 'orange']`
+```undefined
+>>> fruits = ['watermelon', 'apple', 'lime', 'kiwi', 'pear', 'lemon', 'orange']
+                                >>>
+                                fruits
+                                ['watermelon', 'apple', 'lime', 'kiwi',
+                                'pear', 'lemon', 'orange']
                                 
+```
 
 We can get an item from this list by indexing it:
 
-`>>> fruits[3]                                 'kiwi'`
+```undefined
+>>> fruits[3]
+                                'kiwi'
                                 
+```
 
 If we put a colon and another number inside the square brackets, we'll slice this list instead of indexing it:
 
-`>>> fruits[0:3]                                 ['watermelon', 'apple', 'lime']`
+```undefined
+>>> fruits[0:3]
+                                ['watermelon', 'apple', 'lime']
                                 
+```
 
 **Slicing a list gives us back a new list.** We're getting a list of the first three items within our original list.
 

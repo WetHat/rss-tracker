@@ -1,30 +1,30 @@
 ---
 role: rssfeed
-feedurl: https://localhost/RSS/reference/@wethat7․bsky․social - WetHat💦/assets/feed.xml
+feedurl: https://localhost/test/@wethat7․bsky․social - WetHat💦/feed.xml
 site: https://bsky.app/profile/wethat7.bsky.social
 itemlimit: 10
-updated: 2024-07-16T10:44:20.254Z
-status: OK
-tags: 
+updated: 2024-10-04T17:20:53.978Z
+status: ✅
+tags: []
 interval: 19
 ---
 > [!abstract] @wethat7.bsky.social - WetHat💦
+> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
 > I enjoy programming computers
->
-> ![[assets/@wethat7․bsky․social - WetHat💦.svg|200x200]]
+
 # Unread Feed Items 📚
 ~~~dataview
 TASK
-FROM [[@wethat7․bsky․social - WetHat💦.md]]
-WHERE !completed AND role = "rssitem"
+FROM [[]]
+WHERE !completed AND startswith(text,"[[") AND role = "rssitem"
 SORT published DESC
 ~~~
 
-# Pinned Feed Items 📌
+# Pinned Feed Items 📍
 ~~~dataview
 TABLE
 published as Published
-FROM [[@wethat7․bsky․social - WetHat💦.md]]
+FROM [[]]
 WHERE pinned = true AND role = "rssitem"
 SORT published DESC
 ~~~
@@ -32,7 +32,7 @@ SORT published DESC
 # Read Feed Items
 ~~~dataview
 TASK
-FROM [[@wethat7․bsky․social - WetHat💦.md]]
-WHERE completed AND role = "rssitem"
+FROM [[]]
+WHERE completed AND startswith(text,"[[") AND role = "rssitem"
 SORT published DESC
 ~~~

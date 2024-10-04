@@ -1,14 +1,16 @@
 ---
 role: rssitem
-author: Python Morsels
+author: Unknown
 published: 2024-04-16T15:00:00.000Z
 link: https://www.pythonmorsels.com/time-complexities/
 id: https://www.pythonmorsels.com/time-complexities/
-feed: "[[../Python Morsels]]"
+feed: "[[Python Morsels]]"
 tags: []
 pinned: false
 ---
+
 > [!abstract] Python Big O: the time complexities of different data structures in Python - 2024-04-16T15:00:00.000Z
+> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
 > The time complexity of common operations on Python's many data structures.
 > 
 > **Table of contents**
@@ -20,9 +22,25 @@ pinned: false
 > 5. [Set 🎨](https://www.pythonmorsels.com/time-complexities/#set)
 > ⋯
 
-🔗Read article [online](https://www.pythonmorsels.com/time-complexities/). For other items in this feed see [[../Python Morsels]].
+🔗Read article [online](https://www.pythonmorsels.com/time-complexities/). For other items in this feed see [[Python Morsels]].
 
 - [ ] [[Python Big O꞉ the time complexities of different data structures in Python]]
+
+~~~dataviewjs
+const
+    current = dv.current(),
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	tasks = await dvjs.rssDuplicateItemsTasks(current);
+if (tasks.length > 0) {
+	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+    dv.taskList(tasks,false);
+}
+const tags = current.file.etags.join(" ");
+if (current) {
+	dv.span(tags);
+}
+~~~
+
 - - -
 The time complexity of common operations on Python's many data structures.
 
