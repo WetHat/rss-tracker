@@ -1,11 +1,8 @@
-import { EventRef, TFile, CachedMetadata, App, MetadataCache, Vault, Notice } from "obsidian";
+import { EventRef, TFile, CachedMetadata, App, Vault, Notice } from "obsidian";
 import RSSTrackerPlugin from "./main";
 import { TPropertyBag } from "./FeedAssembler";
 import { RSSTrackerSettings } from "./settings";
-
-type MetadataCacheEx = MetadataCache & {
-    getTags(): TPropertyBag; // undocumented non-API method
-}
+import { MetadataCacheEx } from "./RSSFileManager";
 
 /**
  * Utility class to orchestrate the mapping of rss tags to tags into the domain
