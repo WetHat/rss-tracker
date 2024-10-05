@@ -8,7 +8,7 @@ status:
 tags: []
 ---
 > [!abstract] {{title}}
-> {{image}}
+> <span class="rss-image">{{image}}</span>
 > {{description}}
 
 # Unread Feed Items 📚

@@ -6,7 +6,7 @@ available in the app when your plugin is enabled.
 If your plugin does not need CSS, delete this file.
 
 */
-span.rss-image>img, img.rss-image {
+span.rss-image img, img.rss-image {
     float: right;
     margin-left: 10px;
 }

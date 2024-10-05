@@ -5,6 +5,7 @@ allof: []
 noneof: []
 ---
 > [!abstract] [headline:: A curated collection of RSS feeds about ???]
+> - [ ] Add an image like so `<span class=".rss-image">{{logo.png|400}}</span>`
 > - [ ] Create a headline
 > - [ ] Summarize the purpose of this collection.
 > - [ ] Specify tags in the `tags`, `allof`, 'noneof' frontmatter properties

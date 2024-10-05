@@ -167,7 +167,7 @@ export class RSSitemProxy extends RSSProxy {
                 "{{publishDate}}": frontmatter.published,
                 "{{tags}}": frontmatter.tags,
                 "{{title}}": title ?? "",
-                "{{image}}": image ? formatImage(image) : `![[${defaultImage}|200x200]]{.rss-image}`,
+                "{{image}}": image ? formatImage(image) : `![[${defaultImage}|200x200]]`,
                 "{{description}}": description ?? "",
                 "{{content}}": content ?? "",
                 "{{feedFileName}}": itemfolder.name,
@@ -212,7 +212,7 @@ export class RSSfeedProxy extends RSSProxy {
                 "{{siteUrl}}": frontmatter.site,
                 "{{title}}": htmlToMarkdown(title ?? ""),
                 "{{description}}": description ? htmlToMarkdown(description) : "",
-                "{{image}}": image ? formatImage(image) : `![[${defaultImage}|200x200]]{.rss-image}`
+                "{{image}}": image ? formatImage(image) : `![[${defaultImage}|200x200]]`
             };
 
         // create the feed dashboard file
