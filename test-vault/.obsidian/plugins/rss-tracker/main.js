@@ -13949,14 +13949,6 @@ var _RSSfeedProxy = class extends RSSProxy {
     return proxy;
   }
   /**
-   * Get the fedd suspension state.
-   * @returns `true` if feed updates are suspended, `false` otherwise.
-   */
-  get suspended() {
-    var _a2, _b;
-    return (_b = (_a2 = this.frontmatter.status) == null ? void 0 : _a2.startsWith(_RSSfeedProxy.SUSPENDED_STATUS_ICON)) != null ? _b : false;
-  }
-  /**
    * Get the feed status.
    *
    * @returns a string containing one of:
@@ -14012,11 +14004,20 @@ var _RSSfeedProxy = class extends RSSProxy {
   set itemlimit(value) {
     this.frontmatter.itemlimit = value;
   }
-  suspendUpdates() {
-    this.status = _RSSfeedProxy.SUSPENDED_STATUS_ICON + "suspended";
+  /**
+   * Get the fedd suspension state.
+   * @returns `true` if feed updates are suspended, `false` otherwise.
+   */
+  get suspended() {
+    var _a2, _b;
+    return (_b = (_a2 = this.frontmatter.status) == null ? void 0 : _a2.startsWith(_RSSfeedProxy.SUSPENDED_STATUS_ICON)) != null ? _b : false;
   }
-  resumeUpdates() {
-    this.status = _RSSfeedProxy.RESUMED_STATUS_ICON + "resumed updates";
+  set suspended(value) {
+    if (value) {
+      this.status = _RSSfeedProxy.SUSPENDED_STATUS_ICON + "suspended";
+    } else {
+      this.status = _RSSfeedProxy.RESUMED_STATUS_ICON + "resumed updates";
+    }
   }
   set error(message) {
     this.status = _RSSfeedProxy.ERROR_STATUS_ICON + message;
@@ -14026,10 +14027,7 @@ var _RSSfeedProxy = class extends RSSProxy {
     return (0, import_obsidian2.normalizePath)(path.join((_b = (_a2 = this.file.parent) == null ? void 0 : _a2.path) != null ? _b : "", this.file.basename));
   }
   async itemFolder() {
-    if (!this._folder) {
-      this._folder = await this.plugin.app.vault.createFolder(this.itemFolderPath);
-    }
-    return this._folder;
+    return this.filemgr.ensureFolderExists(this.itemFolderPath);
   }
   /**
    * Get all items in this RSS feed currently in Obsidian.
@@ -15840,7 +15838,7 @@ var ToggleRSSfeedActiveStatusMenuItem = class extends RSSTrackerMenuItem {
       menu.addItem((item) => {
         item.setTitle("Resume RSS feed updates").setIcon("power").onClick(async () => {
           var _a2;
-          proxy.resumeUpdates();
+          proxy.suspended = false;
           await proxy.commitFrontmatterChanges();
           new import_obsidian5.Notice(`${(_a2 = file == null ? void 0 : file.name) != null ? _a2 : "???"} updates resumed`);
         });
@@ -15849,7 +15847,7 @@ var ToggleRSSfeedActiveStatusMenuItem = class extends RSSTrackerMenuItem {
       menu.addItem((item) => {
         item.setTitle("Suspend RSS feed updates").setIcon("power-off").onClick(async () => {
           var _a2;
-          proxy.suspendUpdates();
+          proxy.suspended = true;
           await proxy.commitFrontmatterChanges();
           new import_obsidian5.Notice(`${(_a2 = file == null ? void 0 : file.name) != null ? _a2 : "???"} updates suspended`);
         });

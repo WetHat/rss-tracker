@@ -160,8 +160,8 @@ export class ToggleRSSfeedActiveStatusMenuItem extends RSSTrackerMenuItem {
                 item.setTitle('Resume RSS feed updates')
                     .setIcon('power')
                     .onClick(async () => {
-                        proxy.resumeUpdates();
-                        await proxy.commitFrontmatterChanges()
+                        proxy.suspended = false;
+                        await proxy.commitFrontmatterChanges();
                         new Notice(`${file?.name ?? '???'} updates resumed`);
                     });
             });
@@ -170,7 +170,7 @@ export class ToggleRSSfeedActiveStatusMenuItem extends RSSTrackerMenuItem {
                 item.setTitle('Suspend RSS feed updates')
                     .setIcon('power-off')
                     .onClick(async () => {
-                        proxy.suspendUpdates();
+                        proxy.suspended = true;
                         await proxy.commitFrontmatterChanges();
                         new Notice(`${file?.name ?? '???'} updates suspended`);
                     });

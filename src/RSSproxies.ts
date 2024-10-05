@@ -21,7 +21,7 @@ abstract class RSSProxy {
     plugin: RSSTrackerPlugin;
 
     /**
-     * The Obsidian file an instanc of a derived classes is a proxy for.
+     * The Obsidian file an instance of a derived classes is a proxy for.
      */
     file: TFile;
 
@@ -238,14 +238,6 @@ export class RSSfeedProxy extends RSSProxy {
     }
 
     /**
-     * Get the fedd suspension state.
-     * @returns `true` if feed updates are suspended, `false` otherwise.
-     */
-    get suspended(): boolean {
-        return this.frontmatter.status?.startsWith(RSSfeedProxy.SUSPENDED_STATUS_ICON) ?? false;
-    }
-
-    /**
      * Get the feed status.
      *
      * @returns a string containing one of:
@@ -307,12 +299,20 @@ export class RSSfeedProxy extends RSSProxy {
         this.frontmatter.itemlimit = value;
     }
 
-    suspendUpdates() {
-        this.status = RSSfeedProxy.SUSPENDED_STATUS_ICON + "suspended";
+    /**
+     * Get the fedd suspension state.
+     * @returns `true` if feed updates are suspended, `false` otherwise.
+     */
+    get suspended(): boolean {
+        return this.frontmatter.status?.startsWith(RSSfeedProxy.SUSPENDED_STATUS_ICON) ?? false;
     }
 
-    resumeUpdates() {
-        this.status = RSSfeedProxy.RESUMED_STATUS_ICON + "resumed updates";
+    set suspended(value:boolean) {
+        if (value) {
+            this.status = RSSfeedProxy.SUSPENDED_STATUS_ICON + "suspended";
+        } else {
+            this.status = RSSfeedProxy.RESUMED_STATUS_ICON + "resumed updates";
+        }
     }
 
     set error(message: string) {
@@ -324,10 +324,7 @@ export class RSSfeedProxy extends RSSProxy {
     }
 
     async itemFolder(): Promise<TFolder> {
-        if (!this._folder) {
-            this._folder = await this.plugin.app.vault.createFolder(this.itemFolderPath);
-        }
-        return this._folder;
+        return this.filemgr.ensureFolderExists(this.itemFolderPath);
     }
 
     /**
