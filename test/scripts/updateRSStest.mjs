@@ -24,7 +24,7 @@ if (process.argv.length < 3) {
 
 const
     feedSource = process.argv[2], // url or relative directory path or --all
-    referencePath = "";
+    referencePath = "test-vault/test";
 
 async function generateFeedReference(feed) {
     // cleanup the markdown files
@@ -72,7 +72,7 @@ if (feedSource === "--all") {
     feeds = globSync(`${referencePath}/*/feed.xml`);
     console.log(feeds);
 } else {
-    feeds = [path.join(referencePath, feedSource, "feed.xml")];
+    feeds = [path.join(feedSource, "feed.xml")];
 }
 
 for (let feedXml of feeds) {
