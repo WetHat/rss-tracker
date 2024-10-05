@@ -1,5 +1,5 @@
 
-import { App, TAbstractFile, TFile, Vault, FileManager, MetadataCache, TFolder } from 'obsidian';
+import { App, TFile, Vault, MetadataCache, TFolder } from 'obsidian';
 import { TPropertyBag } from './FeedAssembler';
 import { RSSTrackerSettings, TTemplateName } from "./settings";
 import RSSTrackerPlugin from "./main";
