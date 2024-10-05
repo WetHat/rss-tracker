@@ -1,6 +1,6 @@
 ---
 role: rssitem
-author: Thomas Dohmke
+author: "Thomas Dohmke"
 published: 2024-05-29T13:15:54.000Z
 link: https://github.blog/2024-05-29-github-and-jfrog/
 id: https://github.blog/?p=78206
@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] GitHub and JFrog partner to unify code and binaries for DevSecOps by Thomas Dohmke - 2024-05-29T13:15:54.000Z
-> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
 > This partnership between GitHub and JFrog enables developers to manage code and binaries more efficiently on two of the most widely used developer platforms in the world. The post GitHub and JFrog partner to unify code and binaries for DevSecOps appeared first on The GitHub Blog.
 
 🔗Read article [online](https://github.blog/2024-05-29-github-and-jfrog/). For other items in this feed see [[The GitHub Blog꞉ Product News and Updates]].

@@ -1,6 +1,6 @@
 ---
 role: rssitem
-author: Larissa Fortuna
+author: "Larissa Fortuna"
 published: 2024-06-03T16:31:50.000Z
 link: https://github.blog/2024-06-03-arm64-on-github-actions-powering-faster-more-efficient-build-systems/
 id: https://github.blog/?p=78262
@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Arm64 on GitHub Actions: Powering faster, more efficient build systems by Larissa Fortuna - 2024-06-03T16:31:50.000Z
-> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
 > GitHub Actions now offers Arm-hosted runners with images built by Arm for developers to begin building on the latest and most sustainable processors on the market. The post Arm64 on GitHub Actions: Powering faster, more efficient build systems appeared first on The GitHub Blog.
 
 🔗Read article [online](https://github.blog/2024-06-03-arm64-on-github-actions-powering-faster-more-efficient-build-systems/). For other items in this feed see [[The GitHub Blog꞉ Product News and Updates]].

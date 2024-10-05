@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Improve your TypeScript workflow with Code Snippets - 2023-12-11T14:19:29.000Z
-> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
 > Learn how to improve your TypeScript workflow by using code snippets. This article provides a code example for logging a JSON response into a file using Node.js and TypeScript.
 
 🔗Read article [online](https://typescript.tv/hands-on/improve-your-typescript-workflow-with-code-snippets/). For other items in this feed see [[TypeScript TV]].

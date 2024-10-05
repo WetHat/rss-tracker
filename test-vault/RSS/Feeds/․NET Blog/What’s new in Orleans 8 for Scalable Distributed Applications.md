@@ -1,6 +1,6 @@
 ---
 role: rssitem
-author: Mike Kistler
+author: "Mike Kistler"
 published: 2024-05-13T17:05:00.000Z
 link: https://devblogs.microsoft.com/dotnet/whats-new-in-orleans-8/
 id: https://devblogs.microsoft.com/dotnet/?p=51767
@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] What&#8217;s new in Orleans 8 for Scalable Distributed Applications by Mike Kistler - 2024-05-13T17:05:00.000Z
-> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
 > Let's take a look at what is new with Orleans for building robust, scalable distribute applications with Orleans 8 and integration with .NET Aspire.
 > 
 > The post [What’s new in Orleans 8 for Scalable Distributed Applications](https://devblogs.microsoft.com/dotnet/whats-new-in-orleans-8/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).

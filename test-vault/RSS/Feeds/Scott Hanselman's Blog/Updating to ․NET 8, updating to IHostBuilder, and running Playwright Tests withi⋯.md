@@ -1,6 +1,6 @@
 ---
 role: rssitem
-author: Scott Hanselman
+author: "Scott Hanselman"
 published: 2024-03-07T01:12:13.000Z
 link: https://feeds.hanselman.com/~/873234002/0/scotthanselman~Updating-to-NET-updating-to-IHostBuilder-and-running-Playwright-Tests-within-NUnit-headless-or-headed-on-any-OS
 id: https://www.hanselman.com/blog/post/815e0b55-f583-49a5-b01c-bd38197343f9
@@ -10,8 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Updating to .NET 8, updating to IHostBuilder, and running Playwright Tests within NUnit headless or headed on any OS by Scott Hanselman - 2024-03-07T01:12:13.000Z
-> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
-> 
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
 > ![All the Unit Tests pass](https://www.hanselman.com/blog/content/binary/Windows-Live-Writer/78fe85887e7e_1244B/image_8b82f0d7-a3bc-4403-96c3-9dd36fc46d1f.png "All the Unit Tests pass")I've been doing not just Unit Testing for my sites but full on Integration Testing and Browser Automation Testing as early as 2007 with Selenium. Lately, however, I've been using the faster and generally more compatible [Playwright](https://playwright.dev/). It has one API and can test on Windows, Linux, Mac, loca⋯
 
 🔗Read article [online](https://feeds.hanselman.com/~/873234002/0/scotthanselman~Updating-to-NET-updating-to-IHostBuilder-and-running-Playwright-Tests-within-NUnit-headless-or-headed-on-any-OS). For other items in this feed see [[Scott Hanselman's Blog]].

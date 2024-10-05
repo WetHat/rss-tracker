@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Refactoring in Rust: Abstraction with the Newtype Pattern - 2023-02-21T00:00:00.000Z
-> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
 > The following piece of code takes a PathBuf and extracts the file name, eventually converting it to an owned String.
 
 🔗Read article [online](https://fettblog.eu/refactoring-rust-abstraction-newtype/). For other items in this feed see [[fettblog․eu ∣ TypeScript, JavaScript, Jamstack]].

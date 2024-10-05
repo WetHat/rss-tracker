@@ -1,6 +1,6 @@
 ---
 role: rssitem
-author: Scott Hanselman
+author: "Scott Hanselman"
 published: 2021-12-14T21:36:00.000Z
 link: https://feeds.hanselman.com/~/676711904/0/scotthanselman~Using-Home-Assistant-to-integrate-a-Unifi-Protect-G-Doorbell-and-Amazon-Alexa-to-announce-visitors
 id: https://www.hanselman.com/blog/post/9632ddf9-403c-4319-bba6-4cb98bc7932b
@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Using Home Assistant to integrate a Unifi Protect G4 Doorbell and Amazon Alexa to announce visitors by Scott Hanselman - 2021-12-14T21:36:00.000Z
-> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
 > I am not a [Home Assistant](https://www.home-assistant.io/) expert, but it's clearly a massive and powerful ecosystem. I've interviewed [the creator of Home Assistant on my podcast](https://hanselminutes.com/788/automating-all-the-things-with-home-assistants-paulus-schoutsen) and I encourage you to check out that chat.
 > 
 > Home Assistant can quickly become a hobby that overwhelms you. Every object (entity) in your house that is even remotely connected can become programmable. Everything. Even peopl⋯

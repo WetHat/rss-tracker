@@ -1,6 +1,6 @@
 ---
 role: rssitem
-author: John Baez
+author: "John Baez"
 published: 2024-05-13T18:23:03.000Z
 link: https://johncarlosbaez.wordpress.com/2024/05/13/agent-based-models-part-9/
 id: http://johncarlosbaez.wordpress.com/?p=37840
@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Agent-Based Models (Part 9) by John Baez - 2024-05-13T18:23:03.000Z
-> ![image|400](https://johncarlosbaez.files.wordpress.com/2023/07/state_diagram.png){.rss-image}
+> <span class="rss-image">![image|400](https://johncarlosbaez.files.wordpress.com/2023/07/state_diagram.png)</span>
 > Since May 1st, Kris Brown, Nathaniel Osgood, Xiaoyan Li, William Waites and I have been meeting daily in James Clerk Maxwell’s childhood home in Edinburgh. We’re hard at work on our project called New Mathematics and Software for Agent-Based models. It’s impossible to explain everything we’re doing while it’s happening. But I want to record ［…］
 
 🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/05/13/agent-based-models-part-9/). For other items in this feed see [[Azimuth]].

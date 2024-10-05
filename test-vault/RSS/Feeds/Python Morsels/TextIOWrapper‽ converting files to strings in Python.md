@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] TextIOWrapper‽ converting files to strings in Python - 2024-02-05T16:00:00.000Z
-> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
 > Ever encountered an `_io.TextIOWrapper` object when you wished you had a string? That's Python's version of a "text file" object!
 > 
 > **Table of contents**

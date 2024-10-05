@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Replied to: @WetHat I recall several stack overflow libraries had compiler switches so they compiled with readonly in development and not readonly in production builds because the compiler added extra checks to the output and it slowed down hot paths. Not sure if this is still the case. Readonly is certainly important for development at the absolute minimum since it makes several classes of bugs effectively impossible. by @WetHat - 2024-05-14T07:34:27.000Z
-> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
 > [@cambirch](https://infosec.exchange/@cambirch)
 > 
 > I remeber these articles too. Hwever, I did not pay much attention because readonly field optimization was the least of my problems at that time.😉

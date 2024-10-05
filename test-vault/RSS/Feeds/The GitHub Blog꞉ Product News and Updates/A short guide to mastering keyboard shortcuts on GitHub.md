@@ -1,6 +1,6 @@
 ---
 role: rssitem
-author: Sara Verdi
+author: "Sara Verdi"
 published: 2024-04-19T16:37:20.000Z
 link: https://github.blog/2024-04-19-a-short-guide-to-mastering-keyboard-shortcuts-on-github/
 id: https://github.blog/?p=77552
@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] A short guide to mastering keyboard shortcuts on GitHub by Sara Verdi - 2024-04-19T16:37:20.000Z
-> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
 > Say goodbye to constant mouse clicking and hello to seamless navigation with GitHub shortcuts. The post A short guide to mastering keyboard shortcuts on GitHub appeared first on The GitHub Blog.
 
 🔗Read article [online](https://github.blog/2024-04-19-a-short-guide-to-mastering-keyboard-shortcuts-on-github/). For other items in this feed see [[The GitHub Blog꞉ Product News and Updates]].

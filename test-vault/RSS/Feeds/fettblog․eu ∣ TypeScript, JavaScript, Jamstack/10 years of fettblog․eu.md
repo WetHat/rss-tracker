@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] 10 years of fettblog.eu - 2022-04-27T00:00:00.000Z
-> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
 > I missed a little anniversary. Roughly 10 years ago (on April 8, 2012), I started blogging on fettblog.eu! Time flies! I think this is my longest-running project, let’s take some time to reflect.
 
 🔗Read article [online](https://fettblog.eu/10-years-of-fettblog/). For other items in this feed see [[fettblog․eu ∣ TypeScript, JavaScript, Jamstack]].

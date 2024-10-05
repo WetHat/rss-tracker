@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Refactoring in Rust: Introducing Traits - 2023-03-02T00:00:00.000Z
-> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
 > In the same codebase as last time, we extract data from a HashMap called headers, presumably dealing with something similar to HTTP headers.
 
 🔗Read article [online](https://fettblog.eu/refactoring-rust-introducing-traits/). For other items in this feed see [[fettblog․eu ∣ TypeScript, JavaScript, Jamstack]].

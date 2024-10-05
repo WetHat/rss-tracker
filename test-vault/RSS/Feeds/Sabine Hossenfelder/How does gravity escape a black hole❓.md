@@ -1,6 +1,6 @@
 ---
 role: rssitem
-author: Sabine Hossenfelder
+author: "Sabine Hossenfelder"
 published: 2024-05-05T15:00:45.000Z
 link: https://www.youtube.com/watch?v=qwu58DOxLdA
 id: yt:video:qwu58DOxLdA
@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] How does gravity escape a black hole? by Sabine Hossenfelder - 2024-05-05T15:00:45.000Z
-> ![image|400](https://i2.ytimg.com/vi/qwu58DOxLdA/hqdefault.jpg){.rss-image}
+> <span class="rss-image">![image|400](https://i2.ytimg.com/vi/qwu58DOxLdA/hqdefault.jpg)</span>
 > Take my course on quantum mechanics on Brilliant. First 30 days are free and 20% off the annual premium subscription when you use our link ➜ https://brilliant.org/sabine. If nothing gets out of a black hole, how does gravity do it? Something with virtual gravitons? Is this really necessary? It's tricky question, but this is what I can say without resorting to equations. 🤓 Check out my new quiz app ➜ http://quizwithit.com/ 💌 Support me on Donatebox ➜ https://donorbox.org/swtg 📝 Transcripts and⋯
 
 🔗Read article [online](https://www.youtube.com/watch?v=qwu58DOxLdA). For other items in this feed see [[Sabine Hossenfelder]].

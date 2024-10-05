@@ -1,6 +1,6 @@
 ---
 role: rssitem
-author: David Pine
+author: "David Pine"
 published: 2024-05-08T17:05:00.000Z
 link: https://devblogs.microsoft.com/dotnet/refactor-your-code-with-collection-expressions/
 id: https://devblogs.microsoft.com/dotnet/?p=51745
@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Refactor your code with C# collection expressions by David Pine - 2024-05-08T17:05:00.000Z
-> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
 > Explore various C# 12 refactoring scenarios for a variety of target types using collection expressions, collection initializers, and the spread syntax.
 > 
 > The post [Refactor your code with C# collection expressions](https://devblogs.microsoft.com/dotnet/refactor-your-code-with-collection-expressions/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).

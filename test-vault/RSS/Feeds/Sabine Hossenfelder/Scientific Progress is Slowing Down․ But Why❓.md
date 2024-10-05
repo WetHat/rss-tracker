@@ -1,6 +1,6 @@
 ---
 role: rssitem
-author: Sabine Hossenfelder
+author: "Sabine Hossenfelder"
 published: 2024-05-09T15:00:27.000Z
 link: https://www.youtube.com/watch?v=KBT9vFrV6yQ
 id: yt:video:KBT9vFrV6yQ
@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Scientific Progress is Slowing Down. But Why? by Sabine Hossenfelder - 2024-05-09T15:00:27.000Z
-> ![image|400](https://i4.ytimg.com/vi/KBT9vFrV6yQ/hqdefault.jpg){.rss-image}
+> <span class="rss-image">![image|400](https://i4.ytimg.com/vi/KBT9vFrV6yQ/hqdefault.jpg)</span>
 > Speed up your scientific progress with Brilliant! First 30 days are free and 20% off the annual premium subscription when you use our link ➜ https://brilliant.org/sabine. We see constant progress in the world every day, from better cars to faster phones to virtual reality and the internet of things. However, despite all the technological and engineering advances, science seems to be slowing down? Let’s have a look. Paper here: https://www.sciencedirect.com/science/article/abs/pii/S00487333240004⋯
 
 🔗Read article [online](https://www.youtube.com/watch?v=KBT9vFrV6yQ). For other items in this feed see [[Sabine Hossenfelder]].

@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Replied to: @WetHat Newtonsoft,Json is not dead. It's last release was 14 months ago & the repo has commits in the last month. There is such a thing as stable code that doesn't need constant releases every 5 minutes. by @WetHat - 2024-05-13T12:22:02.000Z
-> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
 > [@irongut](https://mastodon.scot/@irongut) You are right! Newtonsoft,Json is still with us!
 > 
 > - WetHat💦 (@WetHat) [May 13, 2024](https://fosstodon.org/@WetHat/112433753157520180)

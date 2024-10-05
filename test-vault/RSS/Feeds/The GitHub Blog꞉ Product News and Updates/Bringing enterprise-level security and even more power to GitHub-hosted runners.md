@@ -1,6 +1,6 @@
 ---
 role: rssitem
-author: Tanmayee Kamath
+author: "Tanmayee Kamath"
 published: 2024-04-02T16:35:24.000Z
 link: https://github.blog/2024-04-02-bringing-enterprise-level-security-and-even-more-power-to-github-hosted-runners/
 id: https://github.blog/?p=77210
@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Bringing enterprise-level security and even more power to GitHub-hosted runners by Tanmayee Kamath - 2024-04-02T16:35:24.000Z
-> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
 > GitHub-hosted runners now support Azure private networking. Plus, we've added 2 vCPU Linux, 4 vCPU Windows, macOS L, macOS XL, and GPU hosted runners to our runner fleet. The post Bringing enterprise-level security and even more power to GitHub-hosted runners appeared first on The GitHub Blog.
 
 🔗Read article [online](https://github.blog/2024-04-02-bringing-enterprise-level-security-and-even-more-power-to-github-hosted-runners/). For other items in this feed see [[The GitHub Blog꞉ Product News and Updates]].

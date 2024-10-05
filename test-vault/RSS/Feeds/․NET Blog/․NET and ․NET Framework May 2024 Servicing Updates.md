@@ -1,6 +1,6 @@
 ---
 role: rssitem
-author: Tara Overfield
+author: "Tara Overfield"
 published: 2024-05-15T17:05:00.000Z
 link: https://devblogs.microsoft.com/dotnet/dotnet-and-dotnet-framework-may-2024-servicing-updates/
 id: https://devblogs.microsoft.com/dotnet/?p=51837
@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] .NET and .NET Framework May 2024 Servicing Updates by Tara Overfield - 2024-05-15T17:05:00.000Z
-> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
 > A recap of the latest servicing updates for .NET and .NET Framework for May 2024.
 > 
 > The post [.NET and .NET Framework May 2024 Servicing Updates](https://devblogs.microsoft.com/dotnet/dotnet-and-dotnet-framework-may-2024-servicing-updates/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).

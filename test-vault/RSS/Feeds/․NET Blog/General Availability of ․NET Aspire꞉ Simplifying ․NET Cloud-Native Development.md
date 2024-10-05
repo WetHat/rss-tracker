@@ -1,6 +1,6 @@
 ---
 role: rssitem
-author: Damian Edwards
+author: "Damian Edwards"
 published: 2024-05-21T15:50:00.000Z
 link: https://devblogs.microsoft.com/dotnet/dotnet-aspire-general-availability/
 id: https://devblogs.microsoft.com/dotnet/?p=51907
@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] General Availability of .NET Aspire: Simplifying .NET Cloud-Native Development by Damian Edwards - 2024-05-21T15:50:00.000Z
-> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
 > .NET Aspire, the stack that streamlines development of .NET cloud-native services, is now generally available.
 > 
 > The post [General Availability of .NET Aspire: Simplifying .NET Cloud-Native Development](https://devblogs.microsoft.com/dotnet/dotnet-aspire-general-availability/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).

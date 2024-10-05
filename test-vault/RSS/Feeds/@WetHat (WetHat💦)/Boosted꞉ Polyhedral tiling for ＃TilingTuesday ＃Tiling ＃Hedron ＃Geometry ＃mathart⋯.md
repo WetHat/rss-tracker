@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Boosted: Polyhedral tiling for #rss/TilingTuesday #rss/Tiling #rss/Hedron #rss/Geometry #rss/mathart #rss/mathsart #rss/mastoart by @WetHat - 2024-05-15T05:36:22.000Z
-> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
 > ![](https://cdn.fosstodon.org/cache/media_attachments/files/112/440/814/082/576/222/original/b5bd02dcafece97f.mp4)
 > 
 > Polyhedral tiling for [#rss/TilingTuesday](https://mathstodon.xyz/tags/TilingTuesday)

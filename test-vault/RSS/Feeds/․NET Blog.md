@@ -3,13 +3,13 @@ role: rssfeed
 feedurl: https://localhost/test/․NET Blog/feed.xml
 site: https://devblogs.microsoft.com/dotnet/
 itemlimit: 10
-updated: 2024-10-04T17:04:40.856Z
+updated: 2024-10-05T09:45:14.513Z
 status: ✅
 tags: []
 interval: 77
 ---
 > [!abstract] .NET Blog
-> ![image|400](https://devblogs.microsoft.com/dotnet/wp-content/uploads/sites/10/2018/10/Microsoft-Favicon.png){.rss-image}
+> <span class="rss-image">![image|400](https://devblogs.microsoft.com/dotnet/wp-content/uploads/sites/10/2018/10/Microsoft-Favicon.png)</span>
 > Free. Cross-platform. Open source. A developer platform for building all your apps.
 
 # Unread Feed Items 📚

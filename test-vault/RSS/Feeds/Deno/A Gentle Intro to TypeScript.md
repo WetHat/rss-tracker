@@ -1,6 +1,6 @@
 ---
 role: rssitem
-author: Jo Franchetti
+author: "Jo Franchetti"
 published: 2024-06-27T12:00:00.000Z
 link: https://deno.com/blog/deno-bites-ts-intro
 id: https://deno.com/blog/deno-bites-ts-intro
@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] A Gentle Intro to TypeScript by Jo Franchetti - 2024-06-27T12:00:00.000Z
-> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
 > Quick, digestible bites of TypeScript goodness for Deno developers. In this first bite, we introduce TypeScript, how to add type annotations to your code and why you should.
 
 🔗Read article [online](https://deno.com/blog/deno-bites-ts-intro). For other items in this feed see [[Deno]].

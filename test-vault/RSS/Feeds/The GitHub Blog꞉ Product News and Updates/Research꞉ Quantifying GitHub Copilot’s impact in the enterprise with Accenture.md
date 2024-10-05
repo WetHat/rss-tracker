@@ -1,6 +1,6 @@
 ---
 role: rssitem
-author: Ya Gao
+author: "Ya Gao"
 published: 2024-05-13T18:27:34.000Z
 link: https://github.blog/2024-05-13-research-quantifying-github-copilots-impact-in-the-enterprise-with-accenture/
 id: https://github.blog/?p=78014
@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Research: Quantifying GitHub Copilot’s impact in the enterprise with Accenture by Ya Gao - 2024-05-13T18:27:34.000Z
-> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
 > We conducted research with developers at Accenture to understand GitHub Copilot’s real-world impact in enterprise organizations. The post Research: Quantifying GitHub Copilot’s impact in the enterprise with Accenture appeared first on The GitHub Blog.
 
 🔗Read article [online](https://github.blog/2024-05-13-research-quantifying-github-copilots-impact-in-the-enterprise-with-accenture/). For other items in this feed see [[The GitHub Blog꞉ Product News and Updates]].

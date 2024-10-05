@@ -1,6 +1,6 @@
 ---
 role: rssitem
-author: Andy Jiang
+author: "Andy Jiang"
 published: 2024-06-25T12:00:00.000Z
 link: https://deno.com/blog/hono-on-jsr
 id: https://deno.com/blog/hono-on-jsr
@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Announcing Hono on JSR by Andy Jiang - 2024-06-25T12:00:00.000Z
-> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
 > Hono, a lightweight, fast, cross-platform web framework, is now on JSR.
 
 🔗Read article [online](https://deno.com/blog/hono-on-jsr). For other items in this feed see [[Deno]].

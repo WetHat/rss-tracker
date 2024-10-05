@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Python Big O: the time complexities of different data structures in Python - 2024-04-16T15:00:00.000Z
-> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
 > The time complexity of common operations on Python's many data structures.
 > 
 > **Table of contents**

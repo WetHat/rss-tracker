@@ -1,6 +1,6 @@
 ---
 role: rssitem
-author: Sabine Hossenfelder
+author: "Sabine Hossenfelder"
 published: 2024-05-11T15:00:42.000Z
 link: https://www.youtube.com/watch?v=lt7a3wjf3qY
 id: yt:video:lt7a3wjf3qY
@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] CERN Looks for Origins of Quantum Randomness by Sabine Hossenfelder - 2024-05-11T15:00:42.000Z
-> ![image|400](https://i1.ytimg.com/vi/lt7a3wjf3qY/hqdefault.jpg){.rss-image}
+> <span class="rss-image">![image|400](https://i1.ytimg.com/vi/lt7a3wjf3qY/hqdefault.jpg)</span>
 > Learn more about quantum mechanics from my course on Brilliant! First 30 days are free and 20% off the annual premium subscription when you use our link ➜ https://brilliant.org/sabine. Particle physics have conducted a test using data from the Large Hadron Collider at CERN to see if the particles in their collisions play by the rules of quantum physics - whether they have quantum entanglement. Why was this test conducted when previous tests already found that entanglement is real? Is it just non⋯
 
 🔗Read article [online](https://www.youtube.com/watch?v=lt7a3wjf3qY). For other items in this feed see [[Sabine Hossenfelder]].

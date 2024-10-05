@@ -1,6 +1,6 @@
 ---
 role: rssitem
-author: Wendy Breiding (SHE/HER)
+author: "Wendy Breiding (SHE/HER)"
 published: 2024-05-07T20:05:00.000Z
 link: https://devblogs.microsoft.com/dotnet/may-release-of-csharp-dev-kit/
 id: https://devblogs.microsoft.com/dotnet/?p=51662
@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Package Management &#038; improved .NET Aspire support come to C# Dev Kit by Wendy Breiding (SHE/HER) - 2024-05-07T20:05:00.000Z
-> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
 > Explore the new features and enhancements in the latest version of C# Dev Kit including NuGet package management, .NET Aspire project support, and much more.
 > 
 > The post [Package Management & improved .NET Aspire support come to C# Dev Kit](https://devblogs.microsoft.com/dotnet/may-release-of-csharp-dev-kit/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).

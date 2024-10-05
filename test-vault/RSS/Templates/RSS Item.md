@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] {{title}}
-> {{image}}
+> <span class="rss-image">{{image}}</span>
 > {{description}}
 
 🔗Read article [online]({{link}}). For other items in this feed see [[{{feedFileName}}]].

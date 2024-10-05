@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Assignment vs. Mutation in Python - 2024-05-18T12:13:21.000Z
-> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
 > In Python, "change" can mean two different things. Assignment changes which object a variable points to. Mutation, changes the object itself.
 > 
 > ![](https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F1854521349-e14ed4db822e6fea015ebfe110262647a82f42a5680adaa7865ff74da2cb4765-d_1920x1080&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png)

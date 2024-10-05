@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Every dunder method in Python - 2024-03-19T21:30:00.000Z
-> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
 > An explanation of all of Python's 100+ dunder methods and 50+ dunder attributes, including a summary of each one.
 > 
 > **Table of contents**

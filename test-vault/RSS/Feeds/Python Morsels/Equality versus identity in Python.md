@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Equality versus identity in Python - 2024-05-28T23:52:24.000Z
-> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
 > Equality checks whether two objects **represent the same value**. Identity checks whether two variables **point to the same object**.
 > 
 > ![](https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F1859635053-5a5a328c38769260b233cb1fae005603a26ff65e609fba2d15a8af03ad563ba9-d_1920x1080&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png)

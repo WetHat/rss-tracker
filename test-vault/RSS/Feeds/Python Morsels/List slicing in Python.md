@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] List slicing in Python - 2024-03-08T22:16:58.000Z
-> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
 > In Python, slicing looks like indexing with colons (`:`). You can slice a list (or any sequence) to get the first few items, the last few items, or all items in reverse.
 > 
 > ![](https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F1809471197-6ac16458794fea7dbf99e06573578d8c7d78c395f13e143d7c899431706a0715-d_1920x1080&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png)

@@ -1,6 +1,6 @@
 ---
 role: rssitem
-author: Lauren Forristal
+author: "Lauren Forristal"
 published: 2024-05-22T13:19:57.000Z
 link: https://techcrunch.com/2024/05/22/linktree-surpasses-50m-users-rolls-out-beta-social-commerce-program/?eicker.news=
 id: flipboard-6d6f6f9a11/techcrunch.com-1716383997
@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Linktree surpasses 50M users, rolls out its social commerce program to more creators by Lauren Forristal - 2024-05-22T13:19:57.000Z
-> ![image|400](https://ic-cdn.flipboard.com/techcrunch.com/7e8ca89da50410df713077858a681e2789455675/_xlarge.jpeg){.rss-image}
+> <span class="rss-image">![image|400](https://ic-cdn.flipboard.com/techcrunch.com/7e8ca89da50410df713077858a681e2789455675/_xlarge.jpeg)</span>
 > Redwood Materials, the battery recycling startup founded by former Tesla co-founder JB Straubel, will be recycling production scrap for batteries going into General Motors electric vehicles. The company announced Thursday… A new startup called Auggie is aiming to give parents a single platform where …
 
 🔗Read article [online](https://techcrunch.com/2024/05/22/linktree-surpasses-50m-users-rolls-out-beta-social-commerce-program/?eicker.news=). For other items in this feed see [[Bluesky]].

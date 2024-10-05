@@ -1,6 +1,6 @@
 ---
 role: rssitem
-author: Sabine Hossenfelder
+author: "Sabine Hossenfelder"
 published: 2024-05-07T15:00:42.000Z
 link: https://www.youtube.com/watch?v=iiC1VO_uvrQ
 id: yt:video:iiC1VO_uvrQ
@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] NASA named an asteroid after me by Sabine Hossenfelder - 2024-05-07T15:00:42.000Z
-> ![image|400](https://i2.ytimg.com/vi/iiC1VO_uvrQ/hqdefault.jpg){.rss-image}
+> <span class="rss-image">![image|400](https://i2.ytimg.com/vi/iiC1VO_uvrQ/hqdefault.jpg)</span>
 > The first 500 people to use my link will get a 1 month free trial of Skillshare https://skl.sh/sabinehossenfelder05241 It's not a joke, they did indeed name an asteroid after me. You can look it up here: https://ssd.jpl.nasa.gov/tools/sbdb_lookup.html#/?sstr=16648 I want to use this opportunity as an excuse to explain why asteroids are cool. 🤓 Check out my new quiz app ➜ http://quizwithit.com/ 💌 Support me on Donorbox ➜ https://donorbox.org/swtg 📝 Transcripts and written news on Substack ➜ ht⋯
 
 🔗Read article [online](https://www.youtube.com/watch?v=iiC1VO_uvrQ). For other items in this feed see [[Sabine Hossenfelder]].

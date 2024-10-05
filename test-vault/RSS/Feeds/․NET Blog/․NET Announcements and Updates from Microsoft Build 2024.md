@@ -1,6 +1,6 @@
 ---
 role: rssitem
-author: .NET Team
+author: ".NET Team"
 published: 2024-05-21T17:05:00.000Z
 link: https://devblogs.microsoft.com/dotnet/dotnet-build-2024-announcements/
 id: https://devblogs.microsoft.com/dotnet/?p=51919
@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] .NET Announcements and Updates from Microsoft Build 2024 by .NET Team - 2024-05-21T17:05:00.000Z
-> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
 > Our latest updates and announcements from Microsoft Build including .NET Aspire, .NET 9 Preview 4, C# 13, Blazor, .NET MAUI, and more!
 > 
 > The post [.NET Announcements and Updates from Microsoft Build 2024](https://devblogs.microsoft.com/dotnet/dotnet-build-2024-announcements/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).

@@ -1,6 +1,6 @@
 ---
 role: rssitem
-author: Buffer
+author: "Buffer"
 published: 2024-05-22T15:03:57.000Z
 link: https://buffer.com/resources/buffer-product-update-may-2024/
 id: flipboard-2d95f12188/buffer.com-1716390237
@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] 7 New Buffer Features to Explore in 2024 (+ a Sneak Peek at What's to Come) by Buffer - 2024-05-22T15:03:57.000Z
-> ![image|400](https://ic-cdn.flipboard.com/buffer.com/7295abec9d6cdb75b6d8e351974c1b331cafe126/_xlarge.png){.rss-image}
+> <span class="rss-image">![image|400](https://ic-cdn.flipboard.com/buffer.com/7295abec9d6cdb75b6d8e351974c1b331cafe126/_xlarge.png)</span>
 > We’re always adding new features and updates to Buffer. This year, we've introduced several new additions, and we're excited to give you a sneak peek …
 
 🔗Read article [online](https://buffer.com/resources/buffer-product-update-may-2024/). For other items in this feed see [[Bluesky]].

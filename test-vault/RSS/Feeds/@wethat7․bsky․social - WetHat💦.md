@@ -3,13 +3,13 @@ role: rssfeed
 feedurl: https://localhost/test/@wethat7․bsky․social - WetHat💦/feed.xml
 site: https://bsky.app/profile/wethat7.bsky.social
 itemlimit: 10
-updated: 2024-10-04T17:20:53.978Z
+updated: 2024-10-05T09:45:45.917Z
 status: ✅
 tags: []
 interval: 19
 ---
 > [!abstract] @wethat7.bsky.social - WetHat💦
-> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
 > I enjoy programming computers
 
 # Unread Feed Items 📚

@@ -1,6 +1,6 @@
 ---
 role: rssitem
-author: Mario Rodriguez
+author: "Mario Rodriguez"
 published: 2024-05-21T15:27:46.000Z
 link: https://github.blog/2024-05-21-introducing-github-copilot-extensions/
 id: https://github.blog/?p=78012
@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Introducing GitHub Copilot Extensions: Unlocking unlimited possibilities with our ecosystem of partners by Mario Rodriguez - 2024-05-21T15:27:46.000Z
-> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
 > The world of Copilot is getting bigger, improving the developer experience by keeping developers in the flow longer and allowing them to do more in natural language. The post Introducing GitHub Copilot Extensions: Unlocking unlimited possibilities with our ecosystem of partners appeared first on The GitHub Blog.
 
 🔗Read article [online](https://github.blog/2024-05-21-introducing-github-copilot-extensions/). For other items in this feed see [[The GitHub Blog꞉ Product News and Updates]].

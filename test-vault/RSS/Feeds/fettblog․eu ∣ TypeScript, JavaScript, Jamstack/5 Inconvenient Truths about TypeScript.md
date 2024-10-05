@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] 5 Inconvenient Truths about TypeScript - 2023-07-17T00:00:00.000Z
-> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
 > I’m writing books about TypeScript and I do workshops and trainings online and in-house. Every time I meet a new group of developers there are some TypeScript facts that they need to be confronted with:
 
 🔗Read article [online](https://fettblog.eu/5-truths-about-typescript/). For other items in this feed see [[fettblog․eu ∣ TypeScript, JavaScript, Jamstack]].

@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Announcing the TypeScript Cookbook - 2022-11-07T00:00:00.000Z
-> ![[RSS/assets/RSSdefaultImage.svg|200x200]]{.rss-image}
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
 > Oops, I did it again! I’m writing another book, and it’s again about TypeScript. I’m happy to announce The TypeScript Cookbook, to be published in 2023 by O’Reilly. You can check it out in Early Release on the O’Reilly website.
 
 🔗Read article [online](https://fettblog.eu/announcing-the-typescript-cookbook/). For other items in this feed see [[fettblog․eu ∣ TypeScript, JavaScript, Jamstack]].
