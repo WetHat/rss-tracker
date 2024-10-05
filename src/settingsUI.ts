@@ -23,8 +23,8 @@ class RSSTagmapNameSetting extends RSSTrackerSettingBase {
 	constructor(settingsTab: RSSTrackerSettingTab) {
 		super(settingsTab);
 		this
-			.setName('RSS Tag MapName')
-			.setDesc('THe name of the tag map Markdown file in the RSS Home folder which contains a table whic defines the mapping of RSS tags to tags in the local knowledge graph.')
+			.setName('RSS tag map name')
+			.setDesc('THe name of the tag map Markdown file in the RSS Home folder which contains a table mapping tags found in feeds to tags in the local knowledge graph.')
 			.addText(ta => {
 				ta
 					.setPlaceholder(DEFAULT_SETTINGS.rssTagmapName)
