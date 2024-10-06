@@ -1,6 +1,6 @@
 import { App, Modal, Command, Setting, TFile, TFolder, Notice } from 'obsidian';
 import RSSTrackerPlugin from './main';
-import { RSSfeedProxy } from './RSSproxies';
+import { RSScollectionProxy, RSSfeedProxy } from './RSSproxies';
 
 /**
  * Modal dialog to request rss url input from the user.
@@ -180,12 +180,12 @@ export class NewRSSFeedCollectionCommand extends RSSTrackerCommandBase {
     }
 
     callback(): any {
-        this.plugin.filemgr.createFile(this.plugin.settings.rssCollectionsFolderPath, "New Feed Collection", "RSS Collection")
+        RSScollectionProxy.create(this.plugin)
             .then(collection => {
                 const leaf = this.app.workspace.getLeaf(false);
-                leaf.openFile(collection).catch(reason => new Notice(reason.message))
+                leaf.openFile(collection.file).catch(reason => new Notice(reason.message))
             })
-            .catch(reason => new Notice(`RSS feed collection could not be created! ${reason.message}`));
+            .catch(reason => new Notice(`RSS feed collection not created! ${reason.message}`));
     }
 }
 

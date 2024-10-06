@@ -1,4 +1,4 @@
-import { TFile, normalizePath, TFolder, Notice, Plugin, htmlToMarkdown, TAbstractFile, ListItemCache } from 'obsidian';
+import { TFile, normalizePath, TFolder, Notice, htmlToMarkdown, TAbstractFile, ListItemCache } from 'obsidian';
 import * as path from "path";
 import { IRssMedium, TPropertyBag, TrackedRSSfeed, TrackedRSSitem } from "./FeedAssembler";
 import { HTMLxlate, formatImage } from "./HTMLxlate";
@@ -20,13 +20,17 @@ abstract class RSSProxy {
     protected frontmatter: TFrontmatter;
     plugin: RSSTrackerPlugin;
 
+    protected static toPlaintags(hashtags?: string[]) {
+        return hashtags ? hashtags.map(h => h.replace(/^#*/, "")) : [];
+    }
+
     /**
      * The Obsidian file an instance of a derived classes is a proxy for.
      */
     file: TFile;
 
     get tags(): string[] {
-        return this.frontmatter.tags && [];
+        return RSSProxy.toPlaintags(this.frontmatter.tags);
     }
 
     get filemgr(): RSSfileManager {
@@ -153,7 +157,7 @@ export class RSSitemProxy extends RSSProxy {
             frontmatter: TFrontmatter = {
                 role: "rssitem",
                 id: id ?? link,
-                author:  author ? ('"' + author + '"') : "Unknown",
+                author: author ? ('"' + author + '"') : "Unknown",
                 link: link ?? "",
                 published: published ?? new Date().valueOf(),
                 feed: `[[${itemfolder.name}]]`,
@@ -218,7 +222,7 @@ export class RSSfeedProxy extends RSSProxy {
         // create the feed dashboard file
         const
             filemgr = plugin.filemgr,
-            dashboard = await filemgr.createFile(plugin.settings.rssFeedFolderPath, feed.fileName, "RSS Feed", dataMap,true),
+            dashboard = await filemgr.createFile(plugin.settings.rssFeedFolderPath, feed.fileName, "RSS Feed", dataMap, true),
             proxy = new RSSfeedProxy(plugin, dashboard, frontmatter);
 
         try {
@@ -307,7 +311,7 @@ export class RSSfeedProxy extends RSSProxy {
         return this.frontmatter.status?.startsWith(RSSfeedProxy.SUSPENDED_STATUS_ICON) ?? false;
     }
 
-    set suspended(value:boolean) {
+    set suspended(value: boolean) {
         if (value) {
             this.status = RSSfeedProxy.SUSPENDED_STATUS_ICON + "suspended";
         } else {
@@ -392,5 +396,30 @@ export class RSSfeedProxy extends RSSProxy {
         this.interval = feed.avgPostInterval;
         await this.commitFrontmatterChanges();
         return newRSSitems.length;
+    }
+}
+
+export class RSScollectionProxy extends RSSProxy {
+    static async create(plugin: RSSTrackerPlugin): Promise<RSScollectionProxy> {
+        const file = await plugin.filemgr.createFile(plugin.settings.rssCollectionsFolderPath, "New Feed Collection", "RSS Collection");
+        return new RSScollectionProxy(plugin, file);
+    }
+
+    constructor(plugin: RSSTrackerPlugin, collection: TFile, frontmatter?: TFrontmatter) {
+        super(plugin, collection, frontmatter);
+    }
+
+    get feeds(): RSSfeedProxy[] {
+        const
+            anyofSet = new Set<string>(this.tags),
+            allof = RSSProxy.toPlaintags(this.frontmatter.allof),
+            noneofSet = new Set<string>(RSSProxy.toPlaintags(this.frontmatter.noneof));
+        return this.plugin.feedmgr.feeds
+			.filter(f => {
+				const
+					tags: string[] = f.tags,
+					tagSet = new Set<string>(tags);
+				return !tags.some(t => noneofSet.has(t)) && !allof.some(t => !tagSet.has(t)) && tags.some(t => anyofSet.has(t));
+			});
     }
 }

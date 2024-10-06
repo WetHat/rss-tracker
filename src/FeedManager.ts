@@ -3,7 +3,7 @@ import RSSTrackerPlugin from './main';
 import { TrackedRSSfeed } from './FeedAssembler';
 import { RSSfileManager } from './RSSFileManager';
 import { HTMLxlate } from './HTMLxlate';
-import { RSSfeedProxy } from './RSSproxies';
+import { RSSfeedProxy, RSScollectionProxy } from './RSSproxies';
 
 
 /**
@@ -135,7 +135,7 @@ export class FeedManager {
         }
     }
 
-    getFeeds(): RSSfeedProxy[] {
+    get feeds(): RSSfeedProxy[] {
         const feedFolder = this._app.vault.getFolderByPath(this._plugin.settings.rssFeedFolderPath);
         if (feedFolder) {
             return feedFolder.children
@@ -145,9 +145,8 @@ export class FeedManager {
         return [];
     }
 
-    async updateAllRSSfeeds(force: boolean) {
+    async updateFeeds(feeds: RSSfeedProxy[], force:boolean) :Promise<void> {
         await this._plugin.tagmgr.updateTagMap();
-        const feeds = this.getFeeds();
         let n: number = 0;
         const notice = new Notice(`0/${feeds.length} feeds updated`, 0);
 

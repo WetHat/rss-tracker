@@ -13791,8 +13791,11 @@ HTMLxlate.VALIDATTR = /^[a-zA-Z_-]*$/;
 
 // src/RSSproxies.ts
 var RSSProxy = class {
+  static toPlaintags(hashtags) {
+    return hashtags ? hashtags.map((h) => h.replace(/^#*/, "")) : [];
+  }
   get tags() {
-    return this.frontmatter.tags && [];
+    return RSSProxy.toPlaintags(this.frontmatter.tags);
   }
   get filemgr() {
     return this.plugin.filemgr;
@@ -14081,6 +14084,22 @@ RSSfeedProxy.SUSPENDED_STATUS_ICON = "\u23F9\uFE0F";
 RSSfeedProxy.RESUMED_STATUS_ICON = "\u25B6\uFE0F";
 RSSfeedProxy.ERROR_STATUS_ICON = "\u274C";
 RSSfeedProxy.OK_STATUS_ICON = "\u2705";
+var RSScollectionProxy = class extends RSSProxy {
+  static async create(plugin) {
+    const file = await plugin.filemgr.createFile(plugin.settings.rssCollectionsFolderPath, "New Feed Collection", "RSS Collection");
+    return new RSScollectionProxy(plugin, file);
+  }
+  constructor(plugin, collection, frontmatter) {
+    super(plugin, collection, frontmatter);
+  }
+  get feeds() {
+    const anyofSet = new Set(this.tags), allof = RSSProxy.toPlaintags(this.frontmatter.allof), noneofSet = new Set(RSSProxy.toPlaintags(this.frontmatter.noneof));
+    return this.plugin.feedmgr.feeds.filter((f) => {
+      const tags = f.tags, tagSet = new Set(tags);
+      return !tags.some((t) => noneofSet.has(t)) && !allof.some((t) => !tagSet.has(t)) && tags.some((t) => anyofSet.has(t));
+    });
+  }
+};
 
 // src/commands.ts
 var InputUrlModal = class extends import_obsidian3.Modal {
@@ -14198,10 +14217,10 @@ var NewRSSFeedCollectionCommand = class extends RSSTrackerCommandBase {
     super(plugin, "rss-tracker-new-feed-collection", "New RSS feed collection");
   }
   callback() {
-    this.plugin.filemgr.createFile(this.plugin.settings.rssCollectionsFolderPath, "New Feed Collection", "RSS Collection").then((collection) => {
+    RSScollectionProxy.create(this.plugin).then((collection) => {
       const leaf = this.app.workspace.getLeaf(false);
-      leaf.openFile(collection).catch((reason) => new import_obsidian3.Notice(reason.message));
-    }).catch((reason) => new import_obsidian3.Notice(`RSS feed collection could not be created! ${reason.message}`));
+      leaf.openFile(collection.file).catch((reason) => new import_obsidian3.Notice(reason.message));
+    }).catch((reason) => new import_obsidian3.Notice(`RSS feed collection not created! ${reason.message}`));
   }
 };
 var NewRSSFeedModalCommand = class extends RSSTrackerCommandBase {
@@ -15668,16 +15687,15 @@ var FeedManager = class {
       await item.completeReadingTask();
     }
   }
-  getFeeds() {
+  get feeds() {
     const feedFolder = this._app.vault.getFolderByPath(this._plugin.settings.rssFeedFolderPath);
     if (feedFolder) {
       return feedFolder.children.map((f) => f instanceof import_obsidian4.TFile ? this._filemgr.getProxy(f) : null).filter((p) => p instanceof RSSfeedProxy);
     }
     return [];
   }
-  async updateAllRSSfeeds(force) {
+  async updateFeeds(feeds, force) {
     await this._plugin.tagmgr.updateTagMap();
-    const feeds = this.getFeeds();
     let n = 0;
     const notice = new import_obsidian4.Notice(`0/${feeds.length} feeds updated`, 0);
     for (const feed of feeds) {
@@ -15798,17 +15816,27 @@ var UpdateRSSfeedMenuItem = class extends RSSTrackerMenuItem {
       return;
     }
     const proxy = this.plugin.filemgr.getProxy(file);
-    if (proxy instanceof RSSfeedProxy) {
-      if (!proxy.suspended) {
-        menu.addItem((item) => {
-          item.setTitle("Update RSS feed").setIcon("rss").onClick(async () => {
-            var _a2;
+    let title;
+    if (proxy instanceof RSSfeedProxy && !proxy.suspended) {
+      title = "Update RSS feed";
+    } else if (proxy instanceof RSScollectionProxy) {
+      title = "Update RSS collection";
+    } else {
+      title = "";
+    }
+    if (title) {
+      menu.addItem((item) => {
+        item.setTitle(title).setIcon("rss").onClick(async () => {
+          var _a2;
+          if (proxy instanceof RSSfeedProxy) {
             await this.plugin.tagmgr.updateTagMap();
             await this.plugin.feedmgr.updateFeed(proxy, true);
-            new import_obsidian5.Notice(`${(_a2 = file == null ? void 0 : file.name) != null ? _a2 : "???"} updated`);
-          });
+          } else if (proxy instanceof RSScollectionProxy) {
+            await this.plugin.feedmgr.updateFeeds(proxy.feeds, true);
+          }
+          new import_obsidian5.Notice(`${(_a2 = file == null ? void 0 : file.name) != null ? _a2 : "???"} updated`);
         });
-      }
+      });
     }
   }
 };
@@ -16297,6 +16325,8 @@ var _RSSfileManager = class {
           return new RSSfeedProxy(this._plugin, file, frontmatter);
         case "rssitem":
           return new RSSitemProxy(this._plugin, file, frontmatter);
+        case "rsscollection":
+          return new RSScollectionProxy(this._plugin, file, frontmatter);
       }
     }
     return void 0;
@@ -16402,27 +16432,6 @@ var _RSSfileManager = class {
     }
     return this._vault.create(uniqueFilepath, content);
   }
-  /*
-  	getFeedsOfCollection(collection: TFile): TFile[] {
-  		const collectionFrontmatter = this._app.metadataCache.getFileCache(collection)?.frontmatter;
-  		if (collectionFrontmatter?.role !== "rsscollection") {
-  			return [];
-  		}
-  		// get the conditions
-  		const
-  			anyofSet = new Set<string>(collectionFrontmatter.tags),
-  			noneofSet = new Set<string>(collectionFrontmatter.noneof),
-  			allof: string[] = collectionFrontmatter.allof ?? [];
-  		return this.getFeeds()
-  			.filter(f => {
-  				const
-  					feedFrontmatter = this._app.metadataCache.getFileCache(f)?.frontmatter,
-  					tags: string[] = feedFrontmatter?.tags ?? [],
-  					tagSet = new Set<string>(tags);
-  				return !tags.some(t => noneofSet.has(t)) && !allof.some(t => !tagSet.has(t)) && tags.some(t => anyofSet.has(t));
-  			});
-  	}
-  			*/
 };
 var RSSfileManager = _RSSfileManager;
 /**
@@ -16671,7 +16680,7 @@ var RSSTrackerPlugin = class extends import_obsidian9.Plugin {
     console.log("Loading rss-tracker.");
     await this._settings.loadData();
     const ribbonIconEl = this.addRibbonIcon("rss", "Update all RSS Feeds", (evt) => {
-      this._feedmgr.updateAllRSSfeeds(true);
+      this._feedmgr.updateFeeds(this._feedmgr.feeds, true);
     });
     ribbonIconEl.addClass("rss-tracker-plugin-ribbon-class");
     this.addCommand(new UpdateRSSfeedCommand(this));
@@ -16706,7 +16715,7 @@ var RSSTrackerPlugin = class extends import_obsidian9.Plugin {
     this.registerInterval(window.setInterval(() => {
       if (this._settings.autoUpdateFeeds) {
         try {
-          this._feedmgr.updateAllRSSfeeds(false);
+          this._feedmgr.updateFeeds(this._feedmgr.feeds, false);
           console.log("RSS Feed background update complete.");
         } catch (ex) {
           console.log(`Background update failed: ${ex.message}`);

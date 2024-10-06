@@ -1,6 +1,6 @@
 import RSSTrackerPlugin from './main';
 import { App, Notice, Menu, TFile, EventRef, Command, Plugin } from 'obsidian';
-import { RSSfeedProxy } from './RSSproxies';
+import { RSScollectionProxy, RSSfeedProxy } from './RSSproxies';
 
 /**
  * Abstract base class to Obsidian menus.
@@ -115,18 +115,29 @@ export class UpdateRSSfeedMenuItem extends RSSTrackerMenuItem {
             return;
         }
         const proxy = this.plugin.filemgr.getProxy(file);
-        if (proxy instanceof RSSfeedProxy) {
-            if (!proxy.suspended) {
-                menu.addItem(item => {
-                    item.setTitle('Update RSS feed')
-                        .setIcon('rss')
-                        .onClick(async () => {
+        let title: string;
+        if (proxy instanceof RSSfeedProxy && !proxy.suspended) {
+            title = "Update RSS feed";
+        } else if (proxy instanceof RSScollectionProxy) {
+            title = "Update RSS collection";
+        } else {
+            title = "";
+        }
+
+        if (title) {
+            menu.addItem(item => {
+                item.setTitle(title)
+                    .setIcon('rss')
+                    .onClick(async () => {
+                        if (proxy instanceof RSSfeedProxy) {
                             await this.plugin.tagmgr.updateTagMap()
                             await this.plugin.feedmgr.updateFeed(proxy, true);
-                            new Notice(`${file?.name ?? '???'} updated`);
-                        });
-                });
-            }
+                        } else if (proxy instanceof RSScollectionProxy) {
+                            await this.plugin.feedmgr.updateFeeds(proxy.feeds,true);
+                        }
+                        new Notice(`${file?.basename ?? '???'} updated`);
+                    });
+            });
         }
     }
 }

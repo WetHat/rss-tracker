@@ -3,7 +3,7 @@ import { App, TFile, Vault, MetadataCache, TFolder } from 'obsidian';
 import { TPropertyBag } from './FeedAssembler';
 import { RSSTrackerSettings, TTemplateName } from "./settings";
 import RSSTrackerPlugin from "./main";
-import { RSSfeedProxy, RSSitemProxy } from './RSSproxies';
+import { RSScollectionProxy, RSSfeedProxy, RSSitemProxy } from './RSSproxies';
 
 export type MetadataCacheEx = MetadataCache & {
 	getTags(): TPropertyBag; // undocumented non-API method
@@ -46,7 +46,7 @@ export class RSSfileManager {
 	 * @param file An RSS file to create the proxy for.
 	 * @returns The appropriate proxy, if it exists.
 	 */
-	getProxy(file: TFile): RSSfeedProxy | RSSitemProxy | undefined {
+	getProxy(file: TFile): RSSfeedProxy | RSSitemProxy | RSScollectionProxy | undefined {
 		const frontmatter = this.metadataCache.getFileCache(file)?.frontmatter;
 		if (frontmatter) {
 			switch (frontmatter.role) {
@@ -54,6 +54,8 @@ export class RSSfileManager {
 					return new RSSfeedProxy(this._plugin, file, frontmatter);
 				case "rssitem":
 					return new RSSitemProxy(this._plugin, file, frontmatter);
+				case "rsscollection":
+					return new RSScollectionProxy(this._plugin, file, frontmatter);
 			}
 		}
 		return undefined;
@@ -133,7 +135,7 @@ export class RSSfileManager {
 		return false;
 	}
 
-	ensureFolderExists(path : string) : Promise<TFolder> | TFolder {
+	ensureFolderExists(path: string): Promise<TFolder> | TFolder {
 		return this.app.vault.getFolderByPath(path) ?? this.app.vault.createFolder(path);
 	}
 
@@ -181,25 +183,4 @@ export class RSSfileManager {
 
 		return this._vault.create(uniqueFilepath, content);
 	}
-/*
-	getFeedsOfCollection(collection: TFile): TFile[] {
-		const collectionFrontmatter = this._app.metadataCache.getFileCache(collection)?.frontmatter;
-		if (collectionFrontmatter?.role !== "rsscollection") {
-			return [];
-		}
-		// get the conditions
-		const
-			anyofSet = new Set<string>(collectionFrontmatter.tags),
-			noneofSet = new Set<string>(collectionFrontmatter.noneof),
-			allof: string[] = collectionFrontmatter.allof ?? [];
-		return this.getFeeds()
-			.filter(f => {
-				const
-					feedFrontmatter = this._app.metadataCache.getFileCache(f)?.frontmatter,
-					tags: string[] = feedFrontmatter?.tags ?? [],
-					tagSet = new Set<string>(tags);
-				return !tags.some(t => noneofSet.has(t)) && !allof.some(t => !tagSet.has(t)) && tags.some(t => anyofSet.has(t));
-			});
-	}
-			*/
 }
