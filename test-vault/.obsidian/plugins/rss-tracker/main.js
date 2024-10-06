@@ -13862,7 +13862,9 @@ var RSSitemProxy = class extends RSSProxy {
     if (first) {
       const data = await vault.read(this.file), s = first.position.start.offset, e = first.position.end.offset, newdata = data.substring(0, s) + "- [x]" + data.substring(s + 5);
       await vault.modify(this.file, newdata);
+      return true;
     }
+    return false;
   }
   /**
    * Factory methos to create a new instance of an RSS item
@@ -14067,8 +14069,7 @@ var _RSSfeedProxy = class extends RSSProxy {
         try {
           await RSSitemProxy.create(newItem, this);
         } catch (err) {
-          console.error(`Failed to save RSS item '${newItem.title}' in feed '${this.file.name}'; error: ${err.message}`);
-          new import_obsidian2.Notice(`Could not save '${newItem.fileName}' in feed '${this.file.name}': ${err.message}`);
+          throw new Error(`Saving '${newItem.fileName}' of feed '${this.file.basename} failed': ${err.message}`);
         }
       }
     }
@@ -14077,6 +14078,15 @@ var _RSSfeedProxy = class extends RSSProxy {
     this.interval = feed.avgPostInterval;
     await this.commitFrontmatterChanges();
     return newRSSitems.length;
+  }
+  async completeReadingTasks() {
+    let completed = 0;
+    for (const item of this.items) {
+      if (await item.completeReadingTask()) {
+        completed++;
+      }
+    }
+    return completed;
   }
 };
 var RSSfeedProxy = _RSSfeedProxy;
@@ -14098,6 +14108,13 @@ var RSScollectionProxy = class extends RSSProxy {
       const tags = f.tags, tagSet = new Set(tags);
       return !tags.some((t) => noneofSet.has(t)) && !allof.some((t) => !tagSet.has(t)) && tags.some((t) => anyofSet.has(t));
     });
+  }
+  async completeReadingTasks() {
+    let completed = 0;
+    for (const feed of this.feeds) {
+      completed += await feed.completeReadingTasks();
+    }
+    return completed;
   }
 };
 
@@ -14194,7 +14211,7 @@ var MarkAllRSSitemsReadCommand = class extends RSSTrackerCommandBase {
         return proxy instanceof RSSfeedProxy;
       }
       if (proxy instanceof RSSfeedProxy) {
-        this.plugin.feedmgr.markFeedItemsRead(proxy).then(() => new import_obsidian3.Notice(`${proxy.file.basename} updated!`));
+        this.plugin.feedmgr.completeReadingTasks(proxy);
         return true;
       }
     }
@@ -15682,10 +15699,14 @@ var FeedManager = class {
     console.log(`Feed ${feed.file.name} update status: ${status}`);
     return feed;
   }
-  async markFeedItemsRead(feed) {
-    for (const item of feed.items) {
-      await item.completeReadingTask();
+  async completeReadingTasks(proxy) {
+    let completed = 0;
+    if (proxy instanceof RSSfeedProxy) {
+      completed = await proxy.completeReadingTasks();
+    } else if (proxy instanceof RSScollectionProxy) {
+      completed = await proxy.completeReadingTasks();
     }
+    new import_obsidian4.Notice(`${completed} items taken off the '${proxy.file.basename}' reading list`, 3e4);
   }
   get feeds() {
     const feedFolder = this._app.vault.getFolderByPath(this._plugin.settings.rssFeedFolderPath);
@@ -15709,7 +15730,7 @@ var FeedManager = class {
       }
     }
     notice.hide();
-    console.log(`Update of ${n}/${feeds.length} feeds complete.`);
+    console.log(`${n}/${feeds.length} feeds updated.`);
     new import_obsidian4.Notice(`${n}/${feeds.length} RSS feeds successfully updated`, 3e4);
   }
   canDownloadArticle(item) {
@@ -15768,14 +15789,10 @@ var MarkAllItemsReadMenuItem = class extends RSSTrackerMenuItem {
       return;
     }
     const proxy = this.plugin.filemgr.getProxy(dashboard);
-    if (proxy instanceof RSSfeedProxy) {
+    if (proxy instanceof RSSfeedProxy || proxy instanceof RSScollectionProxy) {
       menu.addItem((item) => {
-        {
-        }
         item.setTitle("Mark all RSS items as read").setIcon("list-checks").onClick(async () => {
-          var _a2;
-          this.plugin.feedmgr.markFeedItemsRead(proxy);
-          new import_obsidian5.Notice(`All items of "${(_a2 = dashboard == null ? void 0 : dashboard.basename) != null ? _a2 : "unavailable"}" marked read.`);
+          this.plugin.feedmgr.completeReadingTasks(proxy);
         });
       });
     }
@@ -15834,7 +15851,7 @@ var UpdateRSSfeedMenuItem = class extends RSSTrackerMenuItem {
           } else if (proxy instanceof RSScollectionProxy) {
             await this.plugin.feedmgr.updateFeeds(proxy.feeds, true);
           }
-          new import_obsidian5.Notice(`${(_a2 = file == null ? void 0 : file.name) != null ? _a2 : "???"} updated`);
+          new import_obsidian5.Notice(`${(_a2 = file == null ? void 0 : file.basename) != null ? _a2 : "???"} updated`);
         });
       });
     }

@@ -129,10 +129,15 @@ export class FeedManager {
         return feed;
     }
 
-    async markFeedItemsRead(feed: RSSfeedProxy) {
-        for (const item of feed.items) {
-            await item.completeReadingTask();
+    async completeReadingTasks(proxy: RSSfeedProxy | RSScollectionProxy) {
+        let completed = 0;
+        if (proxy instanceof RSSfeedProxy) {
+            completed = await proxy.completeReadingTasks();
+        } else if (proxy instanceof RSScollectionProxy) {
+            completed = await proxy.completeReadingTasks();
         }
+
+        new Notice(`${completed} items taken off the '${proxy.file.basename}' reading list`, 30000);
     }
 
     get feeds(): RSSfeedProxy[] {
@@ -145,7 +150,7 @@ export class FeedManager {
         return [];
     }
 
-    async updateFeeds(feeds: RSSfeedProxy[], force:boolean) :Promise<void> {
+    async updateFeeds(feeds: RSSfeedProxy[], force: boolean): Promise<void> {
         await this._plugin.tagmgr.updateTagMap();
         let n: number = 0;
         const notice = new Notice(`0/${feeds.length} feeds updated`, 0);
@@ -161,7 +166,7 @@ export class FeedManager {
             }
         }
         notice.hide();
-        console.log(`Update of ${n}/${feeds.length} feeds complete.`)
+        console.log(`${n}/${feeds.length} feeds updated.`)
         new Notice(`${n}/${feeds.length} RSS feeds successfully updated`, 30000);
     }
 

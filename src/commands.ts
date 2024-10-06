@@ -151,7 +151,7 @@ export class MarkAllRSSitemsReadCommand extends RSSTrackerCommandBase {
                 return proxy instanceof RSSfeedProxy;
             }
             if (proxy instanceof RSSfeedProxy) {
-                this.plugin.feedmgr.markFeedItemsRead(proxy).then(() => new Notice(`${proxy.file.basename} updated!`));
+                this.plugin.feedmgr.completeReadingTasks(proxy);
                 return true;
             }
         }

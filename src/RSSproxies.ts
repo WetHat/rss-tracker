@@ -1,4 +1,4 @@
-import { TFile, normalizePath, TFolder, Notice, htmlToMarkdown, TAbstractFile, ListItemCache } from 'obsidian';
+import { TFile, normalizePath, TFolder, htmlToMarkdown, TAbstractFile, ListItemCache } from 'obsidian';
 import * as path from "path";
 import { IRssMedium, TPropertyBag, TrackedRSSfeed, TrackedRSSitem } from "./FeedAssembler";
 import { HTMLxlate, formatImage } from "./HTMLxlate";
@@ -8,7 +8,7 @@ import RSSTrackerPlugin from "./main";
 export type TFrontmatter = TPropertyBag;
 
 /**
- * THe base of all proxies for RSS related files.
+ * THe base of all proxies for RSS related files in Obsidian.
  *
  * Provides support for transactional frontmatter property changes via
  * {@link commitFrontmatterChanges}.
@@ -100,7 +100,7 @@ export class RSSitemProxy extends RSSProxy {
         this.frontmatter.tags = value.map(t => tagmgr.mapHashtag(t.startsWith("#") ? t : "#" + t).slice(1));
     }
 
-    async completeReadingTask(): Promise<void> {
+    async completeReadingTask(): Promise<boolean> {
         const
             app = this.plugin.app,
             vault = app.vault,
@@ -115,7 +115,9 @@ export class RSSitemProxy extends RSSProxy {
                 e = first.position.end.offset,
                 newdata = data.substring(0, s) + "- [x]" + data.substring(s + 5);
             await vault.modify(this.file, newdata);
+            return true;
         }
+        return false;
     }
 
     /**
@@ -386,8 +388,7 @@ export class RSSfeedProxy extends RSSProxy {
                 try {
                     await RSSitemProxy.create(newItem, this);
                 } catch (err: any) {
-                    console.error(`Failed to save RSS item '${newItem.title}' in feed '${this.file.name}'; error: ${err.message}`);
-                    new Notice(`Could not save '${newItem.fileName}' in feed '${this.file.name}': ${err.message}`);
+                    throw new Error(`Saving '${newItem.fileName}' of feed '${this.file.basename} failed': ${err.message}`);
                 }
             }
         }
@@ -396,6 +397,16 @@ export class RSSfeedProxy extends RSSProxy {
         this.interval = feed.avgPostInterval;
         await this.commitFrontmatterChanges();
         return newRSSitems.length;
+    }
+
+    async completeReadingTasks(): Promise<number> {
+        let completed = 0;
+        for (const item of this.items) {
+            if (await item.completeReadingTask()) {
+                completed++;
+            }
+        }
+        return completed;
     }
 }
 
@@ -415,11 +426,19 @@ export class RSScollectionProxy extends RSSProxy {
             allof = RSSProxy.toPlaintags(this.frontmatter.allof),
             noneofSet = new Set<string>(RSSProxy.toPlaintags(this.frontmatter.noneof));
         return this.plugin.feedmgr.feeds
-			.filter(f => {
-				const
-					tags: string[] = f.tags,
-					tagSet = new Set<string>(tags);
-				return !tags.some(t => noneofSet.has(t)) && !allof.some(t => !tagSet.has(t)) && tags.some(t => anyofSet.has(t));
-			});
+            .filter(f => {
+                const
+                    tags: string[] = f.tags,
+                    tagSet = new Set<string>(tags);
+                return !tags.some(t => noneofSet.has(t)) && !allof.some(t => !tagSet.has(t)) && tags.some(t => anyofSet.has(t));
+            });
+    }
+
+    async completeReadingTasks(): Promise<number> {
+        let completed = 0;
+        for (const feed of this.feeds) {
+            completed += await feed.completeReadingTasks();
+        }
+        return completed;
     }
 }

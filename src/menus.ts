@@ -56,14 +56,12 @@ export class MarkAllItemsReadMenuItem extends RSSTrackerMenuItem {
         }
 
         const proxy = this.plugin.filemgr.getProxy(dashboard);
-        if (proxy instanceof RSSfeedProxy) {
+        if (proxy instanceof RSSfeedProxy || proxy instanceof RSScollectionProxy) {
             menu.addItem(item => {
-                { }
                 item.setTitle('Mark all RSS items as read')
                     .setIcon('list-checks')
                     .onClick(async () => {
-                        this.plugin.feedmgr.markFeedItemsRead(proxy);
-                        new Notice(`All items of "${dashboard?.basename ?? 'unavailable'}" marked read.`);
+                        this.plugin.feedmgr.completeReadingTasks(proxy);
                     });
             });
         }
