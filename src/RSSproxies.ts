@@ -1,6 +1,6 @@
 import { TFile, normalizePath, TFolder, htmlToMarkdown, TAbstractFile, ListItemCache } from 'obsidian';
 import * as path from "path";
-import { IRssMedium, TPropertyBag, TrackedRSSfeed, TrackedRSSitem } from "./FeedAssembler";
+import { IRssMedium, MediumType, TPropertyBag, TrackedRSSfeed, TrackedRSSitem } from "./FeedAssembler";
 import { HTMLxlate, formatImage } from "./HTMLxlate";
 import { RSSfileManager } from "./RSSFileManager";
 import RSSTrackerPlugin from "./main";
@@ -62,6 +62,7 @@ abstract class RSSProxy {
  * The proxy of an RSS item.
  */
 export class RSSitemProxy extends RSSProxy {
+    static readonly EMBEDDING_MATCHER = /!\[[^\]]*\]\(([^\)]+)\)\s*/;
     /**
      * **Note**. This property can only be changed by the user.
      * @returns `true` if the item is pinned and will not be deleted; `false` otherwise.
@@ -133,9 +134,32 @@ export class RSSitemProxy extends RSSProxy {
 
         if (description) {
             description = html.fragmentAsMarkdown(description);
+            if (!image) {
+                // attempt to find an image in the item description
+                const match = description.match(RSSitemProxy.EMBEDDING_MATCHER);
+                if (match && match.index !== undefined) {
+                    image = {
+                        src: match[1],
+                        type: MediumType.Image
+                    }
+                    // remove the image from the description
+                    description = description.slice(0, match.index) + description.slice(match.index + match[0].length);
+                }
+            }
         }
+
         if (content) {
             content = html.fragmentAsMarkdown(content);
+            if (!image) {
+                // attempt to find an image in the item content
+                const match = content.match(RSSitemProxy.EMBEDDING_MATCHER);
+                if (match) {
+                    image = {
+                        src: match[1],
+                        type: MediumType.Image
+                    }
+                }
+            }
         }
 
         const byline = author ? ` by ${author}` : "";
@@ -148,9 +172,11 @@ export class RSSitemProxy extends RSSProxy {
         const defaultImage = await feed.plugin.settings.getRssDefaultImagePath();
 
         if (description) {
+            // truncate description
             const teaser = (description.length > 500 ? (description.substring(0, 500) + "⋯") : description);
             description = teaser.replaceAll("\n", "\n> ");
         }
+
 
         // fill in the template
         const
