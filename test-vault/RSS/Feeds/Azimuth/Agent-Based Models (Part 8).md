@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Agent-Based Models (Part 8) by John Baez - 2024-04-16T19:01:15.000Z
-> <span class="rss-image">![image|400](https://johncarlosbaez.files.wordpress.com/2023/07/state_diagram.png)</span> Last time I presented a class of agent-based models where agents hop around a graph in a stochastic way. Each vertex of the graph is some &#8216;state&#8217; agents can be in, and each edge is called a &#8216;transition&#8217;. In these models, the probability per time of an agent making a transition and leaving some state [&#8230;]
+> <span class="rss-image">![image|400](https://johncarlosbaez.files.wordpress.com/2023/07/state_diagram.png)</span> Last time I presented a class of agent-based models where agents hop around a graph in a stochastic way. Each vertex of the graph is some ‘state’ agents can be in, and each edge is called a ‘transition’. In these models, the probability per time of an agent making a transition and leaving some state ［…］
 
 🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/04/16/agent-based-models-part-8/). For other items in this feed see [[Azimuth]].
 

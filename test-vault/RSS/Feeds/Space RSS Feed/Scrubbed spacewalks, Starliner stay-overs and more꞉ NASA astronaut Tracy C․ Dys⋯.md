@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract]  Scrubbed spacewalks, Starliner stay-overs and more: NASA astronaut Tracy C. Dyson discusses her eventful 6 months in orbit  by  robert@collectspace.com (Robert Z. Pearlman)  - 2024-10-07T12:00:25.000Z
-> <span class="rss-image">![image|400](https://cdn.mos.cms.futurecdn.net/YXud9By9jEiirv4jJ8uyvZ.jpg)</span>  NASA astronaut Tracy Caldwell Dyson reflected on her time in space during a post-flight press conference at NASA’s Johnson Space Center in Houston on Friday (Oct. 4). 
+> <span class="rss-image">![image|400](https://cdn.mos.cms.futurecdn.net/YXud9By9jEiirv4jJ8uyvZ.jpg)</span> NASA astronaut Tracy Caldwell Dyson reflected on her time in space during a post-flight press conference at NASA’s Johnson Space Center in Houston on Friday (Oct. 4).
 
 🔗Read article [online](https://www.space.com/nasa-astronaut-tracy-caldwell-dyson-post-flight-briefing). For other items in this feed see [[Space RSS Feed]].
 

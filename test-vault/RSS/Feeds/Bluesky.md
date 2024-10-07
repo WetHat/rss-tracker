@@ -3,7 +3,7 @@ role: rssfeed
 feedurl: https://localhost/test/Bluesky/feed.xml
 site: https://flipboard.com/topic/blueskysocial
 itemlimit: 10
-updated: 2024-10-07T13:19:20.841Z
+updated: 2024-10-07T17:50:37.108Z
 status: ✅
 tags: []
 interval: 19

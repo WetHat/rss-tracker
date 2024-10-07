@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract]  Ancient supermassive black hole is blowing galaxy-killing wind, James Webb Space Telescope finds  - 2024-10-05T13:00:22.000Z
-> <span class="rss-image">![image|400](https://cdn.mos.cms.futurecdn.net/naziz24haeF7fpGtC9JLQ3.png)</span>  The James Webb Space Telescope has spotted the earliest supermassive black hole-driven quasar wind ever seen, pushing away matter at 6,000 times the speed of sound and killing its host galaxy. 
+> <span class="rss-image">![image|400](https://cdn.mos.cms.futurecdn.net/naziz24haeF7fpGtC9JLQ3.png)</span> The James Webb Space Telescope has spotted the earliest supermassive black hole-driven quasar wind ever seen, pushing away matter at 6,000 times the speed of sound and killing its host galaxy.
 
 🔗Read article [online](https://www.space.com/james-webb-space-telescope-earliest-quasar-wind). For other items in this feed see [[Space RSS Feed]].
 

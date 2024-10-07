@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract]  Save 10% on this BlissLights Sky Lite Evolve star projector this Prime Day  - 2024-10-07T12:02:36.000Z
-> <span class="rss-image">![image|400](https://cdn.mos.cms.futurecdn.net/f72tLccSoByVbGcDhLkU5a.jpg)</span>  This BlissLights Sky Light Evolve star projector is 10% off for Prime Day 
+> <span class="rss-image">![image|400](https://cdn.mos.cms.futurecdn.net/f72tLccSoByVbGcDhLkU5a.jpg)</span> This BlissLights Sky Light Evolve star projector is 10% off for Prime Day
 
 🔗Read article [online](https://www.space.com/prime-day-star-projector-deal-save-10-percent-blisslights-october-2024). For other items in this feed see [[Space RSS Feed]].
 

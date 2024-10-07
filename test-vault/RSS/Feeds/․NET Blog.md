@@ -3,7 +3,7 @@ role: rssfeed
 feedurl: https://localhost/test/․NET Blog/feed.xml
 site: https://devblogs.microsoft.com/dotnet/
 itemlimit: 10
-updated: 2024-10-07T13:18:57.156Z
+updated: 2024-10-07T17:50:06.318Z
 status: ✅
 tags: []
 interval: 77

@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract]  Earth is a spaceship like the ISS — let me explain  - 2024-10-06T10:00:01.000Z
-> <span class="rss-image">![image|400](https://cdn.mos.cms.futurecdn.net/YaAwoQASUBtjW3fyXScSp4.jpg)</span>  From water recycling to carbon capture, there are a myriad ways in which space technologies can be applied to help us live in a more environmentally friendly way on Earth. 
+> <span class="rss-image">![image|400](https://cdn.mos.cms.futurecdn.net/YaAwoQASUBtjW3fyXScSp4.jpg)</span> From water recycling to carbon capture, there are a myriad ways in which space technologies can be applied to help us live in a more environmentally friendly way on Earth.
 
 🔗Read article [online](https://www.space.com/earth-iss-sustainable-living-world-space-week). For other items in this feed see [[Space RSS Feed]].
 

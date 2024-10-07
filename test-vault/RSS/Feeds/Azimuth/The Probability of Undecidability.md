@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] The Probability of Undecidability by John Baez - 2024-03-15T10:10:44.000Z
-> <span class="rss-image">![image|400](https://johncarlosbaez.files.wordpress.com/2024/03/unprovability_michael_freedman.png)</span> There&#8217;s a lot we don&#8217;t know. There&#8217;s a lot we can&#8217;t know. But can we at least know how much we can&#8217;t know? What fraction of mathematical statements are undecidable&#8212;that is, can be neither proved nor disproved? There are many ways to make this question precise&#8230; but it remains a bit mysterious. The best results [&#8230;]
+> <span class="rss-image">![image|400](https://johncarlosbaez.files.wordpress.com/2024/03/unprovability_michael_freedman.png)</span> There’s a lot we don’t know. There’s a lot we can’t know. But can we at least know how much we can’t know? What fraction of mathematical statements are undecidable—that is, can be neither proved nor disproved? There are many ways to make this question precise… but it remains a bit mysterious. The best results ［…］
 
 🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/03/15/the-probability-of-undecidability/). For other items in this feed see [[Azimuth]].
 

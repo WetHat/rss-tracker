@@ -3,7 +3,7 @@ role: rssfeed
 feedurl: https://localhost/test/Python Morsels/feed.xml
 site: https://www.pythonmorsels.com/topics/
 itemlimit: 10
-updated: 2024-10-07T13:19:09.841Z
+updated: 2024-10-07T17:50:21.065Z
 status: ✅
 tags: []
 interval: 425

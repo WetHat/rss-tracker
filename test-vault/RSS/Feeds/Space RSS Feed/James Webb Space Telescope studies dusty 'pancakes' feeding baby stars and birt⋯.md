@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract]  James Webb Space Telescope studies dusty 'pancakes' feeding baby stars and birthing planets  - 2024-10-07T10:00:05.000Z
-> <span class="rss-image">![image|400](https://cdn.mos.cms.futurecdn.net/YXUbhXtGRc5wEoi2vxYLUG.png)</span>  The James Webb Space Telescope has taken an intricate look at how pancakes of gas and dust feed infant stars and help them grow before influencing the birth of planets. 
+> <span class="rss-image">![image|400](https://cdn.mos.cms.futurecdn.net/YXUbhXtGRc5wEoi2vxYLUG.png)</span> The James Webb Space Telescope has taken an intricate look at how pancakes of gas and dust feed infant stars and help them grow before influencing the birth of planets.
 
 🔗Read article [online](https://www.space.com/james-webb-space-telescope-dusty-pancakes-baby-stars). For other items in this feed see [[Space RSS Feed]].
 

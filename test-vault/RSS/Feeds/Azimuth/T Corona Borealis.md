@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] T Corona Borealis by John Baez - 2024-03-27T18:32:47.000Z
-> <span class="rss-image">![image|400](https://johncarlosbaez.files.wordpress.com/2024/03/corona_borealis.jpg)</span> &#160; Sometime this year, the star T Corona Borealis will go nova and become much brighter! At least that&#8217;s what a lot of astronomers think. So examine the sky between Arcturus and Vega now&#8212;and look again if you hear this event has happened. Normally this star is magnitude 10, too dim to see. When it [&#8230;]
+> <span class="rss-image">![image|400](https://johncarlosbaez.files.wordpress.com/2024/03/corona_borealis.jpg)</span>   Sometime this year, the star T Corona Borealis will go nova and become much brighter! At least that’s what a lot of astronomers think. So examine the sky between Arcturus and Vega now—and look again if you hear this event has happened. Normally this star is magnitude 10, too dim to see. When it ［…］
 
 🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/03/27/t-corona-borealis/). For other items in this feed see [[Azimuth]].
 

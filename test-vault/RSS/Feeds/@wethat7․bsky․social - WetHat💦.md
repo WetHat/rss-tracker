@@ -3,7 +3,7 @@ role: rssfeed
 feedurl: https://localhost/test/@wethat7․bsky․social - WetHat💦/feed.xml
 site: https://bsky.app/profile/wethat7.bsky.social
 itemlimit: 10
-updated: 2024-10-07T13:19:27.341Z
+updated: 2024-10-07T17:50:43.995Z
 status: ✅
 tags: []
 interval: 19

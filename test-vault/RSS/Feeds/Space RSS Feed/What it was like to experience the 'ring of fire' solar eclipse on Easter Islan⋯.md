@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract]  What it was like to experience the 'ring of fire' solar eclipse on Easter Island  - 2024-10-06T14:00:01.000Z
-> <span class="rss-image">![image|400](https://cdn.mos.cms.futurecdn.net/WXmUPgGJMZUS3rkgA5SokM.jpg)</span>  A few hundred eclipse chasers flocked to Chile's Rapa Nui to see annularity from the home of the mysterious moai. 
+> <span class="rss-image">![image|400](https://cdn.mos.cms.futurecdn.net/WXmUPgGJMZUS3rkgA5SokM.jpg)</span> A few hundred eclipse chasers flocked to Chile's Rapa Nui to see annularity from the home of the mysterious moai.
 
 🔗Read article [online](https://www.space.com/annular-solar-eclipse-easter-island-first-hand-experience). For other items in this feed see [[Space RSS Feed]].
 

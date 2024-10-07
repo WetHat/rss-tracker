@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract]  Get $100 off with this Prime Day beginner telescope deal on the Celestron AstroMaster 114EQ  - 2024-10-07T10:02:02.000Z
-> <span class="rss-image">![image|400](https://cdn.mos.cms.futurecdn.net/4NgoEMy3qf4NU2AHuPsXmF.jpg)</span>  Ready to start stargazing? The Celestron AstroMaster 114EQ is a perfect beginners telescope that you won't immediately outgrow, and it's down to just $219.95.  
+> <span class="rss-image">![image|400](https://cdn.mos.cms.futurecdn.net/4NgoEMy3qf4NU2AHuPsXmF.jpg)</span> Ready to start stargazing? The Celestron AstroMaster 114EQ is a perfect beginners telescope that you won't immediately outgrow, and it's down to just $219.95.
 
 🔗Read article [online](https://www.space.com/save-usd100-on-beginner-friendly-celestron-astromaster-114eq-at-amazon-prime-day-october-2024). For other items in this feed see [[Space RSS Feed]].
 
