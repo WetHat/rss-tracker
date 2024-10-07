@@ -15122,7 +15122,7 @@ var _HTMLxlate = class {
    * @return The markdown text generated from the HTML fragment.
    */
   fragmentAsMarkdown(html) {
-    if (!html.match(/<\/[^<>\/]+\>/)) {
+    if (!html.startsWith("<") && html.match(/```|~~~|^\s*#+\s+[^#]$|\]\([^\]\[\)]+\)/)) {
       return html;
     }
     const doc = this.parser.parseFromString(html, "text/html");
