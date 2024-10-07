@@ -10,8 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Keep Microsoft Teams status Available instead of away using PowerShell by Matthew Dowst - 2024-05-24T12:23:30.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
-> It is one of the things I hear my colleagues, and even my girlfriend, mention regularly... Why does
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span> It is one of the things I hear my colleagues, and even my girlfriend, mention regularly... Why does
 > 
 > Microsoft Teams think I'm away while I'm not / My PC isn't locked yet... I read a few solutions, setting your status duration to a date in the future, etc... Didn't work :( What does work is running my simple PowerShell scripts, which I will show you in this blog post :)
 > 
@@ -27,7 +26,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+	dv.header(1,"⚠ Other RSS items are referring to the same article");
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");

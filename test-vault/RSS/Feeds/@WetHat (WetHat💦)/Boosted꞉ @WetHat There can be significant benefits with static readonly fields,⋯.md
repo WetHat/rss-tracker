@@ -10,8 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Boosted: @WetHat There can be significant benefits with static readonly fields, see https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-8/#tiering-and-dynamic-pgo and https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-8/#constant-folding IIRC, the JIT will also optimize multiple loads of the same field better in some cases if it is readonly. by @WetHat - 2024-05-13T16:13:42.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
-> [@WetHat](https://fosstodon.org/@WetHat)  
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span> [@WetHat](https://fosstodon.org/@WetHat)  
 > There can be significant benefits with static readonly fields, see [https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-8/#tiering-and-dynamic-pgo](https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-8/#tiering-and-dynamic-pgo) and [https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-8/#constant-folding](https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-8/#constant-folding)  
 > IIRC⋯
 
@@ -25,7 +24,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+	dv.header(1,"⚠ Other RSS items are referring to the same article");
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");

@@ -10,8 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Issue #627 (April 30, 2024) - 2024-04-30T19:30:00.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
-> #627 – APRIL 30, 2024 View in Browser » PEP 686: Make UTF-8 Mode Default This Python Enhancement Proposal outlines making UTF-8 the default throughout Python. This takes the addition of Unicode introduced in Python 3 to its full extent, applying it to file encoding, pipes, and more. Mechanisms for other encoding are still supported. This PEP is targeted for Python 3.15. PEPS What’s Lazy Evaluation in Python? This tutorial explores lazy evaluation in Python and looks at the advantages and disadva⋯
+> <span class="rss-image">![image|400](https://cdn.pycoders.com/37bdf31dc645f968ffb90196e5d38ff5)</span> #627 – APRIL 30, 2024 View in Browser       »     PEP 686:       Make UTF-8 Mode Default        This Python Enhancement Proposal outlines making UTF-8 the default throughout Python. This       takes the addition of Unicode introduced in Python 3 to its full extent, applying it to file       encoding, pipes, and more. Mechanisms for other encoding are still supported. This PEP is       targeted for Python 3.15. PEPS          What’s Lazy Evaluation in Python?        This tutorial explores lazy eva⋯
 
 🔗Read article [online](https://pycoders.com/issues/627). For other items in this feed see [[PyCoder’s Weekly]].
 
@@ -23,7 +22,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+	dv.header(1,"⚠ Other RSS items are referring to the same article");
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");

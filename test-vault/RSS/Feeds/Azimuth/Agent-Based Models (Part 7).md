@@ -10,8 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Agent-Based Models (Part 7) by John Baez - 2024-02-28T21:09:29.000Z
-> <span class="rss-image">![image|400](https://johncarlosbaez.files.wordpress.com/2023/07/state_diagram.png)</span>
-> Last time I presented a simple, limited class of agent-based models where each agent independently hops around a graph. I wrote: Today the probability for an agent to hop from one vertex of the graph to another by going along some edge will be determined the moment the agent arrives at that vertex. It will ［…］
+> <span class="rss-image">![image|400](https://johncarlosbaez.files.wordpress.com/2023/07/state_diagram.png)</span> Last time I presented a simple, limited class of agent-based models where each agent independently hops around a graph. I wrote: Today the probability for an agent to hop from one vertex of the graph to another by going along some edge will be determined the moment the agent arrives at that vertex. It will [&#8230;]
 
 🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/02/28/agent-based-models-part-7/). For other items in this feed see [[Azimuth]].
 
@@ -23,7 +22,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+	dv.header(1,"⚠ Other RSS items are referring to the same article");
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");

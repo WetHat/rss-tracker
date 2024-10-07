@@ -10,8 +10,7 @@ pinned: false
 ---
 
 > [!abstract] 5 Inconvenient Truths about TypeScript - 2023-07-17T00:00:00.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
-> I’m writing books about TypeScript and I do workshops and trainings online and in-house. Every time I meet a new group of developers there are some TypeScript facts that they need to be confronted with:
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span> I’m writing books about TypeScript and I do workshops and trainings online and in-house. Every time I meet a new group of developers there are some TypeScript facts that they need to be confronted with:
 
 🔗Read article [online](https://fettblog.eu/5-truths-about-typescript/). For other items in this feed see [[fettblog․eu ∣ TypeScript, JavaScript, Jamstack]].
 
@@ -23,7 +22,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+	dv.header(1,"⚠ Other RSS items are referring to the same article");
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");

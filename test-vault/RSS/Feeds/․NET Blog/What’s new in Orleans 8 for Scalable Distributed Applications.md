@@ -10,8 +10,7 @@ pinned: false
 ---
 
 > [!abstract] What&#8217;s new in Orleans 8 for Scalable Distributed Applications by Mike Kistler - 2024-05-13T17:05:00.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
-> Let's take a look at what is new with Orleans for building robust, scalable distribute applications with Orleans 8 and integration with .NET Aspire.
+> <span class="rss-image">![image|400](./live-migration-lifecycle.png)</span> Let's take a look at what is new with Orleans for building robust, scalable distribute applications with Orleans 8 and integration with .NET Aspire.
 > 
 > The post [What’s new in Orleans 8 for Scalable Distributed Applications](https://devblogs.microsoft.com/dotnet/whats-new-in-orleans-8/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 
@@ -25,7 +24,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+	dv.header(1,"⚠ Other RSS items are referring to the same article");
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");

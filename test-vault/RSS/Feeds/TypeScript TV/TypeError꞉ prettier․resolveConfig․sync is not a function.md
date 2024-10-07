@@ -10,8 +10,9 @@ pinned: false
 ---
 
 > [!abstract] TypeError: prettier.resolveConfig.sync is not a function - 2023-12-18T22:47:43.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
-> Learn how to fix error: prettier.resolveConfig.sync is not a function. Resolve any issues that arise from updating to Prettier v3 and migrate from Husky & pretty-quick to Lefthook.
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span> Learn how to fix error: prettier.resolveConfig.sync is not a function.
+>                 Resolve any issues that arise from updating to Prettier v3 and migrate from Husky
+>                 & pretty-quick to Lefthook.
 
 🔗Read article [online](https://typescript.tv/hands-on/typeerror-prettierresolveconfigsync-is-not-a-function/). For other items in this feed see [[TypeScript TV]].
 
@@ -23,7 +24,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+	dv.header(1,"⚠ Other RSS items are referring to the same article");
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");

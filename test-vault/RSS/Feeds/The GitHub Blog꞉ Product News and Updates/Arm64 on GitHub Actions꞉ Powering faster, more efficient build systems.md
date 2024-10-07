@@ -10,8 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Arm64 on GitHub Actions: Powering faster, more efficient build systems by Larissa Fortuna - 2024-06-03T16:31:50.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
-> GitHub Actions now offers Arm-hosted runners with images built by Arm for developers to begin building on the latest and most sustainable processors on the market. The post Arm64 on GitHub Actions: Powering faster, more efficient build systems appeared first on The GitHub Blog.
+> <span class="rss-image">![image|400](#get-started-using-arm-hosted-runners-today)</span> GitHub Actions now offers Arm-hosted runners with images built by Arm for developers to begin building on the latest and most sustainable processors on the market. The post Arm64 on GitHub Actions: Powering faster, more efficient build systems appeared first on The GitHub Blog.
 
 🔗Read article [online](https://github.blog/2024-06-03-arm64-on-github-actions-powering-faster-more-efficient-build-systems/). For other items in this feed see [[The GitHub Blog꞉ Product News and Updates]].
 
@@ -23,7 +22,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+	dv.header(1,"⚠ Other RSS items are referring to the same article");
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");

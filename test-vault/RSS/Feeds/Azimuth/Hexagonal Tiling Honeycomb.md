@@ -10,8 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Hexagonal Tiling Honeycomb by John Baez - 2024-05-04T15:47:17.000Z
-> <span class="rss-image">![image|400](https://johncarlosbaez.files.wordpress.com/2024/05/633_honeycomb_roice_bright.png)</span>
-> This picture by Roice Nelson shows a remarkable structure: the hexagonal tiling honeycomb. What is it? Roughly speaking, a honeycomb is a way of filling 3d space with polyhedra. The most symmetrical honeycombs are the ‘regular’ ones. For any honeycomb, we define a flag to be a chosen vertex lying on a chosen edge lying ［…］
+> <span class="rss-image">![image|400](https://johncarlosbaez.files.wordpress.com/2024/05/633_honeycomb_roice_bright.png)</span> This picture by Roice Nelson shows a remarkable structure: the hexagonal tiling honeycomb. What is it? Roughly speaking, a honeycomb is a way of filling 3d space with polyhedra. The most symmetrical honeycombs are the &#8216;regular&#8217; ones. For any honeycomb, we define a flag to be a chosen vertex lying on a chosen edge lying [&#8230;]
 
 🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/05/04/hexagonal-tiling-honeycomb/). For other items in this feed see [[Azimuth]].
 
@@ -23,7 +22,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+	dv.header(1,"⚠ Other RSS items are referring to the same article");
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");

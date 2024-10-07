@@ -10,8 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Refactor your code with C# collection expressions by David Pine - 2024-05-08T17:05:00.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
-> Explore various C# 12 refactoring scenarios for a variety of target types using collection expressions, collection initializers, and the spread syntax.
+> <span class="rss-image">![image|400](https://s.w.org/images/core/emoji/15.0.3/72x72/1f3a8.png)</span> Explore various C# 12 refactoring scenarios for a variety of target types using collection expressions, collection initializers, and the spread syntax.
 > 
 > The post [Refactor your code with C# collection expressions](https://devblogs.microsoft.com/dotnet/refactor-your-code-with-collection-expressions/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 
@@ -25,7 +24,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+	dv.header(1,"⚠ Other RSS items are referring to the same article");
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");

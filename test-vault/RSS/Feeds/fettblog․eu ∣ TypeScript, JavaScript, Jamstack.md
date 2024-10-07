@@ -3,14 +3,13 @@ role: rssfeed
 feedurl: https://localhost/test/fettblog․eu ∣ TypeScript, JavaScript, Jamstack/feed.xml
 site: https://fettblog.eu/
 itemlimit: 10
-updated: 2024-10-05T09:45:34.695Z
+updated: 2024-10-07T13:19:16.726Z
 status: ✅
 tags: []
 interval: 593
 ---
 > [!abstract] fettblog.eu | TypeScript, JavaScript, Jamstack
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
-> 
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span> 
 
 # Unread Feed Items 📚
 ~~~dataview

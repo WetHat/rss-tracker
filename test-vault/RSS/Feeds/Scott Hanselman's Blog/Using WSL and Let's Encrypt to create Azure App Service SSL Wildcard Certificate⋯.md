@@ -10,8 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Using WSL and Let's Encrypt to create Azure App Service SSL Wildcard Certificates by Scott Hanselman - 2023-06-27T17:17:25.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
-> There are many let's encrypt automatic tools for azure but I also wanted to see if I could use certbot in wsl to generate a wildcard certificate for the azure Friday website and then upload the resulting certificates to azure app service.
+> <span class="rss-image">![image|400](https://www.hanselman.com/blog/content/binary/Windows-Live-Writer/Using-WSL-and-Lets-Encrypt-to-create-Azu_C384/image_3849c466-fcdb-4abd-96ad-8d52a5e93730.png "Custom Domains in Azure App Service")</span> There are many let's encrypt automatic tools for azure but I also wanted to see if I could use certbot in wsl to generate a wildcard certificate for the azure Friday website and then upload the resulting certificates to azure app service.
 > 
 > Azure app service ultimately needs a specific format called dot PFX that includes the full certificate path and all intermediates.
 > 
@@ -27,7 +26,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+	dv.header(1,"⚠ Other RSS items are referring to the same article");
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");
@@ -55,9 +54,13 @@ Within WSL, install certbot:
 
 ```undefined
 sudo apt update
+
 sudo apt install python3 python3-venv libaugeas0
+
 sudo python3 -m venv /opt/certbot/
+
 sudo /opt/certbot/bin/pip install --upgrade pip
+
 sudo /opt/certbot/bin/pip install certbot
 ```
 
@@ -65,10 +68,15 @@ Then I generate the cert. You'll get a nice text UI from certbot and update your
 
 ```undefined
 sudo certbot certonly --manual --preferred-challenges=dns --email YOUR@EMAIL.COM   
+
     --server https://acme-v02.api.letsencrypt.org/directory   
+
     --agree-tos   --manual-public-ip-logging-ok   -d "azurefriday.com"   -d "*.azurefriday.com"
+
 sudo openssl pkcs12 -export -out AzureFriday2023.pfx 
+
     -inkey /etc/letsencrypt/live/azurefriday.com/privkey.pem 
+
     -in /etc/letsencrypt/live/azurefriday.com/fullchain.pem
 ```
 
@@ -82,9 +90,13 @@ Now from Windows, import the PFX, note the thumbprint and export that cert.
 
 ```undefined
 Import-PfxCertificate -FilePath "AzureFriday2023.pfx" -CertStoreLocation Cert:\LocalMachine\My 
+
     -Password (ConvertTo-SecureString -String 'PASSWORDHERE' -AsPlainText -Force) -Exportable
 
+
+
 Export-PfxCertificate -Cert Microsoft.PowerShell.Security\Certificate::LocalMachine\My\597THISISTHETHUMBNAILCF1157B8CEBB7CA1 
+
     -FilePath 'AzureFriday2023-fixed.pfx' -Password (ConvertTo-SecureString -String 'PASSWORDHERE' -AsPlainText -Force) 
 ```
 

@@ -10,14 +10,13 @@ pinned: false
 ---
 
 > [!abstract] Unnecessary else statements - 2024-03-22T22:00:00.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
-> When your function ends in an `else` block with a `return` statement in it, should you remove that `else`?
-> 
-> ![](https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F1819454470-59789a86671b414679eb978d1af70942df16e8d2ea5ca46c1f4eab3ae5e2e0eb-d_1920x1080&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png)
+> <span class="rss-image">![image|400](https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F1819454470-59789a86671b414679eb978d1af70942df16e8d2ea5ca46c1f4eab3ae5e2e0eb-d_1920x1080&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png)</span> When your function ends in an `else` block with a `return` statement in it, should you remove that `else`?
 > 
 > **Table of contents**
 > 
-> 1. [A function where both `if` and `else` return](https://www.pythonmorsels.com/unnecessary-else-statements/#a-function-where-bo⋯
+> 1. [A function where both `if` and `else` return](https://www.pythonmorsels.com/unnecessary-else-statements/#a-function-where-both-if-and-else-return)
+> 2. [Is that `else` statement unnecessary?](https://www.pythonmorsels.com/unnecessary-else-statements/#is-that-else-statement-unnecessary)
+> 3. [Sometimes `else` improves readability](https://www.pythonmorsels.com/unneces⋯
 
 🔗Read article [online](https://www.pythonmorsels.com/unnecessary-else-statements/). For other items in this feed see [[Python Morsels]].
 
@@ -29,7 +28,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+	dv.header(1,"⚠ Other RSS items are referring to the same article");
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");
@@ -40,8 +39,6 @@ if (current) {
 
 - - -
 When your function ends in an `else` block with a `return` statement in it, should you remove that `else`?
-
-![](https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F1819454470-59789a86671b414679eb978d1af70942df16e8d2ea5ca46c1f4eab3ae5e2e0eb-d_1920x1080&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png)
 
 **Table of contents**
 

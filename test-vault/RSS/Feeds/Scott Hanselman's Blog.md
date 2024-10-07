@@ -3,14 +3,13 @@ role: rssfeed
 feedurl: https://localhost/test/Scott Hanselman's Blog/feed.xml
 site: https://www.hanselman.com/blog/
 itemlimit: 10
-updated: 2024-10-05T09:45:23.031Z
+updated: 2024-10-07T13:19:05.511Z
 status: ✅
 tags: []
 interval: 2138
 ---
 > [!abstract] Scott Hanselman's Blog
-> <span class="rss-image">![image|400](http://www.hanselman.com/blog/images/tinyheadshot2.jpg)</span>
-> Scott Hanselman on Programming, User Experience, The Zen of Computers and Life in General
+> <span class="rss-image">![image|400](http://www.hanselman.com/blog/images/tinyheadshot2.jpg)</span> Scott Hanselman on Programming, User Experience, The Zen of Computers and Life in General
 
 # Unread Feed Items 📚
 ~~~dataview

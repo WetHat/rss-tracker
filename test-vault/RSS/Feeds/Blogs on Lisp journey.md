@@ -3,14 +3,13 @@ role: rssfeed
 feedurl: https://localhost/test/Blogs on Lisp journey/feed.xml
 site: https://localhost/blog/
 itemlimit: 10
-updated: 2024-10-05T09:45:41.354Z
+updated: 2024-10-07T13:19:22.991Z
 status: ✅
 tags: []
 interval: 645
 ---
 > [!abstract] Blogs on Lisp journey
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
-> Recent content in Blogs on Lisp journey
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span> Recent content in Blogs on Lisp journey
 
 # Unread Feed Items 📚
 ~~~dataview

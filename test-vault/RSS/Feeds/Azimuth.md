@@ -3,14 +3,13 @@ role: rssfeed
 feedurl: https://localhost/test/Azimuth/feed.xml
 site: https://johncarlosbaez.wordpress.com
 itemlimit: 10
-updated: 2024-10-05T09:45:43.591Z
+updated: 2024-10-07T13:19:25.192Z
 status: ✅
 tags: []
 interval: 206
 ---
 > [!abstract] Azimuth
-> <span class="rss-image">![image|400](https://s0.wp.com/i/buttonw-com.png)</span>
-> 
+> <span class="rss-image">![image|400](https://s0.wp.com/i/buttonw-com.png)</span> 
 
 # Unread Feed Items 📚
 ~~~dataview

@@ -10,8 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Introducing GitHub Copilot Extensions: Unlocking unlimited possibilities with our ecosystem of partners by Mario Rodriguez - 2024-05-21T15:27:46.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
-> The world of Copilot is getting bigger, improving the developer experience by keeping developers in the flow longer and allowing them to do more in natural language. The post Introducing GitHub Copilot Extensions: Unlocking unlimited possibilities with our ecosystem of partners appeared first on The GitHub Blog.
+> <span class="rss-image">![image|400](https://github.blog/wp-content/uploads/2024/05/Marketplace-App-Tiles@2x.png?resize=1024%2C597)</span> The world of Copilot is getting bigger, improving the developer experience by keeping developers in the flow longer and allowing them to do more in natural language. The post Introducing GitHub Copilot Extensions: Unlocking unlimited possibilities with our ecosystem of partners appeared first on The GitHub Blog.
 
 🔗Read article [online](https://github.blog/2024-05-21-introducing-github-copilot-extensions/). For other items in this feed see [[The GitHub Blog꞉ Product News and Updates]].
 
@@ -23,7 +22,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+	dv.header(1,"⚠ Other RSS items are referring to the same article");
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");

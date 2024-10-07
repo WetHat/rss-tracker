@@ -10,8 +10,9 @@ pinned: false
 ---
 
 > [!abstract] I got tired by Scott Hanselman - 2022-12-18T18:27:11.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
-> [![I got tired - photo by Elisa Ventur](https://www.hanselman.com/blog/content/binary/Windows-Live-Writer/I-got-tired-and-I-took-a-break_C67F/tired_299ef159-a454-413b-8654-3ec136cf9f79.jpg "I got tired - photo by Elisa Ventur")](https://unsplash.com/photos/bmJAXAz6ads)I have been blogging here for the last 20 years. Every Tuesday and Thursday, quite consistently, for two decades. But last year, without planning it, I got tired and stopped. Not sure why. It didn't correspond with any life events.⋯
+> <span class="rss-image">![image|400](https://www.hanselman.com/blog/content/binary/Windows-Live-Writer/I-got-tired-and-I-took-a-break_C67F/tired_299ef159-a454-413b-8654-3ec136cf9f79.jpg "I got tired - photo by Elisa Ventur")</span> [](https://unsplash.com/photos/bmJAXAz6ads)I have been blogging here for the last 20 years. Every Tuesday and Thursday, quite consistently, for two decades. But last year, without planning it, I got tired and stopped. Not sure why. It didn't correspond with any life events. Nothing interesting or notable happened. I just stopped.
+> 
+> I did find joy on [TikTok](https://www.tiktok.com/@shanselman) and amassed a small group of like-minded followers there. I enjoy my [YouTube](https://www.youtube.com/s⋯
 
 🔗Read article [online](https://feeds.hanselman.com/~/722495724/0/scotthanselman~I-got-tired). For other items in this feed see [[Scott Hanselman's Blog]].
 
@@ -23,7 +24,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+	dv.header(1,"⚠ Other RSS items are referring to the same article");
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");

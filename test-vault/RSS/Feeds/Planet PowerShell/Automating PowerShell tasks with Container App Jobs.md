@@ -10,8 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Automating PowerShell tasks with Container App Jobs by Matthew Dowst - 2024-05-24T12:23:54.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
-> I previously wrote about Automating maintenance tasks with Azure Functions and PowerShell. That
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span> I previously wrote about Automating maintenance tasks with Azure Functions and PowerShell. That
 > 
 > combo has been my go-to solution for many automation tasks.
 > 
@@ -27,7 +26,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+	dv.header(1,"⚠ Other RSS items are referring to the same article");
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");

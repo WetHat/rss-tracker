@@ -10,14 +10,13 @@ pinned: false
 ---
 
 > [!abstract] Variables are pointers in Python - 2024-05-02T15:00:00.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
-> Python's variables are not buckets that contain objects; they're pointers. Assignment statements don't copy: they point a variable to a value (and multiple variables can "point" to the same value).
-> 
-> ![](https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F1845329914-b5fa57ff219326904a95bd76a0f43718091a20347606e8c743228177821624c4-d_1920x1080&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png)
+> <span class="rss-image">![image|400](https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F1845329914-b5fa57ff219326904a95bd76a0f43718091a20347606e8c743228177821624c4-d_1920x1080&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png)</span> Python's variables are not buckets that contain objects; they're pointers. Assignment statements don't copy: they point a variable to a value (and multiple variables can "point" to the same value).
 > 
 > **Table of contents**
 > 
-> 1. [Changing two lists at once...?](h⋯
+> 1. [Changing two lists at once...?](https://www.pythonmorsels.com/variables-are-pointers/#changing-two-lists-at-once)
+> 2. [Variables are _separate_ from objects](https://www.pythonmorsels.com/variables-are-pointers/#variables-are-separate-from-objects)
+> 3. [Assignment statements ⋯
 
 🔗Read article [online](https://www.pythonmorsels.com/variables-are-pointers/). For other items in this feed see [[Python Morsels]].
 
@@ -29,7 +28,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+	dv.header(1,"⚠ Other RSS items are referring to the same article");
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");
@@ -40,8 +39,6 @@ if (current) {
 
 - - -
 Python's variables are not buckets that contain objects; they're pointers. Assignment statements don't copy: they point a variable to a value (and multiple variables can "point" to the same value).
-
-![](https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F1845329914-b5fa57ff219326904a95bd76a0f43718091a20347606e8c743228177821624c4-d_1920x1080&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png)
 
 **Table of contents**
 

@@ -10,8 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Agent-Based Models (Part 9) by John Baez - 2024-05-13T18:23:03.000Z
-> <span class="rss-image">![image|400](https://johncarlosbaez.files.wordpress.com/2023/07/state_diagram.png)</span>
-> Since May 1st, Kris Brown, Nathaniel Osgood, Xiaoyan Li, William Waites and I have been meeting daily in James Clerk Maxwell’s childhood home in Edinburgh. We’re hard at work on our project called New Mathematics and Software for Agent-Based models. It’s impossible to explain everything we’re doing while it’s happening. But I want to record ［…］
+> <span class="rss-image">![image|400](https://johncarlosbaez.files.wordpress.com/2023/07/state_diagram.png)</span> Since May 1st, Kris Brown, Nathaniel Osgood, Xiaoyan Li, William Waites and I have been meeting daily in James Clerk Maxwell&#8217;s childhood home in Edinburgh. We&#8217;re hard at work on our project called New Mathematics and Software for Agent-Based models. It&#8217;s impossible to explain everything we&#8217;re doing while it&#8217;s happening. But I want to record [&#8230;]
 
 🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/05/13/agent-based-models-part-9/). For other items in this feed see [[Azimuth]].
 
@@ -23,7 +22,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+	dv.header(1,"⚠ Other RSS items are referring to the same article");
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");

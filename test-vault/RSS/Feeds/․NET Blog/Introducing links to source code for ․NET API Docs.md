@@ -10,8 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Introducing links to source code for .NET API Docs by Min Huang - 2024-05-27T15:00:00.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
-> .NET API reference docs now link directly to the source code! Learn how the links are generated, and some of ideas for future improvements.
+> <span class="rss-image">![image|400](https://devblogs.microsoft.com/dotnet/wp-content/uploads/sites/10/2024/05/string-class-example.png)</span> .NET API reference docs now link directly to the source code! Learn how the links are generated, and some of ideas for future improvements.
 > 
 > The post [Introducing links to source code for .NET API Docs](https://devblogs.microsoft.com/dotnet/dotnet-docs-link-to-source-code/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 
@@ -25,7 +24,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+	dv.header(1,"⚠ Other RSS items are referring to the same article");
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");

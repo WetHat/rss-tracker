@@ -10,8 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Python Big O: the time complexities of different data structures in Python - 2024-04-16T15:00:00.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
-> The time complexity of common operations on Python's many data structures.
+> <span class="rss-image">![image|400](https://pythonmorsels.s3.amazonaws.com/medialibrary/2024/03/time_complexity.png)</span> The time complexity of common operations on Python's many data structures.
 > 
 > **Table of contents**
 > 
@@ -32,7 +31,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+	dv.header(1,"⚠ Other RSS items are referring to the same article");
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");
@@ -68,9 +67,6 @@ In the words of [Ned Batchelder](https://nedbatchelder.com/text/bigo.html), time
 Time complexity is usually discussed in terms of "Big O" notation. This is basically a way to discuss the **order of magnitude** for a given operation while ignoring the _exact_ number of computations it needs. In "Big O" land, we don't care if something is twice as slow, but we do care whether it's `n` times slower where `n` is the length of our list/set/slice/etc.
 
 Here's a graph of the common time complexity curves:
-
-![O(1), O(log n), O(n), O(n log n), and O(n^2) curves plotted on
-a graph, each being steeper in slope than the last](https://pythonmorsels.s3.amazonaws.com/medialibrary/2024/03/time_complexity.png)
 
 Remember that these lines are simply about **orders of magnitude**. If an operation is on the order of `n`, that means 100 times more data will slow things down about 100 times. If an operation is on the order of `n²` (that's `n*n`), that means 100 times more data will slow things down `100*100` times.
 

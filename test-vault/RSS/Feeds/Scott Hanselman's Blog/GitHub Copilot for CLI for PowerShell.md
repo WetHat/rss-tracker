@@ -10,8 +10,7 @@ pinned: false
 ---
 
 > [!abstract] GitHub Copilot for CLI for PowerShell by Scott Hanselman - 2023-04-25T15:31:49.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
-> GitHub Next has this cool project that is basically Copilot for the CLI (command line interface). You can sign up for their waitlist at the [Copilot for CLI site](https://githubnext.com/projects/copilot-cli/).
+> <span class="rss-image">![image|400](https://www.hanselman.com/blog/content/binary/Windows-Live-Writer/GitHub-Copilot-for-CLI-for-PowerShell_B0E3/image_f39afdbf-04bf-4c95-a913-2404f46dc308.png "image")</span> GitHub Next has this cool project that is basically Copilot for the CLI (command line interface). You can sign up for their waitlist at the [Copilot for CLI site](https://githubnext.com/projects/copilot-cli/).
 > 
 > > Copilot for CLI provides three shell commands: `??`, `git?` and `gh?`
 > 
@@ -27,7 +26,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+	dv.header(1,"⚠ Other RSS items are referring to the same article");
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");
@@ -51,38 +50,71 @@ Here are my aliases. Feel free to suggest if these suck. Note the addition of "u
 
 ```undefined
 function ?? { 
+
     $TmpFile = New-TemporaryFile 
+
     github-copilot-cli what-the-shell ('use powershell to ' + $args) --shellout $TmpFile 
+
     if ([System.IO.File]::Exists($TmpFile)) { 
+
         $TmpFileContents = Get-Content $TmpFile 
+
             if ($TmpFileContents -ne $nill) {
+
             Invoke-Expression $TmpFileContents 
+
             Remove-Item $TmpFile 
+
         }
+
     }
+
 }
 
+
+
 function git? {
+
     $TmpFile = New-TemporaryFile
+
     github-copilot-cli git-assist $args --shellout $TmpFile
+
     if ([System.IO.File]::Exists($TmpFile)) {
+
         $TmpFileContents = Get-Content $TmpFile 
+
             if ($TmpFileContents -ne $nill) {
+
             Invoke-Expression $TmpFileContents 
+
             Remove-Item $TmpFile 
+
         }
+
     }
+
 }
+
 function gh? {
+
     $TmpFile = New-TemporaryFile
+
     github-copilot-cli gh-assist $args --shellout $TmpFile
+
     if ([System.IO.File]::Exists($TmpFile)) {
+
         $TmpFileContents = Get-Content $TmpFile 
+
             if ($TmpFileContents -ne $nill) {
+
             Invoke-Expression $TmpFileContents 
+
             Remove-Item $TmpFile 
+
         }
+
     }
+
 } 
 ```
 

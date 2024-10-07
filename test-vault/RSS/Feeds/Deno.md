@@ -3,14 +3,13 @@ role: rssfeed
 feedurl: https://localhost/test/Deno/feed.xml
 site: https://deno.com/blog
 itemlimit: 10
-updated: 2024-10-05T09:45:36.796Z
+updated: 2024-10-07T13:19:18.749Z
 status: ✅
 tags: []
 interval: 207
 ---
 > [!abstract] Deno
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
-> The latest news from Deno Land Inc.
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span> The latest news from Deno Land Inc.
 
 # Unread Feed Items 📚
 ~~~dataview

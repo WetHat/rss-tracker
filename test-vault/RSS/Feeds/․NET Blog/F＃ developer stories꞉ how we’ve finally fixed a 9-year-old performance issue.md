@@ -10,8 +10,7 @@ pinned: false
 ---
 
 > [!abstract] F# developer stories: how we&#8217;ve finally fixed a 9-year-old performance issue by Petr Semkin - 2024-05-29T17:05:00.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
-> Some bugs carry exciting narratives — attempting to resolve them lets you trace the history of the repository and the community.
+> <span class="rss-image">![image|400](https://s.w.org/images/core/emoji/15.0.3/72x72/1f41b.png)</span> Some bugs carry exciting narratives — attempting to resolve them lets you trace the history of the repository and the community.
 > 
 > The post [F# developer stories: how we’ve finally fixed a 9-year-old performance issue](https://devblogs.microsoft.com/dotnet/fsharp-developer-stories-how-weve-finally-fixed-a-9yearold-performance-issue/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 
@@ -25,7 +24,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+	dv.header(1,"⚠ Other RSS items are referring to the same article");
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");

@@ -10,8 +10,9 @@ pinned: false
 ---
 
 > [!abstract] Updating to .NET 8, updating to IHostBuilder, and running Playwright Tests within NUnit headless or headed on any OS by Scott Hanselman - 2024-03-07T01:12:13.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
-> ![All the Unit Tests pass](https://www.hanselman.com/blog/content/binary/Windows-Live-Writer/78fe85887e7e_1244B/image_8b82f0d7-a3bc-4403-96c3-9dd36fc46d1f.png "All the Unit Tests pass")I've been doing not just Unit Testing for my sites but full on Integration Testing and Browser Automation Testing as early as 2007 with Selenium. Lately, however, I've been using the faster and generally more compatible [Playwright](https://playwright.dev/). It has one API and can test on Windows, Linux, Mac, loca⋯
+> <span class="rss-image">![image|400](https://www.hanselman.com/blog/content/binary/Windows-Live-Writer/78fe85887e7e_1244B/image_8b82f0d7-a3bc-4403-96c3-9dd36fc46d1f.png "All the Unit Tests pass")</span> I've been doing not just Unit Testing for my sites but full on Integration Testing and Browser Automation Testing as early as 2007 with Selenium. Lately, however, I've been using the faster and generally more compatible [Playwright](https://playwright.dev/). It has one API and can test on Windows, Linux, Mac, locally, in a container (headless), in my CI/CD pipeline, on Azure DevOps, or in GitHub Actions.
+> 
+> For me, it's that last moment of truth to make sure that the site runs completely from end ⋯
 
 🔗Read article [online](https://feeds.hanselman.com/~/873234002/0/scotthanselman~Updating-to-NET-updating-to-IHostBuilder-and-running-Playwright-Tests-within-NUnit-headless-or-headed-on-any-OS). For other items in this feed see [[Scott Hanselman's Blog]].
 
@@ -23,7 +24,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+	dv.header(1,"⚠ Other RSS items are referring to the same article");
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");
@@ -49,25 +50,40 @@ As such my code for Program.cs changed from this
 
 ```undefined
 public static void Main(string[] args)
+
 {
+
     CreateWebHostBuilder(args).Build().Run();
+
 }
 
+
+
 public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+
     WebHost.CreateDefaultBuilder(args)
+
         .UseStartup<Startup>();
+
 ```
 
 to this:
 
 ```undefined
 public static void Main(string[] args)
+
 {
+
   CreateHostBuilder(args).Build().Run();
+
 }
 
+
+
 public static IHostBuilder CreateHostBuilder(string[] args) =>
+
   Host.CreateDefaultBuilder(args).
+
       ConfigureWebHostDefaults(WebHostBuilder => WebHostBuilder.UseStartup<Startup>());
 ```
 
@@ -79,23 +95,41 @@ Here is an example of my goal from a Playwright perspective within a .NET NUnit 
 
 ```undefined
 [Test]
+
 public async Task DoesSearchWork()
+
 {
+
     await Page.GotoAsync(Url);
+
+
 
     await Page.Locator("#topbar").GetByRole(AriaRole.Link, new() { Name = "episodes" }).ClickAsync();
 
+
+
     await Page.GetByPlaceholder("search and filter").ClickAsync();
+
+
 
     await Page.GetByPlaceholder("search and filter").TypeAsync("wife");
 
+
+
     const string visibleCards = ".showCard:visible";
+
+
 
     var waiting = await Page.WaitForSelectorAsync(visibleCards, new PageWaitForSelectorOptions() { Timeout = 500 });
 
+
+
     await Expect(Page.Locator(visibleCards).First).ToBeVisibleAsync();
 
+
+
     await Expect(Page.Locator(visibleCards)).ToHaveCountAsync(5);
+
 }
 ```
 
@@ -105,30 +139,55 @@ Here is the setup code that starts my new "web application test builder factory,
 
 ```undefined
 private string Url;
+
 private WebApplication? _app = null;
 
+
+
 [OneTimeSetUp]
+
 public void Setup()
+
 {
+
     var builder = WebApplicationTestBuilderFactory.CreateBuilder<Startup>();
 
+
+
     var startup = new Startup(builder.Environment);
+
     builder.WebHost.ConfigureKestrel(o => o.Listen(IPAddress.Loopback, 0));
+
     startup.ConfigureServices(builder.Services);
+
     _app = builder.Build();
 
+
+
     // listen on any local port (hence the 0)
+
     startup.Configure(_app, _app.Configuration);
+
     _app.Start();
 
+
+
     //you are kidding me
+
     Url = _app.Services.GetRequiredService<IServer>().Features.GetRequiredFeature<IServerAddressesFeature>().Addresses.Last();
+
 }
 
+
+
 [OneTimeTearDown]
+
 public async Task TearDown()
+
 {
+
     await _app.DisposeAsync();
+
 }
 ```
 
@@ -136,25 +195,45 @@ So what horrors are buried in WebApplicationTestBuilderFactory? The first bit is
 
 ```undefined
 public class WebApplicationTestBuilderFactory 
+
 {
+
     public static WebApplicationBuilder CreateBuilder<T>() where T : class 
+
     {
+
         //This ungodly code requires an unused reference to the MvcTesting package that hooks up
+
         //  MSBuild to create the manifest file that is read here.
+
         var testLocation = Path.Combine(AppContext.BaseDirectory, "MvcTestingAppManifest.json");
+
         var json = JsonObject.Parse(File.ReadAllText(testLocation));
+
         var asmFullName = typeof(T).Assembly.FullName ?? throw new InvalidOperationException("Assembly Full Name is null");
+
         var contentRootPath = json?[asmFullName]?.GetValue<string>();
 
+
+
         //spin up a real live web application inside TestHost.exe
+
         var builder = WebApplication.CreateBuilder(
+
             new WebApplicationOptions()
+
             {
+
                 ContentRootPath = contentRootPath,
+
                 ApplicationName = asmFullName
+
             });
+
         return builder;
+
     }
+
 }
 ```
 

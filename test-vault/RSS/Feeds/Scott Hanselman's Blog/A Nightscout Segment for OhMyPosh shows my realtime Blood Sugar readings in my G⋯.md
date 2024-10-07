@@ -10,8 +10,7 @@ pinned: false
 ---
 
 > [!abstract] A Nightscout Segment for OhMyPosh shows my realtime Blood Sugar readings in my Git Prompt by Scott Hanselman - 2021-11-23T20:02:00.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
-> I've talked about [how I love a nice pretty prompt in my Windows Terminal](https://www.hanselman.com/blog/my-ultimate-powershell-prompt-with-oh-my-posh-and-the-windows-terminal) and [made videos showing in detail how to do it](https://www.youtube.com/watch?v=VT2L1SXFq9U). I've also worked with my buddy [TooTallNate to put my real-time blood sugar into a bash or PowerShell prompt](https://www.hanselman.com/blog/visualizing-your-realtime-blood-sugar-values-and-a-git-prompt-on-windows-powershell-an⋯
+> <span class="rss-image">![image|400](https://www.hanselman.com/blog/content/binary/Windows-Live-Writer/a1ea1c6a57b0_119D3/image_d14e0906-8932-44e0-a493-86eeac62c1ae.png "My blood sugar in my Prompt!")</span> I've talked about [how I love a nice pretty prompt in my Windows Terminal](https://www.hanselman.com/blog/my-ultimate-powershell-prompt-with-oh-my-posh-and-the-windows-terminal) and [made videos showing in detail how to do it](https://www.youtube.com/watch?v=VT2L1SXFq9U). I've also worked with my buddy [TooTallNate to put my real-time blood sugar into a bash or PowerShell prompt](https://www.hanselman.com/blog/visualizing-your-realtime-blood-sugar-values-and-a-git-prompt-on-windows-powershell-an⋯
 
 🔗Read article [online](https://feeds.hanselman.com/~/673947624/0/scotthanselman~A-Nightscout-Segment-for-OhMyPosh-shows-my-realtime-Blood-Sugar-readings-in-my-Git-Prompt). For other items in this feed see [[Scott Hanselman's Blog]].
 
@@ -23,7 +22,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+	dv.header(1,"⚠ Other RSS items are referring to the same article");
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");
@@ -51,28 +50,51 @@ If you have an existing OhMyPosh json config, you can just add another segment l
 
 ```undefined
 {
+
   "type": "nightscout",
+
   "style": "diamond",
+
   "foreground": "#ffffff",
+
   "background": "#ff0000",
+
   "background_templates": [
+
     "{{ if gt .Sgv 150 }}#FFFF00{{ end }}",
+
     "{{ if lt .Sgv 60 }}#FF0000{{ end }}",
+
     "#00FF00"
-  ],
-  "foreground_templates": [
-    "{{ if gt .Sgv 150 }}#000000{{ end }}",
-    "{{ if lt .Sgv 60 }}#000000{{ end }}",
-    "#000000"
+
   ],
 
+  "foreground_templates": [
+
+    "{{ if gt .Sgv 150 }}#000000{{ end }}",
+
+    "{{ if lt .Sgv 60 }}#000000{{ end }}",
+
+    "#000000"
+
+  ],
+
+
+
   "leading_diamond": "",
+
   "trailing_diamond": "\uE0B0",
+
   "properties": {
+
     "url": "https://YOURNIGHTSCOUTAPP.herokuapp.com/api/v1/entries.json?count=1&token=APITOKENFROMYOURADMIN",
+
     "http_timeout": 1500,
+
     "template": " {{.Sgv}}{{.TrendIcon}}"
+
   }
+
 },
 ```
 

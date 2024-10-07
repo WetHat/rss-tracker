@@ -10,8 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Using Home Assistant to integrate a Unifi Protect G4 Doorbell and Amazon Alexa to announce visitors by Scott Hanselman - 2021-12-14T21:36:00.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
-> I am not a [Home Assistant](https://www.home-assistant.io/) expert, but it's clearly a massive and powerful ecosystem. I've interviewed [the creator of Home Assistant on my podcast](https://hanselminutes.com/788/automating-all-the-things-with-home-assistants-paulus-schoutsen) and I encourage you to check out that chat.
+> <span class="rss-image">![image|400](https://www.hanselman.com/blog/content/binary/Windows-Live-Writer/Using-Home-Assistant_E31C/image_c613af81-10de-49d3-aead-6e174ca870ca.png "Basic Home Assistant Setup")</span> I am not a [Home Assistant](https://www.home-assistant.io/) expert, but it's clearly a massive and powerful ecosystem. I've interviewed [the creator of Home Assistant on my podcast](https://hanselminutes.com/788/automating-all-the-things-with-home-assistants-paulus-schoutsen) and I encourage you to check out that chat.
 > 
 > Home Assistant can quickly become a hobby that overwhelms you. Every object (entity) in your house that is even remotely connected can become programmable. Everything. Even peopl⋯
 
@@ -25,7 +24,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+	dv.header(1,"⚠ Other RSS items are referring to the same article");
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");

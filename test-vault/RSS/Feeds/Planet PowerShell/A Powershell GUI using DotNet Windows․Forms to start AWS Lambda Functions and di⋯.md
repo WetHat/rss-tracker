@@ -10,8 +10,7 @@ pinned: false
 ---
 
 > [!abstract] A Powershell GUI using DotNet Windows.Forms to start AWS Lambda Functions and display their output by Matthew Dowst - 2024-05-24T12:24:44.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
-> A Powershell GUI using DotNet Windows.Forms to start AWS Lambda Functions and display their output -
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span> A Powershell GUI using DotNet Windows.Forms to start AWS Lambda Functions and display their output -
 > 
 > powershell-gui-aws-lambda-start-functions.ps1
 > 
@@ -27,7 +26,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+	dv.header(1,"⚠ Other RSS items are referring to the same article");
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");

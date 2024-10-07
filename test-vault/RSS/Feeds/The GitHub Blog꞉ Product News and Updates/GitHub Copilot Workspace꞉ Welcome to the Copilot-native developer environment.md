@@ -10,8 +10,7 @@ pinned: false
 ---
 
 > [!abstract] GitHub Copilot Workspace: Welcome to the Copilot-native developer environment by Thomas Dohmke - 2024-04-29T16:00:02.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
-> We’re redefining the developer environment with GitHub Copilot Workspace - where any developer can go from idea, to code, to software all in natural language. The post GitHub Copilot Workspace: Welcome to the Copilot-native developer environment appeared first on The GitHub Blog.
+> <span class="rss-image">![image|400](https://github.blog/wp-content/uploads/2024/04/octoacademy-projects.png?w=1024&resize=1024%2C593)</span> We’re redefining the developer environment with GitHub Copilot Workspace - where any developer can go from idea, to code, to software all in natural language.  The post GitHub Copilot Workspace: Welcome to the Copilot-native developer environment appeared first on The GitHub Blog.
 
 🔗Read article [online](https://github.blog/2024-04-29-github-copilot-workspace/). For other items in this feed see [[The GitHub Blog꞉ Product News and Updates]].
 
@@ -23,7 +22,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+	dv.header(1,"⚠ Other RSS items are referring to the same article");
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");
@@ -33,9 +32,7 @@ if (current) {
 ~~~
 
 - - -
-|   |
-|---|
-|We’re redefining the developer environment with GitHub Copilot Workspace–where any developer can go from idea, to code, to software in natural language. [Sign up here](https://githubnext.com/projects/copilot-workspace).|
+We’re redefining the developer environment with GitHub Copilot Workspace–where any developer can go from idea, to code, to software in natural language. [Sign up here](https://githubnext.com/projects/copilot-workspace).
 
 In the past two years, generative AI has foundationally changed the developer landscape largely as a tool embedded inside the developer environment. In 2022, we launched GitHub Copilot as an autocomplete pair programmer in the editor, [boosting developer productivity by up to 55%](https://github.blog/2022-09-07-research-quantifying-github-copilots-impact-on-developer-productivity-and-happiness/). Copilot is now the most widely adopted AI developer tool. In 2023, we released GitHub Copilot Chat—unlocking the power of natural language in coding, debugging, and testing—allowing developers to converse with their code in real time.
 

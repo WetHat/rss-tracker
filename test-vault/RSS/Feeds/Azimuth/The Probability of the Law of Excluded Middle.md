@@ -10,8 +10,7 @@ pinned: false
 ---
 
 > [!abstract] The Probability of the Law of Excluded Middle by John Baez - 2024-03-13T23:20:10.000Z
-> <span class="rss-image">![image|400](https://johncarlosbaez.files.wordpress.com/2024/03/free_heyting_algebra_on_one_generator.jpg)</span>
-> The Law of Excluded Middle says that for any statement P, “P or not P” is true. Is this law true? In classical logic it is. But in intuitionistic logic it’s not. So, in intuitionistic logic we can ask what’s the probability that a randomly chosen statement obeys the Law of Excluded Middle. And the ［…］
+> <span class="rss-image">![image|400](https://johncarlosbaez.files.wordpress.com/2024/03/free_heyting_algebra_on_one_generator.jpg)</span> The Law of Excluded Middle says that for any statement P, &#8220;P or not P&#8221; is true. Is this law true? In classical logic it is. But in intuitionistic logic it&#8217;s not. So, in intuitionistic logic we can ask what&#8217;s the probability that a randomly chosen statement obeys the Law of Excluded Middle. And the [&#8230;]
 
 🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/03/13/the-probability-of-the-law-of-excluded-middle/). For other items in this feed see [[Azimuth]].
 
@@ -23,7 +22,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+	dv.header(1,"⚠ Other RSS items are referring to the same article");
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");

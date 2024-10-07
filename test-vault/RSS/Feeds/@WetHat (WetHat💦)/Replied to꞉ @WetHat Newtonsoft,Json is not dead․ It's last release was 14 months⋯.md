@@ -10,8 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Replied to: @WetHat Newtonsoft,Json is not dead. It's last release was 14 months ago & the repo has commits in the last month. There is such a thing as stable code that doesn't need constant releases every 5 minutes. by @WetHat - 2024-05-13T13:43:29.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
-> [@irongut](https://mastodon.scot/@irongut) I did ask some fellow hackers why they would consider [https://github.com/JamesNK/Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json) dead.
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span> [@irongut](https://mastodon.scot/@irongut) I did ask some fellow hackers why they would consider [https://github.com/JamesNK/Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json) dead.
 > 
 > Arguments for 'dead':  
 > ➡️ ~700 open issues  
@@ -33,7 +32,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+	dv.header(1,"⚠ Other RSS items are referring to the same article");
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");

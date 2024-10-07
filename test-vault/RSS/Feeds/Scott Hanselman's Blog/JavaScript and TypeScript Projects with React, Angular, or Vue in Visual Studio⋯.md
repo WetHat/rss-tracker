@@ -10,8 +10,7 @@ pinned: false
 ---
 
 > [!abstract] JavaScript and TypeScript Projects with React, Angular, or Vue in Visual Studio 2022 with or without .NET by Scott Hanselman - 2021-11-25T20:50:00.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
-> I was reading [Gabby's blog post about the new TypeScript/JavaScript project experience in Visual Studio 2022](https://devblogs.microsoft.com/visualstudio/the-new-javascript-typescript-experience-in-vs-2022-preview-3/). You should read the docs on [JavaScript and TypeScript in Visual Studio 2022](https://docs.microsoft.com/en-us/visualstudio/javascript/javascript-in-vs-2022?view=vs-2022).
+> <span class="rss-image">![image|400](https://www.hanselman.com/blog/content/binary/Windows-Live-Writer/97390fb5b7df_12523/image_8fbe4808-d001-4208-a77c-614f8ed4126d.png "Standalone JavaScript Templates in VS2022")</span> I was reading [Gabby's blog post about the new TypeScript/JavaScript project experience in Visual Studio 2022](https://devblogs.microsoft.com/visualstudio/the-new-javascript-typescript-experience-in-vs-2022-preview-3/). You should read the docs on [JavaScript and TypeScript in Visual Studio 2022](https://docs.microsoft.com/en-us/visualstudio/javascript/javascript-in-vs-2022?view=vs-2022).
 > 
 > If you're used to ASP.NET apps when you think about apps that are JavaScript heavy, "front end apps" or Typ⋯
 
@@ -25,7 +24,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+	dv.header(1,"⚠ Other RSS items are referring to the same article");
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");

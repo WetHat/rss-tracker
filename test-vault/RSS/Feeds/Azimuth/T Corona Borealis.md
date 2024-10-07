@@ -10,8 +10,7 @@ pinned: false
 ---
 
 > [!abstract] T Corona Borealis by John Baez - 2024-03-27T18:32:47.000Z
-> <span class="rss-image">![image|400](https://johncarlosbaez.files.wordpress.com/2024/03/corona_borealis.jpg)</span>
->   Sometime this year, the star T Corona Borealis will go nova and become much brighter! At least that’s what a lot of astronomers think. So examine the sky between Arcturus and Vega now—and look again if you hear this event has happened. Normally this star is magnitude 10, too dim to see. When it ［…］
+> <span class="rss-image">![image|400](https://johncarlosbaez.files.wordpress.com/2024/03/corona_borealis.jpg)</span> &#160; Sometime this year, the star T Corona Borealis will go nova and become much brighter! At least that&#8217;s what a lot of astronomers think. So examine the sky between Arcturus and Vega now&#8212;and look again if you hear this event has happened. Normally this star is magnitude 10, too dim to see. When it [&#8230;]
 
 🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/03/27/t-corona-borealis/). For other items in this feed see [[Azimuth]].
 
@@ -23,7 +22,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+	dv.header(1,"⚠ Other RSS items are referring to the same article");
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");

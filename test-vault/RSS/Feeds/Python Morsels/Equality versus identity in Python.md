@@ -10,14 +10,13 @@ pinned: false
 ---
 
 > [!abstract] Equality versus identity in Python - 2024-05-28T23:52:24.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
-> Equality checks whether two objects **represent the same value**. Identity checks whether two variables **point to the same object**.
-> 
-> ![](https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F1859635053-5a5a328c38769260b233cb1fae005603a26ff65e609fba2d15a8af03ad563ba9-d_1920x1080&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png)
+> <span class="rss-image">![image|400](https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F1859635053-5a5a328c38769260b233cb1fae005603a26ff65e609fba2d15a8af03ad563ba9-d_1920x1080&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png)</span> Equality checks whether two objects **represent the same value**. Identity checks whether two variables **point to the same object**.
 > 
 > **Table of contents**
 > 
-> 1. [The equality operator in Python](https://www.pythonmorsels.com/equality-vs-identity/#the-equality⋯
+> 1. [The equality operator in Python](https://www.pythonmorsels.com/equality-vs-identity/#the-equality-operator-in-python)
+> 2. [The `is` operator in Python](https://www.pythonmorsels.com/equality-vs-identity/#the-is-operator-in-python)
+> 3. [How equality and identity work differently?](https://www.pythonmorsels.com/equality-vs-identity/#how-equ⋯
 
 🔗Read article [online](https://www.pythonmorsels.com/equality-vs-identity/). For other items in this feed see [[Python Morsels]].
 
@@ -29,7 +28,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+	dv.header(1,"⚠ Other RSS items are referring to the same article");
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");
@@ -40,8 +39,6 @@ if (current) {
 
 - - -
 Equality checks whether two objects **represent the same value**. Identity checks whether two variables **point to the same object**.
-
-![](https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F1859635053-5a5a328c38769260b233cb1fae005603a26ff65e609fba2d15a8af03ad563ba9-d_1920x1080&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png)
 
 **Table of contents**
 

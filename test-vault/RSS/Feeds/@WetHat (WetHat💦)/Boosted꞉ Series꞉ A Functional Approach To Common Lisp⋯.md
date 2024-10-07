@@ -10,8 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Boosted: Series: A Functional Approach To Common Lisp https://youtu.be/2mJ88j3CqRs Discussions: https://discu.eu/q/https://youtu.be/2mJ88j3CqRs #rss/lisp #rss/programming by @WetHat - 2024-05-15T05:40:35.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
-> Series: A Functional Approach To Common Lisp
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span> Series: A Functional Approach To Common Lisp
 > 
 > [https://youtu.be/2mJ88j3CqRs](https://youtu.be/2mJ88j3CqRs)
 > 
@@ -31,7 +30,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+	dv.header(1,"⚠ Other RSS items are referring to the same article");
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");

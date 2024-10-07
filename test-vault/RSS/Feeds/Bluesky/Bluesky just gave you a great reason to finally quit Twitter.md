@@ -10,8 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Bluesky just gave you a great reason to finally quit Twitter by By Carrie Marshall - 2024-05-23T11:00:53.000Z
-> <span class="rss-image">![image|400](https://cdn.mos.cms.futurecdn.net/CcY75ZjGLzBZdVdfGxbdR3-1200-80.jpg)</span>
-> Since Elon Musk took over Twitter there's been no shortage of supposed Twitter killers, but so far the renamed X.com remains very much un-dead. And a …
+> <span class="rss-image">![image|400](https://cdn.mos.cms.futurecdn.net/CcY75ZjGLzBZdVdfGxbdR3-1200-80.jpg)</span> Since Elon Musk took over Twitter there's been no shortage of supposed Twitter killers, but so far the renamed X.com remains very much un-dead. And a …
 
 🔗Read article [online](https://www.t3.com/news/bluesky-just-gave-you-a-great-reason-to-finally-quit-twitter). For other items in this feed see [[Bluesky]].
 
@@ -23,7 +22,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+	dv.header(1,"⚠ Other RSS items are referring to the same article");
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");

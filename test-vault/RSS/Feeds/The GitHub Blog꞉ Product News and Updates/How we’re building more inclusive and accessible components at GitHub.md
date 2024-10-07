@@ -10,8 +10,7 @@ pinned: false
 ---
 
 > [!abstract] How we’re building more inclusive and accessible components at GitHub by Eric Bailey - 2024-05-07T17:00:20.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
-> We've made improvements to the way users of assistive technology can interact with and navigate lists of issues and pull requests and tables across GitHub.com. The post How we’re building more inclusive and accessible components at GitHub appeared first on The GitHub Blog.
+> <span class="rss-image">![image|400](https://github.blog/wp-content/uploads/2024/05/example-listview.png?w=1024&resize=1024%2C543)</span> We've made improvements to the way users of assistive technology can interact with and navigate lists of issues and pull requests and tables across GitHub.com. The post How we’re building more inclusive and accessible components at GitHub appeared first on The GitHub Blog.
 
 🔗Read article [online](https://github.blog/2024-05-07-how-were-building-more-inclusive-and-accessible-components-at-github/). For other items in this feed see [[The GitHub Blog꞉ Product News and Updates]].
 
@@ -23,7 +22,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+	dv.header(1,"⚠ Other RSS items are referring to the same article");
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");

@@ -10,8 +10,7 @@ pinned: false
 ---
 
 > [!abstract] PowerShell Scripting and Toolmaking by Jeffery Hicks - 2024-05-24T17:03:43.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
-> Several years ago Don Jones and I wrote what we hoped would be the definitive book on PowerShell scripting and toolmaking. The book takes all off our years of experience, not only from writing PowerShell code, to teaching and conference presentations where we hear first hand what people struggle with. We published the book on...
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span> Several years ago Don Jones and I wrote what we hoped would be the definitive book on PowerShell scripting and toolmaking. The book takes all off our years of experience, not only from writing PowerShell code, to teaching and conference presentations where we hear first hand what people struggle with. We published the book on...
 
 🔗Read article [online](https://jdhitsolutions.com/blog/books/9389/powershell-scripting-and-toolmaking/). For other items in this feed see [[Planet PowerShell]].
 
@@ -23,7 +22,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+	dv.header(1,"⚠ Other RSS items are referring to the same article");
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");

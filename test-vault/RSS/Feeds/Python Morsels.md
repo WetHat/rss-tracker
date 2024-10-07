@@ -3,14 +3,13 @@ role: rssfeed
 feedurl: https://localhost/test/Python Morsels/feed.xml
 site: https://www.pythonmorsels.com/topics/
 itemlimit: 10
-updated: 2024-10-05T09:45:27.512Z
+updated: 2024-10-07T13:19:09.841Z
 status: ✅
 tags: []
 interval: 425
 ---
 > [!abstract] Python Morsels
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
-> Python Morsels
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span> Python Morsels
 
 # Unread Feed Items 📚
 ~~~dataview

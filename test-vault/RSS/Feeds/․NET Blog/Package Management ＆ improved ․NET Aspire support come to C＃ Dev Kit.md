@@ -10,8 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Package Management &#038; improved .NET Aspire support come to C# Dev Kit by Wendy Breiding (SHE/HER) - 2024-05-07T20:05:00.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
-> Explore the new features and enhancements in the latest version of C# Dev Kit including NuGet package management, .NET Aspire project support, and much more.
+> <span class="rss-image">![image|400](https://devblogs.microsoft.com/dotnet/wp-content/uploads/sites/10/2024/04/SDKAcquisition.png)</span> Explore the new features and enhancements in the latest version of C# Dev Kit including NuGet package management, .NET Aspire project support, and much more.
 > 
 > The post [Package Management & improved .NET Aspire support come to C# Dev Kit](https://devblogs.microsoft.com/dotnet/may-release-of-csharp-dev-kit/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 
@@ -25,7 +24,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+	dv.header(1,"⚠ Other RSS items are referring to the same article");
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");

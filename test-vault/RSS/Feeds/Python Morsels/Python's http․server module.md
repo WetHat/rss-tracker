@@ -10,15 +10,14 @@ pinned: false
 ---
 
 > [!abstract] Python's http.server module - 2024-04-05T23:41:43.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
-> Use Python's `http.server` module to serve up a static website on your own machine.
-> 
-> ![](https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F1841759405-9da045272fa3ba2c3dafbff1086447bd10609290a8f06c9e3ef300b43cd23fbf-d_1920x1080&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png)
+> <span class="rss-image">![image|400](https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F1841759405-9da045272fa3ba2c3dafbff1086447bd10609290a8f06c9e3ef300b43cd23fbf-d_1920x1080&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png)</span> Use Python's `http.server` module to serve up a static website on your own machine.
 > 
 > **Table of contents**
 > 
 > 1. [A directory trees of `index.html` files](https://www.pythonmorsels.com/http-server/#a-directory-trees-of-indexhtml-files)
-> 2. [Serving up HTML files⋯
+> 2. [Serving up HTML files with `http.server`](https://www.pythonmorsels.com/http-server/#serving-up-html-files-with-httpserver)
+> 3. [Customizing `http.server` with CLI arguments](https://www.pythonmorsels.com/http-server/#customizing-httpserver-with-cli-arguments)
+> 4.⋯
 
 🔗Read article [online](https://www.pythonmorsels.com/http-server/). For other items in this feed see [[Python Morsels]].
 
@@ -30,7 +29,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+	dv.header(1,"⚠ Other RSS items are referring to the same article");
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");
@@ -41,8 +40,6 @@ if (current) {
 
 - - -
 Use Python's `http.server` module to serve up a static website on your own machine.
-
-![](https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F1841759405-9da045272fa3ba2c3dafbff1086447bd10609290a8f06c9e3ef300b43cd23fbf-d_1920x1080&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png)
 
 **Table of contents**
 

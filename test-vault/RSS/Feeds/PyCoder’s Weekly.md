@@ -3,14 +3,13 @@ role: rssfeed
 feedurl: https://localhost/test/PyCoder’s Weekly/feed.xml
 site: https://pycoders.com/
 itemlimit: 10
-updated: 2024-10-05T09:45:29.549Z
+updated: 2024-10-07T13:19:11.777Z
 status: ✅
 tags: []
 interval: 168
 ---
 > [!abstract] PyCoder’s Weekly
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
-> 
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span> 
 
 # Unread Feed Items 📚
 ~~~dataview

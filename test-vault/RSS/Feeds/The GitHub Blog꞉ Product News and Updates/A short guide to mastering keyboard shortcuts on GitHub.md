@@ -10,8 +10,7 @@ pinned: false
 ---
 
 > [!abstract] A short guide to mastering keyboard shortcuts on GitHub by Sara Verdi - 2024-04-19T16:37:20.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
-> Say goodbye to constant mouse clicking and hello to seamless navigation with GitHub shortcuts. The post A short guide to mastering keyboard shortcuts on GitHub appeared first on The GitHub Blog.
+> <span class="rss-image">![image|400](https://github.blog/wp-content/uploads/2024/04/ezgif.com-gif-maker.gif?w=600&resize=600%2C338)</span> Say goodbye to constant mouse clicking and hello to seamless navigation with GitHub shortcuts.  The post A short guide to mastering keyboard shortcuts on GitHub appeared first on The GitHub Blog.
 
 🔗Read article [online](https://github.blog/2024-04-19-a-short-guide-to-mastering-keyboard-shortcuts-on-github/). For other items in this feed see [[The GitHub Blog꞉ Product News and Updates]].
 
@@ -23,7 +22,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+	dv.header(1,"⚠ Other RSS items are referring to the same article");
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");
@@ -33,9 +32,7 @@ if (current) {
 ~~~
 
 - - -
-|   |
-|---|
-|This is abridged content from November 2023’s _Insider_ newsletter. Like what you see? Sign up for the newsletter to receive complete, unabridged content in your inbox twice a month. [Sign up now ＞](https://resources.github.com/newsletter/)|
+This is abridged content from November 2023’s _Insider_ newsletter. Like what you see? Sign up for the newsletter to receive complete, unabridged content in your inbox twice a month. [Sign up now ＞](https://resources.github.com/newsletter/)
 
 Did you know that just about every page on GitHub has a keyboard shortcut? In this blog post, we’ll uncover the world of [GitHub keyboard shortcuts](https://docs.github.com/get-started/using-github/keyboard-shortcuts) and how they can help you navigate and perform actions swiftly. ⌨️
 

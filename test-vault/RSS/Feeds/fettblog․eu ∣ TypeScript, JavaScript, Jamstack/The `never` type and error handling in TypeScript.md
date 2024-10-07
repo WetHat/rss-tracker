@@ -10,8 +10,7 @@ pinned: false
 ---
 
 > [!abstract] The `never` type and error handling in TypeScript - 2024-03-05T00:00:00.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
-> One thing that I see more often recently is that folks find out about the never type, and start using it more often, especially trying to model error handling. But more often than not, they don’t use it properly or overlook some fundamental features of never. This can lead to faulty code that might act up in production, so I want to clear doubts and misconceptions, and show you what you can really do with never.
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span> One thing that I see more often recently is that folks find out about the never type, and start using it more often, especially trying to model error handling. But more often than not, they don’t use it properly or overlook some fundamental features of never. This can lead to faulty code that might act up in production, so I want to clear doubts and misconceptions, and show you what you can really do with never.
 
 🔗Read article [online](https://fettblog.eu/typescript-never-and-error-handling/). For other items in this feed see [[fettblog․eu ∣ TypeScript, JavaScript, Jamstack]].
 
@@ -23,7 +22,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Additional RSS Items Referring to This Article");
+	dv.header(1,"⚠ Other RSS items are referring to the same article");
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");

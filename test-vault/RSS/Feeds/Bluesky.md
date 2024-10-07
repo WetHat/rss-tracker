@@ -3,14 +3,13 @@ role: rssfeed
 feedurl: https://localhost/test/Bluesky/feed.xml
 site: https://flipboard.com/topic/blueskysocial
 itemlimit: 10
-updated: 2024-10-05T09:45:39.082Z
+updated: 2024-10-07T13:19:20.841Z
 status: ✅
 tags: []
 interval: 19
 ---
 > [!abstract] Bluesky
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span>
-> 
+> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span> 
 
 # Unread Feed Items 📚
 ~~~dataview
