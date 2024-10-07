@@ -71,6 +71,29 @@ export class HTMLxlate {
         }
     }
 
+    private static cleanupCodeBlock(element: HTMLElement) {
+        const
+            codeBlocks = element.getElementsByTagName("code"),
+            blockCount = codeBlocks.length;
+
+        for (let i = 0; i < blockCount; i++) {
+            const
+                code = codeBlocks[i],
+                brs = code.getElementsByTagName("br");
+            while (brs.length > 0) {
+                const
+                    br = brs[0],
+                    parent = br.parentElement;
+                if (parent) {
+                    br.parentElement?.insertAfter(code.doc.createTextNode("\n"), br);
+                }
+                br.remove();
+            }
+
+            code.textContent = code.innerText;
+        }
+    }
+
     private constructor() {
         // configure the article extractor to make the returned content
         // more Obsidian friendly
@@ -104,10 +127,12 @@ export class HTMLxlate {
             },
             post: document => {
                 // look for <pre> tags and make sure their first child is always a <code> tag.
+                HTMLxlate.flattenTables(document.body);
                 HTMLxlate.injectCodeBlock(document.body);
+                HTMLxlate.cleanupCodeBlock(document.body);
 
                 // enable Obsidian Math and get rid of some special characters
-                HTMLxlate.transformText(document.body,(node:Node) => {
+                HTMLxlate.transformText(document.body, (node: Node) => {
                     HTMLxlate.mathTransformer(node);
                     HTMLxlate.entityTransformer(node);
                 });
@@ -139,7 +164,7 @@ export class HTMLxlate {
         });
     }
 
-    private static flattenSingleRowTable(element: Element, table: HTMLTableElement): boolean {
+    private static flattenSingleRowTable(table: HTMLTableElement): boolean {
         let trs = table.querySelectorAll(":scope > tbody > tr"); // this is static
         if (trs.length == 0) {
             trs = table.querySelectorAll(":scope > tr");
@@ -147,7 +172,7 @@ export class HTMLxlate {
         if (trs.length == 1) {
             trs[0].querySelectorAll(":scope > td").forEach(td => {
                 // hoist each td before the table
-                const section = element.doc.createElement("section");
+                const section = table.doc.createElement("section");
                 table.parentElement?.insertBefore(section, table);
                 // move all children of td into the section
                 while (td.firstChild) {
@@ -162,7 +187,7 @@ export class HTMLxlate {
 
     private static flattenTables(element: Element) {
         const tables = Array.from<HTMLTableElement>(element.getElementsByTagName("table"));
-        tables.forEach(table => HTMLxlate.flattenSingleRowTable(element, table));
+        tables.forEach(table => HTMLxlate.flattenSingleRowTable(table));
     }
 
     private static mathTransformer(textNode: Node) {
@@ -223,14 +248,16 @@ export class HTMLxlate {
      */
     fragmentAsMarkdown(html: string): string {
         // some quick plausibility check to determine if this actually already markdown.
-        if (html.match(/```|~~~|^\s*#+\s+[^#]$/)) {
-            return html;
+        if (!html.match(/<\/[^<>\/]+\>/)) {
+            return html; // no closing tags found, assume Markdown
         }
         const doc = this.parser.parseFromString(html, "text/html");
         // tidy the docuement
+        HTMLxlate.flattenTables(doc.body);
         HTMLxlate.injectCodeBlock((doc.body))
+        HTMLxlate.cleanupCodeBlock((doc.body))
 
-        HTMLxlate.transformText(doc.body,(node:Node) => {
+        HTMLxlate.transformText(doc.body, (node: Node) => {
             HTMLxlate.mathTransformer(node);
             HTMLxlate.entityTransformer(node);
         });
