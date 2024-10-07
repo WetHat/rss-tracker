@@ -279,7 +279,7 @@ const DEFAULT_OPTIONS = {
         if (image) {
             tracked.image = image;
         }
-        let content = item["content:encoded"] || item.content;
+        let content = item["content:encoded"] || item.content || item["dc:content"];
         if (content) {
             tracked.content = typeof content === "string" ? content : content["#text"];
         }
@@ -316,7 +316,7 @@ const DEFAULT_OPTIONS = {
     },
 };
 /**
- * Representation of an RSS feed with a canocical set of properties
+ * Representation of an RSS feed with a canoiccal set of properties
  * collected from available sources.
  */
 export class TrackedRSSfeed {

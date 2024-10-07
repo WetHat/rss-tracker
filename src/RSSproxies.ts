@@ -177,7 +177,6 @@ export class RSSitemProxy extends RSSProxy {
             description = teaser.replaceAll("\n", "\n> ");
         }
 
-
         // fill in the template
         const
             itemfolder = await feed.itemFolder(),
@@ -370,9 +369,10 @@ export class RSSfeedProxy extends RSSProxy {
     }
 
     /**
+     * Update the RSS feed.
      *
-     * @param feed Update the RSS feed.
-     * @returns
+     * @param feed the proxy of the feed to update.
+     * @returns the number of new items
      */
     async update(feed: TrackedRSSfeed): Promise<number> {
         // build a map of RSS items already existing in the feed folder
@@ -382,14 +382,13 @@ export class RSSfeedProxy extends RSSProxy {
             oldItemsMap.set(item.id, item);
         }
 
-        // Inspect the downloaded feed and determine which of its items are not already present
+        // Inspect the downloaded feed and determine which of its items are not yet present in Obsidian
         // and need to be saved to disk.
         const newRSSitems: TrackedRSSitem[] = feed.items
             .slice(0, this.itemlimit) // do not use anything beyond the item limit
             .filter(itm => !oldItemsMap.has(itm.id));
 
         if (newRSSitems.length > 0) {
-
             // obtain an oldest-first list of remainong RSS item files
             const oldItems: RSSitemProxy[] = Array.from(oldItemsMap.values())
                 .filter(it => !it.pinned) // do not consider pinned items for deletion
@@ -418,10 +417,12 @@ export class RSSfeedProxy extends RSSProxy {
                 }
             }
         }
+        // update the feeds meta daty
         this.status = RSSfeedProxy.OK_STATUS_ICON;
         this.updated = new Date().valueOf();
         this.interval = feed.avgPostInterval;
         await this.commitFrontmatterChanges();
+
         return newRSSitems.length;
     }
 

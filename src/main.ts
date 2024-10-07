@@ -51,7 +51,7 @@ export default class RSSTrackerPlugin extends Plugin {
         // This creates an icon in the left ribbon.
         const ribbonIconEl = this.addRibbonIcon('rss', 'Update all RSS Feeds', (evt: MouseEvent) => {
             // Called when the user clicks the icon.
-            this._feedmgr.updateFeeds(this._feedmgr.feeds,true);
+            this._feedmgr.update(true); // update all feeds
         });
 
         // Perform additional things with the ribbon
@@ -113,7 +113,7 @@ export default class RSSTrackerPlugin extends Plugin {
         this.registerInterval(window.setInterval(() => {
             if (this._settings.autoUpdateFeeds) {
                 try {
-                    this._feedmgr.updateFeeds(this._feedmgr.feeds, false);
+                    this._feedmgr.update(false); // update all due feeds.
                     console.log("RSS Feed background update complete.")
                 } catch (ex: any) {
                     console.log(`Background update failed: ${ex.message}`)

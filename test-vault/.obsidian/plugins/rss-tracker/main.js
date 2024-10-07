@@ -14191,7 +14191,7 @@ var DEFAULT_OPTIONS = {
     if (image) {
       tracked.image = image;
     }
-    let content = item["content:encoded"] || item.content;
+    let content = item["content:encoded"] || item.content || item["dc:content"];
     if (content) {
       tracked.content = typeof content === "string" ? content : content["#text"];
     }
@@ -14962,7 +14962,9 @@ var _HTMLxlate = class {
         return document;
       },
       post: (document) => {
+        _HTMLxlate.flattenTables(document.body);
         _HTMLxlate.injectCodeBlock(document.body);
+        _HTMLxlate.cleanupCodeBlock(document.body);
         _HTMLxlate.transformText(document.body, (node) => {
           _HTMLxlate.mathTransformer(node);
           _HTMLxlate.entityTransformer(node);
@@ -15015,6 +15017,21 @@ var _HTMLxlate = class {
       }
     }
   }
+  static cleanupCodeBlock(element) {
+    var _a2;
+    const codeBlocks = element.getElementsByTagName("code"), blockCount = codeBlocks.length;
+    for (let i = 0; i < blockCount; i++) {
+      const code = codeBlocks[i], brs = code.getElementsByTagName("br");
+      while (brs.length > 0) {
+        const br = brs[0], parent = br.parentElement;
+        if (parent) {
+          (_a2 = br.parentElement) == null ? void 0 : _a2.insertAfter(code.doc.createTextNode("\n"), br);
+        }
+        br.remove();
+      }
+      code.textContent = code.innerText;
+    }
+  }
   /**
    * Fix `<img>` elemnts without 'src' attribute enclosed in a `<picture>` element.
    *
@@ -15035,7 +15052,7 @@ var _HTMLxlate = class {
       }
     });
   }
-  static flattenSingleRowTable(element, table) {
+  static flattenSingleRowTable(table) {
     let trs = table.querySelectorAll(":scope > tbody > tr");
     if (trs.length == 0) {
       trs = table.querySelectorAll(":scope > tr");
@@ -15043,7 +15060,7 @@ var _HTMLxlate = class {
     if (trs.length == 1) {
       trs[0].querySelectorAll(":scope > td").forEach((td) => {
         var _a2;
-        const section = element.doc.createElement("section");
+        const section = table.doc.createElement("section");
         (_a2 = table.parentElement) == null ? void 0 : _a2.insertBefore(section, table);
         while (td.firstChild) {
           section.appendChild(td.firstChild);
@@ -15056,7 +15073,7 @@ var _HTMLxlate = class {
   }
   static flattenTables(element) {
     const tables = Array.from(element.getElementsByTagName("table"));
-    tables.forEach((table) => _HTMLxlate.flattenSingleRowTable(element, table));
+    tables.forEach((table) => _HTMLxlate.flattenSingleRowTable(table));
   }
   static mathTransformer(textNode) {
     const text = textNode.textContent;
@@ -15101,11 +15118,13 @@ var _HTMLxlate = class {
    * @return The markdown text generated from the HTML fragment.
    */
   fragmentAsMarkdown(html) {
-    if (html.match(/```|~~~|^\s*#+\s+[^#]$/)) {
+    if (!html.match(/<\/[^<>\/]+\>/)) {
       return html;
     }
     const doc = this.parser.parseFromString(html, "text/html");
+    _HTMLxlate.flattenTables(doc.body);
     _HTMLxlate.injectCodeBlock(doc.body);
+    _HTMLxlate.cleanupCodeBlock(doc.body);
     _HTMLxlate.transformText(doc.body, (node) => {
       _HTMLxlate.mathTransformer(node);
       _HTMLxlate.entityTransformer(node);
@@ -15404,9 +15423,10 @@ var _RSSfeedProxy = class extends RSSProxy {
     return this._folder ? this._folder.children.map((c) => c instanceof import_obsidian2.TFile && c.extension === "md" ? this.filemgr.getProxy(c) : void 0).filter((p) => p instanceof RSSitemProxy) : [];
   }
   /**
+   * Update the RSS feed.
    *
-   * @param feed Update the RSS feed.
-   * @returns
+   * @param feed the proxy of the feed to update.
+   * @returns the number of new items
    */
   async update(feed) {
     const oldItemsMap = /* @__PURE__ */ new Map();
@@ -15528,18 +15548,17 @@ var RSSTrackerCommandBase = class {
 };
 var UpdateRSSfeedCommand = class extends RSSTrackerCommandBase {
   constructor(plugin) {
-    super(plugin, "rss-tracker-update-feed-checked", "Update RSS feed");
+    super(plugin, "rss-tracker-update-feed-checked", "Update RSS feed or collection");
   }
   checkCallback(checking) {
     const active = this.app.workspace.getActiveFile();
     if (active) {
       const proxy = this.plugin.filemgr.getProxy(active);
       if (checking) {
-        return proxy instanceof RSSfeedProxy && !proxy.suspended;
+        return proxy instanceof RSSfeedProxy && !proxy.suspended || proxy instanceof RSScollectionProxy;
       }
-      if (proxy instanceof RSSfeedProxy && !proxy.suspended) {
-        this.plugin.tagmgr.updateTagMap().then((x) => this.plugin.feedmgr.updateFeed(proxy, true).then(() => new import_obsidian3.Notice(`${proxy.file.basename} updated!`)));
-        return true;
+      if (proxy instanceof RSSfeedProxy && !proxy.suspended || proxy instanceof RSScollectionProxy) {
+        this.plugin.feedmgr.update(true, proxy);
       }
     }
     return false;
@@ -15692,40 +15711,30 @@ var FeedManager = class {
    * Update an RSS feed according to the configured frequency.
    * @param feed The proxy of the RSS feed to update.
    * @param force `true` to update even if it is not due.
-   * @returns
+   * @returns the number of new items
    */
   async updateFeed(feed, force) {
     if (feed.suspended) {
-      return feed;
+      return 0;
     }
     if (!force) {
       const now = new Date().valueOf(), lastUpdate = feed.updated, span = feed.interval * 60 * 60 * 1e3;
       if (lastUpdate + span > now) {
-        return feed;
+        return 0;
       }
     }
+    let itemCount = 0;
     try {
       const feedXML = await (0, import_obsidian4.request)({
         url: feed.feedurl,
         method: "GET"
       }), rssfeed = new TrackedRSSfeed(feedXML, feed.feedurl);
-      feed.interval = rssfeed.avgPostInterval;
-      await feed.update(rssfeed);
+      itemCount = await feed.update(rssfeed);
     } catch (err) {
+      console.log(`feed '${feed.file.basename}' update failed: ${err.message}`);
       feed.error = err.message;
     }
-    await feed.commitFrontmatterChanges();
-    console.log(`Feed ${feed.file.name} update status: ${status}`);
-    return feed;
-  }
-  async completeReadingTasks(proxy) {
-    let completed = 0;
-    if (proxy instanceof RSSfeedProxy) {
-      completed = await proxy.completeReadingTasks();
-    } else if (proxy instanceof RSScollectionProxy) {
-      completed = await proxy.completeReadingTasks();
-    }
-    new import_obsidian4.Notice(`${completed} items taken off the '${proxy.file.basename}' reading list`, 3e4);
+    return itemCount;
   }
   get feeds() {
     const feedFolder = this._app.vault.getFolderByPath(this._plugin.settings.rssFeedFolderPath);
@@ -15735,22 +15744,43 @@ var FeedManager = class {
     return [];
   }
   async updateFeeds(feeds, force) {
-    await this._plugin.tagmgr.updateTagMap();
-    let n = 0;
+    let feedCount = 0, newItemCount = 0;
     const notice = new import_obsidian4.Notice(`0/${feeds.length} feeds updated`, 0);
     for (const feed of feeds) {
       try {
-        if (await this.updateFeed(feed, force)) {
-          n++;
-          notice.setMessage(`${n}/${feeds.length} RSS feeds updated`);
-        }
+        newItemCount += await this.updateFeed(feed, force);
+        feedCount++;
+        notice.setMessage(`${feedCount}/${feeds.length} RSS feeds updated`);
       } catch (ex) {
-        console.error(`Feed update failed: ${ex.message}`);
+        console.error(`Update failed: ${ex.message}`);
       }
     }
     notice.hide();
-    console.log(`${n}/${feeds.length} feeds updated.`);
-    new import_obsidian4.Notice(`${n}/${feeds.length} RSS feeds successfully updated`, 3e4);
+    console.log(`${feedCount}/${feeds.length} feeds updated.`);
+    new import_obsidian4.Notice(`${feedCount}/${feeds.length} RSS feeds successfully updated`, 3e4);
+    return newItemCount;
+  }
+  async update(force, proxy) {
+    await this._plugin.tagmgr.updateTagMap();
+    if (proxy instanceof RSSfeedProxy) {
+      const itemCount = await this.updateFeed(proxy, force);
+      new import_obsidian4.Notice(`Feed '${proxy.file.basename}' has '${itemCount}' new items`, 2e4);
+    } else if (proxy instanceof RSScollectionProxy) {
+      const itemCount = await this.updateFeeds(proxy.feeds, force);
+      new import_obsidian4.Notice(`Collection '${proxy.file.basename}' has '${itemCount}' new items`, 2e4);
+    } else {
+      const feeds = this.feeds, itemCount = await this.updateFeeds(feeds, force);
+      new import_obsidian4.Notice(`'${itemCount}' new items in ${feeds.length} feeds.`, 2e4);
+    }
+  }
+  async completeReadingTasks(proxy) {
+    let completed = 0;
+    if (proxy instanceof RSSfeedProxy) {
+      completed = await proxy.completeReadingTasks();
+    } else if (proxy instanceof RSScollectionProxy) {
+      completed = await proxy.completeReadingTasks();
+    }
+    new import_obsidian4.Notice(`${completed} items taken off the '${proxy.file.basename}' reading list`, 3e4);
   }
   canDownloadArticle(item) {
     var _a2;
@@ -15863,14 +15893,9 @@ var UpdateRSSfeedMenuItem = class extends RSSTrackerMenuItem {
     if (title) {
       menu.addItem((item) => {
         item.setTitle(title).setIcon("rss").onClick(async () => {
-          var _a2;
-          if (proxy instanceof RSSfeedProxy) {
-            await this.plugin.tagmgr.updateTagMap();
-            await this.plugin.feedmgr.updateFeed(proxy, true);
-          } else if (proxy instanceof RSScollectionProxy) {
-            await this.plugin.feedmgr.updateFeeds(proxy.feeds, true);
+          if (proxy instanceof RSSfeedProxy || proxy instanceof RSScollectionProxy) {
+            await this.plugin.feedmgr.update(true, proxy);
           }
-          new import_obsidian5.Notice(`${(_a2 = file == null ? void 0 : file.basename) != null ? _a2 : "???"} updated`);
         });
       });
     }
@@ -16716,7 +16741,7 @@ var RSSTrackerPlugin = class extends import_obsidian9.Plugin {
     console.log("Loading rss-tracker.");
     await this._settings.loadData();
     const ribbonIconEl = this.addRibbonIcon("rss", "Update all RSS Feeds", (evt) => {
-      this._feedmgr.updateFeeds(this._feedmgr.feeds, true);
+      this._feedmgr.update(true);
     });
     ribbonIconEl.addClass("rss-tracker-plugin-ribbon-class");
     this.addCommand(new UpdateRSSfeedCommand(this));
@@ -16751,7 +16776,7 @@ var RSSTrackerPlugin = class extends import_obsidian9.Plugin {
     this.registerInterval(window.setInterval(() => {
       if (this._settings.autoUpdateFeeds) {
         try {
-          this._feedmgr.updateFeeds(this._feedmgr.feeds, false);
+          this._feedmgr.update(false);
           console.log("RSS Feed background update complete.");
         } catch (ex) {
           console.log(`Background update failed: ${ex.message}`);

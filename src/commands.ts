@@ -75,7 +75,7 @@ abstract class RSSTrackerCommandBase implements Command {
  */
 export class UpdateRSSfeedCommand extends RSSTrackerCommandBase {
     constructor(plugin: RSSTrackerPlugin) {
-        super(plugin, 'rss-tracker-update-feed-checked', 'Update RSS feed');
+        super(plugin, 'rss-tracker-update-feed-checked', 'Update RSS feed or collection');
     }
 
     checkCallback(checking: boolean): boolean {
@@ -89,14 +89,10 @@ export class UpdateRSSfeedCommand extends RSSTrackerCommandBase {
             if (checking) {
                 // This command will only show up in Command Palette when the check function returns true
                 // check if active file is a rss feed dashboard.
-                return proxy instanceof RSSfeedProxy && !proxy.suspended;
+                return (proxy instanceof RSSfeedProxy && !proxy.suspended) || proxy instanceof RSScollectionProxy;
             }
-            if (proxy instanceof RSSfeedProxy && !proxy.suspended) {
-                this.plugin.tagmgr.updateTagMap()
-                    .then(x =>
-                        this.plugin.feedmgr.updateFeed(proxy, true)
-                            .then(() => new Notice(`${proxy.file.basename} updated!`)));
-                return true;
+            if ((proxy instanceof RSSfeedProxy && !proxy.suspended) || proxy instanceof RSScollectionProxy) {
+                this.plugin.feedmgr.update(true,proxy);
             }
         }
         return false;

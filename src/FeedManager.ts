@@ -94,11 +94,11 @@ export class FeedManager {
      * Update an RSS feed according to the configured frequency.
      * @param feed The proxy of the RSS feed to update.
      * @param force `true` to update even if it is not due.
-     * @returns
+     * @returns the number of new items
      */
-    async updateFeed(feed: RSSfeedProxy, force: boolean): Promise<RSSfeedProxy> {
+    private async updateFeed(feed: RSSfeedProxy, force: boolean): Promise<number> {
         if (feed.suspended) {
-            return feed;
+            return 0;
         }
 
         if (!force) {
@@ -107,9 +107,11 @@ export class FeedManager {
                 lastUpdate = feed.updated,
                 span = feed.interval * 60 * 60 * 1000; // millis
             if ((lastUpdate + span) > now) {
-                return feed; // time has not come
+                return 0; // time has not come
             }
         }
+
+        let itemCount = 0;
         try {
             const
                 feedXML = await request({
@@ -117,27 +119,12 @@ export class FeedManager {
                     method: "GET"
                 }),
                 rssfeed = new TrackedRSSfeed(feedXML, feed.feedurl);
-            // compute the new update interval in hours
-            feed.interval = rssfeed.avgPostInterval;
-            await feed.update(rssfeed);
+            itemCount = await feed.update(rssfeed);
         } catch (err: any) {
+            console.log(`feed '${feed.file.basename}' update failed: ${err.message}`);
             feed.error = err.message;
         }
-        await feed.commitFrontmatterChanges();
-
-        console.log(`Feed ${feed.file.name} update status: ${status}`);
-        return feed;
-    }
-
-    async completeReadingTasks(proxy: RSSfeedProxy | RSScollectionProxy) {
-        let completed = 0;
-        if (proxy instanceof RSSfeedProxy) {
-            completed = await proxy.completeReadingTasks();
-        } else if (proxy instanceof RSScollectionProxy) {
-            completed = await proxy.completeReadingTasks();
-        }
-
-        new Notice(`${completed} items taken off the '${proxy.file.basename}' reading list`, 30000);
+        return itemCount;
     }
 
     get feeds(): RSSfeedProxy[] {
@@ -150,24 +137,52 @@ export class FeedManager {
         return [];
     }
 
-    async updateFeeds(feeds: RSSfeedProxy[], force: boolean): Promise<void> {
-        await this._plugin.tagmgr.updateTagMap();
-        let n: number = 0;
+    private async updateFeeds(feeds: RSSfeedProxy[], force: boolean): Promise<number> {
+        let
+            feedCount: number = 0,
+            newItemCount = 0;
         const notice = new Notice(`0/${feeds.length} feeds updated`, 0);
 
         for (const feed of feeds) {
             try {
-                if ((await this.updateFeed(feed, force))) {
-                    n++;
-                    notice.setMessage(`${n}/${feeds.length} RSS feeds updated`);
-                }
+                newItemCount += await this.updateFeed(feed, force);
+                feedCount++;
+                notice.setMessage(`${feedCount}/${feeds.length} RSS feeds updated`);
             } catch (ex: any) {
-                console.error(`Feed update failed: ${ex.message}`);
+                console.error(`Update failed: ${ex.message}`);
             }
         }
         notice.hide();
-        console.log(`${n}/${feeds.length} feeds updated.`)
-        new Notice(`${n}/${feeds.length} RSS feeds successfully updated`, 30000);
+        console.log(`${feedCount}/${feeds.length} feeds updated.`)
+        new Notice(`${feedCount}/${feeds.length} RSS feeds successfully updated`, 30000);
+        return newItemCount;
+    }
+
+    async update(force: boolean, proxy?: RSSfeedProxy | RSScollectionProxy) : Promise<void> {
+        await this._plugin.tagmgr.updateTagMap();
+        if (proxy instanceof RSSfeedProxy) {
+            const itemCount = await this.updateFeed(proxy,force);
+            new Notice(`Feed '${proxy.file.basename}' has '${itemCount}' new items`,20000);
+        } else if (proxy instanceof RSScollectionProxy) {
+            const itemCount = await this.updateFeeds(proxy.feeds,force);
+            new Notice(`Collection '${proxy.file.basename}' has '${itemCount}' new items`,20000);
+        } else {
+            const
+                feeds = this.feeds,
+                itemCount = await this.updateFeeds(feeds,force);
+            new Notice(`'${itemCount}' new items in ${feeds.length} feeds.`,20000);
+        }
+    }
+
+    async completeReadingTasks(proxy: RSSfeedProxy | RSScollectionProxy) {
+        let completed = 0;
+        if (proxy instanceof RSSfeedProxy) {
+            completed = await proxy.completeReadingTasks();
+        } else if (proxy instanceof RSScollectionProxy) {
+            completed = await proxy.completeReadingTasks();
+        }
+
+        new Notice(`${completed} items taken off the '${proxy.file.basename}' reading list`, 30000);
     }
 
     canDownloadArticle(item: TFile): boolean {

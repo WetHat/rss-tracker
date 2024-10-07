@@ -127,13 +127,9 @@ export class UpdateRSSfeedMenuItem extends RSSTrackerMenuItem {
                 item.setTitle(title)
                     .setIcon('rss')
                     .onClick(async () => {
-                        if (proxy instanceof RSSfeedProxy) {
-                            await this.plugin.tagmgr.updateTagMap()
-                            await this.plugin.feedmgr.updateFeed(proxy, true);
-                        } else if (proxy instanceof RSScollectionProxy) {
-                            await this.plugin.feedmgr.updateFeeds(proxy.feeds,true);
+                        if (proxy instanceof RSSfeedProxy || proxy instanceof RSScollectionProxy ) {
+                            await this.plugin.feedmgr.update(true,proxy);
                         }
-                        new Notice(`${file?.basename ?? '???'} updated`);
                     });
             });
         }
