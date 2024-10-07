@@ -63,12 +63,26 @@ export class HTMLxlate {
                     code.className = 'language-undefined';
                 }
 
-                code.textContent = pre.textContent;
+                code.textContent = HTMLxlate.expandBR(pre).textContent;
                 pre.innerHTML = "";
                 pre.append(code);
                 pre.removeAttribute("class");
             }
         }
+    }
+
+    private static expandBR(element: HTMLElement): HTMLElement {
+        const brs = element.getElementsByTagName("br");
+        while (brs.length > 0) {
+            const
+                br = brs[0],
+                parent = br.parentElement;
+            if (parent) {
+                br.parentElement?.insertAfter(element.doc.createTextNode("\n"), br);
+            }
+            br.remove();
+        }
+        return element;
     }
 
     private static cleanupCodeBlock(element: HTMLElement) {
@@ -77,19 +91,7 @@ export class HTMLxlate {
             blockCount = codeBlocks.length;
 
         for (let i = 0; i < blockCount; i++) {
-            const
-                code = codeBlocks[i],
-                brs = code.getElementsByTagName("br");
-            while (brs.length > 0) {
-                const
-                    br = brs[0],
-                    parent = br.parentElement;
-                if (parent) {
-                    br.parentElement?.insertAfter(code.doc.createTextNode("\n"), br);
-                }
-                br.remove();
-            }
-
+            const code = HTMLxlate.expandBR(codeBlocks[i]);
             code.textContent = code.innerText;
         }
     }
@@ -128,8 +130,9 @@ export class HTMLxlate {
             post: document => {
                 // look for <pre> tags and make sure their first child is always a <code> tag.
                 HTMLxlate.flattenTables(document.body);
-                HTMLxlate.injectCodeBlock(document.body);
                 HTMLxlate.cleanupCodeBlock(document.body);
+                HTMLxlate.injectCodeBlock(document.body);
+
 
                 // enable Obsidian Math and get rid of some special characters
                 HTMLxlate.transformText(document.body, (node: Node) => {
@@ -254,8 +257,8 @@ export class HTMLxlate {
         const doc = this.parser.parseFromString(html, "text/html");
         // tidy the docuement
         HTMLxlate.flattenTables(doc.body);
-        HTMLxlate.injectCodeBlock((doc.body))
-        HTMLxlate.cleanupCodeBlock((doc.body))
+        HTMLxlate.cleanupCodeBlock((doc.body));
+        HTMLxlate.injectCodeBlock((doc.body));
 
         HTMLxlate.transformText(doc.body, (node: Node) => {
             HTMLxlate.mathTransformer(node);

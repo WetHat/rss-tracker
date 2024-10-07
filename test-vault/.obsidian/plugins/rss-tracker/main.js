@@ -14963,8 +14963,8 @@ var _HTMLxlate = class {
       },
       post: (document) => {
         _HTMLxlate.flattenTables(document.body);
-        _HTMLxlate.injectCodeBlock(document.body);
         _HTMLxlate.cleanupCodeBlock(document.body);
+        _HTMLxlate.injectCodeBlock(document.body);
         _HTMLxlate.transformText(document.body, (node) => {
           _HTMLxlate.mathTransformer(node);
           _HTMLxlate.entityTransformer(node);
@@ -15010,25 +15010,29 @@ var _HTMLxlate = class {
         else {
           code.className = "language-undefined";
         }
-        code.textContent = pre.textContent;
+        code.textContent = _HTMLxlate.expandBR(pre).textContent;
         pre.innerHTML = "";
         pre.append(code);
         pre.removeAttribute("class");
       }
     }
   }
-  static cleanupCodeBlock(element) {
+  static expandBR(element) {
     var _a2;
+    const brs = element.getElementsByTagName("br");
+    while (brs.length > 0) {
+      const br = brs[0], parent = br.parentElement;
+      if (parent) {
+        (_a2 = br.parentElement) == null ? void 0 : _a2.insertAfter(element.doc.createTextNode("\n"), br);
+      }
+      br.remove();
+    }
+    return element;
+  }
+  static cleanupCodeBlock(element) {
     const codeBlocks = element.getElementsByTagName("code"), blockCount = codeBlocks.length;
     for (let i = 0; i < blockCount; i++) {
-      const code = codeBlocks[i], brs = code.getElementsByTagName("br");
-      while (brs.length > 0) {
-        const br = brs[0], parent = br.parentElement;
-        if (parent) {
-          (_a2 = br.parentElement) == null ? void 0 : _a2.insertAfter(code.doc.createTextNode("\n"), br);
-        }
-        br.remove();
-      }
+      const code = _HTMLxlate.expandBR(codeBlocks[i]);
       code.textContent = code.innerText;
     }
   }
@@ -15123,8 +15127,8 @@ var _HTMLxlate = class {
     }
     const doc = this.parser.parseFromString(html, "text/html");
     _HTMLxlate.flattenTables(doc.body);
-    _HTMLxlate.injectCodeBlock(doc.body);
     _HTMLxlate.cleanupCodeBlock(doc.body);
+    _HTMLxlate.injectCodeBlock(doc.body);
     _HTMLxlate.transformText(doc.body, (node) => {
       _HTMLxlate.mathTransformer(node);
       _HTMLxlate.entityTransformer(node);
