@@ -251,8 +251,8 @@ export class HTMLxlate {
      */
     fragmentAsMarkdown(html: string): string {
         // some quick plausibility check to determine if this actually already markdown.
-        if (!html.match(/<\/[^<>\/]+\>/)) {
-            return html; // no closing tags found, assume Markdown
+        if (!html.startsWith("<") && html.match(/```|~~~|^\s*#+\s+[^#]$|\]\([^\]\[\)]+\)/)) {
+            return html;
         }
         const doc = this.parser.parseFromString(html, "text/html");
         // tidy the docuement
