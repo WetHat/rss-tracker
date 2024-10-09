@@ -26,7 +26,7 @@ if (tasks.length > 0) {
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");
-if (current) {
+if (tags) {
 	dv.span(tags);
 }
 ~~~
