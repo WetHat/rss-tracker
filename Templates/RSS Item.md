@@ -12,7 +12,7 @@ pinned: false
 > [!abstract] {{title}}
 > <span class="rss-image">{{image}}</span> {{description}}
 
-🔗Read article [online]({{link}}). For other items in this feed see [[{{feedFileName}}]].
+🌐 Read article [online]({{link}}). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[{{fileName}}]]
 
@@ -22,11 +22,11 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
+	dv.header(1,"⚠ Other RSS items are also referring to the same article");
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");
-if (current) {
+if (tags) {
 	dv.span(tags);
 }
 ~~~
