@@ -15270,12 +15270,13 @@ var _RSSitemProxy = class extends RSSProxy {
     }
     const byline = author ? ` by ${author}` : "";
     title = `${title}${byline} - ${published}`;
-    if (!content && description && description.length > 500) {
+    const abstractMaxLength = 800;
+    if (!content && description && description.length > abstractMaxLength) {
       content = description;
     }
     const defaultImage = await feed.plugin.settings.getRssDefaultImagePath();
     if (description) {
-      const teaser = description.length > 500 ? description.substring(0, 500) + "\u22EF" : description;
+      const teaser = description.length > abstractMaxLength ? description.substring(0, abstractMaxLength) + "\u22EF" : description;
       description = teaser.replaceAll("\n", "\n> ");
     }
     const itemfolder = await feed.itemFolder(), tagmgr = feed.plugin.tagmgr, frontmatter = {
@@ -15430,6 +15431,20 @@ var _RSSfeedProxy = class extends RSSProxy {
   get items() {
     return this._folder ? this._folder.children.map((c) => c instanceof import_obsidian2.TFile && c.extension === "md" ? this.filemgr.getProxy(c) : void 0).filter((p) => p instanceof RSSitemProxy) : [];
   }
+  async rename(newBasename) {
+    if (!newBasename) {
+      return false;
+    }
+    const vault = this.plugin.app.vault, itemFolder = await this.itemFolder(), items = this.items, newPath = this.plugin.settings.rssFeedFolderPath + "/" + newBasename;
+    console.log(`${this.file.basename} -> ${newBasename}`);
+    items.forEach(async (item) => {
+      item.feed = newBasename;
+      item.commitFrontmatterChanges();
+    });
+    await vault.rename(this.file, newPath + ".md");
+    await vault.rename(itemFolder, newPath);
+    return true;
+  }
   /**
    * Update the RSS feed.
    *
@@ -15519,22 +15534,12 @@ var RenameRSSFeedModal = class extends import_obsidian3.Modal {
     this.plugin = plugin;
     this.feed = feed;
   }
-  get valid() {
-    if (this.newName.toLowerCase() === this.feed.file.basename.toLowerCase() || !this.newName.trim()) {
+  async isValid() {
+    if (this.newName.toLowerCase() === this.feed.file.basename.toLowerCase() || !this.newName) {
       return false;
     }
     const newFolderPath = this.plugin.settings.rssFeedFolderPath + "/" + this.newName;
-    return this.app.vault.getFolderByPath(newFolderPath) === null;
-  }
-  async rename() {
-    const vault = this.app.vault, itemFolder = await this.feed.itemFolder(), items = this.feed.items, newPath = this.plugin.settings.rssFeedFolderPath + "/" + this.newName;
-    console.log(newPath);
-    items.forEach(async (item) => {
-      item.feed = this.newName;
-      item.commitFrontmatterChanges();
-    });
-    await vault.rename(this.feed.file, newPath + ".md");
-    await vault.rename(itemFolder, newPath);
+    return !await this.app.vault.adapter.exists(this.newName);
   }
   onOpen() {
     const { contentEl } = this;
@@ -15543,9 +15548,9 @@ var RenameRSSFeedModal = class extends import_obsidian3.Modal {
       text.inputEl.addEventListener("keyup", async (evt) => {
         var _a2;
         const keyCode = (_a2 = evt.code) != null ? _a2 : evt.key;
-        if (keyCode === "Enter" && this.valid) {
+        if (keyCode === "Enter" && await this.isValid()) {
           this.close();
-          await this.rename();
+          await this.feed.rename(this.newName);
           return false;
         }
       });
@@ -15553,8 +15558,8 @@ var RenameRSSFeedModal = class extends import_obsidian3.Modal {
       text.inputEl.style.width = "95%";
       text.inputEl.style.borderColor = "red";
       text.setPlaceholder("New Feed Name").setValue(this.feed.file.basename).onChange(async (value) => {
-        this.newName = value;
-        const valid = this.valid;
+        this.newName = value.trim();
+        const valid = await this.isValid();
         if (this.btn) {
           this.btn.disabled = !valid;
           this.btn.buttonEl.style.color = valid ? this.originalBtnColor : "red";
@@ -15570,7 +15575,7 @@ var RenameRSSFeedModal = class extends import_obsidian3.Modal {
         btn.buttonEl.style.color = "red";
         btn.setButtonText("Rename").setCta().onClick(async () => {
           this.close();
-          await this.rename();
+          await this.feed.rename(this.newName);
         }).disabled = true;
       }
     );
@@ -15626,6 +15631,24 @@ var RSSTrackerCommandBase = class {
     this.plugin = plugin;
     this.id = id;
     this.name = name;
+  }
+};
+var RenameRSSfeedModalCommand = class extends RSSTrackerCommandBase {
+  constructor(plugin) {
+    super(plugin, "rss-tracker-rename-feed-checked", "Rename RSS feed");
+  }
+  checkCallback(checking) {
+    const active = this.app.workspace.getActiveFile();
+    if (active) {
+      const proxy = this.plugin.filemgr.getProxy(active);
+      if (checking) {
+        return proxy instanceof RSSfeedProxy;
+      }
+      if (proxy instanceof RSSfeedProxy) {
+        new RenameRSSFeedModal(this.plugin, proxy).open();
+      }
+    }
+    return false;
   }
 };
 var UpdateRSSfeedCommand = class extends RSSTrackerCommandBase {
@@ -16858,6 +16881,7 @@ var RSSTrackerPlugin = class extends import_obsidian10.Plugin {
     ribbonIconEl.addClass("rss-tracker-plugin-ribbon-class");
     this.addCommand(new UpdateRSSfeedCommand(this));
     this.addCommand(new NewRSSFeedModalCommand(this));
+    this.addCommand(new RenameRSSfeedModalCommand(this));
     this.addCommand(new MarkAllRSSitemsReadCommand(this));
     this.addCommand(new NewRSSFeedCollectionCommand(this));
     this.addCommand(new DownloadRSSitemArticleCommand(this));

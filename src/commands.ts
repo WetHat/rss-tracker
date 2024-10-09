@@ -1,7 +1,7 @@
 import { App, Command, Notice } from 'obsidian';
 import RSSTrackerPlugin from './main';
 import { RSScollectionProxy, RSSfeedProxy } from './RSSproxies';
-import { InputUrlModal } from './dialogs';
+import { InputUrlModal, RenameRSSFeedModal } from './dialogs';
 
 abstract class RSSTrackerCommandBase implements Command {
     protected app: App;
@@ -18,7 +18,36 @@ abstract class RSSTrackerCommandBase implements Command {
 }
 
 /**
- * A command that can update an RSS feed if the current file is a RSS feed dashboard.
+ * A command that can update an RSS feed if the current file is a RSS feed or collection.
+ */
+export class RenameRSSfeedModalCommand extends RSSTrackerCommandBase {
+    constructor(plugin: RSSTrackerPlugin) {
+        super(plugin, 'rss-tracker-rename-feed-checked', 'Rename RSS feed');
+    }
+
+    checkCallback(checking: boolean): boolean {
+        // Conditions to check
+        const active = this.app.workspace.getActiveFile();
+
+        if (active) {
+            // If checking is true, we're simply "checking" if the command can be run.
+            // If checking is false, then we want to actually perform the operation.
+            const proxy = this.plugin.filemgr.getProxy(active);
+            if (checking) {
+                // This command will only show up in Command Palette when the check function returns true
+                // check if active file is a rss feed dashboard.
+                return proxy instanceof RSSfeedProxy;
+            }
+            if (proxy instanceof RSSfeedProxy) {
+                new RenameRSSFeedModal(this.plugin,proxy).open();
+            }
+        }
+        return false;
+    }
+}
+
+/**
+ * A command that can update an RSS feed if the current file is a RSS feed or collection.
  */
 export class UpdateRSSfeedCommand extends RSSTrackerCommandBase {
     constructor(plugin: RSSTrackerPlugin) {

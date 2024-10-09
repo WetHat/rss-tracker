@@ -19,29 +19,12 @@ export class RenameRSSFeedModal extends Modal {
         this.feed = feed;
     }
 
-    get valid() : boolean {
-        if (this.newName.toLowerCase() === this.feed.file.basename.toLowerCase() || !this.newName.trim()) {
+    async isValid() : Promise<boolean> {
+        if (this.newName.toLowerCase() === this.feed.file.basename.toLowerCase() || !this.newName) {
             return false;
         }
         const newFolderPath = this.plugin.settings.rssFeedFolderPath + "/" + this.newName;
-        return this.app.vault.getFolderByPath(newFolderPath) === null;
-    }
-
-    private async rename() : Promise<void> {
-        const
-            vault = this.app.vault,
-            itemFolder = await this.feed.itemFolder(),
-            items = this.feed.items,
-            newPath = this.plugin.settings.rssFeedFolderPath + "/" + this.newName;
-        console.log(newPath);
-        // relink to new feed in all items
-        items.forEach(async item => {
-            item.feed = this.newName;
-            item.commitFrontmatterChanges();
-        });
-
-        await vault.rename(this.feed.file,newPath + ".md");
-        await vault.rename(itemFolder,newPath);
+        return !await this.app.vault.adapter.exists(this.newName);
     }
 
     onOpen() {
@@ -55,9 +38,9 @@ export class RenameRSSFeedModal extends Modal {
             .addText(text => {
                 text.inputEl.addEventListener("keyup", async (evt) => {
                     const keyCode = evt.code ?? evt.key;
-                    if (keyCode === "Enter" && this.valid) {
+                    if (keyCode === "Enter" && await this.isValid()) {
                         this.close();
-                        await this.rename();
+                        await this.feed.rename(this.newName);
                         return false;
                     }
                 });
@@ -67,8 +50,8 @@ export class RenameRSSFeedModal extends Modal {
                 text.setPlaceholder('New Feed Name')
                     .setValue(this.feed.file.basename)
                     .onChange(async value => {
-                        this.newName = value;
-                        const  valid = this.valid;
+                        this.newName = value.trim();
+                        const  valid = await this.isValid();
                         if (this.btn) {
                             this.btn.disabled = !valid;
                             this.btn.buttonEl.style.color = valid ? this.originalBtnColor : "red";
@@ -87,7 +70,7 @@ export class RenameRSSFeedModal extends Modal {
                 .setCta()
                 .onClick(async () => {
                     this.close();
-                    await this.rename();
+                    await this.feed.rename(this.newName);
                 }).disabled = true;
             }
         );

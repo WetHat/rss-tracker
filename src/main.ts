@@ -1,6 +1,6 @@
 import { Notice, Plugin, PluginManifest, App, ObsidianProtocolData } from 'obsidian';
 import { RSSTrackerSettings } from './settings';
-import { DownloadRSSitemArticleCommand, MarkAllRSSitemsReadCommand, NewRSSFeedCollectionCommand, NewRSSFeedModalCommand, NewRSSTopicCommand, UpdateRSSfeedCommand } from './commands';
+import { DownloadRSSitemArticleCommand, MarkAllRSSitemsReadCommand, NewRSSFeedCollectionCommand, NewRSSFeedModalCommand, NewRSSTopicCommand, RenameRSSfeedModalCommand, UpdateRSSfeedCommand } from './commands';
 import { FeedManager } from './FeedManager';
 import { UpdateRSSfeedMenuItem, MarkAllItemsReadMenuItem, DownloadArticleContentMenuItem, ToggleRSSfeedActiveStatusMenuItem, RenameRSSfeedMenuItem } from './menus';
 import { DataViewJSTools } from './DataViewJSTools';
@@ -8,6 +8,7 @@ import { TPropertyBag } from './FeedAssembler';
 import { RSSTrackerSettingTab } from './settingsUI';
 import { RSSfileManager } from './RSSFileManager';
 import { RSSTagManager } from './TagManager';
+import { RenameRSSFeedModal } from './dialogs';
 
 export default class RSSTrackerPlugin extends Plugin {
     private _settings: RSSTrackerSettings;
@@ -65,10 +66,12 @@ export default class RSSTrackerPlugin extends Plugin {
         this.addCommand(new UpdateRSSfeedCommand(this));
         // This adds a simple command that can be triggered anywhere
         this.addCommand(new NewRSSFeedModalCommand(this));
+        this.addCommand(new RenameRSSfeedModalCommand(this));
         this.addCommand(new MarkAllRSSitemsReadCommand(this));
         this.addCommand(new NewRSSFeedCollectionCommand(this));
         this.addCommand(new DownloadRSSitemArticleCommand(this));
         this.addCommand(new NewRSSTopicCommand(this));
+
         // This adds a settings tab so the user can configure various aspects of the plugin
         this.addSettingTab(new RSSTrackerSettingTab(this._settings));
 

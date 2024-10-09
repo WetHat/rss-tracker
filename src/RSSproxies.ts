@@ -373,6 +373,28 @@ export class RSSfeedProxy extends RSSProxy {
             .filter(p => p instanceof RSSitemProxy) as RSSitemProxy[] : [];
     }
 
+    async rename(newBasename : string) : Promise<boolean> {
+        if (!newBasename) {
+            return false;
+        }
+
+        const
+            vault = this.plugin.app.vault,
+            itemFolder = await this.itemFolder(),
+            items = this.items,
+            newPath = this.plugin.settings.rssFeedFolderPath + "/" + newBasename;
+        console.log(`${this.file.basename} -> ${newBasename}`);
+        // relink to new feed in all items
+        items.forEach(async item => {
+            item.feed = newBasename;
+            item.commitFrontmatterChanges();
+        });
+
+        await vault.rename(this.file,newPath + ".md");
+        await vault.rename(itemFolder,newPath);
+        return true;
+    }
+
     /**
      * Update the RSS feed.
      *
