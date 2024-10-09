@@ -250,6 +250,7 @@ export class HTMLxlate {
      * @return The markdown text generated from the HTML fragment.
      */
     fragmentAsMarkdown(html: string): string {
+        html = html.trim();
         // some quick plausibility check to determine if this actually already markdown.
         if (!html.startsWith("<") && html.match(/```|~~~|^\s*#+\s+[^#]$|\]\([^\]\[\)]+\)/)) {
             return html;
