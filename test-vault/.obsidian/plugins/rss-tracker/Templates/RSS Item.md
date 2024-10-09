@@ -22,7 +22,7 @@ const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	tasks = await dvjs.rssDuplicateItemsTasks(current);
 if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
+	dv.header(1,"⚠ Other RSS items are also referring to the same article");
     dv.taskList(tasks,false);
 }
 const tags = current.file.etags.join(" ");
