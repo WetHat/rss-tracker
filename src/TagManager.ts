@@ -264,8 +264,8 @@ export class RSSTagManager {
                 if (modified) {
                     await item.vault.modify(item, parts.join("")); // save the updatedd RSS item
                 }
-                await this.commit(); // update the tag map
             }
+            await this.commit(); // update the tag map
         })
     };
 }

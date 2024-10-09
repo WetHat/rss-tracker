@@ -16842,8 +16842,8 @@ var RSSTagManager = class {
         if (modified) {
           await item.vault.modify(item, parts.join(""));
         }
-        await this.commit();
       }
+      await this.commit();
     });
   }
 };
