@@ -169,7 +169,8 @@ export class RSSitemProxy extends RSSProxy {
         const byline = author ? ` by ${author}` : "";
         title = `${title}${byline} - ${published}`;
 
-        if (!content && description && description.length > 500) {
+        const abstractMaxLength= 800;
+        if (!content && description && description.length > abstractMaxLength) {
             content = description
         }
 
@@ -177,7 +178,7 @@ export class RSSitemProxy extends RSSProxy {
 
         if (description) {
             // truncate description
-            const teaser = (description.length > 500 ? (description.substring(0, 500) + "⋯") : description);
+            const teaser = (description.length > abstractMaxLength ? (description.substring(0, abstractMaxLength) + "⋯") : description);
             description = teaser.replaceAll("\n", "\n> ");
         }
 

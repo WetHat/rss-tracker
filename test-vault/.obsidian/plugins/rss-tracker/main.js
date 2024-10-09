@@ -16554,15 +16554,15 @@ var _RSSfileManager = class {
   }
   /**
    * Rename/move a file.
-   * @param oldFilePath Path to file to rename ior file object
+   * @param oldFilePath Path to file to rename
    * @param newFilePath new path and name of the file
    * @returns `true` if file was successfully renamed/moved; `false otherwise`
    */
   async renameFile(oldFilePath, newFilePath) {
-    const oldFile = this._vault.getFileByPath(oldFilePath);
     if (oldFilePath === newFilePath) {
       return false;
     }
+    const oldFile = this._vault.getFileByPath(oldFilePath);
     if (oldFile) {
       await this._vault.rename(oldFile, newFilePath);
       return true;
