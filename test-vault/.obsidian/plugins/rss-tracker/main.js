@@ -15295,7 +15295,7 @@ var _RSSitemProxy = class extends RSSProxy {
       "{{publishDate}}": frontmatter.published,
       "{{tags}}": frontmatter.tags,
       "{{title}}": title != null ? title : "",
-      "{{image}}": image ? formatImage(image) : `![[${defaultImage}|200x200]]`,
+      "{{image}}": image ? formatImage(image) : `![[${defaultImage}|100x100]]`,
       "{{description}}": description != null ? description : "",
       "{{content}}": content != null ? content : "",
       "{{feedFileName}}": itemfolder.name
@@ -15331,7 +15331,7 @@ var _RSSfeedProxy = class extends RSSProxy {
       "{{siteUrl}}": frontmatter.site,
       "{{title}}": (0, import_obsidian2.htmlToMarkdown)(title != null ? title : ""),
       "{{description}}": description ? (0, import_obsidian2.htmlToMarkdown)(description) : "",
-      "{{image}}": image ? formatImage(image) : `![[${defaultImage}|200x200]]`
+      "{{image}}": image ? formatImage(image) : `![[${defaultImage}|100x100]]`
     };
     const filemgr = plugin.filemgr, dashboard = await filemgr.createFile(plugin.settings.rssFeedFolderPath, feed.fileName, "RSS Feed", dataMap, true), proxy = new _RSSfeedProxy(plugin, dashboard, frontmatter);
     try {
