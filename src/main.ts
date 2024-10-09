@@ -2,7 +2,7 @@ import { Notice, Plugin, PluginManifest, App, ObsidianProtocolData } from 'obsid
 import { RSSTrackerSettings } from './settings';
 import { DownloadRSSitemArticleCommand, MarkAllRSSitemsReadCommand, NewRSSFeedCollectionCommand, NewRSSFeedModalCommand, NewRSSTopicCommand, UpdateRSSfeedCommand } from './commands';
 import { FeedManager } from './FeedManager';
-import { UpdateRSSfeedMenuItem, MarkAllItemsReadMenuItem, DownloadArticleContentMenuItem, ToggleRSSfeedActiveStatusMenuItem } from './menus';
+import { UpdateRSSfeedMenuItem, MarkAllItemsReadMenuItem, DownloadArticleContentMenuItem, ToggleRSSfeedActiveStatusMenuItem, RenameRSSfeedMenuItem } from './menus';
 import { DataViewJSTools } from './DataViewJSTools';
 import { TPropertyBag } from './FeedAssembler';
 import { RSSTrackerSettingTab } from './settingsUI';
@@ -94,6 +94,10 @@ export default class RSSTrackerPlugin extends Plugin {
         const downloadArticle = new DownloadArticleContentMenuItem(this.app,this);
         this.registerEvent(downloadArticle.editorMenuHandler);
         this.registerEvent(downloadArticle.fileMenuHandler);
+
+        const renameFeed = new RenameRSSfeedMenuItem(this.app,this);
+        this.registerEvent(renameFeed.editorMenuHandler);
+        this.registerEvent(renameFeed.fileMenuHandler);
 
         // post-processing of RSS related files files
         this.registerEvent(this._tagmgr.rssTagPostProcessor);

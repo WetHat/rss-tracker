@@ -71,6 +71,10 @@ export class RSSitemProxy extends RSSProxy {
         return this.frontmatter.pinned === true;
     }
 
+    set feed(value: string) {
+        this.frontmatter.feed = `[[${value}]]`;
+    }
+
     /**
      * Get the date the article described by this item was published.
      * @returns the date published in millisecondes since Jan 1st, 1970,

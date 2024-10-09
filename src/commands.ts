@@ -1,60 +1,7 @@
-import { App, Modal, Command, Setting, TFile, TFolder, Notice } from 'obsidian';
+import { App, Command, Notice } from 'obsidian';
 import RSSTrackerPlugin from './main';
 import { RSScollectionProxy, RSSfeedProxy } from './RSSproxies';
-
-/**
- * Modal dialog to request rss url input from the user.
- */
-export class InputUrlModal extends Modal {
-    result: string = '';
-
-    onSubmit: (result: string) => void;
-
-    constructor(app: App, onSubmit: (result: string) => void) {
-        super(app);
-        this.onSubmit = onSubmit;
-    }
-
-    onOpen() {
-        const { contentEl } = this;
-        // Input fiels
-        new Setting(contentEl)
-            .setName('Feed Url:')
-            .setDesc('Enter the url of the rss feed:')
-            .setHeading()
-            .addText(text => {
-                text.inputEl.addEventListener("keyup", (evt) => {
-                    var keyCode = evt.code ?? evt.key;
-                    if (keyCode === "Enter") {
-                        if (this.result) {
-                            this.close();
-                            this.onSubmit(this.result);
-                        }
-                        return false;
-                    }
-                });
-                text.inputEl.style.width = '95%';
-                text.setPlaceholder('https://x.com/feed')
-                    .onChange(value => {
-                        this.result = value;
-                    });
-            });
-
-        new Setting(contentEl).addButton(btn =>
-            btn.setButtonText('Submit')
-                .setCta()
-                .onClick(() => {
-                    this.close();
-                    this.onSubmit(this.result);
-                })
-        );
-    }
-
-    onClose() {
-        const { contentEl } = this;
-        contentEl.empty();
-    }
-}
+import { InputUrlModal } from './dialogs';
 
 abstract class RSSTrackerCommandBase implements Command {
     protected app: App;

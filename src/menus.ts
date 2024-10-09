@@ -1,6 +1,7 @@
 import RSSTrackerPlugin from './main';
-import { App, Notice, Menu, TFile, EventRef, Command, Plugin } from 'obsidian';
+import { App, Notice, Menu, TFile, EventRef} from 'obsidian';
 import { RSScollectionProxy, RSSfeedProxy } from './RSSproxies';
+import { RenameRSSFeedModal } from './dialogs';
 
 /**
  * Abstract base class to Obsidian menus.
@@ -112,6 +113,7 @@ export class UpdateRSSfeedMenuItem extends RSSTrackerMenuItem {
         if (!file) {
             return;
         }
+        menu.addSeparator();
         const proxy = this.plugin.filemgr.getProxy(file);
         let title: string;
         if (proxy instanceof RSSfeedProxy && !proxy.suspended) {
@@ -130,6 +132,39 @@ export class UpdateRSSfeedMenuItem extends RSSTrackerMenuItem {
                         if (proxy instanceof RSSfeedProxy || proxy instanceof RSScollectionProxy ) {
                             await this.plugin.feedmgr.update(true,proxy);
                         }
+                    });
+            });
+        }
+    }
+}
+
+export class RenameRSSfeedMenuItem extends RSSTrackerMenuItem {
+    constructor(app: App, plugin: RSSTrackerPlugin) {
+        super(app, plugin);
+    }
+
+    /**
+     * Add an item to a menu which calls an action to update an RSS feed.
+     *
+     * The condition under which the item is added is that the given file is an
+     * RSS dashboard containing frontmatter defining the properties `itemlimit` and
+     * `feedurl`.
+     *
+     * @param menu - The menu to add the item to
+     * @param file - An Obsidian file which may contain frontmatter describing an RSS feed configuration.
+     */
+    protected addItem(menu: Menu, file: TFile | null) {
+        if (!file) {
+            return;
+        }
+        const proxy = this.plugin.filemgr.getProxy(file);
+        let title: string;
+        if (proxy instanceof RSSfeedProxy) {
+            menu.addItem(item => {
+                item.setTitle("Rename RSS feed")
+                    .setIcon('pen-line')
+                    .onClick(async () => {
+                        new RenameRSSFeedModal(this.plugin,proxy).open();
                     });
             });
         }
