@@ -2,6 +2,7 @@ import { TPropertyBag } from './FeedAssembler';
 import { RSSTrackerSettings } from './settings';
 import { TFile } from "obsidian";
 
+//#region Type definitions
 type TDashboardRole = "rsscollection" | "rsstopic" | "rssdashboard";
 /**
  * A lambda function type to build a dataview table row for an RSS
@@ -9,10 +10,26 @@ type TDashboardRole = "rsscollection" | "rsstopic" | "rssdashboard";
  */
 type TRowBuilder = (rec: TPageRecord) => object[];
 
+type TSortOrder = "asc" | "desc";
+
+type TRSSoptions = {};
+
+type TTableLayout =  { [key: string]: string };
+
+type TRSStableOptions = TRSSoptions & {
+   layout: TTableLayout;
+   sortBy: string;
+   sortOrder: TSortOrder;
+}
+
+type TRSSitemHeaderOptions = TRSSoptions & {
+    showDuplicates: boolean,
+    showTags: boolean
+}
+
 /** Type describing an object returned from dataview */
 type TRecord = {
     [key: string]: any;
-
 }
 
 type TPageRecord = TRecord & {
@@ -35,8 +52,9 @@ type TRecordList = {
 type TPageRecordList = TRecordList;
 type TTaskRecordList = TRecordList;
 
-/** A lambda function type to filter a pagge list */
+/** Function type to filter a pagg list */
 type TItemPredicate = (fileRecord: TPageRecord) => boolean;
+//#endregion
 
 /**
  * Utility class to map RSS feeds to RSS collections where they are a member of.
@@ -143,23 +161,22 @@ export class DataViewJSTools {
             .join(", ");
     }
 
-    ////////////////////////
-
+    //#region Dataview queries
     /**
-     * Generate a dataview FROM expressing using 3 tag lists defined in the frontmatter of a page.
+     * Generate a dataview FROM expressing to get pages matching a tag filter.
      *
-     * The required frontmatter tag list property names are:
+     * The required frontmatter tag list properties:
      * - `tags`: pages with any of these tags are included
      * - `allof`: pages must have all of these tags to be included
      * - `noneof` - paged with any of these tags are excluded
-     * @param pageRecord - A page defining 3 tag lists
+     * @param page - A page defining 3 tag lists
      * @returns A FROM expression suitable for `dv.pages`.
      */
-    fromTags(pageRecord: TPageRecord): string {
+    fromTags(page: TPageRecord): string {
         const
-            anyTags: string[] = pageRecord.file.etags?.map((t: string) => DataViewJSTools.hashtag(t)) ?? [],
-            allTags: string[] = pageRecord?.allof?.map((t: string) => DataViewJSTools.hashtag(t)) ?? [],
-            noneTags: string[] = pageRecord?.noneof?.map((t: string) => DataViewJSTools.hashtag(t)) ?? [];
+            anyTags: string[] = page.file.etags?.map((t: string) => DataViewJSTools.hashtag(t)) ?? [],
+            allTags: string[] = page?.allof?.map((t: string) => DataViewJSTools.hashtag(t)) ?? [],
+            noneTags: string[] = page?.noneof?.map((t: string) => DataViewJSTools.hashtag(t)) ?? [];
 
         let from = [
             anyTags.length > 0 ? "( " + anyTags.join(" OR ") + " )" : null,
@@ -169,9 +186,22 @@ export class DataViewJSTools {
         return from.length > 0 ? from.join(" AND ") : "#nil";
     }
 
+    /**
+     * Generate a dataview FROM expressing to get all items of an RSS feed.
+     * @param feed Ths RSS feed to get the items from.
+     * @returns A FROM expression suitable for `dv.pages`.
+     */
     fromItemsOfFeed(feed: TPageRecord): string {
         return '[[' + feed.file.path + ']]';
     }
+
+    async fromItemsOfCollection(collection: TPageRecord): Promise<string> {
+        const
+            feeds: TPageRecordList = await this.rssFeeds(collection),
+            feedFolderPath = this.settings.rssFeedFolderPath;
+        return feeds.file.map((f: TPropertyBag) => `"${feedFolderPath}/${f.name}"`).join(" OR ");
+    }
+
 
     get fromFeedsFolderFiles(): string {
         const
@@ -190,6 +220,7 @@ export class DataViewJSTools {
     get fromFeedsFolder(): string {
         return '"' + this.settings.rssFeedFolderPath + '"';
     }
+    //#endregion Dataview queries
 
     // obtaining lists of rss related markdown files
     /**
@@ -223,7 +254,7 @@ export class DataViewJSTools {
     }
 
     private itemReadingTask(item: TPageRecord): TTaskRecord | null {
-        const tasks = item.file.tasks.where((t:TTaskRecord) => t.text.startsWith("[["));
+        const tasks = item.file.tasks.where((t: TTaskRecord) => t.text.startsWith("[["));
         return tasks.length > 0 ? tasks[0] : null;
     }
 
@@ -321,7 +352,7 @@ export class DataViewJSTools {
      */
     readingList(items: TPageRecordList, read: boolean, header?: string): number {
         const
-            tasks = this.rssReadingTasks(items,read),
+            tasks = this.rssReadingTasks(items, read),
             taskCount = tasks.length;
         if (taskCount > 0) {
             if (header) {
@@ -364,5 +395,109 @@ export class DataViewJSTools {
         }
         return totalItemCount;
     }
+    //////////////////////////////////////// Next GEN API
 
+    private formatProperty(page: TPageRecord, name: string): any {
+        switch(name) {
+            case "ID":
+                return page.file.link;
+            case "tags":
+                return this.hashtagLine(page);
+        }
+        return page[name] ?? page.file.name;
+    }
+
+    private formatProperties(page: TPageRecord, names: string[]): any[] {
+        return names.map(name => this.formatProperty(page, name));
+    }
+
+    /**
+     * Get Options for dataviewJS RSS tools from the plugin settings.
+     *
+     * @param key option key
+     * @returns Options object for that key.
+     */
+    getOptions(key: string): TRSSitemHeaderOptions | TRSStableOptions | TRSSoptions {
+        let options: TRSSitemHeaderOptions | TRSStableOptions | TRSSoptions;
+
+        // TODO get from settings
+        switch (key) {
+            case "rss_item_header":
+                options = {
+                    showDuplicates: true,
+                    showTags: true
+                };
+                break;
+            case "rss_pinned_feed_items":
+                return {
+                    layout: {
+                        ID: "Item",
+                        tags: "Tags",
+                        updated: "Updated"
+                    },
+                    sortBy: "name",
+                    sortOrder: "asc"
+                };
+            case "rss_pinned_collection_items":
+                return {
+                    layout: {
+                        ID: "Item",
+                        tags: "Tags",
+                        feed: "Feed",
+                        updated: "Updated",
+                    },
+                    sortBy: "name",
+                    sortOrder: "asc"
+                };
+            default:
+                options = {};
+                break;
+        }
+        return options;
+    }
+
+    async rssItemHeader(item: TPageRecord, options?: TRSSitemHeaderOptions) {
+        const opts = options ?? this.getOptions("rss_item_header") as TRSSitemHeaderOptions;
+        if (opts.showDuplicates) {
+            const tasks = await this.rssDuplicateItemsTasks(item);
+            if (tasks.length > 0) {
+                this.dv.header(1, "⚠ Other RSS items are also referring to the same article");
+                this.dv.taskList(tasks, false);
+            }
+        }
+        if (opts.showTags) {
+            const tags = this.hashtagLine(item);
+            if (tags) {
+                this.dv.span(tags);
+            }
+        }
+    }
+
+    async itemsOf(context?: TPageRecord): Promise<TPageRecordList> {
+        let from: string = "";
+        if (context) {
+            switch (context.role) {
+                case "rssfeed":
+                    from = this.fromItemsOfFeed(context);
+                    break;
+                case "rsscollection":
+                    from = await this.fromItemsOfCollection(context);
+                    break;
+            }
+        }
+        return this.dv.pages(from).where((p: TPageRecord) => p.role === "rssitem");
+    }
+
+    async rssPageTable(pages: TPageRecordList, options: TRSStableOptions) {
+        const
+            layout = options.layout,
+            properties = Object.keys(options.layout),
+            tableHeader = properties.map( name => layout[name]);
+
+        return this.dv.table(
+            tableHeader,
+            pages
+                .sort((p: TPageRecord)  => this.formatProperty(p,options.sortBy),options.sortOrder)
+                .map((p: TPageRecord) => this.formatProperties(p, properties)));
+    }
 }
