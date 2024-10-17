@@ -6,7 +6,7 @@ type TTExtTransformer = (textNode: Node) => void;
 
 export function formatImage(image: IRssMedium): string {
     const { src, width, height } = image as IRssMedium;
-    return `![image|400](${src})`;
+    return `![image|float:right|400](${src})`;
 }
 
 /**

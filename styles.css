@@ -1,12 +1,17 @@
-/*
-
-This CSS file will be included with your plugin, and
-available in the app when your plugin is enabled.
-
-If your plugin does not need CSS, delete this file.
-
+/**
+  Image styling;
+  Markdown Usage: [[x.png | float:right | 400]] or
+  [alt| float:right | 400]](x.png)
+  to float text around the image of wudth 400.
 */
-span.rss-image img, img.rss-image {
+img[alt*="float:right"] {
     float: right;
-    margin-left: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+img[alt*="float:left"] {
+    float: right;
+    margin-left: auto;
+    margin-right: auto;
 }
