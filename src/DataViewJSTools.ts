@@ -331,7 +331,7 @@ export class DataViewJSTools {
 
     private async fromItemsOfCollection(collection: TPageRecord): Promise<string> {
         const
-            feeds: TPageRecords = await this.dv.pages(this.fromFeeds),
+            feeds: TPageRecords = await this.dv.pages(this.fromFeedsOf(collection)),
             feedFolderPath = this.settings.rssFeedFolderPath;
         return feeds.file.map((f: TPropertyBag) => `"${feedFolderPath}/${f.name}"`).join(" OR ");
     }
