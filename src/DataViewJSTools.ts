@@ -170,9 +170,10 @@ export class FeedToCollectionMap extends Map<string, TPageRecord[]> {
         // create a map
         const map = new FeedToCollectionMap();
 
-        const collections = await dvjs.rssDashboards("rsscollection");
+        /**
+        const collections; //= await dvjs.rssDashboards("rsscollection");
         for (const collection of collections) {
-            const feeds = await dvjs.rssFeeds(collection);
+            const feeds = await dvjs.dv.pages(dvjs.fromFeeds);
             for (const feed of feeds) {
                 const key = feed.file.path;
                 let clist = map.get(key);
@@ -183,6 +184,7 @@ export class FeedToCollectionMap extends Map<string, TPageRecord[]> {
                 }
             }
         }
+        */
         return map;
     }
 }
@@ -194,7 +196,7 @@ export class DataViewJSTools {
     /**
      * The dataview object.
      */
-    private dv: TPropertyBag;
+    dv: TPropertyBag;
     /**
      * THe settings object describing the RSS related golder structure
      */
@@ -329,12 +331,12 @@ export class DataViewJSTools {
 
     private async fromItemsOfCollection(collection: TPageRecord): Promise<string> {
         const
-            feeds: TPageRecords = await this.rssFeeds(collection),
+            feeds: TPageRecords = await this.dv.pages(this.fromFeeds),
             feedFolderPath = this.settings.rssFeedFolderPath;
         return feeds.file.map((f: TPropertyBag) => `"${feedFolderPath}/${f.name}"`).join(" OR ");
     }
 
-    private get fromFeeds(): string {
+    get fromFeeds(): string {
         const
             settings = this.settings,
             feedsFolder = settings.app.vault.getFolderByPath(settings.rssFeedFolderPath);
@@ -356,7 +358,7 @@ export class DataViewJSTools {
         }
     }
 
-    fromFeedsOfCollection(collection: TPageRecord): string {
+    private fromFeedsOfCollection(collection: TPageRecord): string {
         return this.fromFeeds + " AND " + this.fromTags(collection);
     }
 
@@ -365,37 +367,6 @@ export class DataViewJSTools {
     }
 
     //#endregion Dataview queries
-
-    // obtaining lists of rss related markdown files
-    /**
-     * Get RSS feeds matching an optional selection criterion.
-     * @param context A dashboard file specifying 'tags', 'allof', and `noneof` tag list properties in its frontmatter.
-     *                  If omitted all feeds are returnd.
-     * @returns List of all RSS feeds matching the optional selector.
-     */
-    async rssFeeds(context?: TPageRecord): Promise<TPageRecords> {
-        const
-            from: string = dashboard ? ("(" + this.fromFeedsFolderFiles + ") AND " + this.fromTags(dashboard)) : this.fromFeedsFolderFiles,
-            feeds = await this.dv.pages(from);
-        return feeds
-            .where((f: TPageRecord) => f.role === "rssfeed")
-            .sort((rec: TPageRecord) => rec.file.name, "asc");
-    }
-
-    /**
-     * Get RSS items matching an optional selection criterion.
-     * @param page A page specifying 'tags', 'allof', and `noneof` tag list properties in its frontmatter.
-     *                  If omitted all items across all feeds are returnd.
-     * @returns List of all RSS items across all RSS feeds matching the optional dashboard selector.
-     */
-    async rssItems(page?: TPageRecord): Promise<TPageRecords> {
-        const
-            from: string = this.fromFeedsFolder + (page ? (" AND " + this.fromTags(page)) : ""),
-            pages = await this.dv.pages(from);
-        return pages
-            .where((rec: TPageRecord) => rec.role === "rssitem")
-            .sort((rec: TPageRecord) => rec.published, "desc"); // newest first
-    }
 
     private itemReadingTask(item: TPageRecord): TTaskRecord | null {
         const tasks = item.file.tasks.where((t: TTaskRecord) => t.text.startsWith("[["));
@@ -424,8 +395,8 @@ export class DataViewJSTools {
         const
             link = item.link,
             path = item.file.path,
-            pages = await this.rssItems();
-        return pages.where((rec: TPageRecord) => rec.link === link && rec.file.path !== path);
+            pages = await this.dv.pages(this.fromItems);
+        return pages.where((rec: TPageRecord) => rec.role === "rssitem" && rec.link === link && rec.file.path !== path);
     }
 
     /**
@@ -454,32 +425,8 @@ export class DataViewJSTools {
             .where((t: TTaskRecord) => t);
     }
 
-    async rssDashboards(role: TDashboardRole): Promise<TPageRecords> {
-        let dashboardFolderPath = this.settings.rssHome;
-        switch (role) {
-            case "rsscollection":
-                dashboardFolderPath = this.settings.rssCollectionsFolderPath;
-                break;
-            case "rsstopic":
-                dashboardFolderPath = this.settings.rssTopicsFolderPath;
-        }
-        const
-            from = '"' + dashboardFolderPath + '"',
-            collections = await this.dv.pages(from);
-        return collections
-            .where((itm: TPageRecord) => itm.role === role)
-            .sort((rec: TPageRecord) => rec.file.name, "asc");
-    }
-
     async mapFeedsToCollections(): Promise<FeedToCollectionMap> {
         return FeedToCollectionMap.initialize(this);
-    }
-
-    async rssItemsOfFeed(feed: TPageRecord): Promise<TPageRecords> {
-        const pages = await this.dv.pages(this.fromItemsOfFeed(feed));
-        return pages
-            .where((rec: TPageRecord) => rec.role === "rssitem")
-            .sort((rec: TPageRecord) => rec.published, "desc");
     }
 
     ///////
@@ -511,7 +458,7 @@ export class DataViewJSTools {
         let totalTaskCount = 0;
 
         for (const feed of feeds) {
-            const items = await this.rssItemsOfFeed(feed);
+            const items = await this.dv.pages(await this.fromItemsOf(feed));
             totalTaskCount += this.readingList(items, read, this.fileLink(feed));
         }
         return totalTaskCount;

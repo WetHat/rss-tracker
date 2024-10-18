@@ -8,7 +8,7 @@ status:
 tags: []
 ---
 > [!abstract] {{title}}
-> <span class="rss-image">{{image}}</span> {{description}}
+> {{image}} {{description}}
 
 # Unread Feed Items 📚
 ~~~dataview
@@ -19,12 +19,14 @@ SORT published DESC
 ~~~
 
 # Pinned Feed Items 📍
-~~~dataview
-TABLE
-published as Published
-FROM [[]]
-WHERE pinned = true AND role = "rssitem"
-SORT published DESC
+
+~~~dataviewjs
+const
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	pages = await dv.pages(await dvjs.fromItemsOf(dv.current()));
+dvjs.rssTable(
+	pages.where(it => it.pinned === true),
+	dvjs.getOptions("rss_feed_items"));
 ~~~
 
 # Read Feed Items
