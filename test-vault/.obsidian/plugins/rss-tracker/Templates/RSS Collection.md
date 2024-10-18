@@ -4,37 +4,23 @@ tags: []
 allof: []
 noneof: []
 ---
+
 > [!abstract] [headline:: A curated collection of RSS feeds about ???]
-> - [ ] Add an image like so `<span class=".rss-image">{{logo.png|400}}</span>`
+> - [ ] Add an image like so `[[ogo.png|float:right|400]]`
 > - [ ] Create a headline
 > - [ ] Summarize the purpose of this collection.
 > - [ ] Specify tags in the `tags`, `allof`, 'noneof' frontmatter properties
-
 
 # Feeds in this Collection
 
 ~~~dataviewjs
 const
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	collection = dv.current(),
-	feeds = await dvjs.rssFeeds(collection);
-if (await dvjs.rssTable(
-		feeds,
-		[
-			"Feed",
-			"Status",
-			"Updated",
-			"Tags"
-		],
-		f => [
-				dvjs.fileLink(f),
-				f.status,
-				f.updated,
-				dvjs.hashtagLine(f)
-			]) === 0) {
-	dv.paragraph("No feeds in this collection")
-}
-dv.paragraph("From: " + dvjs.fromTags(collection));
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssTable(
+	await dv.pages(dvjs.fromFeedsOf(dv.current())),
+	dvjs.getOptions("rss_context_feeds")
+);
+dv.paragraph("From: " + dvjs.fromTags(dv.current()));
 ~~~
 
 # Reading List 📚
@@ -42,8 +28,7 @@ dv.paragraph("From: " + dvjs.fromTags(collection));
 ~~~dataviewjs
 const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	collection = dv.current(),
-	feeds = await dvjs.rssFeeds(collection);
+	feeds = await dv.pages(dvjs.fromFeedsOf(dv.current()));
 await dvjs.groupedReadingList(feeds,false);
 ~~~
 
@@ -52,12 +37,8 @@ await dvjs.groupedReadingList(feeds,false);
 ~~~dataviewjs
 const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	collection = dv.current(),
-	feeds = await dvjs.rssFeeds(collection);
-await dvjs.groupedRssItemTable(
-	feeds,
-	(feed => feed.pinned === true),
-	["Item", "Published", "Tags"],
-	itm => [dvjs.fileLink(itm), collection.published,dvjs.hashtagLine(itm)]
-);
+	pages = await dv.pages(await dvjs.fromItemsOf(dv.current()));
+dvjs.rssTable(
+	pages.where(it => it.pinned === true),
+	dvjs.getOptions("rss_context_items"));
 ~~~

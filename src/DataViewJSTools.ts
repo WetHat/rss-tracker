@@ -353,18 +353,30 @@ export class DataViewJSTools {
             return feeds.length > 1
                 ? "(" + feeds.join(" OR ") + ")"
                 : feeds.join(" OR ");
-        } else {
-            return '"' + this.settings.rssFeedFolderPath + '"';
         }
+        return '"undefined"';
+    }
+
+    fromFeedsOf(context? : TPageRecord) : string {
+        let from ="";
+        if (context) {
+            switch(context.role) {
+                case "rsscollection":
+                    from = this.fromFeedsOfCollection(context);
+                    break;
+                default:
+                    from = this.fromFeeds;
+            }
+        } else {
+            from = this.fromFeeds;
+        }
+        return from;
     }
 
     private fromFeedsOfCollection(collection: TPageRecord): string {
         return this.fromFeeds + " AND " + this.fromTags(collection);
     }
 
-    private get fromFeedsFolder(): string { // deprecated: use fromItems or from feeds
-        return '"' + this.settings.rssFeedFolderPath + '"';
-    }
 
     //#endregion Dataview queries
 
