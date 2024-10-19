@@ -365,7 +365,53 @@ export class DataViewJSTools {
         return this.dv.pages(this.fromItems).where((p: TPageRecord) => p.role === "rssitem");
     }
 
-    //rssItemsOfContext() : TPageRecord
+    async rssItemsOfContext() {
+        const context = this.dv.current();
+        let from: string | null = null;
+        switch (context.role) {
+            case "rssfeed":
+                from = this.fromItemsOfFeed(context);
+                break;
+            case "rsscollection":
+                from = await this.fromItemsOfCollection(context);
+                break;
+            case "rsstopic":
+                from = this.fromItemsOfTopic(context);
+                break;
+        }
+        return from
+            ? this.dv.pages(from).where((p: TPageRecord) => p.role === "rssitem")
+            : this.dv.array([]);
+    }
+
+    private getPagesOfFolder(path: string, type: string): TPageRecords {
+        const folder = this.settings.app.vault.getFolderByPath(path);
+        if (folder) {
+            const pages = folder.children
+                .filter(fof => fof instanceof TFile)
+                .map(f => this.dv.page(f.path))
+                .filter(f => f.role === type);
+            return this.dv.array(pages);
+        }
+        return this.dv.array([]);
+    }
+
+    /**
+     * Get a list of all RSS feeds.
+     *
+     * @returns RSS feed list
+     */
+    async rssFeeds(): Promise<TPageRecords> {
+        return this.getPagesOfFolder(this.settings.rssFeedFolderPath, "rssfeed");
+    }
+
+    async rssCollections(): Promise<TPageRecords> {
+        return this.dv.pages(this.fromCollections).where((p: TPageRecord) => p.role === "rsscollection");
+    }
+
+    async rssTopics(): Promise<TPageRecords> {
+        return this.dv.pages(this.fromTopics).where((p: TPageRecord) => p.role === "rsstopic");
+    }
 
     private itemReadingTask(item: TPageRecord): TTaskRecord | null {
         const tasks = item.file.tasks.where((t: TTaskRecord) => t.text.startsWith("[["));
