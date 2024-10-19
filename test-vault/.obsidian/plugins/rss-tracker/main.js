@@ -10168,11 +10168,12 @@ and ensure you are accounting for this risk.
                   const allowedWildcardClasses = allowedClassesMap["*"];
                   const allowedSpecificClassesGlob = allowedClassesGlobMap[name];
                   const allowedSpecificClassesRegex = allowedClassesRegexMap[name];
+                  const allowedWildcardClassesRegex = allowedClassesRegexMap["*"];
                   const allowedWildcardClassesGlob = allowedClassesGlobMap["*"];
                   const allowedClassesGlobs = [
                     allowedSpecificClassesGlob,
                     allowedWildcardClassesGlob
-                  ].concat(allowedSpecificClassesRegex).filter(function(t) {
+                  ].concat(allowedSpecificClassesRegex, allowedWildcardClassesRegex).filter(function(t) {
                     return t;
                   });
                   if (allowedSpecificClasses && allowedWildcardClasses) {
@@ -14619,26 +14620,71 @@ var parseJson = (text) => {
   }
 };
 var extractLdSchema_default = (document, entry) => {
-  var _a2;
-  const ldSchema = (_a2 = document.querySelector('script[type="application/ld+json"]')) == null ? void 0 : _a2.textContent;
-  const ldJson = ldSchema ? parseJson(ldSchema) : null;
-  if (ldJson) {
-    Object.entries(attributeLists).forEach(([key, attr]) => {
-      if ((typeof entry[key] === "undefined" || entry[key] === "") && ldJson[attr]) {
-        if (key === "type" && typeof ldJson[attr] === "string") {
-          return entry[key] = typeSchemas.includes(ldJson[attr].toLowerCase()) ? ldJson[attr].toLowerCase() : "";
+  const ldSchemas = document.querySelectorAll('script[type="application/ld+json"]');
+  ldSchemas.forEach((ldSchema) => {
+    var _a2;
+    const ldJson = parseJson(ldSchema.textContent.replace(/[\n\r\t]/g, ""));
+    const isAllowedLdJsonType = typeSchemas.includes((_a2 = ldJson["@type"]) == null ? void 0 : _a2.toLowerCase());
+    if (ldJson && isAllowedLdJsonType) {
+      Object.entries(attributeLists).forEach(([key, attr]) => {
+        const isEntryAlreadyPopulated = typeof entry[key] !== "undefined" && entry[key] !== "";
+        if (isEntryAlreadyPopulated || !ldJson[attr]) {
+          return;
         }
-        if (typeof ldJson[attr] === "string") {
-          return entry[key] = ldJson[attr].toLowerCase();
+        const keyValue = ldJson[attr];
+        if (keyValue) {
+          entry[key] = Array.isArray(keyValue) ? keyValue[0] : keyValue;
+          if (typeof entry[key] === "string") {
+            entry[key] = entry[key].toLowerCase().trim();
+          }
         }
-        if (Array.isArray(ldJson[attr]) && typeof ldJson[attr][0] === "string") {
-          return entry[key] = ldJson[attr][0].toLowerCase();
-        }
-      }
-    });
-  }
+      });
+    }
+  });
   return entry;
 };
+
+// node_modules/@extractus/article-extractor/src/utils/findDate.js
+function convertDateFormat(dateString) {
+  const parts = dateString.split("/");
+  if (parts.length !== 3)
+    return dateString;
+  let year, month, day;
+  if (parseInt(parts[0]) > 12) {
+    [day, month, year] = parts;
+  } else {
+    [month, day, year] = parts;
+  }
+  year = year.length === 2 ? "20" + year : year;
+  return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}T00:00:00`;
+}
+function findDate_default(doc) {
+  const datePatterns = [
+    /\d{4}-\d{2}-\d{2}/,
+    /\d{1,2}\/\d{1,2}\/\d{2,4}/
+  ];
+  const findDate = (element) => {
+    for (const pattern of datePatterns) {
+      const match = element.textContent.match(pattern);
+      if (match)
+        return convertDateFormat(match[0]);
+    }
+    return null;
+  };
+  const priorityElements = doc.querySelectorAll("time, [datetime], [itemprop~=datePublished], [itemprop~=dateCreated]");
+  for (const el of priorityElements) {
+    const date = el.getAttribute("datetime") || el.getAttribute("content") || findDate(el);
+    if (date)
+      return date;
+  }
+  const secondaryElements = doc.querySelectorAll("p, span, div");
+  for (const el of secondaryElements) {
+    const date = findDate(el);
+    if (date)
+      return date;
+  }
+  return null;
+}
 
 // node_modules/@extractus/article-extractor/src/utils/extractMetaData.js
 function getMetaContentByNameOrProperty(node, attributeLists2) {
@@ -14762,6 +14808,9 @@ var extractMetaData_default = (html) => {
     }
   });
   const entries = extractLdSchema_default(doc, entry);
+  if (!entries.published) {
+    entries.published = findDate_default(doc);
+  }
   return entries;
 };
 
@@ -14935,7 +14984,7 @@ var extractFromHtml = async (html, url, parserOptions = {}) => {
 var import_obsidian = require("obsidian");
 function formatImage(image) {
   const { src, width, height } = image;
-  return `![image|400](${src})`;
+  return `![image|float:right|400](${src})`;
 }
 var _HTMLxlate = class {
   constructor() {
@@ -15295,7 +15344,7 @@ var _RSSitemProxy = class extends RSSProxy {
       "{{publishDate}}": frontmatter.published,
       "{{tags}}": frontmatter.tags,
       "{{title}}": title != null ? title : "",
-      "{{image}}": image ? formatImage(image) : `![[${defaultImage}|100x100]]`,
+      "{{image}}": image ? formatImage(image) : `![[${defaultImage}|float:right|100x100]]`,
       "{{description}}": description != null ? description : "",
       "{{content}}": content != null ? content : "",
       "{{feedFileName}}": itemfolder.name
@@ -15331,7 +15380,7 @@ var _RSSfeedProxy = class extends RSSProxy {
       "{{siteUrl}}": frontmatter.site,
       "{{title}}": (0, import_obsidian2.htmlToMarkdown)(title != null ? title : ""),
       "{{description}}": description ? (0, import_obsidian2.htmlToMarkdown)(description) : "",
-      "{{image}}": image ? formatImage(image) : `![[${defaultImage}|100x100]]`
+      "{{image}}": image ? formatImage(image) : `![[${defaultImage}|float:right|100x100]]`
     };
     const filemgr = plugin.filemgr, dashboard = await filemgr.createFile(plugin.settings.rssFeedFolderPath, feed.fileName, "RSS Feed", dataMap, true), proxy = new _RSSfeedProxy(plugin, dashboard, frontmatter);
     try {
@@ -16082,95 +16131,75 @@ var ToggleRSSfeedActiveStatusMenuItem = class extends RSSTrackerMenuItem {
 
 // src/DataViewJSTools.ts
 var import_obsidian7 = require("obsidian");
-var FeedToCollectionMap = class {
+var PageProxyHandler = class {
   /**
-   * Get all collections the given feed is a member of.
-   * @returns a list of collections.
-   */
-  rssFeedToCollections(feed) {
-    var _a2;
-    return (_a2 = this.map.get(feed.file.path)) != null ? _a2 : [];
-  }
-  constructor(map) {
-    this.map = map;
-  }
-  /**
+   * Convert a tag to a hashtag.
    *
-   * @param dvjs Factory method to build a map of RSS feeds to RSS Collections
-   * where they are a member of.
-   * @returns a fully initialized instance of this class.
+   * @param tag a tag
+   * @return a hashtag
    */
-  static async initialize(dvjs) {
-    const map = /* @__PURE__ */ new Map();
-    const collections = await dvjs.rssDashboards("rsscollection");
-    for (const collection of collections) {
-      const feeds = await dvjs.rssFeeds(collection);
-      for (const feed of feeds) {
-        const key = feed.file.path;
-        let clist = map.get(key);
-        if (clist === void 0) {
-          this, map.set(key, [collection]);
-        } else {
-          clist.push(collection);
+  static toHashtag(tag) {
+    return tag.startsWith("#") ? tag : "#" + tag;
+  }
+  get(target, p) {
+    var _a2, _b, _c;
+    const name = p.toString();
+    switch (name) {
+      case "ID":
+        return target.file.link;
+      case "tags":
+        return target.file.etags.map((t) => PageProxyHandler.toHashtag(t));
+      case "allof":
+        const allof = target.allof;
+        return Array.isArray(allof) ? allof.map((t) => PageProxyHandler.toHashtag(t)) : allof ? [PageProxyHandler.toHashtag(allof)] : [];
+      case "noneof":
+        const noneof = target.noneof;
+        return Array.isArray(noneof) ? noneof.map((t) => PageProxyHandler.toHashtag(t)) : noneof ? [PageProxyHandler.toHashtag(noneof)] : [];
+      case "collections":
+        return (_b = (_a2 = this.feedsToCollections) == null ? void 0 : _a2.get(target.file.path)) == null ? void 0 : _b.map((f) => f.file.link);
+    }
+    return (_c = target[name]) != null ? _c : target.file[name];
+  }
+  async initializeCollectionMap(dvjs) {
+    if (!this.feedsToCollections) {
+      this.feedsToCollections = /* @__PURE__ */ new Map();
+      const dv = dvjs.dv, collections = await dvjs.rssCollections();
+      for (const collection of collections) {
+        const feeds = await dvjs.rssFeedsOfContext(collection);
+        for (const feed of feeds) {
+          let cList = this.feedsToCollections.get(feed.file.path);
+          if (!cList) {
+            cList = [];
+            this.feedsToCollections.set(feed.file.path, cList);
+          }
+          cList.push(collection);
         }
       }
     }
-    return new FeedToCollectionMap(map);
   }
 };
 var DataViewJSTools = class {
-  /**
-   * Turn a tag or category into a hashtag.
-   *
-   * **Note**: The tag or category **must not contain whitespaces**-
-   * @param tag - a Tag or category
-   * @returns A hashtag with a `#` prefix.
-   */
-  static hashtag(tag) {
-    return tag.startsWith("#") ? tag : "#" + tag;
-  }
-  /**
-   * Get the list of hashtags from a page (frontmatter nad content)
-   * @param pageRecord The page record object.
-   * @returns hashtag list
-   */
-  static hashtags(pageRecord) {
-    return pageRecord.file.etags.map((t) => DataViewJSTools.hashtag(t));
-  }
   constructor(dv, settings) {
+    /**
+     * Handler for the `Proxy<TPageRecord>` proxy.
+     */
+    this.proxyHandler = new PageProxyHandler();
     this.dv = dv;
     this.settings = settings;
   }
+  //#region Dataview queries
   /**
-   * Get a space separated list of hashtags from a page,
+   * Generate a dataview FROM expressing to get pages matching a tag filter.
    *
-   * This function is typically used in `TRowBuilder` functions.
-   * @param pageRecord - Page object
-   * @returns Space separated tagline.
-   */
-  hashtagLine(pageRecord) {
-    return DataViewJSTools.hashtags(pageRecord).join(" ");
-  }
-  fileLink(fileRecord) {
-    return this.dv.fileLink(fileRecord.file.path);
-  }
-  fileLinks(fileRecords) {
-    return fileRecords.map((rec) => this.fileLink(rec)).join(", ");
-  }
-  ////////////////////////
-  /**
-   * Generate a dataview FROM expressing using 3 tag lists defined in the frontmatter of a page.
-   *
-   * The required frontmatter tag list property names are:
+   * The required frontmatter tag list properties:
    * - `tags`: pages with any of these tags are included
    * - `allof`: pages must have all of these tags to be included
    * - `noneof` - paged with any of these tags are excluded
-   * @param pageRecord - A page defining 3 tag lists
+   * @param page - A page defining 3 tag lists
    * @returns A FROM expression suitable for `dv.pages`.
    */
-  fromTags(pageRecord) {
-    var _a2, _b, _c, _d, _e, _f;
-    const anyTags = (_b = (_a2 = pageRecord.file.etags) == null ? void 0 : _a2.map((t) => DataViewJSTools.hashtag(t))) != null ? _b : [], allTags = (_d = (_c = pageRecord == null ? void 0 : pageRecord.allof) == null ? void 0 : _c.map((t) => DataViewJSTools.hashtag(t))) != null ? _d : [], noneTags = (_f = (_e = pageRecord == null ? void 0 : pageRecord.noneof) == null ? void 0 : _e.map((t) => DataViewJSTools.hashtag(t))) != null ? _f : [];
+  fromTags(page) {
+    const proxy = new Proxy(page, this.proxyHandler), anyTags = proxy.tags, allTags = proxy.allof, noneTags = proxy.noneof;
     let from = [
       anyTags.length > 0 ? "( " + anyTags.join(" OR ") + " )" : null,
       allTags.length > 0 ? allTags.join(" AND ") : null,
@@ -16178,40 +16207,101 @@ var DataViewJSTools = class {
     ].filter((expr) => expr);
     return from.length > 0 ? from.join(" AND ") : "#nil";
   }
+  get fromItems() {
+    return `"${this.settings.rssFeedFolderPath}"`;
+  }
+  /**
+   * Generate a dataview FROM expressing to get all items of an RSS feed.
+   * @param feed Ths RSS feed to get the items from.
+   * @returns A FROM expression suitable for `dv.pages`.
+   */
   fromItemsOfFeed(feed) {
     return "[[" + feed.file.path + "]]";
   }
-  get fromFeedsFolderFiles() {
+  fromItemsOfTopic(topic) {
+    return this.fromItems + " AND " + this.fromTags(topic);
+  }
+  async fromItemsOfCollection(collection) {
+    const feeds = await this.rssFeedsOfContext(collection), feedFolderPath = this.settings.rssFeedFolderPath;
+    return feeds.file.map((f) => `"${feedFolderPath}/${f.name}"`).join(" OR ");
+  }
+  get fromFeeds() {
     const settings = this.settings, feedsFolder = settings.app.vault.getFolderByPath(settings.rssFeedFolderPath);
     if (feedsFolder) {
-      return feedsFolder.children.filter((fof) => fof instanceof import_obsidian7.TFile).map((f) => '"' + f.path + '"').join(" OR ");
-    } else {
-      return '"' + this.settings.rssFeedFolderPath + '"';
+      const feeds = this.rssFeeds().map((f) => '"' + f.file.path + '"');
+      return feeds.length > 1 ? "(" + feeds.join(" OR ") + ")" : feeds.join(" OR ");
     }
+    return '"undefined"';
   }
-  get fromFeedsFolder() {
-    return '"' + this.settings.rssFeedFolderPath + '"';
+  fromFeedsOfCollection(collection) {
+    return this.fromFeeds + " AND " + this.fromTags(collection);
   }
-  // obtaining lists of rss related markdown files
+  get fromCollections() {
+    return `"${this.settings.rssCollectionsFolderPath}"`;
+  }
+  get fromTopics() {
+    return `"${this.settings.rssTopicsFolderPath}"`;
+  }
+  //#endregion Dataview queries
+  //#region Item lists
   /**
-   * Get RSS feeds matching an optional selection criterion.
-   * @param dashboard A dashboard file specifying 'tags', 'allof', and `noneof` tag list properties in its frontmatter.
-   *                  If omitted all feeds are returnd.
-   * @returns List of all RSS feeds matching the optional selector.
+   * Get a list of all RSS items.
+   *
+   * @returns RSS item list
    */
-  async rssFeeds(dashboard) {
-    const from = dashboard ? "(" + this.fromFeedsFolderFiles + ") AND " + this.fromTags(dashboard) : this.fromFeedsFolderFiles, feeds = await this.dv.pages(from);
-    return feeds.where((f) => f.role === "rssfeed").sort((rec) => rec.file.name, "asc");
+  async rssItems() {
+    return this.dv.pages(this.fromItems).where((p) => p.role === "rssitem");
+  }
+  async rssItemsOfContext(context) {
+    const ctx = context != null ? context : this.dv.current();
+    let from = null;
+    switch (ctx.role) {
+      case "rssfeed":
+        from = this.fromItemsOfFeed(ctx);
+        break;
+      case "rsscollection":
+        from = await this.fromItemsOfCollection(ctx);
+        break;
+      case "rsstopic":
+        from = this.fromItemsOfTopic(ctx);
+        break;
+    }
+    return from ? this.dv.pages(from).where((p) => p.role === "rssitem") : this.dv.array([]);
+  }
+  //#endregion Item lists
+  //#region Feed lists
+  getPagesOfFolder(path2, type) {
+    const folder = this.settings.app.vault.getFolderByPath(path2);
+    if (folder) {
+      const pages = folder.children.filter((fof) => fof instanceof import_obsidian7.TFile).map((f) => this.dv.page(f.path)).filter((f) => f.role === type);
+      return this.dv.array(pages);
+    }
+    return this.dv.array([]);
   }
   /**
-   * Get RSS items matching an optional selection criterion.
-   * @param page A page specifying 'tags', 'allof', and `noneof` tag list properties in its frontmatter.
-   *                  If omitted all items across all feeds are returnd.
-   * @returns List of all RSS items across all RSS feeds matching the optional dashboard selector.
+   * Get a list of all RSS feeds.
+   *
+   * @returns RSS feed list
    */
-  async rssItems(page) {
-    const from = this.fromFeedsFolder + (page ? " AND " + this.fromTags(page) : ""), pages = await this.dv.pages(from);
-    return pages.where((rec) => rec.role === "rssitem").sort((rec) => rec.published, "desc");
+  rssFeeds() {
+    return this.getPagesOfFolder(this.settings.rssFeedFolderPath, "rssfeed");
+  }
+  async rssFeedsOfContext(context) {
+    const ctx = context != null ? context : this.dv.current();
+    let from = null;
+    switch (ctx.role) {
+      case "rsscollection":
+        from = this.fromFeedsOfCollection(ctx);
+        break;
+    }
+    return from ? this.dv.pages(from).where((p) => p.role === "rssfeed") : this.dv.array([]);
+  }
+  //#endregion Feed lists
+  async rssCollections() {
+    return this.dv.pages(this.fromCollections).where((p) => p.role === "rsscollection");
+  }
+  async rssTopics() {
+    return this.dv.pages(this.fromTopics).where((p) => p.role === "rsstopic");
   }
   itemReadingTask(item) {
     const tasks = item.file.tasks.where((t) => t.text.startsWith("[["));
@@ -16234,7 +16324,7 @@ var DataViewJSTools = class {
    */
   async rssDuplicateItems(item) {
     const link = item.link, path2 = item.file.path, pages = await this.rssItems();
-    return pages.where((rec) => rec.link === link && rec.file.path !== path2);
+    return pages.where((rec) => rec.role === "rssitem" && rec.link === link && rec.file.path !== path2);
   }
   /**
    * get a task list for items which refer to the same article.
@@ -16242,45 +16332,23 @@ var DataViewJSTools = class {
    * @returns List of reading tasks of the duplicate items
    */
   async rssDuplicateItemsTasks(item) {
-    const duplicates = await this.rssDuplicateItems(item);
+    const proxy = new Proxy(item, this.proxyHandler), duplicates = await this.rssDuplicateItems(item);
     return duplicates.map((rec) => {
       const feed = rec.feed, pinned = rec.pinned ? " \u{1F4CD} " : " \u{1F4CC} ", task = this.itemReadingTask(rec);
       if (task) {
-        task.visual = this.fileLink(rec) + pinned + "**\u2208** " + feed;
+        task.visual = proxy.link + pinned + "**\u2208** " + feed;
       } else {
         return null;
       }
       return task;
     }).where((t) => t);
   }
-  async rssDashboards(role) {
-    let dashboardFolderPath = this.settings.rssHome;
-    switch (role) {
-      case "rsscollection":
-        dashboardFolderPath = this.settings.rssCollectionsFolderPath;
-        break;
-      case "rsstopic":
-        dashboardFolderPath = this.settings.rssTopicsFolderPath;
-    }
-    const from = '"' + dashboardFolderPath + '"', collections = await this.dv.pages(from);
-    return collections.where((itm) => itm.role === role).sort((rec) => rec.file.name, "asc");
-  }
-  async mapFeedsToCollections() {
-    return FeedToCollectionMap.initialize(this);
-  }
-  async rssItemsOfFeed(feed) {
-    const pages = await this.dv.pages(this.fromItemsOfFeed(feed));
-    return pages.where((rec) => rec.role === "rssitem").sort((rec) => rec.published, "desc");
-  }
-  ///////
   /**
    * Create a dataview task list consisting of rss items already read or still to read.
    *
    * @param items - List of rss item page records
    * @param read - `true` to create a list or items read, `false` to create a list of items to read.
    * @param header - Optional header text for the list
-   * @see this.rssItemPagesOfFeed
-   * @see this.rssItemPages
    * @returns number of items in the list
    */
   readingList(items, read, header) {
@@ -16296,31 +16364,177 @@ var DataViewJSTools = class {
   async groupedReadingList(feeds, read = false) {
     let totalTaskCount = 0;
     for (const feed of feeds) {
-      const items = await this.rssItemsOfFeed(feed);
-      totalTaskCount += this.readingList(items, read, this.fileLink(feed));
+      const proxy = new Proxy(feed, this.proxyHandler), items = await this.rssItemsOfContext(feed);
+      totalTaskCount += this.readingList(items, read, proxy.link);
     }
     return totalTaskCount;
   }
-  rssTable(pages, columnLabels, rowBuilder, header) {
-    const pageCount = pages.length;
-    if (pageCount > 0) {
-      if (header) {
-        this.dv.header(2, header + " (" + pageCount + ")");
+  //////////////////////////////////////// Next GEN API
+  /**
+   * Get Options for dataviewJS RSS tools from the plugin settings.
+   *
+   * @param key option key
+   * @returns Options object for that key.
+   */
+  getOptions(key) {
+    let options;
+    switch (key) {
+      case "rss_item_header":
+        options = {
+          showDuplicates: true,
+          showTags: true
+        };
+        break;
+      case "rss_feed_items":
+        return {
+          type: "rssitem",
+          layout: {
+            ID: "Item",
+            tags: "Tags",
+            published: "Published"
+          },
+          sortBy: "name",
+          sortOrder: "asc"
+        };
+      case "rss_context_items":
+        return {
+          type: "rssitem",
+          layout: {
+            ID: "Item",
+            tags: "Tags",
+            feed: "Feed",
+            published: "Published"
+          },
+          sortBy: "name",
+          sortOrder: "asc"
+        };
+      case "rss_context_feeds":
+        return {
+          type: "rssfeed",
+          layout: {
+            ID: "Item",
+            status: "Status",
+            tags: "Tags",
+            updated: "Updated"
+          },
+          sortBy: "updated",
+          sortOrder: "desc"
+        };
+      case "rss_dashboard_feeds":
+        return {
+          type: "rssfeed",
+          layout: {
+            ID: "Item",
+            status: "Status",
+            tags: "Tags",
+            collections: "Collections",
+            updated: "Updated"
+          },
+          sortBy: "name",
+          sortOrder: "desc"
+        };
+      case "rss_topics":
+        return {
+          type: "rsstopic",
+          layout: {
+            ID: "Topic",
+            headline: "Headline"
+          },
+          sortBy: "name",
+          sortOrder: "desc"
+        };
+      case "rss_collections":
+        return {
+          type: "rsscollection",
+          layout: {
+            ID: "Collection",
+            headline: "Headline"
+          },
+          sortBy: "name",
+          sortOrder: "desc"
+        };
+      default:
+        options = {};
+        break;
+    }
+    return options;
+  }
+  async rssItemHeader(item, options) {
+    const opts = options != null ? options : this.getOptions("rss_item_header");
+    if (opts.showDuplicates) {
+      const tasks = await this.rssDuplicateItemsTasks(item);
+      if (tasks.length > 0) {
+        this.dv.header(1, "\u26A0 Other RSS items are also referring to the same article");
+        this.dv.taskList(tasks, false);
       }
+    }
+    if (opts.showTags) {
+      const proxy = new Proxy(item, this.proxyHandler);
+      const tags = proxy.tags.join(" ");
+      if (tags) {
+        this.dv.span(tags);
+      }
+    }
+  }
+  row(page, propertyNames) {
+    const proxy = new Proxy(page, this.proxyHandler);
+    return propertyNames.map((n) => {
+      const value = proxy[n];
+      return Array.isArray(value) ? value.map((v) => v.toString()).join(" ") : value;
+    });
+  }
+  /**
+   * Displays a configurable table of RSS related pages of the same type.
+   *
+   * The pages are tyically obtained by a call to `dv.pages(frmm)`.
+   *
+   * @param pages the se
+   * @param options table options {@link getOptions}
+   * @example
+   * A list all pinned rss items using the `rss_pinned_feed_item` configuration:
+   *
+   * ```js
+   * ~~~dataviewjs
+   * const
+   *     dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+   *     pages = await dv.pages(dvjs.fromItemsOf(dv.current));
+   * dvjs.rssPageTable(
+   *     pages.where(it => it.pinned === true),
+   *     dvjs.getOptions("rss_pinned_feed_items"));
+   * ~~~
+   * ```
+   */
+  async rssTable(pages, options) {
+    if (pages.length === 0) {
+      this.dv.paragraph("\u26D4");
+      return;
+    }
+    const layout = options.layout, columns = Object.keys(options.layout), columnLabels = columns.map((name) => layout[name]);
+    if (columns.includes("collections")) {
+      await this.proxyHandler.initializeCollectionMap(this);
+    }
+    const sortedPages = pages.where((p) => p.role === options.type).sort((p) => {
+      const proxy = new Proxy(p, this.proxyHandler);
+      return proxy[options.sortBy];
+    }, options.sortOrder);
+    if (options.groupBy) {
+      const groupBy = options.groupBy, groups = pages.groupBy((p) => {
+        const proxy = new Proxy(p, this.proxyHandler);
+        return proxy[groupBy];
+      });
+      groups.forEach((group) => {
+        this.dv.header(2, group.key + " (" + group.rows.length + ")");
+        this.dv.table(
+          columnLabels,
+          group.rows.map((p) => this.row(p, columns))
+        );
+      });
+    } else {
       this.dv.table(
         columnLabels,
-        pages.map((rec) => rowBuilder(rec))
+        sortedPages.map((p) => this.row(p, columns))
       );
     }
-    return pageCount;
-  }
-  async groupedRssItemTable(feeds, predicate, columnLabels, rowBuilder) {
-    let totalItemCount = 0;
-    for (const feed of feeds) {
-      const items = (await this.rssItemsOfFeed(feed)).where((item) => predicate(item));
-      totalItemCount += this.rssTable(items, columnLabels, rowBuilder, this.fileLink(feed));
-    }
-    return totalItemCount;
   }
 };
 
