@@ -481,7 +481,6 @@ export class DataViewJSTools {
                 break;
             case "rss_feed_items":
                 return {
-                    type: "rssitem",
                     layout: {
                         ID: "Item",
                         tags: "Tags",
@@ -492,7 +491,7 @@ export class DataViewJSTools {
                 };
             case "rss_context_items":
                 return {
-                    type: "rssitem",
+
                     layout: {
                         ID: "Item",
                         tags: "Tags",
@@ -504,7 +503,6 @@ export class DataViewJSTools {
                 };
             case "rss_context_feeds":
                 return {
-                    type: "rssfeed",
                     layout: {
                         ID: "Item",
                         status: "Status",
@@ -516,7 +514,6 @@ export class DataViewJSTools {
                 };
             case "rss_dashboard_feeds":
                 return {
-                    type: "rssfeed",
                     layout: {
                         ID: "Item",
                         status: "Status",
@@ -529,7 +526,6 @@ export class DataViewJSTools {
                 };
             case "rss_topics":
                 return {
-                    type: "rsstopic",
                     layout: {
                         ID: "Topic",
                         headline: "Headline"
@@ -539,7 +535,6 @@ export class DataViewJSTools {
                 };
             case "rss_collections":
                 return {
-                    type: "rsscollection",
                     layout: {
                         ID: "Collection",
                         headline: "Headline"
@@ -618,7 +613,6 @@ export class DataViewJSTools {
         }
 
         const sortedPages = pages
-            .where((p: TPageRecord) => p.role === options.type)
             .sort((p: TPageRecord) => {
                 const proxy = new Proxy<TPageRecord>(p, this.proxyHandler);
                 return proxy[options.sortBy];

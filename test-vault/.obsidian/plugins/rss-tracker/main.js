@@ -16336,7 +16336,7 @@ var DataViewJSTools = class {
     return duplicates.map((rec) => {
       const feed = rec.feed, pinned = rec.pinned ? " \u{1F4CD} " : " \u{1F4CC} ", task = this.itemReadingTask(rec);
       if (task) {
-        task.visual = proxy.link + pinned + "**\u2208** " + feed;
+        task.visual = proxy.file.link + pinned + "**\u2208** " + feed;
       } else {
         return null;
       }
@@ -16387,7 +16387,6 @@ var DataViewJSTools = class {
         break;
       case "rss_feed_items":
         return {
-          type: "rssitem",
           layout: {
             ID: "Item",
             tags: "Tags",
@@ -16398,7 +16397,6 @@ var DataViewJSTools = class {
         };
       case "rss_context_items":
         return {
-          type: "rssitem",
           layout: {
             ID: "Item",
             tags: "Tags",
@@ -16410,7 +16408,6 @@ var DataViewJSTools = class {
         };
       case "rss_context_feeds":
         return {
-          type: "rssfeed",
           layout: {
             ID: "Item",
             status: "Status",
@@ -16422,7 +16419,6 @@ var DataViewJSTools = class {
         };
       case "rss_dashboard_feeds":
         return {
-          type: "rssfeed",
           layout: {
             ID: "Item",
             status: "Status",
@@ -16435,7 +16431,6 @@ var DataViewJSTools = class {
         };
       case "rss_topics":
         return {
-          type: "rsstopic",
           layout: {
             ID: "Topic",
             headline: "Headline"
@@ -16445,7 +16440,6 @@ var DataViewJSTools = class {
         };
       case "rss_collections":
         return {
-          type: "rsscollection",
           layout: {
             ID: "Collection",
             headline: "Headline"
@@ -16513,7 +16507,7 @@ var DataViewJSTools = class {
     if (columns.includes("collections")) {
       await this.proxyHandler.initializeCollectionMap(this);
     }
-    const sortedPages = pages.where((p) => p.role === options.type).sort((p) => {
+    const sortedPages = pages.sort((p) => {
       const proxy = new Proxy(p, this.proxyHandler);
       return proxy[options.sortBy];
     }, options.sortOrder);
