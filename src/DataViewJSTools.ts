@@ -382,6 +382,7 @@ export class DataViewJSTools {
      */
     rssReadingTasks(items: TPageRecords, read?: boolean): TTaskRecords {
         return items
+            .sort((i: TPageRecord) => i.published, "desc")
             .map((item: TPageRecord) => this.itemReadingTask(item))
             .where((t: TTaskRecord | null) => t && (read === undefined || t.completed === read));
     }
