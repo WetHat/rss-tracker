@@ -177,9 +177,9 @@ class PageProxyHandler implements ProxyHandler<TPageRecord> {
             this.feedsToCollections = new Map<string, TPageRecord[]>();
             const
                 dv = dvjs.dv,
-                collections = await dv.pages(dvjs.fromCollections).where((p: TPageRecord) => p.role === "rsscollection");
+                collections = await dvjs.rssCollections();
             for (const collection of collections) {
-                const feeds: TPageRecords = await dv.pages(dvjs.fromFeedsOf(collection)).where((p: TPageRecord) => p.role === "rssfeed");
+                const feeds: TPageRecords = await dvjs.rssFeedsOfContext(collection);
                 for (const feed of feeds) {
                     let cList = this.feedsToCollections.get(feed.file.path);
                     if (!cList) {
@@ -243,46 +243,7 @@ export class DataViewJSTools {
         return from.length > 0 ? from.join(" AND ") : "#nil";
     }
 
-    /**
-     * Get a dataview query expression to get RSS items for a context.
-     *
-     * Inspects the context page to figure out which RSS items it refers to
-     * and creates an expression suitable for `dv.pages(from)`.
-     *
-     * **Note**: The expression does not guarantee that all items returned
-     * from `dv.pages(from)` have the correct type.
-     *
-     * @param context An optional RSS feed or RSS collection page. If omitted
-     *                all RSS items are returned.
-     * @returns A `FROM` expression suitable for `dv.pages(from)`.
-     */
-    async fromItemsOf(context?: TPageRecord): Promise<string> {
-        let from: string;
-        if (context) {
-            switch (context.role) {
-                case "rssfeed":
-                    from = this.fromItemsOfFeed(context);
-                    break;
-                case "rsscollection":
-                    from = await this.fromItemsOfCollection(context);
-                    break;
-                case "rsstopic":
-                    from = this.fromItemsOfTopic(context);
-                    break;
-                default:
-                    from = this.fromItems;
-                    break;
-            }
-            if (!from) {
-                from = '"undefined"';
-            }
-        } else {
-            from = this.fromItems;
-        }
-        return from;
-    }
-
-    get fromItems(): string {
+    private get fromItems(): string {
         return `"${this.settings.rssFeedFolderPath}"`;
     }
 
@@ -301,7 +262,7 @@ export class DataViewJSTools {
 
     private async fromItemsOfCollection(collection: TPageRecord): Promise<string> {
         const
-            feeds: TPageRecords = await this.dv.pages(this.fromFeedsOf(collection)),
+            feeds: TPageRecords = await this.rssFeedsOfContext(collection),
             feedFolderPath = this.settings.rssFeedFolderPath;
         return feeds.file.map((f: TPropertyBag) => `"${feedFolderPath}/${f.name}"`).join(" OR ");
     }
@@ -311,36 +272,12 @@ export class DataViewJSTools {
             settings = this.settings,
             feedsFolder = settings.app.vault.getFolderByPath(settings.rssFeedFolderPath);
         if (feedsFolder) {
-            const feeds = feedsFolder.children
-                .filter(fof => {
-                    if (fof instanceof TFile) {
-                        const frontmatter = this.settings.app.metadataCache.getFileCache(fof)?.frontmatter;
-                        return frontmatter?.role === "rssfeed";
-                    }
-                    return false;
-                })
-                .map(f => '"' + f.path + '"');
+            const feeds = this.rssFeeds().map((f: TPageRecord) => '"' + f.file.path + '"');
             return feeds.length > 1
                 ? "(" + feeds.join(" OR ") + ")"
                 : feeds.join(" OR ");
         }
         return '"undefined"';
-    }
-
-    fromFeedsOf(context?: TPageRecord): string {
-        let from = "";
-        if (context) {
-            switch (context.role) {
-                case "rsscollection":
-                    from = this.fromFeedsOfCollection(context);
-                    break;
-                default:
-                    from = this.fromFeeds;
-            }
-        } else {
-            from = this.fromFeeds;
-        }
-        return from;
     }
 
     private fromFeedsOfCollection(collection: TPageRecord): string {
@@ -356,6 +293,7 @@ export class DataViewJSTools {
     }
     //#endregion Dataview queries
 
+    //#region Item lists
     /**
      * Get a list of all RSS items.
      *
@@ -365,25 +303,27 @@ export class DataViewJSTools {
         return this.dv.pages(this.fromItems).where((p: TPageRecord) => p.role === "rssitem");
     }
 
-    async rssItemsOfContext() {
-        const context = this.dv.current();
+    async rssItemsOfContext(context?: TPageRecord): Promise<TPageRecords> {
+        const ctx = context ?? this.dv.current();
         let from: string | null = null;
-        switch (context.role) {
+        switch (ctx.role) {
             case "rssfeed":
-                from = this.fromItemsOfFeed(context);
+                from = this.fromItemsOfFeed(ctx);
                 break;
             case "rsscollection":
-                from = await this.fromItemsOfCollection(context);
+                from = await this.fromItemsOfCollection(ctx);
                 break;
             case "rsstopic":
-                from = this.fromItemsOfTopic(context);
+                from = this.fromItemsOfTopic(ctx);
                 break;
         }
         return from
             ? this.dv.pages(from).where((p: TPageRecord) => p.role === "rssitem")
             : this.dv.array([]);
     }
+    //#endregion Item lists
 
+    //#region Feed lists
     private getPagesOfFolder(path: string, type: string): TPageRecords {
         const folder = this.settings.app.vault.getFolderByPath(path);
         if (folder) {
@@ -401,9 +341,24 @@ export class DataViewJSTools {
      *
      * @returns RSS feed list
      */
-    async rssFeeds(): Promise<TPageRecords> {
+    rssFeeds(): TPageRecords {
         return this.getPagesOfFolder(this.settings.rssFeedFolderPath, "rssfeed");
     }
+
+    async rssFeedsOfContext(context?: TPageRecord): Promise<TPageRecords> {
+        const ctx = context ?? this.dv.current();
+        let from: string | null = null;
+        switch (ctx.role) {
+            case "rsscollection":
+                from = this.fromFeedsOfCollection(ctx);
+                break;
+        }
+        return from
+            ? this.dv.pages(from).where((p: TPageRecord) => p.role === "rssfeed")
+            : this.dv.array([]);
+
+    }
+    //#endregion Feed lists
 
     async rssCollections(): Promise<TPageRecords> {
         return this.dv.pages(this.fromCollections).where((p: TPageRecord) => p.role === "rsscollection");
@@ -499,7 +454,7 @@ export class DataViewJSTools {
         for (const feed of feeds) {
             const
                 proxy = new Proxy<TPageRecord>(feed, this.proxyHandler),
-                items = await this.dv.pages(await this.fromItemsOf(feed));
+                items = await this.rssItemsOfContext(feed);
             totalTaskCount += this.readingList(items, read, proxy.link);
         }
         return totalTaskCount;
