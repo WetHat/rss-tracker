@@ -1,6 +1,6 @@
 import { TPropertyBag } from './FeedAssembler';
 import { RSSTrackerSettings } from './settings';
-import { TFile, Plugin } from 'obsidian';
+import { TFile } from 'obsidian';
 
 /**
  * Sort order specification for page records.
@@ -357,9 +357,9 @@ export class DataViewJSTools {
     //#endregion Dataview queries
 
     /**
-     * Get a list of all rss items.
+     * Get a list of all RSS items.
      *
-     * @returns
+     * @returns RSS item list
      */
     async rssItems(): Promise<TPageRecords> {
         return this.dv.pages(this.fromItems).where((p: TPageRecord) => p.role === "rssitem");
@@ -394,7 +394,7 @@ export class DataViewJSTools {
         const
             link = item.link,
             path = item.file.path,
-            pages = await this.dv.pages(this.fromItems);
+            pages = await this.rssItems();
         return pages.where((rec: TPageRecord) => rec.role === "rssitem" && rec.link === link && rec.file.path !== path);
     }
 
@@ -403,7 +403,7 @@ export class DataViewJSTools {
      * @param item RSS item to get the duplicates of
      * @returns List of reading tasks of the duplicate items
      */
-    async rssDuplicateItemsTasks(item: TPageRecord): Promise<TTaskRecords> {
+    private async rssDuplicateItemsTasks(item: TPageRecord): Promise<TTaskRecords> {
         const
             proxy = new Proxy<TPageRecord>(item, this.proxyHandler),
             duplicates = await this.rssDuplicateItems(item);
@@ -522,6 +522,26 @@ export class DataViewJSTools {
                         tags: "Tags",
                         collections: "Collections",
                         updated: "Updated",
+                    },
+                    sortBy: "name",
+                    sortOrder: "desc"
+                };
+            case "rss_topics":
+                return {
+                    type: "rsstopic",
+                    layout: {
+                        ID: "Topic",
+                        headline: "Headline"
+                    },
+                    sortBy: "name",
+                    sortOrder: "desc"
+                };
+            case "rss_collections":
+                return {
+                    type: "rsscollection",
+                    layout: {
+                        ID: "Collection",
+                        headline: "Headline"
                     },
                     sortBy: "name",
                     sortOrder: "desc"

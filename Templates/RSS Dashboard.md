@@ -3,8 +3,7 @@ type: rssdashboard
 tags: []
 ---
 > [!abstract]  [headline:: RSS feed Dashboard]
-> - [ ] Describe the purpose of this dashboard.
-> - [ ] add an image
+> ![[RSSdefaultImage.svg|float:right|100x100]] See all your subscribed and curated content at a glance.
 
 # Feed Status 💔
 
@@ -23,18 +22,10 @@ dvjs.rssTable(
 ~~~dataviewjs
 const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	collections = await dvjs.rssDashboards("rsscollection");
+	pages = await dvjs.rssCollections();
 dvjs.rssTable(
-	collections,
-	[
-		"Collection",
-		"Headline"
-	],
-	c =>
-	[
-		dvjs.fileLink(c),
-		c.headline
-	]
+	pages,
+	dvjs.getOptions("rss_collections")
 );
 ~~~
 
@@ -43,18 +34,10 @@ dvjs.rssTable(
 ~~~dataviewjs
 const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	collections = await dvjs.rssDashboards("rsstopic");
+	pages = await dvjs.rssTopics();
 dvjs.rssTable(
-	collections,
-	[
-		"Topic",
-		"Headline",
-	],
-	c =>
-	[
-		dvjs.fileLink(c),
-		c.headline
-	]
+	pages,
+	dvjs.getOptions("rss_topics")
 );
 ~~~
 
