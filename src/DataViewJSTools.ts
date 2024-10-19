@@ -415,7 +415,7 @@ export class DataViewJSTools {
                     pinned = rec.pinned ? " 📍 " : " 📌 ",
                     task = this.itemReadingTask(rec);
                 if (task) {
-                    task.visual = proxy.link
+                    task.visual = proxy.file.link
                         + pinned
                         + "**∈** "
                         + feed;
