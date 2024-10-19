@@ -230,7 +230,7 @@ export class DataViewJSTools {
      */
     fromTags(page: TPageRecord): string {
         const
-            proxy = new Proxy<TPageRecord>(page,this.proxyHandler),
+            proxy = new Proxy<TPageRecord>(page, this.proxyHandler),
             anyTags: string[] = proxy.tags,
             allTags: string[] = proxy.allof,
             noneTags: string[] = proxy.noneof;
@@ -356,6 +356,17 @@ export class DataViewJSTools {
     }
     //#endregion Dataview queries
 
+    /**
+     * Get a list of all rss items.
+     *
+     * @returns
+     */
+    async rssItems(): Promise<TPageRecords> {
+        return this.dv.pages(this.fromItems).where((p: TPageRecord) => p.role === "rssitem");
+    }
+
+    //rssItemsOfContext() : TPageRecord
+
     private itemReadingTask(item: TPageRecord): TTaskRecord | null {
         const tasks = item.file.tasks.where((t: TTaskRecord) => t.text.startsWith("[["));
         return tasks.length > 0 ? tasks[0] : null;
@@ -421,8 +432,6 @@ export class DataViewJSTools {
      * @param items - List of rss item page records
      * @param read - `true` to create a list or items read, `false` to create a list of items to read.
      * @param header - Optional header text for the list
-     * @see this.rssItemPagesOfFeed
-     * @see this.rssItemPages
      * @returns number of items in the list
      */
     readingList(items: TPageRecords, read: boolean, header?: string): number {
@@ -504,19 +513,19 @@ export class DataViewJSTools {
                     sortBy: "updated",
                     sortOrder: "desc"
                 };
-                case "rss_dashboard_feeds":
-                    return {
-                        type: "rssfeed",
-                        layout: {
-                            ID: "Item",
-                            status: "Status",
-                            tags: "Tags",
-                            collections: "Collections",
-                            updated: "Updated",
-                        },
-                        sortBy: "name",
-                        sortOrder: "desc"
-                    };
+            case "rss_dashboard_feeds":
+                return {
+                    type: "rssfeed",
+                    layout: {
+                        ID: "Item",
+                        status: "Status",
+                        tags: "Tags",
+                        collections: "Collections",
+                        updated: "Updated",
+                    },
+                    sortBy: "name",
+                    sortOrder: "desc"
+                };
             default:
                 options = {};
                 break;
@@ -549,7 +558,7 @@ export class DataViewJSTools {
             return Array.isArray(value)
                 ? value.map(v => v.toString()).join(" ")
                 : value;
-            });
+        });
     }
 
     /**

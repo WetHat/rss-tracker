@@ -63,22 +63,9 @@ dvjs.rssTable(
 ~~~dataviewjs
 const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	items = await dvjs.rssItems();
-if (dvjs.rssTable(
-	items.where(rec => rec.pinned === true),
-	[
-		"Item",
-		"Tags",
-		"Feed",
-		"Published"
-	],
-	f =>
-	[
-		dvjs.fileLink(f),
-		dvjs.hashtagLine(f),
-		f.feed,
-		f.published
-	]) === 0) {
-		dv.paragraph("No items pinned")
-	}
+	pages = await dvjs.rssItems();
+dvjs.rssTable(
+	pages.where(p => p.pinned === true),
+	dvjs.getOptions("rss_context_items")
+	)
 ~~~
