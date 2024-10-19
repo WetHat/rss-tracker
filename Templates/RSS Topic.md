@@ -9,17 +9,17 @@ noneof: []
 > - [ ] Summarize the purpose of this topic.
 > - [ ] Specify tags in the `tags`, `allof`, 'noneof' frontmatter properties
 
-# Curated Articles 📍
+# Curated Articles  📍
 
 ~~~dataviewjs
 const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	from = await dvjs.fromItemsOf(dv.current());
+	pages = await dvjs.rssItemsOfContext();
 dvjs.rssTable(
-	await dv.pages(from).where(p => p.pinned === true),
+	pages.where(p => p.pinned === true),
 	dvjs.getOptions("rss_context_items")
 )
-dv.paragraph("From: " + from);
+dv.paragraph("From: " + dvjs.fromTags(dv.current()));
 ~~~
 
 # Other Articles
@@ -27,10 +27,10 @@ dv.paragraph("From: " + from);
 ~~~dataviewjs
 const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	from = await dvjs.fromItemsOf(dv.current());
+	pages = await dvjs.rssItemsOfContext();
 dvjs.rssTable(
-	await dv.pages(from).where(p => p.pinned !== true),
+	pages.where(p => p.pinned !== true),
 	dvjs.getOptions("rss_context_items")
 )
-dv.paragraph("From: " + from);
+dv.paragraph("From: " + dvjs.fromTags(dv.current()));
 ~~~
