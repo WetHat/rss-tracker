@@ -2,7 +2,7 @@ import {execFileSync} from "child_process";
 import fs from 'fs-extra';
 
 const
-    targetDir = "C:/Users/Peter/OneDrive/Documents/ObsidianVaults/Sandbox/.obsidian/plugins/rss-tracker",
+    targetDir = "D:/Obsidian Vaults/Sandbox/.obsidian/plugins/rss-tracker",
     templates = targetDir + "/Templates";
 
 if (fs.existsSync(templates)) {
