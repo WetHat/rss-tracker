@@ -1,15 +1,6 @@
 import { TPropertyBag } from './FeedAssembler';
 import { RSSTrackerSettings } from './settings';
 import { TFile, Plugin } from 'obsidian';
-import { TFrontmatter } from './RSSproxies';
-
-//#region Type definitions
-type TDashboardRole = "rsscollection" | "rsstopic" | "rssdashboard";
-/**
- * A lambda function type to build a dataview table row for an RSS
- * feed related page.
- */
-type TRowBuilder = (rec: TPageRecord) => object[];
 
 /**
  * Sort order specification for page records.
@@ -17,7 +8,7 @@ type TRowBuilder = (rec: TPageRecord) => object[];
  */
 type TSortOrder = "asc" | "desc";
 
-type TRSSoptions = {};
+type TRSSoptions = TPropertyBag;
 
 /**
  * Table layouts specifying property names amd their table
@@ -71,12 +62,6 @@ type TRSStableOptions = TRSSoptions & {
      * Optional grouo sort order.
      */
     groupBySortOrder?: TSortOrder;
-
-    /**
-     * Optional switch to show the `from query as table footer`
-     */
-    showQuery?: boolean;
-
 }
 
 type TRSSitemHeaderOptions = TRSSoptions & {
@@ -139,53 +124,72 @@ type TRecords = {
 type TPageRecords = TRecords;
 type TTaskRecords = TRecords;
 
-/** Function type to filter a pagg list */
-type TItemPredicate = (fileRecord: TPageRecord) => boolean;
 //#endregion
 
 /**
- * Utility class to map RSS feeds to RSS collections where they are a member of.
+ * Proxy handler to flatten nested properties of a Dataview page object.
  */
-export class FeedToCollectionMap extends Map<string, TPageRecord[]> {
-    /**
-     * Get all collections the given feed is a member of.
-     * @returns a list of collections.
-     */
-    rssFeedToCollections(feed: TPageRecord): TPageRecord[] {
-        // now lookup the collections
-        return this.get(feed.file.path) ?? [];
-    }
+class PageProxyHandler implements ProxyHandler<TPageRecord> {
 
-    private constructor() {
-        super();
+    /**
+     * Convert a tag to a hashtag.
+     *
+     * @param tag a tag
+     * @return a hashtag
+     */
+    static toHashtag(tag: string): string {
+        return tag.startsWith("#") ? tag : "#" + tag;
     }
 
     /**
-     * Factory method to build a map of RSS feeds to RSS Collections
-     * where they are a member of.
-     * @param dvjs An instance of {@link DataViewJSTools}.
-     * @returns the map of feeds to owning collections.
+     * A map of feeds to the collections the feeds are in.
+     *
+     * **Note**: Needs to be initialized with {@link initializeCollectionMap} before
+     * the `collections` property can be accessed.
      */
-    static async initialize(dvjs: DataViewJSTools): Promise<FeedToCollectionMap> {
-        // create a map
-        const map = new FeedToCollectionMap();
+    private feedsToCollections?: Map<string, TPageRecord[]>;
 
-        /**
-        const collections; //= await dvjs.rssDashboards("rsscollection");
-        for (const collection of collections) {
-            const feeds = await dvjs.dv.pages(dvjs.fromFeeds);
-            for (const feed of feeds) {
-                const key = feed.file.path;
-                let clist = map.get(key);
-                if (clist === undefined) {
-                    this, map.set(key, [collection]);
-                } else {
-                    clist.push(collection);
+    get(target: TPageRecord, p: string | symbol): any {
+        const name = p.toString();
+        switch (name) {
+            case "ID":
+                return target.file.link;
+            case "tags":
+                return target.file.etags.map((t: string) => PageProxyHandler.toHashtag(t));
+            case "allof":
+                const allof = target.allof;
+                return Array.isArray(allof)
+                    ? allof.map(t => PageProxyHandler.toHashtag(t))
+                    : (allof ? [PageProxyHandler.toHashtag(allof)] : []);
+            case "noneof":
+                const noneof = target.noneof;
+                return Array.isArray(noneof)
+                    ? noneof.map(t => PageProxyHandler.toHashtag(t))
+                    : (noneof ? [PageProxyHandler.toHashtag(noneof)] : []);
+            case "collections":
+                return this.feedsToCollections?.get(target.file.path)?.map((f: TPageRecord) => f.file.link)
+        }
+        return target[name] ?? target.file[name];
+    }
+
+    async initializeCollectionMap(dvjs: DataViewJSTools) {
+        if (!this.feedsToCollections) {
+            this.feedsToCollections = new Map<string, TPageRecord[]>();
+            const
+                dv = dvjs.dv,
+                collections = await dv.pages(dvjs.fromCollections).where((p: TPageRecord) => p.role === "rsscollection");
+            for (const collection of collections) {
+                const feeds: TPageRecords = await dv.pages(dvjs.fromFeedsOf(collection)).where((p: TPageRecord) => p.role === "rssfeed");
+                for (const feed of feeds) {
+                    let cList = this.feedsToCollections.get(feed.file.path);
+                    if (!cList) {
+                        cList = [];
+                        this.feedsToCollections.set(feed.file.path, cList);
+                    }
+                    cList.push(collection);
                 }
             }
         }
-        */
-        return map;
     }
 }
 
@@ -203,49 +207,14 @@ export class DataViewJSTools {
     private settings: RSSTrackerSettings;
 
     /**
-     * Turn a tag or category into a hashtag.
-     *
-     * **Note**: The tag or category **must not contain whitespaces**-
-     * @param tag - a Tag or category
-     * @returns A hashtag with a `#` prefix.
+     * Handler for the `Proxy<TPageRecord>` proxy.
      */
-    static hashtag(tag: string): string {
-        return tag.startsWith("#") ? tag : "#" + tag;
-    }
 
-    /**
-     * Get the list of hashtags from a page (frontmatter nad content)
-     * @param pageRecord The page record object.
-     * @returns hashtag list
-     */
-    static hashtags(pageRecord: TPageRecord): string[] {
-        return pageRecord.file.etags.map((t: string) => DataViewJSTools.hashtag(t))
-    }
+    private proxyHandler = new PageProxyHandler();
 
     constructor(dv: TPropertyBag, settings: RSSTrackerSettings) {
         this.dv = dv;
         this.settings = settings;
-    }
-
-    /**
-     * Get a space separated list of hashtags from a page,
-     *
-     * This function is typically used in `TRowBuilder` functions.
-     * @param pageRecord - Page object
-     * @returns Space separated tagline.
-     */
-    hashtagLine(pageRecord: TPageRecord): string {
-        return DataViewJSTools.hashtags(pageRecord).join(" ");
-    }
-
-    fileLink(fileRecord: TPageRecord): string {
-        return this.dv.fileLink(fileRecord.file.path);
-    }
-
-    fileLinks(fileRecords: TPageRecord[]): string {
-        return fileRecords
-            .map((rec: TPageRecord) => this.fileLink(rec))
-            .join(", ");
     }
 
     //#region Dataview queries
@@ -261,9 +230,10 @@ export class DataViewJSTools {
      */
     fromTags(page: TPageRecord): string {
         const
-            anyTags: string[] = page.file.etags?.map((t: string) => DataViewJSTools.hashtag(t)) ?? [],
-            allTags: string[] = page?.allof?.map((t: string) => DataViewJSTools.hashtag(t)) ?? [],
-            noneTags: string[] = page?.noneof?.map((t: string) => DataViewJSTools.hashtag(t)) ?? [];
+            proxy = new Proxy<TPageRecord>(page,this.proxyHandler),
+            anyTags: string[] = proxy.tags,
+            allTags: string[] = proxy.allof,
+            noneTags: string[] = proxy.noneof;
 
         let from = [
             anyTags.length > 0 ? "( " + anyTags.join(" OR ") + " )" : null,
@@ -312,7 +282,7 @@ export class DataViewJSTools {
         return from;
     }
 
-    private get fromItems(): string {
+    get fromItems(): string {
         return `"${this.settings.rssFeedFolderPath}"`;
     }
 
@@ -357,10 +327,10 @@ export class DataViewJSTools {
         return '"undefined"';
     }
 
-    fromFeedsOf(context? : TPageRecord) : string {
-        let from ="";
+    fromFeedsOf(context?: TPageRecord): string {
+        let from = "";
         if (context) {
-            switch(context.role) {
+            switch (context.role) {
                 case "rsscollection":
                     from = this.fromFeedsOfCollection(context);
                     break;
@@ -377,7 +347,13 @@ export class DataViewJSTools {
         return this.fromFeeds + " AND " + this.fromTags(collection);
     }
 
+    get fromCollections(): string {
+        return `"${this.settings.rssCollectionsFolderPath}"`;
+    }
 
+    get fromTopics(): string {
+        return `"${this.settings.rssTopicsFolderPath}"`;
+    }
     //#endregion Dataview queries
 
     private itemReadingTask(item: TPageRecord): TTaskRecord | null {
@@ -417,7 +393,9 @@ export class DataViewJSTools {
      * @returns List of reading tasks of the duplicate items
      */
     async rssDuplicateItemsTasks(item: TPageRecord): Promise<TTaskRecords> {
-        const duplicates = await this.rssDuplicateItems(item);
+        const
+            proxy = new Proxy<TPageRecord>(item, this.proxyHandler),
+            duplicates = await this.rssDuplicateItems(item);
         return duplicates
             .map((rec: TPageRecord): TTaskRecord | null => {
                 const
@@ -425,7 +403,7 @@ export class DataViewJSTools {
                     pinned = rec.pinned ? " 📍 " : " 📌 ",
                     task = this.itemReadingTask(rec);
                 if (task) {
-                    task.visual = this.fileLink(rec)
+                    task.visual = proxy.link
                         + pinned
                         + "**∈** "
                         + feed;
@@ -436,12 +414,6 @@ export class DataViewJSTools {
             })
             .where((t: TTaskRecord) => t);
     }
-
-    async mapFeedsToCollections(): Promise<FeedToCollectionMap> {
-        return FeedToCollectionMap.initialize(this);
-    }
-
-    ///////
 
     /**
      * Create a dataview task list consisting of rss items already read or still to read.
@@ -470,27 +442,15 @@ export class DataViewJSTools {
         let totalTaskCount = 0;
 
         for (const feed of feeds) {
-            const items = await this.dv.pages(await this.fromItemsOf(feed));
-            totalTaskCount += this.readingList(items, read, this.fileLink(feed));
+            const
+                proxy = new Proxy<TPageRecord>(feed, this.proxyHandler),
+                items = await this.dv.pages(await this.fromItemsOf(feed));
+            totalTaskCount += this.readingList(items, read, proxy.link);
         }
         return totalTaskCount;
     }
 
     //////////////////////////////////////// Next GEN API
-
-    private getFileRecordProperty(page: TPageRecord, name: string): any {
-        switch (name) {
-            case "ID":
-                return page.file.link;
-            case "tags":
-                return this.hashtagLine(page);
-        }
-        return page[name] ?? page.file.name;
-    }
-
-    private getFileRecordProperties(page: TPageRecord, names: string[]): any[] {
-        return names.map(name => this.getFileRecordProperty(page, name));
-    }
 
     /**
      * Get Options for dataviewJS RSS tools from the plugin settings.
@@ -538,12 +498,25 @@ export class DataViewJSTools {
                     layout: {
                         ID: "Item",
                         status: "Status",
-                        updated: "Updated",
-                        tags: "Tags"
+                        tags: "Tags",
+                        updated: "Updated"
                     },
-                    sortBy: "updates",
+                    sortBy: "updated",
                     sortOrder: "desc"
                 };
+                case "rss_dashboard_feeds":
+                    return {
+                        type: "rssfeed",
+                        layout: {
+                            ID: "Item",
+                            status: "Status",
+                            tags: "Tags",
+                            collections: "Collections",
+                            updated: "Updated",
+                        },
+                        sortBy: "name",
+                        sortOrder: "desc"
+                    };
             default:
                 options = {};
                 break;
@@ -561,11 +534,22 @@ export class DataViewJSTools {
             }
         }
         if (opts.showTags) {
-            const tags = this.hashtagLine(item);
+            const proxy = new Proxy<TPageRecord>(item, this.proxyHandler);
+            const tags = proxy.tags.join(" ");
             if (tags) {
                 this.dv.span(tags);
             }
         }
+    }
+
+    private row(page: TPageRecord, propertyNames: string[]): any[] {
+        const proxy = new Proxy<TPageRecord>(page, this.proxyHandler);
+        return propertyNames.map(n => {
+            const value = proxy[n];
+            return Array.isArray(value)
+                ? value.map(v => v.toString()).join(" ")
+                : value;
+            });
     }
 
     /**
@@ -594,32 +578,41 @@ export class DataViewJSTools {
             this.dv.paragraph("⛔");
             return;
         }
-
         const
             layout = options.layout,
             columns = Object.keys(options.layout),
-            columnLabels = columns.map(name => layout[name]),
-            sortedPages =  pages
-                .where((p: TPageRecord) => p.role === options.type)
-                .sort((p: TPageRecord) => this.getFileRecordProperty(p, options.sortBy), options.sortOrder);
+            columnLabels = columns.map(name => layout[name]);
+
+        if (columns.includes("collections")) {
+            await this.proxyHandler.initializeCollectionMap(this);
+        }
+
+        const sortedPages = pages
+            .where((p: TPageRecord) => p.role === options.type)
+            .sort((p: TPageRecord) => {
+                const proxy = new Proxy<TPageRecord>(p, this.proxyHandler);
+                return proxy[options.sortBy];
+            }, options.sortOrder);
 
         if (options.groupBy) {
             const
                 groupBy = options.groupBy,
-                groups = pages.groupBy((p:TPageRecord) => this.getFileRecordProperty(p,groupBy));
-
-            groups.forEach( (group : TPropertyBag) => {
+                groups = pages.groupBy((p: TPageRecord) => {
+                    const proxy = new Proxy<TPageRecord>(p, this.proxyHandler);
+                    return proxy[groupBy];
+                });
+            groups.forEach((group: TPropertyBag) => {
                 this.dv.header(2, group.key + " (" + group.rows.length + ")");
                 this.dv.table(
                     columnLabels,
-                    group.rows.map((p: TPageRecord) => this.getFileRecordProperties(p, columns)));
+                    group.rows.map((p: TPageRecord) => this.row(p, columns)));
 
             })
         }
         else {
             this.dv.table(
                 columnLabels,
-                sortedPages.map((p: TPageRecord) => this.getFileRecordProperties(p, columns)));
+                sortedPages.map((p: TPageRecord) => this.row(p, columns)));
         }
     }
 }
