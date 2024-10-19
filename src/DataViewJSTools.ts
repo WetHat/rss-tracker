@@ -1,6 +1,7 @@
 import { TPropertyBag } from './FeedAssembler';
 import { RSSTrackerSettings } from './settings';
-import { TFile } from 'obsidian';
+import { TFile, ObsidianProtocolData } from 'obsidian';
+import * as path from 'path';
 
 /**
  * Sort order specification for page records.
@@ -457,6 +458,9 @@ export class DataViewJSTools {
                 proxy = new Proxy<TPageRecord>(feed, this.proxyHandler),
                 items = await this.rssItemsOfContext(feed);
             totalTaskCount += this.readingList(items, read, proxy.link);
+        }
+        if (totalTaskCount === 0) {
+            this.dv.paragraph("⛔");
         }
         return totalTaskCount;
     }
