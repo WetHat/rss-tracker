@@ -38,7 +38,7 @@ export class HTMLxlate {
      * @param element an element of an HTML document.
      */
     private static injectCodeBlock(element: HTMLElement) {
-        const pres = Array.from(element.getElementsByTagName('pre'));
+        const pres = element.querySelectorAll("pre:not(:has(code))");
         for (let i = 0; i < pres.length; i++) {
             const pre = pres[i];
             let firstChild = pre.firstChild;
@@ -49,9 +49,6 @@ export class HTMLxlate {
                 firstChild = pre.firstChild;
             }
 
-            const firstChildelement = pre.firstElementChild;
-
-            if (!firstChildelement || firstChildelement.localName !== 'code') {
                 const
                     code = element.doc.createElement('code'),
                     preClasses = Array.from(pre.classList),
@@ -67,7 +64,6 @@ export class HTMLxlate {
                 pre.innerHTML = "";
                 pre.append(code);
                 pre.removeAttribute("class");
-            }
         }
     }
 
