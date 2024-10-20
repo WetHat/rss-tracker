@@ -123,6 +123,7 @@ export class FeedManager {
         } catch (err: any) {
             console.log(`feed '${feed.file.basename}' update failed: ${err.message}`);
             feed.error = err.message;
+            await feed.commitFrontmatterChanges();
         }
         return itemCount;
     }
