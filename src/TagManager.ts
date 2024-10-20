@@ -90,29 +90,29 @@ export class RSSTagManager {
             // write an updated file
             const mapfile = await this.getTagmapFile();
             if (mapfile) {
-                await this._vault.modify(mapfile, prefix[0]+"\n");
+                await this._vault.modify(mapfile, prefix[0] + "\n");
                 this._pendingMappings = prefix.slice(1);
-                for (let [hashtag,mappedTag] of this._tagmap) {
+                for (let [hashtag, mappedTag] of this._tagmap) {
                     this._pendingMappings.push(`| ${hashtag.slice(1)} | ${mappedTag} |`);
                 }
-                new Notice(`${removed} unused tags removed`,30000);
+                new Notice(`${removed} unused tags removed`, 30000);
             }
         }
-        // find itendity mappings in the
+        // find idendity mappings in the
         // just in case new tags appeared when we weren't looking.
-        await this.commit(removed === 0);
+        await this.commit();
     }
 
     /**
      * Commit any pending changes to the tag map file.
      */
-    private async commit(verbose: boolean = true): Promise<void> {
+    private async commit(context?: string): Promise<void> {
         if (this._pendingMappings.length > 0) {
             const
                 file = await this.getTagmapFile(),
                 taglist = this._pendingMappings.map(row => `- ${row.split("|")[1]}`).join("\n");
-            if (verbose) {
-                new Notice(this._pendingMappings.length + " new tags\n" + taglist, 30000);
+            if (context) {
+                new Notice(`${this._pendingMappings.length} new tags in ${context}\n` + taglist, 30000);
             }
 
             if (file) {
@@ -233,7 +233,7 @@ export class RSSTagManager {
     get rssTagPostProcessor(): EventRef {
         return this._app.metadataCache.on("changed", async (item: TFile, content: string, metaData: CachedMetadata): Promise<void> => {
             if (!this._postProcessingRegistry.delete(item.path)) {
-                // this file is not registered for posprocessing
+                // this file is not registered for postprocessing
                 return
             }
             console.log(`Post Processing "${item.path}"`);
@@ -265,7 +265,7 @@ export class RSSTagManager {
                     await item.vault.modify(item, parts.join("")); // save the updatedd RSS item
                 }
             }
-            await this.commit(); // update the tag map
+            await this.commit(metaData.frontmatter?.feed); // update the tag map
         })
     };
 }
