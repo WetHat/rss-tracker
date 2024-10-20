@@ -29,6 +29,21 @@ export class HTMLxlate {
         return HTMLxlate._instance;
     }
 
+    private static cleanupFakeCode(element: HTMLElement) {
+        const fakeCode = element.querySelectorAll("code:has(code),code:has(pre)");
+        fakeCode.forEach(code => {
+            const parent = code.parentElement;
+            if (parent) {
+                const div = code.doc.createElement("div");
+                parent.insertBefore(div, code);
+                while (code.firstChild) {
+                    div.append(code.firstChild)
+                }
+                code.remove();
+            }
+        })
+    }
+
     /**
      * An HTML transformation looking for `<pre>` tags which are **not** immediately followed by a `<code>` block
      * and inject one.
@@ -49,21 +64,21 @@ export class HTMLxlate {
                 firstChild = pre.firstChild;
             }
 
-                const
-                    code = element.doc.createElement('code'),
-                    preClasses = Array.from(pre.classList),
-                    lang = preClasses.filter(cl => cl.startsWith("language-"));
+            const
+                code = element.doc.createElement('code'),
+                preClasses = Array.from(pre.classList),
+                lang = preClasses.filter(cl => cl.startsWith("language-"));
 
-                if (lang.length > 0)
-                    code.classList.add(...lang);
-                else {
-                    code.className = 'language-undefined';
-                }
+            if (lang.length > 0)
+                code.classList.add(...lang);
+            else {
+                code.className = 'language-undefined';
+            }
 
-                code.textContent = HTMLxlate.expandBR(pre).textContent;
-                pre.innerHTML = "";
-                pre.append(code);
-                pre.removeAttribute("class");
+            code.textContent = HTMLxlate.expandBR(pre as HTMLElement).textContent;
+            pre.innerHTML = "";
+            pre.append(code);
+            pre.removeAttribute("class");
         }
     }
 
@@ -74,7 +89,7 @@ export class HTMLxlate {
                 br = brs[0],
                 parent = br.parentElement;
             if (parent) {
-                br.parentElement?.insertAfter(element.doc.createTextNode("\n"), br);
+                parent.insertAfter(element.doc.createTextNode("\n"), br);
             }
             br.remove();
         }
@@ -82,12 +97,13 @@ export class HTMLxlate {
     }
 
     private static cleanupCodeBlock(element: HTMLElement) {
-        const
-            codeBlocks = element.getElementsByTagName("code"),
-            blockCount = codeBlocks.length;
+        const codeBlocks = element.getElementsByTagName("code");
 
-        for (let i = 0; i < blockCount; i++) {
-            const code = HTMLxlate.expandBR(codeBlocks[i]);
+        // make sure to check the length every time to handle
+        // nested <pre> tags.
+        for (let i = 0; i < codeBlocks.length; i++) {
+            const code = codeBlocks[i];
+            HTMLxlate.expandBR(code);
             code.textContent = code.innerText;
         }
     }
@@ -126,6 +142,7 @@ export class HTMLxlate {
             post: document => {
                 // look for <pre> tags and make sure their first child is always a <code> tag.
                 HTMLxlate.flattenTables(document.body);
+                HTMLxlate.cleanupFakeCode(document.body);
                 HTMLxlate.cleanupCodeBlock(document.body);
                 HTMLxlate.injectCodeBlock(document.body);
 
@@ -254,6 +271,7 @@ export class HTMLxlate {
         const doc = this.parser.parseFromString(html, "text/html");
         // tidy the docuement
         HTMLxlate.flattenTables(doc.body);
+        HTMLxlate.cleanupFakeCode(doc.body);
         HTMLxlate.cleanupCodeBlock((doc.body));
         HTMLxlate.injectCodeBlock((doc.body));
 
