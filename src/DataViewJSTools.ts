@@ -527,7 +527,7 @@ export class DataViewJSTools {
                         updated: "Updated",
                     },
                     sortBy: "name",
-                    sortOrder: "desc"
+                    sortOrder: "asc"
                 };
             case "rss_topics":
                 return {
@@ -536,7 +536,7 @@ export class DataViewJSTools {
                         headline: "Headline"
                     },
                     sortBy: "name",
-                    sortOrder: "desc"
+                    sortOrder: "asc"
                 };
             case "rss_collections":
                 return {
@@ -545,7 +545,7 @@ export class DataViewJSTools {
                         headline: "Headline"
                     },
                     sortBy: "name",
-                    sortOrder: "desc"
+                    sortOrder: "asc"
                 };
             default:
                 options = {};
