@@ -116,6 +116,7 @@ export class FeedManager {
             const
                 feedXML = await request({
                     url: feed.feedurl,
+                    contentType: "text/xml",
                     method: "GET"
                 }),
                 rssfeed = new TrackedRSSfeed(feedXML, feed.feedurl);
