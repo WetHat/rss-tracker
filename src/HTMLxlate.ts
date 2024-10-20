@@ -29,6 +29,19 @@ export class HTMLxlate {
         return HTMLxlate._instance;
     }
 
+    private static detectCode(element :HTMLElement) {
+        const codeBlocks = element.querySelectorAll("[class*=code]:not(pre):not(code)");
+        codeBlocks.forEach(c=> {
+            const
+                pre = c.doc.createElement("pre"),
+                code = c.doc.createElement("code") as HTMLElement;
+            pre.append(code);
+            code.textContent = c.textContent;
+            c.innerHTML = "";
+            c.append(pre);
+        });
+    }
+
     private static cleanupFakeCode(element: HTMLElement) {
         const fakeCode = element.querySelectorAll("code:has(code),code:has(pre)");
         fakeCode.forEach(code => {
@@ -141,6 +154,7 @@ export class HTMLxlate {
             },
             post: document => {
                 // look for <pre> tags and make sure their first child is always a <code> tag.
+                HTMLxlate.detectCode(document.body);
                 HTMLxlate.flattenTables(document.body);
                 HTMLxlate.cleanupFakeCode(document.body);
                 HTMLxlate.cleanupCodeBlock(document.body);
@@ -270,6 +284,7 @@ export class HTMLxlate {
         }
         const doc = this.parser.parseFromString(html, "text/html");
         // tidy the docuement
+        HTMLxlate.detectCode(doc.body);
         HTMLxlate.flattenTables(doc.body);
         HTMLxlate.cleanupFakeCode(doc.body);
         HTMLxlate.cleanupCodeBlock((doc.body));
