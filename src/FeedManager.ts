@@ -3,7 +3,7 @@ import RSSTrackerPlugin from './main';
 import { TrackedRSSfeed } from './FeedAssembler';
 import { RSSfileManager } from './RSSFileManager';
 import { HTMLxlate } from './HTMLxlate';
-import { RSSfeedProxy, RSScollectionProxy } from './RSSproxies';
+import { RSSfeedAdapter, RSScollectionAdapter } from './RSSAdapter';
 
 
 /**
@@ -50,12 +50,12 @@ export class FeedManager {
      *
      * ⚠ the base url to make relative urls absolute is synthesized as `https://localhost`.
      * @param xml - XML file containing an RSS feed.
-     * @returns the feed proxy
+     * @returns the feed adapter
      */
-    async createFeedFromFile(xml: TFile): Promise<RSSfeedProxy> {
+    async createFeedFromFile(xml: TFile): Promise<RSSfeedAdapter> {
         await this._plugin.tagmgr.updateTagMap();
         const feedXML = await this._app.vault.read(xml);
-        return RSSfeedProxy.create(this._plugin, new TrackedRSSfeed(feedXML, "https://localhost/" + xml.path));
+        return RSSfeedAdapter.create(this._plugin, new TrackedRSSfeed(feedXML, "https://localhost/" + xml.path));
     }
 
     /**
@@ -79,24 +79,24 @@ export class FeedManager {
     * @param url - A hyperlink pointing to an RSS feed on the web.
     * @param location - The obsidian folder where to create the Markdown files
     *                   representing the feed.
-    * @returns The feed proxy.
+    * @returns The feed adapter.
     */
-    async createFeedFromUrl(url: string): Promise<RSSfeedProxy> {
+    async createFeedFromUrl(url: string): Promise<RSSfeedAdapter> {
         const feedXML = await request({
             url: url,
             method: "GET"
         });
         await this._plugin.tagmgr.updateTagMap();
-        return RSSfeedProxy.create(this._plugin, new TrackedRSSfeed(feedXML, url));
+        return RSSfeedAdapter.create(this._plugin, new TrackedRSSfeed(feedXML, url));
     }
 
     /**
      * Update an RSS feed according to the configured frequency.
-     * @param feed The proxy of the RSS feed to update.
+     * @param feed The adapter of the RSS feed to update.
      * @param force `true` to update even if it is not due.
      * @returns the number of new items
      */
-    private async updateFeed(feed: RSSfeedProxy, force: boolean): Promise<number> {
+    private async updateFeed(feed: RSSfeedAdapter, force: boolean): Promise<number> {
         if (feed.suspended) {
             return 0;
         }
@@ -129,17 +129,17 @@ export class FeedManager {
         return itemCount;
     }
 
-    get feeds(): RSSfeedProxy[] {
+    get feeds(): RSSfeedAdapter[] {
         const feedFolder = this._app.vault.getFolderByPath(this._plugin.settings.rssFeedFolderPath);
         if (feedFolder) {
             return feedFolder.children
-                .map(f => f instanceof TFile ? this._filemgr.getProxy(f) : null)
-                .filter(p => p instanceof RSSfeedProxy) as RSSfeedProxy[];
+                .map(f => f instanceof TFile ? this._filemgr.getAdapter(f) : null)
+                .filter(p => p instanceof RSSfeedAdapter) as RSSfeedAdapter[];
         }
         return [];
     }
 
-    private async updateFeeds(feeds: RSSfeedProxy[], force: boolean): Promise<number> {
+    private async updateFeeds(feeds: RSSfeedAdapter[], force: boolean): Promise<number> {
         let
             feedCount: number = 0,
             newItemCount = 0;
@@ -160,14 +160,14 @@ export class FeedManager {
         return newItemCount;
     }
 
-    async update(force: boolean, proxy?: RSSfeedProxy | RSScollectionProxy) : Promise<void> {
+    async update(force: boolean, adapter?: RSSfeedAdapter | RSScollectionAdapter) : Promise<void> {
         await this._plugin.tagmgr.updateTagMap();
-        if (proxy instanceof RSSfeedProxy) {
-            const itemCount = await this.updateFeed(proxy,force);
-            new Notice(`Feed '${proxy.file.basename}' has '${itemCount}' new items`,20000);
-        } else if (proxy instanceof RSScollectionProxy) {
-            const itemCount = await this.updateFeeds(proxy.feeds,force);
-            new Notice(`Collection '${proxy.file.basename}' has '${itemCount}' new items`,20000);
+        if (adapter instanceof RSSfeedAdapter) {
+            const itemCount = await this.updateFeed(adapter,force);
+            new Notice(`Feed '${adapter.file.basename}' has '${itemCount}' new items`,20000);
+        } else if (adapter instanceof RSScollectionAdapter) {
+            const itemCount = await this.updateFeeds(adapter.feeds,force);
+            new Notice(`Collection '${adapter.file.basename}' has '${itemCount}' new items`,20000);
         } else {
             const
                 feeds = this.feeds,
@@ -176,15 +176,15 @@ export class FeedManager {
         }
     }
 
-    async completeReadingTasks(proxy: RSSfeedProxy | RSScollectionProxy) {
+    async completeReadingTasks(adapter: RSSfeedAdapter | RSScollectionAdapter) {
         let completed = 0;
-        if (proxy instanceof RSSfeedProxy) {
-            completed = await proxy.completeReadingTasks();
-        } else if (proxy instanceof RSScollectionProxy) {
-            completed = await proxy.completeReadingTasks();
+        if (adapter instanceof RSSfeedAdapter) {
+            completed = await adapter.completeReadingTasks();
+        } else if (adapter instanceof RSScollectionAdapter) {
+            completed = await adapter.completeReadingTasks();
         }
 
-        new Notice(`${completed} items taken off the '${proxy.file.basename}' reading list`, 30000);
+        new Notice(`${completed} items taken off the '${adapter.file.basename}' reading list`, 30000);
     }
 
     canDownloadArticle(item: TFile): boolean {

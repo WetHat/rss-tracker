@@ -12833,7 +12833,7 @@ RSSTrackerSettings.RSS_DEFAULT_IMAGE = '<svg height="300px" width="300px" versio
 // src/commands.ts
 var import_obsidian4 = require("obsidian");
 
-// src/RSSproxies.ts
+// src/RSSAdapter.ts
 var import_obsidian2 = require("obsidian");
 var path = __toESM(require("path"), 1);
 
@@ -15011,7 +15011,9 @@ var _HTMLxlate = class {
         return document;
       },
       post: (document) => {
+        _HTMLxlate.detectCode(document.body);
         _HTMLxlate.flattenTables(document.body);
+        _HTMLxlate.cleanupFakeCode(document.body);
         _HTMLxlate.cleanupCodeBlock(document.body);
         _HTMLxlate.injectCodeBlock(document.body);
         _HTMLxlate.transformText(document.body, (node) => {
@@ -15033,6 +15035,30 @@ var _HTMLxlate = class {
     }
     return _HTMLxlate._instance;
   }
+  static detectCode(element) {
+    const codeBlocks = element.querySelectorAll("[class*=code]:not(pre):not(code)");
+    codeBlocks.forEach((c) => {
+      const pre = c.doc.createElement("pre"), code = c.doc.createElement("code");
+      pre.append(code);
+      code.textContent = c.textContent;
+      c.innerHTML = "";
+      c.append(pre);
+    });
+  }
+  static cleanupFakeCode(element) {
+    const fakeCode = element.querySelectorAll("code:has(code),code:has(pre)");
+    fakeCode.forEach((code) => {
+      const parent = code.parentElement;
+      if (parent) {
+        const div = code.doc.createElement("div");
+        parent.insertBefore(div, code);
+        while (code.firstChild) {
+          div.append(code.firstChild);
+        }
+        code.remove();
+      }
+    });
+  }
   /**
    * An HTML transformation looking for `<pre>` tags which are **not** immediately followed by a `<code>` block
    * and inject one.
@@ -15043,7 +15069,7 @@ var _HTMLxlate = class {
    */
   static injectCodeBlock(element) {
     var _a2;
-    const pres = Array.from(element.getElementsByTagName("pre"));
+    const pres = element.querySelectorAll("pre:not(:has(code))");
     for (let i = 0; i < pres.length; i++) {
       const pre = pres[i];
       let firstChild = pre.firstChild;
@@ -15051,37 +15077,34 @@ var _HTMLxlate = class {
         firstChild.remove();
         firstChild = pre.firstChild;
       }
-      const firstChildelement = pre.firstElementChild;
-      if (!firstChildelement || firstChildelement.localName !== "code") {
-        const code = element.doc.createElement("code"), preClasses = Array.from(pre.classList), lang = preClasses.filter((cl) => cl.startsWith("language-"));
-        if (lang.length > 0)
-          code.classList.add(...lang);
-        else {
-          code.className = "language-undefined";
-        }
-        code.textContent = _HTMLxlate.expandBR(pre).textContent;
-        pre.innerHTML = "";
-        pre.append(code);
-        pre.removeAttribute("class");
+      const code = element.doc.createElement("code"), preClasses = Array.from(pre.classList), lang = preClasses.filter((cl) => cl.startsWith("language-"));
+      if (lang.length > 0)
+        code.classList.add(...lang);
+      else {
+        code.className = "language-undefined";
       }
+      code.textContent = _HTMLxlate.expandBR(pre).textContent;
+      pre.innerHTML = "";
+      pre.append(code);
+      pre.removeAttribute("class");
     }
   }
   static expandBR(element) {
-    var _a2;
     const brs = element.getElementsByTagName("br");
     while (brs.length > 0) {
       const br = brs[0], parent = br.parentElement;
       if (parent) {
-        (_a2 = br.parentElement) == null ? void 0 : _a2.insertAfter(element.doc.createTextNode("\n"), br);
+        parent.insertAfter(element.doc.createTextNode("\n"), br);
       }
       br.remove();
     }
     return element;
   }
   static cleanupCodeBlock(element) {
-    const codeBlocks = element.getElementsByTagName("code"), blockCount = codeBlocks.length;
-    for (let i = 0; i < blockCount; i++) {
-      const code = _HTMLxlate.expandBR(codeBlocks[i]);
+    const codeBlocks = element.getElementsByTagName("code");
+    for (let i = 0; i < codeBlocks.length; i++) {
+      const code = codeBlocks[i];
+      _HTMLxlate.expandBR(code);
       code.textContent = code.innerText;
     }
   }
@@ -15176,7 +15199,9 @@ var _HTMLxlate = class {
       return html;
     }
     const doc = this.parser.parseFromString(html, "text/html");
+    _HTMLxlate.detectCode(doc.body);
     _HTMLxlate.flattenTables(doc.body);
+    _HTMLxlate.cleanupFakeCode(doc.body);
     _HTMLxlate.cleanupCodeBlock(doc.body);
     _HTMLxlate.injectCodeBlock(doc.body);
     _HTMLxlate.transformText(doc.body, (node) => {
@@ -15203,13 +15228,13 @@ var _HTMLxlate = class {
 var HTMLxlate = _HTMLxlate;
 HTMLxlate.VALIDATTR = /^[a-zA-Z_-]*$/;
 
-// src/RSSproxies.ts
-var RSSProxy = class {
+// src/RSSAdapter.ts
+var RSSAdapter = class {
   static toPlaintags(hashtags) {
     return hashtags ? hashtags.map((h) => h.replace(/^#*/, "")) : [];
   }
   get tags() {
-    return RSSProxy.toPlaintags(this.frontmatter.tags);
+    return RSSAdapter.toPlaintags(this.frontmatter.tags);
   }
   get filemgr() {
     return this.plugin.filemgr;
@@ -15234,7 +15259,7 @@ var RSSProxy = class {
     });
   }
 };
-var _RSSitemProxy = class extends RSSProxy {
+var _RSSitemAdapter = class extends RSSAdapter {
   /**
    * **Note**. This property can only be changed by the user.
    * @returns `true` if the item is pinned and will not be deleted; `false` otherwise.
@@ -15287,7 +15312,7 @@ var _RSSitemProxy = class extends RSSProxy {
    * Factory methos to create a new instance of an RSS item
    * @param item the parse item of an RSS feed.
    * @param feed The feed this item is a part of
-   * @returns A new instance of a RSS item file proxy.
+   * @returns A new instance of a RSS item file adapter.
    */
   static async create(item, feed) {
     let { id, tags, title, link, description, published, author, image, content } = item;
@@ -15295,7 +15320,7 @@ var _RSSitemProxy = class extends RSSProxy {
     if (description) {
       description = html.fragmentAsMarkdown(description);
       if (!image) {
-        const match = description.match(_RSSitemProxy.EMBEDDING_MATCHER);
+        const match = description.match(_RSSitemAdapter.EMBEDDING_MATCHER);
         if (match && match.index !== void 0) {
           image = {
             src: match[1],
@@ -15308,7 +15333,7 @@ var _RSSitemProxy = class extends RSSProxy {
     if (content) {
       content = html.fragmentAsMarkdown(content);
       if (!image) {
-        const match = content.match(_RSSitemProxy.EMBEDDING_MATCHER);
+        const match = content.match(_RSSitemAdapter.EMBEDDING_MATCHER);
         if (match) {
           image = {
             src: match[1],
@@ -15349,8 +15374,8 @@ var _RSSitemProxy = class extends RSSProxy {
       "{{content}}": content != null ? content : "",
       "{{feedFileName}}": itemfolder.name
     };
-    const file = await feed.filemgr.createFile(itemfolder.path, item.fileName, "RSS Item", dataMap, true), proxy = new _RSSitemProxy(feed.plugin, file, frontmatter);
-    return proxy;
+    const file = await feed.filemgr.createFile(itemfolder.path, item.fileName, "RSS Item", dataMap, true), adapter = new _RSSitemAdapter(feed.plugin, file, frontmatter);
+    return adapter;
   }
   constructor(plugin, file, frontmatter) {
     super(plugin, file, frontmatter);
@@ -15359,9 +15384,9 @@ var _RSSitemProxy = class extends RSSProxy {
     await this.plugin.app.vault.adapter.remove(this.file.path);
   }
 };
-var RSSitemProxy = _RSSitemProxy;
-RSSitemProxy.EMBEDDING_MATCHER = /!\[[^\]]*\]\(([^\)]+)\)\s*/;
-var _RSSfeedProxy = class extends RSSProxy {
+var RSSitemAdapter = _RSSitemAdapter;
+RSSitemAdapter.EMBEDDING_MATCHER = /!\[[^\]]*\]\(([^\)]+)\)\s*/;
+var _RSSfeedAdapter = class extends RSSAdapter {
   constructor(plugin, feed, frontmatter) {
     var _a2;
     super(plugin, feed, frontmatter);
@@ -15382,15 +15407,15 @@ var _RSSfeedProxy = class extends RSSProxy {
       "{{description}}": description ? (0, import_obsidian2.htmlToMarkdown)(description) : "",
       "{{image}}": image ? formatImage(image) : `![[${defaultImage}|float:right|100x100]]`
     };
-    const filemgr = plugin.filemgr, dashboard = await filemgr.createFile(plugin.settings.rssFeedFolderPath, feed.fileName, "RSS Feed", dataMap, true), proxy = new _RSSfeedProxy(plugin, dashboard, frontmatter);
+    const filemgr = plugin.filemgr, dashboard = await filemgr.createFile(plugin.settings.rssFeedFolderPath, feed.fileName, "RSS Feed", dataMap, true), adapter = new _RSSfeedAdapter(plugin, dashboard, frontmatter);
     try {
-      await proxy.update(feed);
+      await adapter.update(feed);
     } catch (err) {
       console.error(err);
-      proxy.error = err.message;
+      adapter.error = err.message;
     }
-    await proxy.commitFrontmatterChanges();
-    return proxy;
+    await adapter.commitFrontmatterChanges();
+    return adapter;
   }
   /**
    * Get the feed status.
@@ -15454,17 +15479,17 @@ var _RSSfeedProxy = class extends RSSProxy {
    */
   get suspended() {
     var _a2, _b;
-    return (_b = (_a2 = this.frontmatter.status) == null ? void 0 : _a2.startsWith(_RSSfeedProxy.SUSPENDED_STATUS_ICON)) != null ? _b : false;
+    return (_b = (_a2 = this.frontmatter.status) == null ? void 0 : _a2.startsWith(_RSSfeedAdapter.SUSPENDED_STATUS_ICON)) != null ? _b : false;
   }
   set suspended(value) {
     if (value) {
-      this.status = _RSSfeedProxy.SUSPENDED_STATUS_ICON + "suspended";
+      this.status = _RSSfeedAdapter.SUSPENDED_STATUS_ICON + "suspended";
     } else {
-      this.status = _RSSfeedProxy.RESUMED_STATUS_ICON + "resumed updates";
+      this.status = _RSSfeedAdapter.RESUMED_STATUS_ICON + "resumed updates";
     }
   }
   set error(message) {
-    this.status = _RSSfeedProxy.ERROR_STATUS_ICON + message;
+    this.status = _RSSfeedAdapter.ERROR_STATUS_ICON + message;
   }
   get itemFolderPath() {
     var _a2, _b;
@@ -15478,7 +15503,7 @@ var _RSSfeedProxy = class extends RSSProxy {
    * @return proxies for all RSS items in an RSS feed.
    */
   get items() {
-    return this._folder ? this._folder.children.map((c) => c instanceof import_obsidian2.TFile && c.extension === "md" ? this.filemgr.getProxy(c) : void 0).filter((p) => p instanceof RSSitemProxy) : [];
+    return this._folder ? this._folder.children.map((c) => c instanceof import_obsidian2.TFile && c.extension === "md" ? this.filemgr.getAdapter(c) : void 0).filter((p) => p instanceof RSSitemAdapter) : [];
   }
   async rename(newBasename) {
     if (!newBasename) {
@@ -15497,7 +15522,7 @@ var _RSSfeedProxy = class extends RSSProxy {
   /**
    * Update the RSS feed.
    *
-   * @param feed the proxy of the feed to update.
+   * @param feed the adapter of the feed to update.
    * @returns the number of new items
    */
   async update(feed) {
@@ -15521,13 +15546,13 @@ var _RSSfeedProxy = class extends RSSProxy {
       }
       for (const newItem of newRSSitems) {
         try {
-          await RSSitemProxy.create(newItem, this);
+          await RSSitemAdapter.create(newItem, this);
         } catch (err) {
           throw new Error(`Saving '${newItem.fileName}' of feed '${this.file.basename} failed': ${err.message}`);
         }
       }
     }
-    this.status = _RSSfeedProxy.OK_STATUS_ICON;
+    this.status = _RSSfeedAdapter.OK_STATUS_ICON;
     this.updated = new Date().valueOf();
     this.interval = feed.avgPostInterval;
     await this.commitFrontmatterChanges();
@@ -15543,21 +15568,21 @@ var _RSSfeedProxy = class extends RSSProxy {
     return completed;
   }
 };
-var RSSfeedProxy = _RSSfeedProxy;
-RSSfeedProxy.SUSPENDED_STATUS_ICON = "\u23F9\uFE0F";
-RSSfeedProxy.RESUMED_STATUS_ICON = "\u25B6\uFE0F";
-RSSfeedProxy.ERROR_STATUS_ICON = "\u274C";
-RSSfeedProxy.OK_STATUS_ICON = "\u2705";
-var RSScollectionProxy = class extends RSSProxy {
+var RSSfeedAdapter = _RSSfeedAdapter;
+RSSfeedAdapter.SUSPENDED_STATUS_ICON = "\u23F9\uFE0F";
+RSSfeedAdapter.RESUMED_STATUS_ICON = "\u25B6\uFE0F";
+RSSfeedAdapter.ERROR_STATUS_ICON = "\u274C";
+RSSfeedAdapter.OK_STATUS_ICON = "\u2705";
+var RSScollectionAdapter = class extends RSSAdapter {
   static async create(plugin) {
     const file = await plugin.filemgr.createFile(plugin.settings.rssCollectionsFolderPath, "New Feed Collection", "RSS Collection");
-    return new RSScollectionProxy(plugin, file);
+    return new RSScollectionAdapter(plugin, file);
   }
   constructor(plugin, collection, frontmatter) {
     super(plugin, collection, frontmatter);
   }
   get feeds() {
-    const anyofSet = new Set(this.tags), allof = RSSProxy.toPlaintags(this.frontmatter.allof), noneofSet = new Set(RSSProxy.toPlaintags(this.frontmatter.noneof));
+    const anyofSet = new Set(this.tags), allof = RSSAdapter.toPlaintags(this.frontmatter.allof), noneofSet = new Set(RSSAdapter.toPlaintags(this.frontmatter.noneof));
     return this.plugin.feedmgr.feeds.filter((f) => {
       const tags = f.tags, tagSet = new Set(tags);
       return !tags.some((t) => noneofSet.has(t)) && !allof.some((t) => !tagSet.has(t)) && tags.some((t) => anyofSet.has(t));
@@ -15689,12 +15714,12 @@ var RenameRSSfeedModalCommand = class extends RSSTrackerCommandBase {
   checkCallback(checking) {
     const active = this.app.workspace.getActiveFile();
     if (active) {
-      const proxy = this.plugin.filemgr.getProxy(active);
+      const adapter = this.plugin.filemgr.getAdapter(active);
       if (checking) {
-        return proxy instanceof RSSfeedProxy;
+        return adapter instanceof RSSfeedAdapter;
       }
-      if (proxy instanceof RSSfeedProxy) {
-        new RenameRSSFeedModal(this.plugin, proxy).open();
+      if (adapter instanceof RSSfeedAdapter) {
+        new RenameRSSFeedModal(this.plugin, adapter).open();
       }
     }
     return false;
@@ -15707,12 +15732,12 @@ var UpdateRSSfeedCommand = class extends RSSTrackerCommandBase {
   checkCallback(checking) {
     const active = this.app.workspace.getActiveFile();
     if (active) {
-      const proxy = this.plugin.filemgr.getProxy(active);
+      const adapter = this.plugin.filemgr.getAdapter(active);
       if (checking) {
-        return proxy instanceof RSSfeedProxy && !proxy.suspended || proxy instanceof RSScollectionProxy;
+        return adapter instanceof RSSfeedAdapter && !adapter.suspended || adapter instanceof RSScollectionAdapter;
       }
-      if (proxy instanceof RSSfeedProxy && !proxy.suspended || proxy instanceof RSScollectionProxy) {
-        this.plugin.feedmgr.update(true, proxy);
+      if (adapter instanceof RSSfeedAdapter && !adapter.suspended || adapter instanceof RSScollectionAdapter) {
+        this.plugin.feedmgr.update(true, adapter);
       }
     }
     return false;
@@ -15741,12 +15766,12 @@ var MarkAllRSSitemsReadCommand = class extends RSSTrackerCommandBase {
   checkCallback(checking) {
     const active = this.app.workspace.getActiveFile();
     if (active) {
-      const proxy = this.plugin.filemgr.getProxy(active);
+      const adapter = this.plugin.filemgr.getAdapter(active);
       if (checking) {
-        return proxy instanceof RSSfeedProxy;
+        return adapter instanceof RSSfeedAdapter;
       }
-      if (proxy instanceof RSSfeedProxy) {
-        this.plugin.feedmgr.completeReadingTasks(proxy);
+      if (adapter instanceof RSSfeedAdapter) {
+        this.plugin.feedmgr.completeReadingTasks(adapter);
         return true;
       }
     }
@@ -15769,7 +15794,7 @@ var NewRSSFeedCollectionCommand = class extends RSSTrackerCommandBase {
     super(plugin, "rss-tracker-new-feed-collection", "New RSS feed collection");
   }
   callback() {
-    RSScollectionProxy.create(this.plugin).then((collection) => {
+    RSScollectionAdapter.create(this.plugin).then((collection) => {
       const leaf = this.app.workspace.getLeaf(false);
       leaf.openFile(collection.file).catch((reason) => new import_obsidian4.Notice(reason.message));
     }).catch((reason) => new import_obsidian4.Notice(`RSS feed collection not created! ${reason.message}`));
@@ -15823,12 +15848,12 @@ var FeedManager = class {
    *
    * ⚠ the base url to make relative urls absolute is synthesized as `https://localhost`.
    * @param xml - XML file containing an RSS feed.
-   * @returns the feed proxy
+   * @returns the feed adapter
    */
   async createFeedFromFile(xml) {
     await this._plugin.tagmgr.updateTagMap();
     const feedXML = await this._app.vault.read(xml);
-    return RSSfeedProxy.create(this._plugin, new TrackedRSSfeed(feedXML, "https://localhost/" + xml.path));
+    return RSSfeedAdapter.create(this._plugin, new TrackedRSSfeed(feedXML, "https://localhost/" + xml.path));
   }
   /**
   * Create an RSS feed Markdown representaiton from a hyperlink.
@@ -15851,7 +15876,7 @@ var FeedManager = class {
   * @param url - A hyperlink pointing to an RSS feed on the web.
   * @param location - The obsidian folder where to create the Markdown files
   *                   representing the feed.
-  * @returns The feed proxy.
+  * @returns The feed adapter.
   */
   async createFeedFromUrl(url) {
     const feedXML = await (0, import_obsidian5.request)({
@@ -15859,11 +15884,11 @@ var FeedManager = class {
       method: "GET"
     });
     await this._plugin.tagmgr.updateTagMap();
-    return RSSfeedProxy.create(this._plugin, new TrackedRSSfeed(feedXML, url));
+    return RSSfeedAdapter.create(this._plugin, new TrackedRSSfeed(feedXML, url));
   }
   /**
    * Update an RSS feed according to the configured frequency.
-   * @param feed The proxy of the RSS feed to update.
+   * @param feed The adapter of the RSS feed to update.
    * @param force `true` to update even if it is not due.
    * @returns the number of new items
    */
@@ -15881,19 +15906,21 @@ var FeedManager = class {
     try {
       const feedXML = await (0, import_obsidian5.request)({
         url: feed.feedurl,
+        contentType: "text/xml",
         method: "GET"
       }), rssfeed = new TrackedRSSfeed(feedXML, feed.feedurl);
       itemCount = await feed.update(rssfeed);
     } catch (err) {
       console.log(`feed '${feed.file.basename}' update failed: ${err.message}`);
       feed.error = err.message;
+      await feed.commitFrontmatterChanges();
     }
     return itemCount;
   }
   get feeds() {
     const feedFolder = this._app.vault.getFolderByPath(this._plugin.settings.rssFeedFolderPath);
     if (feedFolder) {
-      return feedFolder.children.map((f) => f instanceof import_obsidian5.TFile ? this._filemgr.getProxy(f) : null).filter((p) => p instanceof RSSfeedProxy);
+      return feedFolder.children.map((f) => f instanceof import_obsidian5.TFile ? this._filemgr.getAdapter(f) : null).filter((p) => p instanceof RSSfeedAdapter);
     }
     return [];
   }
@@ -15914,27 +15941,27 @@ var FeedManager = class {
     new import_obsidian5.Notice(`${feedCount}/${feeds.length} RSS feeds successfully updated`, 3e4);
     return newItemCount;
   }
-  async update(force, proxy) {
+  async update(force, adapter) {
     await this._plugin.tagmgr.updateTagMap();
-    if (proxy instanceof RSSfeedProxy) {
-      const itemCount = await this.updateFeed(proxy, force);
-      new import_obsidian5.Notice(`Feed '${proxy.file.basename}' has '${itemCount}' new items`, 2e4);
-    } else if (proxy instanceof RSScollectionProxy) {
-      const itemCount = await this.updateFeeds(proxy.feeds, force);
-      new import_obsidian5.Notice(`Collection '${proxy.file.basename}' has '${itemCount}' new items`, 2e4);
+    if (adapter instanceof RSSfeedAdapter) {
+      const itemCount = await this.updateFeed(adapter, force);
+      new import_obsidian5.Notice(`Feed '${adapter.file.basename}' has '${itemCount}' new items`, 2e4);
+    } else if (adapter instanceof RSScollectionAdapter) {
+      const itemCount = await this.updateFeeds(adapter.feeds, force);
+      new import_obsidian5.Notice(`Collection '${adapter.file.basename}' has '${itemCount}' new items`, 2e4);
     } else {
       const feeds = this.feeds, itemCount = await this.updateFeeds(feeds, force);
       new import_obsidian5.Notice(`'${itemCount}' new items in ${feeds.length} feeds.`, 2e4);
     }
   }
-  async completeReadingTasks(proxy) {
+  async completeReadingTasks(adapter) {
     let completed = 0;
-    if (proxy instanceof RSSfeedProxy) {
-      completed = await proxy.completeReadingTasks();
-    } else if (proxy instanceof RSScollectionProxy) {
-      completed = await proxy.completeReadingTasks();
+    if (adapter instanceof RSSfeedAdapter) {
+      completed = await adapter.completeReadingTasks();
+    } else if (adapter instanceof RSScollectionAdapter) {
+      completed = await adapter.completeReadingTasks();
     }
-    new import_obsidian5.Notice(`${completed} items taken off the '${proxy.file.basename}' reading list`, 3e4);
+    new import_obsidian5.Notice(`${completed} items taken off the '${adapter.file.basename}' reading list`, 3e4);
   }
   canDownloadArticle(item) {
     var _a2;
@@ -15991,11 +16018,11 @@ var MarkAllItemsReadMenuItem = class extends RSSTrackerMenuItem {
     if (!dashboard) {
       return;
     }
-    const proxy = this.plugin.filemgr.getProxy(dashboard);
-    if (proxy instanceof RSSfeedProxy || proxy instanceof RSScollectionProxy) {
+    const adapter = this.plugin.filemgr.getAdapter(dashboard);
+    if (adapter instanceof RSSfeedAdapter || adapter instanceof RSScollectionAdapter) {
       menu.addItem((item) => {
         item.setTitle("Mark all RSS items as read").setIcon("list-checks").onClick(async () => {
-          this.plugin.feedmgr.completeReadingTasks(proxy);
+          this.plugin.feedmgr.completeReadingTasks(adapter);
         });
       });
     }
@@ -16036,11 +16063,11 @@ var UpdateRSSfeedMenuItem = class extends RSSTrackerMenuItem {
       return;
     }
     menu.addSeparator();
-    const proxy = this.plugin.filemgr.getProxy(file);
+    const adapter = this.plugin.filemgr.getAdapter(file);
     let title;
-    if (proxy instanceof RSSfeedProxy && !proxy.suspended) {
+    if (adapter instanceof RSSfeedAdapter && !adapter.suspended) {
       title = "Update RSS feed";
-    } else if (proxy instanceof RSScollectionProxy) {
+    } else if (adapter instanceof RSScollectionAdapter) {
       title = "Update RSS collection";
     } else {
       title = "";
@@ -16048,8 +16075,8 @@ var UpdateRSSfeedMenuItem = class extends RSSTrackerMenuItem {
     if (title) {
       menu.addItem((item) => {
         item.setTitle(title).setIcon("rss").onClick(async () => {
-          if (proxy instanceof RSSfeedProxy || proxy instanceof RSScollectionProxy) {
-            await this.plugin.feedmgr.update(true, proxy);
+          if (adapter instanceof RSSfeedAdapter || adapter instanceof RSScollectionAdapter) {
+            await this.plugin.feedmgr.update(true, adapter);
           }
         });
       });
@@ -16074,12 +16101,12 @@ var RenameRSSfeedMenuItem = class extends RSSTrackerMenuItem {
     if (!file) {
       return;
     }
-    const proxy = this.plugin.filemgr.getProxy(file);
+    const adapter = this.plugin.filemgr.getAdapter(file);
     let title;
-    if (proxy instanceof RSSfeedProxy) {
+    if (adapter instanceof RSSfeedAdapter) {
       menu.addItem((item) => {
         item.setTitle("Rename RSS feed").setIcon("pen-line").onClick(async () => {
-          new RenameRSSFeedModal(this.plugin, proxy).open();
+          new RenameRSSFeedModal(this.plugin, adapter).open();
         });
       });
     }
@@ -16103,16 +16130,16 @@ var ToggleRSSfeedActiveStatusMenuItem = class extends RSSTrackerMenuItem {
     if (!file) {
       return;
     }
-    const proxy = this.plugin.filemgr.getProxy(file);
-    if (!(proxy instanceof RSSfeedProxy)) {
+    const adapter = this.plugin.filemgr.getAdapter(file);
+    if (!(adapter instanceof RSSfeedAdapter)) {
       return;
     }
-    if (proxy.suspended) {
+    if (adapter.suspended) {
       menu.addItem((item) => {
         item.setTitle("Resume RSS feed updates").setIcon("power").onClick(async () => {
           var _a2;
-          proxy.suspended = false;
-          await proxy.commitFrontmatterChanges();
+          adapter.suspended = false;
+          await adapter.commitFrontmatterChanges();
           new import_obsidian6.Notice(`${(_a2 = file == null ? void 0 : file.name) != null ? _a2 : "???"} updates resumed`);
         });
       });
@@ -16120,8 +16147,8 @@ var ToggleRSSfeedActiveStatusMenuItem = class extends RSSTrackerMenuItem {
       menu.addItem((item) => {
         item.setTitle("Suspend RSS feed updates").setIcon("power-off").onClick(async () => {
           var _a2;
-          proxy.suspended = true;
-          await proxy.commitFrontmatterChanges();
+          adapter.suspended = true;
+          await adapter.commitFrontmatterChanges();
           new import_obsidian6.Notice(`${(_a2 = file == null ? void 0 : file.name) != null ? _a2 : "???"} updates suspended`);
         });
       });
@@ -16315,7 +16342,7 @@ var DataViewJSTools = class {
    * @returns reading tasks matching the given reading status
    */
   rssReadingTasks(items, read) {
-    return items.map((item) => this.itemReadingTask(item)).where((t) => t && (read === void 0 || t.completed === read));
+    return items.sort((i) => i.published, "desc").map((item) => this.itemReadingTask(item)).where((t) => t && (read === void 0 || t.completed === read));
   }
   /**
    * Get duplicate items which link to the same article
@@ -16366,6 +16393,9 @@ var DataViewJSTools = class {
     for (const feed of feeds) {
       const proxy = new Proxy(feed, this.proxyHandler), items = await this.rssItemsOfContext(feed);
       totalTaskCount += this.readingList(items, read, proxy.link);
+    }
+    if (totalTaskCount === 0) {
+      this.dv.paragraph("\u26D4");
     }
     return totalTaskCount;
   }
@@ -16427,7 +16457,7 @@ var DataViewJSTools = class {
             updated: "Updated"
           },
           sortBy: "name",
-          sortOrder: "desc"
+          sortOrder: "asc"
         };
       case "rss_topics":
         return {
@@ -16436,7 +16466,7 @@ var DataViewJSTools = class {
             headline: "Headline"
           },
           sortBy: "name",
-          sortOrder: "desc"
+          sortOrder: "asc"
         };
       case "rss_collections":
         return {
@@ -16445,7 +16475,7 @@ var DataViewJSTools = class {
             headline: "Headline"
           },
           sortBy: "name",
-          sortOrder: "desc"
+          sortOrder: "asc"
         };
       default:
         options = {};
@@ -16717,20 +16747,20 @@ var _RSSfileManager = class {
   }
   /**
    * Factory method to create proxies for RSS files
-   * @param file An RSS file to create the proxy for.
-   * @returns The appropriate proxy, if it exists.
+   * @param file An RSS file to create the adapter for.
+   * @returns The appropriate adapter, if it exists.
    */
-  getProxy(file) {
+  getAdapter(file) {
     var _a2;
     const frontmatter = (_a2 = this.metadataCache.getFileCache(file)) == null ? void 0 : _a2.frontmatter;
     if (frontmatter) {
       switch (frontmatter.role) {
         case "rssfeed":
-          return new RSSfeedProxy(this._plugin, file, frontmatter);
+          return new RSSfeedAdapter(this._plugin, file, frontmatter);
         case "rssitem":
-          return new RSSitemProxy(this._plugin, file, frontmatter);
+          return new RSSitemAdapter(this._plugin, file, frontmatter);
         case "rsscollection":
-          return new RSScollectionProxy(this._plugin, file, frontmatter);
+          return new RSScollectionAdapter(this._plugin, file, frontmatter);
       }
     }
     return void 0;
@@ -16921,16 +16951,17 @@ var RSSTagManager = class {
         new import_obsidian9.Notice(`${removed} unused tags removed`, 3e4);
       }
     }
-    await this.commit(removed === 0);
+    await this.commit();
   }
   /**
    * Commit any pending changes to the tag map file.
    */
-  async commit(verbose = true) {
+  async commit(context) {
     if (this._pendingMappings.length > 0) {
       const file = await this.getTagmapFile(), taglist = this._pendingMappings.map((row) => `- ${row.split("|")[1]}`).join("\n");
-      if (verbose) {
-        new import_obsidian9.Notice(this._pendingMappings.length + " new tags\n" + taglist, 3e4);
+      if (context) {
+        new import_obsidian9.Notice(`${this._pendingMappings.length} new tags in ${context}
+` + taglist, 3e4);
       }
       if (file) {
         const mappings = "\n" + this._pendingMappings.join("\n");
@@ -17030,6 +17061,7 @@ var RSSTagManager = class {
    */
   get rssTagPostProcessor() {
     return this._app.metadataCache.on("changed", async (item, content, metaData) => {
+      var _a2;
       if (!this._postProcessingRegistry.delete(item.path)) {
         return;
       }
@@ -17051,7 +17083,7 @@ var RSSTagManager = class {
           await item.vault.modify(item, parts.join(""));
         }
       }
-      await this.commit();
+      await this.commit((_a2 = metaData.frontmatter) == null ? void 0 : _a2.feed);
     });
   }
 };

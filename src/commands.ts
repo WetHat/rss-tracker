@@ -1,6 +1,6 @@
 import { App, Command, Notice } from 'obsidian';
 import RSSTrackerPlugin from './main';
-import { RSScollectionProxy, RSSfeedProxy } from './RSSproxies';
+import { RSScollectionAdapter, RSSfeedAdapter } from './RSSAdapter';
 import { InputUrlModal, RenameRSSFeedModal } from './dialogs';
 
 abstract class RSSTrackerCommandBase implements Command {
@@ -32,14 +32,14 @@ export class RenameRSSfeedModalCommand extends RSSTrackerCommandBase {
         if (active) {
             // If checking is true, we're simply "checking" if the command can be run.
             // If checking is false, then we want to actually perform the operation.
-            const proxy = this.plugin.filemgr.getProxy(active);
+            const adapter = this.plugin.filemgr.getAdapter(active);
             if (checking) {
                 // This command will only show up in Command Palette when the check function returns true
                 // check if active file is a rss feed dashboard.
-                return proxy instanceof RSSfeedProxy;
+                return adapter instanceof RSSfeedAdapter;
             }
-            if (proxy instanceof RSSfeedProxy) {
-                new RenameRSSFeedModal(this.plugin,proxy).open();
+            if (adapter instanceof RSSfeedAdapter) {
+                new RenameRSSFeedModal(this.plugin,adapter).open();
             }
         }
         return false;
@@ -61,14 +61,14 @@ export class UpdateRSSfeedCommand extends RSSTrackerCommandBase {
         if (active) {
             // If checking is true, we're simply "checking" if the command can be run.
             // If checking is false, then we want to actually perform the operation.
-            const proxy = this.plugin.filemgr.getProxy(active);
+            const adapter = this.plugin.filemgr.getAdapter(active);
             if (checking) {
                 // This command will only show up in Command Palette when the check function returns true
                 // check if active file is a rss feed dashboard.
-                return (proxy instanceof RSSfeedProxy && !proxy.suspended) || proxy instanceof RSScollectionProxy;
+                return (adapter instanceof RSSfeedAdapter && !adapter.suspended) || adapter instanceof RSScollectionAdapter;
             }
-            if ((proxy instanceof RSSfeedProxy && !proxy.suspended) || proxy instanceof RSScollectionProxy) {
-                this.plugin.feedmgr.update(true,proxy);
+            if ((adapter instanceof RSSfeedAdapter && !adapter.suspended) || adapter instanceof RSScollectionAdapter) {
+                this.plugin.feedmgr.update(true,adapter);
             }
         }
         return false;
@@ -116,14 +116,14 @@ export class MarkAllRSSitemsReadCommand extends RSSTrackerCommandBase {
         if (active) {
             // If checking is true, we're simply "checking" if the command can be run.
             // If checking is false, then we want to actually perform the operation.
-            const proxy = this.plugin.filemgr.getProxy(active);
+            const adapter = this.plugin.filemgr.getAdapter(active);
             if (checking) {
                 // This command will only show up in Command Palette when the check function returns true
                 // check if active file is a rss feed dashboard.
-                return proxy instanceof RSSfeedProxy;
+                return adapter instanceof RSSfeedAdapter;
             }
-            if (proxy instanceof RSSfeedProxy) {
-                this.plugin.feedmgr.completeReadingTasks(proxy);
+            if (adapter instanceof RSSfeedAdapter) {
+                this.plugin.feedmgr.completeReadingTasks(adapter);
                 return true;
             }
         }
@@ -152,7 +152,7 @@ export class NewRSSFeedCollectionCommand extends RSSTrackerCommandBase {
     }
 
     callback(): any {
-        RSScollectionProxy.create(this.plugin)
+        RSScollectionAdapter.create(this.plugin)
             .then(collection => {
                 const leaf = this.app.workspace.getLeaf(false);
                 leaf.openFile(collection.file).catch(reason => new Notice(reason.message))

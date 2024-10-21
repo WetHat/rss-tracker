@@ -3,7 +3,7 @@ import { App, TFile, Vault, MetadataCache, TFolder } from 'obsidian';
 import { TPropertyBag } from './FeedAssembler';
 import { RSSTrackerSettings, TTemplateName } from "./settings";
 import RSSTrackerPlugin from "./main";
-import { RSScollectionProxy, RSSfeedProxy, RSSitemProxy } from './RSSproxies';
+import { RSScollectionAdapter, RSSfeedAdapter, RSSitemAdapter } from './RSSAdapter';
 
 export type MetadataCacheEx = MetadataCache & {
 	getTags(): TPropertyBag; // undocumented non-API method
@@ -43,19 +43,19 @@ export class RSSfileManager {
 	}
 	/**
 	 * Factory method to create proxies for RSS files
-	 * @param file An RSS file to create the proxy for.
-	 * @returns The appropriate proxy, if it exists.
+	 * @param file An RSS file to create the adapter for.
+	 * @returns The appropriate adapter, if it exists.
 	 */
-	getProxy(file: TFile): RSSfeedProxy | RSSitemProxy | RSScollectionProxy | undefined {
+	getAdapter(file: TFile): RSSfeedAdapter | RSSitemAdapter | RSScollectionAdapter | undefined {
 		const frontmatter = this.metadataCache.getFileCache(file)?.frontmatter;
 		if (frontmatter) {
 			switch (frontmatter.role) {
 				case "rssfeed":
-					return new RSSfeedProxy(this._plugin, file, frontmatter);
+					return new RSSfeedAdapter(this._plugin, file, frontmatter);
 				case "rssitem":
-					return new RSSitemProxy(this._plugin, file, frontmatter);
+					return new RSSitemAdapter(this._plugin, file, frontmatter);
 				case "rsscollection":
-					return new RSScollectionProxy(this._plugin, file, frontmatter);
+					return new RSScollectionAdapter(this._plugin, file, frontmatter);
 			}
 		}
 		return undefined;

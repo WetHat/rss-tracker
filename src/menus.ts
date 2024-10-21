@@ -1,6 +1,6 @@
 import RSSTrackerPlugin from './main';
 import { App, Notice, Menu, TFile, EventRef} from 'obsidian';
-import { RSScollectionProxy, RSSfeedProxy } from './RSSproxies';
+import { RSScollectionAdapter, RSSfeedAdapter } from './RSSAdapter';
 import { RenameRSSFeedModal } from './dialogs';
 
 /**
@@ -56,13 +56,13 @@ export class MarkAllItemsReadMenuItem extends RSSTrackerMenuItem {
             return;
         }
 
-        const proxy = this.plugin.filemgr.getProxy(dashboard);
-        if (proxy instanceof RSSfeedProxy || proxy instanceof RSScollectionProxy) {
+        const adapter = this.plugin.filemgr.getAdapter(dashboard);
+        if (adapter instanceof RSSfeedAdapter || adapter instanceof RSScollectionAdapter) {
             menu.addItem(item => {
                 item.setTitle('Mark all RSS items as read')
                     .setIcon('list-checks')
                     .onClick(async () => {
-                        this.plugin.feedmgr.completeReadingTasks(proxy);
+                        this.plugin.feedmgr.completeReadingTasks(adapter);
                     });
             });
         }
@@ -114,11 +114,11 @@ export class UpdateRSSfeedMenuItem extends RSSTrackerMenuItem {
             return;
         }
         menu.addSeparator();
-        const proxy = this.plugin.filemgr.getProxy(file);
+        const adapter = this.plugin.filemgr.getAdapter(file);
         let title: string;
-        if (proxy instanceof RSSfeedProxy && !proxy.suspended) {
+        if (adapter instanceof RSSfeedAdapter && !adapter.suspended) {
             title = "Update RSS feed";
-        } else if (proxy instanceof RSScollectionProxy) {
+        } else if (adapter instanceof RSScollectionAdapter) {
             title = "Update RSS collection";
         } else {
             title = "";
@@ -129,8 +129,8 @@ export class UpdateRSSfeedMenuItem extends RSSTrackerMenuItem {
                 item.setTitle(title)
                     .setIcon('rss')
                     .onClick(async () => {
-                        if (proxy instanceof RSSfeedProxy || proxy instanceof RSScollectionProxy ) {
-                            await this.plugin.feedmgr.update(true,proxy);
+                        if (adapter instanceof RSSfeedAdapter || adapter instanceof RSScollectionAdapter ) {
+                            await this.plugin.feedmgr.update(true,adapter);
                         }
                     });
             });
@@ -157,14 +157,14 @@ export class RenameRSSfeedMenuItem extends RSSTrackerMenuItem {
         if (!file) {
             return;
         }
-        const proxy = this.plugin.filemgr.getProxy(file);
+        const adapter = this.plugin.filemgr.getAdapter(file);
         let title: string;
-        if (proxy instanceof RSSfeedProxy) {
+        if (adapter instanceof RSSfeedAdapter) {
             menu.addItem(item => {
                 item.setTitle("Rename RSS feed")
                     .setIcon('pen-line')
                     .onClick(async () => {
-                        new RenameRSSFeedModal(this.plugin,proxy).open();
+                        new RenameRSSFeedModal(this.plugin,adapter).open();
                     });
             });
         }
@@ -190,18 +190,18 @@ export class ToggleRSSfeedActiveStatusMenuItem extends RSSTrackerMenuItem {
         if (!file) {
             return;
         }
-        const proxy = this.plugin.filemgr.getProxy(file);
-        if (!(proxy instanceof RSSfeedProxy)) {
+        const adapter = this.plugin.filemgr.getAdapter(file);
+        if (!(adapter instanceof RSSfeedAdapter)) {
             return;
         }
 
-        if (proxy.suspended) {
+        if (adapter.suspended) {
             menu.addItem(item => {
                 item.setTitle('Resume RSS feed updates')
                     .setIcon('power')
                     .onClick(async () => {
-                        proxy.suspended = false;
-                        await proxy.commitFrontmatterChanges();
+                        adapter.suspended = false;
+                        await adapter.commitFrontmatterChanges();
                         new Notice(`${file?.name ?? '???'} updates resumed`);
                     });
             });
@@ -210,8 +210,8 @@ export class ToggleRSSfeedActiveStatusMenuItem extends RSSTrackerMenuItem {
                 item.setTitle('Suspend RSS feed updates')
                     .setIcon('power-off')
                     .onClick(async () => {
-                        proxy.suspended = true;
-                        await proxy.commitFrontmatterChanges();
+                        adapter.suspended = true;
+                        await adapter.commitFrontmatterChanges();
                         new Notice(`${file?.name ?? '???'} updates suspended`);
                     });
             });

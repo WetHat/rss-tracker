@@ -8,15 +8,26 @@ import RSSTrackerPlugin from "./main";
 export type TFrontmatter = TPropertyBag;
 
 /**
- * THe base of all proxies for RSS related files in Obsidian.
+ * THe base of all specialized adapter implementations for RSS related files in Obsidian.
  *
- * Provides support for transactional frontmatter property changes via
+ * ```svgbob
+ * ┌───────────────┐      ┌───────────────┐
+ * │ RSSManager    │      │ Obsidian      │
+ * └───────────────┘      └───────────────┘
+ *         │                     │
+ *         ▼                     ▼
+ * ┌───────────────┐      ┌───────────────┐
+ * │ RSSAdapter    │─────▶│ TFile         │
+ * └───────────────┘      └───────────────┘
+ * ```
+ *
+ * Support for transactional frontmatter property changes is available via
  * {@link commitFrontmatterChanges}.
  *
  * Derived classes implement specific get/set methods to access relevant frontmatter
  * properties.
  */
-abstract class RSSProxy {
+abstract class RSSAdapter {
     protected frontmatter: TFrontmatter;
     plugin: RSSTrackerPlugin;
 
@@ -25,12 +36,12 @@ abstract class RSSProxy {
     }
 
     /**
-     * The Obsidian file an instance of a derived classes is a proxy for.
+     * The Obsidian file an instance of a derived classes is an adapter to.
      */
     file: TFile;
 
     get tags(): string[] {
-        return RSSProxy.toPlaintags(this.frontmatter.tags);
+        return RSSAdapter.toPlaintags(this.frontmatter.tags);
     }
 
     get filemgr(): RSSfileManager {
@@ -59,9 +70,9 @@ abstract class RSSProxy {
 }
 
 /**
- * The proxy of an RSS item.
+ * The adapter to an RSS item.
  */
-export class RSSitemProxy extends RSSProxy {
+export class RSSitemAdapter extends RSSAdapter {
     static readonly EMBEDDING_MATCHER = /!\[[^\]]*\]\(([^\)]+)\)\s*/;
     /**
      * **Note**. This property can only be changed by the user.
@@ -129,9 +140,9 @@ export class RSSitemProxy extends RSSProxy {
      * Factory methos to create a new instance of an RSS item
      * @param item the parse item of an RSS feed.
      * @param feed The feed this item is a part of
-     * @returns A new instance of a RSS item file proxy.
+     * @returns A new instance of a RSS item file adapter.
      */
-    static async create(item: TrackedRSSitem, feed: RSSfeedProxy): Promise<RSSitemProxy> {
+    static async create(item: TrackedRSSitem, feed: RSSfeedAdapter): Promise<RSSitemAdapter> {
         let { id, tags, title, link, description, published, author, image, content } = item;
 
         const html = HTMLxlate.instance;
@@ -140,7 +151,7 @@ export class RSSitemProxy extends RSSProxy {
             description = html.fragmentAsMarkdown(description);
             if (!image) {
                 // attempt to find an image in the item description
-                const match = description.match(RSSitemProxy.EMBEDDING_MATCHER);
+                const match = description.match(RSSitemAdapter.EMBEDDING_MATCHER);
                 if (match && match.index !== undefined) {
                     image = {
                         src: match[1],
@@ -156,7 +167,7 @@ export class RSSitemProxy extends RSSProxy {
             content = html.fragmentAsMarkdown(content);
             if (!image) {
                 // attempt to find an image in the item content
-                const match = content.match(RSSitemProxy.EMBEDDING_MATCHER);
+                const match = content.match(RSSitemAdapter.EMBEDDING_MATCHER);
                 if (match) {
                     image = {
                         src: match[1],
@@ -210,8 +221,8 @@ export class RSSitemProxy extends RSSProxy {
             };
         const
             file = await feed.filemgr.createFile(itemfolder.path, item.fileName, "RSS Item", dataMap, true),
-            proxy = new RSSitemProxy(feed.plugin, file, frontmatter);
-        return proxy;
+            adapter = new RSSitemAdapter(feed.plugin, file, frontmatter);
+        return adapter;
     }
 
     constructor(plugin: RSSTrackerPlugin, file: TFile, frontmatter: TFrontmatter) {
@@ -223,7 +234,7 @@ export class RSSitemProxy extends RSSProxy {
     }
 }
 
-export class RSSfeedProxy extends RSSProxy {
+export class RSSfeedAdapter extends RSSAdapter {
     static readonly SUSPENDED_STATUS_ICON = "⏹️";
     static readonly RESUMED_STATUS_ICON = "▶️";
     static readonly ERROR_STATUS_ICON = "❌";
@@ -231,7 +242,7 @@ export class RSSfeedProxy extends RSSProxy {
 
     private _folder?: TFolder; // lazily evaluated
 
-    static async create(plugin: RSSTrackerPlugin, feed: TrackedRSSfeed): Promise<RSSfeedProxy> {
+    static async create(plugin: RSSTrackerPlugin, feed: TrackedRSSfeed): Promise<RSSfeedAdapter> {
         const
             { title, site, description } = feed,
             defaultImage: string = await plugin.settings.getRssDefaultImagePath(),
@@ -255,17 +266,17 @@ export class RSSfeedProxy extends RSSProxy {
         const
             filemgr = plugin.filemgr,
             dashboard = await filemgr.createFile(plugin.settings.rssFeedFolderPath, feed.fileName, "RSS Feed", dataMap, true),
-            proxy = new RSSfeedProxy(plugin, dashboard, frontmatter);
+            adapter = new RSSfeedAdapter(plugin, dashboard, frontmatter);
 
         try {
-            await proxy.update(feed);
+            await adapter.update(feed);
         } catch (err: any) {
             console.error(err);
-            proxy.error = err.message;
+            adapter.error = err.message;
         }
 
-        await proxy.commitFrontmatterChanges();
-        return proxy;
+        await adapter.commitFrontmatterChanges();
+        return adapter;
     }
 
     constructor(plugin: RSSTrackerPlugin, feed: TFile, frontmatter?: TFrontmatter) {
@@ -340,19 +351,19 @@ export class RSSfeedProxy extends RSSProxy {
      * @returns `true` if feed updates are suspended, `false` otherwise.
      */
     get suspended(): boolean {
-        return this.frontmatter.status?.startsWith(RSSfeedProxy.SUSPENDED_STATUS_ICON) ?? false;
+        return this.frontmatter.status?.startsWith(RSSfeedAdapter.SUSPENDED_STATUS_ICON) ?? false;
     }
 
     set suspended(value: boolean) {
         if (value) {
-            this.status = RSSfeedProxy.SUSPENDED_STATUS_ICON + "suspended";
+            this.status = RSSfeedAdapter.SUSPENDED_STATUS_ICON + "suspended";
         } else {
-            this.status = RSSfeedProxy.RESUMED_STATUS_ICON + "resumed updates";
+            this.status = RSSfeedAdapter.RESUMED_STATUS_ICON + "resumed updates";
         }
     }
 
     set error(message: string) {
-        this.status = RSSfeedProxy.ERROR_STATUS_ICON + message;
+        this.status = RSSfeedAdapter.ERROR_STATUS_ICON + message;
     }
 
     private get itemFolderPath(): string {
@@ -367,10 +378,10 @@ export class RSSfeedProxy extends RSSProxy {
      * Get all items in this RSS feed currently in Obsidian.
      * @return proxies for all RSS items in an RSS feed.
      */
-    get items(): RSSitemProxy[] {
+    get items(): RSSitemAdapter[] {
         return this._folder ? this._folder.children
-            .map((c: TAbstractFile) => (c instanceof TFile && c.extension === "md") ? this.filemgr.getProxy(c) : undefined)
-            .filter(p => p instanceof RSSitemProxy) as RSSitemProxy[] : [];
+            .map((c: TAbstractFile) => (c instanceof TFile && c.extension === "md") ? this.filemgr.getAdapter(c) : undefined)
+            .filter(p => p instanceof RSSitemAdapter) as RSSitemAdapter[] : [];
     }
 
     async rename(newBasename : string) : Promise<boolean> {
@@ -398,13 +409,13 @@ export class RSSfeedProxy extends RSSProxy {
     /**
      * Update the RSS feed.
      *
-     * @param feed the proxy of the feed to update.
+     * @param feed the adapter of the feed to update.
      * @returns the number of new items
      */
     async update(feed: TrackedRSSfeed): Promise<number> {
         // build a map of RSS items already existing in the feed folder
 
-        const oldItemsMap = new Map<string, RSSitemProxy>(); // mapping item ID -> item proxy
+        const oldItemsMap = new Map<string, RSSitemAdapter>(); // mapping item ID -> item adapter
         for (const item of this.items) {
             oldItemsMap.set(item.id, item);
         }
@@ -417,7 +428,7 @@ export class RSSfeedProxy extends RSSProxy {
 
         if (newRSSitems.length > 0) {
             // obtain an oldest-first list of remainong RSS item files
-            const oldItems: RSSitemProxy[] = Array.from(oldItemsMap.values())
+            const oldItems: RSSitemAdapter[] = Array.from(oldItemsMap.values())
                 .filter(it => !it.pinned) // do not consider pinned items for deletion
                 .sort((a, b) => a.published - b.published); // oldest first
 
@@ -438,14 +449,14 @@ export class RSSfeedProxy extends RSSProxy {
             // create new files for each new item
             for (const newItem of newRSSitems) {
                 try {
-                    await RSSitemProxy.create(newItem, this);
+                    await RSSitemAdapter.create(newItem, this);
                 } catch (err: any) {
                     throw new Error(`Saving '${newItem.fileName}' of feed '${this.file.basename} failed': ${err.message}`);
                 }
             }
         }
         // update the feeds meta daty
-        this.status = RSSfeedProxy.OK_STATUS_ICON;
+        this.status = RSSfeedAdapter.OK_STATUS_ICON;
         this.updated = new Date().valueOf();
         this.interval = feed.avgPostInterval;
         await this.commitFrontmatterChanges();
@@ -464,21 +475,21 @@ export class RSSfeedProxy extends RSSProxy {
     }
 }
 
-export class RSScollectionProxy extends RSSProxy {
-    static async create(plugin: RSSTrackerPlugin): Promise<RSScollectionProxy> {
+export class RSScollectionAdapter extends RSSAdapter {
+    static async create(plugin: RSSTrackerPlugin): Promise<RSScollectionAdapter> {
         const file = await plugin.filemgr.createFile(plugin.settings.rssCollectionsFolderPath, "New Feed Collection", "RSS Collection");
-        return new RSScollectionProxy(plugin, file);
+        return new RSScollectionAdapter(plugin, file);
     }
 
     constructor(plugin: RSSTrackerPlugin, collection: TFile, frontmatter?: TFrontmatter) {
         super(plugin, collection, frontmatter);
     }
 
-    get feeds(): RSSfeedProxy[] {
+    get feeds(): RSSfeedAdapter[] {
         const
             anyofSet = new Set<string>(this.tags),
-            allof = RSSProxy.toPlaintags(this.frontmatter.allof),
-            noneofSet = new Set<string>(RSSProxy.toPlaintags(this.frontmatter.noneof));
+            allof = RSSAdapter.toPlaintags(this.frontmatter.allof),
+            noneofSet = new Set<string>(RSSAdapter.toPlaintags(this.frontmatter.noneof));
         return this.plugin.feedmgr.feeds
             .filter(f => {
                 const

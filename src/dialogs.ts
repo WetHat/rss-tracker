@@ -1,5 +1,5 @@
 import { Modal, App, Setting, ButtonComponent } from "obsidian";
-import { RSSfeedProxy } from './RSSproxies';
+import { RSSfeedAdapter } from './RSSAdapter';
 import RSSTrackerPlugin from "./main";
 
 export type TOnSubmitCallback = (result: string) => any;
@@ -8,12 +8,12 @@ export class RenameRSSFeedModal extends Modal {
     private plugin: RSSTrackerPlugin;
 
     private newName: string = "";
-    private feed : RSSfeedProxy;
+    private feed : RSSfeedAdapter;
     private btn?: ButtonComponent;
     private originalBtnColor : string = "black";
     private originalTextColor : string = "black";
 
-    constructor(plugin: RSSTrackerPlugin, feed: RSSfeedProxy) {
+    constructor(plugin: RSSTrackerPlugin, feed: RSSfeedAdapter) {
         super(plugin.app);
         this.plugin = plugin;
         this.feed = feed;
