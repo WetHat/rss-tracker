@@ -10,7 +10,7 @@ tags: []
 ~~~dataviewjs
 const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	pages = await dv.pages(dvjs.fromFeeds);
+	pages = await dvjs.rssFeeds();
 dvjs.rssTable(
 	pages,
 	dvjs.getOptions("rss_dashboard_feeds")
