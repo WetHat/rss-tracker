@@ -52,8 +52,11 @@ async function generateFeedReference(feed) {
 if (feedSource.includes("://")) {
     // download feed from the web.
     const
-        feedXML = await fetch(feedSource)
-            .then(response => response.text()),
+        response = await fetch(feedSource,{
+            redirect: "follow",
+            headers: { 'Content-Type': 'text/xml'} // Specify the Content-Type
+        }),
+        feedXML = await response.text(),
         feed = new TrackedRSSfeed(feedXML, feedSource),
         feedName = feed.fileName,
         fsAssets = path.join(referencePath, feedName);

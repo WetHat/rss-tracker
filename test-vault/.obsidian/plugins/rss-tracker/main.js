@@ -15115,8 +15115,7 @@ var ObsidianHTMLLinter = class {
         code.className = "language-undefined";
       }
       code.textContent = (_b = (_a2 = ObsidianHTMLLinter.expandBR(pre).textContent) == null ? void 0 : _a2.trim()) != null ? _b : "";
-      pre.innerHTML = "";
-      pre.append(code);
+      pre.replaceChildren(code);
       pre.removeAttribute("class");
     }
     return this;
