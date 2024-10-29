@@ -14386,6 +14386,11 @@ var sanitizeHtmlOptions = {
 var getSanitizeHtmlOptions = () => {
   return clone(sanitizeHtmlOptions);
 };
+var setSanitizeHtmlOptions = (opts = {}) => {
+  Object.keys(opts).forEach((key) => {
+    sanitizeHtmlOptions[key] = clone(opts[key]);
+  });
+};
 
 // node_modules/@extractus/article-extractor/src/utils/html.js
 var purify2 = (html) => {
@@ -14986,109 +14991,12 @@ function formatImage(image) {
   const { src, width, height } = image;
   return `![image|float:right|400](${src})`;
 }
-var _HTMLxlate = class {
-  constructor() {
-    this.parser = new DOMParser();
-    const tm = {
-      patterns: [
-        /.*/
-        // apply to all websites
-      ],
-      pre: (document) => {
-        this.fixImagesWithoutSrc(document);
-        const allElements = document.body.querySelectorAll("*").forEach((e) => {
-          const illegalNames = [], attribs = e.attributes, attCount = attribs.length;
-          for (let i = 0; i < attCount; i++) {
-            const att = attribs[i], name = att.name;
-            if (!_HTMLxlate.VALIDATTR.test(name)) {
-              illegalNames.push(name);
-            }
-          }
-          for (const name of illegalNames) {
-            e.removeAttribute(name);
-          }
-        });
-        return document;
-      },
-      post: (document) => {
-        _HTMLxlate.detectCode(document.body);
-        _HTMLxlate.flattenTables(document.body);
-        _HTMLxlate.cleanupFakeCode(document.body);
-        _HTMLxlate.cleanupCodeBlock(document.body);
-        _HTMLxlate.injectCodeBlock(document.body);
-        _HTMLxlate.transformText(document.body, (node) => {
-          _HTMLxlate.mathTransformer(node);
-          _HTMLxlate.entityTransformer(node);
-        });
-        return document;
-      }
-    };
-    addTransformations([tm]);
-  }
+var ObsidianHTMLLinter = class {
   /**
-   * Get the singleton instance of the importer.
-   * @returns Importer instance.
+   * Expand all `<br>` elements to linefeeds.
+   * @param element The elment to scan for `<br>`
+   * @returns The modified element.
    */
-  static get instance() {
-    if (!_HTMLxlate._instance) {
-      _HTMLxlate._instance = new _HTMLxlate();
-    }
-    return _HTMLxlate._instance;
-  }
-  static detectCode(element) {
-    const codeBlocks = element.querySelectorAll("[class*=code]:not(pre):not(code)");
-    codeBlocks.forEach((c) => {
-      const pre = c.doc.createElement("pre"), code = c.doc.createElement("code");
-      pre.append(code);
-      code.textContent = c.textContent;
-      c.innerHTML = "";
-      c.append(pre);
-    });
-  }
-  static cleanupFakeCode(element) {
-    const fakeCode = element.querySelectorAll("code:has(code),code:has(pre)");
-    fakeCode.forEach((code) => {
-      const parent = code.parentElement;
-      if (parent) {
-        const div = code.doc.createElement("div");
-        parent.insertBefore(div, code);
-        while (code.firstChild) {
-          div.append(code.firstChild);
-        }
-        code.remove();
-      }
-    });
-  }
-  /**
-   * An HTML transformation looking for `<pre>` tags which are **not** immediately followed by a `<code>` block
-   * and inject one.
-   *
-   * Without that `<code>` element Obsidian will not generate a Markdown code block and obfuscates any code contained in the '<pre>'.
-   *
-   * @param element an element of an HTML document.
-   */
-  static injectCodeBlock(element) {
-    var _a2;
-    const pres = element.querySelectorAll("pre:not(:has(code))");
-    for (let i = 0; i < pres.length; i++) {
-      const pre = pres[i];
-      let firstChild = pre.firstChild;
-      while ((firstChild == null ? void 0 : firstChild.nodeType) === Node.TEXT_NODE && ((_a2 = firstChild.textContent) == null ? void 0 : _a2.trim().length) === 0) {
-        firstChild.remove();
-        firstChild = pre.firstChild;
-      }
-      const code = element.doc.createElement("code"), preClasses = Array.from(pre.classList), lang = preClasses.filter((cl) => cl.startsWith("language-"));
-      if (lang.length > 0)
-        code.classList.add(...lang);
-      else {
-        code.className = "language-undefined";
-      }
-      code.textContent = _HTMLxlate.expandBR(pre).textContent;
-      pre.innerHTML = "";
-      pre.append(code);
-      pre.removeAttribute("class");
-    }
-  }
   static expandBR(element) {
     const brs = element.getElementsByTagName("br");
     while (brs.length > 0) {
@@ -15100,33 +15008,118 @@ var _HTMLxlate = class {
     }
     return element;
   }
-  static cleanupCodeBlock(element) {
-    const codeBlocks = element.getElementsByTagName("code");
-    for (let i = 0; i < codeBlocks.length; i++) {
-      const code = codeBlocks[i];
-      _HTMLxlate.expandBR(code);
-      code.textContent = code.innerText;
-    }
+  constructor(element) {
+    this.element = element;
   }
   /**
-   * Fix `<img>` elemnts without 'src' attribute enclosed in a `<picture>` element.
+   * Scan for `<code>` elements and make them Obsidian friendly.
    *
-   * The fix is to use an image url from the `srcset` attibute of the enclosing `<picture>`
-   * element and add it to  the `<img>`
+   * Applied Transformations:
+   * - Replacing all '<br>' elements by linefeeds.
+   * - transforming HTML code to plain text. As formatting and syntax highlighting will be
+   *   done by Obsidian.
    *
-   * @param doc The HTML document
+   * @returns instance of this class for method chaining.
    */
-  fixImagesWithoutSrc(doc) {
-    doc.body.querySelectorAll("picture > img:not([src]").forEach((img) => {
-      var _a2;
-      const sources = (_a2 = img.parentElement) == null ? void 0 : _a2.getElementsByTagName("source");
-      if (sources && sources.length > 0) {
-        const srcset = sources[0].getAttribute("srcset");
-        if (srcset) {
-          img.setAttribute("src", srcset.slice(0, srcset.indexOf(" ")));
+  cleanupCodeBlock() {
+    const codeBlocks = this.element.getElementsByTagName("code");
+    for (let i = 0; i < codeBlocks.length; i++) {
+      const code = codeBlocks[i];
+      ObsidianHTMLLinter.expandBR(code);
+      const codeTxt = code.innerText.trim();
+      code.textContent = codeTxt;
+      const parent = code.parentElement;
+      if ("pre" === (parent == null ? void 0 : parent.localName)) {
+        const preTxt = parent.innerText.trim();
+        if (preTxt.length === codeTxt.length) {
+          parent.replaceChildren(code);
+        }
+      }
+    }
+    return this;
+  }
+  /**
+   * Detect elements which are most likely code.
+   *
+   * @returns instance of this class for method chaining.
+   */
+  detectCode() {
+    this.element.querySelectorAll("[data-syntax-language],div[class*=code]").forEach((e) => {
+      var _a2, _b;
+      let code = e.localName === "code" ? e : e.querySelectorAll("pre>code");
+      if (!code) {
+        ObsidianHTMLLinter.expandBR(e);
+        const codeTxt = (_b = (_a2 = e.textContent) == null ? void 0 : _a2.trim()) != null ? _b : "";
+        code = e.doc.createElement("code");
+        let pre = e.localName === "pre" ? e : e.querySelector("pre");
+        if (pre) {
+          pre.append(code);
+        } else {
+          pre = e.doc.createElement("pre");
+          pre.append(code);
+          e.replaceChildren(pre);
+        }
+        code.textContent = codeTxt;
+      }
+      const lang = e.getAttribute("data-syntax-language");
+      if (lang) {
+        const langClass = "language-" + lang;
+        if (code instanceof HTMLElement) {
+          code.className = langClass;
+        } else {
+          code.forEach((c) => {
+            c.className = langClass;
+          });
         }
       }
     });
+    return this;
+  }
+  /**
+   * Cleanup incorrectly used '<code>' elements.
+   *
+   * @returns instance of this class for method chaining.
+   */
+  cleanupFakeCode() {
+    const fakeCode = this.element.querySelectorAll("code:has(code),code:has(pre)");
+    fakeCode.forEach((code) => {
+      const parent = code.parentElement;
+      if (parent) {
+        const div = code.doc.createElement("div");
+        parent.insertBefore(div, code);
+        while (code.firstChild) {
+          div.append(code.firstChild);
+        }
+        code.remove();
+      }
+    });
+    return this;
+  }
+  /**
+   * An HTML transformation looking for `<pre>` tags which are **not** followed by a `<code>` block
+   * and inject one.
+   *
+   * Without that `<code>` element Obsidian will not generate a Markdown code block and obfuscates any code contained in the '<pre>'.
+   *
+   * @returns instance of this class for method chaining.
+   */
+  injectCodeBlock() {
+    var _a2, _b;
+    const pres = this.element.querySelectorAll("pre:not(:has(code))");
+    for (let i = 0; i < pres.length; i++) {
+      const pre = pres[i];
+      const code = this.element.doc.createElement("code"), preClasses = Array.from(pre.classList), lang = preClasses.filter((cl) => cl.startsWith("language-"));
+      if (lang.length > 0)
+        code.className = preClasses[0];
+      else {
+        code.className = "language-undefined";
+      }
+      code.textContent = (_b = (_a2 = ObsidianHTMLLinter.expandBR(pre).textContent) == null ? void 0 : _a2.trim()) != null ? _b : "";
+      pre.innerHTML = "";
+      pre.append(code);
+      pre.removeAttribute("class");
+    }
+    return this;
   }
   static flattenSingleRowTable(table) {
     let trs = table.querySelectorAll(":scope > tbody > tr");
@@ -15147,9 +15140,93 @@ var _HTMLxlate = class {
     }
     return false;
   }
-  static flattenTables(element) {
-    const tables = Array.from(element.getElementsByTagName("table"));
-    tables.forEach((table) => _HTMLxlate.flattenSingleRowTable(table));
+  /**
+   * Flatten single row tables into a sequence of `<section>` elements.
+   *
+   * @returns instance of this class for method chaining.
+   */
+  flattenTables() {
+    const tables = Array.from(this.element.getElementsByTagName("table"));
+    tables.forEach((table) => ObsidianHTMLLinter.flattenSingleRowTable(table));
+    return this;
+  }
+};
+var _HTMLxlate = class {
+  constructor() {
+    this.parser = new DOMParser();
+    const tm = {
+      patterns: [
+        /.*/
+        // apply to all websites
+      ],
+      pre: (document) => {
+        this.fixImagesWithoutSrc(document);
+        const allElements = document.body.querySelectorAll("*").forEach((e) => {
+          const illegalNames = [], attribs = e.attributes, attCount = attribs.length;
+          for (let i = 0; i < attCount; i++) {
+            const att = attribs[i], name = att.name;
+            if (!_HTMLxlate.VALIDATTR.test(name)) {
+              illegalNames.push(name);
+            }
+            if (att.name === "class" && att.value.contains("highlight")) {
+              illegalNames.push(name);
+            }
+          }
+          for (const name of illegalNames) {
+            e.removeAttribute(name);
+          }
+        });
+        return document;
+      },
+      post: (document) => {
+        const linter = new ObsidianHTMLLinter(document.body);
+        linter.cleanupCodeBlock().detectCode().flattenTables().cleanupFakeCode().injectCodeBlock();
+        _HTMLxlate.transformText(document.body, (node) => {
+          _HTMLxlate.mathTransformer(node);
+          _HTMLxlate.entityTransformer(node);
+        });
+        return document;
+      }
+    };
+    addTransformations([tm]);
+    const opts = getSanitizeHtmlOptions(), allowedAttributes = opts.allowedAttributes;
+    if (!Array.isArray(allowedAttributes.code)) {
+      allowedAttributes.code = [];
+    }
+    allowedAttributes.code.push("class");
+    setSanitizeHtmlOptions({
+      allowedAttributes
+    });
+  }
+  /**
+   * Get the singleton instance of the importer.
+   * @returns Importer instance.
+   */
+  static get instance() {
+    if (!_HTMLxlate._instance) {
+      _HTMLxlate._instance = new _HTMLxlate();
+    }
+    return _HTMLxlate._instance;
+  }
+  /**
+   * Fix `<img>` elemnts without 'src' attribute enclosed in a `<picture>` element.
+   *
+   * The fix is to use an image url from the `srcset` attibute of the enclosing `<picture>`
+   * element and add it to  the `<img>`
+   *
+   * @param doc The HTML document
+   */
+  fixImagesWithoutSrc(doc) {
+    doc.body.querySelectorAll("picture > img:not([src]").forEach((img) => {
+      var _a2;
+      const sources = (_a2 = img.parentElement) == null ? void 0 : _a2.getElementsByTagName("source");
+      if (sources && sources.length > 0) {
+        const srcset = sources[0].getAttribute("srcset");
+        if (srcset) {
+          img.setAttribute("src", srcset.slice(0, srcset.indexOf(" ")));
+        }
+      }
+    });
   }
   static mathTransformer(textNode) {
     const text = textNode.textContent;
@@ -15198,12 +15275,8 @@ var _HTMLxlate = class {
     if (!html.startsWith("<") && html.match(/```|~~~|^\s*#+\s+[^#]$|\]\([^\]\[\)]+\)/)) {
       return html;
     }
-    const doc = this.parser.parseFromString(html, "text/html");
-    _HTMLxlate.detectCode(doc.body);
-    _HTMLxlate.flattenTables(doc.body);
-    _HTMLxlate.cleanupFakeCode(doc.body);
-    _HTMLxlate.cleanupCodeBlock(doc.body);
-    _HTMLxlate.injectCodeBlock(doc.body);
+    const doc = this.parser.parseFromString(html, "text/html"), linter = new ObsidianHTMLLinter(doc.body);
+    linter.cleanupCodeBlock().flattenTables().cleanupFakeCode().injectCodeBlock();
     _HTMLxlate.transformText(doc.body, (node) => {
       _HTMLxlate.mathTransformer(node);
       _HTMLxlate.entityTransformer(node);
@@ -16970,7 +17043,7 @@ var RSSTagManager = class {
         await this._vault.append(file, mappings);
       }
     } else {
-      console.log("Noting added to tag map.");
+      console.log("Nothing added to tag map.");
     }
   }
   /**

@@ -195,7 +195,26 @@ class PageProxyHandler implements ProxyHandler<TPageRecord> {
 }
 
 /**
- * Utility class providing tools for dataviewjs queries in RSS related Markdown pages.
+ * Utility class providing additional tools for dataviewjs queries for RSS related queries.
+ *
+ * ```svgbob
+ * ┌───────────────┐      ┌─────────────────┐
+ * │ ~~~dataviewjs │      │                 │
+ * │ dvjs....      │─────▶│ DataViewJSTools │
+ * │ ~~~           │      │                 │
+ * └───────────────┘      └─────────────────┘
+ *         │                       │
+ *         │                       │
+ *         │                       ▼
+ *         │               ┌───────────────┐
+ *         │               │               │
+ *         └──────────────▶│ Dataview API  │
+ *                         │     (dv)      │
+ *                         └───────────────┘
+ * ```
+ *
+ * The arrows indicate the direction of interaction, showing that a `dataviewjs` interacts with the `dataview`
+ * API through the `DataViewJSTools`.
  */
 export class DataViewJSTools {
     /**
