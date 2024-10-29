@@ -122,7 +122,7 @@ export class RSSTagManager {
                 await this._vault.append(file, mappings);
             }
         } else {
-            console.log("Noting added to tag map.")
+            console.log("Nothing added to tag map.")
         }
     }
 
