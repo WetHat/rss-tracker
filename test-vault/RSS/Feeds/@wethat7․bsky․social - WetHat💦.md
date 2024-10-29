@@ -3,35 +3,35 @@ role: rssfeed
 feedurl: https://localhost/test/@wethat7․bsky․social - WetHat💦/feed.xml
 site: https://bsky.app/profile/wethat7.bsky.social
 itemlimit: 10
-updated: 2024-10-07T17:50:43.995Z
+updated: 2024-10-29T19:36:04.390Z
 status: ✅
 tags: []
 interval: 19
 ---
 > [!abstract] @wethat7.bsky.social - WetHat💦
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span> I enjoy programming computers
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] I enjoy programming computers
 
-# Unread Feed Items 📚
-~~~dataview
-TASK
-FROM [[]]
-WHERE !completed AND startswith(text,"[[") AND role = "rssitem"
-SORT published DESC
+# Reading List ⚫
+
+~~~dataviewjs
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.readingList( await dvjs.rssItemsOfContext(), false);
 ~~~
 
 # Pinned Feed Items 📍
-~~~dataview
-TABLE
-published as Published
-FROM [[]]
-WHERE pinned = true AND role = "rssitem"
-SORT published DESC
+
+~~~dataviewjs
+const
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	pages = await dvjs.rssItemsOfContext();
+dvjs.rssTable(
+	pages.where(it => it.pinned === true),
+	dvjs.getOptions("rss_feed_items"));
 ~~~
 
-# Read Feed Items
-~~~dataview
-TASK
-FROM [[]]
-WHERE completed AND startswith(text,"[[") AND role = "rssitem"
-SORT published DESC
+# Read Feed Items ✅
+
+~~~dataviewjs
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.readingList( await dvjs.rssItemsOfContext(), true);
 ~~~

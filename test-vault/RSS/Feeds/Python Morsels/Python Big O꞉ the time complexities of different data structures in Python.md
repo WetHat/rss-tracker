@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Python Big O: the time complexities of different data structures in Python - 2024-04-16T15:00:00.000Z
-> <span class="rss-image">![image|400](https://pythonmorsels.s3.amazonaws.com/medialibrary/2024/03/time_complexity.png)</span> The time complexity of common operations on Python's many data structures.
+> ![image|float:right|400](https://pythonmorsels.s3.amazonaws.com/medialibrary/2024/03/time_complexity.png) The time complexity of common operations on Python's many data structures.
 > 
 > **Table of contents**
 > 
@@ -19,25 +19,18 @@ pinned: false
 > 3. [Double-Ended Queue ↔️](https://www.pythonmorsels.com/time-complexities/#double-ended-queue)
 > 4. [Dictionary 🗝️](https://www.pythonmorsels.com/time-complexities/#dictionary)
 > 5. [Set 🎨](https://www.pythonmorsels.com/time-complexities/#set)
-> ⋯
+> 6. [Counter 🧮](https://www.pythonmorsels.com/time-complexities/#counter)
+> 7. [Heap / Priority Queue ⛰️](https://www.pythonmorsels.com/time-complexities/#heap-priority-queue)
+> 8. [Sorted List 🔤](https://www.pythonmorsels.com/time-complexities/#sorted-list)
+> 9. [Traversal Techniques 🔍](https://www.pyt⋯
 
-🔗Read article [online](https://www.pythonmorsels.com/time-complexities/). For other items in this feed see [[Python Morsels]].
+🌐 Read article [online](https://www.pythonmorsels.com/time-complexities/). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[Python Big O꞉ the time complexities of different data structures in Python]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -

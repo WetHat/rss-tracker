@@ -10,32 +10,24 @@ pinned: false
 ---
 
 > [!abstract] Every dunder method in Python - 2024-03-19T21:30:00.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span> An explanation of all of Python's 100+ dunder methods and 50+ dunder attributes, including a summary of each one.
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] An explanation of all of Python's 100+ dunder methods and 50+ dunder attributes, including a summary of each one.
 > 
 > **Table of contents**
 > 
 > 1. [The 3 essential dunder methods 🔑](https://www.pythonmorsels.com/every-dunder-method/#the-3-essential-dunder-methods)
 > 2. [Equality and hashability 🟰](https://www.pythonmorsels.com/every-dunder-method/#equality-and-hashability)
 > 3. [Orderability ⚖️](https://www.pythonmorsels.com/every-dunder-method/#orderability)
-> 4. [Type conversions and string formatting ⚗⋯
+> 4. [Type conversions and string formatting ⚗️](https://www.pythonmorsels.com/every-dunder-method/#type-conversions-and-string-formatting)
+> 5. [Context managers 🚪](https://www.pythonmorsels.com/every-dunder-method/#context-managers)
+> 6. [Containers and collections 🗃️](https://www.pythonmorsels.com/every-dunder-method/#containers-and-collection⋯
 
-🔗Read article [online](https://www.pythonmorsels.com/every-dunder-method/). For other items in this feed see [[Python Morsels]].
+🌐 Read article [online](https://www.pythonmorsels.com/every-dunder-method/). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[Every dunder method in Python]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -

@@ -10,32 +10,25 @@ pinned: false
 ---
 
 > [!abstract] Python's http.server module - 2024-04-05T23:41:43.000Z
-> <span class="rss-image">![image|400](https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F1841759405-9da045272fa3ba2c3dafbff1086447bd10609290a8f06c9e3ef300b43cd23fbf-d_1920x1080&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png)</span> Use Python's `http.server` module to serve up a static website on your own machine.
+> ![image|float:right|400](https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F1841759405-9da045272fa3ba2c3dafbff1086447bd10609290a8f06c9e3ef300b43cd23fbf-d_1920x1080&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png) Use Python's `http.server` module to serve up a static website on your own machine.
 > 
 > **Table of contents**
 > 
 > 1. [A directory trees of `index.html` files](https://www.pythonmorsels.com/http-server/#a-directory-trees-of-indexhtml-files)
 > 2. [Serving up HTML files with `http.server`](https://www.pythonmorsels.com/http-server/#serving-up-html-files-with-httpserver)
 > 3. [Customizing `http.server` with CLI arguments](https://www.pythonmorsels.com/http-server/#customizing-httpserver-with-cli-arguments)
-> 4.⋯
+> 4. [Using `http.server` as a module](https://www.pythonmorsels.com/http-server/#using-httpserver-as-a-module)
+> 5. [Use `python -m http.server` for a local HTTP server](https://www.pythonmorsels.com/http-server/#use-python-m-httpserver-for-a-local-http-server)
+> 
+> ## A directory trees of `index.html` files⋯
 
-🔗Read article [online](https://www.pythonmorsels.com/http-server/). For other items in this feed see [[Python Morsels]].
+🌐 Read article [online](https://www.pythonmorsels.com/http-server/). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[Python's http․server module]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
@@ -53,20 +46,18 @@ Use Python's `http.server` module to serve up a static website on your own machi
 
 We have a directory here that represents a static website:
 
-```undefined
+```
 ~/comprehensions/_build/dirhtml
                                 $ ls index.html
                                 index.html
-                                
 ```
 
 We not only have an `index.html` file, but also a bunch of sub-directories, each with their own `index.html` file:
 
-```undefined
+```
 ~/comprehensions/_build/dirhtml
                                 $ ls generator-expressions
                                 index.html
-                                
 ```
 
 The only way to really navigate this website locally is to **serve up these files** using some sort of HTTP server that is aware of these index files.

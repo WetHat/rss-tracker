@@ -10,25 +10,15 @@ pinned: false
 ---
 
 > [!abstract] Now Available: Effective TypeScript, Second Edition - 2024-05-21T21:30:00.000Z
-> <span class="rss-image">![image|400](https://effectivetypescript.com/images/cover-2e.jpg)</span> Fully updated, thoroughly revised, now with 50% more book!
+> ![image|float:right|400](https://effectivetypescript.com/images/cover-2e.jpg) Fully updated, thoroughly revised, now with 50% more book!
 
-🔗Read article [online](https://effectivetypescript.com/2024/05/21/second-edition/). For other items in this feed see [[Effective TypeScript]].
+🌐 Read article [online](https://effectivetypescript.com/2024/05/21/second-edition/). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[Now Available꞉ Effective TypeScript, Second Edition]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -

@@ -10,25 +10,15 @@ pinned: false
 ---
 
 > [!abstract] Create Stunning Maps Effortlessly - Master React Leaflet with TypeScript! - 2024-09-30T00:00:00.000Z
-> <span class="rss-image">![image|400](./images/map1.png)</span> In today’s web development landscape, integrating maps into applications has become increasingly popular. Whether you’re building a location…
+> ![image|float:right|400](./images/map1.png) In today’s web development landscape, integrating maps into applications has become increasingly popular. Whether you’re building a location…
 
-🔗Read article [online](https://jsdev.space/mastering-react-leaflet/). For other items in this feed see [[JavaScript Development Space's RSS Feed]].
+🌐 Read article [online](https://jsdev.space/mastering-react-leaflet/). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[Create Stunning Maps Effortlessly - Master React Leaflet with TypeScript!]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -

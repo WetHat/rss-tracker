@@ -10,7 +10,7 @@ pinned: false
 ---
 
 > [!abstract] Boosted: Series: A Functional Approach To Common Lisp https://youtu.be/2mJ88j3CqRs Discussions: https://discu.eu/q/https://youtu.be/2mJ88j3CqRs #rss/lisp #rss/programming by @WetHat - 2024-05-15T05:40:35.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span> Series: A Functional Approach To Common Lisp
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] Series: A Functional Approach To Common Lisp
 > 
 > [https://youtu.be/2mJ88j3CqRs](https://youtu.be/2mJ88j3CqRs)
 > 
@@ -20,23 +20,13 @@ pinned: false
 > 
 > - Lisp & Scheme Weekly (@lisp_discussions) [May 14, 2024](https://mastodon.social/@lisp_discussions/112442474804563136)
 
-🔗Read article [online](https://mastodon.social/@lisp_discussions/112442474804563136). For other items in this feed see [[@WetHat (WetHat💦)]].
+🌐 Read article [online](https://mastodon.social/@lisp_discussions/112442474804563136). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[Boosted꞉ Series꞉ A Functional Approach To Common Lisp⋯]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -

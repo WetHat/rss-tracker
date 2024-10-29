@@ -10,25 +10,15 @@ pinned: false
 ---
 
 > [!abstract] GitHub Copilot Workspace: Welcome to the Copilot-native developer environment by Thomas Dohmke - 2024-04-29T16:00:02.000Z
-> <span class="rss-image">![image|400](https://github.blog/wp-content/uploads/2024/04/octoacademy-projects.png?w=1024&resize=1024%2C593)</span> We’re redefining the developer environment with GitHub Copilot Workspace - where any developer can go from idea, to code, to software all in natural language. The post GitHub Copilot Workspace: Welcome to the Copilot-native developer environment appeared first on The GitHub Blog.
+> ![image|float:right|400](https://github.blog/wp-content/uploads/2024/04/octoacademy-projects.png?w=1024&resize=1024%2C593) We’re redefining the developer environment with GitHub Copilot Workspace - where any developer can go from idea, to code, to software all in natural language. The post GitHub Copilot Workspace: Welcome to the Copilot-native developer environment appeared first on The GitHub Blog.
 
-🔗Read article [online](https://github.blog/2024-04-29-github-copilot-workspace/). For other items in this feed see [[The GitHub Blog꞉ Product News and Updates]].
+🌐 Read article [online](https://github.blog/2024-04-29-github-copilot-workspace/). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[GitHub Copilot Workspace꞉ Welcome to the Copilot-native developer environment]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -

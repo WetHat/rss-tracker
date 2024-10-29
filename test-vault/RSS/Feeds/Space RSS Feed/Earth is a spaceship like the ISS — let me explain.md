@@ -10,25 +10,15 @@ pinned: false
 ---
 
 > [!abstract]  Earth is a spaceship like the ISS — let me explain  - 2024-10-06T10:00:01.000Z
-> <span class="rss-image">![image|400](https://cdn.mos.cms.futurecdn.net/YaAwoQASUBtjW3fyXScSp4.jpg)</span> From water recycling to carbon capture, there are a myriad ways in which space technologies can be applied to help us live in a more environmentally friendly way on Earth.
+> ![image|float:right|400](https://cdn.mos.cms.futurecdn.net/YaAwoQASUBtjW3fyXScSp4.jpg) From water recycling to carbon capture, there are a myriad ways in which space technologies can be applied to help us live in a more environmentally friendly way on Earth.
 
-🔗Read article [online](https://www.space.com/earth-iss-sustainable-living-world-space-week). For other items in this feed see [[Space RSS Feed]].
+🌐 Read article [online](https://www.space.com/earth-iss-sustainable-living-world-space-week). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[Earth is a spaceship like the ISS — let me explain]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -

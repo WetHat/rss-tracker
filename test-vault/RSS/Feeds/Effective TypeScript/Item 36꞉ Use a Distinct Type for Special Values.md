@@ -10,25 +10,15 @@ pinned: false
 ---
 
 > [!abstract] Item 36: Use a Distinct Type for Special Values - 2024-06-13T17:30:00.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span> It's tempting to use "", 0 or -1 as special values: an empty string might represent text that hasn't loaded yet, or -1 could stand in for a missing number. In TypeScript, this is almost always a bad idea. Special values need to be handled specially, and giving them a distinct type, such as null, allows TypeScript to enforce that you do so.
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] It's tempting to use "", 0 or -1 as special values: an empty string might represent text that hasn't loaded yet, or -1 could stand in for a missing number. In TypeScript, this is almost always a bad idea. Special values need to be handled specially, and giving them a distinct type, such as null, allows TypeScript to enforce that you do so.
 
-🔗Read article [online](https://effectivetypescript.com/2024/06/13/special-values/). For other items in this feed see [[Effective TypeScript]].
+🌐 Read article [online](https://effectivetypescript.com/2024/06/13/special-values/). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[Item 36꞉ Use a Distinct Type for Special Values]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
@@ -37,7 +27,7 @@ _This is a sample item from Chapter 4 of the second edition of [Effective TypeSc
 JavaScript's [string `split` method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split) is a handy way to break a string around a delimiter:
 
 ```undefined
-> 'abcde'.split('c')[ 'ab', 'de' ] 
+> 'abcde'.split('c')[ 'ab', 'de' ]
 ```
 
 Let's write something like `split`, but for arrays. Here's an attempt:

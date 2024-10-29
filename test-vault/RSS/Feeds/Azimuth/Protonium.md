@@ -10,25 +10,15 @@ pinned: false
 ---
 
 > [!abstract] Protonium by John Baez - 2024-04-14T10:57:14.000Z
-> <span class="rss-image">![image|400](https://johncarlosbaez.files.wordpress.com/2024/04/protonium.jpg)</span> It looks like they’ve found protonium in the decay of a heavy particle! Protonium is made of a proton and an antiproton orbiting each other. It lasts a very short time before they annihilate each other. It’s a bit like a hydrogen atom where the electron has been replaced with an antiproton! But it’s much ［…］
+> ![image|float:right|400](https://johncarlosbaez.files.wordpress.com/2024/04/protonium.jpg) It looks like they’ve found protonium in the decay of a heavy particle! Protonium is made of a proton and an antiproton orbiting each other. It lasts a very short time before they annihilate each other. It’s a bit like a hydrogen atom where the electron has been replaced with an antiproton! But it’s much ［…］
 
-🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/04/14/protonium/). For other items in this feed see [[Azimuth]].
+🌐 Read article [online](https://johncarlosbaez.wordpress.com/2024/04/14/protonium/). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[Protonium]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -

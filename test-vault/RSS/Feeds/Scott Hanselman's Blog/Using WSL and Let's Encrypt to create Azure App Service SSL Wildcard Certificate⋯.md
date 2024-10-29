@@ -10,29 +10,23 @@ pinned: false
 ---
 
 > [!abstract] Using WSL and Let's Encrypt to create Azure App Service SSL Wildcard Certificates by Scott Hanselman - 2023-06-27T17:17:25.000Z
-> <span class="rss-image">![image|400](https://www.hanselman.com/blog/content/binary/Windows-Live-Writer/Using-WSL-and-Lets-Encrypt-to-create-Azu_C384/image_3849c466-fcdb-4abd-96ad-8d52a5e93730.png "Custom Domains in Azure App Service")</span> There are many let's encrypt automatic tools for azure but I also wanted to see if I could use certbot in wsl to generate a wildcard certificate for the azure Friday website and then upload the resulting certificates to azure app service.
+> ![image|float:right|400](https://www.hanselman.com/blog/content/binary/Windows-Live-Writer/Using-WSL-and-Lets-Encrypt-to-create-Azu_C384/image_3849c466-fcdb-4abd-96ad-8d52a5e93730.png "Custom Domains in Azure App Service") There are many let's encrypt automatic tools for azure but I also wanted to see if I could use certbot in wsl to generate a wildcard certificate for the azure Friday website and then upload the resulting certificates to azure app service.
 > 
 > Azure app service ultimately needs a specific format called dot PFX that includes the full certificate path and all intermediates.
 > 
-> Per the docs, App Service private certificates must meet [the following requirements](https://learn.microsoft.com/en-us/azure/ap⋯
+> Per the docs, App Service private certificates must meet [the following requirements](https://learn.microsoft.com/en-us/azure/app-service/configure-ssl-certificate?tabs=apex%2Cportal#private-certificate-requirements):
+> 
+> - Exported as a password-protected PFX file, encrypted using triple DES.
+> - Contains private key at least 2048 bits long
+> - Contains all intermediate certificates and the root certificate in the certificate chai⋯
 
-🔗Read article [online](https://feeds.hanselman.com/~/749206136/0/scotthanselman~Using-WSL-and-Lets-Encrypt-to-create-Azure-App-Service-SSL-Wildcard-Certificates). For other items in this feed see [[Scott Hanselman's Blog]].
+🌐 Read article [online](https://feeds.hanselman.com/~/749206136/0/scotthanselman~Using-WSL-and-Lets-Encrypt-to-create-Azure-App-Service-SSL-Wildcard-Certificates). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[Using WSL and Let's Encrypt to create Azure App Service SSL Wildcard Certificate⋯]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
@@ -97,7 +91,7 @@ Import-PfxCertificate -FilePath "AzureFriday2023.pfx" -CertStoreLocation Cert:\L
 
 Export-PfxCertificate -Cert Microsoft.PowerShell.Security\Certificate::LocalMachine\My\597THISISTHETHUMBNAILCF1157B8CEBB7CA1 
 
-    -FilePath 'AzureFriday2023-fixed.pfx' -Password (ConvertTo-SecureString -String 'PASSWORDHERE' -AsPlainText -Force) 
+    -FilePath 'AzureFriday2023-fixed.pfx' -Password (ConvertTo-SecureString -String 'PASSWORDHERE' -AsPlainText -Force)
 ```
 
 Then upload the cert to the Certificates section of your App Service, under Bring Your Own Cert.

@@ -3,35 +3,35 @@ role: rssfeed
 feedurl: https://localhost/test/The GitHub Blog꞉ Product News and Updates/feed.xml
 site: https://github.blog/category/product/
 itemlimit: 10
-updated: 2024-10-07T17:50:12.569Z
+updated: 2024-10-29T19:35:31.933Z
 status: ✅
 tags: []
 interval: 165
 ---
 > [!abstract] The GitHub Blog: Product News and Updates
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span> Updates, ideas, and inspiration from GitHub to help developers build and design software.
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] Updates, ideas, and inspiration from GitHub to help developers build and design software.
 
-# Unread Feed Items 📚
-~~~dataview
-TASK
-FROM [[]]
-WHERE !completed AND startswith(text,"[[") AND role = "rssitem"
-SORT published DESC
+# Reading List ⚫
+
+~~~dataviewjs
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.readingList( await dvjs.rssItemsOfContext(), false);
 ~~~
 
 # Pinned Feed Items 📍
-~~~dataview
-TABLE
-published as Published
-FROM [[]]
-WHERE pinned = true AND role = "rssitem"
-SORT published DESC
+
+~~~dataviewjs
+const
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	pages = await dvjs.rssItemsOfContext();
+dvjs.rssTable(
+	pages.where(it => it.pinned === true),
+	dvjs.getOptions("rss_feed_items"));
 ~~~
 
-# Read Feed Items
-~~~dataview
-TASK
-FROM [[]]
-WHERE completed AND startswith(text,"[[") AND role = "rssitem"
-SORT published DESC
+# Read Feed Items ✅
+
+~~~dataviewjs
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.readingList( await dvjs.rssItemsOfContext(), true);
 ~~~

@@ -10,25 +10,15 @@ pinned: false
 ---
 
 > [!abstract] The Hidden Side of Type Predicates - 2024-02-27T15:45:00.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span> Type guards are a powerful tool for improving TypeScript's built-in control flow analysis. This post looks at when it's appropriate to use a type predicate, and in particular what it means when a type predicate returns false.
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] Type guards are a powerful tool for improving TypeScript's built-in control flow analysis. This post looks at when it's appropriate to use a type predicate, and in particular what it means when a type predicate returns false.
 
-🔗Read article [online](https://effectivetypescript.com/2024/02/27/type-guards/). For other items in this feed see [[Effective TypeScript]].
+🌐 Read article [online](https://effectivetypescript.com/2024/02/27/type-guards/). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[The Hidden Side of Type Predicates]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
@@ -157,7 +147,7 @@ if (isSmallNumber(strOrNum)) {
 This passes the type checker but blows up at runtime:
 
 ```
-  console.log(strOrNum.toUpperCase());
+console.log(strOrNum.toUpperCase());
                        ^
 
 Cannot read property toUpperCase of 123.

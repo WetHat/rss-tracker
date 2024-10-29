@@ -10,25 +10,15 @@ pinned: false
 ---
 
 > [!abstract]  SpaceX will launch Europe's Hera asteroid probe today: Watch it live  - 2024-10-06T13:00:01.000Z
-> <span class="rss-image">![image|400](https://cdn.mos.cms.futurecdn.net/8FdKMmCstG8xM7hs7yAaLA.jpg)</span> SpaceX will launch Europe's Hera spacecraft on Monday (Oct. 7) toward the asteroid Dimorphos for a post-impact evaluation, and you can watch the liftoff live.
+> ![image|float:right|400](https://cdn.mos.cms.futurecdn.net/8FdKMmCstG8xM7hs7yAaLA.jpg) SpaceX will launch Europe's Hera spacecraft on Monday (Oct. 7) toward the asteroid Dimorphos for a post-impact evaluation, and you can watch the liftoff live.
 
-🔗Read article [online](https://www.space.com/esa-hera-mission-spacex-launch-livestream). For other items in this feed see [[Space RSS Feed]].
+🌐 Read article [online](https://www.space.com/esa-hera-mission-spacex-launch-livestream). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[SpaceX will launch Europe's Hera asteroid probe today꞉ Watch it live]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -

@@ -10,25 +10,15 @@ pinned: false
 ---
 
 > [!abstract] The Making of a TypeScript Feature: Inferring Type Predicates - 2024-04-16T17:30:00.000Z
-> <span class="rss-image">![image|400](https://effectivetypescript.com/images/inferred-predicate.png)</span> Over the past few months I became a TypeScript contributor and implemented a new feature, type predicate inference, that should be one of the headliners for TypeScript 5.5. This post tells the story of how that happened: why I wanted to contribute to TypeScript, the journey to implementing the feature and getting the PR merged, and what I've learned along the way. This is not a short read, but it will give you a good sense of what it's like to become a TypeScript contributor and develop a new fe⋯
+> ![image|float:right|400](https://effectivetypescript.com/images/inferred-predicate.png) Over the past few months I became a TypeScript contributor and implemented a new feature, type predicate inference, that should be one of the headliners for TypeScript 5.5. This post tells the story of how that happened: why I wanted to contribute to TypeScript, the journey to implementing the feature and getting the PR merged, and what I've learned along the way. This is not a short read, but it will give you a good sense of what it's like to become a TypeScript contributor and develop a new feature.
 
-🔗Read article [online](https://effectivetypescript.com/2024/04/16/inferring-a-type-predicate/). For other items in this feed see [[Effective TypeScript]].
+🌐 Read article [online](https://effectivetypescript.com/2024/04/16/inferring-a-type-predicate/). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[The Making of a TypeScript Feature꞉ Inferring Type Predicates]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -

@@ -10,25 +10,15 @@ pinned: false
 ---
 
 > [!abstract] The road to universal JavaScript - 2022-05-09T00:00:00.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span> Universal JavaScript. JavaScript that works in every environment. JavaScript that runs on both the client and the server, something thinking about for years (see 1, 2). Where are we now?
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] Universal JavaScript. JavaScript that works in every environment. JavaScript that runs on both the client and the server, something thinking about for years (see 1, 2). Where are we now?
 
-🔗Read article [online](https://fettblog.eu/the-road-to-universal-javascript/). For other items in this feed see [[fettblog․eu ∣ TypeScript, JavaScript, Jamstack]].
+🌐 Read article [online](https://fettblog.eu/the-road-to-universal-javascript/). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[The road to universal JavaScript]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -

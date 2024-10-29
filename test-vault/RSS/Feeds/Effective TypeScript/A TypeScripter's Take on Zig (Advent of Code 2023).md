@@ -10,25 +10,15 @@ pinned: false
 ---
 
 > [!abstract] A TypeScripter's Take on Zig (Advent of Code 2023) - 2024-07-17T19:50:00.000Z
-> <span class="rss-image">![image|400](https://effectivetypescript.com/images/advent-of-code.png "Advent of Code Logo")</span> What can Zig learn from TypeScript, and what can TypeScript learn from Zig?
+> ![image|float:right|400](https://effectivetypescript.com/images/advent-of-code.png "Advent of Code Logo") What can Zig learn from TypeScript, and what can TypeScript learn from Zig?
 
-🔗Read article [online](https://effectivetypescript.com/2024/07/17/advent2023-zig/). For other items in this feed see [[Effective TypeScript]].
+🌐 Read article [online](https://effectivetypescript.com/2024/07/17/advent2023-zig/). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[A TypeScripter's Take on Zig (Advent of Code 2023)]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -

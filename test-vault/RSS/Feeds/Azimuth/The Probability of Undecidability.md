@@ -10,25 +10,15 @@ pinned: false
 ---
 
 > [!abstract] The Probability of Undecidability by John Baez - 2024-03-15T10:10:44.000Z
-> <span class="rss-image">![image|400](https://johncarlosbaez.files.wordpress.com/2024/03/unprovability_michael_freedman.png)</span> There’s a lot we don’t know. There’s a lot we can’t know. But can we at least know how much we can’t know? What fraction of mathematical statements are undecidable—that is, can be neither proved nor disproved? There are many ways to make this question precise… but it remains a bit mysterious. The best results ［…］
+> ![image|float:right|400](https://johncarlosbaez.files.wordpress.com/2024/03/unprovability_michael_freedman.png) There’s a lot we don’t know. There’s a lot we can’t know. But can we at least know how much we can’t know? What fraction of mathematical statements are undecidable—that is, can be neither proved nor disproved? There are many ways to make this question precise… but it remains a bit mysterious. The best results ［…］
 
-🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/03/15/the-probability-of-undecidability/). For other items in this feed see [[Azimuth]].
+🌐 Read article [online](https://johncarlosbaez.wordpress.com/2024/03/15/the-probability-of-undecidability/). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[The Probability of Undecidability]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -

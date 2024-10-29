@@ -10,25 +10,15 @@ pinned: false
 ---
 
 > [!abstract] Geothermal Power Everywhere: Tech Advances Rapidly by Sabine Hossenfelder - 2024-05-14T15:00:22.000Z
-> <span class="rss-image">![image|400](https://i2.ytimg.com/vi/QByk4jJwp9c/hqdefault.jpg)</span> Learn more about your favourite subjects on Brilliant! First 30 days are free and 20% off the annual premium subscription when you use our link ➜ https://brilliant.org/sabine. Geothermal energy is everywhere, just right under our feet. So could it be the solution to climate change? I used to think it was just too difficult and expensive to make much sense in most places, but some recent advances have made me rethink. Let’s have a look. 🤓 Check out my new quiz app ➜ http://quizwithit.com/ 💌 Sup⋯
+> ![image|float:right|400](https://i2.ytimg.com/vi/QByk4jJwp9c/hqdefault.jpg) Learn more about your favourite subjects on Brilliant! First 30 days are free and 20% off the annual premium subscription when you use our link ➜ https://brilliant.org/sabine. Geothermal energy is everywhere, just right under our feet. So could it be the solution to climate change? I used to think it was just too difficult and expensive to make much sense in most places, but some recent advances have made me rethink. Let’s have a look. 🤓 Check out my new quiz app ➜ http://quizwithit.com/ 💌 Support me on Donorbox ➜ https://donorbox.org/swtg 📝 Transcripts and written news on Substack ➜ https://sciencewtg.substack.com/ 👉 Transcript with links to references on Patreon ➜ https://www.patreon.com/Sabine 📩 Free weekly science newsletter ➜ https://sabinehossenfelder.com/newsletter/ 👂 Audio on⋯
 
-🔗Read article [online](https://www.youtube.com/watch?v=QByk4jJwp9c). For other items in this feed see [[Sabine Hossenfelder]].
+🌐 Read article [online](https://www.youtube.com/watch?v=QByk4jJwp9c). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[Geothermal Power Everywhere꞉ Tech Advances Rapidly]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -

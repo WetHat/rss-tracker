@@ -3,35 +3,35 @@ role: rssfeed
 feedurl: https://localhost/test/JavaScript Development Space's RSS Feed/feed.xml
 site: http://github.com/dylang/node-rss
 itemlimit: 10
-updated: 2024-10-07T17:50:28.364Z
+updated: 2024-10-29T19:35:48.447Z
 status: ✅
 tags: []
 interval: 138
 ---
 > [!abstract] JavaScript Development Space's RSS Feed
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span> Explore the world of JavaScript at our blog, your ultimate resource for guides, tutorials, and articles. Uncover the latest insights, tips, and trends.
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] Explore the world of JavaScript at our blog, your ultimate resource for guides, tutorials, and articles. Uncover the latest insights, tips, and trends.
 
-# Unread Feed Items 📚
-~~~dataview
-TASK
-FROM [[]]
-WHERE !completed AND startswith(text,"[[") AND role = "rssitem"
-SORT published DESC
+# Reading List ⚫
+
+~~~dataviewjs
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.readingList( await dvjs.rssItemsOfContext(), false);
 ~~~
 
 # Pinned Feed Items 📍
-~~~dataview
-TABLE
-published as Published
-FROM [[]]
-WHERE pinned = true AND role = "rssitem"
-SORT published DESC
+
+~~~dataviewjs
+const
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	pages = await dvjs.rssItemsOfContext();
+dvjs.rssTable(
+	pages.where(it => it.pinned === true),
+	dvjs.getOptions("rss_feed_items"));
 ~~~
 
-# Read Feed Items
-~~~dataview
-TASK
-FROM [[]]
-WHERE completed AND startswith(text,"[[") AND role = "rssitem"
-SORT published DESC
+# Read Feed Items ✅
+
+~~~dataviewjs
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.readingList( await dvjs.rssItemsOfContext(), true);
 ~~~

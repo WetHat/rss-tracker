@@ -3,35 +3,35 @@ role: rssfeed
 feedurl: https://localhost/test/Python Morsels/feed.xml
 site: https://www.pythonmorsels.com/topics/
 itemlimit: 10
-updated: 2024-10-07T17:50:21.065Z
+updated: 2024-10-29T19:35:41.183Z
 status: ✅
 tags: []
 interval: 425
 ---
 > [!abstract] Python Morsels
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span> Python Morsels
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] Python Morsels
 
-# Unread Feed Items 📚
-~~~dataview
-TASK
-FROM [[]]
-WHERE !completed AND startswith(text,"[[") AND role = "rssitem"
-SORT published DESC
+# Reading List ⚫
+
+~~~dataviewjs
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.readingList( await dvjs.rssItemsOfContext(), false);
 ~~~
 
 # Pinned Feed Items 📍
-~~~dataview
-TABLE
-published as Published
-FROM [[]]
-WHERE pinned = true AND role = "rssitem"
-SORT published DESC
+
+~~~dataviewjs
+const
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	pages = await dvjs.rssItemsOfContext();
+dvjs.rssTable(
+	pages.where(it => it.pinned === true),
+	dvjs.getOptions("rss_feed_items"));
 ~~~
 
-# Read Feed Items
-~~~dataview
-TASK
-FROM [[]]
-WHERE completed AND startswith(text,"[[") AND role = "rssitem"
-SORT published DESC
+# Read Feed Items ✅
+
+~~~dataviewjs
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.readingList( await dvjs.rssItemsOfContext(), true);
 ~~~

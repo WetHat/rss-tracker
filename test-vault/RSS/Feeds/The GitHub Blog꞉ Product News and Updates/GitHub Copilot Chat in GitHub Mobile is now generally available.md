@@ -10,25 +10,15 @@ pinned: false
 ---
 
 > [!abstract] GitHub Copilot Chat in GitHub Mobile is now generally available by Mario Rodriguez - 2024-05-07T16:00:04.000Z
-> <span class="rss-image">![image|400](https://github.blog/wp-content/uploads/2024/05/Tech-Crunch-Blog-Asset-2.png?w=558&resize=558%2C1024)</span> With GitHub Copilot Chat in GitHub Mobile, developers can collaborate, ask coding questions, and gain insights into both public and private repositories anywhere, anytime–all in natural language for users on all GitHub Copilot plans. The post GitHub Copilot Chat in GitHub Mobile is now generally available appeared first on The GitHub Blog.
+> ![image|float:right|400](https://github.blog/wp-content/uploads/2024/05/Tech-Crunch-Blog-Asset-2.png?w=558&resize=558%2C1024) With GitHub Copilot Chat in GitHub Mobile, developers can collaborate, ask coding questions, and gain insights into both public and private repositories anywhere, anytime–all in natural language for users on all GitHub Copilot plans. The post GitHub Copilot Chat in GitHub Mobile is now generally available appeared first on The GitHub Blog.
 
-🔗Read article [online](https://github.blog/2024-05-07-github-copilot-chat-in-github-mobile/). For other items in this feed see [[The GitHub Blog꞉ Product News and Updates]].
+🌐 Read article [online](https://github.blog/2024-05-07-github-copilot-chat-in-github-mobile/). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[GitHub Copilot Chat in GitHub Mobile is now generally available]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -

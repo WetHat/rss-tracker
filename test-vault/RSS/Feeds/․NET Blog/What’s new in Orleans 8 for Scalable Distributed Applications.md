@@ -10,27 +10,17 @@ pinned: false
 ---
 
 > [!abstract] What&#8217;s new in Orleans 8 for Scalable Distributed Applications by Mike Kistler - 2024-05-13T17:05:00.000Z
-> <span class="rss-image">![image|400](./live-migration-lifecycle.png)</span> Let's take a look at what is new with Orleans for building robust, scalable distribute applications with Orleans 8 and integration with .NET Aspire.
+> ![image|float:right|400](./live-migration-lifecycle.png) Let's take a look at what is new with Orleans for building robust, scalable distribute applications with Orleans 8 and integration with .NET Aspire.
 > 
 > The post [What’s new in Orleans 8 for Scalable Distributed Applications](https://devblogs.microsoft.com/dotnet/whats-new-in-orleans-8/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 
-🔗Read article [online](https://devblogs.microsoft.com/dotnet/whats-new-in-orleans-8/). For other items in this feed see [[․NET Blog]].
+🌐 Read article [online](https://devblogs.microsoft.com/dotnet/whats-new-in-orleans-8/). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[What’s new in Orleans 8 for Scalable Distributed Applications]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
@@ -67,7 +57,7 @@ Note that rehydration occurs before OnActivateAsync is called and dehydration oc
 A grain will support live migration if all the components of the grain implement the `IGrainMigrationParticipant` interface, which defines the methods for dehydrating and rehydrating in-memory state in a migration.
 
 ```csharp
- public interface IGrainMigrationParticipant
+public interface IGrainMigrationParticipant
 {
     void OnDehydrate(IDehydrationContext dehydrationContext);
     void OnRehydrate(IRehydrationContext rehydrationContext);

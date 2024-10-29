@@ -10,25 +10,15 @@ pinned: false
 ---
 
 > [!abstract] Nicholas Ludford by John Baez - 2024-02-29T10:00:24.000Z
-> <span class="rss-image">![image|400](https://johncarlosbaez.files.wordpress.com/2024/02/blue_heron_peterhouse_partbooks.jpg)</span> At first glance it’s amazing that one of the great British composers of the 1400s largely sank from view until his works were rediscovered in 1850. But the reason is not hard to find. When the Puritans took over England, they burned not only witches and heretics, but also books — and music! They hated ［…］
+> ![image|float:right|400](https://johncarlosbaez.files.wordpress.com/2024/02/blue_heron_peterhouse_partbooks.jpg) At first glance it’s amazing that one of the great British composers of the 1400s largely sank from view until his works were rediscovered in 1850. But the reason is not hard to find. When the Puritans took over England, they burned not only witches and heretics, but also books — and music! They hated ［…］
 
-🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/02/29/nicholas-ludford/). For other items in this feed see [[Azimuth]].
+🌐 Read article [online](https://johncarlosbaez.wordpress.com/2024/02/29/nicholas-ludford/). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[Nicholas Ludford]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -

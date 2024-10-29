@@ -10,25 +10,15 @@ pinned: false
 ---
 
 > [!abstract] 7 New Buffer Features to Explore in 2024 (+ a Sneak Peek at What's to Come) by Buffer - 2024-05-22T15:03:57.000Z
-> <span class="rss-image">![image|400](https://ic-cdn.flipboard.com/buffer.com/7295abec9d6cdb75b6d8e351974c1b331cafe126/_xlarge.png)</span> We’re always adding new features and updates to Buffer. This year, we've introduced several new additions, and we're excited to give you a sneak peek …
+> ![image|float:right|400](https://ic-cdn.flipboard.com/buffer.com/7295abec9d6cdb75b6d8e351974c1b331cafe126/_xlarge.png) We’re always adding new features and updates to Buffer. This year, we've introduced several new additions, and we're excited to give you a sneak peek …
 
-🔗Read article [online](https://buffer.com/resources/buffer-product-update-may-2024/). For other items in this feed see [[Bluesky]].
+🌐 Read article [online](https://buffer.com/resources/buffer-product-update-may-2024/). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[7 New Buffer Features to Explore in 2024 (+ a Sneak Peek at What's to Come)]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -

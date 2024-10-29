@@ -10,25 +10,15 @@ pinned: false
 ---
 
 > [!abstract] Flow Nodes: How Type Inference Is Implemented - 2024-03-25T03:00:00.000Z
-> <span class="rss-image">![image|400](https://effectivetypescript.com/images/dall-e-control-flow.jpg)</span> If a variable gets a type but no one looks at it, does it really get a type at all? This post looks at how type inference is implemented in the TypeScript compiler. It's of some interest to anyone who uses TypeScript and is curious how it works, but it will be most relevant to developers who want to contribute to TypeScript itself.
+> ![image|float:right|400](https://effectivetypescript.com/images/dall-e-control-flow.jpg) If a variable gets a type but no one looks at it, does it really get a type at all? This post looks at how type inference is implemented in the TypeScript compiler. It's of some interest to anyone who uses TypeScript and is curious how it works, but it will be most relevant to developers who want to contribute to TypeScript itself.
 
-🔗Read article [online](https://effectivetypescript.com/2024/03/24/flownodes/). For other items in this feed see [[Effective TypeScript]].
+🌐 Read article [online](https://effectivetypescript.com/2024/03/24/flownodes/). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[Flow Nodes꞉ How Type Inference Is Implemented]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -

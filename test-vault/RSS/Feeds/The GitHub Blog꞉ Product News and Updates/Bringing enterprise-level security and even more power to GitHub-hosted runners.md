@@ -10,25 +10,15 @@ pinned: false
 ---
 
 > [!abstract] Bringing enterprise-level security and even more power to GitHub-hosted runners by Tanmayee Kamath - 2024-04-02T16:35:24.000Z
-> <span class="rss-image">![image|400](https://github.blog/wp-content/uploads/2024/04/new-network-configuration.png?w=1024&resize=1024%2C582)</span> GitHub-hosted runners now support Azure private networking. Plus, we've added 2 vCPU Linux, 4 vCPU Windows, macOS L, macOS XL, and GPU hosted runners to our runner fleet. The post Bringing enterprise-level security and even more power to GitHub-hosted runners appeared first on The GitHub Blog.
+> ![image|float:right|400](https://github.blog/wp-content/uploads/2024/04/new-network-configuration.png?w=1024&resize=1024%2C582) GitHub-hosted runners now support Azure private networking. Plus, we've added 2 vCPU Linux, 4 vCPU Windows, macOS L, macOS XL, and GPU hosted runners to our runner fleet. The post Bringing enterprise-level security and even more power to GitHub-hosted runners appeared first on The GitHub Blog.
 
-🔗Read article [online](https://github.blog/2024-04-02-bringing-enterprise-level-security-and-even-more-power-to-github-hosted-runners/). For other items in this feed see [[The GitHub Blog꞉ Product News and Updates]].
+🌐 Read article [online](https://github.blog/2024-04-02-bringing-enterprise-level-security-and-even-more-power-to-github-hosted-runners/). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[Bringing enterprise-level security and even more power to GitHub-hosted runners]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -

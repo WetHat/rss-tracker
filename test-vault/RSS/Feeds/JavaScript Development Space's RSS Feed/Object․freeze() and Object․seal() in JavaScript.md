@@ -10,25 +10,15 @@ pinned: false
 ---
 
 > [!abstract] Object.freeze() and Object.seal() in JavaScript - 2024-09-29T00:00:00.000Z
-> <span class="rss-image">![image|400](./images/freeze-seal-js.png)</span> Previously, we wrote about How to Create Immutable Objects in JavaScript. In this howto, we'll explore the difference between Object.freeze(…
+> ![image|float:right|400](./images/freeze-seal-js.png) Previously, we wrote about How to Create Immutable Objects in JavaScript. In this howto, we'll explore the difference between Object.freeze(…
 
-🔗Read article [online](https://jsdev.space/howto/freeze-seal-js/). For other items in this feed see [[JavaScript Development Space's RSS Feed]].
+🌐 Read article [online](https://jsdev.space/howto/freeze-seal-js/). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[Object․freeze() and Object․seal() in JavaScript]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -

@@ -10,27 +10,19 @@ pinned: false
 ---
 
 > [!abstract] Use your own user @ domain for Mastodon discoverability with the WebFinger Protocol without hosting a server by Scott Hanselman - 2022-12-18T22:16:30.000Z
-> <span class="rss-image">![image|400](https://www.hanselman.com/blog/content/binary/Windows-Live-Writer/f76e92f681b3_FC6E/image_cb60bf43-6d0a-41f9-9ff5-246f288adedf.png "Searching for me with Mastodon")</span> Mastodon is a free, open-source social networking service that is decentralized and distributed. It was created in 2016 as an alternative to centralized social media platforms such as Twitter and Facebook.
+> ![image|float:right|400](https://www.hanselman.com/blog/content/binary/Windows-Live-Writer/f76e92f681b3_FC6E/image_cb60bf43-6d0a-41f9-9ff5-246f288adedf.png "Searching for me with Mastodon") Mastodon is a free, open-source social networking service that is decentralized and distributed. It was created in 2016 as an alternative to centralized social media platforms such as Twitter and Facebook.
 > 
-> One of the key features of Mastodon is the use of the WebFinger protocol, which allows users to discover and access information about other users on the Mastodon network. WebFinger is a simple HTTP-based protocol that enables a user to discover information about other users or resources on th⋯
+> One of the key features of Mastodon is the use of the WebFinger protocol, which allows users to discover and access information about other users on the Mastodon network. WebFinger is a simple HTTP-based protocol that enables a user to discover information about other users or resources on the internet by using their email address or other identifying information. The WebFinger protocol is important for Mastodon because it enables users to find and follow each other on the network, regardless of where they are hosted.
+> 
+> WebFinger uses a "well known" path structure when calling an domain.⋯
 
-🔗Read article [online](https://feeds.hanselman.com/~/722495722/0/scotthanselman~Use-your-own-user-domain-for-Mastodon-discoverability-with-the-WebFinger-Protocol-without-hosting-a-server). For other items in this feed see [[Scott Hanselman's Blog]].
+🌐 Read article [online](https://feeds.hanselman.com/~/722495722/0/scotthanselman~Use-your-own-user-domain-for-Mastodon-discoverability-with-the-WebFinger-Protocol-without-hosting-a-server). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[Use your own user @ domain for Mastodon discoverability with the WebFinger Proto⋯]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -

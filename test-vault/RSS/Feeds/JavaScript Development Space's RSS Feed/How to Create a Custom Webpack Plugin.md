@@ -10,25 +10,15 @@ pinned: false
 ---
 
 > [!abstract] How to Create a Custom Webpack Plugin - 2024-10-06T00:00:00.000Z
-> <span class="rss-image">![image|400](./images/custom-webpack-plugin.png)</span> Creating a plugin for Webpack allows you to customize and extend Webpack's functionality to suit your needs. Webpack plugins can perform a…
+> ![image|float:right|400](./images/custom-webpack-plugin.png) Creating a plugin for Webpack allows you to customize and extend Webpack's functionality to suit your needs. Webpack plugins can perform a…
 
-🔗Read article [online](https://jsdev.space/howto/custom-webpack-plugin/). For other items in this feed see [[JavaScript Development Space's RSS Feed]].
+🌐 Read article [online](https://jsdev.space/howto/custom-webpack-plugin/). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[How to Create a Custom Webpack Plugin]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -

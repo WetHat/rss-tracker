@@ -10,25 +10,15 @@ pinned: false
 ---
 
 > [!abstract] Agent-Based Models (Part 8) by John Baez - 2024-04-16T19:01:15.000Z
-> <span class="rss-image">![image|400](https://johncarlosbaez.files.wordpress.com/2023/07/state_diagram.png)</span> Last time I presented a class of agent-based models where agents hop around a graph in a stochastic way. Each vertex of the graph is some ‘state’ agents can be in, and each edge is called a ‘transition’. In these models, the probability per time of an agent making a transition and leaving some state ［…］
+> ![image|float:right|400](https://johncarlosbaez.files.wordpress.com/2023/07/state_diagram.png) Last time I presented a class of agent-based models where agents hop around a graph in a stochastic way. Each vertex of the graph is some ‘state’ agents can be in, and each edge is called a ‘transition’. In these models, the probability per time of an agent making a transition and leaving some state ［…］
 
-🔗Read article [online](https://johncarlosbaez.wordpress.com/2024/04/16/agent-based-models-part-8/). For other items in this feed see [[Azimuth]].
+🌐 Read article [online](https://johncarlosbaez.wordpress.com/2024/04/16/agent-based-models-part-8/). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[Agent-Based Models (Part 8)]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -

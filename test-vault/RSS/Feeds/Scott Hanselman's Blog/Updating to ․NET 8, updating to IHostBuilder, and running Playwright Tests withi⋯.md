@@ -10,27 +10,19 @@ pinned: false
 ---
 
 > [!abstract] Updating to .NET 8, updating to IHostBuilder, and running Playwright Tests within NUnit headless or headed on any OS by Scott Hanselman - 2024-03-07T01:12:13.000Z
-> <span class="rss-image">![image|400](https://www.hanselman.com/blog/content/binary/Windows-Live-Writer/78fe85887e7e_1244B/image_8b82f0d7-a3bc-4403-96c3-9dd36fc46d1f.png "All the Unit Tests pass")</span> I've been doing not just Unit Testing for my sites but full on Integration Testing and Browser Automation Testing as early as 2007 with Selenium. Lately, however, I've been using the faster and generally more compatible [Playwright](https://playwright.dev/). It has one API and can test on Windows, Linux, Mac, locally, in a container (headless), in my CI/CD pipeline, on Azure DevOps, or in GitHub Actions.
+> ![image|float:right|400](https://www.hanselman.com/blog/content/binary/Windows-Live-Writer/78fe85887e7e_1244B/image_8b82f0d7-a3bc-4403-96c3-9dd36fc46d1f.png "All the Unit Tests pass") I've been doing not just Unit Testing for my sites but full on Integration Testing and Browser Automation Testing as early as 2007 with Selenium. Lately, however, I've been using the faster and generally more compatible [Playwright](https://playwright.dev/). It has one API and can test on Windows, Linux, Mac, locally, in a container (headless), in my CI/CD pipeline, on Azure DevOps, or in GitHub Actions.
 > 
-> For me, it's that last moment of truth to make sure that the site runs completely from end ⋯
+> For me, it's that last moment of truth to make sure that the site runs completely from end to end.
+> 
+> I can write those Playwright tests in something like TypeScript, and I could launch them with node, but I like running end unit tests and using that test runner and test harness as my jumping off point for my .NET applications. I'm used to right clicking and "run unit tests" or even better,⋯
 
-🔗Read article [online](https://feeds.hanselman.com/~/873234002/0/scotthanselman~Updating-to-NET-updating-to-IHostBuilder-and-running-Playwright-Tests-within-NUnit-headless-or-headed-on-any-OS). For other items in this feed see [[Scott Hanselman's Blog]].
+🌐 Read article [online](https://feeds.hanselman.com/~/873234002/0/scotthanselman~Updating-to-NET-updating-to-IHostBuilder-and-running-Playwright-Tests-within-NUnit-headless-or-headed-on-any-OS). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[Updating to ․NET 8, updating to IHostBuilder, and running Playwright Tests withi⋯]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
@@ -64,7 +56,6 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
     WebHost.CreateDefaultBuilder(args)
 
         .UseStartup<Startup>();
-
 ```
 
 to this:

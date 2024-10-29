@@ -3,35 +3,35 @@ role: rssfeed
 feedurl: https://localhost/test/․NET Blog/feed.xml
 site: https://devblogs.microsoft.com/dotnet/
 itemlimit: 10
-updated: 2024-10-07T17:50:06.318Z
+updated: 2024-10-29T19:35:25.460Z
 status: ✅
 tags: []
 interval: 77
 ---
 > [!abstract] .NET Blog
-> <span class="rss-image">![image|400](https://devblogs.microsoft.com/dotnet/wp-content/uploads/sites/10/2018/10/Microsoft-Favicon.png)</span> Free. Cross-platform. Open source. A developer platform for building all your apps.
+> ![image|float:right|400](https://devblogs.microsoft.com/dotnet/wp-content/uploads/sites/10/2018/10/Microsoft-Favicon.png) Free. Cross-platform. Open source. A developer platform for building all your apps.
 
-# Unread Feed Items 📚
-~~~dataview
-TASK
-FROM [[]]
-WHERE !completed AND startswith(text,"[[") AND role = "rssitem"
-SORT published DESC
+# Reading List ⚫
+
+~~~dataviewjs
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.readingList( await dvjs.rssItemsOfContext(), false);
 ~~~
 
 # Pinned Feed Items 📍
-~~~dataview
-TABLE
-published as Published
-FROM [[]]
-WHERE pinned = true AND role = "rssitem"
-SORT published DESC
+
+~~~dataviewjs
+const
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	pages = await dvjs.rssItemsOfContext();
+dvjs.rssTable(
+	pages.where(it => it.pinned === true),
+	dvjs.getOptions("rss_feed_items"));
 ~~~
 
-# Read Feed Items
-~~~dataview
-TASK
-FROM [[]]
-WHERE completed AND startswith(text,"[[") AND role = "rssitem"
-SORT published DESC
+# Read Feed Items ✅
+
+~~~dataviewjs
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.readingList( await dvjs.rssItemsOfContext(), true);
 ~~~

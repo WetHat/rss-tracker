@@ -10,25 +10,17 @@ pinned: false
 ---
 
 > [!abstract] A Nightscout Segment for OhMyPosh shows my realtime Blood Sugar readings in my Git Prompt by Scott Hanselman - 2021-11-23T20:02:00.000Z
-> <span class="rss-image">![image|400](https://www.hanselman.com/blog/content/binary/Windows-Live-Writer/a1ea1c6a57b0_119D3/image_d14e0906-8932-44e0-a493-86eeac62c1ae.png "My blood sugar in my Prompt!")</span> I've talked about [how I love a nice pretty prompt in my Windows Terminal](https://www.hanselman.com/blog/my-ultimate-powershell-prompt-with-oh-my-posh-and-the-windows-terminal) and [made videos showing in detail how to do it](https://www.youtube.com/watch?v=VT2L1SXFq9U). I've also worked with my buddy [TooTallNate to put my real-time blood sugar into a bash or PowerShell prompt](https://www.hanselman.com/blog/visualizing-your-realtime-blood-sugar-values-and-a-git-prompt-on-windows-powershell-an⋯
+> ![image|float:right|400](https://www.hanselman.com/blog/content/binary/Windows-Live-Writer/a1ea1c6a57b0_119D3/image_d14e0906-8932-44e0-a493-86eeac62c1ae.png "My blood sugar in my Prompt!") I've talked about [how I love a nice pretty prompt in my Windows Terminal](https://www.hanselman.com/blog/my-ultimate-powershell-prompt-with-oh-my-posh-and-the-windows-terminal) and [made videos showing in detail how to do it](https://www.youtube.com/watch?v=VT2L1SXFq9U). I've also worked with my buddy [TooTallNate to put my real-time blood sugar into a bash or PowerShell prompt](https://www.hanselman.com/blog/visualizing-your-realtime-blood-sugar-values-and-a-git-prompt-on-windows-powershell-and-linux-bash), but this was back in 2017.
+> 
+> Now that I'm "Team [OhMyPosh](https://ohmyposh.dev/)" I have been meaning to write a Nightscout "segment" for my prompt. [Nightscout](https://www.nightscoutfoundation.org/how-you-can-help) is an open source self-hosted (there are [commercial hosts also like⋯
 
-🔗Read article [online](https://feeds.hanselman.com/~/673947624/0/scotthanselman~A-Nightscout-Segment-for-OhMyPosh-shows-my-realtime-Blood-Sugar-readings-in-my-Git-Prompt). For other items in this feed see [[Scott Hanselman's Blog]].
+🌐 Read article [online](https://feeds.hanselman.com/~/673947624/0/scotthanselman~A-Nightscout-Segment-for-OhMyPosh-shows-my-realtime-Blood-Sugar-readings-in-my-Git-Prompt). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[A Nightscout Segment for OhMyPosh shows my realtime Blood Sugar readings in my G⋯]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -

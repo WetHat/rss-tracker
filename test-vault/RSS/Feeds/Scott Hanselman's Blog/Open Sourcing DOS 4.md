@@ -10,27 +10,19 @@ pinned: false
 ---
 
 > [!abstract] Open Sourcing DOS 4 by Scott Hanselman - 2024-04-25T16:46:13.000Z
-> <span class="rss-image">![image|400](https://www.hanselman.com/blog/content/binary/Windows-Live-Writer/Open-Sourcing-DOS-4_E712/clip_image002_5b6e1c02-95d8-4ee1-87af-ca53a8b0bd56.png "Beta DOS Disks")</span> _See [the canonical version of this blog post at the Microsoft Open Source Blog](https://cloudblogs.microsoft.com/opensource/2024/04/25/open-sourcing-ms-dos-4-0/)!_
+> ![image|float:right|400](https://www.hanselman.com/blog/content/binary/Windows-Live-Writer/Open-Sourcing-DOS-4_E712/clip_image002_5b6e1c02-95d8-4ee1-87af-ca53a8b0bd56.png "Beta DOS Disks") _See [the canonical version of this blog post at the Microsoft Open Source Blog](https://cloudblogs.microsoft.com/opensource/2024/04/25/open-sourcing-ms-dos-4-0/)!_
 > 
-> Ten years ago, [Microsoft released the source for MS-DOS 1.25 and 2.0](https://devblogs.microsoft.com/commandline/re-open-sourcing-ms-dos-1-25-and-2-0/) to the Computer History Museum, and then [later republished them](https://github.com/microsoft/MS-DOS) for reference purposes. This code holds an important place in history and is a⋯
+> Ten years ago, [Microsoft released the source for MS-DOS 1.25 and 2.0](https://devblogs.microsoft.com/commandline/re-open-sourcing-ms-dos-1-25-and-2-0/) to the Computer History Museum, and then [later republished them](https://github.com/microsoft/MS-DOS) for reference purposes. This code holds an important place in history and is a fascinating read of an operating system that was written entirely in 8086 assembly code nearly 45 years ago.
+> 
+> Today, in partnership with IBM and in the spirit of open innovation, we're releasing the source code to MS-DOS 4.00 under the MIT license. There's a somewhat complex and fascinating history⋯
 
-🔗Read article [online](https://feeds.hanselman.com/~/882544025/0/scotthanselman~Open-Sourcing-DOS). For other items in this feed see [[Scott Hanselman's Blog]].
+🌐 Read article [online](https://feeds.hanselman.com/~/882544025/0/scotthanselman~Open-Sourcing-DOS). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[Open Sourcing DOS 4]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -

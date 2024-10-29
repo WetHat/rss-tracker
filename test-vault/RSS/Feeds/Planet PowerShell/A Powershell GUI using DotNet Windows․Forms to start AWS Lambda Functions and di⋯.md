@@ -10,29 +10,19 @@ pinned: false
 ---
 
 > [!abstract] A Powershell GUI using DotNet Windows.Forms to start AWS Lambda Functions and display their output by Matthew Dowst - 2024-05-24T12:24:44.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span> A Powershell GUI using DotNet Windows.Forms to start AWS Lambda Functions and display their output -
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] A Powershell GUI using DotNet Windows.Forms to start AWS Lambda Functions and display their output -
 > 
 > powershell-gui-aws-lambda-start-functions.ps1
 > 
 > (+)(-)
 
-🔗Read article [online](https://gist.github.com/aeveltstra/94806a1230b8165f43e9b4e4dec9bacc). For other items in this feed see [[Planet PowerShell]].
+🌐 Read article [online](https://gist.github.com/aeveltstra/94806a1230b8165f43e9b4e4dec9bacc). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[A Powershell GUI using DotNet Windows․Forms to start AWS Lambda Functions and di⋯]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -

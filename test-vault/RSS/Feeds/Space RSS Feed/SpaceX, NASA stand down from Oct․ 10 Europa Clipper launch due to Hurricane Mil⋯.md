@@ -10,25 +10,15 @@ pinned: false
 ---
 
 > [!abstract]  SpaceX, NASA stand down from Oct. 10 Europa Clipper launch due to Hurricane Milton  by  mwall@space.com (Mike Wall)  - 2024-10-07T04:39:52.000Z
-> <span class="rss-image">![image|400](https://cdn.mos.cms.futurecdn.net/NDgDS4Ebivgn68ancGeLcJ.jpg)</span> SpaceX and NASA are standing down from the Oct. 10 launch of the Europa Clipper mission due to anticipated effects of Hurricane Milton. A new target date has not been announced.
+> ![image|float:right|400](https://cdn.mos.cms.futurecdn.net/NDgDS4Ebivgn68ancGeLcJ.jpg) SpaceX and NASA are standing down from the Oct. 10 launch of the Europa Clipper mission due to anticipated effects of Hurricane Milton. A new target date has not been announced.
 
-🔗Read article [online](https://www.space.com/spacex-nasa-europa-clipper-launch-delay-hurricane-milton). For other items in this feed see [[Space RSS Feed]].
+🌐 Read article [online](https://www.space.com/spacex-nasa-europa-clipper-launch-delay-hurricane-milton). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[SpaceX, NASA stand down from Oct․ 10 Europa Clipper launch due to Hurricane Mil⋯]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -

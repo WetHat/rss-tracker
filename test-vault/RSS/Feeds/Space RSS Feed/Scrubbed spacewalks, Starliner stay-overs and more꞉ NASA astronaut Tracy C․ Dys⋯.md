@@ -10,25 +10,15 @@ pinned: false
 ---
 
 > [!abstract]  Scrubbed spacewalks, Starliner stay-overs and more: NASA astronaut Tracy C. Dyson discusses her eventful 6 months in orbit  by  robert@collectspace.com (Robert Z. Pearlman)  - 2024-10-07T12:00:25.000Z
-> <span class="rss-image">![image|400](https://cdn.mos.cms.futurecdn.net/YXud9By9jEiirv4jJ8uyvZ.jpg)</span> NASA astronaut Tracy Caldwell Dyson reflected on her time in space during a post-flight press conference at NASA’s Johnson Space Center in Houston on Friday (Oct. 4).
+> ![image|float:right|400](https://cdn.mos.cms.futurecdn.net/YXud9By9jEiirv4jJ8uyvZ.jpg) NASA astronaut Tracy Caldwell Dyson reflected on her time in space during a post-flight press conference at NASA’s Johnson Space Center in Houston on Friday (Oct. 4).
 
-🔗Read article [online](https://www.space.com/nasa-astronaut-tracy-caldwell-dyson-post-flight-briefing). For other items in this feed see [[Space RSS Feed]].
+🌐 Read article [online](https://www.space.com/nasa-astronaut-tracy-caldwell-dyson-post-flight-briefing). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[Scrubbed spacewalks, Starliner stay-overs and more꞉ NASA astronaut Tracy C․ Dys⋯]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -

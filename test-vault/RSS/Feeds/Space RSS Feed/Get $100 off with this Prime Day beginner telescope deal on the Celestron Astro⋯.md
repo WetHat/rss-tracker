@@ -10,25 +10,15 @@ pinned: false
 ---
 
 > [!abstract]  Get $100 off with this Prime Day beginner telescope deal on the Celestron AstroMaster 114EQ  - 2024-10-07T10:02:02.000Z
-> <span class="rss-image">![image|400](https://cdn.mos.cms.futurecdn.net/4NgoEMy3qf4NU2AHuPsXmF.jpg)</span> Ready to start stargazing? The Celestron AstroMaster 114EQ is a perfect beginners telescope that you won't immediately outgrow, and it's down to just $219.95.
+> ![image|float:right|400](https://cdn.mos.cms.futurecdn.net/4NgoEMy3qf4NU2AHuPsXmF.jpg) Ready to start stargazing? The Celestron AstroMaster 114EQ is a perfect beginners telescope that you won't immediately outgrow, and it's down to just $219.95.
 
-🔗Read article [online](https://www.space.com/save-usd100-on-beginner-friendly-celestron-astromaster-114eq-at-amazon-prime-day-october-2024). For other items in this feed see [[Space RSS Feed]].
+🌐 Read article [online](https://www.space.com/save-usd100-on-beginner-friendly-celestron-astromaster-114eq-at-amazon-prime-day-october-2024). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[Get $100 off with this Prime Day beginner telescope deal on the Celestron Astro⋯]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -

@@ -10,31 +10,23 @@ pinned: false
 ---
 
 > [!abstract] Multiline comments in Python - 2024-04-19T23:00:00.000Z
-> <span class="rss-image">![image|400](https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F1841759670-0b28dacb1984f308cc6f5f4b2e1ab6c842bffdd8cce9a544b0097584850ccc6a-d_1920x1080&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png)</span> Python does not have multiline comments. But you can use alternatives like docstrings, editor shortcuts, and conventional commenting methods, depending on your requirements.
+> ![image|float:right|400](https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F1841759670-0b28dacb1984f308cc6f5f4b2e1ab6c842bffdd8cce9a544b0097584850ccc6a-d_1920x1080&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png) Python does not have multiline comments. But you can use alternatives like docstrings, editor shortcuts, and conventional commenting methods, depending on your requirements.
 > 
 > **Table of contents**
 > 
 > 1. [Does Python have multi-line comments?](https://www.pythonmorsels.com/multiline-comments/#does-python-have-multi-line-comments)
 > 2. [What about triple quotes?](https://www.pythonmorsels.com/multiline-comments/#what-about-triple-quotes)
-> 3. [Docstrings versus comments](https://www.pythonmorsels.com/mu⋯
+> 3. [Docstrings versus comments](https://www.pythonmorsels.com/multiline-comments/#docstrings-versus-comments)
+> 4. [What if I want to comment-out a whole block of code?](https://www.pythonmorsels.com/multiline-comments/#what-if-i-want-to-comment-out-a-whole-block-of-code)
+> 5. [How to comment multiple lines](https://www.pythonmorsels.com/multiline-comments/#how-to-c⋯
 
-🔗Read article [online](https://www.pythonmorsels.com/multiline-comments/). For other items in this feed see [[Python Morsels]].
+🌐 Read article [online](https://www.pythonmorsels.com/multiline-comments/). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[Multiline comments in Python]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
@@ -53,12 +45,11 @@ Python does not have multiline comments. But you can use alternatives like docst
 
 For single-line comments, Python uses the octothorpe character (`#`), also known as pound, number sign, crunch, and of course, the hashtag character:
 
-```undefined
+```
 # This is a comment
 
                                 this = "is not a
                                 comment"
-                                
 ```
 
 But what if you want to comment out **a whole block** of code?

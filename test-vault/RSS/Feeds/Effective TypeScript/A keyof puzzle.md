@@ -10,25 +10,15 @@ pinned: false
 ---
 
 > [!abstract] A keyof puzzle - 2024-08-30T13:00:00.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span> Effective TypeScript is nearly 400 pages long, but I've received the most feedback by far on just one passage. It comes in Item 7: Think of Types as Sets of Values: keyof (A&B) = (keyof A) | (keyof B)keyof (A|B) = (keyof A) & (keyof B) If you can build an intuition for why these equations hold, you'll have come a long way toward understanding TypeScript's type system! I'll explain these equations in a moment. But before I do, head over to the TypeScript Playground and test them out with a few ty⋯
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] Effective TypeScript is nearly 400 pages long, but I've received the most feedback by far on just one passage. It comes in Item 7: Think of Types as Sets of Values: keyof (A&B) = (keyof A) | (keyof B)keyof (A|B) = (keyof A) & (keyof B) If you can build an intuition for why these equations hold, you'll have come a long way toward understanding TypeScript's type system! I'll explain these equations in a moment. But before I do, head over to the TypeScript Playground and test them out with a few types. See if you can build that intuition for why they hold.
 
-🔗Read article [online](https://effectivetypescript.com/2024/08/30/keyof-puzzle/). For other items in this feed see [[Effective TypeScript]].
+🌐 Read article [online](https://effectivetypescript.com/2024/08/30/keyof-puzzle/). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[A keyof puzzle]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -

@@ -10,27 +10,17 @@ pinned: false
 ---
 
 > [!abstract] Join the .NET Team at Microsoft Build 2024! by Mehul Harry - 2024-05-09T17:05:00.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span> Get ready for a great lineup of .NET sessions at Microsoft Build 2024. Join us either in Seattle or from the comfort of your own home. With a mix of live and online sessions, you won’t miss a beat.
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] Get ready for a great lineup of .NET sessions at Microsoft Build 2024. Join us either in Seattle or from the comfort of your own home. With a mix of live and online sessions, you won’t miss a beat.
 > 
 > The post [Join the .NET Team at Microsoft Build 2024!](https://devblogs.microsoft.com/dotnet/join-the-dotnet-team-microsoft-build-2024/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 
-🔗Read article [online](https://devblogs.microsoft.com/dotnet/join-the-dotnet-team-microsoft-build-2024/). For other items in this feed see [[․NET Blog]].
+🌐 Read article [online](https://devblogs.microsoft.com/dotnet/join-the-dotnet-team-microsoft-build-2024/). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[Join the ․NET Team at Microsoft Build 2024!]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -

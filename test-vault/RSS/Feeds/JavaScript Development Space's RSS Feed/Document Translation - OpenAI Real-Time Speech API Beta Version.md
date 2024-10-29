@@ -10,25 +10,15 @@ pinned: false
 ---
 
 > [!abstract] Document Translation - OpenAI Real-Time Speech API Beta Version - 2024-10-03T00:00:00.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span> The rise of artificial intelligence has introduced groundbreaking advancements in language processing and speech recognition. One of the…
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] The rise of artificial intelligence has introduced groundbreaking advancements in language processing and speech recognition. One of the…
 
-🔗Read article [online](https://jsdev.space/document-translation/). For other items in this feed see [[JavaScript Development Space's RSS Feed]].
+🌐 Read article [online](https://jsdev.space/document-translation/). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[Document Translation - OpenAI Real-Time Speech API Beta Version]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -

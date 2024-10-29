@@ -10,25 +10,15 @@ pinned: false
 ---
 
 > [!abstract] Friday Links 5 - 2024-10-04T00:00:00.000Z
-> <span class="rss-image">![image|400](./images/friday-5.png)</span> Happy Friday, devs! 🎉 It’s time for our weekly roundup, where we bring you the latest and greatest in the world of web development…
+> ![image|float:right|400](./images/friday-5.png) Happy Friday, devs! 🎉 It’s time for our weekly roundup, where we bring you the latest and greatest in the world of web development…
 
-🔗Read article [online](https://jsdev.space/friday/friday-5/). For other items in this feed see [[JavaScript Development Space's RSS Feed]].
+🌐 Read article [online](https://jsdev.space/friday/friday-5/). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[Friday Links 5]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -

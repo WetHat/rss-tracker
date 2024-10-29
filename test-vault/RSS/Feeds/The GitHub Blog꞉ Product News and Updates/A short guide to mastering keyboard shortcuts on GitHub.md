@@ -10,25 +10,15 @@ pinned: false
 ---
 
 > [!abstract] A short guide to mastering keyboard shortcuts on GitHub by Sara Verdi - 2024-04-19T16:37:20.000Z
-> <span class="rss-image">![image|400](https://github.blog/wp-content/uploads/2024/04/ezgif.com-gif-maker.gif?w=600&resize=600%2C338)</span> Say goodbye to constant mouse clicking and hello to seamless navigation with GitHub shortcuts. The post A short guide to mastering keyboard shortcuts on GitHub appeared first on The GitHub Blog.
+> ![image|float:right|400](https://github.blog/wp-content/uploads/2024/04/ezgif.com-gif-maker.gif?w=600&resize=600%2C338) Say goodbye to constant mouse clicking and hello to seamless navigation with GitHub shortcuts. The post A short guide to mastering keyboard shortcuts on GitHub appeared first on The GitHub Blog.
 
-🔗Read article [online](https://github.blog/2024-04-19-a-short-guide-to-mastering-keyboard-shortcuts-on-github/). For other items in this feed see [[The GitHub Blog꞉ Product News and Updates]].
+🌐 Read article [online](https://github.blog/2024-04-19-a-short-guide-to-mastering-keyboard-shortcuts-on-github/). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[A short guide to mastering keyboard shortcuts on GitHub]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -

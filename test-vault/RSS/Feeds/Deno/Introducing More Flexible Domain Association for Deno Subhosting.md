@@ -10,25 +10,15 @@ pinned: false
 ---
 
 > [!abstract] Introducing More Flexible Domain Association for Deno Subhosting by Yusuke Tanaka, Andy Jiang - 2024-06-14T12:00:00.000Z
-> <span class="rss-image">![[RSS/assets/RSSdefaultImage.svg|200x200]]</span> This new update simplifies programmatically managing custom domains, wildcard domains, subdomains for different deployments, and more.
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] This new update simplifies programmatically managing custom domains, wildcard domains, subdomains for different deployments, and more.
 
-🔗Read article [online](https://deno.com/blog/subhosting-flexible-domain-association). For other items in this feed see [[Deno]].
+🌐 Read article [online](https://deno.com/blog/subhosting-flexible-domain-association). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[Introducing More Flexible Domain Association for Deno Subhosting]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -

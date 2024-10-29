@@ -10,25 +10,15 @@ pinned: false
 ---
 
 > [!abstract] How to Style and Format Console Output in JavaScript - 2024-10-01T00:00:00.000Z
-> <span class="rss-image">![image|400](./images/console-javascript.png)</span> Styling and formatting console output in JavaScript can greatly enhance the readability and usability of logs, especially during debugging…
+> ![image|float:right|400](./images/console-javascript.png) Styling and formatting console output in JavaScript can greatly enhance the readability and usability of logs, especially during debugging…
 
-🔗Read article [online](https://jsdev.space/howto/console-javascript/). For other items in this feed see [[JavaScript Development Space's RSS Feed]].
+🌐 Read article [online](https://jsdev.space/howto/console-javascript/). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[How to Style and Format Console Output in JavaScript]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -

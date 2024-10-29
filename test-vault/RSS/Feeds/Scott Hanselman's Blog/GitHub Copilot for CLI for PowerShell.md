@@ -10,29 +10,23 @@ pinned: false
 ---
 
 > [!abstract] GitHub Copilot for CLI for PowerShell by Scott Hanselman - 2023-04-25T15:31:49.000Z
-> <span class="rss-image">![image|400](https://www.hanselman.com/blog/content/binary/Windows-Live-Writer/GitHub-Copilot-for-CLI-for-PowerShell_B0E3/image_f39afdbf-04bf-4c95-a913-2404f46dc308.png "image")</span> GitHub Next has this cool project that is basically Copilot for the CLI (command line interface). You can sign up for their waitlist at the [Copilot for CLI site](https://githubnext.com/projects/copilot-cli/).
+> ![image|float:right|400](https://www.hanselman.com/blog/content/binary/Windows-Live-Writer/GitHub-Copilot-for-CLI-for-PowerShell_B0E3/image_f39afdbf-04bf-4c95-a913-2404f46dc308.png "image") GitHub Next has this cool project that is basically Copilot for the CLI (command line interface). You can sign up for their waitlist at the [Copilot for CLI site](https://githubnext.com/projects/copilot-cli/).
 > 
 > > Copilot for CLI provides three shell commands: `??`, `git?` and `gh?`
 > 
-> This is cool and all, but I use PowerShell. Turns out these ?? commands are just router commands to a larger EXE called github-copilot-cli. So if you go "?? something" you're really going "github-copilot-cli what-the⋯
+> This is cool and all, but I use PowerShell. Turns out these ?? commands are just router commands to a larger EXE called github-copilot-cli. So if you go "?? something" you're really going "github-copilot-cli what-the-shell something."
+> 
+> So this means I should be able to to do the same/similar aliases for my PowerShell prompt AND change the injected prompt (look at me I'm a prompt engineer) to add 'use powershell to.'
+> 
+> Now it's not perfect, but hopefully it will make the point to the Copilot CLI team that PowerSh⋯
 
-🔗Read article [online](https://feeds.hanselman.com/~/737271731/0/scotthanselman~GitHub-Copilot-for-CLI-for-PowerShell). For other items in this feed see [[Scott Hanselman's Blog]].
+🌐 Read article [online](https://feeds.hanselman.com/~/737271731/0/scotthanselman~GitHub-Copilot-for-CLI-for-PowerShell). ⤴ For other items in this feed see `= this.feed`.
 
 - [ ] [[GitHub Copilot for CLI for PowerShell]]
 
 ~~~dataviewjs
-const
-    current = dv.current(),
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	tasks = await dvjs.rssDuplicateItemsTasks(current);
-if (tasks.length > 0) {
-	dv.header(1,"⚠ Other RSS items are referring to the same article");
-    dv.taskList(tasks,false);
-}
-const tags = current.file.etags.join(" ");
-if (current) {
-	dv.span(tags);
-}
+const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
+dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
@@ -115,7 +109,7 @@ function gh? {
 
     }
 
-} 
+}
 ```
 
 It also then offers to run the command. Very smooth.
