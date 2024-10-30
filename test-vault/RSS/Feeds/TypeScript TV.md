@@ -3,7 +3,7 @@ role: rssfeed
 feedurl: https://localhost/test/TypeScript TV/feed.xml
 site: https://typescript.tv/
 itemlimit: 10
-updated: 2024-10-29T19:35:27.419Z
+updated: 2024-10-30T07:52:21.047Z
 status: ✅
 tags: []
 interval: 809

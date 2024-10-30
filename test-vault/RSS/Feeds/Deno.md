@@ -3,7 +3,7 @@ role: rssfeed
 feedurl: https://localhost/test/Deno/feed.xml
 site: https://deno.com/blog
 itemlimit: 10
-updated: 2024-10-29T19:35:55.291Z
+updated: 2024-10-30T07:52:51.143Z
 status: ✅
 tags: []
 interval: 207

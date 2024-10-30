@@ -3,7 +3,7 @@ role: rssfeed
 feedurl: https://localhost/test/Sabine Hossenfelder/feed.xml
 site: https://www.youtube.com/channel/UC1yNl2E66ZzKApQdRuTQ4tw
 itemlimit: 10
-updated: 2024-10-29T19:35:38.915Z
+updated: 2024-10-30T07:52:32.598Z
 status: ✅
 tags: []
 interval: 24

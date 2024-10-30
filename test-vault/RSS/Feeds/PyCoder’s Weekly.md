@@ -3,7 +3,7 @@ role: rssfeed
 feedurl: https://localhost/test/PyCoder’s Weekly/feed.xml
 site: https://pycoders.com/
 itemlimit: 10
-updated: 2024-10-29T19:35:43.350Z
+updated: 2024-10-30T07:52:39.292Z
 status: ✅
 tags: []
 interval: 168

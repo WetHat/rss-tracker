@@ -3,7 +3,7 @@ role: rssfeed
 feedurl: https://localhost/test/fettblog․eu ∣ TypeScript, JavaScript, Jamstack/feed.xml
 site: https://fettblog.eu/
 itemlimit: 10
-updated: 2024-10-29T19:35:50.665Z
+updated: 2024-10-30T07:52:46.554Z
 status: ✅
 tags: []
 interval: 593

@@ -3,7 +3,7 @@ role: rssfeed
 feedurl: https://localhost/test/The Hacker News/feed.xml
 site: https://thehackernews.com
 itemlimit: 10
-updated: 2024-10-29T19:35:29.707Z
+updated: 2024-10-30T07:52:23.397Z
 status: ✅
 tags: []
 interval: 5

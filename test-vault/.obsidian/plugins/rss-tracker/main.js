@@ -14987,11 +14987,53 @@ var extractFromHtml = async (html, url, parserOptions = {}) => {
 
 // src/HTMLxlate.ts
 var import_obsidian = require("obsidian");
-function formatImage(image) {
-  const { src, width, height } = image;
-  return `![image|float:right|400](${src})`;
-}
-var ObsidianHTMLLinter = class {
+
+// src/HTMLLint.ts
+var TextTransformer = class {
+  constructor(text) {
+    this.textNode = text;
+  }
+  /**
+   * Detect LaTeX math code and prepare it for Obsidian
+   *
+   * Looks for  LaTex Math markers `\[, \(, \), \]` and chenges them
+   * to `$$` or `$`.
+   *
+   * Note: This transformaer should always called first as it sets
+   * element attributes.
+   *
+   * @returns This instance for method chaining design pattern.
+   */
+  mathTransformer() {
+    const text = this.textNode.textContent;
+    if (text) {
+      const transformed = text.replace(/\\\[\s*([\s\S]+?)\\\]/g, "$$$$ $1 $$$$").replace(/\\\((.*?)\\\)/g, "$$$1$$");
+      if (text !== transformed) {
+        this.textNode.textContent = transformed;
+        if (this.textNode.parentElement) {
+          this.textNode.parentElement.className = "math";
+        }
+      }
+    }
+    return this;
+  }
+  /**
+   * Change dom characters which interfere with Onsidian to Unicode Lookalikes.
+   *
+   * @returns This instance for method chaining design pattern.
+   */
+  entityTransformer() {
+    const text = this.textNode.textContent, parent = this.textNode.parentElement;
+    if (text && parent && parent.localName !== "code" && !parent.classList.contains("math")) {
+      const transformed = text.replace(/>/g, "\uFF1E").replace(/</g, "\uFF1C").replace(/\[/g, "\uFF3B").replace(/\]/g, "\uFF3D");
+      if (transformed !== text) {
+        this.textNode.textContent = transformed;
+      }
+    }
+    return this;
+  }
+};
+var _ObsidianHTMLLinter = class {
   /**
    * Expand all `<br>` elements to linefeeds.
    * @param element The elment to scan for `<br>`
@@ -15025,7 +15067,7 @@ var ObsidianHTMLLinter = class {
     const codeBlocks = this.element.getElementsByTagName("code");
     for (let i = 0; i < codeBlocks.length; i++) {
       const code = codeBlocks[i];
-      ObsidianHTMLLinter.expandBR(code);
+      _ObsidianHTMLLinter.expandBR(code);
       const codeTxt = code.innerText.trim();
       code.textContent = codeTxt;
       const parent = code.parentElement;
@@ -15048,7 +15090,7 @@ var ObsidianHTMLLinter = class {
       var _a2, _b;
       let code = e.localName === "code" ? e : e.querySelectorAll("pre>code");
       if (!code) {
-        ObsidianHTMLLinter.expandBR(e);
+        _ObsidianHTMLLinter.expandBR(e);
         const codeTxt = (_b = (_a2 = e.textContent) == null ? void 0 : _a2.trim()) != null ? _b : "";
         code = e.doc.createElement("code");
         let pre = e.localName === "pre" ? e : e.querySelector("pre");
@@ -15114,7 +15156,7 @@ var ObsidianHTMLLinter = class {
       else {
         code.className = "language-undefined";
       }
-      code.textContent = (_b = (_a2 = ObsidianHTMLLinter.expandBR(pre).textContent) == null ? void 0 : _a2.trim()) != null ? _b : "";
+      code.textContent = (_b = (_a2 = _ObsidianHTMLLinter.expandBR(pre).textContent) == null ? void 0 : _a2.trim()) != null ? _b : "";
       pre.replaceChildren(code);
       pre.removeAttribute("class");
     }
@@ -15146,11 +15188,84 @@ var ObsidianHTMLLinter = class {
    */
   flattenTables() {
     const tables = Array.from(this.element.getElementsByTagName("table"));
-    tables.forEach((table) => ObsidianHTMLLinter.flattenSingleRowTable(table));
+    tables.forEach((table) => _ObsidianHTMLLinter.flattenSingleRowTable(table));
+    return this;
+  }
+  static scanText(node, transformer) {
+    node.childNodes.forEach((n) => {
+      if (n.nodeType === Node.TEXT_NODE) {
+        transformer(new TextTransformer(n));
+      } else {
+        _ObsidianHTMLLinter.scanText(n, transformer);
+      }
+    });
+  }
+  /**
+   * Apply text transformations to all text nodes.
+   * @param transformer The transformer function.
+   *
+    * @returns instance of this class for method chaining.
+   */
+  transformText(transformer) {
+    _ObsidianHTMLLinter.scanText(this.element, transformer);
+    return this;
+  }
+  /**
+   * Fix `<img>` elemnts without 'src' attribute enclosed in a `<picture>` element.
+   *
+   * The fix is to use an image url from the `srcset` attibute of the enclosing `<picture>`
+   * element and add it to  the `<img>`
+   *
+   * @param doc The HTML document
+   */
+  fixImagesWithoutSrc() {
+    this.element.querySelectorAll("picture > img:not([src]").forEach((img) => {
+      var _a2;
+      const sources = (_a2 = img.parentElement) == null ? void 0 : _a2.getElementsByTagName("source");
+      if (sources && sources.length > 0) {
+        const srcset = sources[0].getAttribute("srcset");
+        if (srcset) {
+          img.setAttribute("src", srcset.slice(0, srcset.indexOf(" ")));
+        }
+      }
+    });
+    return this;
+  }
+  static scanElements(element, visitor) {
+    visitor(element);
+    const children = element.children;
+    for (let i = 0; i < element.childElementCount; i++) {
+      _ObsidianHTMLLinter.scanElements(children[i], visitor);
+    }
+  }
+  cleanAttributes() {
+    _ObsidianHTMLLinter.scanElements(this.element, (e) => {
+      const illegalNames = [], attribs = e.attributes, attCount = attribs.length;
+      for (let i = 0; i < attCount; i++) {
+        const att = attribs[i], name = att.name;
+        if (!_ObsidianHTMLLinter.VALIDATTR.test(name)) {
+          illegalNames.push(name);
+        }
+        if (att.name === "class" && att.value.contains("highlight")) {
+          illegalNames.push(name);
+        }
+      }
+      for (const name of illegalNames) {
+        e.removeAttribute(name);
+      }
+    });
     return this;
   }
 };
-var _HTMLxlate = class {
+var ObsidianHTMLLinter = _ObsidianHTMLLinter;
+ObsidianHTMLLinter.VALIDATTR = /^[a-zA-Z_-]*$/;
+
+// src/HTMLxlate.ts
+function formatImage(image) {
+  const { src, width, height } = image;
+  return `![image|float:right|400](${src})`;
+}
+var HTMLxlate = class {
   constructor() {
     this.parser = new DOMParser();
     const tm = {
@@ -15159,30 +15274,14 @@ var _HTMLxlate = class {
         // apply to all websites
       ],
       pre: (document) => {
-        this.fixImagesWithoutSrc(document);
-        const allElements = document.body.querySelectorAll("*").forEach((e) => {
-          const illegalNames = [], attribs = e.attributes, attCount = attribs.length;
-          for (let i = 0; i < attCount; i++) {
-            const att = attribs[i], name = att.name;
-            if (!_HTMLxlate.VALIDATTR.test(name)) {
-              illegalNames.push(name);
-            }
-            if (att.name === "class" && att.value.contains("highlight")) {
-              illegalNames.push(name);
-            }
-          }
-          for (const name of illegalNames) {
-            e.removeAttribute(name);
-          }
-        });
+        const linter = new ObsidianHTMLLinter(document.body);
+        linter.fixImagesWithoutSrc().cleanAttributes();
         return document;
       },
       post: (document) => {
         const linter = new ObsidianHTMLLinter(document.body);
-        linter.cleanupCodeBlock().detectCode().flattenTables().cleanupFakeCode().injectCodeBlock();
-        _HTMLxlate.transformText(document.body, (node) => {
-          _HTMLxlate.mathTransformer(node);
-          _HTMLxlate.entityTransformer(node);
+        linter.cleanupCodeBlock().detectCode().flattenTables().cleanupFakeCode().injectCodeBlock().transformText((tm2) => {
+          tm2.mathTransformer().entityTransformer();
         });
         return document;
       }
@@ -15202,60 +15301,10 @@ var _HTMLxlate = class {
    * @returns Importer instance.
    */
   static get instance() {
-    if (!_HTMLxlate._instance) {
-      _HTMLxlate._instance = new _HTMLxlate();
+    if (!HTMLxlate._instance) {
+      HTMLxlate._instance = new HTMLxlate();
     }
-    return _HTMLxlate._instance;
-  }
-  /**
-   * Fix `<img>` elemnts without 'src' attribute enclosed in a `<picture>` element.
-   *
-   * The fix is to use an image url from the `srcset` attibute of the enclosing `<picture>`
-   * element and add it to  the `<img>`
-   *
-   * @param doc The HTML document
-   */
-  fixImagesWithoutSrc(doc) {
-    doc.body.querySelectorAll("picture > img:not([src]").forEach((img) => {
-      var _a2;
-      const sources = (_a2 = img.parentElement) == null ? void 0 : _a2.getElementsByTagName("source");
-      if (sources && sources.length > 0) {
-        const srcset = sources[0].getAttribute("srcset");
-        if (srcset) {
-          img.setAttribute("src", srcset.slice(0, srcset.indexOf(" ")));
-        }
-      }
-    });
-  }
-  static mathTransformer(textNode) {
-    const text = textNode.textContent;
-    if (text) {
-      const transformed = text.replace(/\\\[\s*([\s\S]+?)\\\]/g, "$$$$ $1 $$$$").replace(/\\\((.*?)\\\)/g, "$$$1$$");
-      if (textNode.textContent !== transformed) {
-        textNode.textContent = transformed;
-        if (textNode.parentElement) {
-          textNode.parentElement.className = "math";
-        }
-      }
-    }
-  }
-  static entityTransformer(textNode) {
-    const text = textNode.textContent, parent = textNode.parentElement;
-    if (text && parent && parent.localName !== "code" && !parent.classList.contains("math")) {
-      const transformed = text.replace(/>/g, "\uFF1E").replace(/</g, "\uFF1C").replace(/\[/g, "\uFF3B").replace(/\]/g, "\uFF3D");
-      if (transformed !== text) {
-        textNode.textContent = transformed;
-      }
-    }
-  }
-  static transformText(node, transformer) {
-    node.childNodes.forEach((n) => {
-      if (n.nodeType === Node.TEXT_NODE) {
-        transformer(n);
-      } else {
-        _HTMLxlate.transformText(n, transformer);
-      }
-    });
+    return HTMLxlate._instance;
   }
   /**
    * Translate an HTML fragment to Markdown text.
@@ -15275,10 +15324,8 @@ var _HTMLxlate = class {
       return html;
     }
     const doc = this.parser.parseFromString(html, "text/html"), linter = new ObsidianHTMLLinter(doc.body);
-    linter.cleanupCodeBlock().flattenTables().cleanupFakeCode().injectCodeBlock();
-    _HTMLxlate.transformText(doc.body, (node) => {
-      _HTMLxlate.mathTransformer(node);
-      _HTMLxlate.entityTransformer(node);
+    linter.cleanupCodeBlock().flattenTables().cleanupFakeCode().injectCodeBlock().transformText((tm) => {
+      tm.mathTransformer().entityTransformer();
     });
     return (0, import_obsidian.htmlToMarkdown)(doc.body);
   }
@@ -15297,8 +15344,6 @@ var _HTMLxlate = class {
     return "\n# " + (title != null ? title : "Downloaded Article") + " \u2B07\uFE0F\n\n" + (content ? (0, import_obsidian.htmlToMarkdown)(content) : "-");
   }
 };
-var HTMLxlate = _HTMLxlate;
-HTMLxlate.VALIDATTR = /^[a-zA-Z_-]*$/;
 
 // src/RSSAdapter.ts
 var RSSAdapter = class {
