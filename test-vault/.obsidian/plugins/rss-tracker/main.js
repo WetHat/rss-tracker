@@ -15036,6 +15036,10 @@ var TextTransformer = class {
 var _ObsidianHTMLLinter = class {
   /**
    * Expand all `<br>` elements to linefeeds.
+   *
+   * This cleanup method is used change unecessary `<br>` elements
+   * to linefeeds in pre-formatted (`<pre>`) HTML.
+   *
    * @param element The elment to scan for `<br>`
    * @returns The modified element.
    */
@@ -15054,7 +15058,7 @@ var _ObsidianHTMLLinter = class {
     this.element = element;
   }
   /**
-   * Scan for `<code>` elements and make them Obsidian friendly.
+   * Scan for `<code>` blocks and make them Obsidian friendly.
    *
    * Applied Transformations:
    * - Replacing all '<br>' elements by linefeeds.
@@ -15088,7 +15092,7 @@ var _ObsidianHTMLLinter = class {
   detectCode() {
     this.element.querySelectorAll("[data-syntax-language],div[class*=code]").forEach((e) => {
       var _a2, _b;
-      let code = e.localName === "code" ? e : e.querySelectorAll("pre>code");
+      let code = e.localName === "code" ? e : e.querySelectorAll("pre > code");
       if (!code) {
         _ObsidianHTMLLinter.expandBR(e);
         const codeTxt = (_b = (_a2 = e.textContent) == null ? void 0 : _a2.trim()) != null ? _b : "";
@@ -15120,6 +15124,9 @@ var _ObsidianHTMLLinter = class {
   /**
    * Cleanup incorrectly used '<code>' elements.
    *
+   * if there are nested `<code>` or `<pre>` elements, the outer `<code>` element is
+   * converted to a `<div>`.
+   *
    * @returns instance of this class for method chaining.
    */
   cleanupFakeCode() {
@@ -15139,9 +15146,13 @@ var _ObsidianHTMLLinter = class {
   }
   /**
    * An HTML transformation looking for `<pre>` tags which are **not** followed by a `<code>` block
-   * and inject one.
+   * and injects one.
    *
-   * Without that `<code>` element Obsidian will not generate a Markdown code block and obfuscates any code contained in the '<pre>'.
+   * This addresses the case where syntax highlighted code is
+   * expressed as HTML and just stuck into a `<pre>` block.
+   *
+   * Without that `<code>` element Obsidian will not generate a Markdown code block and instead obfuscates
+   * any code contained in that '<pre>'.
    *
    * @returns instance of this class for method chaining.
    */
@@ -15184,6 +15195,8 @@ var _ObsidianHTMLLinter = class {
   /**
    * Flatten single row tables into a sequence of `<section>` elements.
    *
+   * Avoids Obsidian having to deal with complex tables.
+   *
    * @returns instance of this class for method chaining.
    */
   flattenTables() {
@@ -15202,9 +15215,10 @@ var _ObsidianHTMLLinter = class {
   }
   /**
    * Apply text transformations to all text nodes.
-   * @param transformer The transformer function.
    *
-    * @returns instance of this class for method chaining.
+   * @param transformer The text transformer function.
+   *
+  * @returns instance of this class for method chaining.
    */
   transformText(transformer) {
     _ObsidianHTMLLinter.scanText(this.element, transformer);
@@ -15216,7 +15230,7 @@ var _ObsidianHTMLLinter = class {
    * The fix is to use an image url from the `srcset` attibute of the enclosing `<picture>`
    * element and add it to  the `<img>`
    *
-   * @param doc The HTML document
+   * @returns instance of this class for method chaining.
    */
   fixImagesWithoutSrc() {
     this.element.querySelectorAll("picture > img:not([src]").forEach((img) => {
@@ -15231,6 +15245,12 @@ var _ObsidianHTMLLinter = class {
     });
     return this;
   }
+  /**
+   * Recursively scan an element tree and call a visitor function on each element.
+   *
+   * @param element the root of the element tree to scan.
+   * @param visitor the functtion to call.
+   */
   static scanElements(element, visitor) {
     visitor(element);
     const children = element.children;
@@ -15238,6 +15258,18 @@ var _ObsidianHTMLLinter = class {
       _ObsidianHTMLLinter.scanElements(children[i], visitor);
     }
   }
+  /**
+   * Remove or clean the attributes of HTML elements.
+   *
+   * This should be called early in the process so that downstream
+   * code does not choke.
+   *
+   * Actions taken:
+   * - Remove Attributes which have illegal names.
+   * - Make classes that hint at code explicit.
+   *
+   * @returns instance of this class for method chaining.
+   */
   cleanAttributes() {
     _ObsidianHTMLLinter.scanElements(this.element, (e) => {
       const illegalNames = [], attribs = e.attributes, attCount = attribs.length;
@@ -15247,7 +15279,11 @@ var _ObsidianHTMLLinter = class {
           illegalNames.push(name);
         }
         if (att.name === "class" && att.value.contains("highlight")) {
-          illegalNames.push(name);
+          if (att.value.contains("code")) {
+            att.value = "code";
+          } else {
+            illegalNames.push(name);
+          }
         }
       }
       for (const name of illegalNames) {
@@ -15258,7 +15294,10 @@ var _ObsidianHTMLLinter = class {
   }
 };
 var ObsidianHTMLLinter = _ObsidianHTMLLinter;
-ObsidianHTMLLinter.VALIDATTR = /^[a-zA-Z_-]*$/;
+/**
+ * A Regular Expression to test for valid HTML attribute names.
+ */
+ObsidianHTMLLinter.VALIDATTR = /^[a-zA-Z][a-zA-Z_-]*$/;
 
 // src/HTMLxlate.ts
 function formatImage(image) {
