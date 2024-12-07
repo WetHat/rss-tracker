@@ -110,7 +110,7 @@ export class HTMLxlate {
     /**
      * Exract the main article from an HTML document
      * @param html The content of an HTML document (including `<html>` and `<body>` elements)
-     * @param baseUrl the base url of the document (needed for processing lofac links).
+     * @param baseUrl the base url of the document (needed for processing local links).
      * @returns Article Markdown text.
      */
     async articleAsMarkdown(html: string, baseUrl: string): Promise<string | null> {

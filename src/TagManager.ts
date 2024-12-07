@@ -5,6 +5,31 @@ import { RSSTrackerSettings } from "./settings";
 import { MetadataCacheEx } from "./RSSFileManager";
 
 /**
+ * A critical section implementation to protect non-thread-save resources.
+ */
+class Mutex {
+    private queue: (() => void)[] = [];
+    private locked: boolean = false;
+
+    async lock(): Promise<void> {
+        if (this.locked) {
+            await new Promise<void>(resolve => this.queue.push(resolve));
+        } else {
+            this.locked = true;
+        }
+    }
+
+    unlock(): void {
+        if (this.queue.length > 0) {
+            const next = this.queue.shift();
+            next && next();
+        } else {
+            this.locked = false;
+        }
+    }
+}
+
+/**
  * Utility class to orchestrate the mapping of rss tags to tags into the domain
  * of the local knowledge graph.
  */
@@ -13,6 +38,8 @@ export class RSSTagManager {
     private _vault: Vault;
     private _plugin: RSSTrackerPlugin;
     private _metadataCache: MetadataCacheEx;
+
+    private _tagmapMutex = new Mutex();
 
     /**
      * A snapshot of the tags cached by Obsidian.
@@ -61,13 +88,14 @@ export class RSSTagManager {
     /**
      * Update the in-memory tag map.
      *
-     * The map is update fron:
+     * The map is updated from:
      * - The persisted mapping table at {@link RSSTrackerSettings.rssTagmapPath}
      * - Hashtags in the rss domain from the Obsidian metadata cache.
      *
-     * All unused mappings
+     * All unused mappings are removed
      */
     async updateTagMap(): Promise<void> {
+        await this._tagmapMutex.lock();
         // reload the file to catch external edits
         const prefix = await this.loadTagmap();
 
@@ -100,6 +128,7 @@ export class RSSTagManager {
         }
         // find idendity mappings in the
         // just in case new tags appeared when we weren't looking.
+        this._tagmapMutex.unlock();
         await this.commit();
     }
 
@@ -108,6 +137,7 @@ export class RSSTagManager {
      */
     private async commit(context?: string): Promise<void> {
         if (this._pendingMappings.length > 0) {
+            await this._tagmapMutex.lock();
             const
                 file = await this.getTagmapFile(),
                 taglist = this._pendingMappings.map(row => `- ${row.split("|")[1]}`).join("\n");
@@ -121,6 +151,7 @@ export class RSSTagManager {
                 this._pendingMappings = [];
                 await this._vault.append(file, mappings);
             }
+            this._tagmapMutex.unlock();
         } else {
             console.log("Nothing added to tag map.")
         }
@@ -158,7 +189,7 @@ export class RSSTagManager {
     }
 
     /**
-     * Load the mapping data into memors.
+     * Load the mapping data into memory.
      *
      * Mappings are read from:
      * - the tag map file located at: {@link RSSTrackerSettings.rssTagmapPath}

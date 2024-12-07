@@ -15371,7 +15371,7 @@ var HTMLxlate = class {
   /**
    * Exract the main article from an HTML document
    * @param html The content of an HTML document (including `<html>` and `<body>` elements)
-   * @param baseUrl the base url of the document (needed for processing lofac links).
+   * @param baseUrl the base url of the document (needed for processing local links).
    * @returns Article Markdown text.
    */
   async articleAsMarkdown(html, baseUrl) {
@@ -17033,8 +17033,30 @@ RSSfileManager.TOKEN_SPLITTER = /(?<={{[^{}]+}})|(?={{[^{}]+}})/g;
 
 // src/TagManager.ts
 var import_obsidian9 = require("obsidian");
+var Mutex = class {
+  constructor() {
+    this.queue = [];
+    this.locked = false;
+  }
+  async lock() {
+    if (this.locked) {
+      await new Promise((resolve) => this.queue.push(resolve));
+    } else {
+      this.locked = true;
+    }
+  }
+  unlock() {
+    if (this.queue.length > 0) {
+      const next = this.queue.shift();
+      next && next();
+    } else {
+      this.locked = false;
+    }
+  }
+};
 var RSSTagManager = class {
   constructor(app, plugin) {
+    this._tagmapMutex = new Mutex();
     /**
      * A snapshot of the tags cached by Obsidian.
      * Used by {@link mapHashtag} to hoist tags from RSS items directly
@@ -17077,13 +17099,14 @@ var RSSTagManager = class {
   /**
    * Update the in-memory tag map.
    *
-   * The map is update fron:
+   * The map is updated from:
    * - The persisted mapping table at {@link RSSTrackerSettings.rssTagmapPath}
    * - Hashtags in the rss domain from the Obsidian metadata cache.
    *
-   * All unused mappings
+   * All unused mappings are removed
    */
   async updateTagMap() {
+    await this._tagmapMutex.lock();
     const prefix = await this.loadTagmap();
     let removed = 0;
     this._knownTagsCache = this._metadataCache.getTags();
@@ -17107,6 +17130,7 @@ var RSSTagManager = class {
         new import_obsidian9.Notice(`${removed} unused tags removed`, 3e4);
       }
     }
+    this._tagmapMutex.unlock();
     await this.commit();
   }
   /**
@@ -17114,6 +17138,7 @@ var RSSTagManager = class {
    */
   async commit(context) {
     if (this._pendingMappings.length > 0) {
+      await this._tagmapMutex.lock();
       const file = await this.getTagmapFile(), taglist = this._pendingMappings.map((row) => `- ${row.split("|")[1]}`).join("\n");
       if (context) {
         new import_obsidian9.Notice(`${this._pendingMappings.length} new tags in ${context}
@@ -17125,6 +17150,7 @@ var RSSTagManager = class {
         this._pendingMappings = [];
         await this._vault.append(file, mappings);
       }
+      this._tagmapMutex.unlock();
     } else {
       console.log("Nothing added to tag map.");
     }
@@ -17158,7 +17184,7 @@ var RSSTagManager = class {
     return mapped;
   }
   /**
-   * Load the mapping data into memors.
+   * Load the mapping data into memory.
    *
    * Mappings are read from:
    * - the tag map file located at: {@link RSSTrackerSettings.rssTagmapPath}
