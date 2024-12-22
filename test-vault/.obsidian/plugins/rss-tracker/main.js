@@ -14621,27 +14621,28 @@ var parseJson = (text) => {
   try {
     return JSON.parse(text);
   } catch (e) {
-    return null;
+    return {};
   }
+};
+var isAllowedLdJsonType = (ldJson) => {
+  const rootLdJsonType = ldJson["@type"] || "";
+  const arr = isArray(rootLdJsonType) ? rootLdJsonType : [rootLdJsonType];
+  const ldJsonTypes = arr.filter((x) => !!x);
+  return ldJsonTypes.length > 0 && ldJsonTypes.some((x) => typeSchemas.includes(x.toLowerCase()));
 };
 var extractLdSchema_default = (document, entry) => {
   const ldSchemas = document.querySelectorAll('script[type="application/ld+json"]');
   ldSchemas.forEach((ldSchema) => {
-    var _a2;
     const ldJson = parseJson(ldSchema.textContent.replace(/[\n\r\t]/g, ""));
-    const isAllowedLdJsonType = typeSchemas.includes((_a2 = ldJson["@type"]) == null ? void 0 : _a2.toLowerCase());
-    if (ldJson && isAllowedLdJsonType) {
+    if (ldJson && isAllowedLdJsonType(ldJson)) {
       Object.entries(attributeLists).forEach(([key, attr]) => {
-        const isEntryAlreadyPopulated = typeof entry[key] !== "undefined" && entry[key] !== "";
-        if (isEntryAlreadyPopulated || !ldJson[attr]) {
+        if (!entry[key] || !ldJson[attr]) {
           return;
         }
         const keyValue = ldJson[attr];
-        if (keyValue) {
-          entry[key] = Array.isArray(keyValue) ? keyValue[0] : keyValue;
-          if (typeof entry[key] === "string") {
-            entry[key] = entry[key].toLowerCase().trim();
-          }
+        const val2 = isArray(keyValue) ? keyValue[0] : isObject(keyValue) ? (keyValue == null ? void 0 : keyValue.name) || "" : keyValue;
+        if (isString(val2)) {
+          entry[key] = val2.trim();
         }
       });
     }
@@ -14674,7 +14675,7 @@ function findDate_default(doc) {
       if (match)
         return convertDateFormat(match[0]);
     }
-    return null;
+    return "";
   };
   const priorityElements = doc.querySelectorAll("time, [datetime], [itemprop~=datePublished], [itemprop~=dateCreated]");
   for (const el of priorityElements) {
@@ -14688,7 +14689,7 @@ function findDate_default(doc) {
     if (date)
       return date;
   }
-  return null;
+  return "";
 }
 
 // node_modules/@extractus/article-extractor/src/utils/extractMetaData.js
@@ -14812,11 +14813,11 @@ var extractMetaData_default = (html) => {
       entry[result.key] = result.content;
     }
   });
-  const entries = extractLdSchema_default(doc, entry);
-  if (!entries.published) {
-    entries.published = findDate_default(doc);
+  const metadata = extractLdSchema_default(doc, entry);
+  if (!metadata.published) {
+    metadata.published = findDate_default(doc) || "";
   }
-  return entries;
+  return metadata;
 };
 
 // node_modules/@extractus/article-extractor/src/utils/extractWithReadability.js
