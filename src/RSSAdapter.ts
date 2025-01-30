@@ -230,7 +230,7 @@ export class RSSitemAdapter extends RSSAdapter {
     }
 
     async remove() {
-        await this.plugin.app.vault.adapter.remove(this.file.path);
+        await this.plugin.app.vault.delete(this.file);
     }
 }
 
