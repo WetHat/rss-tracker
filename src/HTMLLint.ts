@@ -12,10 +12,11 @@ export class TextTransformer {
     /**
      * Detect LaTeX math code and prepare it for Obsidian
      *
-     * Looks for  LaTex Math markers `\[, \(, \), \]` and chenges them
+     * - Looks for LaTex Math markers `\[, \(, \), \], \begin{...}, \end{...}` and changes them
      * to `$$` or `$`.
+     * - Removes some unsupported LaTeX math constructs.
      *
-     * Note: This transformaer should always called first as it sets
+     * Note: This transformer should always called first as it sets
      * element attributes.
      *
      * @returns This instance for method chaining design pattern.
@@ -24,7 +25,8 @@ export class TextTransformer {
         const text = this.textNode.textContent;
         if (text) {
             const transformed = text // non-greedy matches
-                .replace(/\\\[\s*([\s\S]+?)\\\]/g, '$$$$ $1 $$$$')
+                .replace(/\\\[\s*([\s\S]+?)\\\]|(\\begin\{[^}{]+\}[\s\S]+\\end\{[^}{]+\})/g, '$$$$ $1$2 $$$$')
+                .replace(/\\label\{[^}{]+\}/g,'') // unsupported by Obsidian
                 .replace(/\\\((.*?)\\\)/g, "$$$1$$");
             if (text !== transformed) {
                 this.textNode.textContent = transformed;
@@ -73,9 +75,7 @@ export class TextTransformer {
  * const linter = new ObsidianHTMLLinter(document.body);
  * linter
  *     .cleanupCodeBlock()
- *     .detectCode()
- *     .flattenTables()
- *     .cleanupFakeCode()
+ *     ...
  *     .injectCodeBlock();
  * ~~~
  */
@@ -115,12 +115,82 @@ export class ObsidianHTMLLinter {
     constructor(element: HTMLElement) {
         this.element = element;
     }
+    /**
+     * Transmute `<audio>` and  `<video>` tags to `<img>` so that Obsidian embeds them properly.
+     *
+     * @returns instance of this class for method chaining.
+     */
+    fixEmbeds() {
+        this.element.querySelectorAll("audio,:not(iframe) > video,img")
+            .forEach(el => {
+                el.setAttribute("src",el.getAttribute("src")?.replace(/ /g,"%20") ?? "");
+                if (el.localName !== "img") {
+                    el.replaceWith(createEl('img', {
+                        attr: {
+                            src: el.getAttribute("src"),
+                            alt: el.getAttribute('alt'),
+                        }
+                }))
+            }});
+        return this;
+    }
+    /**
+     * Put mermaid diagrams into a code block so that Obsidian can pick them up.
+     *
+    * @returns instance of this class for method chaining.
+     */
+    mermaidToCodeBlock() :ObsidianHTMLLinter{
+        const
+            mermaids = this.element.getElementsByClassName('mermaid'),
+            mermaidCount = mermaids.length;
 
+        for (let i = 0; i < mermaidCount; i++) {
+            const mermaid = mermaids[i];
+
+            switch (mermaid.localName) {
+                case 'code':
+                    mermaid.classList.add('language-mermaid');
+                    const mermaidParent = mermaid.parentElement;
+                    if (mermaidParent && mermaidParent.localName !== 'pre') {
+                        const pre = mermaid.doc.createElement('pre');
+                        mermaidParent.insertBefore(pre, mermaid);
+                        pre.append(mermaid);
+                    }
+                    break;
+
+                case 'pre':
+                    if (mermaid.firstElementChild?.localName !== 'code') {
+                        // create a code block for this diagram
+                        const code = mermaid.doc.createElement('code');
+                        code.className = 'language-mermaid';
+                        while (mermaid.firstChild) {
+                            code.append(mermaid.firstChild);
+                        }
+                        mermaid.append(code);
+                    }
+                    break;
+
+                default:
+                    // create the entire mermaid sub-structure.
+                    const
+                        pre = mermaid.doc.createElement('pre'),
+                        code = mermaid.doc.createElement('code');
+                    code.className = 'language-mermaid';
+                    pre.append(code);
+                    while (mermaid.firstChild) {
+                        code.append(mermaid.firstChild);
+                    }
+                    mermaid.append(pre);
+                    break;
+            }
+        }
+        return this;
+    }
     /**
      * Scan for `<code>` blocks and make them Obsidian friendly.
      *
      * Applied Transformations:
-     * - Replacing all '<br>' elements by linefeeds.
+     * - Replacing all `<br>` elements by linefeeds.
      * - transforming HTML code to plain text. As formatting and syntax highlighting will be
      *   done by Obsidian.
      *
@@ -336,7 +406,7 @@ export class ObsidianHTMLLinter {
         visitor(element);
         const children = element.children;
         for (let i = 0; i < element.childElementCount; i++) {
-            ObsidianHTMLLinter.scanElements(children[i],visitor);
+            ObsidianHTMLLinter.scanElements(children[i], visitor);
         }
     }
 
@@ -352,8 +422,8 @@ export class ObsidianHTMLLinter {
      *
      * @returns instance of this class for method chaining.
      */
-    cleanAttributes() : ObsidianHTMLLinter {
-        ObsidianHTMLLinter.scanElements(this.element, (e : Element) => {
+    cleanAttributes(): ObsidianHTMLLinter {
+        ObsidianHTMLLinter.scanElements(this.element, (e: Element) => {
             const
                 illegalNames = [],
                 attribs = e.attributes,
