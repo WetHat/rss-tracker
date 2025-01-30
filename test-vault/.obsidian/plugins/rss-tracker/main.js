@@ -14997,10 +14997,11 @@ var TextTransformer = class {
   /**
    * Detect LaTeX math code and prepare it for Obsidian
    *
-   * Looks for  LaTex Math markers `\[, \(, \), \]` and chenges them
+   * - Looks for LaTex Math markers `\[, \(, \), \], \begin{...}, \end{...}` and changes them
    * to `$$` or `$`.
+   * - Removes some unsupported LaTeX math constructs.
    *
-   * Note: This transformaer should always called first as it sets
+   * Note: This transformer should always called first as it sets
    * element attributes.
    *
    * @returns This instance for method chaining design pattern.
@@ -15008,7 +15009,7 @@ var TextTransformer = class {
   mathTransformer() {
     const text = this.textNode.textContent;
     if (text) {
-      const transformed = text.replace(/\\\[\s*([\s\S]+?)\\\]/g, "$$$$ $1 $$$$").replace(/\\\((.*?)\\\)/g, "$$$1$$");
+      const transformed = text.replace(/\\\[\s*([\s\S]+?)\\\]|(\\begin\{[^}{]+\}[\s\S]+\\end\{[^}{]+\})/g, "$$$$ $1$2 $$$$").replace(/\\label\{[^}{]+\}/g, "").replace(/\\\((.*?)\\\)/g, "$$$1$$");
       if (text !== transformed) {
         this.textNode.textContent = transformed;
         if (this.textNode.parentElement) {
@@ -15059,10 +15060,73 @@ var _ObsidianHTMLLinter = class {
     this.element = element;
   }
   /**
+   * Transmute `<audio>` and  `<video>` tags to `<img>` so that Obsidian embeds them properly.
+   *
+   * @returns instance of this class for method chaining.
+   */
+  fixEmbeds() {
+    this.element.querySelectorAll("audio,:not(iframe) > video,img").forEach((el) => {
+      var _a2, _b;
+      el.setAttribute("src", (_b = (_a2 = el.getAttribute("src")) == null ? void 0 : _a2.replace(/ /g, "%20")) != null ? _b : "");
+      if (el.localName !== "img") {
+        el.replaceWith(createEl("img", {
+          attr: {
+            src: el.getAttribute("src"),
+            alt: el.getAttribute("alt")
+          }
+        }));
+      }
+    });
+    return this;
+  }
+  /**
+   * Put mermaid diagrams into a code block so that Obsidian can pick them up.
+   *
+  * @returns instance of this class for method chaining.
+   */
+  mermaidToCodeBlock() {
+    var _a2;
+    const mermaids = this.element.getElementsByClassName("mermaid"), mermaidCount = mermaids.length;
+    for (let i = 0; i < mermaidCount; i++) {
+      const mermaid = mermaids[i];
+      switch (mermaid.localName) {
+        case "code":
+          mermaid.classList.add("language-mermaid");
+          const mermaidParent = mermaid.parentElement;
+          if (mermaidParent && mermaidParent.localName !== "pre") {
+            const pre2 = mermaid.doc.createElement("pre");
+            mermaidParent.insertBefore(pre2, mermaid);
+            pre2.append(mermaid);
+          }
+          break;
+        case "pre":
+          if (((_a2 = mermaid.firstElementChild) == null ? void 0 : _a2.localName) !== "code") {
+            const code2 = mermaid.doc.createElement("code");
+            code2.className = "language-mermaid";
+            while (mermaid.firstChild) {
+              code2.append(mermaid.firstChild);
+            }
+            mermaid.append(code2);
+          }
+          break;
+        default:
+          const pre = mermaid.doc.createElement("pre"), code = mermaid.doc.createElement("code");
+          code.className = "language-mermaid";
+          pre.append(code);
+          while (mermaid.firstChild) {
+            code.append(mermaid.firstChild);
+          }
+          mermaid.append(pre);
+          break;
+      }
+    }
+    return this;
+  }
+  /**
    * Scan for `<code>` blocks and make them Obsidian friendly.
    *
    * Applied Transformations:
-   * - Replacing all '<br>' elements by linefeeds.
+   * - Replacing all `<br>` elements by linefeeds.
    * - transforming HTML code to plain text. As formatting and syntax highlighting will be
    *   done by Obsidian.
    *
@@ -15315,7 +15379,7 @@ var HTMLxlate = class {
       ],
       pre: (document) => {
         const linter = new ObsidianHTMLLinter(document.body);
-        linter.fixImagesWithoutSrc().cleanAttributes();
+        linter.fixImagesWithoutSrc().fixEmbeds().cleanAttributes();
         return document;
       },
       post: (document) => {
