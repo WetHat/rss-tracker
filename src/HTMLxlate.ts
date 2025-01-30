@@ -37,6 +37,7 @@ export class HTMLxlate {
                 const linter = new ObsidianHTMLLinter(document.body);
                 linter
                     .fixImagesWithoutSrc()
+                    .fixEmbeds()
                     .cleanAttributes();
                 return document;
             },
