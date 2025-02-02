@@ -39,7 +39,7 @@ export class RenameRSSfeedModalCommand extends RSSTrackerCommandBase {
                 return adapter instanceof RSSfeedAdapter;
             }
             if (adapter instanceof RSSfeedAdapter) {
-                new RenameRSSFeedModal(this.plugin,adapter).open();
+                new RenameRSSFeedModal(this.plugin, adapter).open();
             }
         }
         return false;
@@ -68,7 +68,7 @@ export class UpdateRSSfeedCommand extends RSSTrackerCommandBase {
                 return (adapter instanceof RSSfeedAdapter && !adapter.suspended) || adapter instanceof RSScollectionAdapter;
             }
             if ((adapter instanceof RSSfeedAdapter && !adapter.suspended) || adapter instanceof RSScollectionAdapter) {
-                this.plugin.feedmgr.update(true,adapter);
+                this.plugin.feedmgr.update(true, adapter).then(() => this.plugin.refreshActiveFile());
             }
         }
         return false;
@@ -120,10 +120,10 @@ export class MarkAllRSSitemsReadCommand extends RSSTrackerCommandBase {
             if (checking) {
                 // This command will only show up in Command Palette when the check function returns true
                 // check if active file is a rss feed dashboard.
-                return adapter instanceof RSSfeedAdapter;
+                return adapter instanceof RSSfeedAdapter || adapter instanceof RSScollectionAdapter;
             }
-            if (adapter instanceof RSSfeedAdapter) {
-                this.plugin.feedmgr.completeReadingTasks(adapter);
+            if (adapter instanceof RSSfeedAdapter || adapter instanceof RSScollectionAdapter) {
+                this.plugin.feedmgr.completeReadingTasks(adapter).then(() => this.plugin.refreshActiveFile());
                 return true;
             }
         }

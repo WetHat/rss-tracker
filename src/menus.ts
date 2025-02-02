@@ -62,7 +62,8 @@ export class MarkAllItemsReadMenuItem extends RSSTrackerMenuItem {
                 item.setTitle('Mark all RSS items as read')
                     .setIcon('list-checks')
                     .onClick(async () => {
-                        this.plugin.feedmgr.completeReadingTasks(adapter);
+                        await this.plugin.feedmgr.completeReadingTasks(adapter);
+                        this.plugin.refreshActiveFile();
                     });
             });
         }
@@ -131,6 +132,7 @@ export class UpdateRSSfeedMenuItem extends RSSTrackerMenuItem {
                     .onClick(async () => {
                         if (adapter instanceof RSSfeedAdapter || adapter instanceof RSScollectionAdapter ) {
                             await this.plugin.feedmgr.update(true,adapter);
+                            this.plugin.refreshActiveFile();
                         }
                     });
             });
