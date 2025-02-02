@@ -15602,7 +15602,7 @@ var _RSSitemAdapter = class extends RSSAdapter {
     super(plugin, file, frontmatter);
   }
   async remove() {
-    await this.plugin.app.vault.adapter.remove(this.file.path);
+    await this.plugin.app.vault.delete(this.file);
   }
 };
 var RSSitemAdapter = _RSSitemAdapter;
@@ -15958,7 +15958,7 @@ var UpdateRSSfeedCommand = class extends RSSTrackerCommandBase {
         return adapter instanceof RSSfeedAdapter && !adapter.suspended || adapter instanceof RSScollectionAdapter;
       }
       if (adapter instanceof RSSfeedAdapter && !adapter.suspended || adapter instanceof RSScollectionAdapter) {
-        this.plugin.feedmgr.update(true, adapter);
+        this.plugin.feedmgr.update(true, adapter).then(() => this.plugin.refreshActiveFile());
       }
     }
     return false;
@@ -15989,10 +15989,10 @@ var MarkAllRSSitemsReadCommand = class extends RSSTrackerCommandBase {
     if (active) {
       const adapter = this.plugin.filemgr.getAdapter(active);
       if (checking) {
-        return adapter instanceof RSSfeedAdapter;
+        return adapter instanceof RSSfeedAdapter || adapter instanceof RSScollectionAdapter;
       }
-      if (adapter instanceof RSSfeedAdapter) {
-        this.plugin.feedmgr.completeReadingTasks(adapter);
+      if (adapter instanceof RSSfeedAdapter || adapter instanceof RSScollectionAdapter) {
+        this.plugin.feedmgr.completeReadingTasks(adapter).then(() => this.plugin.refreshActiveFile());
         return true;
       }
     }
@@ -16184,6 +16184,12 @@ var FeedManager = class {
     }
     new import_obsidian5.Notice(`${completed} items taken off the '${adapter.file.basename}' reading list`, 3e4);
   }
+  /**
+   * A predicate to determine if a file has a link to a downloadable article.
+   *
+   * @param item An Obsidian Markdown file.
+   * @returns `true` if the file is a RSS item with a link to a downloadable article.
+   */
   canDownloadArticle(item) {
     var _a2;
     const fm = (_a2 = this._app.metadataCache.getFileCache(item)) == null ? void 0 : _a2.frontmatter;
@@ -16243,7 +16249,8 @@ var MarkAllItemsReadMenuItem = class extends RSSTrackerMenuItem {
     if (adapter instanceof RSSfeedAdapter || adapter instanceof RSScollectionAdapter) {
       menu.addItem((item) => {
         item.setTitle("Mark all RSS items as read").setIcon("list-checks").onClick(async () => {
-          this.plugin.feedmgr.completeReadingTasks(adapter);
+          await this.plugin.feedmgr.completeReadingTasks(adapter);
+          this.plugin.refreshActiveFile();
         });
       });
     }
@@ -16298,6 +16305,7 @@ var UpdateRSSfeedMenuItem = class extends RSSTrackerMenuItem {
         item.setTitle(title).setIcon("rss").onClick(async () => {
           if (adapter instanceof RSSfeedAdapter || adapter instanceof RSScollectionAdapter) {
             await this.plugin.feedmgr.update(true, adapter);
+            this.plugin.refreshActiveFile();
           }
         });
       });
@@ -16592,31 +16600,60 @@ var DataViewJSTools = class {
     }).where((t) => t);
   }
   /**
-   * Create a dataview task list consisting of rss items already read or still to read.
+   * Delayed rendering of a task list on expansion of a 'details' element.
    *
-   * @param items - List of rss item page records
-   * @param read - `true` to create a list or items read, `false` to create a list of items to read.
-   * @param header - Optional header text for the list
-   * @returns number of items in the list
+   * The `<details>` element is expected to be decorated with a `readingList` property which holds
+   * a {@link TTaskRecords} object that provides the data for a dataview `taskList`.
+   * The task list is rendered the first time the `<details>` block is expanded.
+    * @param details - The `<details>` HTML element containing a collapsible task list.
    */
-  readingList(items, read, header) {
-    const tasks = this.rssReadingTasks(items, read), taskCount = tasks.length;
-    if (taskCount > 0) {
-      if (header) {
-        this.dv.header(2, header + " (" + taskCount + ")");
-      }
-      this.dv.taskList(tasks, false);
+  async renderReadingList(details) {
+    const { readingList, readingListRendered } = details;
+    if (details.open && !readingListRendered && readingList) {
+      details.readingListRendered = true;
+      await this.dv.api.taskList(readingList, false, details, this.dv.component);
+      const last = details.lastElementChild;
+      last.style.paddingLeft = "1em";
+      last.style.borderLeftStyle = "solid";
     }
-    return taskCount;
   }
+  /**
+   * Create a collabsible list of reading tasks with delayed rendering.
+   *
+   * If the given feed has no reading tasks which have the state matching the
+   * `read` parameter, no UI is generated.
+   * @param feed The RSS feed to get the reading tasks from
+   * @param read `false` to collect unchecked (unread) reading tasks.
+   * @param header Optional header text to display for the expander control. Defaults to "Items".
+   * @returns the number of reading tasks.
+   */
+  async rssReadingList(feed, read, open, header = "Items") {
+    const items = await this.rssItemsOfContext(feed), tasks = this.rssReadingTasks(items, read);
+    if (tasks.length > 0) {
+      const summary = this.dv.el("summary", `${header} (${tasks.length})`), details = this.dv.el("details", summary);
+      summary.style.cursor = "default";
+      details.open = open;
+      details.readingList = tasks;
+      if (open) {
+        this.renderReadingList(details);
+      } else {
+        details.addEventListener("toggle", async (evt) => this.renderReadingList(evt.target));
+      }
+    }
+    return tasks.length;
+  }
+  /**
+   * Display collabsible reading tasks grouped by feed.
+   *
+   * @param feeds Collection of feeds
+   * @param read `false` to collect and display unchecked (unread) reading tasks: `true` otherwise.
+   * @returns Total number of reading tasks in the requested state.
+   */
   async groupedReadingList(feeds, read = false) {
     let totalTaskCount = 0;
     for (const feed of feeds) {
-      const proxy = new Proxy(feed, this.proxyHandler), items = await this.rssItemsOfContext(feed);
-      totalTaskCount += this.readingList(items, read, proxy.link);
-    }
-    if (totalTaskCount === 0) {
-      this.dv.paragraph("\u26D4");
+      const proxy = new Proxy(feed, this.proxyHandler);
+      totalTaskCount += await this.rssReadingList(feed, read, false, `${proxy.link}`);
     }
     return totalTaskCount;
   }
@@ -17358,6 +17395,17 @@ var RSSTrackerPlugin = class extends import_obsidian10.Plugin {
   }
   getDVJSTools(dv) {
     return new DataViewJSTools(dv, this._settings);
+  }
+  /**
+   * Refresh the dataview blocks on the currently active Obsidian note.
+   *
+   * Calls the _Dataview: Rebuild current view_ command via an undocumented API call.
+   * Found at: https://forum.obsidian.md/t/triggering-an-obsidian-command-from-within-an-event-callback/37158
+   */
+  refreshActiveFile() {
+    if (!this.app.plugins.plugins.dataview.settings.refreshEnabled) {
+      this.app.commands.executeCommandById("dataview:dataview-rebuild-current-view");
+    }
   }
   async onload() {
     console.log("Loading rss-tracker.");

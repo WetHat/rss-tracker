@@ -1,7 +1,6 @@
 import { TPropertyBag } from './FeedAssembler';
 import { RSSTrackerSettings } from './settings';
-import { TFile, ObsidianProtocolData } from 'obsidian';
-import * as path from 'path';
+import { TFile } from 'obsidian';
 
 /**
  * Sort order specification for page records.
@@ -449,37 +448,68 @@ export class DataViewJSTools {
     }
 
     /**
-     * Create a dataview task list consisting of rss items already read or still to read.
+     * Delayed rendering of a task list on expansion of a 'details' element.
      *
-     * @param items - List of rss item page records
-     * @param read - `true` to create a list or items read, `false` to create a list of items to read.
-     * @param header - Optional header text for the list
-     * @returns number of items in the list
+     * The `<details>` element is expected to be decorated with a `readingList` property which holds
+     * a {@link TTaskRecords} object that provides the data for a dataview `taskList`.
+     * The task list is rendered the first time the `<details>` block is expanded.
+      * @param details - The `<details>` HTML element containing a collapsible task list.
      */
-    readingList(items: TPageRecords, read: boolean, header?: string): number {
-        const
-            tasks = this.rssReadingTasks(items, read),
-            taskCount = tasks.length;
-        if (taskCount > 0) {
-            if (header) {
-                this.dv.header(2, header + " (" + taskCount + ")");
-            }
-            this.dv.taskList(tasks, false);
+    private async renderReadingList(details: HTMLDetailsElement) {
+        const { readingList, readingListRendered } = (details as any);
+        if (details.open && !readingListRendered && readingList) {
+            (details as any).readingListRendered = true;
+            await this.dv.api.taskList(readingList, false, details, this.dv.component);
+            const last = details.lastElementChild as HTMLElement;
+            last.style.paddingLeft = "1em";
+            last.style.borderLeftStyle = "solid";
         }
-        return taskCount;
+    }
+    /**
+     * Create a collabsible list of reading tasks with delayed rendering.
+     *
+     * If the given feed has no reading tasks which have the state matching the
+     * `read` parameter, no UI is generated.
+     * @param feed The RSS feed to get the reading tasks from
+     * @param read `false` to collect unchecked (unread) reading tasks.
+     * @param header Optional header text to display for the expander control. Defaults to "Items".
+     * @returns the number of reading tasks.
+     */
+    async rssReadingList(feed: TPageRecord, read: boolean, open: boolean, header: string = "Items"): Promise<number> {
+        const
+            items: TPageRecords = await this.rssItemsOfContext(feed),
+            tasks: TTaskRecords = this.rssReadingTasks(items, read);
+        if (tasks.length > 0) {
+            const
+                summary = this.dv.el("summary", `${header} (${tasks.length})`),
+                details = this.dv.el("details", summary);
+            (summary as HTMLElement).style.cursor = "default";
+            details.open = open;
+            details.readingList = tasks;
+            if (open) {
+                this.renderReadingList(details); // render once now
+            } else {
+                // configure the delayed rendering of the reading tasks
+                details.addEventListener("toggle", async (evt: Event) => this.renderReadingList(evt.target as HTMLDetailsElement));
+            }
+        }
+        // create a collabsible details section
+        return tasks.length;
     }
 
+    /**
+     * Display collabsible reading tasks grouped by feed.
+     *
+     * @param feeds Collection of feeds
+     * @param read `false` to collect and display unchecked (unread) reading tasks: `true` otherwise.
+     * @returns Total number of reading tasks in the requested state.
+     */
     async groupedReadingList(feeds: TPageRecords, read: boolean = false): Promise<number> {
         let totalTaskCount = 0;
 
         for (const feed of feeds) {
-            const
-                proxy = new Proxy<TPageRecord>(feed, this.proxyHandler),
-                items = await this.rssItemsOfContext(feed);
-            totalTaskCount += this.readingList(items, read, proxy.link);
-        }
-        if (totalTaskCount === 0) {
-            this.dv.paragraph("⛔");
+            const proxy = new Proxy<TPageRecord>(feed, this.proxyHandler);
+            totalTaskCount += await this.rssReadingList(feed, read, false, `${proxy.link}`);
         }
         return totalTaskCount;
     }

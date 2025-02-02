@@ -14,7 +14,9 @@ tags: []
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
-dvjs.readingList( await dvjs.rssItemsOfContext(), false);
+if (await dvjs.rssReadingList(dv.current(),false,true) === 0) {
+	dv.paragraph("⛔");
+};
 ~~~
 
 # Pinned Feed Items 📍
@@ -32,5 +34,7 @@ dvjs.rssTable(
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
-dvjs.readingList( await dvjs.rssItemsOfContext(), true);
+if (await dvjs.rssReadingList(dv.current(),true,false) === 0) {
+	dv.paragraph("⛔");
+};
 ~~~

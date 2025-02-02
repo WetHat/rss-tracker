@@ -187,6 +187,12 @@ export class FeedManager {
         new Notice(`${completed} items taken off the '${adapter.file.basename}' reading list`, 30000);
     }
 
+    /**
+     * A predicate to determine if a file has a link to a downloadable article.
+     *
+     * @param item An Obsidian Markdown file.
+     * @returns `true` if the file is a RSS item with a link to a downloadable article.
+     */
     canDownloadArticle(item: TFile): boolean {
         const fm: FrontMatterCache | undefined = this._app.metadataCache.getFileCache(item)?.frontmatter;
         return fm !== undefined && fm["role"] === "rssitem";

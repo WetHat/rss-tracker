@@ -24,7 +24,9 @@ dv.paragraph("From: " + dvjs.fromTags(dv.current()));
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
-await dvjs.groupedReadingList(await dvjs.rssFeedsOfContext(),false);
+if (await dvjs.groupedReadingList(await dvjs.rssFeedsOfContext(),false) === 0) {
+	dv.paragraph("⛔")
+}
 ~~~
 
 # Pinned Items 📍
