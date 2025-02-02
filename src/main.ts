@@ -8,7 +8,6 @@ import { TPropertyBag } from './FeedAssembler';
 import { RSSTrackerSettingTab } from './settingsUI';
 import { RSSfileManager } from './RSSFileManager';
 import { RSSTagManager } from './TagManager';
-import { RenameRSSFeedModal } from './dialogs';
 
 export default class RSSTrackerPlugin extends Plugin {
     private _settings: RSSTrackerSettings;
@@ -16,32 +15,45 @@ export default class RSSTrackerPlugin extends Plugin {
     private _filemgr: RSSfileManager;
     private _tagmgr: RSSTagManager;
 
-    get settings() : RSSTrackerSettings {
+    get settings(): RSSTrackerSettings {
         return this._settings;
     }
 
-    get feedmgr() : FeedManager{
+    get feedmgr(): FeedManager {
         return this._feedmgr;
     }
 
-    get filemgr() : RSSfileManager {
+    get filemgr(): RSSfileManager {
         return this._filemgr;
     }
 
-    get tagmgr() : RSSTagManager {
+    get tagmgr(): RSSTagManager {
         return this._tagmgr;
     }
 
     constructor(app: App, manifest: PluginManifest) {
         super(app, manifest);
-        this._settings = new RSSTrackerSettings(app,this);
-        this._filemgr = new RSSfileManager(app,this);
+        this._settings = new RSSTrackerSettings(app, this);
+        this._filemgr = new RSSfileManager(app, this);
         this._feedmgr = new FeedManager(app, this);
-        this._tagmgr = new RSSTagManager(app,this);
+        this._tagmgr = new RSSTagManager(app, this);
     }
 
     getDVJSTools(dv: TPropertyBag) {
-        return new DataViewJSTools(dv,this._settings);
+        return new DataViewJSTools(dv, this._settings);
+    }
+
+    /**
+     * Refresh the dataview blocks on the currently active Obsidian note.
+     *
+     * Calls the _Dataview: Rebuild current view_ command via an undocumented API call.
+     * Found at: https://forum.obsidian.md/t/triggering-an-obsidian-command-from-within-an-event-callback/37158
+     */
+    refreshActiveFile() {
+        // Everything here is totally undocumented and may break any time!
+        if (!(this.app as any).plugins.plugins.dataview.settings.refreshEnabled) {
+            (this.app as any).commands.executeCommandById("dataview:dataview-rebuild-current-view");
+        }
     }
 
     async onload() {
@@ -86,7 +98,7 @@ export default class RSSTrackerPlugin extends Plugin {
         this.registerEvent(updateFeedItem.editorMenuHandler);
         this.registerEvent(updateFeedItem.fileMenuHandler);
 
-        const toggleActive = new ToggleRSSfeedActiveStatusMenuItem(this.app,this);
+        const toggleActive = new ToggleRSSfeedActiveStatusMenuItem(this.app, this);
         this.registerEvent(toggleActive.editorMenuHandler);
         this.registerEvent(toggleActive.fileMenuHandler);
 
@@ -94,11 +106,11 @@ export default class RSSTrackerPlugin extends Plugin {
         this.registerEvent(markAsRead.editorMenuHandler);
         this.registerEvent(markAsRead.fileMenuHandler);
 
-        const downloadArticle = new DownloadArticleContentMenuItem(this.app,this);
+        const downloadArticle = new DownloadArticleContentMenuItem(this.app, this);
         this.registerEvent(downloadArticle.editorMenuHandler);
         this.registerEvent(downloadArticle.fileMenuHandler);
 
-        const renameFeed = new RenameRSSfeedMenuItem(this.app,this);
+        const renameFeed = new RenameRSSfeedMenuItem(this.app, this);
         this.registerEvent(renameFeed.editorMenuHandler);
         this.registerEvent(renameFeed.fileMenuHandler);
 
