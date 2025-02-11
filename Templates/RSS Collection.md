@@ -12,21 +12,21 @@ noneof: []
 
 ~~~dataviewjs
 const
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
-dvjs.rssTable(
-	await await dvjs.rssFeedsOfContext(),
-	dvjs.getOptions("rss_context_feeds")
-);
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	expand = false,
+	feeds = dvjs.rssFeedsOfCollection(dv.current());
+await dvjs.rssFeedTable(feeds,expand);
 dv.paragraph("From: " + dvjs.fromTags(dv.current()));
 ~~~
 
-# Reading List ⚫
+# Reading List 📑
 
 ~~~dataviewjs
-const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
-if (await dvjs.groupedReadingList(await dvjs.rssFeedsOfContext(),false) === 0) {
-	dv.paragraph("⛔")
-}
+const
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	expand = false,
+	items = dvjs.rssItemsOfCollection(dv.current());
+await dvjs.rssReadingListByFeed(items,false,expand);
 ~~~
 
 # Pinned Items 📍
@@ -34,8 +34,7 @@ if (await dvjs.groupedReadingList(await dvjs.rssFeedsOfContext(),false) === 0) {
 ~~~dataviewjs
 const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	pages = await dvjs.rssItemsOfContext();
-dvjs.rssTable(
-	pages.where(it => it.pinned === true),
-	dvjs.getOptions("rss_context_items"));
+	expand = false,
+	items = await dvjs.rssItemsOfContext().where( i => i.pinned === true);
+await dvjs.rssItemTableByFeed(items,expand);
 ~~~

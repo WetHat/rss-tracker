@@ -10,13 +10,14 @@ tags: []
 > [!abstract] {{title}}
 > {{image}} {{description}}
 
-# Reading List ⚫
+# Reading List 📑
 
 ~~~dataviewjs
-const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
-if (await dvjs.rssReadingList(dv.current(),false,true) === 0) {
-	dv.paragraph("⛔");
-};
+const
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	expand = true,
+	items = dvjs.rssItemsOfFeed(dv.current());
+await dvjs.rssReadingList(items,false,expand);
 ~~~
 
 # Pinned Feed Items 📍
@@ -24,17 +25,17 @@ if (await dvjs.rssReadingList(dv.current(),false,true) === 0) {
 ~~~dataviewjs
 const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	pages = await dvjs.rssItemsOfContext();
-dvjs.rssTable(
-	pages.where(it => it.pinned === true),
-	dvjs.getOptions("rss_feed_items"));
+	expand = false,
+	items = await dvjs.rssItemsOfFeed(dv.current()).where(i => i.pinned === true);
+await dvjs.rssItemTable(items,expand);
 ~~~
 
 # Read Feed Items ✅
 
 ~~~dataviewjs
-const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
-if (await dvjs.rssReadingList(dv.current(),true,false) === 0) {
-	dv.paragraph("⛔");
-};
+const
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	expand = false,
+	items = dvjs.rssItemsOfFeed(dv.current());
+await dvjs.rssReadingList(items,true,expand);
 ~~~
