@@ -21,7 +21,7 @@
 		"@typescript-eslint/parser": "5.29.0",
 		"builtin-modules": "3.3.0",
 		"diff": "^5.2.0",
-		"esbuild": "0.17.3",
+		"esbuild": "0.25.0",
 		"fs-extra": "^11.2.0",
 		"glob": "^10.4.1",
 		"json-diff": "^1.0.6",
