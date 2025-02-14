@@ -16621,8 +16621,8 @@ var _DataViewJSTools = class {
       return task;
     }).where((t) => t);
   }
-  async rssItemHeader(item, options) {
-    const opts = options = {
+  async rssItemHeader(item) {
+    const opts = {
       showDuplicates: true,
       showTags: true
     };

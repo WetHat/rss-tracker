@@ -2,73 +2,20 @@ import { TPropertyBag } from './FeedAssembler';
 import { RSSTrackerSettings } from './settings';
 import { TFile } from 'obsidian';
 
+/**
+ * A extension of HTMLDetailsElement to provide additional properties for a collapsible tables.
+ */
 type TCollapsibleTableContainer = HTMLDetailsElement & { tableHeader: string[], tableData: string[][], tableRendered: boolean };
-/**,
- * Sort order specification for page records.
- * @see {@link TPageRecord}
- */
-type TSortOrder = "asc" | "desc";
-
-type TRSSoptions = TPropertyBag;
 
 /**
- * Table layouts specifying property names amd their table
- * column labels.
+ * A utility tpye to specify the intial state of an expandable table.
  *
- * @example
- * ~~~ts
- * {
- *    ID: "File",
- *    updates: "Updates",
- *    ...
- * }
- * ~~~
+ * Supported states:
+ * - 'undefined' to render the table immediately using a generic dataview table;
+ * - 'true' to render the table immediately and expand the table by default;
+ * - 'false' to collapse the table by default and render the table on-demand.
  */
-type TTableLayout = { [key: string]: string };
-
-/**
- * Options for displaying RSS related pages in a table.
- */
-type TRSStableOptions = TRSSoptions & {
-
-    /**
-     * Table colums and headers.
-     */
-    layout: TTableLayout;
-
-    /**
-     * The type of RSS file this table is displaying.
-     *
-     * This refers to the value of the `type` frontmatter property
-     * od an RSS relaed file.
-     */
-    type: string;
-
-    /**
-     * Name of the property to sort the table by.
-     */
-    sortBy: string;
-
-    /**
-     * Sort order
-     */
-    sortOrder: TSortOrder;
-
-    /**
-     * Optional file name to group the table by
-     */
-    groupBy?: string;
-
-    /**
-     * Optional grouo sort order.
-     */
-    groupBySortOrder?: TSortOrder;
-}
-
-type TRSSitemHeaderOptions = TRSSoptions & {
-    showDuplicates: boolean,
-    showTags: boolean
-}
+type TExpandState = boolean | undefined;
 
 /** An annotated page object returned from Dataview */
 type TRecord = TPropertyBag;
@@ -87,20 +34,23 @@ type TPageRecord = TRecord & {
 };
 
 /**
- * Dataview record object describing an Obsidian task.
+ * Dataview record object describing a task.
  *
  * A full list of propertiws in described in {@link https://blacksmithgu.github.io/obsidian-dataview/annotation/metadata-tasks/}.
  */
 type TTaskRecord = TRecord & {
     /**
-     * Whether or not this specific task has been completed;
+     * Flag to indicate a task has been completed;
      */
     completed: boolean
 };
 
+/**
+ * A collection of records returned from Dataview.
+ */
 type TRecords = {
     /**
-     *  Map indexes to values.
+     *  Map indexes to dataview object properties.
      */
     [index: number]: any;
 
@@ -115,7 +65,7 @@ type TRecords = {
     [Symbol.iterator](): Iterator<TPageRecord>;
 
     /**
-     * Swizzled field.
+     * A Swizzled field.
      * @see {@link TPageRecord}
      */
     file: any
@@ -129,7 +79,7 @@ type TTaskRecords = TRecords;
 
 
 /**
- * Utility class to provide additional tools for dataviewjs queries related to RSS.
+ * Decorator class to provide additional functionality related to RSS to dataviewjs queries.
  *
  * ```svgbob
  * ┌───────────────┐      ┌─────────────────┐
@@ -188,7 +138,7 @@ export class DataViewJSTools {
      */
     fromTags(page: TPageRecord): string {
         const
-            anyTags: string[] = page.file.etags?.map((t:string) => DataViewJSTools.toHashtag(t)) ?? [],
+            anyTags: string[] = page.file.etags?.map((t: string) => DataViewJSTools.toHashtag(t)) ?? [],
             allTags: string[] = page.allof?.map((t: string) => DataViewJSTools.toHashtag(t)) ?? [],
             noneTags: string[] = page.noneof?.map((t: string) => DataViewJSTools.toHashtag(t)) ?? [];
 
@@ -388,8 +338,8 @@ export class DataViewJSTools {
             .where((t: TTaskRecord) => t);
     }
 
-    async rssItemHeader(item: TPageRecord, options?: TRSSitemHeaderOptions) {
-        const opts = options = {
+    async rssItemHeader(item: TPageRecord) {
+        const opts = {
             showDuplicates: true,
             showTags: true
         };
@@ -439,7 +389,7 @@ export class DataViewJSTools {
      *                       `true` render table immediately and expand the table by default;
      *                       `false` to collapse the table by default and render the table on-demand.
      */
-    private async expandableTable(header: string[], rows: any[][], label: string = "Files", expand: boolean | undefined = undefined) {
+    private async expandableTable(header: string[], rows: any[][], label: string = "Files", expand: TExpandState = undefined) {
         if (expand === undefined) {
             this.dv.table(header, rows); // render the table directly with dataview
         } else { // render the table in a collapsible `<details>` block
@@ -481,7 +431,7 @@ export class DataViewJSTools {
      *                       `true` render table immediately and expand the table by default;
      *                       `false` to collapse the table by default and render the table on-demand.
      */
-    async rssCollectionTable(collections: TPageRecords, expand: boolean | undefined = undefined) {
+    async rssCollectionTable(collections: TPageRecords, expand: TExpandState = undefined) {
         const rows = collections
             .sort((c: TPageRecord) => c.file.name, "asc")
             .map((c: TPageRecord) => [c.file.link, c.headline]);
@@ -496,7 +446,7 @@ export class DataViewJSTools {
      *                       `true` render table immediately and expand the table by default;
      *                       `false` to collapse the table by default and render the table on-demand.
      */
-    async rssTopicTable(topics: TPageRecords, expand: boolean | undefined = undefined) {
+    async rssTopicTable(topics: TPageRecords, expand: TExpandState = undefined) {
         const rows = topics
             .sort((t: TPageRecord) => t.file.name, "asc")
             .map((t: TPageRecord) => [t.file.link, t.headline]);
@@ -511,7 +461,7 @@ export class DataViewJSTools {
      *                       `true` render table immediately and expand the table by default;
      *                       `false` to collapse the table by default and render the table on-demand.
      */
-    async rssFeedTable(feeds: TPageRecords, expand: boolean | undefined = undefined) {
+    async rssFeedTable(feeds: TPageRecords, expand: TExpandState = undefined) {
         const rows = feeds
             .sort((t: TPageRecord) => t.file.name, "asc")
             .map((f: TPageRecord) => [
@@ -531,7 +481,7 @@ export class DataViewJSTools {
      *                       `true` render table immediately and expand the table by default;
      *                       `false` to collapse the table by default and render the table on-demand.
      */
-    async rssFeedDashboard(feeds: TPageRecords, expand: boolean | undefined = undefined) {
+    async rssFeedDashboard(feeds: TPageRecords, expand: TExpandState = undefined) {
         const
             feedsToCollections = new Map<string, TPageRecord[]>();
         for (const collection of this.rssCollections) {
@@ -565,7 +515,7 @@ export class DataViewJSTools {
      *                       `false` to collapse the table by default and render the table on-demand.
      * @param [label="Items"] The label for the expander control.
      */
-    async rssItemTable(items: TPageRecords, expand: boolean | undefined = undefined, label: string = "Items") {
+    async rssItemTable(items: TPageRecords, expand: TExpandState = undefined, label: string = "Items") {
         const rows = items
             .sort((i: TPageRecord) => i.file.name, "asc")
             .map((i: TPageRecord) => [i.file.link, DataViewJSTools.getHashtagsAsString(i), i.published]);
@@ -582,7 +532,7 @@ export class DataViewJSTools {
      *                       `true` render table immediately and expand the table by default;
      *                       `false` to collapse the table by default and render the table on-demand.
      */
-    async rssItemTableByFeed(items: TPageRecords, expand: boolean | undefined = undefined) {
+    async rssItemTableByFeed(items: TPageRecords, expand: TExpandState = undefined) {
         if (items.length === 0) {
             this.dv.paragraph("⛔");
             return;
