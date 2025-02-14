@@ -71,7 +71,7 @@ interface IEntryDataTracked {
     title?: string;
     description?: string;
     published?: string;
-    category?: string[];
+    category?: string[] | Object[];
     creator?: string;
     image?: IRssMedium;
     media: IRssMedium[];
@@ -124,7 +124,18 @@ export class TrackedRSSitem {
         this.id = id;
         this.media = media;
         this.tags = (entry.category ?? [])
-            .map(c => ((typeof c === "string" ? c : c["#text"]) ?? c.toString()).replace(/[+&]/g, ","))
+            .map(c => {
+                let tag = null;
+                if (typeof c === "string") {
+                    tag = c;
+                } else if (typeof c === "object") {
+                    const cObj = c as { [key: string]: string };
+                    tag = cObj["#text"] || cObj["@_term"] || cObj["@_label"] || c.toString();
+                } else {
+                    tag = "undefined"
+                }
+                return tag?.replace(/[+&]/g, ",");
+            })
             .join(",") // turn everything into a comma separated list to catch internal commas
             .split(",") // abd pull it apart again
             .map(c => {
