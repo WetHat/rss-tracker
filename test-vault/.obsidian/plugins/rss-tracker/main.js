@@ -16516,25 +16516,6 @@ var _DataViewJSTools = class {
   get rssItems() {
     return this.dv.pages(this.fromFeedsFolder).where((p) => p.role === "rssitem");
   }
-  rssItemsOfContext(context) {
-    const ctx = context != null ? context : this.dv.current();
-    let pages;
-    switch (ctx.role) {
-      case "rssfeed":
-        pages = this.rssItemsOfFeed(ctx);
-        break;
-      case "rsscollection":
-        pages = this.dv.pages(this.fromItemsOfCollection(ctx)).where((p) => p.role === "rssitem");
-        break;
-      case "rsstopic":
-        pages = this.dv.pages(this.fromItemsOfTopic(ctx));
-        break;
-      default:
-        pages = this.dv.pages("undefined");
-        break;
-    }
-    return pages;
-  }
   //#endregion Item lists
   // #region page lists
   /**
@@ -16547,7 +16528,7 @@ var _DataViewJSTools = class {
   getPagesOfFolder(path2, type) {
     const folder = this.settings.app.vault.getFolderByPath(path2);
     if (folder) {
-      const pages = folder.children.filter((fof) => fof instanceof import_obsidian7.TFile).map((f) => this.dv.page(f.path)).filter((f) => f.role === type);
+      const pages = folder.children.filter((fof) => fof instanceof import_obsidian7.TFile).map((f) => this.dv.page(f.path)).filter((f) => (f == null ? void 0 : f.role) === type);
       return this.dv.array(pages);
     }
     return this.dv.array([]);
@@ -16579,7 +16560,7 @@ var _DataViewJSTools = class {
   rssItemsOfTopic(topic) {
     return this.dv.pages(this.fromItemsOfTopic(topic)).where((p) => p.role === "rssitem");
   }
-  //#endregion Feed lists
+  // #endregion Feed lists
   /**
    * @returns a dataview array of all RSS feed collections.
    */
@@ -16632,92 +16613,11 @@ var _DataViewJSTools = class {
       return task;
     }).where((t) => t);
   }
-  // #region Prev GEN API
-  /**
-   * Get Options for dataviewJS RSS tools from the plugin settings.
-   *
-   * @param key option key
-   * @returns Options object for that key.
-   */
-  getOptions(key) {
-    let options;
-    switch (key) {
-      case "rss_item_header":
-        options = {
-          showDuplicates: true,
-          showTags: true
-        };
-        break;
-      case "rss_feed_items":
-        return {
-          layout: {
-            ID: "Item",
-            tags: "Tags",
-            published: "Published"
-          },
-          sortBy: "name",
-          sortOrder: "asc"
-        };
-      case "rss_context_items":
-        return {
-          layout: {
-            ID: "Item",
-            tags: "Tags",
-            feed: "Feed",
-            published: "Published"
-          },
-          sortBy: "name",
-          sortOrder: "asc"
-        };
-      case "rss_context_feeds":
-        return {
-          layout: {
-            ID: "Item",
-            status: "Status",
-            tags: "Tags",
-            updated: "Updated"
-          },
-          sortBy: "updated",
-          sortOrder: "desc"
-        };
-      case "rss_dashboard_feeds":
-        return {
-          layout: {
-            ID: "Item",
-            status: "Status",
-            tags: "Tags",
-            collections: "Collections",
-            updated: "Updated"
-          },
-          sortBy: "name",
-          sortOrder: "asc"
-        };
-      case "rss_topics":
-        return {
-          layout: {
-            ID: "Topic",
-            headline: "Headline"
-          },
-          sortBy: "name",
-          sortOrder: "asc"
-        };
-      case "rss_collections":
-        return {
-          layout: {
-            ID: "Collection",
-            headline: "Headline"
-          },
-          sortBy: "name",
-          sortOrder: "asc"
-        };
-      default:
-        options = {};
-        break;
-    }
-    return options;
-  }
   async rssItemHeader(item, options) {
-    const opts = options != null ? options : this.getOptions("rss_item_header");
+    const opts = options = {
+      showDuplicates: true,
+      showTags: true
+    };
     if (opts.showDuplicates) {
       const tasks = await this.rssDuplicateItemsTasks(item);
       if (tasks.length > 0) {
@@ -16732,7 +16632,6 @@ var _DataViewJSTools = class {
       }
     }
   }
-  // #endregion Prev GEN API
   // #region the generic RSS collapsible table
   /**
   * Event handler render a dataview table on demand.
@@ -16752,14 +16651,16 @@ var _DataViewJSTools = class {
   /**
    * Create an expandable dataview table of pages.
    *
+   * The table is rendered in a collapsible `<details>` block on-demand.
+   *
    * @param header The table header.
    * @param rows The table rows.
    * @param [label="Files"] The expander label
-   * @param [expand=false] `undefined` to use a generic databview table;
-   *                       `true` to expand the table by default;
-   *                       `false` to collapse the table by default.
+   * @param [expand=false] `undefined` render immediately using a generic dataview table;
+   *                       `true` render table immediately and expand the table by default;
+   *                       `false` to collapse the table by default and render the table on-demand.
    */
-  async expandableTable(header, rows, label = "Files", expand = false) {
+  async expandableTable(header, rows, label = "Files", expand = void 0) {
     if (expand === void 0) {
       this.dv.table(header, rows);
     } else {
@@ -16777,11 +16678,11 @@ var _DataViewJSTools = class {
   }
   /**
    * Render a table of RSS collections.
-   * @param collections List of RSS colelction pages.
    *
-   * @param [expand=false] `undefined` to use a generic databview table;
-   *                       `true` to expand the table by default;
-   *                       `false` to collapse the table by default.
+   * @param collections List of RSS collection pages.
+   * @param [expand=false] `undefined` render immediately using a generic dataview table;
+   *                       `true` render table immediately and expand the table by default;
+   *                       `false` to collapse the table by default and render the table on-demand.
    */
   async rssCollectionTable(collections, expand = void 0) {
     const rows = collections.sort((c) => c.file.name, "asc").map((c) => [c.file.link, c.headline]);
@@ -16791,14 +16692,22 @@ var _DataViewJSTools = class {
    * Render a table of RSS topics.
    *
    * @param topics List of RSS topic pages.
-   * @param [expand=false] `undefined` to use a generic databview table;
-   *                       `true` to expand the table by default;
-   *                       `false` to collapse the table by default.
+   * @param [expand=false] `undefined` render immediately using a generic dataview table;
+   *                       `true` render table immediately and expand the table by default;
+   *                       `false` to collapse the table by default and render the table on-demand.
    */
   async rssTopicTable(topics, expand = void 0) {
     const rows = topics.sort((t) => t.file.name, "asc").map((t) => [t.file.link, t.headline]);
     await this.expandableTable(_DataViewJSTools.TABLE_HEADER.rssTopic, rows, "Topics", expand);
   }
+  /**
+   * Render a table of RSS feeds.
+   *
+   * @param feeds collecion of RSS feeds
+   * @param [expand=false] `undefined` render immediately using a generic dataview table;
+   *                       `true` render table immediately and expand the table by default;
+   *                       `false` to collapse the table by default and render the table on-demand.
+   */
   async rssFeedTable(feeds, expand = void 0) {
     const rows = feeds.sort((t) => t.file.name, "asc").map((f) => [
       f.file.link,
@@ -16808,6 +16717,14 @@ var _DataViewJSTools = class {
     ]);
     await this.expandableTable(_DataViewJSTools.TABLE_HEADER.rssFeed, rows, "Feeds", expand);
   }
+  /**
+   * Render a dashboard table of RSS feeds .
+   *
+   * @param feeds List of RSS feeds
+   * @param [expand=false] `undefined` render immediately using a generic dataview table;
+   *                       `true` render table immediately and expand the table by default;
+   *                       `false` to collapse the table by default and render the table on-demand.
+   */
   async rssFeedDashboard(feeds, expand = void 0) {
     const feedsToCollections = /* @__PURE__ */ new Map();
     for (const collection of this.rssCollections) {
@@ -16832,10 +16749,29 @@ var _DataViewJSTools = class {
     });
     await this.expandableTable(_DataViewJSTools.TABLE_HEADER.rssFeedDashboard, rows, "Feeds", expand);
   }
+  /**
+   * Render a table of RSS items.
+   *
+   * @param items A collection of RSS items.
+   * @param [expand=false] `undefined` render immediately using a generic dataview table;
+   *                       `true` render table immediately and expand the table by default;
+   *                       `false` to collapse the table by default and render the table on-demand.
+   * @param [label="Items"] The label for the expander control.
+   */
   async rssItemTable(items, expand = void 0, label = "Items") {
     const rows = items.sort((i) => i.file.name, "asc").map((i) => [i.file.link, _DataViewJSTools.getHashtagsAsString(i), i.published]);
     await this.expandableTable(_DataViewJSTools.TABLE_HEADER.rssItem, rows, label, expand);
   }
+  /**
+   * Render a table of RSS items grouped by feed.
+   *
+   * **Note**The expander control is labeled with the feed name.
+   *
+   * @param items A collection of RSS items.
+   * @param [expand=false] `undefined` render immediately using a generic dataview table;
+   *                       `true` render table immediately and expand the table by default;
+   *                       `false` to collapse the table by default and render the table on-demand.
+   */
   async rssItemTableByFeed(items, expand = void 0) {
     if (items.length === 0) {
       this.dv.paragraph("\u26D4");
@@ -16849,12 +16785,16 @@ var _DataViewJSTools = class {
   // #endregion specific RSS collapsible tables
   // #region reading lists
   /**
-   * Delayed rendering of a task list on expansion of a 'details' element.
+   * On-demand rendering of a task list on expansion of a 'details' element.
+   *
+   * Used by {@link rssTaskList} to render a task list on-demand,
+   * the first time the `<details>` block is expanded.
    *
    * The `<details>` element is expected to be decorated with a `readingList` property which holds
    * a {@link TTaskRecords} object that provides the data for a dataview `taskList`.
    * The task list is rendered the first time the `<details>` block is expanded.
-   * @param details - The `<details>` HTML element containing a collapsible task list.
+   *
+   * @param details The `<details>` HTML block element containing a collapsible task list.
    */
   async renderTaskList(details) {
     const { readingList, readingListRendered } = details;
@@ -16866,6 +16806,15 @@ var _DataViewJSTools = class {
       last.style.borderLeftStyle = "solid";
     }
   }
+  /**
+   * Render a list of reading tasks on-demand in a collapsible block.
+   *
+   * @param tasks The list of reading tasks to render.
+   * @param expand `undefined` render immediately using a generic dataview table;
+   *               `true` render table immediately and expand the table by default;
+   *               `false` to collapse the table by default and render the table on-demand.
+   * @param [header="Items"] The header text for the expander control.
+   */
   async rssTaskList(tasks, expand, header = "Items") {
     if (tasks.length > 0) {
       const summary = this.dv.el("summary", `${header} (${tasks.length})`), details = this.dv.el("details", summary);
@@ -16882,14 +16831,16 @@ var _DataViewJSTools = class {
     }
   }
   /**
-   * Create a collabsible list of reading tasks with delayed rendering.
+   * Create a collapsible list of reading tasks with on-demand rendering.
    *
    * If the given feed has no reading tasks which have the state matching the
    * `read` parameter, no UI is generated.
    * @param items The RSS items to get the reading tasks from
-   * @param read `false` to collect unchecked (unread) reading tasks.
-   * @param header Optional header text to display for the expander control. Defaults to "Items".
-   * @returns the number of reading tasks.
+   * @param read `false` to collect unchecked (unread) reading tasks; `true` otherwise.
+   * @param expand `undefined` render immediately using a generic dataview table;
+   *               `true` render table immediately and expand the table by default;
+   *               `false` to collapse the table by default and render the table on-demand.
+   * @param [header="Items"] Optional header text to display for the expander control.
    */
   async rssReadingList(items, read, expand, header = "Items") {
     const tasks = this.rssReadingTasks(items, read);
@@ -16900,11 +16851,13 @@ var _DataViewJSTools = class {
     await this.rssTaskList(tasks, expand, header);
   }
   /**
-   * Display collabsible reading tasks grouped by feed.
+   * Display collapsible reading tasks grouped by feed.
    *
    * @param feeds Collection of feeds
    * @param read `false` to collect and display unchecked (unread) reading tasks: `true` otherwise.
-   * @returns Total number of reading tasks in the requested state.
+   * @param [expand=false] `undefined` render immediately using a generic dataview table;
+   *                       `true` render table immediately and expand the table by default;
+   *                       `false` to collapse the table by default and render the table on-demand.
    */
   async rssReadingListByFeed(items, read = false, expand = false) {
     const groups = items.groupBy((i) => i.feed).sort((g) => g.key, "asc");
