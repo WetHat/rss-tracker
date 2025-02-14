@@ -14059,8 +14059,16 @@ var TrackedRSSitem = class {
     this.id = id;
     this.media = media;
     this.tags = ((_a2 = entry.category) != null ? _a2 : []).map((c) => {
-      var _a3;
-      return ((_a3 = typeof c === "string" ? c : c["#text"]) != null ? _a3 : c.toString()).replace(/[+&]/g, ",");
+      let tag = null;
+      if (typeof c === "string") {
+        tag = c;
+      } else if (typeof c === "object") {
+        const cObj = c;
+        tag = cObj["#text"] || cObj["@_term"] || cObj["@_label"] || c.toString();
+      } else {
+        tag = "undefined";
+      }
+      return tag == null ? void 0 : tag.replace(/[+&]/g, ",");
     }).join(",").split(",").map((c) => {
       return c.trim().replace(/^#|\s*[;"\]\}\)\{\[\(]+\s*/g, "").replaceAll("#", "\uFF03").replace(/"'/g, "\u02BC").replace(/\s*[\\:]+\s*/g, "/").replace(/[\s\.]+/g, "_");
     }).filter((c) => !!c);

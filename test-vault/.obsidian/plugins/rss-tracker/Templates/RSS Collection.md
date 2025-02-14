@@ -35,6 +35,6 @@ await dvjs.rssReadingListByFeed(items,false,expand);
 const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
 	expand = false,
-	items = await dvjs.rssItemsOfContext().where( i => i.pinned === true);
+	items = dvjs.rssItemsOfCollection(dv.current()).where( i => i.pinned === true);
 await dvjs.rssItemTableByFeed(items,expand);
 ~~~
