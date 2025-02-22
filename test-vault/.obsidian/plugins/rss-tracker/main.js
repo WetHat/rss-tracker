@@ -14070,7 +14070,7 @@ var TrackedRSSitem = class {
       }
       return tag == null ? void 0 : tag.replace(/[+&]/g, ",");
     }).join(",").split(",").map((c) => {
-      return c.trim().replace(/^#|\s*[;"\]\}\)\{\[\(]+\s*/g, "").replaceAll("#", "\uFF03").replace(/"'/g, "\u02BC").replace(/\s*[\\:]+\s*/g, "/").replace(/[\s\.]+/g, "_");
+      return c.trim().replace(/^#|\s*[;"\]\}\)\{\[\(]+\s*/g, "").replaceAll("#", "\uFF03").replace(/"'/g, "\u02B9").replace(/\s*[\\:]+\s*/g, "/").replace(/[\s\.]+/g, "_");
     }).filter((c) => !!c);
     this.tags = Array.from(new Set(this.tags)).sort();
     if (description) {

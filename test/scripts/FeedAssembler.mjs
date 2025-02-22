@@ -88,7 +88,7 @@ export class TrackedRSSitem {
             return c.trim()
                 .replace(/^#|\s*[;"\]\}\)\{\[\(]+\s*/g, "")
                 .replaceAll("#", "＃")
-                .replace(/"'/g, "ʼ")
+                .replace(/"'/g, "ʹ")
                 .replace(/\s*[\\:]+\s*/g, "/")
                 .replace(/[\s\.]+/g, "_");
         })
