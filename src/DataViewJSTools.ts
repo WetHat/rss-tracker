@@ -5,7 +5,17 @@ import { TFile } from 'obsidian';
 /**
  * A extension of HTMLDetailsElement to provide additional properties for a collapsible tables.
  */
-type TCollapsibleTableContainer = HTMLDetailsElement & { tableHeader: string[], tableData: string[][], tableRendered: boolean };
+type TCollapsibleTableContainer = HTMLDetailsElement & { tableHeader: string[], tableData: any[][], tableRendered: boolean };
+
+/**
+ * A extension of HTMLDetailsElement to provide additional properties for a collapsible task lists.
+ */
+type TCollapsibleTaskList = HTMLDetailsElement & { readingList: TTaskRecords, readingListRendered: boolean };
+
+/**
+ * A utility type to representRSS page types.
+ */
+type TRSSPageType = "rsscollection" | "rssfeed" | "rsstopic" | "rssitem";
 
 /**
  * A utility tpye to specify the intial state of an expandable table.
@@ -220,7 +230,7 @@ export class DataViewJSTools {
      * @param type Type of the pages to get.
      * @returns The dataview array of files in a given folder with a given type.
      */
-    private getPagesOfFolder(path: string, type: string): TPageRecords {
+    private getPagesOfFolder(path: string, type: TRSSPageType): TPageRecords {
         const folder = this.settings.app.vault.getFolderByPath(path);
         if (folder) {
             const pages = folder.children
@@ -561,10 +571,10 @@ export class DataViewJSTools {
      *
      * @param details The `<details>` HTML block element containing a collapsible task list.
      */
-    private async renderTaskList(details: HTMLDetailsElement) {
-        const { readingList, readingListRendered } = (details as any);
+    private async renderTaskList(details: TCollapsibleTaskList) {
+        const { readingList, readingListRendered } = details;
         if (details.open && !readingListRendered && readingList) {
-            (details as any).readingListRendered = true;
+            details.readingListRendered = true;
             await this.dv.api.taskList(readingList, false, details, this.dv.component);
             const last = details.lastElementChild as HTMLElement;
             last.style.paddingLeft = "1em";
@@ -585,7 +595,7 @@ export class DataViewJSTools {
         if (tasks.length > 0) {
             const
                 summary = this.dv.el("summary", `${header} (${tasks.length})`),
-                details = this.dv.el("details", summary);
+                details = this.dv.el("details", summary) as TCollapsibleTaskList;
             (summary as HTMLElement).style.cursor = "default";
             details.open = expand;
             details.readingList = tasks;
@@ -593,7 +603,7 @@ export class DataViewJSTools {
                 await this.renderTaskList(details); // render once now
             } else {
                 // configure the delayed rendering of the reading tasks
-                details.addEventListener("toggle", async (evt: Event) => this.renderTaskList(evt.target as HTMLDetailsElement));
+                details.addEventListener("toggle", async (evt: Event) => this.renderTaskList(evt.target as TCollapsibleTaskList));
             }
         } else {
             this.dv.paragraph("⛔");
