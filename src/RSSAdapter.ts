@@ -199,7 +199,7 @@ export class RSSitemAdapter extends RSSAdapter {
             tagmgr = feed.plugin.tagmgr,
             frontmatter: TFrontmatter = {
                 role: "rssitem",
-                id: id ?? link,
+                id: '"' + (id ?? link) + '"',
                 author: author ? ('"' + author + '"') : "Unknown",
                 link: link ?? "",
                 published: published ?? new Date().valueOf(),

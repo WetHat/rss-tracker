@@ -15632,7 +15632,7 @@ var _RSSitemAdapter = class extends RSSAdapter {
     }
     const itemfolder = await feed.itemFolder(), tagmgr = feed.plugin.tagmgr, frontmatter = {
       role: "rssitem",
-      id: id != null ? id : link,
+      id: '"' + (id != null ? id : link) + '"',
       author: author ? '"' + author + '"' : "Unknown",
       link: link != null ? link : "",
       published: published != null ? published : new Date().valueOf(),
