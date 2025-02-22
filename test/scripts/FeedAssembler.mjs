@@ -67,7 +67,7 @@ export class TrackedRSSitem {
         this.id = id;
         this.media = media;
         this.tags = (entry.category ?? [])
-            .map(c => {
+            .map((c) => {
             let tag = null;
             if (typeof c === "string") {
                 tag = c;
@@ -116,7 +116,7 @@ export class TrackedRSSitem {
             }
             this.link = link;
         }
-        this.author = creator;
+        this.author = Array.isArray(creator) ? creator.join(",") : (creator ?? "unknown");
         if (image) {
             this.image = image;
         }

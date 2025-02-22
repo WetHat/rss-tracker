@@ -14092,7 +14092,7 @@ var TrackedRSSitem = class {
       }
       this.link = link;
     }
-    this.author = creator;
+    this.author = Array.isArray(creator) ? creator.join(",") : creator != null ? creator : "unknown";
     if (image) {
       this.image = image;
     }

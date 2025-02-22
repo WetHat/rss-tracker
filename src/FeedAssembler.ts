@@ -71,8 +71,8 @@ interface IEntryDataTracked {
     title?: string;
     description?: string;
     published?: string;
-    category?: string[] | Object[];
-    creator?: string;
+    category?: string[] | object[];
+    creator?: string | string[] | object[];
     image?: IRssMedium;
     media: IRssMedium[];
     content?: string;
@@ -124,7 +124,7 @@ export class TrackedRSSitem {
         this.id = id;
         this.media = media;
         this.tags = (entry.category ?? [])
-            .map(c => {
+            .map((c: string | object ) => {
                 let tag = null;
                 if (typeof c === "string") {
                     tag = c;
@@ -176,7 +176,7 @@ export class TrackedRSSitem {
             this.link = link;
         }
 
-        this.author = creator;
+        this.author = Array.isArray(creator) ? creator.join(",") : (creator ?? "unknown");
         if (image) {
             this.image = image;
         }
