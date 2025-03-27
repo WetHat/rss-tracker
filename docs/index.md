@@ -1,3 +1,8 @@
+---
+layout: default
+title: The RSS Tracker Obsidian Plugin
+---
+
 # RSS Tracker
 
 ## Introduction
