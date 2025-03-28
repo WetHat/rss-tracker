@@ -9,10 +9,18 @@
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
     <script src="{{ '/assets/js/respond.js' | relative_url }}"></script>
     <link rel="icon" href="{{ '/assets/rss-64.png'| relative_url }}" type="image/png">
-    <title>{{ page.title | default: site.title | escape }}</title>
+
     <meta name="description" content="{{ page.description | default: site.description | escape }}" />
     <meta name="author" content="{{ site.github.owner_name | escape }}" />
     <meta name="generator" content="Jekyll v{{ jekyll.version }}" />
+    <meta property="og:image" content="https://repository-images.githubusercontent.com/798236066/9de2bd8c-722a-45de-b2c8-958757221c65">
+    <meta property="og:site_name" content="{{ site.github.repository_name | escape }}" />
+    <meta property="og:title" content="{{ page.title | default: site.title | escape }}" />
+    <meta property="og:description" content="{{ page.description | default: site.description | escape }}" />
+    <meta property="og:url" content="{{ page.url | absolute_url }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="{{ site.lang | default: 'en_US' }}" />
+    <title>{{ page.title | default: site.title | escape }}</title>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -35,7 +43,7 @@
           </ul>
         </nav>
 
-        <nav class="sidebar">
+        <nav">
             <ul>
                 {% for item in site.navigation %}
                 <li><a href="{{ item.url | relative_url }}">{{ item.name }}</a></li>
