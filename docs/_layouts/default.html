@@ -40,14 +40,10 @@
               <li class="downloads"><a href="{{ site.github.tar_url }}">TAR</a></li>
               <li class="title">DOWNLOADS</li>
             {% endif %}
-          </ul>
-        </nav>
 
-        <nav">
-            <ul>
-                {% for item in site.navigation %}
-                <li><a href="{{ item.url | relative_url }}">{{ item.name }}</a></li>
-                {% endfor %}
+            {% for item in site.navigation %}
+            <li><a href="{{ item.url | relative_url }}">{{ item.name }}</a></li>
+            {% endfor %}
             </ul>
         </nav>
       </div><!-- end header -->
