@@ -1,9 +1,8 @@
 title: The RSS Tracker Obsidian Plugin
 description: User manual for the RSS Tracker Obsidian plugin that tracks RSS feeds and displays them in a note.
 theme: jekyll-theme-midnight
-jekyll-theme-midnight:
-  navigation:
-    - title: Home
-      url: /index
-    - title: Commands
-      url: /commands
+navigation:
+  - title: Home
+    url: /index
+  - title: Commands
+    url: /commands
