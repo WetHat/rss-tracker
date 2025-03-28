@@ -1,3 +1,7 @@
+---
+---
+
+@import "{{ site.theme }}";
 
 .sidebar {
     height: 100vh; /* Full viewport height */
@@ -22,4 +26,38 @@
 .content {
     margin-left: 260px; /* Leave space for the sidebar */
     padding: 20px;
+}
+
+.navbar {
+    background-color: #333; /* Dark background */
+    padding-right: 10px;
+    border-style: solid;
+    width: 20%;
+    float:left;
+    border-width: 2px;
+    border-color: green;
+}
+
+.navitem {
+
+}
+
+.navlist {
+    list-style: none; /* Remove default list styling */
+    list-style-position: inside; /* Ensures the list items are inside the container */
+    padding-left: 1em;
+}
+
+.navlink {
+    text-overflow: ellipsis;
+    display: inline-block; /* Ensures it respects width */
+    white-space: nowrap; /* Prevents text from wrapping to the next line */
+    overflow: hidden; /* Hides text that overflows the container */
+    text-overflow: ellipsis; /* Adds the ellipsis at the end */
+    max-width: -webkit-fill-available;
+}
+
+.navheading {
+    text-align: center;
+    color: darkgoldenrod;
 }
