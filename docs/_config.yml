@@ -3,7 +3,7 @@ description: User manual for the RSS Tracker Obsidian plugin that tracks RSS fee
 theme: jekyll-theme-midnight
 favicon: /assets/rss-tracker.png
 navigation:
-  - title: Home
+  - name: Home
     url: /index
-  - title: Commands
+  - name: Commands
     url: /commands
