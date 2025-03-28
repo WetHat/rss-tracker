@@ -5,3 +5,5 @@ jekyll-theme-midnight:
   navigation:
     - title: Home
       url: /index
+    - title: Commands
+      url: /commands
