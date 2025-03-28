@@ -1,0 +1,25 @@
+
+.sidebar {
+    height: 100vh; /* Full viewport height */
+    width: 250px; /* Sidebar width */
+    position: fixed; /* Keeps the sidebar fixed */
+    background-color: #333; /* Dark background */
+    color: white;
+    padding-top: 20px;
+}
+
+.sidebar a {
+    display: block;
+    color: white;
+    padding: 15px;
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    background-color: #575757;
+}
+
+.content {
+    margin-left: 260px; /* Leave space for the sidebar */
+    padding: 20px;
+}
