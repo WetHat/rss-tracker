@@ -11,7 +11,7 @@ Step-by-step guide to install the project.
 
 ## Documentation
 
-See ...
+See the [user's manual](http://wethat.github.io/rss-tracker/index)
 
 ## Configuration
 Details on how to configure the project for custom use cases.

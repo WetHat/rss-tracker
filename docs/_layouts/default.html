@@ -29,6 +29,23 @@
     <![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     {% include head-custom.html %}
+
+    <script type="text/javascript">
+      const
+        toc = document.body.getElementsByClassName('toc')[0],
+        headings = document.body.querySelectorAll('h1');
+      headings.forEach((heading) => {
+        const
+          id = heading.id,
+          li = document.createElement('li'),
+          a = document.createElement('a');
+        a.href = `#${id}`;
+        a.innerText = heading.innerText;
+        li.appendChild(a);
+        toc.appendChild(li);
+      });
+    </script>
+
   </head>
   <body>
       <div id="header">
@@ -47,6 +64,12 @@
             </ul>
         </nav>
       </div><!-- end header -->
+
+      <nav>
+        <h2 >On this page</h2>
+        <ul class="toc">
+        </ul>
+      </nav>
 
     <div class="wrapper">
 
