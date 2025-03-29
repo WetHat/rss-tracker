@@ -25,13 +25,19 @@
 }
 
 .navbar {
+    padding-top: 5em;
     background-color: #333; /* Dark background */
     color: white;
     padding-right: 10px;
-    width: 20%;
+    width: 30%;
     float:left;
     border-width: 2px;
     border-color: green;
+}
+
+.navitem {
+    padding-left: 0;
+    text-overflow: ellipsis;
 }
 
 .navheading {
