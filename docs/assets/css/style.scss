@@ -33,7 +33,7 @@
     background-color: #333; /* Dark background */
     color: white;
     padding-right: 10px;
-    width: 30%;
+    width: 20%;
     float:left;
     border-width: 2px;
     border-color: green;
@@ -41,9 +41,24 @@
 
 .navitem {
     padding-left: 0;
+
+}
+
+.navlist {
+    list-style-type: square;
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+}
+
+.navlink {
     text-overflow: ellipsis;
+    display: inline-block; /* Ensures it respects width */
+    white-space: nowrap; /* Prevents text from wrapping to the next line */
+    overflow: hidden; /* Hides text that overflows the container */
+    text-overflow: ellipsis; /* Adds the ellipsis at the end */
 }
 
 .navheading {
+    text-align: center;
     color: darkgoldenrod;
 }

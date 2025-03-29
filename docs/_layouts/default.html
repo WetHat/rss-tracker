@@ -41,6 +41,7 @@
           a = document.createElement('a');
         li.className = 'navitem';
         a.href = `#${heading.id}`;
+        a.className = 'navlink';
         a.innerText = heading.innerText;
         li.appendChild(a);
         toc.appendChild(li);
@@ -69,8 +70,8 @@
 
       <nav class="navbar">
         <h5 class="navheading">On this page</h5>
-        <ol class="toc">
-        </ol>
+        <ul class="navlist">
+        </ul>
       </nav>
 
     <div class="wrapper">
