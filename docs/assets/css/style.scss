@@ -29,10 +29,9 @@
 }
 
 .navbar {
-    padding-top: 5em;
     background-color: #333; /* Dark background */
-    color: white;
     padding-right: 10px;
+    border-style: solid;
     width: 20%;
     float:left;
     border-width: 2px;
@@ -40,14 +39,13 @@
 }
 
 .navitem {
-    padding-left: 0;
 
 }
 
 .navlist {
-    list-style-type: square;
-    padding: 0; /* Remove padding */
-    margin: 0; /* Remove margin */
+    list-style: none; /* Remove default list styling */
+    list-style-position: inside; /* Ensures the list items are inside the container */
+    padding-left: 1em;
 }
 
 .navlink {
@@ -56,6 +54,7 @@
     white-space: nowrap; /* Prevents text from wrapping to the next line */
     overflow: hidden; /* Hides text that overflows the container */
     text-overflow: ellipsis; /* Adds the ellipsis at the end */
+    max-width: -webkit-fill-available;
 }
 
 .navheading {
