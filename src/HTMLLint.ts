@@ -93,23 +93,39 @@ export class ObsidianHTMLLinter {
     /**
      * Add linefeeds to `<code>` and `<pre>` elements to ensure proper Obsidian code block formatting.
      *
-     * This cleanup method is used change unecessary `<br>` elements
-     * to linefeeds in pre-formatted (`<pre>`) HTML.
+     * This cleanup method is used to change unecessary `<br>` elements
+     * to linefeeds and add linefeeds after `<div>`elements to preserve the structure of `<pre>`
+     * or `<code>` elements in Obsidian code blocks.
      *
-     * @param element The elment to scan for `<br>`
+     * @param element The `<pre>` or `<code>` elment to process.
      * @returns The modified element.
      */
     private static expandBR(element: HTMLElement): HTMLElement {
+        // Take into account that `<div> elements in preformatted blocks produce linefeeds.`
+        const divs = element.getElementsByTagName("div");
+        for (let i = 0; i < divs.length; i++) {
+            const
+                div = divs[i],
+                parent = div.parentElement;
+            if (parent) {
+                parent.insertAfter(element.doc.createTextNode("\n"), div);
+            }
+        }
+
+        // Remove all <br> elements and replace them with linefeeds.
         const brs = element.getElementsByTagName("br");
         while (brs.length > 0) {
             const
-                br = brs[0], parent = br.parentElement;
+                br = brs[0],
+                parent = br.parentElement;
             if (parent) {
                 parent.insertAfter(element.doc.createTextNode("\n"), br);
             }
             br.remove();
         }
-        return element;
+        // Remove empty lines.
+        element.textContent = element.textContent?.replace(/\n+/g, "\n") ?? null;
+        return element; // return the element for method chaining.
     }
 
     constructor(element: HTMLElement) {
