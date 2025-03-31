@@ -81,7 +81,7 @@ export class TextTransformer {
  */
 export class ObsidianHTMLLinter {
     /**
-     * A Regular Expression to test for valid HTML attribute names.
+     * A Regular Expression to test for valid HTML attribute and class names.
      */
     private static VALIDATTR = /^[a-zA-Z][a-zA-Z_-]*$/;
 
@@ -91,7 +91,7 @@ export class ObsidianHTMLLinter {
     private element: HTMLElement;
 
     /**
-     * Expand all `<br>` elements to linefeeds.
+     * Add linefeeds to `<code>` and `<pre>` elements to ensure proper Obsidian code block formatting.
      *
      * This cleanup method is used change unecessary `<br>` elements
      * to linefeeds in pre-formatted (`<pre>`) HTML.
@@ -265,8 +265,8 @@ export class ObsidianHTMLLinter {
     /**
      * Cleanup incorrectly used '<code>' elements.
      *
-     * if there are nested `<code>` or `<pre>` elements, the outer `<code>` element is
-     * converted to a `<div>`.
+     * Cleanup Criteria: If there are nested `<code>` or `<pre>` elements inside a `<code>`element,
+     * the outer `<code>` element is converted to a `<div>`.
      *
      * @returns instance of this class for method chaining.
      */
