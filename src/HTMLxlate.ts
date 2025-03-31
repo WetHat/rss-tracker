@@ -38,18 +38,18 @@ export class HTMLxlate {
                 linter
                     .fixImagesWithoutSrc()
                     .fixEmbeds()
-                    .cleanAttributes();
+                    .cleanAttributes()
+                    .cleanupFakeCode()
+                    .detectCode()
+                    .injectCodeBlock()
+                    .cleanupCodeBlock();
                 return document;
             },
             post: document => {
                 // look for <pre> tags and make sure their first child is always a <code> tag.
                 const linter = new ObsidianHTMLLinter(document.body);
                 linter
-                    .cleanupCodeBlock()
-                    .detectCode()
                     .flattenTables()
-                    .cleanupFakeCode()
-                    .injectCodeBlock()
                     .transformText( tm => {
                         tm
                             .mathTransformer()
@@ -95,10 +95,10 @@ export class HTMLxlate {
             doc = this.parser.parseFromString(html, "text/html"),
             linter = new ObsidianHTMLLinter(doc.body);
         linter
-            .cleanupCodeBlock()
             .flattenTables()
             .cleanupFakeCode()
             .injectCodeBlock()
+            .cleanupCodeBlock()
             .transformText(tm => {
                 tm
                     .mathTransformer()
