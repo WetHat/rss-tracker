@@ -37,9 +37,10 @@ describe('Test FeedAssembler ', function () {
             const
                 feedXml = fs.readFileSync(xmlPath, { encoding: "utf8" }),
                 actual = new TrackedRSSfeed(feedXml, expectedJson.source),
+                actualStr = JSON.stringify(actual, { encoding: "utf8" }, 4),
                 // we have to stringify and reparse the TrackedRSSfeed instance to avoid
                 // false positives in diff.
-                jsondiff = diff(expectedJson, JSON.parse(JSON.stringify(actual, { encoding: "utf8" }, 4)));
+                jsondiff = diff(expectedJson, JSON.parse(actualStr));
             // generate report if needed.
             let reportData = `
 # JSON differences for ${feedName}
@@ -49,6 +50,8 @@ ${JSON.stringify(jsondiff, { encoding: "utf8" }, 4)}
 ~~~`;
             if (reportData.match(/"+"|"-"|"__old"|"_new"|"__added"|"__deleted"/)) {
                 fs.writeFileSync(reportFile, reportData);
+                // write the actual.json file in case this is the new expected.json
+                fs.writeFileSync(path.join(assets, "actual.json"),actualStr);
             }
             // assert that there is no report.
             assert.equal(fs.existsSync(reportFile) ? `${reportFile} does not exist` : false, expected);
