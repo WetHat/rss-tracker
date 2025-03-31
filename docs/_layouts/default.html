@@ -30,23 +30,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     {% include head-custom.html %}
 
+    <!-- Page heading naigation generator-->
     <script type="text/javascript">
       document.addEventListener("DOMContentLoaded", function() {
         const
           toc = document.body.getElementsByClassName('navlist')[0],
           headings = document.body.querySelectorAll('h1');
-      headings.forEach((heading) => {
-        const
-          li = document.createElement('li'),
-          a = document.createElement('a');
-        li.className = 'navitem';
-        a.href = `#${heading.id}`;
-        a.className = 'navlink';
-        a.innerText = heading.innerText;
-        li.appendChild(a);
-        toc.appendChild(li);
+        headings.forEach((heading) => {
+          const
+            li = document.createElement('li'),
+            a = document.createElement('a');
+          li.className = 'navitem';
+          a.href = `#${heading.id}`;
+          a.className = 'navlink';
+          a.innerText = heading.innerText;
+          li.appendChild(a);
+          toc.appendChild(li);
+        });
       });
-    });
     </script>
 
   </head>
@@ -68,14 +69,14 @@
         </nav>
       </div><!-- end header -->
 
-      <nav class="navbar">
-        <h4 class="navheading">On this page</h4>
-        <ul class="navlist">
-        </ul>
-      </nav>
+    <nav class="navbar">
+      <h4 class="navheading">On this page</h4>
+      <ul class="navlist">
+        <!-- Page header navigation linke here ... -->
+      </ul>
+    </nav>
 
     <div class="wrapper">
-
       <section>
         <div id="title">
           <h1>{{ site.title | default: site.github.repository_name }}</h1>
@@ -84,11 +85,8 @@
           <span class="credits left">Project maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></span>
           <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/mattgraham">mattgraham</a></span>
         </div>
-
         {{ content }}
-
       </section>
-
     </div>
   </body>
 </html>
