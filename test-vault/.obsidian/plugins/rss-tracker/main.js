@@ -14843,15 +14843,24 @@ var TextTransformer = class {
 };
 var _ObsidianHTMLLinter = class _ObsidianHTMLLinter {
   /**
-   * Expand all `<br>` elements to linefeeds.
+   * Add linefeeds to `<code>` and `<pre>` elements to ensure proper Obsidian code block formatting.
    *
-   * This cleanup method is used change unecessary `<br>` elements
-   * to linefeeds in pre-formatted (`<pre>`) HTML.
+   * This cleanup method is used to change unecessary `<br>` elements
+   * to linefeeds and add linefeeds after `<div>`elements to preserve the structure of `<pre>`
+   * or `<code>` elements in Obsidian code blocks.
    *
-   * @param element The elment to scan for `<br>`
+   * @param element The `<pre>` or `<code>` elment to process.
    * @returns The modified element.
    */
   static expandBR(element) {
+    var _a2, _b;
+    const divs = element.getElementsByTagName("div");
+    for (let i = 0; i < divs.length; i++) {
+      const div = divs[i], parent = div.parentElement;
+      if (parent) {
+        parent.insertAfter(element.doc.createTextNode("\n"), div);
+      }
+    }
     const brs = element.getElementsByTagName("br");
     while (brs.length > 0) {
       const br = brs[0], parent = br.parentElement;
@@ -14860,6 +14869,7 @@ var _ObsidianHTMLLinter = class _ObsidianHTMLLinter {
       }
       br.remove();
     }
+    element.textContent = (_b = (_a2 = element.textContent) == null ? void 0 : _a2.replace(/\n+/g, "\n")) != null ? _b : null;
     return element;
   }
   constructor(element) {
@@ -14939,11 +14949,12 @@ var _ObsidianHTMLLinter = class _ObsidianHTMLLinter {
    * @returns instance of this class for method chaining.
    */
   cleanupCodeBlock() {
+    var _a2, _b;
     const codeBlocks = this.element.getElementsByTagName("code");
     for (let i = 0; i < codeBlocks.length; i++) {
       const code = codeBlocks[i];
       _ObsidianHTMLLinter.expandBR(code);
-      const codeTxt = code.innerText.trim();
+      const codeTxt = (_b = (_a2 = code.textContent) == null ? void 0 : _a2.trim()) != null ? _b : "";
       code.textContent = codeTxt;
       const parent = code.parentElement;
       if ("pre" === (parent == null ? void 0 : parent.localName)) {
@@ -14961,7 +14972,7 @@ var _ObsidianHTMLLinter = class _ObsidianHTMLLinter {
    * @returns instance of this class for method chaining.
    */
   detectCode() {
-    this.element.querySelectorAll("[data-syntax-language],div[class*=code]").forEach((e) => {
+    this.element.querySelectorAll("[data-syntax-language],[class*=code]").forEach((e) => {
       var _a2, _b;
       let code = e.localName === "code" ? e : e.querySelectorAll("pre > code");
       if (!code) {
@@ -14995,8 +15006,8 @@ var _ObsidianHTMLLinter = class _ObsidianHTMLLinter {
   /**
    * Cleanup incorrectly used '<code>' elements.
    *
-   * if there are nested `<code>` or `<pre>` elements, the outer `<code>` element is
-   * converted to a `<div>`.
+   * Cleanup Criteria: If there are nested `<code>` or `<pre>` elements inside a `<code>`element,
+   * the outer `<code>` element is converted to a `<div>`.
    *
    * @returns instance of this class for method chaining.
    */
@@ -15032,7 +15043,7 @@ var _ObsidianHTMLLinter = class _ObsidianHTMLLinter {
     const pres = this.element.querySelectorAll("pre:not(:has(code))");
     for (let i = 0; i < pres.length; i++) {
       const pre = pres[i];
-      const code = this.element.doc.createElement("code"), preClasses = Array.from(pre.classList), lang = preClasses.filter((cl) => cl.startsWith("language-"));
+      const code = this.element.doc.createElement("code"), preClasses = Array.from(pre.classList), lang = preClasses.filter((cl) => cl.contains("language-") || cl.contains("lang-"));
       if (lang.length > 0)
         code.className = preClasses[0];
       else {
@@ -15148,10 +15159,22 @@ var _ObsidianHTMLLinter = class _ObsidianHTMLLinter {
         const att = attribs[i], name = att.name;
         if (!_ObsidianHTMLLinter.VALIDATTR.test(name)) {
           illegalNames.push(name);
-        }
-        if (att.name === "class" && att.value.contains("highlight")) {
-          if (att.value.contains("code")) {
-            att.value = "code";
+        } else if (name === "class") {
+          const classes = att.value.split(" ");
+          let nCodeAtts = 0, keep = [];
+          classes.forEach((cl) => {
+            if (cl.contains("code")) {
+              nCodeAtts++;
+            } else if (_ObsidianHTMLLinter.VALIDATTR.test(cl)) {
+              keep.push(cl);
+            }
+          });
+          if (nCodeAtts > 0) {
+            keep.push("code");
+            keep = keep.filter((cl) => !cl.contains("highlight") && !cl.contains("hljs"));
+          }
+          if (keep.length > 0) {
+            att.value = keep.join(" ");
           } else {
             illegalNames.push(name);
           }
@@ -15165,7 +15188,7 @@ var _ObsidianHTMLLinter = class _ObsidianHTMLLinter {
   }
 };
 /**
- * A Regular Expression to test for valid HTML attribute names.
+ * A Regular Expression to test for valid HTML attribute and class names.
  */
 _ObsidianHTMLLinter.VALIDATTR = /^[a-zA-Z][a-zA-Z_-]*$/;
 var ObsidianHTMLLinter = _ObsidianHTMLLinter;
@@ -15185,12 +15208,12 @@ var HTMLxlate = class _HTMLxlate {
       ],
       pre: (document) => {
         const linter = new ObsidianHTMLLinter(document.body);
-        linter.fixImagesWithoutSrc().fixEmbeds().cleanAttributes();
+        linter.fixImagesWithoutSrc().fixEmbeds().cleanAttributes().cleanupFakeCode().detectCode().injectCodeBlock().cleanupCodeBlock();
         return document;
       },
       post: (document) => {
         const linter = new ObsidianHTMLLinter(document.body);
-        linter.cleanupCodeBlock().detectCode().flattenTables().cleanupFakeCode().injectCodeBlock().transformText((tm2) => {
+        linter.flattenTables().transformText((tm2) => {
           tm2.mathTransformer().entityTransformer();
         });
         return document;
@@ -15234,7 +15257,7 @@ var HTMLxlate = class _HTMLxlate {
       return html;
     }
     const doc = this.parser.parseFromString(html, "text/html"), linter = new ObsidianHTMLLinter(doc.body);
-    linter.cleanupCodeBlock().flattenTables().cleanupFakeCode().injectCodeBlock().transformText((tm) => {
+    linter.flattenTables().cleanupFakeCode().injectCodeBlock().cleanupCodeBlock().transformText((tm) => {
       tm.mathTransformer().entityTransformer();
     });
     return (0, import_obsidian.htmlToMarkdown)(doc.body);
