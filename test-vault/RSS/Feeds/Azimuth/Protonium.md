@@ -3,7 +3,7 @@ role: rssitem
 author: "John Baez"
 published: 2024-04-14T10:57:14.000Z
 link: https://johncarlosbaez.wordpress.com/2024/04/14/protonium/
-id: http://johncarlosbaez.wordpress.com/?p=37742
+id: "http://johncarlosbaez.wordpress.com/?p=37742"
 feed: "[[Azimuth]]"
 tags: [rss/physics]
 pinned: false

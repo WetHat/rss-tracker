@@ -3,7 +3,7 @@ role: rssitem
 author: "Scott Hanselman"
 published: 2024-04-25T16:46:13.000Z
 link: https://feeds.hanselman.com/~/882544025/0/scotthanselman~Open-Sourcing-DOS
-id: https://www.hanselman.com/blog/post/ed4f5c94-07d3-465c-96f1-776ba41b0099
+id: "https://www.hanselman.com/blog/post/ed4f5c94-07d3-465c-96f1-776ba41b0099"
 feed: "[[Scott Hanselman's Blog]]"
 tags: [rss/Open_Source]
 pinned: false

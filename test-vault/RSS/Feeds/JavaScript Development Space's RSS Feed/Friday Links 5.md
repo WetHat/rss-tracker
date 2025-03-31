@@ -1,15 +1,15 @@
 ---
 role: rssitem
-author: Unknown
+author: "unknown"
 published: 2024-10-04T00:00:00.000Z
 link: https://jsdev.space/friday/friday-5/
-id: https://jsdev.space/friday/friday-5/
+id: "https://jsdev.space/friday/friday-5/"
 feed: "[[JavaScript Development Space's RSS Feed]]"
 tags: []
 pinned: false
 ---
 
-> [!abstract] Friday Links 5 - 2024-10-04T00:00:00.000Z
+> [!abstract] Friday Links 5 by unknown - 2024-10-04T00:00:00.000Z
 > ![image|float:right|400](./images/friday-5.png) Happy Friday, devs! 🎉 It’s time for our weekly roundup, where we bring you the latest and greatest in the world of web development…
 
 🌐 Read article [online](https://jsdev.space/friday/friday-5/). ⤴ For other items in this feed see `= this.feed`.

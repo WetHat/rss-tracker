@@ -3,7 +3,7 @@ role: rssitem
 author: "info@thehackernews.com (The Hacker News)"
 published: 2024-05-17T08:46:00.000Z
 link: https://thehackernews.com/2024/05/kimsuky-apt-deploying-linux-backdoor.html
-id: https://thehackernews.com/2024/05/kimsuky-apt-deploying-linux-backdoor.html
+id: "https://thehackernews.com/2024/05/kimsuky-apt-deploying-linux-backdoor.html"
 feed: "[[The Hacker News]]"
 tags: []
 pinned: false

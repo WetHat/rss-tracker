@@ -3,7 +3,7 @@ role: rssitem
 author: "Matthew Dowst"
 published: 2024-05-24T12:23:30.000Z
 link: https://powershellisfun.com/2024/05/23/keep-microsoft-teams-status-available-instead-of-away-using-powershell/
-id: https://psweekly.dowst.dev/?post_type=link_library_links&p=6890
+id: "https://psweekly.dowst.dev/?post_type=link_library_links&p=6890"
 feed: "[[Planet PowerShell]]"
 tags: []
 pinned: false

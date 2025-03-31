@@ -3,7 +3,7 @@ role: rssitem
 author: "John Baez"
 published: 2024-05-04T15:47:17.000Z
 link: https://johncarlosbaez.wordpress.com/2024/05/04/hexagonal-tiling-honeycomb/
-id: http://johncarlosbaez.wordpress.com/?p=37783
+id: "http://johncarlosbaez.wordpress.com/?p=37783"
 feed: "[[Azimuth]]"
 tags: [rss/mathematics]
 pinned: false
@@ -28,7 +28,7 @@ dvjs.rssItemHeader(dv.current());
 
 This picture by [Roice Nelson](http://www.roice3.org/) shows a remarkable structure: the [hexagonal tiling honeycomb](https://en.wikipedia.org/wiki/Hexagonal_tiling_honeycomb).
 
-What is it? Roughly speaking, a [honeycomb](https://en.wikipedia.org/wiki/Honeycomb_(geometry)) is a way of filling 3d space with polyhedra. The most symmetrical honeycombs are the ‘regular’ ones. For any honeycomb, we define a **flag** to be a chosen vertex lying on a chosen edge lying on a chosen face lying on a chosen polyhedron. A honeycomb is **regular** if its geometrical symmetries act transitively on flags.
+What is it? Roughly speaking, a [honeycomb](https://en.wikipedia.org/wiki/Honeycomb_\(geometry\)) is a way of filling 3d space with polyhedra. The most symmetrical honeycombs are the ‘regular’ ones. For any honeycomb, we define a **flag** to be a chosen vertex lying on a chosen edge lying on a chosen face lying on a chosen polyhedron. A honeycomb is **regular** if its geometrical symmetries act transitively on flags.
 
 The most familiar regular honeycomb is the usual way of filling Euclidean space with cubes. This [cubic honeycomb](https://en.wikipedia.org/wiki/Cubic_honeycomb) is denoted by the symbol {4,3,4}, because a square has 4 edges, 3 squares meet at each corner of a cube, and 4 cubes meet along each edge of this honeycomb. We can also define regular honeycombs in hyperbolic space. For example, the [order-5 cubic honeycomb](https://en.wikipedia.org/wiki/Order-5_cubic_honeycomb) is a hyperbolic honeycomb denoted {4,3,5}, since 5 cubes meet along each edge:
 
@@ -36,7 +36,7 @@ The most familiar regular honeycomb is the usual way of filling Euclidean space 
 ![](https://upload.wikimedia.org/wikipedia/commons/a/a7/H3_435_CC_center.png)  
 ](https://en.wikipedia.org/wiki/Order-5_cubic_honeycomb)
 
-Coxeter showed there are [15 regular hyperbolic honeycombs](https://en.wikipedia.org/wiki/Honeycomb_(geometry)#Hyperbolic_honeycombs). The hexagonal tiling honeycomb is one of these. But it does not contain polyhedra of the usual sort! Instead, it contains flat Euclidean planes embedded in hyperbolic space, each plane containing the vertices of infinitely many regular hexagons. You can think of such a sheet of hexagons as a generalized polyhedron with _infinitely many_ faces. You can see a bunch of such sheets in the picture:
+Coxeter showed there are [15 regular hyperbolic honeycombs](https://en.wikipedia.org/wiki/Honeycomb_\(geometry\)#Hyperbolic_honeycombs). The hexagonal tiling honeycomb is one of these. But it does not contain polyhedra of the usual sort! Instead, it contains flat Euclidean planes embedded in hyperbolic space, each plane containing the vertices of infinitely many regular hexagons. You can think of such a sheet of hexagons as a generalized polyhedron with _infinitely many_ faces. You can see a bunch of such sheets in the picture:
 
 [  
 ![](https://i0.wp.com/math.ucr.edu/home/baez/mathematical/{6,3,3}_honeycomb_roice_bright.png)  

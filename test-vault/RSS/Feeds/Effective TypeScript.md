@@ -3,7 +3,7 @@ role: rssfeed
 feedurl: https://localhost/test/Effective TypeScript/feed.xml
 site: https://effectivetypescript.com/
 itemlimit: 10
-updated: 2024-10-30T07:52:48.873Z
+updated: 2025-03-31T14:39:27.955Z
 status: ✅
 tags: []
 interval: 759

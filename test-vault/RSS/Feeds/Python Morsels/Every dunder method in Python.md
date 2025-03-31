@@ -1,15 +1,15 @@
 ---
 role: rssitem
-author: Unknown
+author: "unknown"
 published: 2024-03-19T21:30:00.000Z
 link: https://www.pythonmorsels.com/every-dunder-method/
-id: https://www.pythonmorsels.com/every-dunder-method/
+id: "https://www.pythonmorsels.com/every-dunder-method/"
 feed: "[[Python Morsels]]"
 tags: []
 pinned: false
 ---
 
-> [!abstract] Every dunder method in Python - 2024-03-19T21:30:00.000Z
+> [!abstract] Every dunder method in Python by unknown - 2024-03-19T21:30:00.000Z
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] An explanation of all of Python's 100+ dunder methods and 50+ dunder attributes, including a summary of each one.
 > 
 > **Table of contents**

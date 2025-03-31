@@ -3,7 +3,7 @@ role: rssitem
 author: "Matthew Dowst"
 published: 2024-05-24T12:23:43.000Z
 link: https://alexholmeset.blog/2024/05/22/use-the-azure-openai-gpt-4o-all-in-one-model-with-powershell/
-id: https://psweekly.dowst.dev/?post_type=link_library_links&p=6891
+id: "https://psweekly.dowst.dev/?post_type=link_library_links&p=6891"
 feed: "[[Planet PowerShell]]"
 tags: []
 pinned: false

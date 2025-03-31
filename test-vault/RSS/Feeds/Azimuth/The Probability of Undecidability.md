@@ -3,7 +3,7 @@ role: rssitem
 author: "John Baez"
 published: 2024-03-15T10:10:44.000Z
 link: https://johncarlosbaez.wordpress.com/2024/03/15/the-probability-of-undecidability/
-id: http://johncarlosbaez.wordpress.com/?p=37690
+id: "http://johncarlosbaez.wordpress.com/?p=37690"
 feed: "[[Azimuth]]"
 tags: [rss/mathematics]
 pinned: false

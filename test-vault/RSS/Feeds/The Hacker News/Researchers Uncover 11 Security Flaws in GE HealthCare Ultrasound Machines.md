@@ -3,7 +3,7 @@ role: rssitem
 author: "info@thehackernews.com (The Hacker News)"
 published: 2024-05-16T10:12:00.000Z
 link: https://thehackernews.com/2024/05/researchers-uncover-11-security-flaws.html
-id: https://thehackernews.com/2024/05/researchers-uncover-11-security-flaws.html
+id: "https://thehackernews.com/2024/05/researchers-uncover-11-security-flaws.html"
 feed: "[[The Hacker News]]"
 tags: []
 pinned: false

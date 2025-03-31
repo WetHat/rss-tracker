@@ -10,6 +10,7 @@
             "title": "Oh no, I started a Magit-like plugin for the Lem editor",
             "link": "https://lisp-journey.gitlab.io/blog/oh-no-i-started-a-magit-like-plugin-for-the-lem-editor/",
             "published": "2024-03-14T12:11:34.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -19,6 +20,7 @@
             "title": "Celebrating 1001 learners on my Common Lisp course 🥳",
             "link": "https://lisp-journey.gitlab.io/blog/celebrating-1001-learners-on-my-common-lisp-course/",
             "published": "2024-02-14T16:05:44.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -28,6 +30,7 @@
             "title": "Latest string manipulation functions in the STR library",
             "link": "https://lisp-journey.gitlab.io/blog/latest-string-manipulation-functions/",
             "published": "2023-12-22T15:52:51.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -37,6 +40,7 @@
             "title": "Common Lisp on the web: enrich your stacktrace with request and session data",
             "link": "https://lisp-journey.gitlab.io/blog/common-lisp-on-the-web-enrich-your-stacktrace-with-request-and-session-data/",
             "published": "2023-10-13T14:51:07.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -46,6 +50,7 @@
             "title": "I published 17 videos about Common Lisp macros - learn Lisp with a code-first tutorial 🎥 ⭐",
             "link": "https://lisp-journey.gitlab.io/blog/17-new-videos-on-common-lisp-macros/",
             "published": "2023-09-15T15:07:23.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -55,6 +60,7 @@
             "title": "Pretty GUIs now: nodgui comes with a pre-installed nice looking theme",
             "link": "https://lisp-journey.gitlab.io/blog/nodgui-now-has-a-nice-looking-theme-by-default/",
             "published": "2023-06-01T17:03:35.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -64,6 +70,7 @@
             "title": "Pretty GUI in Common Lisp with nodgui's Tk themes",
             "link": "https://lisp-journey.gitlab.io/blog/pretty-gui-in-common-lisp-with-nodgui-tk-themes/",
             "published": "2023-05-26T22:22:04.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -73,6 +80,7 @@
             "title": "i18n in my Lisp web app with Djula templates and gettext",
             "link": "https://lisp-journey.gitlab.io/blog/i18n-in-my-lisp-web-app-with-djula-templates-and-gettext/",
             "published": "2023-05-08T12:01:34.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -82,6 +90,7 @@
             "title": "How to parse command line arguments in Common Lisp (bis)",
             "link": "https://lisp-journey.gitlab.io/blog/how-to-parse-command-line-arguments-in-common-lisp/",
             "published": "2023-04-19T09:44:56.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -91,6 +100,7 @@
             "title": "These Years in Common Lisp: 2022 in review",
             "link": "https://lisp-journey.gitlab.io/blog/these-years-in-common-lisp-2022-in-review/",
             "published": "2023-01-09T18:54:29.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -100,6 +110,7 @@
             "title": "Debugging Lisp: fix and resume a program from any point in stack 🎥",
             "link": "https://lisp-journey.gitlab.io/blog/debugging-lisp-fix-and-resume-a-program-from-any-point-in-stack/",
             "published": "2022-12-06T11:47:04.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -109,6 +120,7 @@
             "title": "Debugging Lisp: trace options, break on conditions",
             "link": "https://lisp-journey.gitlab.io/blog/debugging-lisp-trace-options-break-on-conditions/",
             "published": "2022-12-02T10:08:27.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -118,6 +130,7 @@
             "title": "Lisp for the web: building one standalone binary with foreign libraries, templates and static assets",
             "link": "https://lisp-journey.gitlab.io/blog/lisp-for-the-web-build-standalone-binaries-foreign-libraries-templates-static-assets/",
             "published": "2022-11-28T17:43:43.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -127,6 +140,7 @@
             "title": "Lisp for the web: deploying with Systemd, gotchas and solutions",
             "link": "https://lisp-journey.gitlab.io/blog/lisp-for-the-web-deploy-with-systemd/",
             "published": "2022-08-30T14:57:37.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -136,6 +150,7 @@
             "title": "New video: how to request a REST API in Common Lisp: fetching the GitHub API 🎥",
             "link": "https://lisp-journey.gitlab.io/blog/new-video-how-to-request-a-web-api-with-common-lisp/",
             "published": "2022-06-11T09:43:31.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -145,6 +160,7 @@
             "title": "Video: Create a Common Lisp project from scratch with our project generator 🎥",
             "link": "https://lisp-journey.gitlab.io/blog/video-create-a-lisp-project-with-our-project-generator/",
             "published": "2022-05-11T09:43:31.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -154,6 +170,7 @@
             "title": "Writing an interactive web app in Common Lisp: Hunchentoot then CLOG",
             "link": "https://lisp-journey.gitlab.io/blog/clog-contest/",
             "published": "2022-04-28T13:23:14.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -163,6 +180,7 @@
             "title": "I Am Creating a Common Lisp Video Course on Udemy (free video previews) 🎥",
             "link": "https://lisp-journey.gitlab.io/blog/i-am-creating-a-common-lisp-video-course-on-udemy/",
             "published": "2022-04-15T13:23:14.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -172,6 +190,7 @@
             "title": "Lisp Interview: Arnold Noronha of Screenshotbot: from Facebook and Java to Common Lisp.",
             "link": "https://lisp-journey.gitlab.io/blog/lisp-interview-screenshotbot/",
             "published": "2021-12-06T18:08:30.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -181,6 +200,7 @@
             "title": "Lisp for the web: pagination and cleaning up HTML with LQuery",
             "link": "https://lisp-journey.gitlab.io/blog/lisp-for-the-web-pagination-and-cleaning-up-html/",
             "published": "2021-11-25T10:39:18.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -190,6 +210,7 @@
             "title": "Lisp Interview: questions to Alex Nygren of Kina Knowledge, using Common Lisp extensively in their document processing stack",
             "link": "https://lisp-journey.gitlab.io/blog/lisp-interview-kina/",
             "published": "2021-10-22T10:49:17.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -199,6 +220,7 @@
             "title": "Discovering the Lispworks IDE",
             "link": "https://lisp-journey.gitlab.io/blog/discovering-the-lispworks-ide/",
             "published": "2021-05-24T11:57:41.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -208,6 +230,7 @@
             "title": "Lem can now be started as a full featured Lisp REPL",
             "link": "https://lisp-journey.gitlab.io/blog/lem-can-be-started-as-a-full-featured-repl/",
             "published": "2021-03-24T11:43:13.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -217,6 +240,7 @@
             "title": "State of the Common Lisp ecosystem, 2020 🎉",
             "link": "https://lisp-journey.gitlab.io/blog/state-of-the-common-lisp-ecosystem-2020/",
             "published": "2021-02-08T09:29:11.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -226,6 +250,7 @@
             "title": "The Common Lisp Cookbook Is Now Available in EPUB and PDF",
             "link": "https://lisp-journey.gitlab.io/blog/the-common-lisp-cookbook-is-now-available-in-epub-and-pdf/",
             "published": "2021-01-19T10:32:25.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -235,6 +260,7 @@
             "title": "Another Common Lisp app in production",
             "link": "https://lisp-journey.gitlab.io/blog/another-common-lisp-app-in-production/",
             "published": "2020-12-14T21:54:28.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -244,6 +270,7 @@
             "title": "Pro mailing list: on Common Lisp and parallel GC",
             "link": "https://lisp-journey.gitlab.io/blog/pro-mailing-list-on-common-lisp-and-parallel-gc/",
             "published": "2020-12-14T21:41:32.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -253,6 +280,7 @@
             "title": "Lisp Interview: more questions to CLPM author. Common Lisp at university for temporal reasoning and risk-bounded planning",
             "link": "https://lisp-journey.gitlab.io/blog/lisp-interview-more-questions-to-daewok-clpm-author/",
             "published": "2020-11-15T07:22:59.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -262,6 +290,7 @@
             "title": "You can buy a preview of the Common Lisp Cookbook in ePub",
             "link": "https://lisp-journey.gitlab.io/blog/you-can-buy-a-preview-of-the-common-lisp-cookbook-in-epub/",
             "published": "2020-11-13T21:48:15.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -271,6 +300,7 @@
             "title": "Composing queries with Mito, or doing without Django lazy querysets and Q objects",
             "link": "https://lisp-journey.gitlab.io/blog/composing-queries-with-mito-aka-replacing-lazy-querysets-and-q-objects/",
             "published": "2020-09-24T16:15:44.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -280,6 +310,7 @@
             "title": "How are Lisp REPLs different from Python or Ruby REPLs ? (Hackernews, 2020)",
             "link": "https://lisp-journey.gitlab.io/blog/how-are-lisp-repls-different-from-python-or-ruby-repls/",
             "published": "2020-07-14T14:11:43.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -289,6 +320,7 @@
             "title": "Looking for a Lisp Web Developer (not a real job, but nearly)",
             "link": "https://lisp-journey.gitlab.io/blog/looking-for-a-lisp-web-developer/",
             "published": "2020-06-05T19:38:01.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -298,6 +330,7 @@
             "title": "A free software for bookshops to show their catalogue online",
             "link": "https://lisp-journey.gitlab.io/blog/a-free-software-for-bookshops-to-show-their-catalogue-online/",
             "published": "2020-05-30T11:15:47.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -307,6 +340,7 @@
             "title": "Today I Realized that to live reload my Lisp web app is straightforward and so convenient",
             "link": "https://lisp-journey.gitlab.io/blog/i-realized-that-to-live-reload-my-web-app-is-easy-and-convenient/",
             "published": "2020-05-12T14:02:05.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -316,6 +350,7 @@
             "title": "I Worked Remotely in Common Lisp. Here's My Incredible Story.",
             "link": "https://lisp-journey.gitlab.io/blog/i-worked-remotely-in-common-lisp-heres-my-incredible-story/",
             "published": "2020-05-12T10:52:57.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -325,6 +360,7 @@
             "title": "Custom Djula filters",
             "link": "https://lisp-journey.gitlab.io/blog/custom-djula-filter/",
             "published": "2020-04-08T09:38:17.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -334,6 +370,7 @@
             "title": "GUI Programming in Common Lisp, part 5/5: Nuklear",
             "link": "https://lisp-journey.gitlab.io/blog/gui-programming-in-common-lisp-part-5-of-5-nuklear/",
             "published": "2020-03-27T12:19:45.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -343,6 +380,7 @@
             "title": "GUI Programming in Common Lisp, part 4/5: IUP",
             "link": "https://lisp-journey.gitlab.io/blog/gui-programming-in-common-lisp-part-4-of-5-iup/",
             "published": "2020-03-27T12:11:36.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -352,6 +390,7 @@
             "title": "GUI Programming in Common Lisp, part 3/5: Gtk3",
             "link": "https://lisp-journey.gitlab.io/blog/gui-programming-in-common-lisp-part-3-of-5-gtk3/",
             "published": "2020-03-27T12:05:22.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -361,6 +400,7 @@
             "title": "GUI Programming in Common Lisp, part 2/5: Qt4 with Qtools",
             "link": "https://lisp-journey.gitlab.io/blog/gui-programming-in-common-lisp-part-2-of-5-qt4-qtools/",
             "published": "2020-03-27T11:42:59.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -370,6 +410,7 @@
             "title": "GUI Programming in Common Lisp, part 1/5: Tk",
             "link": "https://lisp-journey.gitlab.io/blog/gui-programming-in-common-lisp-part-1-of-5-tk/",
             "published": "2020-03-27T11:20:36.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -379,6 +420,7 @@
             "title": "Literate Programming in Lisp With Erudite",
             "link": "https://lisp-journey.gitlab.io/blog/literate-programming-in-lisp-with-erudite/",
             "published": "2020-03-21T10:01:57.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -388,6 +430,7 @@
             "title": "Common Lisp Macros By Example Tutorial",
             "link": "https://lisp-journey.gitlab.io/blog/common-lisp-macros-by-example-tutorial/",
             "published": "2020-03-02T20:12:53.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -397,6 +440,7 @@
             "title": "Yes Google Uses and Hacks on Common Lisp",
             "link": "https://lisp-journey.gitlab.io/blog/yes-google-develops-common-lisp/",
             "published": "2020-03-02T19:47:32.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -406,6 +450,7 @@
             "title": "Python VS Common Lisp Workflow and Ecosystem",
             "link": "https://lisp-journey.gitlab.io/blog/pythonvslisp-workflow-and-ecosystem/",
             "published": "2019-11-06T14:21:53.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -415,6 +460,7 @@
             "title": "Snippet: Manipulating Rows and Columns With ClAWK",
             "link": "https://lisp-journey.gitlab.io/blog/snippet-manipulating-rows-and-columns-with-clawk/",
             "published": "2019-11-04T17:40:52.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -424,6 +470,7 @@
             "title": "Replic v0.12",
             "link": "https://lisp-journey.gitlab.io/blog/replic-v0.12-readline-applications-with-custom-completion/",
             "published": "2019-10-29T17:40:07.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -433,6 +480,7 @@
             "title": "Compile Time Type Checking in Common Lisp",
             "link": "https://lisp-journey.gitlab.io/blog/compile-time-type-checking-in-common-lisp/",
             "published": "2019-10-29T16:12:33.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -442,6 +490,7 @@
             "title": "Reddit: ABCL Common Lisp vs Clojure",
             "link": "https://lisp-journey.gitlab.io/blog/reddit-abcl-common-lisp-vs-clojure/",
             "published": "2019-09-22T23:47:10.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -451,6 +500,7 @@
             "title": "Slime Tips",
             "link": "https://lisp-journey.gitlab.io/blog/slime-tips/",
             "published": "2019-08-26T08:40:46.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -460,6 +510,7 @@
             "title": "How to Check Slots Types at make-instance",
             "link": "https://lisp-journey.gitlab.io/blog/how-to-check-slots-types-at-make-instance/",
             "published": "2019-07-10T13:28:08.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -469,6 +520,7 @@
             "title": "Web Development in Common Lisp: frameworks overview, templating, deployment",
             "link": "https://lisp-journey.gitlab.io/blog/web-development-in-common-lisp/",
             "published": "2019-07-07T23:21:47.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -478,6 +530,7 @@
             "title": "Pattern Matching in Common Lisp",
             "link": "https://lisp-journey.gitlab.io/blog/pattern-matching-in-common-lisp/",
             "published": "2019-05-26T14:17:08.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -487,6 +540,7 @@
             "title": "Functions Tutorial: Arguments, Multiple Values, funcall and apply, closures and more",
             "link": "https://lisp-journey.gitlab.io/blog/functions-tutorial-arguments-multiple-values-more/",
             "published": "2019-05-26T14:08:10.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -496,6 +550,7 @@
             "title": "I Now Work Professionally in Common Lisp O_o",
             "link": "https://lisp-journey.gitlab.io/blog/i-now-work-professionally-in-common-lisp/",
             "published": "2019-05-20T16:48:31.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -505,6 +560,7 @@
             "title": "TIL how to interactively fix a failing test",
             "link": "https://lisp-journey.gitlab.io/blog/til-how-to-interactively-fix-a-failing-test/",
             "published": "2019-03-12T11:10:27.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -514,6 +570,7 @@
             "title": "These Years in Common Lisp 2018",
             "link": "https://lisp-journey.gitlab.io/blog/these-years-in-common-lisp-2018/",
             "published": "2019-02-28T13:42:46.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -523,6 +580,7 @@
             "title": "These Months in Common Lisp Q4 2018",
             "link": "https://lisp-journey.gitlab.io/blog/these-months-in-common-lisp-q4-2018/",
             "published": "2019-01-15T18:01:30.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -532,6 +590,7 @@
             "title": "Why Deftask Chose Common Lisp",
             "link": "https://lisp-journey.gitlab.io/blog/why-deftask-chose-common-lisp/",
             "published": "2019-01-11T11:21:30.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -541,6 +600,7 @@
             "title": "Why Turtl Switched From CL to Js",
             "link": "https://lisp-journey.gitlab.io/blog/why-turtl-switched-from-lisp-to-js/",
             "published": "2019-01-11T09:21:18.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -550,6 +610,7 @@
             "title": "Introducing Replic: an executable and a library to build a readline app in no time",
             "link": "https://lisp-journey.gitlab.io/blog/introducing-replic-a-readline-app-in-no-time/",
             "published": "2019-01-09T13:41:57.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -559,6 +620,7 @@
             "title": "Debugging in Common Lisp",
             "link": "https://lisp-journey.gitlab.io/blog/debugging-in-common-lisp/",
             "published": "2018-12-20T11:26:02.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -568,6 +630,7 @@
             "title": "One liner, Git from Lisp: commit every file of this repository",
             "link": "https://lisp-journey.gitlab.io/blog/one-liner-git-commit-files/",
             "published": "2018-12-04T20:49:06.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -577,6 +640,7 @@
             "title": "Overview of Documentation Generators",
             "link": "https://lisp-journey.gitlab.io/blog/overview-of-documentation-generators/",
             "published": "2018-11-07T17:34:11.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -586,6 +650,7 @@
             "title": "We now have comments. Thanks, Utterances !",
             "link": "https://lisp-journey.gitlab.io/blog/we-now-have-comments-thanks-utterances/",
             "published": "2018-10-25T16:45:20.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -595,6 +660,7 @@
             "title": "These Months in Common Lisp: Q3 2018",
             "link": "https://lisp-journey.gitlab.io/blog/these-months-in-common-lisp-q3-2018/",
             "published": "2018-10-06T21:47:06.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -604,6 +670,7 @@
             "title": "CLOS Tutorial",
             "link": "https://lisp-journey.gitlab.io/blog/clos-tutorial/",
             "published": "2018-10-05T17:37:35.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -613,6 +680,7 @@
             "title": "Shuffletron, a Common Lisp Music Player for the terminal",
             "link": "https://lisp-journey.gitlab.io/blog/shuffletron-lisp-music-player-for-the-terminal/",
             "published": "2018-09-11T14:36:23.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -622,6 +690,7 @@
             "title": "These Months in Common Lisp: Q2 2018",
             "link": "https://lisp-journey.gitlab.io/blog/these-months-in-common-lisp-q2-2018/",
             "published": "2018-07-02T12:59:46.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -631,6 +700,7 @@
             "title": "New Weblocks tutorial: widgets",
             "link": "https://lisp-journey.gitlab.io/blog/new-weblocks-tutorial/",
             "published": "2018-06-25T17:51:49.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -640,6 +710,7 @@
             "title": "Models and databases with the Mito ORM and SxQL",
             "link": "https://lisp-journey.gitlab.io/blog/models-and-databases-mito-sxql/",
             "published": "2018-05-29T06:51:49.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -649,6 +720,7 @@
             "title": "These months in Common Lisp: Q1 2018",
             "link": "https://lisp-journey.gitlab.io/blog/these-months-in-common-lisp-q1-2018/",
             "published": "2018-04-01T06:51:49.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -658,6 +730,7 @@
             "title": "Tip: capture standard and error output",
             "link": "https://lisp-journey.gitlab.io/blog/tip-capture-all-standard-output/",
             "published": "2018-03-06T06:51:49.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -667,6 +740,7 @@
             "title": "Fixing a CL21 error message in an unrelated library after a quicklisp update (it's about cache)",
             "link": "https://lisp-journey.gitlab.io/blog/fixing-a-cl21-error-message-after-quicklisp-update/",
             "published": "2018-02-12T06:51:49.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -676,6 +750,7 @@
             "title": "(bookmark) Get a list of all the dependencies of a lisp system",
             "link": "https://lisp-journey.gitlab.io/blog/bookmark-get-a-list-of-dependencies-of-a-lisp-system/",
             "published": "2018-01-23T06:51:49.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -685,6 +760,7 @@
             "title": "snippets - functional style, sequences, debugging and more utilities",
             "link": "https://lisp-journey.gitlab.io/blog/snippets-functional-style-more/",
             "published": "2018-01-23T06:51:49.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -694,6 +770,7 @@
             "title": "Print licences used by a given project and its dependencies",
             "link": "https://lisp-journey.gitlab.io/blog/print-licences-used-by-a-given-project-and-its-dependencies/",
             "published": "2018-01-22T06:51:49.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -703,6 +780,7 @@
             "title": "Generic, consistent and dotted access of data structures with Access",
             "link": "https://lisp-journey.gitlab.io/blog/generice-consistent-access-of-data-structures-dotted-path/",
             "published": "2018-01-12T06:51:49.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -712,6 +790,7 @@
             "title": "Structures: lightweight records, a step before classes",
             "link": "https://lisp-journey.gitlab.io/blog/data-structures-structs/",
             "published": "2018-01-03T06:51:49.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -721,6 +800,7 @@
             "title": "Error and condition handling",
             "link": "https://lisp-journey.gitlab.io/blog/error-and-condition-handling/",
             "published": "2018-01-02T14:51:49.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -730,6 +810,7 @@
             "title": "Scripting. Parsing command line arguments, building self-contained executables.",
             "link": "https://lisp-journey.gitlab.io/blog/scripting-parsing-command-line-arguments-executables/",
             "published": "2018-01-02T06:51:49.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -739,6 +820,7 @@
             "title": "cl-torrents, app and (extensive) tutorial: web scraping and building executables",
             "link": "https://lisp-journey.gitlab.io/blog/cl-torrents-app-and-tutorial-web-scraping-building-binaries/",
             "published": "2017-12-20T13:21:20.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -748,6 +830,7 @@
             "title": "Continuous Integration and delivery on Gitlab CI, testing locally with Docker",
             "link": "https://lisp-journey.gitlab.io/blog/continuous-integration-delivering-executables-on-gitlab/",
             "published": "2017-12-01T13:21:20.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -757,6 +840,7 @@
             "title": "Installing libraries, dependencies management",
             "link": "https://lisp-journey.gitlab.io/blog/libraries-dependencies-management/",
             "published": "2017-10-27T09:01:31.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -766,6 +850,7 @@
             "title": "Why do we have to wait one month for Quicklisp updates ?",
             "link": "https://lisp-journey.gitlab.io/blog/why-do-we-have-to-wait-one-month-before-quicklisp-updates/",
             "published": "2017-08-31T16:14:37.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -775,6 +860,7 @@
             "title": "How to do Functional Programming in Common Lisp ?",
             "link": "https://lisp-journey.gitlab.io/blog/functional-programming-in-common-lisp/",
             "published": "2017-07-28T15:38:24.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -784,6 +870,7 @@
             "title": "Data Structures",
             "link": "https://lisp-journey.gitlab.io/blog/data-structures/",
             "published": "2017-07-27T14:48:42.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -793,6 +880,7 @@
             "title": "Common Lisp Async Web Scraping",
             "link": "https://lisp-journey.gitlab.io/blog/common-lisp-async-web-scraping/",
             "published": "2017-06-29T16:47:41.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -802,6 +890,7 @@
             "title": "How to Get a File Size (and others Posix Attributes like its mtime) in Common Lisp",
             "link": "https://lisp-journey.gitlab.io/blog/how-to-get-a-file-size-and-posix-file-attributes/",
             "published": "2017-06-16T14:26:00.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -811,6 +900,7 @@
             "title": "How to access url query parameters in Clack, Lucerne or Caveman",
             "link": "https://lisp-journey.gitlab.io/blog/how-to-access-url-query-parameters-in-clack-lucerne-or-caveman/",
             "published": "2017-05-04T10:59:30.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -820,6 +910,7 @@
             "title": "Is There Something Like Clojure's Figwheel for interactive web dev with the browser in Common Lisp ?",
             "link": "https://lisp-journey.gitlab.io/blog/is-there-something-like-figwheel-for-common-lisp/",
             "published": "2017-05-04T10:32:01.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -829,6 +920,7 @@
             "title": "Getting started: how to install a Common Lisp development environment",
             "link": "https://lisp-journey.gitlab.io/blog/getting-started/",
             "published": "2017-05-03T08:41:33.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -838,6 +930,7 @@
             "title": "String manipulation is frustrating [fixed]",
             "link": "https://lisp-journey.gitlab.io/blog/string-manipulation-was-frustrating/",
             "published": "2017-05-02T09:07:01.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -847,6 +940,7 @@
             "title": "Why is there no generic operators ?",
             "link": "https://lisp-journey.gitlab.io/blog/why-is-there-no-generic-operators/",
             "published": "2017-04-14T14:27:44.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -856,6 +950,7 @@
             "title": "Example of interactively changing the current executed Lisp code in the debugger",
             "link": "https://lisp-journey.gitlab.io/blog/example-of-interactively-changing-the-current-executed-lisp-code-in-the-debugger/",
             "published": "2017-04-14T11:06:27.000Z",
+            "author": "unknown",
             "media": []
         }
     ],

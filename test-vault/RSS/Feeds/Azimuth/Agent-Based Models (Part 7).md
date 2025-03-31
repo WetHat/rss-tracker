@@ -3,7 +3,7 @@ role: rssitem
 author: "John Baez"
 published: 2024-02-28T21:09:29.000Z
 link: https://johncarlosbaez.wordpress.com/2024/02/28/agent-based-models-part-7/
-id: http://johncarlosbaez.wordpress.com/?p=37547
+id: "http://johncarlosbaez.wordpress.com/?p=37547"
 feed: "[[Azimuth]]"
 tags: [rss/computer_science,rss/epidemiology,rss/mathematics]
 pinned: false

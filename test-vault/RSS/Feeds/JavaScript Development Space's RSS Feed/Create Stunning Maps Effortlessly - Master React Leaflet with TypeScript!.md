@@ -1,15 +1,15 @@
 ---
 role: rssitem
-author: Unknown
+author: "unknown"
 published: 2024-09-30T00:00:00.000Z
 link: https://jsdev.space/mastering-react-leaflet/
-id: https://jsdev.space/mastering-react-leaflet/
+id: "https://jsdev.space/mastering-react-leaflet/"
 feed: "[[JavaScript Development Space's RSS Feed]]"
 tags: []
 pinned: false
 ---
 
-> [!abstract] Create Stunning Maps Effortlessly - Master React Leaflet with TypeScript! - 2024-09-30T00:00:00.000Z
+> [!abstract] Create Stunning Maps Effortlessly - Master React Leaflet with TypeScript! by unknown - 2024-09-30T00:00:00.000Z
 > ![image|float:right|400](./images/map1.png) In today’s web development landscape, integrating maps into applications has become increasingly popular. Whether you’re building a location…
 
 🌐 Read article [online](https://jsdev.space/mastering-react-leaflet/). ⤴ For other items in this feed see `= this.feed`.

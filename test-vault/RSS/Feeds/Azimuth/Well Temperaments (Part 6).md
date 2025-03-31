@@ -3,7 +3,7 @@ role: rssitem
 author: "John Baez"
 published: 2024-02-26T10:00:27.000Z
 link: https://johncarlosbaez.wordpress.com/2024/02/26/well-temperaments-part-6/
-id: http://johncarlosbaez.wordpress.com/?p=37578
+id: "http://johncarlosbaez.wordpress.com/?p=37578"
 feed: "[[Azimuth]]"
 tags: [rss/music]
 pinned: false
@@ -26,7 +26,7 @@ Andreas Werckmeister (1645–1706) was a musician and expert on the organ. Compa
 
 His fame comes from the tremendous impact of his his theoretical writings. Most importantly, in his 1687 book _Musikalische Temperatur_ he described the first ‘well tempered’ tuning systems for keyboards, where every key sounds acceptable but each has its own personality. Johann Sebastian Bach read and was influenced by Werckmeister’s work. The first book of Bach’s _Well-Tempered Clavier_ came out in 1722—the first collection of keyboard pieces in all 24 keys.
 
-But Bach was also influenced by Werckmeister’s writings on counterpoint. Werckmeister believed that well-written counterpoint reflected the orderly movements of the planets—especially [invertible counterpoint](https://en.wikipedia.org/wiki/Inversion_(music)#Counterpoint), where as the music goes on, a melody that starts in the high voice switches to the low voice and vice versa. Bach’s Invention No. 13 in A minor is full of invertible counterpoint:
+But Bach was also influenced by Werckmeister’s writings on counterpoint. Werckmeister believed that well-written counterpoint reflected the orderly movements of the planets—especially [invertible counterpoint](https://en.wikipedia.org/wiki/Inversion_\(music\)#Counterpoint), where as the music goes on, a melody that starts in the high voice switches to the low voice and vice versa. Bach’s Invention No. 13 in A minor is full of invertible counterpoint:
 
 ![](https://i0.wp.com/math.ucr.edu/home/baez/cultural/invertible_counterpoint.jpg)
 
@@ -77,7 +77,7 @@ I’ll talk about this more next time. For now, here’s a more elementary point
 
 For more, see:
 
-• Wikipedia, [Werckmeister temperament III](https://en.wikipedia.org/wiki/Werckmeister_temperament#Werckmeister_I_(III):_%22correct_temperament%22_based_on_1/4_comma_divisions).
+• Wikipedia, [Werckmeister temperament III](https://en.wikipedia.org/wiki/Werckmeister_temperament#Werckmeister_I_\(III\):_%22correct_temperament%22_based_on_1/4_comma_divisions).
 
 #### Werckmeister IV
 
@@ -91,7 +91,7 @@ I will say more about Werckmeister IV in a post devoted to systems that use 1/3 
 
 For more, see:
 
-• Wikipedia, [Werckmeister temperament IV](https://en.wikipedia.org/wiki/Werckmeister_temperament#Werckmeister_II_(IV):_another_temperament_included_in_the_Orgelprobe,_divided_up_through_1/3_comma).
+• Wikipedia, [Werckmeister temperament IV](https://en.wikipedia.org/wiki/Werckmeister_temperament#Werckmeister_II_\(IV\):_another_temperament_included_in_the_Orgelprobe,_divided_up_through_1/3_comma).
 
 #### Werckmeister V
 
@@ -103,13 +103,13 @@ Compared to Werckmeister III this has an extra fifth that’s a quarter comma fl
 
 For more, see:
 
-• Wikipedia, [Werckmeister temperament V](https://en.wikipedia.org/wiki/Werckmeister_temperament#Werckmeister_III_(V):_an_additional_temperament_divided_up_through_1/4_comma).
+• Wikipedia, [Werckmeister temperament V](https://en.wikipedia.org/wiki/Werckmeister_temperament#Werckmeister_III_\(V\):_an_additional_temperament_divided_up_through_1/4_comma).
 
 #### Werckmeister VI
 
 This system is based on a completely different principle. It also has another really cool-sounding name—the ‘septenarius tuning’—because it’s based on dividing a string into 196 = 7 × 7 × 4 equal parts. The resulting scale has only rational numbers as frequency ratios, unlike all the other well temperaments I’m discussing. Werckmeister described this system as “an additional temperament which has nothing at all to do with the divisions of the comma, nevertheless in practice so correct that one can be really satisfied with it”. For details, go here:
 
-• Wikipedia, [Werckmeister temperament VI](https://en.wikipedia.org/wiki/Werckmeister_temperament#Werckmeister_IV_(VI):_the_Septenarius_tunings).
+• Wikipedia, [Werckmeister temperament VI](https://en.wikipedia.org/wiki/Werckmeister_temperament#Werckmeister_IV_\(VI\):_the_Septenarius_tunings).
 
 ### Werckmeister on equal temperament
 

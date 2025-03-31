@@ -3,7 +3,7 @@ role: rssitem
 author: "Andy Jiang, Nathan Whitaker"
 published: 2024-06-20T20:00:00.000Z
 link: https://deno.com/blog/optimizing-our-lsp
-id: https://deno.com/blog/optimizing-our-lsp
+id: "https://deno.com/blog/optimizing-our-lsp"
 feed: "[[Deno]]"
 tags: []
 pinned: false

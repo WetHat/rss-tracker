@@ -3,7 +3,7 @@ role: rssitem
 author: "Sabine Hossenfelder"
 published: 2024-05-08T15:00:51.000Z
 link: https://www.youtube.com/watch?v=xTnYS3od6iY
-id: yt:video:xTnYS3od6iY
+id: "yt:video:xTnYS3od6iY"
 feed: "[[Sabine Hossenfelder]]"
 tags: []
 pinned: false

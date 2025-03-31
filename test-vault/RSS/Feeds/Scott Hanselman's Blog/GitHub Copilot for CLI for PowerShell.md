@@ -3,7 +3,7 @@ role: rssitem
 author: "Scott Hanselman"
 published: 2023-04-25T15:31:49.000Z
 link: https://feeds.hanselman.com/~/737271731/0/scotthanselman~GitHub-Copilot-for-CLI-for-PowerShell
-id: https://www.hanselman.com/blog/post/aa1cc05f-3910-471d-8686-68c749ec90ff
+id: "https://www.hanselman.com/blog/post/aa1cc05f-3910-471d-8686-68c749ec90ff"
 feed: "[[Scott Hanselman's Blog]]"
 tags: [rss/AI,rss/PowerShell]
 pinned: false
@@ -44,71 +44,37 @@ Here are my aliases. Feel free to suggest if these suck. Note the addition of "u
 
 ```undefined
 function ?? { 
-
     $TmpFile = New-TemporaryFile 
-
     github-copilot-cli what-the-shell ('use powershell to ' + $args) --shellout $TmpFile 
-
     if ([System.IO.File]::Exists($TmpFile)) { 
-
         $TmpFileContents = Get-Content $TmpFile 
-
             if ($TmpFileContents -ne $nill) {
-
             Invoke-Expression $TmpFileContents 
-
             Remove-Item $TmpFile 
-
         }
-
     }
-
 }
-
-
-
 function git? {
-
     $TmpFile = New-TemporaryFile
-
     github-copilot-cli git-assist $args --shellout $TmpFile
-
     if ([System.IO.File]::Exists($TmpFile)) {
-
         $TmpFileContents = Get-Content $TmpFile 
-
             if ($TmpFileContents -ne $nill) {
-
             Invoke-Expression $TmpFileContents 
-
             Remove-Item $TmpFile 
-
         }
-
     }
-
 }
-
 function gh? {
-
     $TmpFile = New-TemporaryFile
-
     github-copilot-cli gh-assist $args --shellout $TmpFile
-
     if ([System.IO.File]::Exists($TmpFile)) {
-
         $TmpFileContents = Get-Content $TmpFile 
-
             if ($TmpFileContents -ne $nill) {
-
             Invoke-Expression $TmpFileContents 
-
             Remove-Item $TmpFile 
-
         }
-
     }
-
 }
 ```
 

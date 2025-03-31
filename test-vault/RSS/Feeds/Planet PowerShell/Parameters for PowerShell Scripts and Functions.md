@@ -3,7 +3,7 @@ role: rssitem
 author: "Matthew Dowst"
 published: 2024-05-24T12:23:18.000Z
 link: https://powershellisfun.com/2024/05/17/parameters-for-powershell-scripts-and-functions/
-id: https://psweekly.dowst.dev/?post_type=link_library_links&p=6889
+id: "https://psweekly.dowst.dev/?post_type=link_library_links&p=6889"
 feed: "[[Planet PowerShell]]"
 tags: []
 pinned: false

@@ -3,7 +3,7 @@ role: rssfeed
 feedurl: https://localhost/test/Azimuth/feed.xml
 site: https://johncarlosbaez.wordpress.com
 itemlimit: 10
-updated: 2024-10-30T07:52:58.151Z
+updated: 2025-03-31T14:39:36.619Z
 status: ✅
 tags: []
 interval: 206

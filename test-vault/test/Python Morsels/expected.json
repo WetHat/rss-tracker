@@ -10,6 +10,7 @@
             "title": "Equality versus identity in Python",
             "link": "https://www.pythonmorsels.com/equality-vs-identity/",
             "published": "2024-05-28T23:52:24.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -19,6 +20,7 @@
             "title": "Assignment vs. Mutation in Python",
             "link": "https://www.pythonmorsels.com/assignment-versus-mutation/",
             "published": "2024-05-18T12:13:21.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -28,6 +30,7 @@
             "title": "Variables are pointers in Python",
             "link": "https://www.pythonmorsels.com/variables-are-pointers/",
             "published": "2024-05-02T15:00:00.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -37,6 +40,7 @@
             "title": "Multiline comments in Python",
             "link": "https://www.pythonmorsels.com/multiline-comments/",
             "published": "2024-04-19T23:00:00.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -46,6 +50,7 @@
             "title": "Python Big O: the time complexities of different data structures in Python",
             "link": "https://www.pythonmorsels.com/time-complexities/",
             "published": "2024-04-16T15:00:00.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -55,6 +60,7 @@
             "title": "Python's http.server module",
             "link": "https://www.pythonmorsels.com/http-server/",
             "published": "2024-04-05T23:41:43.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -64,6 +70,7 @@
             "title": "Unnecessary else statements",
             "link": "https://www.pythonmorsels.com/unnecessary-else-statements/",
             "published": "2024-03-22T22:00:00.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -73,6 +80,7 @@
             "title": "Every dunder method in Python",
             "link": "https://www.pythonmorsels.com/every-dunder-method/",
             "published": "2024-03-19T21:30:00.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -82,6 +90,7 @@
             "title": "List slicing in Python",
             "link": "https://www.pythonmorsels.com/slicing/",
             "published": "2024-03-08T22:16:58.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -91,6 +100,7 @@
             "title": "TextIOWrapper‽ converting files to strings in Python",
             "link": "https://www.pythonmorsels.com/TextIOWrapper/",
             "published": "2024-02-05T16:00:00.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -100,6 +110,7 @@
             "title": "None in Python",
             "link": "https://www.pythonmorsels.com/none/",
             "published": "2024-01-22T23:00:00.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -109,6 +120,7 @@
             "title": "Python Morsels Lifetime Access Sale",
             "link": "https://www.pythonmorsels.com/python-morsels-lifetime-access-sale/",
             "published": "2023-11-20T01:00:00.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -118,6 +130,7 @@
             "title": "Solving programming exercises",
             "link": "https://www.pythonmorsels.com/programming-exercise-tips/",
             "published": "2023-11-14T14:00:00.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -127,6 +140,7 @@
             "title": "Python's lambda functions",
             "link": "https://www.pythonmorsels.com/lambda-expressions/",
             "published": "2023-10-25T12:30:00.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -136,6 +150,7 @@
             "title": "What is recursion?",
             "link": "https://www.pythonmorsels.com/what-is-recursion/",
             "published": "2023-09-04T18:15:00.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -145,6 +160,7 @@
             "title": "Creating a context manager in Python",
             "link": "https://www.pythonmorsels.com/creating-a-context-manager/",
             "published": "2023-08-07T15:00:00.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -154,6 +170,7 @@
             "title": "Python's next() function",
             "link": "https://www.pythonmorsels.com/next/",
             "published": "2023-07-17T15:00:00.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -163,6 +180,7 @@
             "title": "The difference between return and print in Python",
             "link": "https://www.pythonmorsels.com/print-vs-return/",
             "published": "2023-07-10T15:00:00.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -172,6 +190,7 @@
             "title": "Django June 2023: Tips & Discussions",
             "link": "https://www.pythonmorsels.com/django-june-2023/",
             "published": "2023-06-30T16:00:00.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -181,6 +200,7 @@
             "title": "Counting occurrences in Python with collections.Counter",
             "link": "https://www.pythonmorsels.com/using-counter/",
             "published": "2023-06-27T15:00:00.000Z",
+            "author": "unknown",
             "media": []
         }
     ],

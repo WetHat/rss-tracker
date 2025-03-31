@@ -10,6 +10,7 @@
             "title": "All you need to know about iterators and generators",
             "link": "https://typescript.tv/hands-on/all-you-need-to-know-about-iterators-and-generators/",
             "published": "2024-05-23T11:18:50.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -19,6 +20,7 @@
             "title": "Save memory with TypeScript generators!",
             "link": "https://typescript.tv/hands-on/save-memory-with-typescript-generators/",
             "published": "2024-05-20T16:18:33.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -28,6 +30,7 @@
             "title": "The 4 Must-Know TypeScript Compiler Configs",
             "link": "https://typescript.tv/new-features/the-4-must-know-typescript-compiler-configs/",
             "published": "2024-05-15T16:14:32.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -37,6 +40,7 @@
             "title": "What are Generics and why you should use them?",
             "link": "https://typescript.tv/hands-on/what-are-generics-and-why-you-should-use-them/",
             "published": "2024-04-30T14:36:46.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -46,6 +50,7 @@
             "title": "Module openai has no exported member",
             "link": "https://typescript.tv/hands-on/module-openai-has-no-exported-member/",
             "published": "2024-04-24T14:30:52.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -55,6 +60,7 @@
             "title": "Enumberable vs. Iterable in TypeScript: What's the Difference?",
             "link": "https://typescript.tv/hands-on/enumberable-vs-iterable-in-typescript-whats-the-difference/",
             "published": "2024-01-10T15:37:39.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -64,6 +70,7 @@
             "title": "TypeError: prettier.resolveConfig.sync is not a function",
             "link": "https://typescript.tv/hands-on/typeerror-prettierresolveconfigsync-is-not-a-function/",
             "published": "2023-12-18T22:47:43.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -73,6 +80,7 @@
             "title": "Improve your TypeScript workflow with Code Snippets",
             "link": "https://typescript.tv/hands-on/improve-your-typescript-workflow-with-code-snippets/",
             "published": "2023-12-11T14:19:29.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -82,6 +90,7 @@
             "title": "Filtering arrays in TypeScript with correct types",
             "link": "https://typescript.tv/best-practices/filtering-arrays-in-typescript-with-correct-types/",
             "published": "2023-12-06T14:22:05.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -91,6 +100,7 @@
             "title": "What are ECMAScript Modules?",
             "link": "https://typescript.tv/new-features/what-are-ecmascript-modules/",
             "published": "2023-11-09T17:07:20.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -100,6 +110,7 @@
             "title": "Serving static content with NestJS and Express",
             "link": "https://typescript.tv/hands-on/serving-static-content-with-nestjs-and-express/",
             "published": "2023-11-01T11:11:00.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -109,6 +120,7 @@
             "title": "Write a simple TypeScript script with ESM",
             "link": "https://typescript.tv/hands-on/write-a-simple-typescript-script-with-esm/",
             "published": "2023-10-31T20:58:13.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -118,6 +130,7 @@
             "title": "Effortless Nodemon Setup with TypeScript and ESM",
             "link": "https://typescript.tv/hands-on/effortless-nodemon-setup-with-typescript-and-esm/",
             "published": "2023-09-20T23:38:59.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -127,6 +140,7 @@
             "title": "Fix type X is not assignable to type Y",
             "link": "https://typescript.tv/best-practices/fix-type-x-is-not-assignable-to-type-y/",
             "published": "2023-09-19T19:04:08.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -136,6 +150,7 @@
             "title": "What is the Windows Subsystem for Android (WSA)?",
             "link": "https://typescript.tv/hands-on/what-is-the-windows-subsystem-for-android-wsa/",
             "published": "2023-09-12T09:14:46.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -145,6 +160,7 @@
             "title": "What is Type Coercion in TypeScript?",
             "link": "https://typescript.tv/new-features/what-is-type-coercion-in-typescript/",
             "published": "2023-08-08T19:46:06.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -154,6 +170,7 @@
             "title": "Create a TypeScript test matrix using GitHub Actions",
             "link": "https://typescript.tv/best-practices/create-a-typescript-test-matrix-using-github-actions/",
             "published": "2023-07-24T16:51:40.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -163,6 +180,7 @@
             "title": "Type Inference & Type Annotations in TypeScript",
             "link": "https://typescript.tv/hands-on/type-inference-type-annotations-in-typescript/",
             "published": "2023-07-21T18:12:59.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -172,6 +190,7 @@
             "title": "What is Type Compatibility in TypeScript?",
             "link": "https://typescript.tv/new-features/what-is-type-compatibility-in-typescript/",
             "published": "2023-07-12T13:57:32.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -181,6 +200,7 @@
             "title": "What is the satisfies operator in TypeScript?",
             "link": "https://typescript.tv/new-features/what-is-the-satisfies-operator-in-typescript/",
             "published": "2023-07-06T19:25:54.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -190,6 +210,7 @@
             "title": "What is Downleveling in TypeScript?",
             "link": "https://typescript.tv/new-features/what-is-downleveling-in-typescript/",
             "published": "2023-07-04T19:03:16.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -199,6 +220,7 @@
             "title": "Safer Array Access with TypeScript 4.1",
             "link": "https://typescript.tv/best-practices/safer-array-access-in-typescript/",
             "published": "2023-06-15T16:43:18.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -208,6 +230,7 @@
             "title": "The void operator in TypeScript and JavaScript",
             "link": "https://typescript.tv/new-features/the-void-operator-in-typescript-and-javascript/",
             "published": "2023-06-14T00:44:30.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -217,6 +240,7 @@
             "title": "Improve Your Type Safety with Branded Types",
             "link": "https://typescript.tv/best-practices/improve-your-type-safety-with-branded-types/",
             "published": "2023-05-14T23:00:28.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -226,6 +250,7 @@
             "title": "Avoid Errors with Defensive Coding in TypeScript",
             "link": "https://typescript.tv/best-practices/avoid-errors-with-defensive-coding-in-typescript/",
             "published": "2023-05-08T22:00:29.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -235,6 +260,7 @@
             "title": "Enhancing Return Types with Function Overloading in TypeScript",
             "link": "https://typescript.tv/new-features/enhancing-return-types-with-function-overloading-in-typescript/",
             "published": "2023-05-07T20:58:57.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -244,6 +270,7 @@
             "title": "Video Tutorial: Compiling TypeScript to JavaScript",
             "link": "https://typescript.tv/hands-on/video-tutorial-compiling-typescript-to-javascript/",
             "published": "2023-05-07T19:56:55.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -253,6 +280,7 @@
             "title": "JavaScript in TypeScript: Learn How to Use Them Together",
             "link": "https://typescript.tv/hands-on/javascript-in-typescript-learn-how-to-use-them-together/",
             "published": "2023-01-21T19:12:00.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -262,6 +290,7 @@
             "title": "Type Checking with Assertion Functions in TypeScript",
             "link": "https://typescript.tv/best-practices/type-checking-with-assertion-functions-in-typescript/",
             "published": "2023-01-21T10:08:00.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -271,6 +300,7 @@
             "title": "How to use Mapped Types in TypeScript",
             "link": "https://typescript.tv/new-features/how-to-use-mapped-types-in-typescript/",
             "published": "2023-01-05T01:00:00.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -280,6 +310,7 @@
             "title": "How to use const assertions in TypeScript",
             "link": "https://typescript.tv/new-features/how-to-use-const-assertions-in-typescript/",
             "published": "2023-01-03T14:00:00.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -289,6 +320,7 @@
             "title": "How to write Express.js middleware with TypeScript",
             "link": "https://typescript.tv/hands-on/how-to-type-express-js-middleware/",
             "published": "2021-11-25T18:25:24.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -298,6 +330,7 @@
             "title": "Debugging Node.js with Chrome DevTools",
             "link": "https://typescript.tv/hands-on/debugging-node-js-with-chrome-devtools/",
             "published": "2021-03-17T11:11:56.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -307,6 +340,7 @@
             "title": "Styling React Components with CSS and TypeScript",
             "link": "https://typescript.tv/react/styling-react-components-with-css-and-typescript/",
             "published": "2021-03-17T10:29:01.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -316,6 +350,7 @@
             "title": "Error TS1196: Catch clause variable type annotation",
             "link": "https://typescript.tv/best-practices/error-ts1196-catch-clause-variable-type-annotation/",
             "published": "2021-03-07T15:50:04.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -325,6 +360,7 @@
             "title": "How to create a screencast",
             "link": "https://typescript.tv/hands-on/how-to-create-a-screencast/",
             "published": "2021-03-05T20:27:09.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -334,6 +370,7 @@
             "title": "Rendering multiple elements in React",
             "link": "https://typescript.tv/react/rendering-multiple-elements-in-react/",
             "published": "2021-02-28T10:33:03.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -343,6 +380,7 @@
             "title": "Improve your switch cases with TypeScript",
             "link": "https://typescript.tv/best-practices/improve-your-switch-cases-with-typescript/",
             "published": "2021-02-26T15:45:16.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -352,6 +390,7 @@
             "title": "React with TypeScript for Beginners",
             "link": "https://typescript.tv/react/react-with-typescript-for-beginners/",
             "published": "2021-02-22T18:34:48.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -361,6 +400,7 @@
             "title": "Docker Desktop: Hardware assisted virtualization",
             "link": "https://typescript.tv/hands-on/docker-desktop-hardware-assisted-virtualization/",
             "published": "2021-01-12T18:42:31.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -370,6 +410,7 @@
             "title": "Upgrade to React Router v6",
             "link": "https://typescript.tv/react/upgrade-to-react-router-v6/",
             "published": "2021-01-02T12:38:46.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -379,6 +420,7 @@
             "title": "Setup Webpack HMR with NestJS and React",
             "link": "https://typescript.tv/react/setup-webpack-hmr-with-nestjs-and-react/",
             "published": "2020-12-21T11:53:16.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -388,6 +430,7 @@
             "title": "Setup Webpack HMR with Express server and React",
             "link": "https://typescript.tv/react/setup-webpack-hmr-with-express-server-and-react/",
             "published": "2020-12-20T22:52:34.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -397,6 +440,7 @@
             "title": "Use React with TypeScript",
             "link": "https://typescript.tv/react/use-react-with-typescript/",
             "published": "2020-12-16T17:47:49.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -406,6 +450,7 @@
             "title": "Understanding Generators, Iterators and Iterables",
             "link": "https://typescript.tv/hands-on/understanding-generators-iterators-and-iterables/",
             "published": "2020-11-30T13:16:21.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -415,6 +460,7 @@
             "title": "Function Overloading Explained",
             "link": "https://typescript.tv/hands-on/function-overloading-explained/",
             "published": "2020-11-29T14:28:57.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -424,6 +470,7 @@
             "title": "When to use static methods in TypeScript?",
             "link": "https://typescript.tv/best-practices/when-to-use-static-methods-in-typescript/",
             "published": "2020-10-08T00:00:00.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -433,6 +480,7 @@
             "title": "Fastest way to set up a TypeScript project with Node.js (npm)",
             "link": "https://typescript.tv/hands-on/fastest-way-to-set-up-a-typescript-project-with-nodejs-npm/",
             "published": "2020-08-05T00:00:00.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -442,6 +490,7 @@
             "title": "Error TS2307: Cannot find module events",
             "link": "https://typescript.tv/hands-on/error-ts2307-cannot-find-module-events/",
             "published": "2020-06-04T00:00:00.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -451,6 +500,7 @@
             "title": "Top-level await in TypeScript 3.8",
             "link": "https://typescript.tv/new-features/top-level-await-in-typescript-3-8/",
             "published": "2020-03-31T00:00:00.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -460,6 +510,7 @@
             "title": "Convert to milliseconds",
             "link": "https://typescript.tv/hands-on/convert-to-milliseconds/",
             "published": "2019-07-03T00:00:00.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -469,6 +520,7 @@
             "title": "TypeScript code coverage with Karma",
             "link": "https://typescript.tv/testing/typescript-code-coverage-with-karma/",
             "published": "2019-04-29T00:00:00.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -478,6 +530,7 @@
             "title": "Anatomy of an Electron 4 application",
             "link": "https://typescript.tv/hands-on/anatomy-of-an-electron-4-application/",
             "published": "2019-04-16T00:00:00.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -487,6 +540,7 @@
             "title": "Setup TypeScript code coverage for Electron applications",
             "link": "https://typescript.tv/testing/setup-typescript-code-coverage-for-electron-applications/",
             "published": "2019-04-08T00:00:00.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -496,6 +550,7 @@
             "title": "Run Node.js apps on Heroku with TypeScript",
             "link": "https://typescript.tv/hands-on/run-nodejs-apps-on-heroku-with-typescript/",
             "published": "2019-03-19T00:00:00.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -505,6 +560,7 @@
             "title": "Parse command line arguments in Node.js",
             "link": "https://typescript.tv/hands-on/parse-command-line-arguments-in-nodejs/",
             "published": "2019-03-12T00:00:00.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -514,6 +570,7 @@
             "title": "Add a window property with TypeScript",
             "link": "https://typescript.tv/hands-on/add-a-window-property-with-typescript/",
             "published": "2019-02-20T00:00:00.000Z",
+            "author": "unknown",
             "media": []
         },
         {
@@ -523,6 +580,7 @@
             "title": "Setup electron-mocha with @babel/register and TypeScript",
             "link": "https://typescript.tv/testing/setup-electron-mocha-with-babel-register-and-typescript/",
             "published": "2019-02-19T00:00:00.000Z",
+            "author": "unknown",
             "media": []
         }
     ],

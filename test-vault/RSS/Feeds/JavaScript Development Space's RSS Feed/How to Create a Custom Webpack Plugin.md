@@ -1,15 +1,15 @@
 ---
 role: rssitem
-author: Unknown
+author: "unknown"
 published: 2024-10-06T00:00:00.000Z
 link: https://jsdev.space/howto/custom-webpack-plugin/
-id: https://jsdev.space/howto/custom-webpack-plugin/
+id: "https://jsdev.space/howto/custom-webpack-plugin/"
 feed: "[[JavaScript Development Space's RSS Feed]]"
 tags: []
 pinned: false
 ---
 
-> [!abstract] How to Create a Custom Webpack Plugin - 2024-10-06T00:00:00.000Z
+> [!abstract] How to Create a Custom Webpack Plugin by unknown - 2024-10-06T00:00:00.000Z
 > ![image|float:right|400](./images/custom-webpack-plugin.png) Creating a plugin for Webpack allows you to customize and extend Webpack's functionality to suit your needs. Webpack plugins can perform a…
 
 🌐 Read article [online](https://jsdev.space/howto/custom-webpack-plugin/). ⤴ For other items in this feed see `= this.feed`.

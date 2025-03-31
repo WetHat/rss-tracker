@@ -3,7 +3,7 @@ role: rssitem
 author: "John Baez"
 published: 2024-03-27T18:32:47.000Z
 link: https://johncarlosbaez.wordpress.com/2024/03/27/t-corona-borealis/
-id: http://johncarlosbaez.wordpress.com/?p=37700
+id: "http://johncarlosbaez.wordpress.com/?p=37700"
 feed: "[[Azimuth]]"
 tags: [rss/uncategorized]
 pinned: false

@@ -3,7 +3,7 @@ role: rssitem
 author: "Scott Hanselman"
 published: 2022-12-18T18:27:11.000Z
 link: https://feeds.hanselman.com/~/722495724/0/scotthanselman~I-got-tired
-id: https://www.hanselman.com/blog/post/aba7f282-e752-48e8-8bf5-3c2e8c33c0e6
+id: "https://www.hanselman.com/blog/post/aba7f282-e752-48e8-8bf5-3c2e8c33c0e6"
 feed: "[[Scott Hanselman's Blog]]"
 tags: [rss/Musings]
 pinned: false

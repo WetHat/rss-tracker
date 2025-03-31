@@ -1,15 +1,15 @@
 ---
 role: rssitem
-author: Unknown
+author: "unknown"
 published: 2024-09-29T00:00:00.000Z
 link: https://jsdev.space/howto/visual-viewport-js/
-id: https://jsdev.space/howto/visual-viewport-js/
+id: "https://jsdev.space/howto/visual-viewport-js/"
 feed: "[[JavaScript Development Space's RSS Feed]]"
 tags: []
 pinned: false
 ---
 
-> [!abstract] How to use JavaScript to manipulate the Visual Viewport - 2024-09-29T00:00:00.000Z
+> [!abstract] How to use JavaScript to manipulate the Visual Viewport by unknown - 2024-09-29T00:00:00.000Z
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] Manipulating the visual viewport in JavaScript can enhance the user experience on mobile devices, particularly when dealing with dynamic…
 
 🌐 Read article [online](https://jsdev.space/howto/visual-viewport-js/). ⤴ For other items in this feed see `= this.feed`.

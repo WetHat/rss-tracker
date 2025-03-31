@@ -1,15 +1,15 @@
 ---
 role: rssitem
-author: Unknown
+author: "unknown"
 published: 2024-03-22T22:00:00.000Z
 link: https://www.pythonmorsels.com/unnecessary-else-statements/
-id: https://www.pythonmorsels.com/unnecessary-else-statements/
+id: "https://www.pythonmorsels.com/unnecessary-else-statements/"
 feed: "[[Python Morsels]]"
 tags: []
 pinned: false
 ---
 
-> [!abstract] Unnecessary else statements - 2024-03-22T22:00:00.000Z
+> [!abstract] Unnecessary else statements by unknown - 2024-03-22T22:00:00.000Z
 > ![image|float:right|400](https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F1819454470-59789a86671b414679eb978d1af70942df16e8d2ea5ca46c1f4eab3ae5e2e0eb-d_1920x1080&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png) When your function ends in an `else` block with a `return` statement in it, should you remove that `else`?
 > 
 > **Table of contents**
@@ -46,8 +46,6 @@ This `earliest_date` function uses the [python-dateutil](https://pypi.org/projec
 
 ```
 from dateutil.parser import parse
-
-
                                 def earliest_date(date1,
                                 date2):
                                 """Return the string representing the

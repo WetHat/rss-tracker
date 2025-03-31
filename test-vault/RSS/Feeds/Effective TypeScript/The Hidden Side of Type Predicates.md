@@ -1,15 +1,15 @@
 ---
 role: rssitem
-author: Unknown
+author: "unknown"
 published: 2024-02-27T15:45:00.000Z
 link: https://effectivetypescript.com/2024/02/27/type-guards/
-id: https://effectivetypescript.com/2024/02/27/type-guards/
+id: "https://effectivetypescript.com/2024/02/27/type-guards/"
 feed: "[[Effective TypeScript]]"
 tags: []
 pinned: false
 ---
 
-> [!abstract] The Hidden Side of Type Predicates - 2024-02-27T15:45:00.000Z
+> [!abstract] The Hidden Side of Type Predicates by unknown - 2024-02-27T15:45:00.000Z
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] Type guards are a powerful tool for improving TypeScript's built-in control flow analysis. This post looks at when it's appropriate to use a type predicate, and in particular what it means when a type predicate returns false.
 
 🌐 Read article [online](https://effectivetypescript.com/2024/02/27/type-guards/). ⤴ For other items in this feed see `= this.feed`.
@@ -149,7 +149,6 @@ This passes the type checker but blows up at runtime:
 ```
 console.log(strOrNum.toUpperCase());
                        ^
-
 Cannot read property toUpperCase of 123.
 ```
 
@@ -227,7 +226,6 @@ This means that if you make `isTruthy` return a type predicate, functions like `
 ```
 const numsAndNulls = [1, 2, null, 4, null, 5];
 //    ^? const numsAndNulls: (number | null)[]
-
 const isTruthy = (x: number | null): x is number => !!x;  // don't do this!
 const [nums, nulls] = _.partition(numsAndNulls, isTruthy);
 //           ^? const nulls: null[]

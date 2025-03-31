@@ -3,7 +3,7 @@ role: rssitem
 author: "John Baez"
 published: 2024-02-29T10:00:24.000Z
 link: https://johncarlosbaez.wordpress.com/2024/02/29/nicholas-ludford/
-id: http://johncarlosbaez.wordpress.com/?p=37567
+id: "http://johncarlosbaez.wordpress.com/?p=37567"
 feed: "[[Azimuth]]"
 tags: [rss/music]
 pinned: false

@@ -3,7 +3,7 @@ role: rssitem
 author: "John Baez"
 published: 2024-03-13T23:20:10.000Z
 link: https://johncarlosbaez.wordpress.com/2024/03/13/the-probability-of-the-law-of-excluded-middle/
-id: http://johncarlosbaez.wordpress.com/?p=37675
+id: "http://johncarlosbaez.wordpress.com/?p=37675"
 feed: "[[Azimuth]]"
 tags: [rss/mathematics]
 pinned: false

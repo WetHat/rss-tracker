@@ -3,7 +3,7 @@ role: rssfeed
 feedurl: https://localhost/test/@WetHat (WetHat💦)/feed.xml
 site: https://fosstodon.org/@WetHat
 itemlimit: 10
-updated: 2024-10-30T07:53:03.034Z
+updated: 2025-03-31T14:39:40.644Z
 status: ✅
 tags: []
 interval: 5

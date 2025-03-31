@@ -1,15 +1,15 @@
 ---
 role: rssitem
-author: Unknown
+author: "unknown"
 published: 2024-07-17T19:50:00.000Z
 link: https://effectivetypescript.com/2024/07/17/advent2023-zig/
-id: https://effectivetypescript.com/2024/07/17/advent2023-zig/
+id: "https://effectivetypescript.com/2024/07/17/advent2023-zig/"
 feed: "[[Effective TypeScript]]"
 tags: []
 pinned: false
 ---
 
-> [!abstract] A TypeScripter's Take on Zig (Advent of Code 2023) - 2024-07-17T19:50:00.000Z
+> [!abstract] A TypeScripter's Take on Zig (Advent of Code 2023) by unknown - 2024-07-17T19:50:00.000Z
 > ![image|float:right|400](https://effectivetypescript.com/images/advent-of-code.png "Advent of Code Logo") What can Zig learn from TypeScript, and what can TypeScript learn from Zig?
 
 🌐 Read article [online](https://effectivetypescript.com/2024/07/17/advent2023-zig/). ⤴ For other items in this feed see `= this.feed`.
@@ -58,7 +58,7 @@ I didn't know that much about Zig going in. My mental model was that it was a "m
 
 ## [](#A-very-quick-intro-to-Zig "A very quick intro to Zig")A very quick intro to Zig
 
-![](https://effectivetypescript.com/images/zig-logo-dark.svg "Zig Logo")Zig is a low-level programming language that was [first announced in 2016](https://andrewkelley.me/post/intro-to-zig.html). It fills a similar niche to [C](https://en.wikipedia.org/wiki/C_(programming_language)): manual memory management, access to the bits of your data structures, compatible with C APIs, no object orientation.
+![](https://effectivetypescript.com/images/zig-logo-dark.svg "Zig Logo")Zig is a low-level programming language that was [first announced in 2016](https://andrewkelley.me/post/intro-to-zig.html). It fills a similar niche to [C](https://en.wikipedia.org/wiki/C_\(programming_language\)): manual memory management, access to the bits of your data structures, compatible with C APIs, no object orientation.
 
 C is a very old language, and some of its design choices haven't aged well. While a whole source file might not have fit into memory in 1970, that seems like a safe assumption in the 21st century. And the internet has made the cost of bugs like buffer overflows dramatically higher, since they're now security holes. Zig has a reasonable module system and it doesn't allow null pointers.
 
@@ -70,7 +70,6 @@ Here's what [Hello World](https://zig.guide/getting-started/hello-world) looks l
 
 ```
 const std = @import("std");
-
 pub fn main() void {
     std.debug.print("Hello, {s}!\n", .{"World"});
 }
@@ -244,7 +243,6 @@ fn fibonacci(n: u16) u16 {
     if (n == 0 or n == 1) return n;
     return fibonacci(n - 1) + fibonacci(n - 2);
 }
-
 pub fn main() void {
     const comp = comptime fibonacci(40);
     std.debug.print("comptime: {d}\n", .{comp});
@@ -270,13 +268,11 @@ pub fn Interval(comptime IntType: type) type {
     return struct {
         low: IntType,
         high: IntType,
-
         pub fn includes(self: @This(), val: IntType) bool {
             return val >= self.low and val <= self.high;
         }
     }
 }
-
 const Int32Range = Interval(i32);
 ```
 
@@ -290,7 +286,6 @@ interface Interval<T> {
   high: T;
   includes(val: T): boolean;
 }
-
 type NumInterval = Interval<number>;
 ```
 
@@ -307,7 +302,6 @@ Here's what it might look like if TypeScript had something like Zig's `comptime`
 function camelCase(term: string) {
   return term.replace(/_([a-z])/g, m => m[1].toUpperCase());
 }
-
 // Not real TypeScript, just imagining!
 function ObjectToCamel(comptime type T extends object) type {
   interface Result {}
@@ -316,7 +310,6 @@ function ObjectToCamel(comptime type T extends object) type {
   }
   return Result;
 }
-
 function objectToCamel<T extends object>(obj: T): ObjectToCamel(T) {
   const out: any = {};
   for (const [k, v] of Object.entries(obj)) {
@@ -344,7 +337,6 @@ Here's a simple example of how this can happen:
 ```
 type Box<T> = { value: T };
 declare function unbox<T>(box: Box<T>): T;
-
 const num = unbox({value: 12});
 //    ^? const num: number
 ```
@@ -451,7 +443,6 @@ Zig [advertises](https://ziglang.org/) "No hidden control flow" and "No hidden m
 const Box = struct {
     val: u32,
 };
-
 var a: Box = .{ .val = 1 };
 var b = a;
 b.val = 2;
@@ -477,10 +468,8 @@ Most Advent of Code problems start with reading a text file (your puzzle input).
 ```
 var file = try std.fs.cwd().openFile("foo.txt", .{});
 defer file.close();
-
 var buf_reader = std.io.bufferedReader(file.reader());
 var in_stream = buf_reader.reader();
-
 var buf: [1024]u8 = undefined;
 while (try in_stream.readUntilDelimiterOrEof(&buf, '\n')) |line| {
     // do something with line...

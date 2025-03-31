@@ -3,7 +3,7 @@ role: rssitem
 author: "By Carrie Marshall"
 published: 2024-05-23T11:00:53.000Z
 link: https://www.t3.com/news/bluesky-just-gave-you-a-great-reason-to-finally-quit-twitter
-id: flipboard-vHcnStzORJigtFrI7LAFHA:a:2571318764-1716462053
+id: "flipboard-vHcnStzORJigtFrI7LAFHA:a:2571318764-1716462053"
 feed: "[[Bluesky]]"
 tags: [rss/Apps,rss/Bluesky,rss/Technology,rss/ThreadsApp,rss/Twitter_Blue]
 pinned: false

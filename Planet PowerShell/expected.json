@@ -389,7 +389,6 @@
             "title": "Terraform outputs en PowerShell",
             "link": "https://blog.victorsilva.com.uy/terraform-outputs-powershell/",
             "published": "2024-03-13T19:25:47.000Z",
-            "author": "unknown",
             "media": []
         },
         {
@@ -535,7 +534,6 @@
             "title": "Quickly exanding the booking window of all meeting rooms in Microsoft 365",
             "link": "http://www.randriksen.net/powershell/2024/02/08/quick-fix-meeting-room-booking-window.html",
             "published": "2024-02-08T00:00:00.000Z",
-            "author": "unknown",
             "media": []
         },
         {
@@ -663,7 +661,6 @@
             "title": "2023 Videos In Review 2023",
             "link": "https://dfinke.github.io/powershell,%20powershellai,%20openai,%20azure%20openai,%20excel,%20copilot/2024/01/02/Videos-In-Review-2023.html",
             "published": "2024-01-02T09:00:00.000Z",
-            "author": "unknown",
             "media": []
         },
         {
@@ -763,7 +760,6 @@
             "title": "My PowerShell Journey",
             "link": "https://ngetchell.com/posts/my-powershell-journey/",
             "published": "2023-12-11T11:00:12.000Z",
-            "author": "unknown",
             "media": []
         },
         {
@@ -940,7 +936,6 @@
             "title": "Removing stale devices from Entra/Intune",
             "link": "http://www.randriksen.net/powershell/azure/microsoftgraph/2023/11/07/removing-stale-devices-from-entra.html",
             "published": "2023-11-07T00:00:00.000Z",
-            "author": "unknown",
             "media": []
         },
         {
@@ -981,7 +976,6 @@
             "title": "New version of MGNestedGroups",
             "link": "http://www.randriksen.net/powershell/2023/10/30/new-version-of-MGNestedGroups.html",
             "published": "2023-10-30T00:00:00.000Z",
-            "author": "unknown",
             "media": []
         },
         {
@@ -996,7 +990,6 @@
             "title": "How to set up GitLab Runner on a Windows Server",
             "link": "http://www.randriksen.net/powershell/2023/10/27/windows-gitlab-runner-setup.html",
             "published": "2023-10-27T00:00:00.000Z",
-            "author": "unknown",
             "media": []
         },
         {
@@ -1026,7 +1019,6 @@
             "title": "An easy way to figure out what old scripts actually do, document them and maybe even improve them",
             "link": "http://www.randriksen.net/powershell/2023/10/20/easy-way-to-figure-out-what-old-scripts-do.html",
             "published": "2023-10-20T00:00:00.000Z",
-            "author": "unknown",
             "media": []
         },
         {
@@ -1041,7 +1033,6 @@
             "title": "Alerting when running out of licenses",
             "link": "http://www.randriksen.net/powershell/2023/10/19/alert-when-running-out-of-licenses.html",
             "published": "2023-10-19T00:00:00.000Z",
-            "author": "unknown",
             "media": []
         },
         {
@@ -1151,7 +1142,6 @@
             "title": "Installing PowerShell Side by Side for testing purposes",
             "link": "https://blog.kilasuit.org/2023/09/09/installing-powershell-side-by-side-for-testing-purposes/",
             "published": "2023-09-09T00:00:00.000Z",
-            "author": "unknown",
             "media": []
         },
         {
@@ -1536,7 +1526,6 @@
             "title": "Excel Tables and PowerShell ImportExcel: A Powerful Combination for Data Analysis",
             "link": "https://dfinke.github.io/powershell,%20importexcel,%20excel%20tables,%20excel/2023/05/31/Excel-Tables-and-PowerShell-ImportExcel-A-Powerful-Combination-for-Data-Analysis.html",
             "published": "2023-05-31T10:00:00.000Z",
-            "author": "unknown",
             "media": []
         },
         {
@@ -1704,7 +1693,6 @@
             "title": "Fixing JSON Syntax Errors with the PowerShellAI Module",
             "link": "https://dfinke.github.io/powershell,%20powershellai,%20openai,%20azure%20openai,%20gpt-4,%20chatgpt/2023/04/13/Fixing-JSON-Syntax-Errors-with-the-PowerShellAI-Module.html",
             "published": "2023-04-13T09:00:00.000Z",
-            "author": "unknown",
             "media": []
         },
         {
@@ -1748,7 +1736,6 @@
             "title": "Soft Skills - Part 3 - Motivation and Inspiration",
             "link": "https://thedavecarroll.com/powershell/soft-skills-part-3/",
             "published": "2023-04-10T05:00:00.000Z",
-            "author": "unknown",
             "media": []
         },
         {
@@ -1762,7 +1749,6 @@
             "title": "PowerShellAI ChatGPT Conversation Mode",
             "link": "https://dfinke.github.io/powershellai,%20powershell,%20chatgpt/2023/04/04/PowerShellAI-ChatGPT-Conversation-Mode.html",
             "published": "2023-04-04T15:00:00.000Z",
-            "author": "unknown",
             "media": []
         },
         {
@@ -1791,7 +1777,6 @@
             "title": "Soft Skills - Part 2 - Collaboration",
             "link": "https://thedavecarroll.com/powershell/soft-skills-part-2/",
             "published": "2023-04-03T05:00:00.000Z",
-            "author": "unknown",
             "media": []
         },
         {
@@ -1880,7 +1865,6 @@
             "title": "Soft Skills - Part 1 - Communication",
             "link": "https://thedavecarroll.com/powershell/soft-skills-part-1/",
             "published": "2023-03-25T05:00:00.000Z",
-            "author": "unknown",
             "media": []
         },
         {
@@ -1908,7 +1892,6 @@
             "title": "How to Set up and Use ChatGPT in Windows Terminal using PowerShellAI",
             "link": "https://dfinke.github.io/powershellai,%20powershell,%20chatgpt,%20windows%20terminal/2023/03/24/How-to-Set-up-and-Use-ChatGPT-in-Windows-Terminal-using-PowerShellAI.html",
             "published": "2023-03-24T09:00:00.000Z",
-            "author": "unknown",
             "media": []
         },
         {
@@ -1973,7 +1956,6 @@
             "title": "PowerShell Summit 2023",
             "link": "https://thedavecarroll.com/powershell/powershell-summit-2023/",
             "published": "2023-03-22T05:00:00.000Z",
-            "author": "unknown",
             "media": []
         },
         {
@@ -2053,7 +2035,6 @@
             "title": "Automating Role Assignment Cleanup in Azure with PowerShell",
             "link": "https://cloud-right.com/2023/03/azure-role-assignment-cleanup",
             "published": "2023-03-19T00:01:30.000Z",
-            "author": "unknown",
             "media": []
         },
         {
@@ -2080,7 +2061,6 @@
             "title": "Using Azure OpenAI from PowerShell [English]",
             "link": "https://blog.victorsilva.com.uy/azure-openai-powershell/",
             "published": "2023-03-04T23:26:51.000Z",
-            "author": "unknown",
             "media": []
         },
         {
@@ -2164,7 +2144,6 @@
             "title": "Running PowerShell Inside ChatGPT",
             "link": "https://dfinke.github.io/powershell,%20chatgpt/2023/01/15/Running-PowerShell-Inside-ChatGPT.html",
             "published": "2023-01-15T09:00:00.000Z",
-            "author": "unknown",
             "media": []
         },
         {
@@ -2194,7 +2173,6 @@
             "title": "Interactive Plotting with PowerShell and Polyglot Interactive Notebooks",
             "link": "https://dfinke.github.io/powershell,%20polyglot,%20interactive%20notebooks,%20scottplot/2022/12/28/Interactive-Plotting-with-PowerSheLL-and-Polyglot-Interactive-Notebooks.html",
             "published": "2022-12-28T09:00:00.000Z",
-            "author": "unknown",
             "media": []
         },
         {
@@ -2241,7 +2219,6 @@
             "title": "Where are the PowerShell People on Mastodon?",
             "link": "https://thedavecarroll.com/powershell/powershell-people-on-mastodon/",
             "published": "2022-11-29T06:00:00.000Z",
-            "author": "unknown",
             "media": []
         },
         {
@@ -2306,7 +2283,6 @@
             "title": "Refreshing the Blog",
             "link": "https://thedavecarroll.com/blog/refreshing-the-blog/",
             "published": "2022-09-13T05:00:00.000Z",
-            "author": "unknown",
             "media": []
         },
         {
@@ -2324,7 +2300,6 @@
             "title": "Questions from a PowerShell.org Forums User",
             "link": "https://thedavecarroll.com/powershell/questions-from-powershell-forums-user/",
             "published": "2022-08-30T05:00:00.000Z",
-            "author": "unknown",
             "media": []
         },
         {

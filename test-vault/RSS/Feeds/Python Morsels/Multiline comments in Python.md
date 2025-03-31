@@ -1,15 +1,15 @@
 ---
 role: rssitem
-author: Unknown
+author: "unknown"
 published: 2024-04-19T23:00:00.000Z
 link: https://www.pythonmorsels.com/multiline-comments/
-id: https://www.pythonmorsels.com/multiline-comments/
+id: "https://www.pythonmorsels.com/multiline-comments/"
 feed: "[[Python Morsels]]"
 tags: []
 pinned: false
 ---
 
-> [!abstract] Multiline comments in Python - 2024-04-19T23:00:00.000Z
+> [!abstract] Multiline comments in Python by unknown - 2024-04-19T23:00:00.000Z
 > ![image|float:right|400](https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F1841759670-0b28dacb1984f308cc6f5f4b2e1ab6c842bffdd8cce9a544b0097584850ccc6a-d_1920x1080&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png) Python does not have multiline comments. But you can use alternatives like docstrings, editor shortcuts, and conventional commenting methods, depending on your requirements.
 > 
 > **Table of contents**
@@ -47,7 +47,6 @@ For single-line comments, Python uses the octothorpe character (`#`), also known
 
 ```
 # This is a comment
-
                                 this = "is not a
                                 comment"
 ```

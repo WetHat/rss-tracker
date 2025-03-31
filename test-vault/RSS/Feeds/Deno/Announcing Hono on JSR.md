@@ -3,7 +3,7 @@ role: rssitem
 author: "Andy Jiang"
 published: 2024-06-25T12:00:00.000Z
 link: https://deno.com/blog/hono-on-jsr
-id: https://deno.com/blog/hono-on-jsr
+id: "https://deno.com/blog/hono-on-jsr"
 feed: "[[Deno]]"
 tags: []
 pinned: false

@@ -3,7 +3,7 @@ role: rssitem
 author: "info@thehackernews.com (The Hacker News)"
 published: 2024-05-19T07:59:00.000Z
 link: https://thehackernews.com/2024/05/grandoreiro-banking-trojan-resurfaces.html
-id: https://thehackernews.com/2024/05/grandoreiro-banking-trojan-resurfaces.html
+id: "https://thehackernews.com/2024/05/grandoreiro-banking-trojan-resurfaces.html"
 feed: "[[The Hacker News]]"
 tags: []
 pinned: false

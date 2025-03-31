@@ -1,15 +1,15 @@
 ---
 role: rssitem
-author: Unknown
+author: "unknown"
 published: 2024-10-03T00:00:00.000Z
 link: https://jsdev.space/document-translation/
-id: https://jsdev.space/document-translation/
+id: "https://jsdev.space/document-translation/"
 feed: "[[JavaScript Development Space's RSS Feed]]"
 tags: []
 pinned: false
 ---
 
-> [!abstract] Document Translation - OpenAI Real-Time Speech API Beta Version - 2024-10-03T00:00:00.000Z
+> [!abstract] Document Translation - OpenAI Real-Time Speech API Beta Version by unknown - 2024-10-03T00:00:00.000Z
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] The rise of artificial intelligence has introduced groundbreaking advancements in language processing and speech recognition. One of the…
 
 🌐 Read article [online](https://jsdev.space/document-translation/). ⤴ For other items in this feed see `= this.feed`.

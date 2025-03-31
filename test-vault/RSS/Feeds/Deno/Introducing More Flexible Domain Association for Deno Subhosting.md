@@ -3,7 +3,7 @@ role: rssitem
 author: "Yusuke Tanaka, Andy Jiang"
 published: 2024-06-14T12:00:00.000Z
 link: https://deno.com/blog/subhosting-flexible-domain-association
-id: https://deno.com/blog/subhosting-flexible-domain-association
+id: "https://deno.com/blog/subhosting-flexible-domain-association"
 feed: "[[Deno]]"
 tags: []
 pinned: false

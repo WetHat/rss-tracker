@@ -3,7 +3,7 @@ role: rssitem
 author: "Yoshiya Hinosawa"
 published: 2024-06-10T16:00:00.000Z
 link: https://deno.com/blog/stabilize-std
-id: https://deno.com/blog/stabilize-std
+id: "https://deno.com/blog/stabilize-std"
 feed: "[[Deno]]"
 tags: []
 pinned: false

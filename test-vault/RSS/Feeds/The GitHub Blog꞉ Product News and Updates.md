@@ -3,7 +3,7 @@ role: rssfeed
 feedurl: https://localhost/test/The GitHub Blog꞉ Product News and Updates/feed.xml
 site: https://github.blog/category/product/
 itemlimit: 10
-updated: 2024-10-30T07:52:25.713Z
+updated: 2025-03-31T14:39:05.270Z
 status: ✅
 tags: []
 interval: 165

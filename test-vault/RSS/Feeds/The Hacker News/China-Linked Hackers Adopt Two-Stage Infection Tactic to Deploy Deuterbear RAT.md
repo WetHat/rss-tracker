@@ -3,7 +3,7 @@ role: rssitem
 author: "info@thehackernews.com (The Hacker News)"
 published: 2024-05-17T11:20:00.000Z
 link: https://thehackernews.com/2024/05/china-linked-hackers-adopt-two-stage.html
-id: https://thehackernews.com/2024/05/china-linked-hackers-adopt-two-stage.html
+id: "https://thehackernews.com/2024/05/china-linked-hackers-adopt-two-stage.html"
 feed: "[[The Hacker News]]"
 tags: []
 pinned: false
