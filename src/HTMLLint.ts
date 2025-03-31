@@ -146,7 +146,7 @@ export class ObsidianHTMLLinter {
                             src: el.getAttribute("src"),
                             alt: el.getAttribute('alt'),
                         }
-                }))
+                    }))
                 }
             });
         return this;
@@ -221,7 +221,7 @@ export class ObsidianHTMLLinter {
         for (let i = 0; i < codeBlocks.length; i++) {
             const code = codeBlocks[i];
             ObsidianHTMLLinter.expandBR(code);
-            const codeTxt = code.innerText.trim();
+            const codeTxt = code.textContent?.trim() ?? "";
             code.textContent = codeTxt;
             const parent = code.parentElement;
             if ("pre" === parent?.localName) {
@@ -240,7 +240,7 @@ export class ObsidianHTMLLinter {
      * @returns instance of this class for method chaining.
      */
     detectCode(): ObsidianHTMLLinter {
-        this.element.querySelectorAll("[data-syntax-language],div[class*=code]")
+        this.element.querySelectorAll("[data-syntax-language],[class*=code]")
             .forEach(e => {
                 // identify the <code> element
                 let code = e.localName === "code"
@@ -318,9 +318,11 @@ export class ObsidianHTMLLinter {
     injectCodeBlock(): ObsidianHTMLLinter {
         const pres = this.element.querySelectorAll("pre:not(:has(code))");
         for (let i = 0; i < pres.length; i++) {
-            const pre = pres[i];
+            const pre = pres[i] as HTMLPreElement;
             const
-                code = this.element.doc.createElement('code'), preClasses = Array.from(pre.classList), lang = preClasses.filter(cl => cl.startsWith("language-"));
+                code = this.element.doc.createElement('code'),
+                preClasses = Array.from(pre.classList),
+                lang = preClasses.filter(cl => cl.contains("language-") || cl.contains("lang-"));
 
             if (lang.length > 0)
                 code.className = preClasses[0];
@@ -452,13 +454,32 @@ export class ObsidianHTMLLinter {
                     name = att.name;
                 if (!ObsidianHTMLLinter.VALIDATTR.test(name)) {
                     illegalNames.push(name);
-                }
-                // Detect code classes
-                if (att.name === "class" && att.value.contains("highlight")) {
-                    if (att.value.contains("code")) {
-                        att.value = "code";
+                } else if (name === "class") {
+                    // detect and retain code related classes.
+                    const classes = att.value.split(" ");
+                    let
+                        nCodeAtts = 0,
+                        keep: string[] = [];
+                    classes
+                        .forEach(cl => {
+                            if (cl.contains("code")) {
+                                nCodeAtts++;
+                            } else if (ObsidianHTMLLinter.VALIDATTR.test(cl)) {
+                                // that appears to be a good class name.
+                                keep.push(cl);
+                            }
+                        });
+                    if (nCodeAtts > 0) {
+                        // make sure we keep the 'code' class name, so that we can find this element downstream.
+                        keep.push("code");
+                        // we now remove all highlight classes to avoid confusion in the extractor.
+                        keep = keep.filter(cl => !cl.contains("highlight") && !cl.contains("hljs"));
+                    }
+                    if (keep.length > 0) {
+                        // keep only checked attributes
+                        att.value = keep.join(" ");
                     } else {
-                        // that meeds to go so we get past downstream filters.
+                        // remove the class attribute as it is empty.
                         illegalNames.push(name);
                     }
                 }
