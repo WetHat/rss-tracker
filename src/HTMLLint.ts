@@ -26,7 +26,7 @@ export class TextTransformer {
         if (text) {
             const transformed = text // non-greedy matches
                 .replace(/\\\[\s*([\s\S]+?)\\\]|(\\begin\{[^}{]+\}[\s\S]+\\end\{[^}{]+\})/g, '$$$$ $1$2 $$$$')
-                .replace(/\\label\{[^}{]+\}/g,'') // unsupported by Obsidian
+                .replace(/\\label\{[^}{]+\}/g, '') // unsupported by Obsidian
                 .replace(/\\\((.*?)\\\)/g, "$$$1$$");
             if (text !== transformed) {
                 this.textNode.textContent = transformed;
@@ -139,7 +139,7 @@ export class ObsidianHTMLLinter {
     fixEmbeds() {
         this.element.querySelectorAll("audio,:not(iframe) > video,img")
             .forEach(el => {
-                el.setAttribute("src",el.getAttribute("src")?.replace(/ /g,"%20") ?? "");
+                el.setAttribute("src", el.getAttribute("src")?.replace(/ /g, "%20") ?? "");
                 if (el.localName !== "img") {
                     el.replaceWith(createEl('img', {
                         attr: {
@@ -147,7 +147,8 @@ export class ObsidianHTMLLinter {
                             alt: el.getAttribute('alt'),
                         }
                 }))
-            }});
+                }
+            });
         return this;
     }
     /**
@@ -155,7 +156,7 @@ export class ObsidianHTMLLinter {
      *
     * @returns instance of this class for method chaining.
      */
-    mermaidToCodeBlock() :ObsidianHTMLLinter{
+    mermaidToCodeBlock(): ObsidianHTMLLinter {
         const
             mermaids = this.element.getElementsByClassName('mermaid'),
             mermaidCount = mermaids.length;
