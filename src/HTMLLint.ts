@@ -25,7 +25,9 @@ export class TextTransformer {
         const text = this.textNode.textContent;
         if (text) {
             const transformed = text // non-greedy matches
-                .replace(/[\$\s]*?\\\[\s*([\s\S]+?)\\\][\$\s]*?/g,'$$$$ $1$2 $$$$') // matches \[...\] block math
+                .replace(/[\$\s]*\\\[([\s\S]*?)\\\][\$\s]*/g,'\n$$$$\n$1\n$$$$\n') // matches \[...\] block math
+                .replace(/[\s\$]*(\\begin\{align\}[\s\S]*?\\end\{align\})[\s\$]*/g,'\n$$$$\n$1\n$$$$\n') // matches \begin{align}...\end{align} block math
+                .replace(/[\s\$]*(\\begin\{equation\}[\s\S]*?\\end\{equation\})[\s\$]*/g,'\n$$$$\n$1\n$$$$\n') // matches \begin{equation}...\end{equation} block math
                 .replace(/\\\((.*?)\\\)/g, "$$$1$$") // matches \(...\) inline math
                 .replace(/\\label\{[^}{]+\}/g, ''); // unsupported by Obsidian
 
@@ -102,6 +104,7 @@ export class ObsidianHTMLLinter {
      * @returns The modified element.
      */
     private static expandBR(element: HTMLElement): HTMLElement {
+        let reduceLineFeeds = false
         // Take into account that `<div> elements in preformatted blocks produce linefeeds.`
         const divs = element.getElementsByTagName("div");
         for (let i = 0; i < divs.length; i++) {
@@ -110,6 +113,7 @@ export class ObsidianHTMLLinter {
                 parent = div.parentElement;
             if (parent) {
                 parent.insertAfter(element.doc.createTextNode("\n"), div);
+                reduceLineFeeds = true;
             }
         }
 
@@ -121,11 +125,18 @@ export class ObsidianHTMLLinter {
                 parent = br.parentElement;
             if (parent) {
                 parent.insertAfter(element.doc.createTextNode("\n"), br);
+                reduceLineFeeds = true;
             }
             br.remove();
         }
-        // Remove empty lines.
-        element.textContent = element.textContent?.replace(/\n+/g, "\n") ?? null;
+
+        if (reduceLineFeeds) {
+             // Remove additional empty lines produced by divs.
+            element.textContent = element.textContent?.replace(/\n+/g, "\n") ?? null;
+        } else {
+            element.textContent = element.textContent ?? null;
+        }
+
         return element; // return the element for method chaining.
     }
 
@@ -331,7 +342,7 @@ export class ObsidianHTMLLinter {
                 code.className = 'language-undefined';
             }
 
-            code.textContent = ObsidianHTMLLinter.expandBR(pre as HTMLElement).textContent?.trim() ?? "";
+            code.textContent = ObsidianHTMLLinter.expandBR(pre).textContent?.trim() ?? "";
             pre.replaceChildren(code);
             pre.removeAttribute("class");
         }
