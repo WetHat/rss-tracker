@@ -25,9 +25,10 @@ export class TextTransformer {
         const text = this.textNode.textContent;
         if (text) {
             const transformed = text // non-greedy matches
-                .replace(/\\\[\s*([\s\S]+?)\\\]|(\\begin\{[^}{]+\}[\s\S]+\\end\{[^}{]+\})/g, '$$$$ $1$2 $$$$')
-                .replace(/\\label\{[^}{]+\}/g, '') // unsupported by Obsidian
-                .replace(/\\\((.*?)\\\)/g, "$$$1$$");
+                .replace(/[\$\s]*?\\\[\s*([\s\S]+?)\\\][\$\s]*?/g,'$$$$ $1$2 $$$$') // matches \[...\] block math
+                .replace(/\\\((.*?)\\\)/g, "$$$1$$") // matches \(...\) inline math
+                .replace(/\\label\{[^}{]+\}/g, ''); // unsupported by Obsidian
+
             if (text !== transformed) {
                 this.textNode.textContent = transformed;
                 if (this.textNode.parentElement) {

@@ -14815,7 +14815,7 @@ var TextTransformer = class {
   mathTransformer() {
     const text = this.textNode.textContent;
     if (text) {
-      const transformed = text.replace(/\\\[\s*([\s\S]+?)\\\]|(\\begin\{[^}{]+\}[\s\S]+\\end\{[^}{]+\})/g, "$$$$ $1$2 $$$$").replace(/\\label\{[^}{]+\}/g, "").replace(/\\\((.*?)\\\)/g, "$$$1$$");
+      const transformed = text.replace(/[\$\s]*?\\\[\s*([\s\S]+?)\\\][\$\s]*?/g, "$$$$ $1$2 $$$$").replace(/\\\((.*?)\\\)/g, "$$$1$$").replace(/\\label\{[^}{]+\}/g, "");
       if (text !== transformed) {
         this.textNode.textContent = transformed;
         if (this.textNode.parentElement) {
