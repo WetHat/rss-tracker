@@ -3,7 +3,7 @@ role: rssfeed
 feedurl: https://localhost/test/Blogs on Lisp journey/feed.xml
 site: https://localhost/blog/
 itemlimit: 10
-updated: 2025-03-31T14:39:34.286Z
+updated: 2025-04-03T18:52:35.108Z
 status: ✅
 tags: []
 interval: 645

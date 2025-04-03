@@ -46,6 +46,8 @@ This `earliest_date` function uses the [python-dateutil](https://pypi.org/projec
 
 ```
 from dateutil.parser import parse
+
+
                                 def earliest_date(date1,
                                 date2):
                                 """Return the string representing the

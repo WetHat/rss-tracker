@@ -47,6 +47,7 @@ For single-line comments, Python uses the octothorpe character (`#`), also known
 
 ```
 # This is a comment
+
                                 this = "is not a
                                 comment"
 ```

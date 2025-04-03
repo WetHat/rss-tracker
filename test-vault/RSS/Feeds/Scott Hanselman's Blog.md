@@ -3,7 +3,7 @@ role: rssfeed
 feedurl: https://localhost/test/Scott Hanselman's Blog/feed.xml
 site: https://www.hanselman.com/blog/
 itemlimit: 10
-updated: 2025-03-31T14:39:09.636Z
+updated: 2025-04-03T18:52:10.977Z
 status: ✅
 tags: []
 interval: 2138

@@ -3,7 +3,7 @@ role: rssfeed
 feedurl: https://localhost/test/Real Python/feed.xml
 site: https://realpython.com/
 itemlimit: 10
-updated: 2025-03-31T14:39:14.106Z
+updated: 2025-04-03T18:52:15.299Z
 status: ✅
 tags: []
 interval: 50

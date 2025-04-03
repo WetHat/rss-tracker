@@ -14815,7 +14815,7 @@ var TextTransformer = class {
   mathTransformer() {
     const text = this.textNode.textContent;
     if (text) {
-      const transformed = text.replace(/[\$\s]*?\\\[\s*([\s\S]+?)\\\][\$\s]*?/g, "$$$$ $1$2 $$$$").replace(/\\\((.*?)\\\)/g, "$$$1$$").replace(/\\label\{[^}{]+\}/g, "");
+      const transformed = text.replace(/[\$\s]*\\\[([\s\S]*?)\\\][\$\s]*/g, "\n$$$$\n$1\n$$$$\n").replace(/[\s\$]*(\\begin\{align\}[\s\S]*?\\end\{align\})[\s\$]*/g, "\n$$$$\n$1\n$$$$\n").replace(/[\s\$]*(\\begin\{equation\}[\s\S]*?\\end\{equation\})[\s\$]*/g, "\n$$$$\n$1\n$$$$\n").replace(/\\\((.*?)\\\)/g, "$$$1$$").replace(/\\label\{[^}{]+\}/g, "");
       if (text !== transformed) {
         this.textNode.textContent = transformed;
         if (this.textNode.parentElement) {
@@ -14853,12 +14853,14 @@ var _ObsidianHTMLLinter = class _ObsidianHTMLLinter {
    * @returns The modified element.
    */
   static expandBR(element) {
-    var _a2, _b;
+    var _a2, _b, _c;
+    let reduceLineFeeds = false;
     const divs = element.getElementsByTagName("div");
     for (let i = 0; i < divs.length; i++) {
       const div = divs[i], parent = div.parentElement;
       if (parent) {
         parent.insertAfter(element.doc.createTextNode("\n"), div);
+        reduceLineFeeds = true;
       }
     }
     const brs = element.getElementsByTagName("br");
@@ -14866,10 +14868,15 @@ var _ObsidianHTMLLinter = class _ObsidianHTMLLinter {
       const br = brs[0], parent = br.parentElement;
       if (parent) {
         parent.insertAfter(element.doc.createTextNode("\n"), br);
+        reduceLineFeeds = true;
       }
       br.remove();
     }
-    element.textContent = (_b = (_a2 = element.textContent) == null ? void 0 : _a2.replace(/\n+/g, "\n")) != null ? _b : null;
+    if (reduceLineFeeds) {
+      element.textContent = (_b = (_a2 = element.textContent) == null ? void 0 : _a2.replace(/\n+/g, "\n")) != null ? _b : null;
+    } else {
+      element.textContent = (_c = element.textContent) != null ? _c : null;
+    }
     return element;
   }
   constructor(element) {
