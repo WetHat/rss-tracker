@@ -57,7 +57,7 @@ export class TrackedRSSitem {
     author; // one or more authors
     image; // The items image
     media; // A list of media associated with the articls
-    content; // Optinal item content (in most cases a HTML fragment)
+    content; // Optional item content (in most cases a HTML fragment)
     /**
      * Build a RSS item representation object.
      * @param entry - The parsed RSS item data.
@@ -329,7 +329,7 @@ const DEFAULT_OPTIONS = {
     },
 };
 /**
- * Representation of an RSS feed with a canoiccal set of properties
+ * Representation of an RSS feed with a canonical set of properties
  * collected from available sources.
  */
 export class TrackedRSSfeed {
@@ -346,8 +346,8 @@ export class TrackedRSSfeed {
      *
      * @param xml - XML representation of an RSS feed.
      * @param source - The location where the xml data came from. Usually a url or file path.
-     * @param options Optional Parsing options.
-     * @returns Feed obkect {TrackedRSSfeed} contaiing all relevant properties that
+     * @param options - Optional Parsing options.
+     * @returns Feed object {@link TrackedRSSfeed} containing all relevant properties that
      *          were available in the feed.
      */
     constructor(xml, source, options = DEFAULT_OPTIONS) {

@@ -527,7 +527,7 @@ declare class RSSfeedAdapter extends RSSAdapter {
 /**
  * A utility class to manage RSS related files.
  */
-declare class RSSfileManager {
+export declare class RSSfileManager {
     /**
      * Regular expression to split a template string into and array
      * where all mustache tokens of the form `{{mustache}}` have their
@@ -592,7 +592,7 @@ declare class RSSfileManager {
      * @param templateName - The template to use
      * @param data - Optional data map for replacing the mustache tokens in the template with custom data.
      * @param postProcess - Flag indicating if this file requires post processing
-     * @returns The new file created
+     * @returns A `Promise` to the file handle.
      */
     createFile(folderPath: string, basename: string, templateName: TTemplateName, data?: TPropertyBag, postProcess?: boolean): Promise<TFile>;
 }
@@ -641,7 +641,7 @@ declare class RSSitemAdapter extends RSSAdapter {
  * Utility class to orchestrate the mapping of rss tags to tags into the domain
  * of the local knowledge graph.
  */
-declare class RSSTagManager {
+export declare class RSSTagManager {
     private _app;
     private _vault;
     private _plugin;

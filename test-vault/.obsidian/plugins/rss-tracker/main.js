@@ -12399,6 +12399,11 @@ var require_readability = __commonJS({
 // src/main.ts
 var main_exports = {};
 __export(main_exports, {
+  DataViewJSTools: () => DataViewJSTools,
+  FeedManager: () => FeedManager,
+  RSSTagManager: () => RSSTagManager,
+  RSSTrackerSettings: () => RSSTrackerSettings,
+  RSSfileManager: () => RSSfileManager,
   default: () => RSSTrackerPlugin
 });
 module.exports = __toCommonJS(main_exports);
@@ -13805,7 +13810,7 @@ function toFilename(name) {
   return fname;
 }
 var TrackedRSSitem = class {
-  // Optinal item content (in most cases a HTML fragment)
+  // Optional item content (in most cases a HTML fragment)
   /**
    * Build a RSS item representation object.
    * @param entry - The parsed RSS item data.
@@ -14047,8 +14052,8 @@ var TrackedRSSfeed = class {
    *
    * @param xml - XML representation of an RSS feed.
    * @param source - The location where the xml data came from. Usually a url or file path.
-   * @param options Optional Parsing options.
-   * @returns Feed obkect {TrackedRSSfeed} contaiing all relevant properties that
+   * @param options - Optional Parsing options.
+   * @returns Feed object {@link TrackedRSSfeed} containing all relevant properties that
    *          were available in the feed.
    */
   constructor(xml, source, options = DEFAULT_OPTIONS) {
@@ -14849,7 +14854,7 @@ var _ObsidianHTMLLinter = class _ObsidianHTMLLinter {
    * to linefeeds and add linefeeds after `<div>`elements to preserve the structure of `<pre>`
    * or `<code>` elements in Obsidian code blocks.
    *
-   * @param element The `<pre>` or `<code>` elment to process.
+   * @param element - The `<pre>` or `<code>` elment to process.
    * @returns The modified element.
    */
   static expandBR(element) {
@@ -15105,7 +15110,7 @@ var _ObsidianHTMLLinter = class _ObsidianHTMLLinter {
   /**
    * Apply text transformations to all text nodes.
    *
-   * @param transformer The text transformer function.
+   * @param transformer - The text transformer function.
    *
   * @returns instance of this class for method chaining.
    */
@@ -15137,8 +15142,8 @@ var _ObsidianHTMLLinter = class _ObsidianHTMLLinter {
   /**
    * Recursively scan an element tree and call a visitor function on each element.
    *
-   * @param element the root of the element tree to scan.
-   * @param visitor the functtion to call.
+   * @param element - the root of the element tree to scan.
+   * @param visitor - the functtion to call.
    */
   static scanElements(element, visitor) {
     visitor(element);
@@ -15255,8 +15260,8 @@ var HTMLxlate = class _HTMLxlate {
    * **Notes**:
    * - This addresses nested tables in the 'Node Weekly' feed.
    *
-   * @param html A HTML fragment string
-   * @return The markdown text generated from the HTML fragment.
+   * @param html - A HTML fragment string
+   * @returns The markdown text generated from the HTML fragment.
    */
   fragmentAsMarkdown(html) {
     html = html.trim();
@@ -15271,8 +15276,8 @@ var HTMLxlate = class _HTMLxlate {
   }
   /**
    * Exract the main article from an HTML document
-   * @param html The content of an HTML document (including `<html>` and `<body>` elements)
-   * @param baseUrl the base url of the document (needed for processing local links).
+   * @param html - The content of an HTML document (including `<html>` and `<body>` elements)
+   * @param baseUrl - the base url of the document (needed for processing local links).
    * @returns Article Markdown text.
    */
   async articleAsMarkdown(html, baseUrl) {
@@ -15338,14 +15343,14 @@ var _RSSitemAdapter = class _RSSitemAdapter extends RSSAdapter {
   /**
    * The article link.
    *
-   * @return the hyperlink to the original article.
+   * @returns the hyperlink to the original article.
    */
   get link() {
     return this.frontmatter.link;
   }
   /**
    * THe unique id of this item
-   * @return A unique item identifier,
+   * @returns A unique item identifier,
    */
   get id() {
     var _a2;
@@ -15367,8 +15372,8 @@ var _RSSitemAdapter = class _RSSitemAdapter extends RSSAdapter {
   }
   /**
    * Factory methos to create a new instance of an RSS item
-   * @param item the parse item of an RSS feed.
-   * @param feed The feed this item is a part of
+   * @param item - the parse item of an RSS feed.
+   * @param feed - The feed this item is a part of
    * @returns A new instance of a RSS item file adapter.
    */
   static async create(item, feed) {
@@ -15501,14 +15506,14 @@ var _RSSfeedAdapter = class _RSSfeedAdapter extends RSSAdapter {
   }
   /**
    * Set the feed update interval
-   * @param value the update interval in hours,
+   * @param value - the update interval in hours,
    */
   set interval(value) {
     this.frontmatter.interval = value;
   }
   /**
    * The timestamp when the feed was last updated.
-   * @return the time in milliseconds since Jan 1st 1970.
+   * @returns the time in milliseconds since Jan 1st 1970.
    */
   get updated() {
     return new Date(this.frontmatter.updated).valueOf();
@@ -15557,7 +15562,7 @@ var _RSSfeedAdapter = class _RSSfeedAdapter extends RSSAdapter {
   }
   /**
    * Get all items in this RSS feed currently in Obsidian.
-   * @return proxies for all RSS items in an RSS feed.
+   * @returns proxies for all RSS items in an RSS feed.
    */
   get items() {
     return this._folder ? this._folder.children.map((c) => c instanceof import_obsidian2.TFile && c.extension === "md" ? this.filemgr.getAdapter(c) : void 0).filter((p) => p instanceof RSSitemAdapter) : [];
@@ -15579,7 +15584,7 @@ var _RSSfeedAdapter = class _RSSfeedAdapter extends RSSAdapter {
   /**
    * Update the RSS feed.
    *
-   * @param feed the adapter of the feed to update.
+   * @param feed - the adapter of the feed to update.
    * @returns the number of new items
    */
   async update(feed) {
@@ -15913,7 +15918,7 @@ var FeedManager = class {
     return RSSfeedAdapter.create(this._plugin, new TrackedRSSfeed(feedXML, "https://localhost/" + xml.path));
   }
   /**
-  * Create an RSS feed Markdown representaiton from a hyperlink.
+  * Create an RSS feed Markdown representation from a hyperlink.
   *
   * The Markdown representation consists of
   * - a feed dashboard
@@ -15945,8 +15950,8 @@ var FeedManager = class {
   }
   /**
    * Update an RSS feed according to the configured frequency.
-   * @param feed The adapter of the RSS feed to update.
-   * @param force `true` to update even if it is not due.
+   * @param feed - The adapter of the RSS feed to update.
+   * @param force - `true` to update even if it is not due.
    * @returns the number of new items
    */
   async updateFeed(feed, force) {
@@ -16023,7 +16028,7 @@ var FeedManager = class {
   /**
    * A predicate to determine if a file has a link to a downloadable article.
    *
-   * @param item An Obsidian Markdown file.
+   * @param item - An Obsidian Markdown file.
    * @returns `true` if the file is a RSS item with a link to a downloadable article.
    */
   canDownloadArticle(item) {
@@ -16270,7 +16275,7 @@ var _DataViewJSTools = class _DataViewJSTools {
    *
    * **Note**: The **FROM** expression will capture Markdown files which are not of type `rssitem`,
    *
-   * @param topic The topic file containing the tag filter definition in its frontmatter.
+   * @param topic - The topic file containing the tag filter definition in its frontmatter.
    * @returns A FROM expression suitable for use with `dv.pages`.
    */
   fromItemsOfTopic(topic) {
@@ -16281,7 +16286,7 @@ var _DataViewJSTools = class _DataViewJSTools {
     return feeds.map((f) => `"${f.file.folder}/${f.file.name}"`).join(" OR ");
   }
   /**
-   * @retun A **FROM** expression to get all items from all feed folders.
+   * @returns A **FROM** expression to get all items from all feed folders.
    */
   get fromFeeds() {
     const settings = this.settings, feedsFolder = settings.app.vault.getFolderByPath(settings.rssFeedFolderPath);
@@ -16309,8 +16314,8 @@ var _DataViewJSTools = class _DataViewJSTools {
   /**
    * Get all pages of a folder of a specific type.
    *
-   * @param path Obsidian path to a folder
-   * @param type Type of the pages to get.
+   * @param path - Obsidian path to a folder
+   * @param type - Type of the pages to get.
    * @returns The dataview array of files in a given folder with a given type.
    */
   getPagesOfFolder(path2, type) {
@@ -16324,7 +16329,7 @@ var _DataViewJSTools = class _DataViewJSTools {
   /**
    * Get a list of all RSS items of a feed.
    *
-   * @param feed The RSS feed to get the items from.
+   * @param feed - The RSS feed to get the items from.
    * @returns dataview array of RSS items.
    */
   rssItemsOfFeed(feed) {
@@ -16367,8 +16372,8 @@ var _DataViewJSTools = class _DataViewJSTools {
   }
   /**
    * Get a list of reading tasks for the given RSS items.
-   * @param items list of RSS items to get the reading tasks for
-   * @param read `false` to return unread items; `true` to return read items. If `undefined`
+   * @param items - list of RSS items to get the reading tasks for
+   * @param read - `false` to return unread items; `true` to return read items. If `undefined`
    *             all reading tasks are returned
    * @returns reading tasks matching the given reading status
    */
@@ -16377,7 +16382,7 @@ var _DataViewJSTools = class _DataViewJSTools {
   }
   /**
    * Get duplicate items which link to the same article
-   * @param item The RSS item to get publicates for
+   * @param item - The RSS item to get publicates for
    * @returns List of duplicates, if any.
    */
   async rssDuplicateItems(item) {
@@ -16386,7 +16391,7 @@ var _DataViewJSTools = class _DataViewJSTools {
   }
   /**
    * get a task list for items which refer to the same article.
-   * @param item RSS item to get the duplicates of
+   * @param item - RSS item to get the duplicates of
    * @returns List of reading tasks of the duplicate items
    */
   async rssDuplicateItemsTasks(item) {
@@ -16423,8 +16428,7 @@ var _DataViewJSTools = class _DataViewJSTools {
   // #region the generic RSS collapsible table
   /**
   * Event handler render a dataview table on demand.
-  * @param {object} dv The dataview object
-  * @param {HTMLDetailsElement} details the expandable block containing a dataview table.
+  * @param details - the expandable block containing a dataview table.
   */
   async renderTable(details) {
     const { tableHeader, tableData, tableRendered } = details;
@@ -16441,10 +16445,10 @@ var _DataViewJSTools = class _DataViewJSTools {
    *
    * The table is rendered in a collapsible `<details>` block on-demand.
    *
-   * @param header The table header.
-   * @param rows The table rows.
-   * @param [label="Files"] The expander label
-   * @param [expand=false] `undefined` render immediately using a generic dataview table;
+   * @param header - The table header.
+   * @param rows - The table rows.
+   * @param label - The expander label
+   * @param expand - `undefined` render immediately using a generic dataview table;
    *                       `true` render table immediately and expand the table by default;
    *                       `false` to collapse the table by default and render the table on-demand.
    */
@@ -16467,8 +16471,8 @@ var _DataViewJSTools = class _DataViewJSTools {
   /**
    * Render a table of RSS collections.
    *
-   * @param collections List of RSS collection pages.
-   * @param [expand=false] `undefined` render immediately using a generic dataview table;
+   * @param collections - List of RSS collection pages.
+   * @param expand - `undefined` render immediately using a generic dataview table;
    *                       `true` render table immediately and expand the table by default;
    *                       `false` to collapse the table by default and render the table on-demand.
    */
@@ -16479,8 +16483,8 @@ var _DataViewJSTools = class _DataViewJSTools {
   /**
    * Render a table of RSS topics.
    *
-   * @param topics List of RSS topic pages.
-   * @param [expand=false] `undefined` render immediately using a generic dataview table;
+   * @param topics - List of RSS topic pages.
+   * @param expand - `undefined` render immediately using a generic dataview table;
    *                       `true` render table immediately and expand the table by default;
    *                       `false` to collapse the table by default and render the table on-demand.
    */
@@ -16491,8 +16495,8 @@ var _DataViewJSTools = class _DataViewJSTools {
   /**
    * Render a table of RSS feeds.
    *
-   * @param feeds collecion of RSS feeds
-   * @param [expand=false] `undefined` render immediately using a generic dataview table;
+   * @param feeds - collecion of RSS feeds
+   * @param expand - `undefined` render immediately using a generic dataview table;
    *                       `true` render table immediately and expand the table by default;
    *                       `false` to collapse the table by default and render the table on-demand.
    */
@@ -16508,8 +16512,8 @@ var _DataViewJSTools = class _DataViewJSTools {
   /**
    * Render a dashboard table of RSS feeds .
    *
-   * @param feeds List of RSS feeds
-   * @param [expand=false] `undefined` render immediately using a generic dataview table;
+   * @param feeds - List of RSS feeds
+   * @param expand - `undefined` render immediately using a generic dataview table;
    *                       `true` render table immediately and expand the table by default;
    *                       `false` to collapse the table by default and render the table on-demand.
    */
@@ -16540,11 +16544,11 @@ var _DataViewJSTools = class _DataViewJSTools {
   /**
    * Render a table of RSS items.
    *
-   * @param items A collection of RSS items.
-   * @param [expand=false] `undefined` render immediately using a generic dataview table;
+   * @param items - A collection of RSS items.
+   * @param expand - `undefined` render immediately using a generic dataview table;
    *                       `true` render table immediately and expand the table by default;
    *                       `false` to collapse the table by default and render the table on-demand.
-   * @param [label="Items"] The label for the expander control.
+   * @param label - The label for the expander control.
    */
   async rssItemTable(items, expand = void 0, label = "Items") {
     const rows = items.sort((i) => i.file.name, "asc").map((i) => [i.file.link, _DataViewJSTools.getHashtagsAsString(i), i.published]);
@@ -16555,8 +16559,8 @@ var _DataViewJSTools = class _DataViewJSTools {
    *
    * **Note**The expander control is labeled with the feed name.
    *
-   * @param items A collection of RSS items.
-   * @param [expand=false] `undefined` render immediately using a generic dataview table;
+   * @param items - A collection of RSS items.
+   * @param expand - `undefined` render immediately using a generic dataview table;
    *                       `true` render table immediately and expand the table by default;
    *                       `false` to collapse the table by default and render the table on-demand.
    */
@@ -16582,7 +16586,7 @@ var _DataViewJSTools = class _DataViewJSTools {
    * a {@link TTaskRecords} object that provides the data for a dataview `taskList`.
    * The task list is rendered the first time the `<details>` block is expanded.
    *
-   * @param details The `<details>` HTML block element containing a collapsible task list.
+   * @param details - The `<details>` HTML block element containing a collapsible task list.
    */
   async renderTaskList(details) {
     const { readingList, readingListRendered } = details;
@@ -16597,11 +16601,11 @@ var _DataViewJSTools = class _DataViewJSTools {
   /**
    * Render a list of reading tasks on-demand in a collapsible block.
    *
-   * @param tasks The list of reading tasks to render.
-   * @param expand `undefined` render immediately using a generic dataview table;
+   * @param tasks - The list of reading tasks to render.
+   * @param expand - `undefined` render immediately using a generic dataview table;
    *               `true` render table immediately and expand the table by default;
    *               `false` to collapse the table by default and render the table on-demand.
-   * @param [header="Items"] The header text for the expander control.
+   * @param header - The header text for the expander control.
    */
   async rssTaskList(tasks, expand, header = "Items") {
     if (tasks.length > 0) {
@@ -16623,12 +16627,12 @@ var _DataViewJSTools = class _DataViewJSTools {
    *
    * If the given feed has no reading tasks which have the state matching the
    * `read` parameter, no UI is generated.
-   * @param items The RSS items to get the reading tasks from
-   * @param read `false` to collect unchecked (unread) reading tasks; `true` otherwise.
-   * @param expand `undefined` render immediately using a generic dataview table;
+   * @param items - The RSS items to get the reading tasks from
+   * @param read - `false` to collect unchecked (unread) reading tasks; `true` otherwise.
+   * @param expand - `undefined` render immediately using a generic dataview table;
    *               `true` render table immediately and expand the table by default;
    *               `false` to collapse the table by default and render the table on-demand.
-   * @param [header="Items"] Optional header text to display for the expander control.
+   * @param header - Optional header text to display for the expander control.
    */
   async rssReadingList(items, read, expand, header = "Items") {
     const tasks = this.rssReadingTasks(items, read);
@@ -16641,9 +16645,9 @@ var _DataViewJSTools = class _DataViewJSTools {
   /**
    * Display collapsible reading tasks grouped by feed.
    *
-   * @param feeds Collection of feeds
-   * @param read `false` to collect and display unchecked (unread) reading tasks: `true` otherwise.
-   * @param [expand=false] `undefined` render immediately using a generic dataview table;
+   * @param feeds - Collection of feeds
+   * @param read - `false` to collect and display unchecked (unread) reading tasks: `true` otherwise.
+   * @param expand - `undefined` render immediately using a generic dataview table;
    *                       `true` render table immediately and expand the table by default;
    *                       `false` to collapse the table by default and render the table on-demand.
    */
@@ -16862,7 +16866,7 @@ var _RSSfileManager = class _RSSfileManager {
   }
   /**
    * Factory method to create proxies for RSS files
-   * @param file An RSS file to create the adapter for.
+   * @param file - An RSS file to create the adapter for.
    * @returns The appropriate adapter, if it exists.
    */
   getAdapter(file) {
@@ -16897,7 +16901,7 @@ var _RSSfileManager = class _RSSfileManager {
    *
    * If the template does not esist, it is installed,
    *
-   * @param templateName Name of the template to read
+   * @param templateName - Name of the template to read
    * @returns Template contents
    */
   async readTemplate(templateName) {
@@ -16913,8 +16917,8 @@ var _RSSfileManager = class _RSSfileManager {
   }
   /**
    * Rename a folder
-   * @param oldFolderPath path to an existing folder
-   * @param newFolderPath new folder path.
+   * @param oldFolderPath - path to an existing folder
+   * @param newFolderPath - new folder path.
    * @returns `true` if renaming was successful; `false` otherwise.
    */
   async renameFolder(oldFolderPath, newFolderPath) {
@@ -16930,8 +16934,8 @@ var _RSSfileManager = class _RSSfileManager {
   }
   /**
    * Rename/move a file.
-   * @param oldFilePath Path to file to rename
-   * @param newFilePath new path and name of the file
+   * @param oldFilePath - Path to file to rename
+   * @param newFilePath - new path and name of the file
    * @returns `true` if file was successfully renamed/moved; `false otherwise`
    */
   async renameFile(oldFilePath, newFilePath) {
@@ -16958,12 +16962,12 @@ var _RSSfileManager = class _RSSfileManager {
    * ❗The mustache token `{{fileName}}` is automatically added to the data object. This token maps to the unique
    * basename of the generated file (no file extension) and can be used to create wiki-links.
    *
-   * @param folderPath THe location of the new file
-   * @param basename The basename of the new file (without fie extension)
-   * @param templateName The template to use
-   * @param data Optional data map for replacing the mustache tokens in the template with custom data.
-   * @param postProcess Flag indicating if this file requires post processing
-   * @returns The new file created
+   * @param folderPath - THe location of the new file
+   * @param basename - The basename of the new file (without fie extension)
+   * @param templateName - The template to use
+   * @param data - Optional data map for replacing the mustache tokens in the template with custom data.
+   * @param postProcess - Flag indicating if this file requires post processing
+   * @returns A `Promise` to the file handle.
    */
   async createFile(folderPath, basename, templateName, data = {}, postProcess = false) {
     await this.ensureFolderExists(folderPath);
@@ -17037,7 +17041,7 @@ var RSSTagManager = class {
    * Post processing is performed by the event handler returnd from
    * {@link rssTagPostProcessor}.
    *
-   * @param path Vault relative path to file
+   * @param path - Vault relative path to file
    * @returns the registered path
    */
   registerFileForPostProcessing(path2) {
@@ -17124,7 +17128,7 @@ var RSSTagManager = class {
    * - if there is a mapping defined in the map file {@link RSSTrackerSettings.rssTagmapPath},
    *   the tag is mapped and changed in the text.
    *
-   * @param rssHashtag A hashtag found in RSS item contents.
+   * @param rssHashtag - A hashtag found in RSS item contents.
    * @returns mapped tag
    */
   mapHashtag(rssHashtag) {

@@ -162,8 +162,6 @@ abstract class RSSAdapter {
     protected constructor(plugin: RSSTrackerPlugin, file: TFile, frontmatter?: TFrontmatter);
     commitFrontmatterChanges(): Promise<void>;
     file: TFile;
-    // Warning: (ae-forgotten-export) The symbol "RSSfileManager" needs to be exported by the entry point main.d.ts
-    //
     // (undocumented)
     get filemgr(): RSSfileManager;
     // Warning: (ae-forgotten-export) The symbol "TFrontmatter" needs to be exported by the entry point main.d.ts
@@ -231,7 +229,7 @@ class RSSfeedAdapter extends RSSAdapter {
 }
 
 // @public
-class RSSfileManager {
+export class RSSfileManager {
     constructor(app: App, plugin: RSSTrackerPlugin);
     // (undocumented)
     get app(): App;
@@ -272,7 +270,7 @@ class RSSitemAdapter extends RSSAdapter {
 }
 
 // @public
-class RSSTagManager {
+export class RSSTagManager {
     constructor(app: App, plugin: RSSTrackerPlugin);
     mapHashtag(rssHashtag: string): string;
     registerFileForPostProcessing(path: string): string;
@@ -296,8 +294,6 @@ class RSSTrackerPlugin extends Plugin_2 {
     refreshActiveFile(): void;
     // (undocumented)
     get settings(): RSSTrackerSettings;
-    // Warning: (ae-forgotten-export) The symbol "RSSTagManager" needs to be exported by the entry point main.d.ts
-    //
     // (undocumented)
     get tagmgr(): RSSTagManager;
 }

@@ -119,5 +119,5 @@ _(Optional)_ Flag indicating if this file requires post processing
 
 Promise&lt;TFile&gt;
 
-The new file created
+A `Promise` to the file handle.
 

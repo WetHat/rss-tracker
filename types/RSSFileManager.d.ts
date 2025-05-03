@@ -74,7 +74,7 @@ export declare class RSSfileManager {
      * @param templateName - The template to use
      * @param data - Optional data map for replacing the mustache tokens in the template with custom data.
      * @param postProcess - Flag indicating if this file requires post processing
-     * @returns The new file created
+     * @returns A `Promise` to the file handle.
      */
     createFile(folderPath: string, basename: string, templateName: TTemplateName, data?: TPropertyBag, postProcess?: boolean): Promise<TFile>;
 }
