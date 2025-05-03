@@ -9,9 +9,12 @@ import { RSSTrackerSettingTab } from './settingsUI';
 import { RSSfileManager } from './RSSFileManager';
 import { RSSTagManager } from './TagManager';
 
+// API exports
 export {RSSTrackerSettings} from './settings';
 export { FeedManager } from './FeedManager';
 export { DataViewJSTools } from './DataViewJSTools';
+export { RSSfileManager } from './RSSFileManager';
+export { RSSTagManager } from './TagManager';
 
 export default class RSSTrackerPlugin extends Plugin {
     private _settings: RSSTrackerSettings;
