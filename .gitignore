@@ -23,3 +23,4 @@ data.json
 # build artefacts
 dist
 test-vault/.trash
+temp/*

@@ -6,8 +6,8 @@
 	"main": "dist/main.js",
 	"scripts": {
 		"dev": "node esbuild.config.mjs",
-		"docs": "tsc -skipLibCheck",
-		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production && npm run prep-test && node pack.mjs ",
+		"api": "tsc -skipLibCheck && npx api-extractor run --local && npx api-documenter markdown -i temp -o api/docs",
+		"build": "tsc -skipLibCheck && node esbuild.config.mjs production && npm run prep-test && node pack.mjs ",
 		"ship": "npm run build && node ship.mjs",
 		"version": "node version-bump.mjs && git add manifest.json versions.json",
 		"prep-test": "npx tsc src/FeedAssembler.ts --module esnext --moduleResolution node --isolatedModules true --importHelpers true --allowJS true --target esnext --outDir test/scripts",

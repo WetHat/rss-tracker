@@ -26,11 +26,10 @@
     ],
     "declaration": true,
     "declarationDir": "./types",
-    "emitDeclarationOnly": false,
+    "emitDeclarationOnly": true,
   },
 
   "include": [
-    "src/**/*.ts",
-    "types.d.ts"
+    "src/**/*.ts"
   ]
 }

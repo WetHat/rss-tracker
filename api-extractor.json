@@ -1,23 +1,68 @@
 {
+  "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
+
+  "projectFolder": ".",
+
+  "mainEntryPointFilePath": "<projectFolder>/types/main.d.ts",
+
+  "bundledPackages": [
+
+  ],
   "compiler": {
-    "tsconfigFilePath": "./tsconfig.json"
+    "tsconfigFilePath": "<projectFolder>/tsconfig.json",
+    "overrideTsconfig": {
+
+    },
+    "skipLibCheck": true
   },
-  "project": {
-    "entryPointSourceFile": "./src/index.ts"
-  },
-  "apiExtractor": {
+
+  "apiReport": {
     "enabled": true,
-    "apiReport": {
-      "enabled": true,
-      "reportFolder": "./etc/api-extractor"
+    "reportFileName": "<unscopedPackageName>",
+    "reportVariants": ["complete"],
+    "reportFolder": "<projectFolder>/api/",
+    "reportTempFolder": "<projectFolder>/temp/",
+    "includeForgottenExports": true
+  },
+
+  "docModel": {
+    "enabled": true,
+    "apiJsonFilePath": "<projectFolder>/temp/<unscopedPackageName>.api.json",
+    "includeForgottenExports": true
+  },
+
+  "dtsRollup": {
+    "enabled": true,
+    "untrimmedFilePath": "<projectFolder>/api/rss-tracker.d.ts"
+  },
+
+  "tsdocMetadata": {
+    "enabled": true,
+    "tsdocMetadataFilePath": "<projectFolder>/api/tsdoc-metadata.json"
+  },
+  "messages": {
+    "compilerMessageReporting": {
+      "default": {
+        "logLevel": "warning",
+        "addToApiReportFile": false
+      }
     },
-    "docModel": {
-      "enabled": true,
-      "apiJsonFilePath": "./temp/api/myLibrary.api.json"
+
+    "extractorMessageReporting": {
+      "default": {
+        "logLevel": "warning",
+        "addToApiReportFile": false
+      },
+      "ae-missing-release-tag": {
+        "logLevel": "none"
+      }
     },
-    "dtsRollup": {
-      "enabled": true,
-      "untrimmedFilePath": "./dist/myLibrary.d.ts"
+
+    "tsdocMessageReporting": {
+      "default": {
+        "logLevel": "warning",
+        "addToApiReportFile": false
+      }
     }
   }
 }
