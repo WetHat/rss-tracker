@@ -7,8 +7,7 @@ import { RenameRSSFeedModal } from './dialogs';
  * Abstract base class to Obsidian menus.
  *
  * Currently event menu event hadlers can be generated for the file menu
- * @see {@link fileMenuHandler} and the editor menu
- * @see {@link editorMenuHandler}.
+ * {@link fileMenuHandler} and the editor menu {@link editorMenuHandler}.
  *
  */
 abstract class RSSTrackerMenuItem {

@@ -35,7 +35,7 @@ type TRecord = TPropertyBag;
  *
  * Contains all frontmatter properties
  */
-type TPageRecord = TRecord & {
+export type TPageRecord = TRecord & {
     /**
      * Annotated File obect as documentes in
      * {@link https://blacksmithgu.github.io/obsidian-dataview/annotation/metadata-pages/}
@@ -76,7 +76,7 @@ type TRecords = {
 
     /**
      * A Swizzled field.
-     * @see {@link TPageRecord}
+     * {@link TPageRecord}
      */
     file: any
 
@@ -176,7 +176,7 @@ export class DataViewJSTools {
      *
      * **Note**: The **FROM** expression will capture Markdown files which are not of type `rssitem`,
      *
-     * @param topic The topic file containing the tag filter definition in its frontmatter.
+     * @param topic - The topic file containing the tag filter definition in its frontmatter.
      * @returns A FROM expression suitable for use with `dv.pages`.
      */
     private fromItemsOfTopic(topic: TPageRecord): string {
@@ -189,7 +189,7 @@ export class DataViewJSTools {
     }
 
     /**
-     * @retun A **FROM** expression to get all items from all feed folders.
+     * @returns A **FROM** expression to get all items from all feed folders.
      */
     private get fromFeeds(): string {
         const
@@ -226,8 +226,8 @@ export class DataViewJSTools {
     /**
      * Get all pages of a folder of a specific type.
      *
-     * @param path Obsidian path to a folder
-     * @param type Type of the pages to get.
+     * @param path - Obsidian path to a folder
+     * @param type - Type of the pages to get.
      * @returns The dataview array of files in a given folder with a given type.
      */
     private getPagesOfFolder(path: string, type: TRSSPageType): TPageRecords {
@@ -245,7 +245,7 @@ export class DataViewJSTools {
     /**
      * Get a list of all RSS items of a feed.
      *
-     * @param feed The RSS feed to get the items from.
+     * @param feed - The RSS feed to get the items from.
      * @returns dataview array of RSS items.
      */
     rssItemsOfFeed(feed: TPageRecord): TPageRecords {
@@ -297,8 +297,8 @@ export class DataViewJSTools {
 
     /**
      * Get a list of reading tasks for the given RSS items.
-     * @param items list of RSS items to get the reading tasks for
-     * @param read `false` to return unread items; `true` to return read items. If `undefined`
+     * @param items - list of RSS items to get the reading tasks for
+     * @param read - `false` to return unread items; `true` to return read items. If `undefined`
      *             all reading tasks are returned
      * @returns reading tasks matching the given reading status
      */
@@ -311,7 +311,7 @@ export class DataViewJSTools {
 
     /**
      * Get duplicate items which link to the same article
-     * @param item The RSS item to get publicates for
+     * @param item - The RSS item to get publicates for
      * @returns List of duplicates, if any.
      */
     async rssDuplicateItems(item: TPageRecord): Promise<TPageRecords> {
@@ -324,7 +324,7 @@ export class DataViewJSTools {
 
     /**
      * get a task list for items which refer to the same article.
-     * @param item RSS item to get the duplicates of
+     * @param item - RSS item to get the duplicates of
      * @returns List of reading tasks of the duplicate items
      */
     private async rssDuplicateItemsTasks(item: TPageRecord): Promise<TTaskRecords> {
@@ -372,8 +372,7 @@ export class DataViewJSTools {
 
     /**
     * Event handler render a dataview table on demand.
-    * @param {object} dv The dataview object
-    * @param {HTMLDetailsElement} details the expandable block containing a dataview table.
+    * @param details - the expandable block containing a dataview table.
     */
     private async renderTable(details: TCollapsibleTableContainer) {
         const { tableHeader, tableData, tableRendered } = details;
@@ -392,10 +391,10 @@ export class DataViewJSTools {
      *
      * The table is rendered in a collapsible `<details>` block on-demand.
      *
-     * @param header The table header.
-     * @param rows The table rows.
-     * @param [label="Files"] The expander label
-     * @param [expand=false] `undefined` render immediately using a generic dataview table;
+     * @param header - The table header.
+     * @param rows - The table rows.
+     * @param label - The expander label
+     * @param expand - `undefined` render immediately using a generic dataview table;
      *                       `true` render table immediately and expand the table by default;
      *                       `false` to collapse the table by default and render the table on-demand.
      */
@@ -436,8 +435,8 @@ export class DataViewJSTools {
     /**
      * Render a table of RSS collections.
      *
-     * @param collections List of RSS collection pages.
-     * @param [expand=false] `undefined` render immediately using a generic dataview table;
+     * @param collections - List of RSS collection pages.
+     * @param expand - `undefined` render immediately using a generic dataview table;
      *                       `true` render table immediately and expand the table by default;
      *                       `false` to collapse the table by default and render the table on-demand.
      */
@@ -451,8 +450,8 @@ export class DataViewJSTools {
     /**
      * Render a table of RSS topics.
      *
-     * @param topics List of RSS topic pages.
-     * @param [expand=false] `undefined` render immediately using a generic dataview table;
+     * @param topics - List of RSS topic pages.
+     * @param expand - `undefined` render immediately using a generic dataview table;
      *                       `true` render table immediately and expand the table by default;
      *                       `false` to collapse the table by default and render the table on-demand.
      */
@@ -466,8 +465,8 @@ export class DataViewJSTools {
     /**
      * Render a table of RSS feeds.
      *
-     * @param feeds collecion of RSS feeds
-     * @param [expand=false] `undefined` render immediately using a generic dataview table;
+     * @param feeds - collecion of RSS feeds
+     * @param expand - `undefined` render immediately using a generic dataview table;
      *                       `true` render table immediately and expand the table by default;
      *                       `false` to collapse the table by default and render the table on-demand.
      */
@@ -486,8 +485,8 @@ export class DataViewJSTools {
     /**
      * Render a dashboard table of RSS feeds .
      *
-     * @param feeds List of RSS feeds
-     * @param [expand=false] `undefined` render immediately using a generic dataview table;
+     * @param feeds - List of RSS feeds
+     * @param expand - `undefined` render immediately using a generic dataview table;
      *                       `true` render table immediately and expand the table by default;
      *                       `false` to collapse the table by default and render the table on-demand.
      */
@@ -519,11 +518,11 @@ export class DataViewJSTools {
     /**
      * Render a table of RSS items.
      *
-     * @param items A collection of RSS items.
-     * @param [expand=false] `undefined` render immediately using a generic dataview table;
+     * @param items - A collection of RSS items.
+     * @param expand - `undefined` render immediately using a generic dataview table;
      *                       `true` render table immediately and expand the table by default;
      *                       `false` to collapse the table by default and render the table on-demand.
-     * @param [label="Items"] The label for the expander control.
+     * @param label - The label for the expander control.
      */
     async rssItemTable(items: TPageRecords, expand: TExpandState = undefined, label: string = "Items") {
         const rows = items
@@ -537,8 +536,8 @@ export class DataViewJSTools {
      *
      * **Note**The expander control is labeled with the feed name.
      *
-     * @param items A collection of RSS items.
-     * @param [expand=false] `undefined` render immediately using a generic dataview table;
+     * @param items - A collection of RSS items.
+     * @param expand - `undefined` render immediately using a generic dataview table;
      *                       `true` render table immediately and expand the table by default;
      *                       `false` to collapse the table by default and render the table on-demand.
      */
@@ -569,7 +568,7 @@ export class DataViewJSTools {
      * a {@link TTaskRecords} object that provides the data for a dataview `taskList`.
      * The task list is rendered the first time the `<details>` block is expanded.
      *
-     * @param details The `<details>` HTML block element containing a collapsible task list.
+     * @param details - The `<details>` HTML block element containing a collapsible task list.
      */
     private async renderTaskList(details: TCollapsibleTaskList) {
         const { readingList, readingListRendered } = details;
@@ -585,11 +584,11 @@ export class DataViewJSTools {
     /**
      * Render a list of reading tasks on-demand in a collapsible block.
      *
-     * @param tasks The list of reading tasks to render.
-     * @param expand `undefined` render immediately using a generic dataview table;
+     * @param tasks - The list of reading tasks to render.
+     * @param expand - `undefined` render immediately using a generic dataview table;
      *               `true` render table immediately and expand the table by default;
      *               `false` to collapse the table by default and render the table on-demand.
-     * @param [header="Items"] The header text for the expander control.
+     * @param header - The header text for the expander control.
      */
     private async rssTaskList(tasks: TTaskRecords, expand: boolean, header: string = "Items") {
         if (tasks.length > 0) {
@@ -615,12 +614,12 @@ export class DataViewJSTools {
      *
      * If the given feed has no reading tasks which have the state matching the
      * `read` parameter, no UI is generated.
-     * @param items The RSS items to get the reading tasks from
-     * @param read `false` to collect unchecked (unread) reading tasks; `true` otherwise.
-     * @param expand `undefined` render immediately using a generic dataview table;
+     * @param items - The RSS items to get the reading tasks from
+     * @param read - `false` to collect unchecked (unread) reading tasks; `true` otherwise.
+     * @param expand - `undefined` render immediately using a generic dataview table;
      *               `true` render table immediately and expand the table by default;
      *               `false` to collapse the table by default and render the table on-demand.
-     * @param [header="Items"] Optional header text to display for the expander control.
+     * @param header - Optional header text to display for the expander control.
      */
     async rssReadingList(items: TPageRecords, read: boolean, expand: boolean, header: string = "Items") {
         const tasks: TTaskRecords = this.rssReadingTasks(items, read);
@@ -634,9 +633,9 @@ export class DataViewJSTools {
     /**
      * Display collapsible reading tasks grouped by feed.
      *
-     * @param feeds Collection of feeds
-     * @param read `false` to collect and display unchecked (unread) reading tasks: `true` otherwise.
-     * @param [expand=false] `undefined` render immediately using a generic dataview table;
+     * @param feeds - Collection of feeds
+     * @param read - `false` to collect and display unchecked (unread) reading tasks: `true` otherwise.
+     * @param expand - `undefined` render immediately using a generic dataview table;
      *                       `true` render table immediately and expand the table by default;
      *                       `false` to collapse the table by default and render the table on-demand.
      */

@@ -36,7 +36,7 @@ function toFilename(name: string): string {
 }
 
 /**
- * Type for property bag objects (key -> value) with unknown content.
+ * Type for property bag objects (key -\> value) with unknown content.
  */
 export type TPropertyBag = { [key: string]: any };
 
@@ -63,7 +63,7 @@ export interface IRssMedium {
 /**
  * Specification of the tracked properties of an RSS item.
  * Some properties overlap with the property specification in the
- * `FeedEntry` interface. These will get special attention during
+ * {@link FeedEntry}  interface. These will get special attention during
  * parsing.
  */
 interface IEntryDataTracked {
@@ -113,7 +113,7 @@ export class TrackedRSSitem {
     author?: string; // one or more authors
     image?: IRssMedium; // The items image
     media: IRssMedium[]; // A list of media associated with the articls
-    content?: string; // Optinal item content (in most cases a HTML fragment)
+    content?: string; // Optional item content (in most cases a HTML fragment)
 
     /**
      * Build a RSS item representation object.
@@ -421,7 +421,7 @@ const DEFAULT_OPTIONS: ReaderOptions = {
 }
 
 /**
- * Representation of an RSS feed with a canoiccal set of properties
+ * Representation of an RSS feed with a canonical set of properties
  * collected from available sources.
  */
 export class TrackedRSSfeed {
@@ -439,8 +439,8 @@ export class TrackedRSSfeed {
      *
      * @param xml - XML representation of an RSS feed.
      * @param source - The location where the xml data came from. Usually a url or file path.
-     * @param options Optional Parsing options.
-     * @returns Feed obkect {TrackedRSSfeed} contaiing all relevant properties that
+     * @param options - Optional Parsing options.
+     * @returns Feed object {@link TrackedRSSfeed} containing all relevant properties that
      *          were available in the feed.
      */
     constructor(xml: string, source: string, options: ReaderOptions = DEFAULT_OPTIONS) {

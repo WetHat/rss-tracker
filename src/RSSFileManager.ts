@@ -43,7 +43,7 @@ export class RSSfileManager {
 	}
 	/**
 	 * Factory method to create proxies for RSS files
-	 * @param file An RSS file to create the adapter for.
+	 * @param file - An RSS file to create the adapter for.
 	 * @returns The appropriate adapter, if it exists.
 	 */
 	getAdapter(file: TFile): RSSfeedAdapter | RSSitemAdapter | RSScollectionAdapter | undefined {
@@ -75,7 +75,7 @@ export class RSSfileManager {
 	 *
 	 * If the template does not esist, it is installed,
 	 *
-	 * @param templateName Name of the template to read
+	 * @param templateName - Name of the template to read
 	 * @returns Template contents
 	 */
 	private async readTemplate(templateName: TTemplateName): Promise<string> {
@@ -97,8 +97,8 @@ export class RSSfileManager {
 
 	/**
 	 * Rename a folder
-	 * @param oldFolderPath path to an existing folder
-	 * @param newFolderPath new folder path.
+	 * @param oldFolderPath - path to an existing folder
+	 * @param newFolderPath - new folder path.
 	 * @returns `true` if renaming was successful; `false` otherwise.
 	 */
 	async renameFolder(oldFolderPath: string, newFolderPath: string): Promise<boolean> {
@@ -117,8 +117,8 @@ export class RSSfileManager {
 
 	/**
 	 * Rename/move a file.
-	 * @param oldFilePath Path to file to rename
-	 * @param newFilePath new path and name of the file
+	 * @param oldFilePath - Path to file to rename
+	 * @param newFilePath - new path and name of the file
 	 * @returns `true` if file was successfully renamed/moved; `false otherwise`
 	 */
 	async renameFile(oldFilePath: string, newFilePath: string): Promise<boolean> {
@@ -148,11 +148,11 @@ export class RSSfileManager {
 	 * ❗The mustache token `{{fileName}}` is automatically added to the data object. This token maps to the unique
 	 * basename of the generated file (no file extension) and can be used to create wiki-links.
 	 *
-	 * @param folderPath THe location of the new file
-	 * @param basename The basename of the new file (without fie extension)
-	 * @param templateName The template to use
-	 * @param data Optional data map for replacing the mustache tokens in the template with custom data.
-	 * @param postProcess Flag indicating if this file requires post processing
+	 * @param folderPath - THe location of the new file
+	 * @param basename - The basename of the new file (without fie extension)
+	 * @param templateName - The template to use
+	 * @param data - Optional data map for replacing the mustache tokens in the template with custom data.
+	 * @param postProcess - Flag indicating if this file requires post processing
 	 * @returns The new file created
 	 */
 	async createFile(folderPath: string, basename: string, templateName: TTemplateName, data: TPropertyBag = {}, postProcess: boolean = false): Promise<TFile> {

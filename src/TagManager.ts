@@ -64,7 +64,7 @@ export class RSSTagManager {
      * Post processing is performed by the event handler returnd from
      * {@link rssTagPostProcessor}.
      *
-     * @param path Vault relative path to file
+     * @param path - Vault relative path to file
      * @returns the registered path
      */
     registerFileForPostProcessing(path: string): string {
@@ -167,7 +167,7 @@ export class RSSTagManager {
      * - if there is a mapping defined in the map file {@link RSSTrackerSettings.rssTagmapPath},
      *   the tag is mapped and changed in the text.
      *
-     * @param rssHashtag A hashtag found in RSS item contents.
+     * @param rssHashtag - A hashtag found in RSS item contents.
      * @returns mapped tag
      */
     mapHashtag(rssHashtag: string): string {

@@ -10,10 +10,13 @@ import { RSSfeedAdapter, RSScollectionAdapter } from './RSSAdapter';
  * Manage RSS feeds in Obsidian.
  *
  * Currently available functionality:
+ *
  * - Building a Markdown representation of RSS feeds including feed dashboards.
- *   @see {@link createFeedFromFile} and  @see {@link createFeedFromUrl}
- * - Updating feeds (individual or all). @see {@link updateFeed} and @see {@link}
- * - Setting all items on a feed as _read_. see {@link markFeedItemsRead}
+ *   {@link FeedManager.createFeedFromFile} and  {@link FeedManager.createFeedFromUrl}
+ *
+ * - Updating feeds (individual or all). {@link FeedManager.updateFeed} and {@link FeedManager.updateFeeds}
+ *
+ * - Setting all items on a feed as _read_. See {@link FeedManager.completeReadingTasks}
  */
 export class FeedManager {
     private _app: App;
@@ -59,7 +62,7 @@ export class FeedManager {
     }
 
     /**
-    * Create an RSS feed Markdown representaiton from a hyperlink.
+    * Create an RSS feed Markdown representation from a hyperlink.
     *
     * The Markdown representation consists of
     * - a feed dashboard
@@ -92,8 +95,8 @@ export class FeedManager {
 
     /**
      * Update an RSS feed according to the configured frequency.
-     * @param feed The adapter of the RSS feed to update.
-     * @param force `true` to update even if it is not due.
+     * @param feed - The adapter of the RSS feed to update.
+     * @param force - `true` to update even if it is not due.
      * @returns the number of new items
      */
     private async updateFeed(feed: RSSfeedAdapter, force: boolean): Promise<number> {
@@ -190,7 +193,7 @@ export class FeedManager {
     /**
      * A predicate to determine if a file has a link to a downloadable article.
      *
-     * @param item An Obsidian Markdown file.
+     * @param item - An Obsidian Markdown file.
      * @returns `true` if the file is a RSS item with a link to a downloadable article.
      */
     canDownloadArticle(item: TFile): boolean {
