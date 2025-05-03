@@ -21,14 +21,14 @@ export declare class HTMLxlate {
      * **Notes**:
      * - This addresses nested tables in the 'Node Weekly' feed.
      *
-     * @param html A HTML fragment string
-     * @return The markdown text generated from the HTML fragment.
+     * @param html - A HTML fragment string
+     * @returns The markdown text generated from the HTML fragment.
      */
     fragmentAsMarkdown(html: string): string;
     /**
      * Exract the main article from an HTML document
-     * @param html The content of an HTML document (including `<html>` and `<body>` elements)
-     * @param baseUrl the base url of the document (needed for processing local links).
+     * @param html - The content of an HTML document (including `<html>` and `<body>` elements)
+     * @param baseUrl - the base url of the document (needed for processing local links).
      * @returns Article Markdown text.
      */
     articleAsMarkdown(html: string, baseUrl: string): Promise<string | null>;

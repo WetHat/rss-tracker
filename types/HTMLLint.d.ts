@@ -53,7 +53,7 @@ export declare class ObsidianHTMLLinter {
      * to linefeeds and add linefeeds after `<div>`elements to preserve the structure of `<pre>`
      * or `<code>` elements in Obsidian code blocks.
      *
-     * @param element The `<pre>` or `<code>` elment to process.
+     * @param element - The `<pre>` or `<code>` elment to process.
      * @returns The modified element.
      */
     private static expandBR;
@@ -122,7 +122,7 @@ export declare class ObsidianHTMLLinter {
     /**
      * Apply text transformations to all text nodes.
      *
-     * @param transformer The text transformer function.
+     * @param transformer - The text transformer function.
      *
     * @returns instance of this class for method chaining.
      */
@@ -139,8 +139,8 @@ export declare class ObsidianHTMLLinter {
     /**
      * Recursively scan an element tree and call a visitor function on each element.
      *
-     * @param element the root of the element tree to scan.
-     * @param visitor the functtion to call.
+     * @param element - the root of the element tree to scan.
+     * @param visitor - the functtion to call.
      */
     private static scanElements;
     /**

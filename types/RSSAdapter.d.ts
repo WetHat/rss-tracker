@@ -58,20 +58,20 @@ export declare class RSSitemAdapter extends RSSAdapter {
     /**
      * The article link.
      *
-     * @return the hyperlink to the original article.
+     * @returns the hyperlink to the original article.
      */
     get link(): string;
     /**
      * THe unique id of this item
-     * @return A unique item identifier,
+     * @returns A unique item identifier,
      */
     get id(): string;
     set tags(value: string[]);
     completeReadingTask(): Promise<boolean>;
     /**
      * Factory methos to create a new instance of an RSS item
-     * @param item the parse item of an RSS feed.
-     * @param feed The feed this item is a part of
+     * @param item - the parse item of an RSS feed.
+     * @param feed - The feed this item is a part of
      * @returns A new instance of a RSS item file adapter.
      */
     static create(item: TrackedRSSitem, feed: RSSfeedAdapter): Promise<RSSitemAdapter>;
@@ -105,12 +105,12 @@ export declare class RSSfeedAdapter extends RSSAdapter {
     get interval(): number;
     /**
      * Set the feed update interval
-     * @param value the update interval in hours,
+     * @param value - the update interval in hours,
      */
     set interval(value: number);
     /**
      * The timestamp when the feed was last updated.
-     * @return the time in milliseconds since Jan 1st 1970.
+     * @returns the time in milliseconds since Jan 1st 1970.
      */
     get updated(): number;
     set updated(value: number);
@@ -132,14 +132,14 @@ export declare class RSSfeedAdapter extends RSSAdapter {
     itemFolder(): Promise<TFolder>;
     /**
      * Get all items in this RSS feed currently in Obsidian.
-     * @return proxies for all RSS items in an RSS feed.
+     * @returns proxies for all RSS items in an RSS feed.
      */
     get items(): RSSitemAdapter[];
     rename(newBasename: string): Promise<boolean>;
     /**
      * Update the RSS feed.
      *
-     * @param feed the adapter of the feed to update.
+     * @param feed - the adapter of the feed to update.
      * @returns the number of new items
      */
     update(feed: TrackedRSSfeed): Promise<number>;
