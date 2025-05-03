@@ -6,6 +6,7 @@
 	"main": "dist/main.js",
 	"scripts": {
 		"dev": "node esbuild.config.mjs",
+		"docs": "tsc -skipLibCheck",
 		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production && npm run prep-test && node pack.mjs ",
 		"ship": "npm run build && node ship.mjs",
 		"version": "node version-bump.mjs && git add manifest.json versions.json",
@@ -16,6 +17,8 @@
 	"author": "@WetHat",
 	"license": "MIT",
 	"devDependencies": {
+		"@microsoft/api-documenter": "^7.26.26",
+		"@microsoft/api-extractor": "^7.52.7",
 		"@types/node": "^16.11.6",
 		"@typescript-eslint/eslint-plugin": "5.29.0",
 		"@typescript-eslint/parser": "5.29.0",

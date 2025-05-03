@@ -353,7 +353,7 @@ export class TrackedRSSfeed {
     constructor(xml, source, options = DEFAULT_OPTIONS) {
         this.source = source;
         options.baseUrl = source.match(/[htps]+:\/\/[^\/]+(?=\/*)/)?.[0];
-        const feed = extractFromXml(xml, options);
+        const feed = extractFromXml(xml.trimStart(), options);
         let { link, title, description, image, entries } = feed;
         if (link) {
             this.site = link.startsWith("/") && options.baseUrl ? options.baseUrl + link : link;

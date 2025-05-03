@@ -1,0 +1,23 @@
+{
+  "compiler": {
+    "tsconfigFilePath": "./tsconfig.json"
+  },
+  "project": {
+    "entryPointSourceFile": "./src/index.ts"
+  },
+  "apiExtractor": {
+    "enabled": true,
+    "apiReport": {
+      "enabled": true,
+      "reportFolder": "./etc/api-extractor"
+    },
+    "docModel": {
+      "enabled": true,
+      "apiJsonFilePath": "./temp/api/myLibrary.api.json"
+    },
+    "dtsRollup": {
+      "enabled": true,
+      "untrimmedFilePath": "./dist/myLibrary.d.ts"
+    }
+  }
+}

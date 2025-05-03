@@ -14055,7 +14055,7 @@ var TrackedRSSfeed = class {
     var _a2;
     this.source = source;
     options.baseUrl = (_a2 = source.match(/[htps]+:\/\/[^\/]+(?=\/*)/)) == null ? void 0 : _a2[0];
-    const feed = extractFromXml(xml, options);
+    const feed = extractFromXml(xml.trimStart(), options);
     let { link, title, description, image, entries } = feed;
     if (link) {
       this.site = link.startsWith("/") && options.baseUrl ? options.baseUrl + link : link;
