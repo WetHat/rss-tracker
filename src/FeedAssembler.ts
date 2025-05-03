@@ -447,7 +447,7 @@ export class TrackedRSSfeed {
         this.source = source;
         options.baseUrl = source.match(/[htps]+:\/\/[^\/]+(?=\/*)/)?.[0];
 
-        const feed = extractFromXml(xml, options);
+        const feed = extractFromXml(xml.trimStart(), options);
 
         let { link, title, description, image, entries } = feed as IFeedDataExtended;
 
