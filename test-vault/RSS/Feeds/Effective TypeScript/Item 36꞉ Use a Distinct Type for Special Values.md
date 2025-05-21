@@ -1,20 +1,20 @@
 ---
 role: rssitem
-author: Unknown
+author: "unknown"
 published: 2024-06-13T17:30:00.000Z
 link: https://effectivetypescript.com/2024/06/13/special-values/
-id: https://effectivetypescript.com/2024/06/13/special-values/
+id: "https://effectivetypescript.com/2024/06/13/special-values/"
 feed: "[[Effective TypeScript]]"
 tags: []
 pinned: false
 ---
 
-> [!abstract] Item 36: Use a Distinct Type for Special Values - 2024-06-13T17:30:00.000Z
+> [!abstract] Item 36: Use a Distinct Type for Special Values (by unknown)
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] It's tempting to use "", 0 or -1 as special values: an empty string might represent text that hasn't loaded yet, or -1 could stand in for a missing number. In TypeScript, this is almost always a bad idea. Special values need to be handled specially, and giving them a distinct type, such as null, allows TypeScript to enforce that you do so.
 
 🌐 Read article [online](https://effectivetypescript.com/2024/06/13/special-values/). ⤴ For other items in this feed see `= this.feed`.
 
-- [ ] [[Item 36꞉ Use a Distinct Type for Special Values]]
+- [ ] [[RSS/Feeds/Effective TypeScript/Item 36꞉ Use a Distinct Type for Special Values|Item 36꞉ Use a Distinct Type for Special Values]]
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);

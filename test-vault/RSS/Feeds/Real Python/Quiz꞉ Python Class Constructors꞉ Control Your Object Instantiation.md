@@ -1,20 +1,20 @@
 ---
 role: rssitem
-author: Unknown
+author: "unknown"
 published: 2024-10-23T12:00:00.000Z
 link: https://realpython.com/quizzes/python-class-constructor/
-id: https://realpython.com/quizzes/python-class-constructor/
+id: "https://realpython.com/quizzes/python-class-constructor/"
 feed: "[[Real Python]]"
 tags: []
 pinned: false
 ---
 
-> [!abstract] Quiz: Python Class Constructors: Control Your Object Instantiation - 2024-10-23T12:00:00.000Z
+> [!abstract] Quiz: Python Class Constructors: Control Your Object Instantiation (by unknown)
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] In this quiz, you'll test your understanding of class constructors in Python. By working through this quiz, you'll revisit the internal instantiation process, object initialization, and fine-tuning object creation.
 
 🌐 Read article [online](https://realpython.com/quizzes/python-class-constructor/). ⤴ For other items in this feed see `= this.feed`.
 
-- [ ] [[Quiz꞉ Python Class Constructors꞉ Control Your Object Instantiation]]
+- [ ] [[RSS/Feeds/Real Python/Quiz꞉ Python Class Constructors꞉ Control Your Object Instantiation|Quiz꞉ Python Class Constructors꞉ Control Your Object Instantiation]]
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);

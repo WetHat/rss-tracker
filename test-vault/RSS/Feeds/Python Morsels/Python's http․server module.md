@@ -1,15 +1,15 @@
 ---
 role: rssitem
-author: Unknown
+author: "unknown"
 published: 2024-04-05T23:41:43.000Z
 link: https://www.pythonmorsels.com/http-server/
-id: https://www.pythonmorsels.com/http-server/
+id: "https://www.pythonmorsels.com/http-server/"
 feed: "[[Python Morsels]]"
 tags: []
 pinned: false
 ---
 
-> [!abstract] Python's http.server module - 2024-04-05T23:41:43.000Z
+> [!abstract] Python's http.server module (by unknown)
 > ![image|float:right|400](https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F1841759405-9da045272fa3ba2c3dafbff1086447bd10609290a8f06c9e3ef300b43cd23fbf-d_1920x1080&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png) Use Python's `http.server` module to serve up a static website on your own machine.
 > 
 > **Table of contents**
@@ -24,7 +24,7 @@ pinned: false
 
 🌐 Read article [online](https://www.pythonmorsels.com/http-server/). ⤴ For other items in this feed see `= this.feed`.
 
-- [ ] [[Python's http․server module]]
+- [ ] [[RSS/Feeds/Python Morsels/Python's http․server module|Python's http․server module]]
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);

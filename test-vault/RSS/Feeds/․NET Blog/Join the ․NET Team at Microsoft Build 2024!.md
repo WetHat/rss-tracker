@@ -3,20 +3,20 @@ role: rssitem
 author: "Mehul Harry"
 published: 2024-05-09T17:05:00.000Z
 link: https://devblogs.microsoft.com/dotnet/join-the-dotnet-team-microsoft-build-2024/
-id: https://devblogs.microsoft.com/dotnet/?p=51773
+id: "https://devblogs.microsoft.com/dotnet/?p=51773"
 feed: "[[․NET Blog]]"
 tags: [rss/AI,rss/ASP_NET,rss/ASP_NET_Core,rss/C＃,rss/Machine_Learning,rss/_NET,rss/_NET_Core,rss/azure,rss/event,rss/microsoft_build]
 pinned: false
 ---
 
-> [!abstract] Join the .NET Team at Microsoft Build 2024! by Mehul Harry - 2024-05-09T17:05:00.000Z
+> [!abstract] Join the .NET Team at Microsoft Build 2024! (by Mehul Harry)
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] Get ready for a great lineup of .NET sessions at Microsoft Build 2024. Join us either in Seattle or from the comfort of your own home. With a mix of live and online sessions, you won’t miss a beat.
 > 
 > The post [Join the .NET Team at Microsoft Build 2024!](https://devblogs.microsoft.com/dotnet/join-the-dotnet-team-microsoft-build-2024/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 
 🌐 Read article [online](https://devblogs.microsoft.com/dotnet/join-the-dotnet-team-microsoft-build-2024/). ⤴ For other items in this feed see `= this.feed`.
 
-- [ ] [[Join the ․NET Team at Microsoft Build 2024!]]
+- [ ] [[RSS/Feeds/․NET Blog/Join the ․NET Team at Microsoft Build 2024!|Join the ․NET Team at Microsoft Build 2024!]]
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);

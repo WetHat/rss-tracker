@@ -3,18 +3,18 @@ role: rssitem
 author: "Carlin Cherry"
 published: 2024-05-02T16:30:32.000Z
 link: https://github.blog/2024-05-02-dependabot-on-github-actions-and-self-hosted-runners-is-now-generally-available/
-id: https://github.blog/?p=77824
+id: "https://github.blog/?p=77824"
 feed: "[[The GitHub Blog꞉ Product News and Updates]]"
-tags: [rss/object_Object]
+tags: [rss/Dependabot,rss/GitHub_Actions,rss/Product,rss/supply_chain_security]
 pinned: false
 ---
 
-> [!abstract] Dependabot on GitHub Actions and self-hosted runners is now generally available by Carlin Cherry - 2024-05-02T16:30:32.000Z
+> [!abstract] Dependabot on GitHub Actions and self-hosted runners is now generally available (by Carlin Cherry)
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] A quick guide on the advantages of Dependabot as a GitHub Actions workflow and the benefits this unlocks, including self-hosted runner support. The post Dependabot on GitHub Actions and self-hosted runners is now generally available appeared first on The GitHub Blog.
 
 🌐 Read article [online](https://github.blog/2024-05-02-dependabot-on-github-actions-and-self-hosted-runners-is-now-generally-available/). ⤴ For other items in this feed see `= this.feed`.
 
-- [ ] [[Dependabot on GitHub Actions and self-hosted runners is now generally available]]
+- [ ] [[RSS/Feeds/The GitHub Blog꞉ Product News and Updates/Dependabot on GitHub Actions and self-hosted runners is now generally available|Dependabot on GitHub Actions and self-hosted runners is now generally available]]
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);

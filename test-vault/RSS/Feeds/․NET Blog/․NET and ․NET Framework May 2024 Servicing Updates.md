@@ -3,20 +3,20 @@ role: rssitem
 author: "Tara Overfield"
 published: 2024-05-15T17:05:00.000Z
 link: https://devblogs.microsoft.com/dotnet/dotnet-and-dotnet-framework-may-2024-servicing-updates/
-id: https://devblogs.microsoft.com/dotnet/?p=51837
+id: "https://devblogs.microsoft.com/dotnet/?p=51837"
 feed: "[[․NET Blog]]"
 tags: [rss/Maintenance,rss/Updates,rss/_NET,rss/_NET_Framework,rss/_net_framework]
 pinned: false
 ---
 
-> [!abstract] .NET and .NET Framework May 2024 Servicing Updates by Tara Overfield - 2024-05-15T17:05:00.000Z
+> [!abstract] .NET and .NET Framework May 2024 Servicing Updates (by Tara Overfield)
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] A recap of the latest servicing updates for .NET and .NET Framework for May 2024.
 > 
 > The post [.NET and .NET Framework May 2024 Servicing Updates](https://devblogs.microsoft.com/dotnet/dotnet-and-dotnet-framework-may-2024-servicing-updates/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 
 🌐 Read article [online](https://devblogs.microsoft.com/dotnet/dotnet-and-dotnet-framework-may-2024-servicing-updates/). ⤴ For other items in this feed see `= this.feed`.
 
-- [ ] [[․NET and ․NET Framework May 2024 Servicing Updates]]
+- [ ] [[RSS/Feeds/․NET Blog/․NET and ․NET Framework May 2024 Servicing Updates|․NET and ․NET Framework May 2024 Servicing Updates]]
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);

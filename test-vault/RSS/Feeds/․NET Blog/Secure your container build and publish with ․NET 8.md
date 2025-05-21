@@ -3,20 +3,20 @@ role: rssitem
 author: "Richard Lander"
 published: 2024-04-30T17:05:00.000Z
 link: https://devblogs.microsoft.com/dotnet/secure-your-container-build-and-publish-with-dotnet-8/
-id: https://devblogs.microsoft.com/dotnet/?p=51654
+id: "https://devblogs.microsoft.com/dotnet/?p=51654"
 feed: "[[․NET Blog]]"
 tags: [rss/CLI,rss/Cloud_Native,rss/Containers,rss/_NET,rss/_net_sdk,rss/dotnet_cli,rss/sdk]
 pinned: false
 ---
 
-> [!abstract] Secure your container build and publish with .NET 8 by Richard Lander - 2024-04-30T17:05:00.000Z
+> [!abstract] Secure your container build and publish with .NET 8 (by Richard Lander)
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] .NET 8 has new security features for containers, including non-root images and SDK tools. Discover how to create non-root container images, configure Kubernetes pods, and inspect images and containers for enhanced security.
 > 
 > The post [Secure your container build and publish with .NET 8](https://devblogs.microsoft.com/dotnet/secure-your-container-build-and-publish-with-dotnet-8/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 
 🌐 Read article [online](https://devblogs.microsoft.com/dotnet/secure-your-container-build-and-publish-with-dotnet-8/). ⤴ For other items in this feed see `= this.feed`.
 
-- [ ] [[Secure your container build and publish with ․NET 8]]
+- [ ] [[RSS/Feeds/․NET Blog/Secure your container build and publish with ․NET 8|Secure your container build and publish with ․NET 8]]
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
@@ -56,7 +56,7 @@ From the same post, under “Mitigations”:
 
 Here, the author is effectively saying that you need to do your part to more safely rely on the pseudo-sandboxing nature of container solutions. If you don’t and another container breakout vulnerability is discovered, then part of the burden falls to developers hosting their apps as `root`. Put another way, “caveat emptor.”
 
-The security and vulnerability landscape can be tough to navigate at the best of times. Keeping dependencies up to date is the first and most critical mitigation to these risks, for both container host and guest. Non-root hosting is an excellent [defense in depth](https://en.wikipedia.org/wiki/Defense_in_depth_(computing)) measure that may protect against unknown future vulnerabilities.
+The security and vulnerability landscape can be tough to navigate at the best of times. Keeping dependencies up to date is the first and most critical mitigation to these risks, for both container host and guest. Non-root hosting is an excellent [defense in depth](https://en.wikipedia.org/wiki/Defense_in_depth_\(computing\)) measure that may protect against unknown future vulnerabilities.
 
 ## Container ecosystem: `root` by default
 

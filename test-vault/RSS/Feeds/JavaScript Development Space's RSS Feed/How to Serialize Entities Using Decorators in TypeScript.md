@@ -9,12 +9,12 @@ tags: []
 pinned: false
 ---
 
-> [!abstract] How to Serialize Entities Using Decorators in TypeScript by unknown - 2024-09-30T00:00:00.000Z
+> [!abstract] How to Serialize Entities Using Decorators in TypeScript (by unknown)
 > ![image|float:right|400](./images/serialize-entities-typescript.png) Serialization is the process of converting an object into a format that can be easily stored or transmitted and later reconstructed. In…
 
 🌐 Read article [online](https://jsdev.space/howto/serialize-entities-typescript/). ⤴ For other items in this feed see `= this.feed`.
 
-- [ ] [[How to Serialize Entities Using Decorators in TypeScript]]
+- [ ] [[RSS/Feeds/JavaScript Development Space's RSS Feed/How to Serialize Entities Using Decorators in TypeScript|How to Serialize Entities Using Decorators in TypeScript]]
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);

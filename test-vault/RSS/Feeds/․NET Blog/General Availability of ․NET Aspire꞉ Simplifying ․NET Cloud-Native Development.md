@@ -3,20 +3,20 @@ role: rssitem
 author: "Damian Edwards"
 published: 2024-05-21T15:50:00.000Z
 link: https://devblogs.microsoft.com/dotnet/dotnet-aspire-general-availability/
-id: https://devblogs.microsoft.com/dotnet/?p=51907
+id: "https://devblogs.microsoft.com/dotnet/?p=51907"
 feed: "[[․NET Blog]]"
 tags: [rss/Azure,rss/Cloud_Native,rss/Containers,rss/Docker,rss/OpenTelemetry,rss/_NET,rss/_NET_Aspire,rss/aspire,rss/azure,rss/cloud_native,rss/distribute,rss/observable,rss/otel,rss/scalable,rss/stack]
 pinned: false
 ---
 
-> [!abstract] General Availability of .NET Aspire: Simplifying .NET Cloud-Native Development by Damian Edwards - 2024-05-21T15:50:00.000Z
+> [!abstract] General Availability of .NET Aspire: Simplifying .NET Cloud-Native Development (by Damian Edwards)
 > ![image|float:right|400](./aspire-ga-what-is-aspire.png) .NET Aspire, the stack that streamlines development of .NET cloud-native services, is now generally available.
 > 
 > The post [General Availability of .NET Aspire: Simplifying .NET Cloud-Native Development](https://devblogs.microsoft.com/dotnet/dotnet-aspire-general-availability/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 
 🌐 Read article [online](https://devblogs.microsoft.com/dotnet/dotnet-aspire-general-availability/). ⤴ For other items in this feed see `= this.feed`.
 
-- [ ] [[General Availability of ․NET Aspire꞉ Simplifying ․NET Cloud-Native Development]]
+- [ ] [[RSS/Feeds/․NET Blog/General Availability of ․NET Aspire꞉ Simplifying ․NET Cloud-Native Development|General Availability of ․NET Aspire꞉ Simplifying ․NET Cloud-Native Development]]
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);

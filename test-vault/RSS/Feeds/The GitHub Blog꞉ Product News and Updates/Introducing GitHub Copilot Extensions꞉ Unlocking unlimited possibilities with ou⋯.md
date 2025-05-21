@@ -3,18 +3,18 @@ role: rssitem
 author: "Mario Rodriguez"
 published: 2024-05-21T15:27:46.000Z
 link: https://github.blog/2024-05-21-introducing-github-copilot-extensions/
-id: https://github.blog/?p=78012
+id: "https://github.blog/?p=78012"
 feed: "[[The GitHub Blog꞉ Product News and Updates]]"
-tags: [rss/object_Object]
+tags: [rss/AI,rss/GitHub_Copilot,rss/GitHub_Copilot_Extensions,rss/Product,rss/developer_experience]
 pinned: false
 ---
 
-> [!abstract] Introducing GitHub Copilot Extensions: Unlocking unlimited possibilities with our ecosystem of partners by Mario Rodriguez - 2024-05-21T15:27:46.000Z
+> [!abstract] Introducing GitHub Copilot Extensions: Unlocking unlimited possibilities with our ecosystem of partners (by Mario Rodriguez)
 > ![image|float:right|400](https://github.blog/wp-content/uploads/2024/05/Marketplace-App-Tiles@2x.png?resize=1024%2C597) The world of Copilot is getting bigger, improving the developer experience by keeping developers in the flow longer and allowing them to do more in natural language. The post Introducing GitHub Copilot Extensions: Unlocking unlimited possibilities with our ecosystem of partners appeared first on The GitHub Blog.
 
 🌐 Read article [online](https://github.blog/2024-05-21-introducing-github-copilot-extensions/). ⤴ For other items in this feed see `= this.feed`.
 
-- [ ] [[Introducing GitHub Copilot Extensions꞉ Unlocking unlimited possibilities with ou⋯]]
+- [ ] [[RSS/Feeds/The GitHub Blog꞉ Product News and Updates/Introducing GitHub Copilot Extensions꞉ Unlocking unlimited possibilities with ou⋯|Introducing GitHub Copilot Extensions꞉ Unlocking unlimited possibilities with ou⋯]]
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);

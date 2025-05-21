@@ -9,7 +9,7 @@ tags: [rss/AI,rss/PowerShell]
 pinned: false
 ---
 
-> [!abstract] GitHub Copilot for CLI for PowerShell by Scott Hanselman - 2023-04-25T15:31:49.000Z
+> [!abstract] GitHub Copilot for CLI for PowerShell (by Scott Hanselman)
 > ![image|float:right|400](https://www.hanselman.com/blog/content/binary/Windows-Live-Writer/GitHub-Copilot-for-CLI-for-PowerShell_B0E3/image_f39afdbf-04bf-4c95-a913-2404f46dc308.png "image") GitHub Next has this cool project that is basically Copilot for the CLI (command line interface). You can sign up for their waitlist at the [Copilot for CLI site](https://githubnext.com/projects/copilot-cli/).
 > 
 > > Copilot for CLI provides three shell commands: `??`, `git?` and `gh?`
@@ -22,7 +22,7 @@ pinned: false
 
 🌐 Read article [online](https://feeds.hanselman.com/~/737271731/0/scotthanselman~GitHub-Copilot-for-CLI-for-PowerShell). ⤴ For other items in this feed see `= this.feed`.
 
-- [ ] [[GitHub Copilot for CLI for PowerShell]]
+- [ ] [[RSS/Feeds/Scott Hanselman's Blog/GitHub Copilot for CLI for PowerShell|GitHub Copilot for CLI for PowerShell]]
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);

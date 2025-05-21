@@ -1,15 +1,15 @@
 ---
 role: rssitem
-author: Unknown
+author: "unknown"
 published: 2024-02-05T16:00:00.000Z
 link: https://www.pythonmorsels.com/TextIOWrapper/
-id: https://www.pythonmorsels.com/TextIOWrapper/
+id: "https://www.pythonmorsels.com/TextIOWrapper/"
 feed: "[[Python Morsels]]"
 tags: []
 pinned: false
 ---
 
-> [!abstract] TextIOWrapper‽ converting files to strings in Python - 2024-02-05T16:00:00.000Z
+> [!abstract] TextIOWrapper‽ converting files to strings in Python (by unknown)
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] Ever encountered an `_io.TextIOWrapper` object when you wished you had a string? That's Python's version of a "text file" object!
 > 
 > **Table of contents**
@@ -22,7 +22,7 @@ pinned: false
 
 🌐 Read article [online](https://www.pythonmorsels.com/TextIOWrapper/). ⤴ For other items in this feed see `= this.feed`.
 
-- [ ] [[TextIOWrapper‽ converting files to strings in Python]]
+- [ ] [[RSS/Feeds/Python Morsels/TextIOWrapper‽ converting files to strings in Python|TextIOWrapper‽ converting files to strings in Python]]
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);

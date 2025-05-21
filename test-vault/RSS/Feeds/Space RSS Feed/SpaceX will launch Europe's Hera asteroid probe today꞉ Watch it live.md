@@ -1,20 +1,20 @@
 ---
 role: rssitem
-author: Unknown
+author: "unknown"
 published: 2024-10-06T13:00:01.000Z
 link: https://www.space.com/esa-hera-mission-spacex-launch-livestream
-id: 4pWw6gTKuizShJZXC9BioD
+id: "4pWw6gTKuizShJZXC9BioD"
 feed: "[[Space RSS Feed]]"
 tags: [rss/Launches,rss/Space_Exploration,rss/ampSpacecraft]
 pinned: false
 ---
 
-> [!abstract]  SpaceX will launch Europe's Hera asteroid probe today: Watch it live  - 2024-10-06T13:00:01.000Z
+> [!abstract]  SpaceX will launch Europe's Hera asteroid probe today: Watch it live  (by unknown)
 > ![image|float:right|400](https://cdn.mos.cms.futurecdn.net/8FdKMmCstG8xM7hs7yAaLA.jpg) SpaceX will launch Europe's Hera spacecraft on Monday (Oct. 7) toward the asteroid Dimorphos for a post-impact evaluation, and you can watch the liftoff live.
 
 🌐 Read article [online](https://www.space.com/esa-hera-mission-spacex-launch-livestream). ⤴ For other items in this feed see `= this.feed`.
 
-- [ ] [[SpaceX will launch Europe's Hera asteroid probe today꞉ Watch it live]]
+- [ ] [[RSS/Feeds/Space RSS Feed/SpaceX will launch Europe's Hera asteroid probe today꞉ Watch it live|SpaceX will launch Europe's Hera asteroid probe today꞉ Watch it live]]
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);

@@ -3,20 +3,20 @@ role: rssitem
 author: ".NET Team"
 published: 2024-05-21T17:05:00.000Z
 link: https://devblogs.microsoft.com/dotnet/dotnet-build-2024-announcements/
-id: https://devblogs.microsoft.com/dotnet/?p=51919
+id: "https://devblogs.microsoft.com/dotnet/?p=51919"
 feed: "[[․NET Blog]]"
 tags: [rss/AI,rss/ASP_NET,rss/ASP_NET_Core,rss/Blazor,rss/Cloud_Native,rss/Containers,rss/C＃,rss/Performance,rss/Visual_Studio,rss/Visual_Studio_Code,rss/_NET,rss/_NET_Aspire,rss/_NET_Internals,rss/_NET_MAUI,rss/_net_9,rss/_net_9_preview_4,rss/_net_aspire,rss/announcement,rss/microsoft_build]
 pinned: false
 ---
 
-> [!abstract] .NET Announcements and Updates from Microsoft Build 2024 by .NET Team - 2024-05-21T17:05:00.000Z
+> [!abstract] .NET Announcements and Updates from Microsoft Build 2024 (by .NET Team)
 > ![image|float:right|400](https://devblogs.microsoft.com/dotnet/wp-content/uploads/sites/10/2024/05/build-dotnet-overview.png) Our latest updates and announcements from Microsoft Build including .NET Aspire, .NET 9 Preview 4, C# 13, Blazor, .NET MAUI, and more!
 > 
 > The post [.NET Announcements and Updates from Microsoft Build 2024](https://devblogs.microsoft.com/dotnet/dotnet-build-2024-announcements/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 
 🌐 Read article [online](https://devblogs.microsoft.com/dotnet/dotnet-build-2024-announcements/). ⤴ For other items in this feed see `= this.feed`.
 
-- [ ] [[․NET Announcements and Updates from Microsoft Build 2024]]
+- [ ] [[RSS/Feeds/․NET Blog/․NET Announcements and Updates from Microsoft Build 2024|․NET Announcements and Updates from Microsoft Build 2024]]
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);

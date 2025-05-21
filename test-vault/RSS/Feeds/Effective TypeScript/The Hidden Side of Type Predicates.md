@@ -9,12 +9,12 @@ tags: []
 pinned: false
 ---
 
-> [!abstract] The Hidden Side of Type Predicates by unknown - 2024-02-27T15:45:00.000Z
+> [!abstract] The Hidden Side of Type Predicates (by unknown)
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] Type guards are a powerful tool for improving TypeScript's built-in control flow analysis. This post looks at when it's appropriate to use a type predicate, and in particular what it means when a type predicate returns false.
 
 🌐 Read article [online](https://effectivetypescript.com/2024/02/27/type-guards/). ⤴ For other items in this feed see `= this.feed`.
 
-- [ ] [[The Hidden Side of Type Predicates]]
+- [ ] [[RSS/Feeds/Effective TypeScript/The Hidden Side of Type Predicates|The Hidden Side of Type Predicates]]
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);

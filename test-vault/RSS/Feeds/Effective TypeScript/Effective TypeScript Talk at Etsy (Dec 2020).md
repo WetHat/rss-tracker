@@ -9,12 +9,12 @@ tags: []
 pinned: false
 ---
 
-> [!abstract] Effective TypeScript Talk at Etsy (Dec 2020) by unknown - 2024-01-31T22:40:00.000Z
+> [!abstract] Effective TypeScript Talk at Etsy (Dec 2020) (by unknown)
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] Back in 2020 I gave a whole series of Effective TypeScript talks at companies that were interested in the language and the book. The talk that I gave at Etsy in December of 2020 was one of the most fun. It was recorded and is now available to watch. It's about an hour.
 
 🌐 Read article [online](https://effectivetypescript.com/2024/01/31/etsy/). ⤴ For other items in this feed see `= this.feed`.
 
-- [ ] [[Effective TypeScript Talk at Etsy (Dec 2020)]]
+- [ ] [[RSS/Feeds/Effective TypeScript/Effective TypeScript Talk at Etsy (Dec 2020)|Effective TypeScript Talk at Etsy (Dec 2020)]]
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);

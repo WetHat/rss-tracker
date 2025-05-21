@@ -1,20 +1,20 @@
 ---
 role: rssitem
-author: Unknown
+author: "unknown"
 published: 2024-10-23T14:00:00.000Z
 link: https://realpython.com/python-thread-lock/
-id: https://realpython.com/python-thread-lock/
+id: "https://realpython.com/python-thread-lock/"
 feed: "[[Real Python]]"
 tags: []
 pinned: false
 ---
 
-> [!abstract] Python Thread Safety: Using a Lock and Other Techniques - 2024-10-23T14:00:00.000Z
+> [!abstract] Python Thread Safety: Using a Lock and Other Techniques (by unknown)
 > ![image|float:right|400](https://files.realpython.com/media/Thread-Safety-in-Python_Watermarked.434d0dbc3127.jpg) In this tutorial, you'll learn about the issues that can occur when your code is run in a multithreaded environment. Then you'll explore the various synchronization primitives available in Python's threading module, such as locks, which help you make your code safe.
 
 🌐 Read article [online](https://realpython.com/python-thread-lock/). ⤴ For other items in this feed see `= this.feed`.
 
-- [ ] [[Python Thread Safety꞉ Using a Lock and Other Techniques]]
+- [ ] [[RSS/Feeds/Real Python/Python Thread Safety꞉ Using a Lock and Other Techniques|Python Thread Safety꞉ Using a Lock and Other Techniques]]
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);

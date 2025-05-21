@@ -3,20 +3,20 @@ role: rssitem
 author: "Wendy Breiding (SHE/HER)"
 published: 2024-05-07T20:05:00.000Z
 link: https://devblogs.microsoft.com/dotnet/may-release-of-csharp-dev-kit/
-id: https://devblogs.microsoft.com/dotnet/?p=51662
+id: "https://devblogs.microsoft.com/dotnet/?p=51662"
 feed: "[[․NET Blog]]"
 tags: [rss/Cloud_Native,rss/Csharp,rss/C＃,rss/C＃_Dev_Kit,rss/Visual_Studio_Code,rss/_NET,rss/csharpdevkit,rss/vscode]
 pinned: false
 ---
 
-> [!abstract] Package Management &#038; improved .NET Aspire support come to C# Dev Kit by Wendy Breiding (SHE/HER) - 2024-05-07T20:05:00.000Z
+> [!abstract] Package Management &#038; improved .NET Aspire support come to C# Dev Kit (by Wendy Breiding (SHE/HER))
 > ![image|float:right|400](https://devblogs.microsoft.com/dotnet/wp-content/uploads/sites/10/2024/04/SDKAcquisition.png) Explore the new features and enhancements in the latest version of C# Dev Kit including NuGet package management, .NET Aspire project support, and much more.
 > 
 > The post [Package Management & improved .NET Aspire support come to C# Dev Kit](https://devblogs.microsoft.com/dotnet/may-release-of-csharp-dev-kit/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 
 🌐 Read article [online](https://devblogs.microsoft.com/dotnet/may-release-of-csharp-dev-kit/). ⤴ For other items in this feed see `= this.feed`.
 
-- [ ] [[Package Management ＆ improved ․NET Aspire support come to C＃ Dev Kit]]
+- [ ] [[RSS/Feeds/․NET Blog/Package Management ＆ improved ․NET Aspire support come to C＃ Dev Kit|Package Management ＆ improved ․NET Aspire support come to C＃ Dev Kit]]
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);

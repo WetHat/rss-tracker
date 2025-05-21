@@ -9,7 +9,7 @@ tags: []
 pinned: false
 ---
 
-> [!abstract] Every dunder method in Python by unknown - 2024-03-19T21:30:00.000Z
+> [!abstract] Every dunder method in Python (by unknown)
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] An explanation of all of Python's 100+ dunder methods and 50+ dunder attributes, including a summary of each one.
 > 
 > **Table of contents**
@@ -23,7 +23,7 @@ pinned: false
 
 🌐 Read article [online](https://www.pythonmorsels.com/every-dunder-method/). ⤴ For other items in this feed see `= this.feed`.
 
-- [ ] [[Every dunder method in Python]]
+- [ ] [[RSS/Feeds/Python Morsels/Every dunder method in Python|Every dunder method in Python]]
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);

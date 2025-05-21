@@ -9,12 +9,12 @@ tags: [rss/Astronomy_Kit,rss/Stargazing]
 pinned: false
 ---
 
-> [!abstract]  Save 10% on this BlissLights Sky Lite Evolve star projector this Prime Day  by unknown - 2024-10-07T12:02:36.000Z
+> [!abstract]  Save 10% on this BlissLights Sky Lite Evolve star projector this Prime Day  (by unknown)
 > ![image|float:right|400](https://cdn.mos.cms.futurecdn.net/f72tLccSoByVbGcDhLkU5a.jpg) This BlissLights Sky Light Evolve star projector is 10% off for Prime Day
 
 🌐 Read article [online](https://www.space.com/prime-day-star-projector-deal-save-10-percent-blisslights-october-2024). ⤴ For other items in this feed see `= this.feed`.
 
-- [ ] [[Save 10% on this BlissLights Sky Lite Evolve star projector this Prime Day]]
+- [ ] [[RSS/Feeds/Space RSS Feed/Save 10% on this BlissLights Sky Lite Evolve star projector this Prime Day|Save 10% on this BlissLights Sky Lite Evolve star projector this Prime Day]]
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);

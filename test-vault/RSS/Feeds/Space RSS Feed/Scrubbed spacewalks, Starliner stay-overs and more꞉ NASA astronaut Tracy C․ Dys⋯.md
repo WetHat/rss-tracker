@@ -3,18 +3,18 @@ role: rssitem
 author: " robert@collectspace.com (Robert Z. Pearlman) "
 published: 2024-10-07T12:00:25.000Z
 link: https://www.space.com/nasa-astronaut-tracy-caldwell-dyson-post-flight-briefing
-id: zvZkavgFL5GFmmUezkRB6A
+id: "zvZkavgFL5GFmmUezkRB6A"
 feed: "[[Space RSS Feed]]"
 tags: [rss/Human_Spaceflight,rss/Space_Exploration]
 pinned: false
 ---
 
-> [!abstract]  Scrubbed spacewalks, Starliner stay-overs and more: NASA astronaut Tracy C. Dyson discusses her eventful 6 months in orbit  by  robert@collectspace.com (Robert Z. Pearlman)  - 2024-10-07T12:00:25.000Z
+> [!abstract]  Scrubbed spacewalks, Starliner stay-overs and more: NASA astronaut Tracy C. Dyson discusses her eventful 6 months in orbit  (by  robert@collectspace.com (Robert Z. Pearlman) )
 > ![image|float:right|400](https://cdn.mos.cms.futurecdn.net/YXud9By9jEiirv4jJ8uyvZ.jpg) NASA astronaut Tracy Caldwell Dyson reflected on her time in space during a post-flight press conference at NASA’s Johnson Space Center in Houston on Friday (Oct. 4).
 
 🌐 Read article [online](https://www.space.com/nasa-astronaut-tracy-caldwell-dyson-post-flight-briefing). ⤴ For other items in this feed see `= this.feed`.
 
-- [ ] [[Scrubbed spacewalks, Starliner stay-overs and more꞉ NASA astronaut Tracy C․ Dys⋯]]
+- [ ] [[RSS/Feeds/Space RSS Feed/Scrubbed spacewalks, Starliner stay-overs and more꞉ NASA astronaut Tracy C․ Dys⋯|Scrubbed spacewalks, Starliner stay-overs and more꞉ NASA astronaut Tracy C․ Dys⋯]]
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);

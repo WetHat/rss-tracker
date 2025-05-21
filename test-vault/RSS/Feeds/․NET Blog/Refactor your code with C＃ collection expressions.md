@@ -3,20 +3,20 @@ role: rssitem
 author: "David Pine"
 published: 2024-05-08T17:05:00.000Z
 link: https://devblogs.microsoft.com/dotnet/refactor-your-code-with-collection-expressions/
-id: https://devblogs.microsoft.com/dotnet/?p=51745
+id: "https://devblogs.microsoft.com/dotnet/?p=51745"
 feed: "[[․NET Blog]]"
 tags: [rss/C＃,rss/_NET,rss/_net_8,rss/c＃_12]
 pinned: false
 ---
 
-> [!abstract] Refactor your code with C# collection expressions by David Pine - 2024-05-08T17:05:00.000Z
+> [!abstract] Refactor your code with C# collection expressions (by David Pine)
 > ![image|float:right|400](https://s.w.org/images/core/emoji/15.0.3/72x72/1f3a8.png) Explore various C# 12 refactoring scenarios for a variety of target types using collection expressions, collection initializers, and the spread syntax.
 > 
 > The post [Refactor your code with C# collection expressions](https://devblogs.microsoft.com/dotnet/refactor-your-code-with-collection-expressions/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 
 🌐 Read article [online](https://devblogs.microsoft.com/dotnet/refactor-your-code-with-collection-expressions/). ⤴ For other items in this feed see `= this.feed`.
 
-- [ ] [[Refactor your code with C＃ collection expressions]]
+- [ ] [[RSS/Feeds/․NET Blog/Refactor your code with C＃ collection expressions|Refactor your code with C＃ collection expressions]]
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);

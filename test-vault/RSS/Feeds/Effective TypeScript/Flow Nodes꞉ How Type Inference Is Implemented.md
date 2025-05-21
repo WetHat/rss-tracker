@@ -1,20 +1,20 @@
 ---
 role: rssitem
-author: Unknown
+author: "unknown"
 published: 2024-03-25T03:00:00.000Z
 link: https://effectivetypescript.com/2024/03/24/flownodes/
-id: https://effectivetypescript.com/2024/03/24/flownodes/
+id: "https://effectivetypescript.com/2024/03/24/flownodes/"
 feed: "[[Effective TypeScript]]"
 tags: []
 pinned: false
 ---
 
-> [!abstract] Flow Nodes: How Type Inference Is Implemented - 2024-03-25T03:00:00.000Z
+> [!abstract] Flow Nodes: How Type Inference Is Implemented (by unknown)
 > ![image|float:right|400](https://effectivetypescript.com/images/dall-e-control-flow.jpg) If a variable gets a type but no one looks at it, does it really get a type at all? This post looks at how type inference is implemented in the TypeScript compiler. It's of some interest to anyone who uses TypeScript and is curious how it works, but it will be most relevant to developers who want to contribute to TypeScript itself.
 
 🌐 Read article [online](https://effectivetypescript.com/2024/03/24/flownodes/). ⤴ For other items in this feed see `= this.feed`.
 
-- [ ] [[Flow Nodes꞉ How Type Inference Is Implemented]]
+- [ ] [[RSS/Feeds/Effective TypeScript/Flow Nodes꞉ How Type Inference Is Implemented|Flow Nodes꞉ How Type Inference Is Implemented]]
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);

@@ -9,7 +9,7 @@ tags: [rss/Open_Source]
 pinned: false
 ---
 
-> [!abstract] Open Sourcing DOS 4 by Scott Hanselman - 2024-04-25T16:46:13.000Z
+> [!abstract] Open Sourcing DOS 4 (by Scott Hanselman)
 > ![image|float:right|400](https://www.hanselman.com/blog/content/binary/Windows-Live-Writer/Open-Sourcing-DOS-4_E712/clip_image002_5b6e1c02-95d8-4ee1-87af-ca53a8b0bd56.png "Beta DOS Disks") _See [the canonical version of this blog post at the Microsoft Open Source Blog](https://cloudblogs.microsoft.com/opensource/2024/04/25/open-sourcing-ms-dos-4-0/)!_
 > 
 > Ten years ago, [Microsoft released the source for MS-DOS 1.25 and 2.0](https://devblogs.microsoft.com/commandline/re-open-sourcing-ms-dos-1-25-and-2-0/) to the Computer History Museum, and then [later republished them](https://github.com/microsoft/MS-DOS) for reference purposes. This code holds an important place in history and is a fascinating read of an operating system that was written entirely in 8086 assembly code nearly 45 years ago.
@@ -18,7 +18,7 @@ pinned: false
 
 🌐 Read article [online](https://feeds.hanselman.com/~/882544025/0/scotthanselman~Open-Sourcing-DOS). ⤴ For other items in this feed see `= this.feed`.
 
-- [ ] [[Open Sourcing DOS 4]]
+- [ ] [[RSS/Feeds/Scott Hanselman's Blog/Open Sourcing DOS 4|Open Sourcing DOS 4]]
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);

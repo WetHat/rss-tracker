@@ -3,20 +3,20 @@ role: rssitem
 author: "Min Huang"
 published: 2024-05-27T15:00:00.000Z
 link: https://devblogs.microsoft.com/dotnet/dotnet-docs-link-to-source-code/
-id: https://devblogs.microsoft.com/dotnet/?p=51964
+id: "https://devblogs.microsoft.com/dotnet/?p=51964"
 feed: "[[․NET Blog]]"
 tags: [rss/Source_Link,rss/_NET,rss/_NET_Fundamentals,rss/_NET_Internals,rss/microsoft_learn]
 pinned: false
 ---
 
-> [!abstract] Introducing links to source code for .NET API Docs by Min Huang - 2024-05-27T15:00:00.000Z
+> [!abstract] Introducing links to source code for .NET API Docs (by Min Huang)
 > ![image|float:right|400](https://devblogs.microsoft.com/dotnet/wp-content/uploads/sites/10/2024/05/string-class-example.png) .NET API reference docs now link directly to the source code! Learn how the links are generated, and some of ideas for future improvements.
 > 
 > The post [Introducing links to source code for .NET API Docs](https://devblogs.microsoft.com/dotnet/dotnet-docs-link-to-source-code/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 
 🌐 Read article [online](https://devblogs.microsoft.com/dotnet/dotnet-docs-link-to-source-code/). ⤴ For other items in this feed see `= this.feed`.
 
-- [ ] [[Introducing links to source code for ․NET API Docs]]
+- [ ] [[RSS/Feeds/․NET Blog/Introducing links to source code for ․NET API Docs|Introducing links to source code for ․NET API Docs]]
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
@@ -34,7 +34,7 @@ Before going into implementation details, we would like to showcase where the do
 
 ![Screenshot of String Class showing placement on the new link to source in the Definition metadata](https://devblogs.microsoft.com/dotnet/wp-content/uploads/sites/10/2024/05/string-class-example.png)
 
-In cases where overloads are present, the links are included below the overload title. The following image of [`String.IndexOf`](https://learn.microsoft.com/dotnet/api/system.string.indexof?view=net-8.0#system-string-indexof(system-string-system-int32-system-int32)) method demonstrates this pattern:
+In cases where overloads are present, the links are included below the overload title. The following image of [`String.IndexOf`](https://learn.microsoft.com/dotnet/api/system.string.indexof?view=net-8.0#system-string-indexof\(system-string-system-int32-system-int32\)) method demonstrates this pattern:
 
 ![Screenshot of String.IndexOf Method showing placement on the new link to source below the overload title](https://devblogs.microsoft.com/dotnet/wp-content/uploads/sites/10/2024/05/index-of-example.png)
 

@@ -9,7 +9,7 @@ tags: []
 pinned: false
 ---
 
-> [!abstract] Equality versus identity in Python by unknown - 2024-05-28T23:52:24.000Z
+> [!abstract] Equality versus identity in Python (by unknown)
 > ![image|float:right|400](https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F1859635053-5a5a328c38769260b233cb1fae005603a26ff65e609fba2d15a8af03ad563ba9-d_1920x1080&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png) Equality checks whether two objects **represent the same value**. Identity checks whether two variables **point to the same object**.
 > 
 > **Table of contents**
@@ -23,7 +23,7 @@ pinned: false
 
 🌐 Read article [online](https://www.pythonmorsels.com/equality-vs-identity/). ⤴ For other items in this feed see `= this.feed`.
 
-- [ ] [[Equality versus identity in Python]]
+- [ ] [[RSS/Feeds/Python Morsels/Equality versus identity in Python|Equality versus identity in Python]]
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);

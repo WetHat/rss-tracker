@@ -3,13 +3,13 @@ role: rssitem
 author: "Scott Hanselman"
 published: 2021-12-14T21:36:00.000Z
 link: https://feeds.hanselman.com/~/676711904/0/scotthanselman~Using-Home-Assistant-to-integrate-a-Unifi-Protect-G-Doorbell-and-Amazon-Alexa-to-announce-visitors
-id: https://www.hanselman.com/blog/post/9632ddf9-403c-4319-bba6-4cb98bc7932b
+id: "https://www.hanselman.com/blog/post/9632ddf9-403c-4319-bba6-4cb98bc7932b"
 feed: "[[Scott Hanselman's Blog]]"
 tags: [rss/Home_Server,rss/Musings]
 pinned: false
 ---
 
-> [!abstract] Using Home Assistant to integrate a Unifi Protect G4 Doorbell and Amazon Alexa to announce visitors by Scott Hanselman - 2021-12-14T21:36:00.000Z
+> [!abstract] Using Home Assistant to integrate a Unifi Protect G4 Doorbell and Amazon Alexa to announce visitors (by Scott Hanselman)
 > ![image|float:right|400](https://www.hanselman.com/blog/content/binary/Windows-Live-Writer/Using-Home-Assistant_E31C/image_c613af81-10de-49d3-aead-6e174ca870ca.png "Basic Home Assistant Setup") I am not a [Home Assistant](https://www.home-assistant.io/) expert, but it's clearly a massive and powerful ecosystem. I've interviewed [the creator of Home Assistant on my podcast](https://hanselminutes.com/788/automating-all-the-things-with-home-assistants-paulus-schoutsen) and I encourage you to check out that chat.
 > 
 > Home Assistant can quickly become a hobby that overwhelms you. Every object (entity) in your house that is even remotely connected can become programmable. Everything. Even people! You can declare that any name:value pair that (for example) your phone can expose can be consumable by Home Assistant. Questions like "is Scott home" or "what's Scott's phone battery" can be associated with Scott the Entity in the Home Assistant Dashboard.
@@ -18,7 +18,7 @@ pinned: false
 
 🌐 Read article [online](https://feeds.hanselman.com/~/676711904/0/scotthanselman~Using-Home-Assistant-to-integrate-a-Unifi-Protect-G-Doorbell-and-Amazon-Alexa-to-announce-visitors). ⤴ For other items in this feed see `= this.feed`.
 
-- [ ] [[Using Home Assistant to integrate a Unifi Protect G4 Doorbell and Amazon Alexa t⋯]]
+- [ ] [[RSS/Feeds/Scott Hanselman's Blog/Using Home Assistant to integrate a Unifi Protect G4 Doorbell and Amazon Alexa t⋯|Using Home Assistant to integrate a Unifi Protect G4 Doorbell and Amazon Alexa t⋯]]
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);

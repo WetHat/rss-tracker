@@ -5,16 +5,16 @@ published: 2024-04-14T10:57:14.000Z
 link: https://johncarlosbaez.wordpress.com/2024/04/14/protonium/
 id: "http://johncarlosbaez.wordpress.com/?p=37742"
 feed: "[[Azimuth]]"
-tags: [rss/physics]
+tags: [physics]
 pinned: false
 ---
 
-> [!abstract] Protonium by John Baez - 2024-04-14T10:57:14.000Z
+> [!abstract] Protonium (by John Baez)
 > ![image|float:right|400](https://johncarlosbaez.files.wordpress.com/2024/04/protonium.jpg) It looks like they’ve found protonium in the decay of a heavy particle! Protonium is made of a proton and an antiproton orbiting each other. It lasts a very short time before they annihilate each other. It’s a bit like a hydrogen atom where the electron has been replaced with an antiproton! But it’s much ［…］
 
 🌐 Read article [online](https://johncarlosbaez.wordpress.com/2024/04/14/protonium/). ⤴ For other items in this feed see `= this.feed`.
 
-- [ ] [[Protonium]]
+- [ ] [[RSS/Feeds/Azimuth/Protonium|Protonium]]
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);

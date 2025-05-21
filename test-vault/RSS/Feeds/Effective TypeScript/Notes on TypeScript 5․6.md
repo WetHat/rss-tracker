@@ -1,20 +1,20 @@
 ---
 role: rssitem
-author: Unknown
+author: "unknown"
 published: 2024-09-30T16:15:00.000Z
 link: https://effectivetypescript.com/2024/09/30/ts-56/
-id: https://effectivetypescript.com/2024/09/30/ts-56/
+id: "https://effectivetypescript.com/2024/09/30/ts-56/"
 feed: "[[Effective TypeScript]]"
 tags: []
 pinned: false
 ---
 
-> [!abstract] Notes on TypeScript 5.6 - 2024-09-30T16:15:00.000Z
+> [!abstract] Notes on TypeScript 5.6 (by unknown)
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] We TypeScript developers are a lucky bunch. While some languages (Python, JavaScript) are released annually, every three years (C++) or even less, we get four new versions of TypeScript every year. TypeScript 5.6 was released on September 9th, 2024. Let's take a look.
 
 🌐 Read article [online](https://effectivetypescript.com/2024/09/30/ts-56/). ⤴ For other items in this feed see `= this.feed`.
 
-- [ ] [[Notes on TypeScript 5․6]]
+- [ ] [[RSS/Feeds/Effective TypeScript/Notes on TypeScript 5․6|Notes on TypeScript 5․6]]
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
@@ -84,7 +84,7 @@ const oneLetter = letters.values().next().value;
 
 The type in TS 5.6 makes a lot of sense! If the Set were empty, `oneLetter` would be `undefined`. Otherwise it would be a `string`. (You can also check the `done` property to narrow the type.) While directly working with an iterator is rare (you should typically use `for-of` loops or the new iterator helpers), this is a welcome improvement because it eliminates a surprising source of `any` types.
 
-So the real question is… why was this an `any` type in older versions of TypeScript? To understand why, the TypeScript blog gives [this example](https://devblogs.microsoft.com/typescript/announcing-typescript-5-6/#strict-builtin-iterator-checks-(and---strictbuiltiniteratorreturn)):
+So the real question is… why was this an `any` type in older versions of TypeScript? To understand why, the TypeScript blog gives [this example](https://devblogs.microsoft.com/typescript/announcing-typescript-5-6/#strict-builtin-iterator-checks-\(and---strictbuiltiniteratorreturn\)):
 
 ```
 function* abc123() {
@@ -93,9 +93,7 @@ function* abc123() {
     yield "c";
     return 123;
 }
-
 const iter = abc123();
-
 iter.next(); // { value: "a", done: false }
 iter.next(); // { value: "b", done: false }
 iter.next(); // { value: "c", done: false }
@@ -141,7 +139,7 @@ But this didn't seem to work at all. Relative imports of these files still produ
 
 ### [](#Region-Prioritized-Diagnostics-in-Editors "Region-Prioritized Diagnostics in Editors")Region-Prioritized Diagnostics in Editors
 
-Like most compilers, TypeScript is [self-hosting](https://en.wikipedia.org/wiki/Self-hosting_(compilers)): `tsc` is written in TypeScript. This is a good idea because it's a form of [dogfooding](https://en.wikipedia.org/wiki/Eating_your_own_dog_food). The idea is that, since the TS team works in TypeScript every day, they'll be acutely aware of all the same issues that face other TypeScript developers.
+Like most compilers, TypeScript is [self-hosting](https://en.wikipedia.org/wiki/Self-hosting_\(compilers\)): `tsc` is written in TypeScript. This is a good idea because it's a form of [dogfooding](https://en.wikipedia.org/wiki/Eating_your_own_dog_food). The idea is that, since the TS team works in TypeScript every day, they'll be acutely aware of all the same issues that face other TypeScript developers.
 
 Sometimes, though, this can have strange consequences. I suspect that most developers who contribute to TypeScript had a chuckle when they saw [Region-Prioritized Diagnostics in Editors](https://devblogs.microsoft.com/typescript/announcing-typescript-5-6/#region-prioritized-diagnostics-in-editors) in the TS 5.6 release notes. The idea is that, for very large TypeScript files, the editor can focus on just the part that you're editing, rather than checking the whole file.
 
@@ -192,17 +190,14 @@ declare const f: <P>(
   fn: (props: P) => void,
   init?: P,
 ) => P;
-
 interface Props {
   req: string;
   opt?: string;
 }
-
 const props = f(
   (p: Props) => '',
   { req: "" },
 );
-
 props.opt
 // Error in TS 5.6, OK in earlier versions
 ```

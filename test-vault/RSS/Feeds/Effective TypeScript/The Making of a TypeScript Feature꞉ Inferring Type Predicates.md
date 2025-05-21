@@ -1,20 +1,20 @@
 ---
 role: rssitem
-author: Unknown
+author: "unknown"
 published: 2024-04-16T17:30:00.000Z
 link: https://effectivetypescript.com/2024/04/16/inferring-a-type-predicate/
-id: https://effectivetypescript.com/2024/04/16/inferring-a-type-predicate/
+id: "https://effectivetypescript.com/2024/04/16/inferring-a-type-predicate/"
 feed: "[[Effective TypeScript]]"
 tags: []
 pinned: false
 ---
 
-> [!abstract] The Making of a TypeScript Feature: Inferring Type Predicates - 2024-04-16T17:30:00.000Z
+> [!abstract] The Making of a TypeScript Feature: Inferring Type Predicates (by unknown)
 > ![image|float:right|400](https://effectivetypescript.com/images/inferred-predicate.png) Over the past few months I became a TypeScript contributor and implemented a new feature, type predicate inference, that should be one of the headliners for TypeScript 5.5. This post tells the story of how that happened: why I wanted to contribute to TypeScript, the journey to implementing the feature and getting the PR merged, and what I've learned along the way. This is not a short read, but it will give you a good sense of what it's like to become a TypeScript contributor and develop a new feature.
 
 🌐 Read article [online](https://effectivetypescript.com/2024/04/16/inferring-a-type-predicate/). ⤴ For other items in this feed see `= this.feed`.
 
-- [ ] [[The Making of a TypeScript Feature꞉ Inferring Type Predicates]]
+- [ ] [[RSS/Feeds/Effective TypeScript/The Making of a TypeScript Feature꞉ Inferring Type Predicates|The Making of a TypeScript Feature꞉ Inferring Type Predicates]]
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
@@ -110,7 +110,7 @@ As it turned out, this was totally wrong! Nothing was stored on the `ok` symbol 
 
 As part of my efforts to understand how control-flow analysis worked, I wrote some code to visualize TypeScript's control flow graph. I [contributed this](https://twitter.com/danvdk/status/1762868150800977996) as a new feature to the [TS AST Viewer](https://ts-ast-viewer.com/). This was a nice, concrete win: even if my work on type predicate inference went nowhere, at least I'd contributed something of value to the ecosystem.
 
-## [](#quot-OK-maybe-this-isn’t-hopeless…-quot ""OK, maybe this isn’t hopeless…"")"OK, maybe this isn’t hopeless…"
+## [](#quot-OK-maybe-this-isn’t-hopeless…-quot "\"OK, maybe this isn’t hopeless…\"")"OK, maybe this isn’t hopeless…"
 
 _Week of February 2, 2024_
 
@@ -122,9 +122,7 @@ Whenever I explained this feature, I'd demo how you could put the return express
 function isNonNull(x: number | null) {
   return x !== null;
 }
-
 // ->
-
 function isNonNullRewrite(x: number | null) {
   if (x !== null) {
     x  // type is number

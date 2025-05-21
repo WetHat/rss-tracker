@@ -3,18 +3,18 @@ role: rssitem
 author: "Ya Gao"
 published: 2024-05-13T18:27:34.000Z
 link: https://github.blog/2024-05-13-research-quantifying-github-copilots-impact-in-the-enterprise-with-accenture/
-id: https://github.blog/?p=78014
+id: "https://github.blog/?p=78014"
 feed: "[[The GitHub Blog꞉ Product News and Updates]]"
-tags: [rss/object_Object]
+tags: [rss/GitHub_Copilot,rss/Product,rss/research]
 pinned: false
 ---
 
-> [!abstract] Research: Quantifying GitHub Copilot’s impact in the enterprise with Accenture by Ya Gao - 2024-05-13T18:27:34.000Z
+> [!abstract] Research: Quantifying GitHub Copilot’s impact in the enterprise with Accenture (by Ya Gao)
 > ![image|float:right|400](https://github.blog/wp-content/uploads/2024/05/image3.png?w=1024&resize=1024%2C538) We conducted research with developers at Accenture to understand GitHub Copilot’s real-world impact in enterprise organizations. The post Research: Quantifying GitHub Copilot’s impact in the enterprise with Accenture appeared first on The GitHub Blog.
 
 🌐 Read article [online](https://github.blog/2024-05-13-research-quantifying-github-copilots-impact-in-the-enterprise-with-accenture/). ⤴ For other items in this feed see `= this.feed`.
 
-- [ ] [[Research꞉ Quantifying GitHub Copilot’s impact in the enterprise with Accenture]]
+- [ ] [[RSS/Feeds/The GitHub Blog꞉ Product News and Updates/Research꞉ Quantifying GitHub Copilot’s impact in the enterprise with Accenture|Research꞉ Quantifying GitHub Copilot’s impact in the enterprise with Accenture]]
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);

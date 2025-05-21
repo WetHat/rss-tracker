@@ -1,20 +1,20 @@
 ---
 role: rssitem
-author: Unknown
+author: "unknown"
 published: 2024-10-07T10:02:02.000Z
 link: https://www.space.com/save-usd100-on-beginner-friendly-celestron-astromaster-114eq-at-amazon-prime-day-october-2024
-id: 3vYrP79LnYWRnJtJ7r5xP6
+id: "3vYrP79LnYWRnJtJ7r5xP6"
 feed: "[[Space RSS Feed]]"
 tags: [rss/Astronomy_Kit,rss/Stargazing]
 pinned: false
 ---
 
-> [!abstract]  Get $100 off with this Prime Day beginner telescope deal on the Celestron AstroMaster 114EQ  - 2024-10-07T10:02:02.000Z
+> [!abstract]  Get $100 off with this Prime Day beginner telescope deal on the Celestron AstroMaster 114EQ  (by unknown)
 > ![image|float:right|400](https://cdn.mos.cms.futurecdn.net/4NgoEMy3qf4NU2AHuPsXmF.jpg) Ready to start stargazing? The Celestron AstroMaster 114EQ is a perfect beginners telescope that you won't immediately outgrow, and it's down to just $219.95.
 
 🌐 Read article [online](https://www.space.com/save-usd100-on-beginner-friendly-celestron-astromaster-114eq-at-amazon-prime-day-october-2024). ⤴ For other items in this feed see `= this.feed`.
 
-- [ ] [[Get $100 off with this Prime Day beginner telescope deal on the Celestron Astro⋯]]
+- [ ] [[RSS/Feeds/Space RSS Feed/Get $100 off with this Prime Day beginner telescope deal on the Celestron Astro⋯|Get $100 off with this Prime Day beginner telescope deal on the Celestron Astro⋯]]
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);

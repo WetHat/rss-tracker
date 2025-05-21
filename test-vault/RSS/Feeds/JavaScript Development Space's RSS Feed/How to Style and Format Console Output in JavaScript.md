@@ -9,12 +9,12 @@ tags: []
 pinned: false
 ---
 
-> [!abstract] How to Style and Format Console Output in JavaScript by unknown - 2024-10-01T00:00:00.000Z
+> [!abstract] How to Style and Format Console Output in JavaScript (by unknown)
 > ![image|float:right|400](./images/console-javascript.png) Styling and formatting console output in JavaScript can greatly enhance the readability and usability of logs, especially during debugging…
 
 🌐 Read article [online](https://jsdev.space/howto/console-javascript/). ⤴ For other items in this feed see `= this.feed`.
 
-- [ ] [[How to Style and Format Console Output in JavaScript]]
+- [ ] [[RSS/Feeds/JavaScript Development Space's RSS Feed/How to Style and Format Console Output in JavaScript|How to Style and Format Console Output in JavaScript]]
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);

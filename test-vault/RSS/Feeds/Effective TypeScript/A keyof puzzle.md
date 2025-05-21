@@ -9,12 +9,12 @@ tags: []
 pinned: false
 ---
 
-> [!abstract] A keyof puzzle by unknown - 2024-08-30T13:00:00.000Z
+> [!abstract] A keyof puzzle (by unknown)
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] Effective TypeScript is nearly 400 pages long, but I've received the most feedback by far on just one passage. It comes in Item 7: Think of Types as Sets of Values: keyof (A&B) = (keyof A) | (keyof B)keyof (A|B) = (keyof A) & (keyof B) If you can build an intuition for why these equations hold, you'll have come a long way toward understanding TypeScript's type system! I'll explain these equations in a moment. But before I do, head over to the TypeScript Playground and test them out with a few types. See if you can build that intuition for why they hold.
 
 🌐 Read article [online](https://effectivetypescript.com/2024/08/30/keyof-puzzle/). ⤴ For other items in this feed see `= this.feed`.
 
-- [ ] [[A keyof puzzle]]
+- [ ] [[RSS/Feeds/Effective TypeScript/A keyof puzzle|A keyof puzzle]]
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);

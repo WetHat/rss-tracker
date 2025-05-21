@@ -3,18 +3,18 @@ role: rssitem
 author: " info@space.com (Space.com Staff) "
 published: 2024-10-05T13:37:45.000Z
 link: https://www.space.com/entertainment/space-movies-shows/this-week-in-space-podcast-this-week-in-space-podcast-episode-131-star-wars-vs-star-trek-food-fight
-id: bL7rmDpVCk3BnXUk6tRUF
+id: "bL7rmDpVCk3BnXUk6tRUF"
 feed: "[[Space RSS Feed]]"
 tags: [rss/Entertainment,rss/Space_Movies,rss/ampShows]
 pinned: false
 ---
 
-> [!abstract]  This Week In Space podcast: Episode 131 —The Star Wars vs. Star Trek Food Fight  by  info@space.com (Space.com Staff)  - 2024-10-05T13:37:45.000Z
+> [!abstract]  This Week In Space podcast: Episode 131 —The Star Wars vs. Star Trek Food Fight  (by  info@space.com (Space.com Staff) )
 > ![image|float:right|400](https://cdn.mos.cms.futurecdn.net/mkpqri8v93kHfERYnGCTUZ.jpg) On Episode 131 of This Week In Space, Rod and Tariq tackle a question that rivals the meaning of life itself: which is better, Star Trek or Star Wars?
 
 🌐 Read article [online](https://www.space.com/entertainment/space-movies-shows/this-week-in-space-podcast-this-week-in-space-podcast-episode-131-star-wars-vs-star-trek-food-fight). ⤴ For other items in this feed see `= this.feed`.
 
-- [ ] [[This Week In Space podcast꞉ Episode 131 —The Star Wars vs․ Star Trek Food Fight⋯]]
+- [ ] [[RSS/Feeds/Space RSS Feed/This Week In Space podcast꞉ Episode 131 —The Star Wars vs․ Star Trek Food Fight⋯|This Week In Space podcast꞉ Episode 131 —The Star Wars vs․ Star Trek Food Fight⋯]]
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);

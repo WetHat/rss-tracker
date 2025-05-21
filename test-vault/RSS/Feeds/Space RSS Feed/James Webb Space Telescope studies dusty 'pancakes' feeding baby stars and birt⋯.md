@@ -1,20 +1,20 @@
 ---
 role: rssitem
-author: Unknown
+author: "unknown"
 published: 2024-10-07T10:00:05.000Z
 link: https://www.space.com/james-webb-space-telescope-dusty-pancakes-baby-stars
-id: h7P4YB4oxW2M68vCdfmpRU
+id: "h7P4YB4oxW2M68vCdfmpRU"
 feed: "[[Space RSS Feed]]"
 tags: [rss/James_Webb_Space_Telescope,rss/Missions,rss/Space_Exploration]
 pinned: false
 ---
 
-> [!abstract]  James Webb Space Telescope studies dusty 'pancakes' feeding baby stars and birthing planets  - 2024-10-07T10:00:05.000Z
+> [!abstract]  James Webb Space Telescope studies dusty 'pancakes' feeding baby stars and birthing planets  (by unknown)
 > ![image|float:right|400](https://cdn.mos.cms.futurecdn.net/YXUbhXtGRc5wEoi2vxYLUG.png) The James Webb Space Telescope has taken an intricate look at how pancakes of gas and dust feed infant stars and help them grow before influencing the birth of planets.
 
 🌐 Read article [online](https://www.space.com/james-webb-space-telescope-dusty-pancakes-baby-stars). ⤴ For other items in this feed see `= this.feed`.
 
-- [ ] [[James Webb Space Telescope studies dusty 'pancakes' feeding baby stars and birt⋯]]
+- [ ] [[RSS/Feeds/Space RSS Feed/James Webb Space Telescope studies dusty 'pancakes' feeding baby stars and birt⋯|James Webb Space Telescope studies dusty 'pancakes' feeding baby stars and birt⋯]]
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);

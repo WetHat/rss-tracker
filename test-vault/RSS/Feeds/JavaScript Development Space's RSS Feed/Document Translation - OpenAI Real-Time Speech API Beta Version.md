@@ -9,12 +9,12 @@ tags: []
 pinned: false
 ---
 
-> [!abstract] Document Translation - OpenAI Real-Time Speech API Beta Version by unknown - 2024-10-03T00:00:00.000Z
+> [!abstract] Document Translation - OpenAI Real-Time Speech API Beta Version (by unknown)
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] The rise of artificial intelligence has introduced groundbreaking advancements in language processing and speech recognition. One of the…
 
 🌐 Read article [online](https://jsdev.space/document-translation/). ⤴ For other items in this feed see `= this.feed`.
 
-- [ ] [[Document Translation - OpenAI Real-Time Speech API Beta Version]]
+- [ ] [[RSS/Feeds/JavaScript Development Space's RSS Feed/Document Translation - OpenAI Real-Time Speech API Beta Version|Document Translation - OpenAI Real-Time Speech API Beta Version]]
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);

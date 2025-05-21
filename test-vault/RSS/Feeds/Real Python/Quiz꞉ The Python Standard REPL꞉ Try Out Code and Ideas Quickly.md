@@ -1,20 +1,20 @@
 ---
 role: rssitem
-author: Unknown
+author: "unknown"
 published: 2024-10-24T12:00:00.000Z
 link: https://realpython.com/quizzes/python-repl/
-id: https://realpython.com/quizzes/python-repl/
+id: "https://realpython.com/quizzes/python-repl/"
 feed: "[[Real Python]]"
 tags: []
 pinned: false
 ---
 
-> [!abstract] Quiz: The Python Standard REPL: Try Out Code and Ideas Quickly - 2024-10-24T12:00:00.000Z
+> [!abstract] Quiz: The Python Standard REPL: Try Out Code and Ideas Quickly (by unknown)
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] In this quiz, you'll test your understanding of the Python standard REPL. The Python REPL allows you to run Python code interactively, which is useful for testing new ideas, exploring libraries, refactoring and debugging code, and trying out examples.
 
 🌐 Read article [online](https://realpython.com/quizzes/python-repl/). ⤴ For other items in this feed see `= this.feed`.
 
-- [ ] [[Quiz꞉ The Python Standard REPL꞉ Try Out Code and Ideas Quickly]]
+- [ ] [[RSS/Feeds/Real Python/Quiz꞉ The Python Standard REPL꞉ Try Out Code and Ideas Quickly|Quiz꞉ The Python Standard REPL꞉ Try Out Code and Ideas Quickly]]
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);

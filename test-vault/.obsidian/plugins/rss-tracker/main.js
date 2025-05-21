@@ -15404,8 +15404,6 @@ var _RSSitemAdapter = class _RSSitemAdapter extends RSSAdapter {
         }
       }
     }
-    const byline = author ? ` by ${author}` : "";
-    title = `${title}${byline} - ${published}`;
     const abstractMaxLength = 800;
     if (!content && description && description.length > abstractMaxLength) {
       content = description;
@@ -15417,8 +15415,8 @@ var _RSSitemAdapter = class _RSSitemAdapter extends RSSAdapter {
     }
     const itemfolder = await feed.itemFolder(), tagmgr = feed.plugin.tagmgr, frontmatter = {
       role: "rssitem",
-      id: '"' + (id != null ? id : link) + '"',
-      author: author ? '"' + author + '"' : "Unknown",
+      id: id != null ? id : link,
+      author: author != null ? author : "Unknown",
       link: link != null ? link : "",
       published: published != null ? published : (/* @__PURE__ */ new Date()).valueOf(),
       feed: `[[${itemfolder.name}]]`,
@@ -16971,19 +16969,20 @@ var _RSSfileManager = class _RSSfileManager {
    */
   async createFile(folderPath, basename, templateName, data = {}, postProcess = false) {
     await this.ensureFolderExists(folderPath);
-    let uniqueBasename = basename, uniqueFilepath = folderPath + "/" + basename + ".md", index = 1;
+    let uniqueBasename = basename, uniqueFilepath = folderPath + "/" + basename, index = 1;
     const fs = this._vault.adapter;
     while (await fs.exists(uniqueFilepath)) {
       uniqueBasename = `${basename} (${index})`;
-      uniqueFilepath = folderPath + "/" + uniqueBasename + ".md";
+      uniqueFilepath = folderPath + "/" + uniqueBasename;
       index++;
     }
     data["{{fileName}}"] = uniqueBasename;
+    data["{{filePath}}"] = uniqueFilepath;
     const tpl = await this.readTemplate(templateName), content = this.expandTemplate(tpl, data);
     if (postProcess) {
       this._plugin.tagmgr.registerFileForPostProcessing(uniqueFilepath);
     }
-    return this._vault.create(uniqueFilepath, content);
+    return this._vault.create(uniqueFilepath + ".md", content);
   }
 };
 /**

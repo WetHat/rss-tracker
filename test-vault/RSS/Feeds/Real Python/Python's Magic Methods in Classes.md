@@ -9,12 +9,12 @@ tags: []
 pinned: false
 ---
 
-> [!abstract] Python's Magic Methods in Classes by unknown - 2024-10-29T14:00:00.000Z
+> [!abstract] Python's Magic Methods in Classes (by unknown)
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] In this video course, you'll learn what magic methods are in Python, how they work, and how to use them in your custom classes to support powerful features in your object-oriented code.
 
 🌐 Read article [online](https://realpython.com/courses/magic-methods-classes/). ⤴ For other items in this feed see `= this.feed`.
 
-- [ ] [[Python's Magic Methods in Classes]]
+- [ ] [[RSS/Feeds/Real Python/Python's Magic Methods in Classes|Python's Magic Methods in Classes]]
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);

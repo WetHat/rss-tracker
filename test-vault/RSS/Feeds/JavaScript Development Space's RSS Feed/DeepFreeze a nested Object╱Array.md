@@ -1,20 +1,20 @@
 ---
 role: rssitem
-author: Unknown
+author: "unknown"
 published: 2024-09-29T00:00:00.000Z
 link: https://jsdev.space/snippets/deepfreeze-js/
-id: https://jsdev.space/snippets/deepfreeze-js/
+id: "https://jsdev.space/snippets/deepfreeze-js/"
 feed: "[[JavaScript Development Space's RSS Feed]]"
 tags: []
 pinned: false
 ---
 
-> [!abstract] DeepFreeze a nested Object/Array - 2024-09-29T00:00:00.000Z
+> [!abstract] DeepFreeze a nested Object/Array (by unknown)
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] To deeply freeze a nested object or array in JavaScript, you need to freeze not only the outer object but also any nested objects or arrays.…
 
 🌐 Read article [online](https://jsdev.space/snippets/deepfreeze-js/). ⤴ For other items in this feed see `= this.feed`.
 
-- [ ] [[DeepFreeze a nested Object╱Array]]
+- [ ] [[RSS/Feeds/JavaScript Development Space's RSS Feed/DeepFreeze a nested Object╱Array|DeepFreeze a nested Object╱Array]]
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
