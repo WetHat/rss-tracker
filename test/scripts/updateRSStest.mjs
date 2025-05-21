@@ -11,8 +11,8 @@ node ${path.basename(process.argv[1])}  <feed url> | <feed reference folder | --
 
 <feed url> - the rss feed pointed to by this url will be downloaded
              an a new test reference data will be generated
-<feed reference folder - path to feed data in the test-vault/reference folder.
-             The expected.json wile will be re-creaded from feed.xml and the
+<feed reference folder - path to feed data in the test-vault/test folder.
+             The expected.json wile will be re-created from feed.xml and the
              feed markdown files will be updated
 --all - all feed reference data will be updated
 If a feed url is provided, a new test will be generated.`;
