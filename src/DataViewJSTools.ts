@@ -267,7 +267,8 @@ export class DataViewJSTools {
     }
 
     rssItemsOfCollection(collection: TPageRecord): TPageRecords {
-        return this.dv.pages(this.fromItemsOfCollection(collection)).where((p: TPageRecord) => p.role === "rssitem");
+        const from = this.fromItemsOfCollection(collection);
+        return from ? this.dv.pages(from).where((p: TPageRecord) => p.role === "rssitem") : this.dv.array([]);
     }
 
     rssItemsOfTopic(topic: TPageRecord): TPageRecords {
