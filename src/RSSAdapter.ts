@@ -177,9 +177,6 @@ export class RSSitemAdapter extends RSSAdapter {
             }
         }
 
-        const byline = author ? ` by ${author}` : "";
-        title = `${title}${byline} - ${published}`;
-
         const abstractMaxLength= 800;
         if (!content && description && description.length > abstractMaxLength) {
             content = description
@@ -199,8 +196,8 @@ export class RSSitemAdapter extends RSSAdapter {
             tagmgr = feed.plugin.tagmgr,
             frontmatter: TFrontmatter = {
                 role: "rssitem",
-                id: '"' + (id ?? link) + '"',
-                author: author ? ('"' + author + '"') : "Unknown",
+                id: id ?? link,
+                author: author ?? "Unknown",
                 link: link ?? "",
                 published: published ?? new Date().valueOf(),
                 feed: `[[${itemfolder.name}]]`,

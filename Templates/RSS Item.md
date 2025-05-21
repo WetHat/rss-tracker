@@ -1,15 +1,15 @@
 ---
 role: rssitem
-author: {{author}}
+author: "{{author}}"
 published: {{publishDate}}
 link: {{link}}
-id: {{id}}
+id: "{{id}}"
 feed: "[[{{feedFileName}}]]"
 tags: [{{tags}}]
 pinned: false
 ---
 
-> [!abstract] {{title}}
+> [!abstract] {{title}} (by {{author}})
 > {{image}} {{description}}
 
 🌐 Read article [online]({{link}}). ⤴ For other items in this feed see `= this.feed`.
