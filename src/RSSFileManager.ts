@@ -180,7 +180,7 @@ export class RSSfileManager {
 
 		// 4. Save the expanded template into a file at the given location
 		if (postProcess) {
-			this._plugin.tagmgr.registerFileForPostProcessing(uniqueFilepath);
+			this._plugin.tagmgr.registerFileForPostProcessing(uniqueFilepath + ".md");
 		}
 
 		return this._vault.create(uniqueFilepath + ".md", content);
