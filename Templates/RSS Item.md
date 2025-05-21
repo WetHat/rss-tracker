@@ -14,7 +14,7 @@ pinned: false
 
 🌐 Read article [online]({{link}}). ⤴ For other items in this feed see `= this.feed`.
 
-- [ ] [[{{fileName}}]]
+- [ ] [[{{filePath}}|{{fileName}}]]
 
 ~~~dataviewjs
 const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);

@@ -160,16 +160,18 @@ export class RSSfileManager {
 		// 1. generate a unique filename based on the given desired file system location info.
 		let
 			uniqueBasename = basename,
-			uniqueFilepath = folderPath + "/" + basename + ".md",
+			uniqueFilepath = folderPath + "/" + basename,
 			index = 1;
 		const fs = this._vault.adapter;
 		while (await fs.exists(uniqueFilepath)) {
 			uniqueBasename = `${basename} (${index})`;
-			uniqueFilepath = folderPath + "/" + uniqueBasename + ".md";
+			uniqueFilepath = folderPath + "/" + uniqueBasename;
 			index++;
 		}
-		// 2. augment the data map with the unique basename
+		// 2. augment the data map with the unique file name & path
+		//    (without file extension) of the new file.
 		data["{{fileName}}"] = uniqueBasename;
+        data["{{filePath}}"] = uniqueFilepath;
 
 		// 3. read and expand the template
 		const
@@ -181,6 +183,6 @@ export class RSSfileManager {
 			this._plugin.tagmgr.registerFileForPostProcessing(uniqueFilepath);
 		}
 
-		return this._vault.create(uniqueFilepath, content);
+		return this._vault.create(uniqueFilepath + ".md", content);
 	}
 }
