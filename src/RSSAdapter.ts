@@ -50,7 +50,7 @@ abstract class RSSAdapter {
 
     protected constructor(plugin: RSSTrackerPlugin, file: TFile, frontmatter?: TFrontmatter) {
         this.plugin = plugin;
-        this.frontmatter = frontmatter ?? (plugin.app.metadataCache.getFileCache(file) ?? {});
+        this.frontmatter = frontmatter ?? (plugin.app.metadataCache.getFileCache(file)?.frontmatter ?? {});
         this.file = file;
     }
 
@@ -177,7 +177,7 @@ export class RSSitemAdapter extends RSSAdapter {
             }
         }
 
-        const abstractMaxLength= 800;
+        const abstractMaxLength = 800;
         if (!content && description && description.length > abstractMaxLength) {
             content = description
         }
@@ -196,29 +196,32 @@ export class RSSitemAdapter extends RSSAdapter {
             tagmgr = feed.plugin.tagmgr,
             frontmatter: TFrontmatter = {
                 role: "rssitem",
+                aliases: [],
                 id: id ?? link,
-                author: author ?? "Unknown",
-                link: link ?? "",
+                author: author ?? "unknown",
+                link: link ?? "unknown",
                 published: published ?? new Date().valueOf(),
                 feed: `[[${itemfolder.name}]]`,
                 pinned: false,
                 tags: tags.map(t => tagmgr.mapHashtag(t.startsWith("#") ? t : "#" + t).slice(1)),
             },
             dataMap = {
-                "{{id}}": frontmatter.id,
                 "{{author}}": frontmatter.author,
                 "{{link}}": frontmatter.link,
                 "{{publishDate}}": frontmatter.published,
-                "{{tags}}": frontmatter.tags,
                 "{{title}}": title ?? "",
                 "{{image}}": image ? formatImage(image) : `![[${defaultImage}|float:right|100x100]]`,
                 "{{description}}": description ?? "",
                 "{{content}}": content ?? "",
                 "{{feedFileName}}": itemfolder.name,
             };
-        const
-            file = await feed.filemgr.createFile(itemfolder.path, item.fileName, "RSS Item", dataMap, true),
-            adapter = new RSSitemAdapter(feed.plugin, file, frontmatter);
+        const file = await feed.filemgr.createFile(itemfolder.path, item.fileName, "RSS Item", dataMap, true);
+        // create an alias if the filename was doctored.
+        if (title && file.basename !== title) {
+            frontmatter.aliases = [title];
+        }
+        const adapter = new RSSitemAdapter(feed.plugin, file, frontmatter);
+        await adapter.commitFrontmatterChanges();
         return adapter;
     }
 
@@ -381,7 +384,7 @@ export class RSSfeedAdapter extends RSSAdapter {
             .filter(p => p instanceof RSSitemAdapter) as RSSitemAdapter[] : [];
     }
 
-    async rename(newBasename : string) : Promise<boolean> {
+    async rename(newBasename: string): Promise<boolean> {
         if (!newBasename) {
             return false;
         }
@@ -398,8 +401,8 @@ export class RSSfeedAdapter extends RSSAdapter {
             item.commitFrontmatterChanges();
         });
 
-        await vault.rename(this.file,newPath + ".md");
-        await vault.rename(itemFolder,newPath);
+        await vault.rename(this.file, newPath + ".md");
+        await vault.rename(itemFolder, newPath);
         return true;
     }
 
@@ -474,8 +477,18 @@ export class RSSfeedAdapter extends RSSAdapter {
 
 export class RSScollectionAdapter extends RSSAdapter {
     static async create(plugin: RSSTrackerPlugin): Promise<RSScollectionAdapter> {
-        const file = await plugin.filemgr.createFile(plugin.settings.rssCollectionsFolderPath, "New Feed Collection", "RSS Collection");
-        return new RSScollectionAdapter(plugin, file);
+        const
+            file = await plugin.filemgr.createFile(plugin.settings.rssCollectionsFolderPath, "New Feed Collection", "RSS Collection"),
+            frontmatter: TFrontmatter = {
+                role: "rsscollection",
+                tags: [ "nil"],
+                allof: [],
+                noneof: []
+            },
+            adapter = new RSScollectionAdapter(plugin, file, frontmatter);
+
+        await adapter.commitFrontmatterChanges();
+        return adapter;
     }
 
     constructor(plugin: RSSTrackerPlugin, collection: TFile, frontmatter?: TFrontmatter) {

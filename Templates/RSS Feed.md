@@ -1,10 +1,5 @@
 ---
 role: rssfeed
-feedurl: "{{feedUrl}}"
-site: "{{siteUrl}}"
-itemlimit:
-updated:
-status:
 tags: []
 ---
 > [!abstract] {{title}}
