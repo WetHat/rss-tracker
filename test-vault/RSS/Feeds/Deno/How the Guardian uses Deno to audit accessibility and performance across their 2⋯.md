@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "Andy Jiang"
-published: 2024-06-18T14:15:00.000Z
+aliases:
+  - How the Guardian uses Deno to audit accessibility and performance across their 2.7 million articles
+id: https://deno.com/blog/guardian
+author: Andy Jiang
 link: https://deno.com/blog/guardian
-id: "https://deno.com/blog/guardian"
+published: 2024-06-18T14:15:00.000Z
 feed: "[[Deno]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] How the Guardian uses Deno to audit accessibility and performance across their 2.7 million articles (by Andy Jiang)
@@ -22,3 +24,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

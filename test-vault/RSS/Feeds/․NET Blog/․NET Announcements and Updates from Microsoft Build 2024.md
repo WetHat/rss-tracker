@@ -1,12 +1,33 @@
 ---
 role: rssitem
-author: ".NET Team"
-published: 2024-05-21T17:05:00.000Z
+aliases:
+  - .NET Announcements and Updates from Microsoft Build 2024
+id: https://devblogs.microsoft.com/dotnet/?p=51919
+author: .NET Team
 link: https://devblogs.microsoft.com/dotnet/dotnet-build-2024-announcements/
-id: "https://devblogs.microsoft.com/dotnet/?p=51919"
+published: 2024-05-21T17:05:00.000Z
 feed: "[[․NET Blog]]"
-tags: [rss/AI,rss/ASP_NET,rss/ASP_NET_Core,rss/Blazor,rss/Cloud_Native,rss/Containers,rss/C＃,rss/Performance,rss/Visual_Studio,rss/Visual_Studio_Code,rss/_NET,rss/_NET_Aspire,rss/_NET_Internals,rss/_NET_MAUI,rss/_net_9,rss/_net_9_preview_4,rss/_net_aspire,rss/announcement,rss/microsoft_build]
 pinned: false
+tags:
+  - rss/AI
+  - rss/ASP۔NET
+  - rss/ASP۔NET_Core
+  - rss/Blazor
+  - rss/Cloud_Native
+  - rss/Containers
+  - rss/C＃
+  - rss/Performance
+  - rss/Visual_Studio
+  - rss/Visual_Studio_Code
+  - rss/announcement
+  - rss/microsoft_build
+  - rss/۔NET
+  - rss/۔NET_Aspire
+  - rss/۔NET_Internals
+  - rss/۔NET_MAUI
+  - rss/۔net_9
+  - rss/۔net_9_preview_4
+  - rss/۔net_aspire
 ---
 
 > [!abstract] .NET Announcements and Updates from Microsoft Build 2024 (by .NET Team)
@@ -24,6 +45,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 At [Microsoft Build 2024](https://build.microsoft.com/), we’re thrilled to unveil a new set of features and tools designed to make .NET development faster and easier.
 
 Explore the [.NET sessions at Microsoft Build 2024](https://devblogs.microsoft.com/dotnet/join-the-dotnet-team-microsoft-build-2024/) to see the new features in action, or [try them yourself](https://aka.ms/dotnet/9/preview4) by downloading .NET 9 Preview 4 today. Prepare for the .NET 9 launch by [saving the date for .NET Conf 2024](https://www.dotnetconf.net/) in November.

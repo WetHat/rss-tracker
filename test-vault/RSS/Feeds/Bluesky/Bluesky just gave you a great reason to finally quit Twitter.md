@@ -1,12 +1,18 @@
 ---
 role: rssitem
-author: "By Carrie Marshall"
-published: 2024-05-23T11:00:53.000Z
+aliases: []
+id: flipboard-vHcnStzORJigtFrI7LAFHA:a:2571318764-1716462053
+author: By Carrie Marshall
 link: https://www.t3.com/news/bluesky-just-gave-you-a-great-reason-to-finally-quit-twitter
-id: "flipboard-vHcnStzORJigtFrI7LAFHA:a:2571318764-1716462053"
+published: 2024-05-23T11:00:53.000Z
 feed: "[[Bluesky]]"
-tags: [rss/Apps,rss/Bluesky,rss/Technology,rss/ThreadsApp,rss/Twitter_Blue]
 pinned: false
+tags:
+  - rss/Apps
+  - rss/Bluesky
+  - rss/Technology
+  - rss/ThreadsApp
+  - rss/Twitter_Blue
 ---
 
 > [!abstract] Bluesky just gave you a great reason to finally quit Twitter (by By Carrie Marshall)
@@ -22,3 +28,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

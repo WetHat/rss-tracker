@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-05-02T15:00:00.000Z
+aliases: []
+id: https://www.pythonmorsels.com/variables-are-pointers/
+author: unknown
 link: https://www.pythonmorsels.com/variables-are-pointers/
-id: "https://www.pythonmorsels.com/variables-are-pointers/"
+published: 2024-05-02T15:00:00.000Z
 feed: "[[Python Morsels]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Variables are pointers in Python (by unknown)
@@ -30,6 +31,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 Python's variables are not buckets that contain objects; they're pointers. Assignment statements don't copy: they point a variable to a value (and multiple variables can "point" to the same value).
 
 **Table of contents**

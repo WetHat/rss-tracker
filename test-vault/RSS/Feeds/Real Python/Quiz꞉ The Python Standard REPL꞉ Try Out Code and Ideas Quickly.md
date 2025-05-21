@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-10-24T12:00:00.000Z
+aliases:
+  - "Quiz: The Python Standard REPL: Try Out Code and Ideas Quickly"
+id: https://realpython.com/quizzes/python-repl/
+author: unknown
 link: https://realpython.com/quizzes/python-repl/
-id: "https://realpython.com/quizzes/python-repl/"
+published: 2024-10-24T12:00:00.000Z
 feed: "[[Real Python]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Quiz: The Python Standard REPL: Try Out Code and Ideas Quickly (by unknown)
@@ -22,6 +24,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 In this quiz, you’ll test your understanding of [The Python Standard REPL: Try Out Code and Ideas Quickly](https://realpython.com/python-repl/).
 
 The Python REPL allows you to run Python code interactively, which is useful for testing new ideas, exploring libraries, refactoring and debugging code, and trying out examples.

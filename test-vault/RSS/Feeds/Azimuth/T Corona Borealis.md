@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "John Baez"
-published: 2024-03-27T18:32:47.000Z
+aliases: []
+id: http://johncarlosbaez.wordpress.com/?p=37700
+author: John Baez
 link: https://johncarlosbaez.wordpress.com/2024/03/27/t-corona-borealis/
-id: "http://johncarlosbaez.wordpress.com/?p=37700"
+published: 2024-03-27T18:32:47.000Z
 feed: "[[Azimuth]]"
-tags: [rss/uncategorized]
 pinned: false
+tags:
+  - rss/uncategorized
 ---
 
 > [!abstract] T Corona Borealis (by John Baez)
@@ -22,6 +24,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 [![](https://johncarlosbaez.files.wordpress.com/2024/03/corona_borealis.jpg?w=450&h=227)](https://johncarlosbaez.files.wordpress.com/2024/03/corona_borealis.jpg)
 
 Sometime this year, the star [T Corona Borealis](https://en.wikipedia.org/wiki/T_Coronae_Borealis) will go nova and become much brighter! At least that’s what a lot of astronomers think. So examine the sky between Arcturus and Vega now—and look again if you hear this event has happened. Normally this star is magnitude 10, too dim to see. When it goes nova is should reach magnitude 2 for a week—as bright as the North Star. So you will see a new star, which is the original meaning of ‘nova’.

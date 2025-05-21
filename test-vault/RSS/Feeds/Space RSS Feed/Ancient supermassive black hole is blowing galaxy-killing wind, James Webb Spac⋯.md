@@ -1,12 +1,16 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-10-05T13:00:22.000Z
+aliases:
+  - " Ancient supermassive black hole is blowing galaxy-killing wind, James Webb Space Telescope finds "
+id: gfgCfmPQ5VNTQtSJSJPf8L
+author: unknown
 link: https://www.space.com/james-webb-space-telescope-earliest-quasar-wind
-id: "gfgCfmPQ5VNTQtSJSJPf8L"
+published: 2024-10-05T13:00:22.000Z
 feed: "[[Space RSS Feed]]"
-tags: [rss/Black_Holes,rss/The_Universe]
 pinned: false
+tags:
+  - rss/Black_Holes
+  - rss/The_Universe
 ---
 
 > [!abstract]  Ancient supermassive black hole is blowing galaxy-killing wind, James Webb Space Telescope finds  (by unknown)
@@ -22,6 +26,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 Using the James Webb Space Telescope (JWST), astronomers have spotted the earliest powerful "galaxy-size" wind blowing from a feeding supermassive black hole-powered quasar. The powerful wind is pushing gas and dust from its galaxy at incredible speeds, killing star birth in its host galaxy. 
 
 This [quasar](https://www.space.com/17262-quasar-definition.html), designated J1007+2115, is so distant that it is seen as it was just 700 million years after [the Big Bang](https://www.space.com/25126-big-bang-theory.html) — when [the 13.8 billion-year-old universe](https://www.space.com/24054-how-old-is-the-universe.html) was just around 5% of its current age. Though this makes J1007+2115 just the third-earliest quasar ever seen, it is the earliest ever observed with a powerful, galaxy-size wind flowing from it.

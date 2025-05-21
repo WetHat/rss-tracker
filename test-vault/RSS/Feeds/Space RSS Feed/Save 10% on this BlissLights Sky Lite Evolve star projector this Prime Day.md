@@ -1,12 +1,16 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-10-07T12:02:36.000Z
+aliases:
+  - " Save 10% on this BlissLights Sky Lite Evolve star projector this Prime Day "
+id: BiWKZR48FuvfYcNLwupt9B
+author: unknown
 link: https://www.space.com/prime-day-star-projector-deal-save-10-percent-blisslights-october-2024
-id: "BiWKZR48FuvfYcNLwupt9B"
+published: 2024-10-07T12:02:36.000Z
 feed: "[[Space RSS Feed]]"
-tags: [rss/Astronomy_Kit,rss/Stargazing]
 pinned: false
+tags:
+  - rss/Astronomy_Kit
+  - rss/Stargazing
 ---
 
 > [!abstract]  Save 10% on this BlissLights Sky Lite Evolve star projector this Prime Day  (by unknown)
@@ -22,6 +26,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 Want to bring the cosmos closer, make your meditation a little more magical or just spruce up a boring room? The BlissLights Sky Light Evolve star projector, now [10% off down to $31.49 at Amazon](https://www.amazon.com/dp/B0B4TYK7V6) (via on-site voucher) for the green stars model, is just what you need. It projects stars and nebula into any room, creating a breathtaking display.
 
 _**This BlissLights Sky Light Evolve star projector (green stars model)**_ [_**is on sale at Amazon $31.49**_**.**](https://www.amazon.com/dp/B0B4TYK7V6?tag=georiot-us-default-20&th=1&ascsubtag=livescience-us-2175917845972047563-20&geniuslink=true)

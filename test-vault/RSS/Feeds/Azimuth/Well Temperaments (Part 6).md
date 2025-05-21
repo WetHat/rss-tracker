@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "John Baez"
-published: 2024-02-26T10:00:27.000Z
+aliases: []
+id: http://johncarlosbaez.wordpress.com/?p=37578
+author: John Baez
 link: https://johncarlosbaez.wordpress.com/2024/02/26/well-temperaments-part-6/
-id: "http://johncarlosbaez.wordpress.com/?p=37578"
+published: 2024-02-26T10:00:27.000Z
 feed: "[[Azimuth]]"
-tags: [rss/music]
 pinned: false
+tags:
+  - rss/music
 ---
 
 > [!abstract] Well Temperaments (Part 6) (by John Baez)
@@ -22,6 +24,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 Andreas Werckmeister (1645–1706) was a musician and expert on the organ. Compared to [Kirnberger](https://johncarlosbaez.wordpress.com/2024/02/05/well-temperaments-part-4/), his life seems outwardly dull. He got his musical training from his uncles, and from the age of 19 to his death he worked as an organist in three German towns. That’s about all I know.
 
 His fame comes from the tremendous impact of his his theoretical writings. Most importantly, in his 1687 book _Musikalische Temperatur_ he described the first ‘well tempered’ tuning systems for keyboards, where every key sounds acceptable but each has its own personality. Johann Sebastian Bach read and was influenced by Werckmeister’s work. The first book of Bach’s _Well-Tempered Clavier_ came out in 1722—the first collection of keyboard pieces in all 24 keys.

@@ -1,12 +1,17 @@
 ---
 role: rssitem
-author: "Larissa Fortuna"
-published: 2024-06-03T16:31:50.000Z
+aliases:
+  - "Arm64 on GitHub Actions: Powering faster, more efficient build systems"
+id: https://github.blog/?p=78262
+author: Larissa Fortuna
 link: https://github.blog/2024-06-03-arm64-on-github-actions-powering-faster-more-efficient-build-systems/
-id: "https://github.blog/?p=78262"
+published: 2024-06-03T16:31:50.000Z
 feed: "[[The GitHub Blog꞉ Product News and Updates]]"
-tags: [rss/Arm,rss/GitHub_Actions,rss/Product]
 pinned: false
+tags:
+  - rss/Arm
+  - rss/GitHub_Actions
+  - rss/Product
 ---
 
 > [!abstract] Arm64 on GitHub Actions: Powering faster, more efficient build systems (by Larissa Fortuna)
@@ -22,6 +27,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 GitHub is ecstatic to unveil ArmⓇ-based Linux and Windows runners for GitHub Actions are now in Public Beta. This new addition to our suite of hosted runners provides power, performance and sustainability improvements for all your GitHub Actions jobs. Developers can now take advantage of Arm-based hardware hosted by GitHub to build and deploy their release assets anywhere Arm architecture is used. Best of all, these runners are priced at 37% less than our x64 Linux and Windows runners.
 
 Customers are refactoring their applications to take advantage of the price and performance benefits of Arm architecture. These new runners provide power, performance, and sustainability improvements for all your GitHub Actions jobs and are designed to efficiently run large cloud-native workloads. Developers in every industry—from gaming to embedded mobile development—are able to take advantage of the performance these new runners offer.

@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-04-19T23:00:00.000Z
+aliases: []
+id: https://www.pythonmorsels.com/multiline-comments/
+author: unknown
 link: https://www.pythonmorsels.com/multiline-comments/
-id: "https://www.pythonmorsels.com/multiline-comments/"
+published: 2024-04-19T23:00:00.000Z
 feed: "[[Python Morsels]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Multiline comments in Python (by unknown)
@@ -30,6 +31,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 Python does not have multiline comments. But you can use alternatives like docstrings, editor shortcuts, and conventional commenting methods, depending on your requirements.
 
 **Table of contents**

@@ -1,12 +1,14 @@
 ---
 role: rssitem
+aliases:
+  - "Replied to: @WetHat Newtonsoft,Json is not dead. It's last release was 14 months ago & the repo has commits in the last month. There is such a thing as stable code that doesn't need constant releases every 5 minutes."
+id: https://fosstodon.org/@WetHat/112434073371395011
 author: "@WetHat"
-published: 2024-05-13T13:43:29.000Z
 link: https://fosstodon.org/@WetHat/112434073371395011
-id: "https://fosstodon.org/@WetHat/112434073371395011"
+published: 2024-05-13T13:43:29.000Z
 feed: "[[@WetHat (WetHat💦)]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Replied to: @WetHat Newtonsoft,Json is not dead. It's last release was 14 months ago & the repo has commits in the last month. There is such a thing as stable code that doesn't need constant releases every 5 minutes. (by @WetHat)
@@ -34,3 +36,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

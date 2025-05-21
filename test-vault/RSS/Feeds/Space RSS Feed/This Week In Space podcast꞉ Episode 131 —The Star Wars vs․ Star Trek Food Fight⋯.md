@@ -1,12 +1,17 @@
 ---
 role: rssitem
+aliases:
+  - " This Week In Space podcast: Episode 131 —The Star Wars vs. Star Trek Food Fight "
+id: bL7rmDpVCk3BnXUk6tRUF
 author: " info@space.com (Space.com Staff) "
-published: 2024-10-05T13:37:45.000Z
 link: https://www.space.com/entertainment/space-movies-shows/this-week-in-space-podcast-this-week-in-space-podcast-episode-131-star-wars-vs-star-trek-food-fight
-id: "bL7rmDpVCk3BnXUk6tRUF"
+published: 2024-10-05T13:37:45.000Z
 feed: "[[Space RSS Feed]]"
-tags: [rss/Entertainment,rss/Space_Movies,rss/ampShows]
 pinned: false
+tags:
+  - rss/Entertainment
+  - rss/Space_Movies
+  - rss/ampShows
 ---
 
 > [!abstract]  This Week In Space podcast: Episode 131 —The Star Wars vs. Star Trek Food Fight  (by  info@space.com (Space.com Staff) )
@@ -22,6 +27,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 On [Episode 131 of This Week In Space](https://twit.tv/shows/this-week-in-space/episodes/131), Rod Pyle and Tariq Malik tackle a question that rivals the meaning of life itself: which is better, Star Trek or Star Wars?  
   
 Of course, they are very different, and that's really the core of it--one is a sweeping fantasy adventure incorporating the "Hero's Journey," while the other is a science fantasy wrapped around a morality play. In the end, we love them both. But there is a bit of cultural (and perhaps generation) divide here, and someone has to put Tariq in his place. Join us for this civilization-shattering conversation! 

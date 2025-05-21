@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "Matthew Dowst"
-published: 2024-05-24T12:25:00.000Z
+aliases: []
+id: https://psweekly.dowst.dev/?post_type=link_library_links&p=6896
+author: Matthew Dowst
 link: https://leanpub.com/psprimer
-id: "https://psweekly.dowst.dev/?post_type=link_library_links&p=6896"
+published: 2024-05-24T12:25:00.000Z
 feed: "[[Planet PowerShell]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] The PowerShell Practice Primer (by Matthew Dowst)
@@ -26,6 +27,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 A collection of over 100 PowerShell learning exercises targeted for beginners developed by
 
 PowerShell MVP and veteran teacher Jeff Hicks.

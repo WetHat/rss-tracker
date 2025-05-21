@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-04-30T19:30:00.000Z
+aliases:
+  - "Issue #627 (April 30, 2024)"
+id: https://pycoders.com/issues/627
+author: unknown
 link: https://pycoders.com/issues/627
-id: "https://pycoders.com/issues/627"
+published: 2024-04-30T19:30:00.000Z
 feed: "[[PyCoder’s Weekly]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Issue #627 (April 30, 2024) (by unknown)
@@ -22,6 +24,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 #627 – APRIL 30, 2024  
 [View in Browser »](https://pycoders.com/issues/627/feed)
 

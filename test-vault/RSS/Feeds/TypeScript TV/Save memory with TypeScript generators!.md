@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-05-20T16:18:33.000Z
+aliases: []
+id: https://typescript.tv/hands-on/save-memory-with-typescript-generators/
+author: unknown
 link: https://typescript.tv/hands-on/save-memory-with-typescript-generators/
-id: "https://typescript.tv/hands-on/save-memory-with-typescript-generators/"
+published: 2024-05-20T16:18:33.000Z
 feed: "[[TypeScript TV]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Save memory with TypeScript generators! (by unknown)
@@ -22,3 +23,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

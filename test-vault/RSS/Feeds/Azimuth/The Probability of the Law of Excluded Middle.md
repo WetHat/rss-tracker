@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "John Baez"
-published: 2024-03-13T23:20:10.000Z
+aliases: []
+id: http://johncarlosbaez.wordpress.com/?p=37675
+author: John Baez
 link: https://johncarlosbaez.wordpress.com/2024/03/13/the-probability-of-the-law-of-excluded-middle/
-id: "http://johncarlosbaez.wordpress.com/?p=37675"
+published: 2024-03-13T23:20:10.000Z
 feed: "[[Azimuth]]"
-tags: [rss/mathematics]
 pinned: false
+tags:
+  - rss/mathematics
 ---
 
 > [!abstract] The Probability of the Law of Excluded Middle (by John Baez)
@@ -22,6 +24,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 The [Law of Excluded Middle](https://en.wikipedia.org/wiki/Law_of_excluded_middle) says that for any statement P, “P or not P” is true.
 
 Is this law true? In classical logic it is. But in [intuitionistic logic](https://en.wikipedia.org/wiki/Intuitionistic_logic) it’s not.

@@ -1,12 +1,17 @@
 ---
 role: rssitem
-author: "Carlin Cherry"
-published: 2024-05-02T16:30:32.000Z
+aliases: []
+id: https://github.blog/?p=77824
+author: Carlin Cherry
 link: https://github.blog/2024-05-02-dependabot-on-github-actions-and-self-hosted-runners-is-now-generally-available/
-id: "https://github.blog/?p=77824"
+published: 2024-05-02T16:30:32.000Z
 feed: "[[The GitHub Blog꞉ Product News and Updates]]"
-tags: [rss/Dependabot,rss/GitHub_Actions,rss/Product,rss/supply_chain_security]
 pinned: false
+tags:
+  - rss/Dependabot
+  - rss/GitHub_Actions
+  - rss/Product
+  - rss/supply_chain_security
 ---
 
 > [!abstract] Dependabot on GitHub Actions and self-hosted runners is now generally available (by Carlin Cherry)
@@ -22,6 +27,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 Starting today, administrators using `Github.com` accounts can enable their repositories and/or organizations to run Dependabot updates jobs as a GitHub Actions workflow using both hosted and self-hosted runners. **Running Dependabot does not count towards GitHub Actions minutes–meaning that using Dependabot continues to be free for everyone**.
 
 Since its launch, Dependabot has used hosted compute to simplify the process of running update jobs, minimizing the amount of work developers need to do to stay on top of security vulnerabilities. However, this compute system wasn’t able to access some on-premises resources like private registries–a growing best practice outlined in frameworks like [S2C2F](https://www.microsoft.com/en-us/securityengineering/opensource/osssscframeworkguide)–and it wasn’t as flexible as it could be. Further, as GitHub Actions has become more ubiquitous over the years, users told us they wanted to see the logs for all their jobs in just one place.

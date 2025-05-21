@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "Matthew Dowst"
-published: 2024-05-24T12:24:12.000Z
+aliases:
+  - "Frontend PowerShell with Google Forms: Part 1 Getting your data"
+id: https://psweekly.dowst.dev/?post_type=link_library_links&p=6893
+author: Matthew Dowst
 link: https://www.youtube.com/watch?v=ZqAShden9qA
-id: "https://psweekly.dowst.dev/?post_type=link_library_links&p=6893"
+published: 2024-05-24T12:24:12.000Z
 feed: "[[Planet PowerShell]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Frontend PowerShell with Google Forms: Part 1 Getting your data (by Matthew Dowst)
@@ -26,6 +28,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 ［OC］ Learn how to get data from a Google Form into PowerShell, by building a repeatable and reusable
 
 automation you can use to with any form.

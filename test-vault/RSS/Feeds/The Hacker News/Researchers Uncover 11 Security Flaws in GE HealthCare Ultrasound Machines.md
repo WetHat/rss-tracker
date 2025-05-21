@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "info@thehackernews.com (The Hacker News)"
-published: 2024-05-16T10:12:00.000Z
+aliases: []
+id: https://thehackernews.com/2024/05/researchers-uncover-11-security-flaws.html
+author: info@thehackernews.com (The Hacker News)
 link: https://thehackernews.com/2024/05/researchers-uncover-11-security-flaws.html
-id: "https://thehackernews.com/2024/05/researchers-uncover-11-security-flaws.html"
+published: 2024-05-16T10:12:00.000Z
 feed: "[[The Hacker News]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Researchers Uncover 11 Security Flaws in GE HealthCare Ultrasound Machines (by info@thehackernews.com (The Hacker News))
@@ -22,3 +23,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

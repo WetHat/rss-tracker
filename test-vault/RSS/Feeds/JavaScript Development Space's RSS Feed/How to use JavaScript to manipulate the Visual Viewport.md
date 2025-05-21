@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-09-29T00:00:00.000Z
+aliases: []
+id: https://jsdev.space/howto/visual-viewport-js/
+author: unknown
 link: https://jsdev.space/howto/visual-viewport-js/
-id: "https://jsdev.space/howto/visual-viewport-js/"
+published: 2024-09-29T00:00:00.000Z
 feed: "[[JavaScript Development Space's RSS Feed]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] How to use JavaScript to manipulate the Visual Viewport (by unknown)
@@ -22,6 +23,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 Manipulating the visual viewport in JavaScript can enhance the user experience on mobile devices,
 particularly when dealing with dynamic layouts or responsive design. The visual viewport refers to
 the portion of the webpage that is visible to the user, excluding any browser UI elements.

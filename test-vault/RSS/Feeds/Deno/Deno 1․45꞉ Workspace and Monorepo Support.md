@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "Bartek Iwańczuk, Nayeem Rahman, Nathan Whitaker, Yoshiya Hinosawa, Asher Gomez"
-published: 2024-07-11T09:00:00.000Z
+aliases:
+  - "Deno 1.45: Workspace and Monorepo Support"
+id: https://deno.com/blog/v1.45
+author: Bartek Iwańczuk, Nayeem Rahman, Nathan Whitaker, Yoshiya Hinosawa, Asher Gomez
 link: https://deno.com/blog/v1.45
-id: "https://deno.com/blog/v1.45"
+published: 2024-07-11T09:00:00.000Z
 feed: "[[Deno]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Deno 1.45: Workspace and Monorepo Support (by Bartek Iwańczuk, Nayeem Rahman, Nathan Whitaker, Yoshiya Hinosawa, Asher Gomez)
@@ -22,3 +24,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

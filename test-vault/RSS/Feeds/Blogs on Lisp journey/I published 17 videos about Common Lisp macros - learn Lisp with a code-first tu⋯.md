@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2023-09-15T15:07:23.000Z
+aliases:
+  - I published 17 videos about Common Lisp macros - learn Lisp with a code-first tutorial 🎥 ⭐
+id: /blog/17-new-videos-on-common-lisp-macros/
+author: unknown
 link: https://localhost/blog/17-new-videos-on-common-lisp-macros/
-id: "/blog/17-new-videos-on-common-lisp-macros/"
+published: 2023-09-15T15:07:23.000Z
 feed: "[[Blogs on Lisp journey]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] I published 17 videos about Common Lisp macros - learn Lisp with a code-first tutorial 🎥 ⭐ (by unknown)
@@ -22,3 +24,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

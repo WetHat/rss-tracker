@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2023-06-01T17:03:35.000Z
+aliases:
+  - "Pretty GUIs now: nodgui comes with a pre-installed nice looking theme"
+id: /blog/nodgui-now-has-a-nice-looking-theme-by-default/
+author: unknown
 link: https://localhost/blog/nodgui-now-has-a-nice-looking-theme-by-default/
-id: "/blog/nodgui-now-has-a-nice-looking-theme-by-default/"
+published: 2023-06-01T17:03:35.000Z
 feed: "[[Blogs on Lisp journey]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Pretty GUIs now: nodgui comes with a pre-installed nice looking theme (by unknown)
@@ -22,3 +24,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

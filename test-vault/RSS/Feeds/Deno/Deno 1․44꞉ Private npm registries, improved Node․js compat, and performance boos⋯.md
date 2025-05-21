@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "Bartek Iwańczuk, Marvin Hagemeister, Ryan Dahl"
-published: 2024-05-30T09:00:00.000Z
+aliases:
+  - "Deno 1.44: Private npm registries, improved Node.js compat, and performance boosts"
+id: https://deno.com/blog/v1.44
+author: Bartek Iwańczuk, Marvin Hagemeister, Ryan Dahl
 link: https://deno.com/blog/v1.44
-id: "https://deno.com/blog/v1.44"
+published: 2024-05-30T09:00:00.000Z
 feed: "[[Deno]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Deno 1.44: Private npm registries, improved Node.js compat, and performance boosts (by Bartek Iwańczuk, Marvin Hagemeister, Ryan Dahl)
@@ -22,3 +24,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

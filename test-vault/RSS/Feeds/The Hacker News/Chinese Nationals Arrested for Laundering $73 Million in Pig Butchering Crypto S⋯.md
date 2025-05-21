@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "info@thehackernews.com (The Hacker News)"
-published: 2024-05-19T09:46:00.000Z
+aliases:
+  - Chinese Nationals Arrested for Laundering $73 Million in Pig Butchering Crypto Scam
+id: https://thehackernews.com/2024/05/chinese-nationals-arrested-for.html
+author: info@thehackernews.com (The Hacker News)
 link: https://thehackernews.com/2024/05/chinese-nationals-arrested-for.html
-id: "https://thehackernews.com/2024/05/chinese-nationals-arrested-for.html"
+published: 2024-05-19T09:46:00.000Z
 feed: "[[The Hacker News]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Chinese Nationals Arrested for Laundering $73 Million in Pig Butchering Crypto Scam (by info@thehackernews.com (The Hacker News))
@@ -22,3 +24,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

@@ -1,11 +1,11 @@
 ---
 role: rssfeed
+tags: []
 feedurl: https://localhost/test/PyCoder’s Weekly/feed.xml
 site: https://pycoders.com/
 itemlimit: 10
-updated: 2025-05-21T12:31:18.866Z
 status: ✅
-tags: []
+updated: 2025-05-21T19:06:18.005Z
 interval: 168
 ---
 > [!abstract] PyCoder’s Weekly

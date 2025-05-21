@@ -1,12 +1,16 @@
 ---
 role: rssitem
+aliases:
+  - " SpaceX, NASA stand down from Oct. 10 Europa Clipper launch due to Hurricane Milton "
+id: Dv85k7E2dBnqGCFFxj3YFY
 author: " mwall@space.com (Mike Wall) "
-published: 2024-10-07T04:39:52.000Z
 link: https://www.space.com/spacex-nasa-europa-clipper-launch-delay-hurricane-milton
-id: "Dv85k7E2dBnqGCFFxj3YFY"
+published: 2024-10-07T04:39:52.000Z
 feed: "[[Space RSS Feed]]"
-tags: [rss/Missions,rss/Space_Exploration]
 pinned: false
+tags:
+  - rss/Missions
+  - rss/Space_Exploration
 ---
 
 > [!abstract]  SpaceX, NASA stand down from Oct. 10 Europa Clipper launch due to Hurricane Milton  (by  mwall@space.com (Mike Wall) )
@@ -22,6 +26,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 We'll have to wait a bit longer to see NASA's Europa Clipper probe get off the ground.
 
 The $5 billion [Europa Clipper](https://www.space.com/europa-clipper-mission-explained) mission had been scheduled to launch on Thursday (Oct. 10) atop a [SpaceX](https://www.space.com/18853-spacex.html) Falcon Heavy rocket from NASA's Kennedy Space Center (KSC), on Florida's Atlantic Coast. But Hurricane Milton has nixed that plan.

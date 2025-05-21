@@ -1,12 +1,18 @@
 ---
 role: rssitem
-author: "David Pine"
-published: 2024-05-08T17:05:00.000Z
+aliases:
+  - Refactor your code with C# collection expressions
+id: https://devblogs.microsoft.com/dotnet/?p=51745
+author: David Pine
 link: https://devblogs.microsoft.com/dotnet/refactor-your-code-with-collection-expressions/
-id: "https://devblogs.microsoft.com/dotnet/?p=51745"
+published: 2024-05-08T17:05:00.000Z
 feed: "[[․NET Blog]]"
-tags: [rss/C＃,rss/_NET,rss/_net_8,rss/c＃_12]
 pinned: false
+tags:
+  - rss/C＃
+  - rss/c＃_12
+  - rss/۔NET
+  - rss/۔net_8
 ---
 
 > [!abstract] Refactor your code with C# collection expressions (by David Pine)
@@ -24,6 +30,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 This post is the second in a series of posts covering various refactoring scenarios that explore C# 12 features. In this post, we’ll look at how you can refactor your code using collection expressions, we’ll learn about collection initializers, various expression usages, supported collection target types, and the spread syntax. Here’s how the series is shaping up:
 
 1. [Refactor your C# code with primary constructors](https://devblogs.microsoft.com/dotnet/csharp-primary-constructors-refactoring/)

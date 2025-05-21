@@ -1,12 +1,19 @@
 ---
 role: rssitem
-author: "Mario Rodriguez"
-published: 2024-05-21T15:27:46.000Z
+aliases:
+  - "Introducing GitHub Copilot Extensions: Unlocking unlimited possibilities with our ecosystem of partners"
+id: https://github.blog/?p=78012
+author: Mario Rodriguez
 link: https://github.blog/2024-05-21-introducing-github-copilot-extensions/
-id: "https://github.blog/?p=78012"
+published: 2024-05-21T15:27:46.000Z
 feed: "[[The GitHub Blog꞉ Product News and Updates]]"
-tags: [rss/AI,rss/GitHub_Copilot,rss/GitHub_Copilot_Extensions,rss/Product,rss/developer_experience]
 pinned: false
+tags:
+  - rss/AI
+  - rss/GitHub_Copilot
+  - rss/GitHub_Copilot_Extensions
+  - rss/Product
+  - rss/developer_experience
 ---
 
 > [!abstract] Introducing GitHub Copilot Extensions: Unlocking unlimited possibilities with our ecosystem of partners (by Mario Rodriguez)
@@ -22,6 +29,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 Today, we’re introducing GitHub Copilot Extensions to bring the world’s knowledge into the most widely adopted AI developer tool. Through a growing partner ecosystem, Copilot Extensions enables developers to build and deploy to the cloud in their natural language with their preferred tools and services, all without leaving the IDE or GitHub.com. With Copilot and now Copilot Extensions, developers can stay in the flow longer, uplevel their skills, and innovate faster.
 
 ![Sixteen GitHub Copilot Extensions from GitHub Copilot partners laid out as grid of tiles](https://github.blog/wp-content/uploads/2024/05/Marketplace-App-Tiles@2x.png?resize=1024%2C597)

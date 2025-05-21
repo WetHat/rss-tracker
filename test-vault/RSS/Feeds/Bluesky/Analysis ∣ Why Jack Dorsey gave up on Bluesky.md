@@ -1,12 +1,19 @@
 ---
 role: rssitem
-author: "Will Oremus"
-published: 2024-05-14T13:18:56.000Z
+aliases:
+  - Analysis | Why Jack Dorsey gave up on Bluesky
+id: flipboard-k41RuLVITpWeYyZdxPKRVg:a:5131961-1715692736
+author: Will Oremus
 link: https://www.washingtonpost.com/politics/2024/05/14/why-jack-dorsey-gave-up-bluesky/
-id: "flipboard-k41RuLVITpWeYyZdxPKRVg:a:5131961-1715692736"
+published: 2024-05-14T13:18:56.000Z
 feed: "[[Bluesky]]"
-tags: [rss/Artificial_Intelligence,rss/Bluesky,rss/Computer_Science,rss/Jack_Dorsey,rss/Technology]
 pinned: false
+tags:
+  - rss/Artificial_Intelligence
+  - rss/Bluesky
+  - rss/Computer_Science
+  - rss/Jack_Dorsey
+  - rss/Technology
 ---
 
 > [!abstract] Analysis | Why Jack Dorsey gave up on Bluesky (by Will Oremus)
@@ -22,3 +29,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

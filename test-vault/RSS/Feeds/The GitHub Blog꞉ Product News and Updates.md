@@ -1,11 +1,11 @@
 ---
 role: rssfeed
+tags: []
 feedurl: https://localhost/test/The GitHub Blog꞉ Product News and Updates/feed.xml
 site: https://github.blog/category/product/
 itemlimit: 10
-updated: 2025-05-21T12:31:05.689Z
 status: ✅
-tags: []
+updated: 2025-05-21T19:06:04.932Z
 interval: 165
 ---
 > [!abstract] The GitHub Blog: Product News and Updates

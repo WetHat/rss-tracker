@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "Sabine Hossenfelder"
-published: 2024-05-13T15:00:35.000Z
+aliases:
+  - Does "Quark" Rhyme With "Dark"?
+id: yt:video:_U3oIWQJqH0
+author: Sabine Hossenfelder
 link: https://www.youtube.com/watch?v=_U3oIWQJqH0
-id: "yt:video:_U3oIWQJqH0"
+published: 2024-05-13T15:00:35.000Z
 feed: "[[Sabine Hossenfelder]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Does "Quark" Rhyme With "Dark"? (by Sabine Hossenfelder)
@@ -22,3 +24,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

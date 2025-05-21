@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-10-23T12:00:00.000Z
+aliases:
+  - "Quiz: Python Class Constructors: Control Your Object Instantiation"
+id: https://realpython.com/quizzes/python-class-constructor/
+author: unknown
 link: https://realpython.com/quizzes/python-class-constructor/
-id: "https://realpython.com/quizzes/python-class-constructor/"
+published: 2024-10-23T12:00:00.000Z
 feed: "[[Real Python]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Quiz: Python Class Constructors: Control Your Object Instantiation (by unknown)
@@ -22,6 +24,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 In this quiz, you’ll test your understanding of [Python Class Constructors](https://realpython.com/python-class-constructor/).
 
 By working through this quiz, you’ll revisit the internal instantiation process, object initialization using `.__init__()`, and fine-tuning object creation by overriding `.__new__()`.

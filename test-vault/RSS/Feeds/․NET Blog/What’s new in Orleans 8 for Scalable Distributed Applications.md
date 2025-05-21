@@ -1,12 +1,24 @@
 ---
 role: rssitem
-author: "Mike Kistler"
-published: 2024-05-13T17:05:00.000Z
+aliases:
+  - What&#8217;s new in Orleans 8 for Scalable Distributed Applications
+id: https://devblogs.microsoft.com/dotnet/?p=51767
+author: Mike Kistler
 link: https://devblogs.microsoft.com/dotnet/whats-new-in-orleans-8/
-id: "https://devblogs.microsoft.com/dotnet/?p=51767"
+published: 2024-05-13T17:05:00.000Z
 feed: "[[․NET Blog]]"
-tags: [rss/ASP_NET,rss/ASP_NET_Core,rss/Cloud,rss/Cloud_Native,rss/Orleans,rss/_NET,rss/_NET_Aspire,rss/_net_aspire,rss/cloud_native,rss/orleans]
 pinned: false
+tags:
+  - rss/ASP۔NET
+  - rss/ASP۔NET_Core
+  - rss/Cloud
+  - rss/Cloud_Native
+  - rss/Orleans
+  - rss/cloud_native
+  - rss/orleans
+  - rss/۔NET
+  - rss/۔NET_Aspire
+  - rss/۔net_aspire
 ---
 
 > [!abstract] What&#8217;s new in Orleans 8 for Scalable Distributed Applications (by Mike Kistler)
@@ -24,6 +36,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 Orleans is a cross-platform framework for building robust, scalable distributed applications. A lot has happened in Orleans for since our last blog on new features in [Orleans 7.0](https://devblogs.microsoft.com/dotnet/whats-new-in-orleans-7/) including new integration with [.NET Aspire](https://aka.ms/dotnet-aspire). Let’s take a look at what’s new!
 
 The Orleans 7.2 release delivered two great new capabilities that I think Orleans developers will find exciting:

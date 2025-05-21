@@ -1,12 +1,18 @@
 ---
 role: rssitem
-author: "Thomas Dohmke"
-published: 2024-04-29T16:00:02.000Z
+aliases:
+  - "GitHub Copilot Workspace: Welcome to the Copilot-native developer environment"
+id: https://github.blog/?p=77597
+author: Thomas Dohmke
 link: https://github.blog/2024-04-29-github-copilot-workspace/
-id: "https://github.blog/?p=77597"
+published: 2024-04-29T16:00:02.000Z
 feed: "[[The GitHub Blog꞉ Product News and Updates]]"
-tags: [rss/GitHub_Copilot,rss/GitHub_Enterprise,rss/Product,rss/generative_AI]
 pinned: false
+tags:
+  - rss/GitHub_Copilot
+  - rss/GitHub_Enterprise
+  - rss/Product
+  - rss/generative_AI
 ---
 
 > [!abstract] GitHub Copilot Workspace: Welcome to the Copilot-native developer environment (by Thomas Dohmke)
@@ -22,6 +28,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 We’re redefining the developer environment with GitHub Copilot Workspace–where any developer can go from idea, to code, to software in natural language. [Sign up here](https://githubnext.com/projects/copilot-workspace).
 
 In the past two years, generative AI has foundationally changed the developer landscape largely as a tool embedded inside the developer environment. In 2022, we launched GitHub Copilot as an autocomplete pair programmer in the editor, [boosting developer productivity by up to 55%](https://github.blog/2022-09-07-research-quantifying-github-copilots-impact-on-developer-productivity-and-happiness/). Copilot is now the most widely adopted AI developer tool. In 2023, we released GitHub Copilot Chat—unlocking the power of natural language in coding, debugging, and testing—allowing developers to converse with their code in real time.

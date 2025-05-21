@@ -1,12 +1,29 @@
 ---
 role: rssitem
-author: "Damian Edwards"
-published: 2024-05-21T15:50:00.000Z
+aliases:
+  - "General Availability of .NET Aspire: Simplifying .NET Cloud-Native Development"
+id: https://devblogs.microsoft.com/dotnet/?p=51907
+author: Damian Edwards
 link: https://devblogs.microsoft.com/dotnet/dotnet-aspire-general-availability/
-id: "https://devblogs.microsoft.com/dotnet/?p=51907"
+published: 2024-05-21T15:50:00.000Z
 feed: "[[․NET Blog]]"
-tags: [rss/Azure,rss/Cloud_Native,rss/Containers,rss/Docker,rss/OpenTelemetry,rss/_NET,rss/_NET_Aspire,rss/aspire,rss/azure,rss/cloud_native,rss/distribute,rss/observable,rss/otel,rss/scalable,rss/stack]
 pinned: false
+tags:
+  - rss/Azure
+  - rss/Cloud_Native
+  - rss/Containers
+  - rss/Docker
+  - rss/OpenTelemetry
+  - rss/aspire
+  - rss/azure
+  - rss/cloud_native
+  - rss/distribute
+  - rss/observable
+  - rss/otel
+  - rss/scalable
+  - rss/stack
+  - rss/۔NET
+  - rss/۔NET_Aspire
 ---
 
 > [!abstract] General Availability of .NET Aspire: Simplifying .NET Cloud-Native Development (by Damian Edwards)
@@ -24,6 +41,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 .NET Aspire is a new stack that streamlines development of .NET cloud-native services and is now generally available. You can [get started with .NET Aspire](https://learn.microsoft.com/dotnet/aspire/fundamentals/setup-tooling) today in Visual Studio 2022 17.10, the .NET CLI, or Visual Studio Code. .NET Aspire brings together tools, templates, and NuGet packages that help you build distributed applications in .NET more easily. Whether you’re building a new application, adding cloud-native capabilities to an existing one, or are already deploying .NET apps to production in the cloud today, .NET Aspire can help you get there faster.
 
 ![.NET Aspire overview](./aspire-ga-what-is-aspire.png)

@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "Yusuke Tanaka, Andy Jiang"
-published: 2024-07-09T12:00:00.000Z
+aliases: []
+id: https://deno.com/blog/subhosting-kv-backup
+author: Yusuke Tanaka, Andy Jiang
 link: https://deno.com/blog/subhosting-kv-backup
-id: "https://deno.com/blog/subhosting-kv-backup"
+published: 2024-07-09T12:00:00.000Z
 feed: "[[Deno]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Introducing KV Backup for Deno Subhosting (by Yusuke Tanaka, Andy Jiang)
@@ -22,3 +23,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

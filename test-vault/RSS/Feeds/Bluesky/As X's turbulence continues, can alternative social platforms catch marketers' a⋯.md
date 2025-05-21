@@ -1,12 +1,19 @@
 ---
 role: rssitem
-author: "By Kimeko McCoy and Sam Bradley"
-published: 2024-05-29T04:01:00.000Z
+aliases:
+  - As X's turbulence continues, can alternative social platforms catch marketers' attention?
+id: flipboard-246dafe53e/digiday.com-1716955260
+author: By Kimeko McCoy and Sam Bradley
 link: https://digiday.com/marketing/as-xs-turbulence-continues-can-alternative-social-platforms-catch-marketers-attention/
-id: "flipboard-246dafe53e/digiday.com-1716955260"
+published: 2024-05-29T04:01:00.000Z
 feed: "[[Bluesky]]"
-tags: [rss/Advertising,rss/Bluesky,rss/Digital_Marketing,rss/Internet_Marketing,rss/Viral_Marketing]
 pinned: false
+tags:
+  - rss/Advertising
+  - rss/Bluesky
+  - rss/Digital_Marketing
+  - rss/Internet_Marketing
+  - rss/Viral_Marketing
 ---
 
 > [!abstract] As X's turbulence continues, can alternative social platforms catch marketers' attention? (by By Kimeko McCoy and Sam Bradley)
@@ -22,3 +29,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

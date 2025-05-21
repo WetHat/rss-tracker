@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "info@thehackernews.com (The Hacker News)"
-published: 2024-05-17T11:20:00.000Z
+aliases: []
+id: https://thehackernews.com/2024/05/china-linked-hackers-adopt-two-stage.html
+author: info@thehackernews.com (The Hacker News)
 link: https://thehackernews.com/2024/05/china-linked-hackers-adopt-two-stage.html
-id: "https://thehackernews.com/2024/05/china-linked-hackers-adopt-two-stage.html"
+published: 2024-05-17T11:20:00.000Z
 feed: "[[The Hacker News]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] China-Linked Hackers Adopt Two-Stage Infection Tactic to Deploy Deuterbear RAT (by info@thehackernews.com (The Hacker News))
@@ -22,3 +23,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

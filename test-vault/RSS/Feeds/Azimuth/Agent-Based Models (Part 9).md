@@ -1,12 +1,16 @@
 ---
 role: rssitem
-author: "John Baez"
-published: 2024-05-13T18:23:03.000Z
+aliases: []
+id: http://johncarlosbaez.wordpress.com/?p=37840
+author: John Baez
 link: https://johncarlosbaez.wordpress.com/2024/05/13/agent-based-models-part-9/
-id: "http://johncarlosbaez.wordpress.com/?p=37840"
+published: 2024-05-13T18:23:03.000Z
 feed: "[[Azimuth]]"
-tags: [rss/computer_science,rss/epidemiology,rss/mathematics]
 pinned: false
+tags:
+  - rss/computer_science
+  - rss/epidemiology
+  - rss/mathematics
 ---
 
 > [!abstract] Agent-Based Models (Part 9) (by John Baez)
@@ -22,6 +26,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 Since May 1st, [Kris Brown](https://www.krisb.org/docs/research), [Nathaniel Osgood](https://www.cs.usask.ca/faculty/osgood/), [Xiaoyan Li](https://scholar.google.ca/citations?user=55dzbRgAAAAJ&hl=en), [William Waites](https://scholar.google.com/citations?user=eayiEiwAAAAJ&hl=en) and I have been meeting daily in James Clerk Maxwell’s childhood home in Edinburgh.
 
 [![](https://johncarlosbaez.files.wordpress.com/2024/05/1200px-maxwellsequations-1860-1871.jpg?w=450&h=298)](https://johncarlosbaez.files.wordpress.com/2024/05/1200px-maxwellsequations-1860-1871.jpg)

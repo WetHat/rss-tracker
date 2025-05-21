@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "John Baez"
-published: 2024-02-29T10:00:24.000Z
+aliases: []
+id: http://johncarlosbaez.wordpress.com/?p=37567
+author: John Baez
 link: https://johncarlosbaez.wordpress.com/2024/02/29/nicholas-ludford/
-id: "http://johncarlosbaez.wordpress.com/?p=37567"
+published: 2024-02-29T10:00:24.000Z
 feed: "[[Azimuth]]"
-tags: [rss/music]
 pinned: false
+tags:
+  - rss/music
 ---
 
 > [!abstract] Nicholas Ludford (by John Baez)
@@ -22,6 +24,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 [![](https://i0.wp.com/math.ucr.edu/home/baez/cultural/blue_heron_peterhouse_partbooks.jpg)](https://www.blueheron.org/learn-more/the-peterhouse-partbooks/)
 
 At first glance it’s amazing that one of the great British composers of the 1400s largely sank from view until his works were rediscovered in 1850.

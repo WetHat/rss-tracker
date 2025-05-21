@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "Andy Jiang"
-published: 2024-06-25T12:00:00.000Z
+aliases: []
+id: https://deno.com/blog/hono-on-jsr
+author: Andy Jiang
 link: https://deno.com/blog/hono-on-jsr
-id: "https://deno.com/blog/hono-on-jsr"
+published: 2024-06-25T12:00:00.000Z
 feed: "[[Deno]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Announcing Hono on JSR (by Andy Jiang)
@@ -22,3 +23,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

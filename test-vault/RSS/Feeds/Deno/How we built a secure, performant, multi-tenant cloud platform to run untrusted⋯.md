@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "Bert Belder"
-published: 2024-05-17T15:30:00.000Z
+aliases:
+  - How we built a secure, performant, multi-tenant cloud platform to run untrusted code
+id: https://deno.com/blog/build-secure-performant-cloud-platform
+author: Bert Belder
 link: https://deno.com/blog/build-secure-performant-cloud-platform
-id: "https://deno.com/blog/build-secure-performant-cloud-platform"
+published: 2024-05-17T15:30:00.000Z
 feed: "[[Deno]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] How we built a secure, performant, multi-tenant cloud platform to run untrusted code (by Bert Belder)
@@ -22,3 +24,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "info@thehackernews.com (The Hacker News)"
-published: 2024-05-17T11:29:00.000Z
+aliases:
+  - "New XM Cyber Research: 80% of Exposures from Misconfigurations, Less Than 1% from CVEs"
+id: https://thehackernews.com/2024/05/new-xm-cyber-research-80-of-exposures.html
+author: info@thehackernews.com (The Hacker News)
 link: https://thehackernews.com/2024/05/new-xm-cyber-research-80-of-exposures.html
-id: "https://thehackernews.com/2024/05/new-xm-cyber-research-80-of-exposures.html"
+published: 2024-05-17T11:29:00.000Z
 feed: "[[The Hacker News]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] New XM Cyber Research: 80% of Exposures from Misconfigurations, Less Than 1% from CVEs (by info@thehackernews.com (The Hacker News))
@@ -22,3 +24,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

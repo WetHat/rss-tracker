@@ -1,22 +1,15 @@
 ---
 role: rssitem
-author: "@WetHat"
-published: 2024-05-15T05:40:35.000Z
-link: https://mastodon.social/@lisp_discussions/112442474804563136
-id: "https://mastodon.social/@lisp_discussions/112442474804563136"
-feed: "[[@WetHat (WetHat💦)]]"
-tags: []
-pinned: false
 ---
 
-> [!abstract] Boosted: Series: A Functional Approach To Common Lisp https://youtu.be/2mJ88j3CqRs Discussions: https://discu.eu/q/https://youtu.be/2mJ88j3CqRs #lisp #programming (by @WetHat)
+> [!abstract] Boosted: Series: A Functional Approach To Common Lisp https://youtu.be/2mJ88j3CqRs Discussions: https://discu.eu/q/https://youtu.be/2mJ88j3CqRs #rss/lisp #rss/programming (by @WetHat)
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] Series: A Functional Approach To Common Lisp
 > 
 > [https://youtu.be/2mJ88j3CqRs](https://youtu.be/2mJ88j3CqRs)
 > 
 > Discussions: [https://discu.eu/q/https://youtu.be/2mJ88j3CqRs](https://discu.eu/q/https://youtu.be/2mJ88j3CqRs)
 > 
-> [#lisp](https://mastodon.social/tags/lisp) [#programming](https://mastodon.social/tags/programming)
+> [#rss/lisp](https://mastodon.social/tags/lisp) [#rss/programming](https://mastodon.social/tags/programming)
 > 
 > - Lisp & Scheme Weekly (@lisp_discussions) [May 14, 2024](https://mastodon.social/@lisp_discussions/112442474804563136)
 

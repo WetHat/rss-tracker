@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2023-12-11T14:19:29.000Z
+aliases: []
+id: https://typescript.tv/hands-on/improve-your-typescript-workflow-with-code-snippets/
+author: unknown
 link: https://typescript.tv/hands-on/improve-your-typescript-workflow-with-code-snippets/
-id: "https://typescript.tv/hands-on/improve-your-typescript-workflow-with-code-snippets/"
+published: 2023-12-11T14:19:29.000Z
 feed: "[[TypeScript TV]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Improve your TypeScript workflow with Code Snippets (by unknown)
@@ -22,3 +23,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

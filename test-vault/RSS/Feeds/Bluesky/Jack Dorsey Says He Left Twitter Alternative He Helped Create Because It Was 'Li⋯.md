@@ -1,12 +1,19 @@
 ---
 role: rssitem
-author: "Benzinga Neuro"
-published: 2024-05-10T01:38:56.000Z
+aliases:
+  - Jack Dorsey Says He Left Twitter Alternative He Helped Create Because It Was 'Literally Repeating All The Mistakes'
+id: flipboard-lMDHh0MsSIGCv4bMtvLasQ:a:628494323-1715305136
+author: Benzinga Neuro
 link: https://www.benzinga.com/24/05/38750990/jack-dorsey-says-he-left-twitter-alternative-he-helped-create-because-it-was-literally-repeating-all
-id: "flipboard-lMDHh0MsSIGCv4bMtvLasQ:a:628494323-1715305136"
+published: 2024-05-10T01:38:56.000Z
 feed: "[[Bluesky]]"
-tags: [rss/Bluesky,rss/Business,rss/Finance,rss/Jack_Dorsey,rss/Twitter]
 pinned: false
+tags:
+  - rss/Bluesky
+  - rss/Business
+  - rss/Finance
+  - rss/Jack_Dorsey
+  - rss/Twitter
 ---
 
 > [!abstract] Jack Dorsey Says He Left Twitter Alternative He Helped Create Because It Was 'Literally Repeating All The Mistakes' (by Benzinga Neuro)
@@ -22,3 +29,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

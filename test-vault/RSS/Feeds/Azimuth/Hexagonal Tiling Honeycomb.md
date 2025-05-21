@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "John Baez"
-published: 2024-05-04T15:47:17.000Z
+aliases: []
+id: http://johncarlosbaez.wordpress.com/?p=37783
+author: John Baez
 link: https://johncarlosbaez.wordpress.com/2024/05/04/hexagonal-tiling-honeycomb/
-id: "http://johncarlosbaez.wordpress.com/?p=37783"
+published: 2024-05-04T15:47:17.000Z
 feed: "[[Azimuth]]"
-tags: [rss/mathematics]
 pinned: false
+tags:
+  - rss/mathematics
 ---
 
 > [!abstract] Hexagonal Tiling Honeycomb (by John Baez)
@@ -22,6 +24,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 [  
 ![](https://i0.wp.com/math.ucr.edu/home/baez/mathematical/{6,3,3}_honeycomb_roice_bright.png)  
 ](https://commons.wikimedia.org/wiki/File:H3_633_FC_boundary.png)

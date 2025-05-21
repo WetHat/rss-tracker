@@ -1,12 +1,24 @@
 ---
 role: rssitem
-author: "Mehul Harry"
-published: 2024-05-09T17:05:00.000Z
+aliases:
+  - Join the .NET Team at Microsoft Build 2024!
+id: https://devblogs.microsoft.com/dotnet/?p=51773
+author: Mehul Harry
 link: https://devblogs.microsoft.com/dotnet/join-the-dotnet-team-microsoft-build-2024/
-id: "https://devblogs.microsoft.com/dotnet/?p=51773"
+published: 2024-05-09T17:05:00.000Z
 feed: "[[․NET Blog]]"
-tags: [rss/AI,rss/ASP_NET,rss/ASP_NET_Core,rss/C＃,rss/Machine_Learning,rss/_NET,rss/_NET_Core,rss/azure,rss/event,rss/microsoft_build]
 pinned: false
+tags:
+  - rss/AI
+  - rss/ASP۔NET
+  - rss/ASP۔NET_Core
+  - rss/C＃
+  - rss/Machine_Learning
+  - rss/azure
+  - rss/event
+  - rss/microsoft_build
+  - rss/۔NET
+  - rss/۔NET_Core
 ---
 
 > [!abstract] Join the .NET Team at Microsoft Build 2024! (by Mehul Harry)
@@ -24,6 +36,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 The countdown has begun! Microsoft Build 2024 is just around the corner, and if you’re a .NET enthusiast, get ready for a great lineup of sessions. Whether you’re a seasoned developer or just starting your journey, there’s something for everyone.
 
 **Event Format: Hybrid Experience**  

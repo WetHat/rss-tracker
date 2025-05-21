@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2023-05-08T12:01:34.000Z
+aliases: []
+id: /blog/i18n-in-my-lisp-web-app-with-djula-templates-and-gettext/
+author: unknown
 link: https://localhost/blog/i18n-in-my-lisp-web-app-with-djula-templates-and-gettext/
-id: "/blog/i18n-in-my-lisp-web-app-with-djula-templates-and-gettext/"
+published: 2023-05-08T12:01:34.000Z
 feed: "[[Blogs on Lisp journey]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] i18n in my Lisp web app with Djula templates and gettext (by unknown)
@@ -22,3 +23,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

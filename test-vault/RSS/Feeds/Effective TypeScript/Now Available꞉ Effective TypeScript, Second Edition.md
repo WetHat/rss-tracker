@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-05-21T21:30:00.000Z
+aliases:
+  - "Now Available: Effective TypeScript, Second Edition"
+id: https://effectivetypescript.com/2024/05/21/second-edition/
+author: unknown
 link: https://effectivetypescript.com/2024/05/21/second-edition/
-id: "https://effectivetypescript.com/2024/05/21/second-edition/"
+published: 2024-05-21T21:30:00.000Z
 feed: "[[Effective TypeScript]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Now Available: Effective TypeScript, Second Edition (by unknown)
@@ -22,6 +24,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 ![](https://effectivetypescript.com/images/cover-2e.jpg)I'm happy to [announce](https://twitter.com/danvdk/status/1788579805643915424) that the second edition of [_Effective TypeScript_](https://amzn.to/3UjPrsK) is now available! I've spent a good chunk of the past year working on this update, and I'm incredibly happy with how it's turned out.
 
 You can buy a copy at all the usual places:

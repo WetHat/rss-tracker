@@ -1,12 +1,18 @@
 ---
 role: rssitem
-author: "Mario Rodriguez"
-published: 2024-05-07T16:00:04.000Z
+aliases: []
+id: https://github.blog/?p=77910
+author: Mario Rodriguez
 link: https://github.blog/2024-05-07-github-copilot-chat-in-github-mobile/
-id: "https://github.blog/?p=77910"
+published: 2024-05-07T16:00:04.000Z
 feed: "[[The GitHub Blog꞉ Product News and Updates]]"
-tags: [rss/GitHub_Copilot,rss/GitHub_Copilot_Chat,rss/GitHub_Mobile,rss/Product,rss/generative_AI]
 pinned: false
+tags:
+  - rss/GitHub_Copilot
+  - rss/GitHub_Copilot_Chat
+  - rss/GitHub_Mobile
+  - rss/Product
+  - rss/generative_AI
 ---
 
 > [!abstract] GitHub Copilot Chat in GitHub Mobile is now generally available (by Mario Rodriguez)
@@ -22,6 +28,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 Developers are constantly coming up with new ideas, exploring new skills, and collaborating with other developers on work and personal projects. At GitHub, we understand that all this collaboration doesn’t always happen from behind desks and computers. Developers increasingly use their mobile devices to learn, understand, and perform important tasks in the software development process. Today, we’re making that easier than ever, empowering developers to build in natural language wherever they may be, with the general availability of GitHub Copilot Chat for GitHub Mobile.
 
 With GitHub Copilot Chat natively integrated with GitHub Mobile, developers can access their AI coding assistant to get answers for all their coding questions, or even repositories and knowledge bases, from anywhere they use mobile devices.

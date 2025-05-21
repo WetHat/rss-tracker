@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "Sabine Hossenfelder"
-published: 2024-05-10T15:00:54.000Z
+aliases: []
+id: yt:video:yPDo7S-EGCE
+author: Sabine Hossenfelder
 link: https://www.youtube.com/watch?v=yPDo7S-EGCE
-id: "yt:video:yPDo7S-EGCE"
+published: 2024-05-10T15:00:54.000Z
 feed: "[[Sabine Hossenfelder]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] What Einstein wrote to Marie Curie (by Sabine Hossenfelder)
@@ -22,3 +23,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

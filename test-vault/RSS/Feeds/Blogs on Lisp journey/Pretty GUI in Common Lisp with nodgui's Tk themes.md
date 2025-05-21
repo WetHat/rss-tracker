@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2023-05-26T22:22:04.000Z
+aliases: []
+id: /blog/pretty-gui-in-common-lisp-with-nodgui-tk-themes/
+author: unknown
 link: https://localhost/blog/pretty-gui-in-common-lisp-with-nodgui-tk-themes/
-id: "/blog/pretty-gui-in-common-lisp-with-nodgui-tk-themes/"
+published: 2023-05-26T22:22:04.000Z
 feed: "[[Blogs on Lisp journey]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Pretty GUI in Common Lisp with nodgui's Tk themes (by unknown)
@@ -22,3 +23,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

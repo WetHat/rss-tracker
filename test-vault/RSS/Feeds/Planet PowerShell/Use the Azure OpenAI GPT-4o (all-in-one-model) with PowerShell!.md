@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "Matthew Dowst"
-published: 2024-05-24T12:23:43.000Z
+aliases: []
+id: https://psweekly.dowst.dev/?post_type=link_library_links&p=6891
+author: Matthew Dowst
 link: https://alexholmeset.blog/2024/05/22/use-the-azure-openai-gpt-4o-all-in-one-model-with-powershell/
-id: "https://psweekly.dowst.dev/?post_type=link_library_links&p=6891"
+published: 2024-05-24T12:23:43.000Z
 feed: "[[Planet PowerShell]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Use the Azure OpenAI GPT-4o (all-in-one-model) with PowerShell! (by Matthew Dowst)
@@ -26,6 +27,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 On May 13th GPT-4o was released in preview in the Azure OpenAI Playground. No API access, only
 
 accessible in the browser. Today I was going into the playground to test something with the GPT-4o model, but could not find it. What had happened? Turnes out it suddenly was in GA and available to choose under ... Continue reading Use the Azure OpenAI GPT-4o (all-in-one-model) with PowerShell!

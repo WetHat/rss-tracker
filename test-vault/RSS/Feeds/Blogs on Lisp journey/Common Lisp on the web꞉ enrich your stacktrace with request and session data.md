@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2023-10-13T14:51:07.000Z
+aliases:
+  - "Common Lisp on the web: enrich your stacktrace with request and session data"
+id: /blog/common-lisp-on-the-web-enrich-your-stacktrace-with-request-and-session-data/
+author: unknown
 link: https://localhost/blog/common-lisp-on-the-web-enrich-your-stacktrace-with-request-and-session-data/
-id: "/blog/common-lisp-on-the-web-enrich-your-stacktrace-with-request-and-session-data/"
+published: 2023-10-13T14:51:07.000Z
 feed: "[[Blogs on Lisp journey]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Common Lisp on the web: enrich your stacktrace with request and session data (by unknown)
@@ -22,3 +24,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

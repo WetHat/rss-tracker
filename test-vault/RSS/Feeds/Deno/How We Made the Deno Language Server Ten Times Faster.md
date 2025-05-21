@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "Andy Jiang, Nathan Whitaker"
-published: 2024-06-20T20:00:00.000Z
+aliases: []
+id: https://deno.com/blog/optimizing-our-lsp
+author: Andy Jiang, Nathan Whitaker
 link: https://deno.com/blog/optimizing-our-lsp
-id: "https://deno.com/blog/optimizing-our-lsp"
+published: 2024-06-20T20:00:00.000Z
 feed: "[[Deno]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] How We Made the Deno Language Server Ten Times Faster (by Andy Jiang, Nathan Whitaker)
@@ -22,3 +23,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

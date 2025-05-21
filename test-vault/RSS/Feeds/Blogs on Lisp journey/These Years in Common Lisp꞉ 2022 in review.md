@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2023-01-09T18:54:29.000Z
+aliases:
+  - "These Years in Common Lisp: 2022 in review"
+id: /blog/these-years-in-common-lisp-2022-in-review/
+author: unknown
 link: https://localhost/blog/these-years-in-common-lisp-2022-in-review/
-id: "/blog/these-years-in-common-lisp-2022-in-review/"
+published: 2023-01-09T18:54:29.000Z
 feed: "[[Blogs on Lisp journey]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] These Years in Common Lisp: 2022 in review (by unknown)
@@ -22,3 +24,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

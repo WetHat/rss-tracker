@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-05-23T11:18:50.000Z
+aliases: []
+id: https://typescript.tv/hands-on/all-you-need-to-know-about-iterators-and-generators/
+author: unknown
 link: https://typescript.tv/hands-on/all-you-need-to-know-about-iterators-and-generators/
-id: "https://typescript.tv/hands-on/all-you-need-to-know-about-iterators-and-generators/"
+published: 2024-05-23T11:18:50.000Z
 feed: "[[TypeScript TV]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] All you need to know about iterators and generators (by unknown)
@@ -22,3 +23,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

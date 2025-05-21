@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "John Baez"
-published: 2024-03-15T10:10:44.000Z
+aliases: []
+id: http://johncarlosbaez.wordpress.com/?p=37690
+author: John Baez
 link: https://johncarlosbaez.wordpress.com/2024/03/15/the-probability-of-undecidability/
-id: "http://johncarlosbaez.wordpress.com/?p=37690"
+published: 2024-03-15T10:10:44.000Z
 feed: "[[Azimuth]]"
-tags: [rss/mathematics]
 pinned: false
+tags:
+  - rss/mathematics
 ---
 
 > [!abstract] The Probability of Undecidability (by John Baez)
@@ -22,6 +24,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 There’s a lot we don’t know. There’s a lot we _can’t_ know. But can we at least know how _much_ we can’t know?
 
 What fraction of mathematical statements are undecidable—that is, can be neither proved nor disproved? There are many ways to make this question precise… but it remains a bit mysterious. The best results I know appear, not in a published paper, but on MathOverflow!

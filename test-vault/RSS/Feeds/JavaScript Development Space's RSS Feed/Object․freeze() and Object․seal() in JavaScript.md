@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-09-29T00:00:00.000Z
+aliases:
+  - Object.freeze() and Object.seal() in JavaScript
+id: https://jsdev.space/howto/freeze-seal-js/
+author: unknown
 link: https://jsdev.space/howto/freeze-seal-js/
-id: "https://jsdev.space/howto/freeze-seal-js/"
+published: 2024-09-29T00:00:00.000Z
 feed: "[[JavaScript Development Space's RSS Feed]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Object.freeze() and Object.seal() in JavaScript (by unknown)
@@ -22,6 +24,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 Previously, we wrote about
 [How to Create Immutable Objects in JavaScript](https://jsdev.space/howto/immutable-objects-js/). In
 this howto, we'll explore the difference between **Object.freeze()** and **Object.seal()**.

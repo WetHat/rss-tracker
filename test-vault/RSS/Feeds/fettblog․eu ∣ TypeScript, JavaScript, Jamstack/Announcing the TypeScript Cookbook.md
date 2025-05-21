@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2022-11-07T00:00:00.000Z
+aliases: []
+id: https://fettblog.eu/announcing-the-typescript-cookbook/
+author: unknown
 link: https://fettblog.eu/announcing-the-typescript-cookbook/
-id: "https://fettblog.eu/announcing-the-typescript-cookbook/"
+published: 2022-11-07T00:00:00.000Z
 feed: "[[fettblog․eu ∣ TypeScript, JavaScript, Jamstack]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Announcing the TypeScript Cookbook (by unknown)
@@ -22,4 +23,5 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 Oops, I did it again! I’m writing another book, and it’s again about TypeScript. I’m happy to announce _The TypeScript Cookbook_, to be published in 2023 by O’Reilly. You can check it out in Early Release on the [O’Reilly website](https://www.oreilly.com/library/view/typescript-cookbook/9781098136642/).

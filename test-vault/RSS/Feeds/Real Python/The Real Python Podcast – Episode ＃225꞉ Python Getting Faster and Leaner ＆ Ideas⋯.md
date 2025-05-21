@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-10-25T12:00:00.000Z
+aliases:
+  - "The Real Python Podcast – Episode #225: Python Getting Faster and Leaner & Ideas for Django Projects"
+id: https://realpython.com/podcasts/rpp/225/
+author: unknown
 link: https://realpython.com/podcasts/rpp/225/
-id: "https://realpython.com/podcasts/rpp/225/"
+published: 2024-10-25T12:00:00.000Z
 feed: "[[Real Python]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] The Real Python Podcast – Episode #225: Python Getting Faster and Leaner & Ideas for Django Projects (by unknown)
@@ -22,6 +24,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 What changes are happening under the hood in the latest versions of Python? How are these updates laying the groundwork for a faster Python in the coming years? Christopher Trudeau is back on the show this week, bringing another batch of PyCoder's Weekly articles and projects.
 
 ---

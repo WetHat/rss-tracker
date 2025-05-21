@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "info@thehackernews.com (The Hacker News)"
-published: 2024-05-19T07:59:00.000Z
+aliases: []
+id: https://thehackernews.com/2024/05/grandoreiro-banking-trojan-resurfaces.html
+author: info@thehackernews.com (The Hacker News)
 link: https://thehackernews.com/2024/05/grandoreiro-banking-trojan-resurfaces.html
-id: "https://thehackernews.com/2024/05/grandoreiro-banking-trojan-resurfaces.html"
+published: 2024-05-19T07:59:00.000Z
 feed: "[[The Hacker News]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Grandoreiro Banking Trojan Resurfaces, Targeting Over 1,500 Banks Worldwide (by info@thehackernews.com (The Hacker News))
@@ -22,3 +23,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

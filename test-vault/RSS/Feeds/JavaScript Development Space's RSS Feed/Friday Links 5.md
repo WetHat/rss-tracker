@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-10-04T00:00:00.000Z
+aliases: []
+id: https://jsdev.space/friday/friday-5/
+author: unknown
 link: https://jsdev.space/friday/friday-5/
-id: "https://jsdev.space/friday/friday-5/"
+published: 2024-10-04T00:00:00.000Z
 feed: "[[JavaScript Development Space's RSS Feed]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Friday Links 5 (by unknown)
@@ -22,6 +23,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 ![Friday Links #5](./images/friday-5.png)
 
 Happy Friday, devs! 🎉 It’s time for our weekly roundup, where we bring you the latest and greatest in the world of web development. Whether you're looking for fresh insights into JavaScript, updates in NodeJS, or useful tools to enhance your workflow, we’ve got it all right here. So, grab a cup of coffee, get comfortable, and let’s dive into another exciting week of coding knowledge!

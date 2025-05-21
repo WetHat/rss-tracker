@@ -1,12 +1,15 @@
 ---
 role: rssitem
-author: "Scott Hanselman"
-published: 2022-12-18T22:16:30.000Z
+aliases:
+  - Use your own user @ domain for Mastodon discoverability with the WebFinger Protocol without hosting a server
+id: https://www.hanselman.com/blog/post/0c9c9a66-f3db-4e58-a1f3-c692b8ad64af
+author: Scott Hanselman
 link: https://feeds.hanselman.com/~/722495722/0/scotthanselman~Use-your-own-user-domain-for-Mastodon-discoverability-with-the-WebFinger-Protocol-without-hosting-a-server
-id: "https://www.hanselman.com/blog/post/0c9c9a66-f3db-4e58-a1f3-c692b8ad64af"
+published: 2022-12-18T22:16:30.000Z
 feed: "[[Scott Hanselman's Blog]]"
-tags: [rss/Musings]
 pinned: false
+tags:
+  - rss/Musings
 ---
 
 > [!abstract] Use your own user @ domain for Mastodon discoverability with the WebFinger Protocol without hosting a server (by Scott Hanselman)
@@ -26,6 +29,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 Mastodon is a free, open-source social networking service that is decentralized and distributed. It was created in 2016 as an alternative to centralized social media platforms such as Twitter and Facebook.
 
 One of the key features of Mastodon is the use of the WebFinger protocol, which allows users to discover and access information about other users on the Mastodon network. WebFinger is a simple HTTP-based protocol that enables a user to discover information about other users or resources on the internet by using their email address or other identifying information. The WebFinger protocol is important for Mastodon because it enables users to find and follow each other on the network, regardless of where they are hosted.

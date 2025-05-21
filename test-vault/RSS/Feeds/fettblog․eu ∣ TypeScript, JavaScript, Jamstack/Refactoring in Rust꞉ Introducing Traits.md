@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2023-03-02T00:00:00.000Z
+aliases:
+  - "Refactoring in Rust: Introducing Traits"
+id: https://fettblog.eu/refactoring-rust-introducing-traits/
+author: unknown
 link: https://fettblog.eu/refactoring-rust-introducing-traits/
-id: "https://fettblog.eu/refactoring-rust-introducing-traits/"
+published: 2023-03-02T00:00:00.000Z
 feed: "[[fettblog․eu ∣ TypeScript, JavaScript, Jamstack]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Refactoring in Rust: Introducing Traits (by unknown)
@@ -22,4 +24,5 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 In the same codebase as [last time](/refactoring-rust-abstraction-newtype/), we extract data from a `HashMap<String, String>` called `headers`, presumably dealing with something similar to HTTP headers.

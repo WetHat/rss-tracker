@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "Jo Franchetti"
-published: 2024-06-27T12:00:00.000Z
+aliases: []
+id: https://deno.com/blog/deno-bites-ts-intro
+author: Jo Franchetti
 link: https://deno.com/blog/deno-bites-ts-intro
-id: "https://deno.com/blog/deno-bites-ts-intro"
+published: 2024-06-27T12:00:00.000Z
 feed: "[[Deno]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] A Gentle Intro to TypeScript (by Jo Franchetti)
@@ -22,3 +23,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

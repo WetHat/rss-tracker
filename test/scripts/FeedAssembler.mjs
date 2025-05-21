@@ -88,9 +88,11 @@ export class TrackedRSSitem {
             return c.trim()
                 .replace(/^#|\s*[;"\]\}\)\{\[\(]+\s*/g, "")
                 .replaceAll("#", "＃")
+                .replaceAll("\s*:\s*", "꞉")
+                .replaceAll(".", "۔")
                 .replace(/"'/g, "ʹ")
-                .replace(/\s*[\\:]+\s*/g, "/")
-                .replace(/[\s\.]+/g, "_");
+                .replace(/\s*\\+\s*/g, "/")
+                .replace(/\s+/g, "_");
         })
             .filter(c => !!c); // remove empty strings;
         // make unique and sort

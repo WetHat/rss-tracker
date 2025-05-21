@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-04-24T14:30:52.000Z
+aliases: []
+id: https://typescript.tv/hands-on/module-openai-has-no-exported-member/
+author: unknown
 link: https://typescript.tv/hands-on/module-openai-has-no-exported-member/
-id: "https://typescript.tv/hands-on/module-openai-has-no-exported-member/"
+published: 2024-04-24T14:30:52.000Z
 feed: "[[TypeScript TV]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Module openai has no exported member (by unknown)
@@ -22,3 +23,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

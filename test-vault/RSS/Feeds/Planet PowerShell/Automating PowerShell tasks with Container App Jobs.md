@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "Matthew Dowst"
-published: 2024-05-24T12:23:54.000Z
+aliases: []
+id: https://psweekly.dowst.dev/?post_type=link_library_links&p=6892
+author: Matthew Dowst
 link: https://www.jannemattila.com/azure/2024/05/20/automating-powershell-tasks-with-container-apps.html
-id: "https://psweekly.dowst.dev/?post_type=link_library_links&p=6892"
+published: 2024-05-24T12:23:54.000Z
 feed: "[[Planet PowerShell]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Automating PowerShell tasks with Container App Jobs (by Matthew Dowst)
@@ -26,6 +27,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 I previously wrote about Automating maintenance tasks with Azure Functions and PowerShell. That
 
 combo has been my go-to solution for many automation tasks.

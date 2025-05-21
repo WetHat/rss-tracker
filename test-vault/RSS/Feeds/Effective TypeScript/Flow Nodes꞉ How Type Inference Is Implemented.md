@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-03-25T03:00:00.000Z
+aliases:
+  - "Flow Nodes: How Type Inference Is Implemented"
+id: https://effectivetypescript.com/2024/03/24/flownodes/
+author: unknown
 link: https://effectivetypescript.com/2024/03/24/flownodes/
-id: "https://effectivetypescript.com/2024/03/24/flownodes/"
+published: 2024-03-25T03:00:00.000Z
 feed: "[[Effective TypeScript]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Flow Nodes: How Type Inference Is Implemented (by unknown)
@@ -22,6 +24,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 In most programming languages a variable has a type and that type does not change. But one of the most interesting aspects of TypeScript's type system is that a symbol has a type _at a location_. Various control flow constructs can change this type:
 
 ```

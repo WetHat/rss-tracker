@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2023-02-21T00:00:00.000Z
+aliases:
+  - "Refactoring in Rust: Abstraction with the Newtype Pattern"
+id: https://fettblog.eu/refactoring-rust-abstraction-newtype/
+author: unknown
 link: https://fettblog.eu/refactoring-rust-abstraction-newtype/
-id: "https://fettblog.eu/refactoring-rust-abstraction-newtype/"
+published: 2023-02-21T00:00:00.000Z
 feed: "[[fettblog․eu ∣ TypeScript, JavaScript, Jamstack]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Refactoring in Rust: Abstraction with the Newtype Pattern (by unknown)
@@ -22,4 +24,5 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 The following piece of code takes a `PathBuf` and extracts the file name, eventually converting it to an _owned_ `String`.

@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-10-02T00:15:18.000Z
+aliases: []
+id: https://jsdev.space/memory-management-js/
+author: unknown
 link: https://jsdev.space/memory-management-js/
-id: "https://jsdev.space/memory-management-js/"
+published: 2024-10-02T00:15:18.000Z
 feed: "[[JavaScript Development Space's RSS Feed]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Memory Management in JavaScript with WeakRef and FinalizationRegistry (by unknown)
@@ -22,6 +23,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 Today, we’re diving into the topic of memory management in JavaScript—but not in the traditional sense of garbage collection. Instead, we'll explore the powerful capabilities of **WeakRef** and **FinalizationRegistry**. These tools give developers control over weak references and asynchronous object finalization, allowing for more refined and efficient memory handling.
 
 JavaScript’s garbage collector automatically manages memory for most objects, but certain scenarios, like caching or long-lived objects, can cause memory leaks. 

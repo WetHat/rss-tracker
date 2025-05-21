@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-08-30T13:00:00.000Z
+aliases: []
+id: https://effectivetypescript.com/2024/08/30/keyof-puzzle/
+author: unknown
 link: https://effectivetypescript.com/2024/08/30/keyof-puzzle/
-id: "https://effectivetypescript.com/2024/08/30/keyof-puzzle/"
+published: 2024-08-30T13:00:00.000Z
 feed: "[[Effective TypeScript]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] A keyof puzzle (by unknown)
@@ -22,6 +23,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 _Effective TypeScript_ is nearly 400 pages long, but I've received the most feedback by far on just one passage. It comes in [Item 7: Think of Types as Sets of Values](https://github.com/danvk/effective-typescript/blob/main/samples/ch-types/types-as-sets.md):
 
 > ```

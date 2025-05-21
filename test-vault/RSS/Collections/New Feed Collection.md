@@ -1,10 +1,13 @@
 ---
 role: rsscollection
+tags:
+  - rss/۔NET
+allof: 
+noneof: []
 ---
 
 > [!abstract] [headline:: A curated collection of RSS feeds]
-> ![[RSSdefaultImage.svg|float:right|100x100]]
-> - [ ] Specify tags in the `tags`, `allof`, `noneof` frontmatter properties to collect feeds matching the tag filter.
+> ![[RSSdefaultImage.svg|float:right|100x100]] Specify tags in the `tags`, `allof`, `noneof` frontmatter properties to collect feeds matching the tag filter.
 
 # Feeds in this Collection 📚
 

@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2023-12-18T22:47:43.000Z
+aliases:
+  - "TypeError: prettier.resolveConfig.sync is not a function"
+id: https://typescript.tv/hands-on/typeerror-prettierresolveconfigsync-is-not-a-function/
+author: unknown
 link: https://typescript.tv/hands-on/typeerror-prettierresolveconfigsync-is-not-a-function/
-id: "https://typescript.tv/hands-on/typeerror-prettierresolveconfigsync-is-not-a-function/"
+published: 2023-12-18T22:47:43.000Z
 feed: "[[TypeScript TV]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] TypeError: prettier.resolveConfig.sync is not a function (by unknown)
@@ -22,3 +24,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

@@ -1,12 +1,18 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-10-06T10:00:01.000Z
+aliases:
+  - " Earth is a spaceship like the ISS — let me explain "
+id: kaSrmngqgmniEfZD8m8gMd
+author: unknown
 link: https://www.space.com/earth-iss-sustainable-living-world-space-week
-id: "kaSrmngqgmniEfZD8m8gMd"
+published: 2024-10-06T10:00:01.000Z
 feed: "[[Space RSS Feed]]"
-tags: [rss/Climate_Change,rss/Earth,rss/Solar_System,rss/The_Universe]
 pinned: false
+tags:
+  - rss/Climate_Change
+  - rss/Earth
+  - rss/Solar_System
+  - rss/The_Universe
 ---
 
 > [!abstract]  Earth is a spaceship like the ISS — let me explain  (by unknown)
@@ -22,6 +28,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 Imagine living in a place where your survival depends upon living within your limits, not consuming more food and energy than you produce, creating enough fresh water and air to live on, reducing waste to a bare minimum, recycling everything that you can, and avoiding contaminating the environment around you. This is what astronauts must face, to an extent, on board the [International Space Station](https://www.space.com/16748-international-space-station.html), and what they would have to face to a greater extent in future settlements on [the moon](https://www.space.com/55-earths-moon-formation-composition-and-orbit.html) or [Mars](https://www.space.com/47-mars-the-red-planet-fourth-planet-from-the-sun.html).
 
 But it's also how we have to live on [Earth](https://www.space.com/54-earth-history-composition-and-atmosphere.html) if we are to protect our environment, which is one of the themes of this year's [World Space Week](https://www.worldspaceweek.org/theme/), running between Oct. 4 to Oct. 10.

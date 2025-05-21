@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2022-05-11T00:00:00.000Z
+aliases:
+  - "TypeScript: Iterating over objects"
+id: https://fettblog.eu/typescript-iterating-over-objects/
+author: unknown
 link: https://fettblog.eu/typescript-iterating-over-objects/
-id: "https://fettblog.eu/typescript-iterating-over-objects/"
+published: 2022-05-11T00:00:00.000Z
 feed: "[[fettblog․eu ∣ TypeScript, JavaScript, Jamstack]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] TypeScript: Iterating over objects (by unknown)
@@ -22,4 +24,5 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 There is rarely a head-scratcher in TypeScript as prominent as trying to access an object property via iterating through its keys. This is a pattern that’s so common in JavaScript, yet TypeScript seems to through all the obstacles at you. This simple line:

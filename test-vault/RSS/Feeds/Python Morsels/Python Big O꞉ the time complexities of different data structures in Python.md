@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-04-16T15:00:00.000Z
+aliases:
+  - "Python Big O: the time complexities of different data structures in Python"
+id: https://www.pythonmorsels.com/time-complexities/
+author: unknown
 link: https://www.pythonmorsels.com/time-complexities/
-id: "https://www.pythonmorsels.com/time-complexities/"
+published: 2024-04-16T15:00:00.000Z
 feed: "[[Python Morsels]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Python Big O: the time complexities of different data structures in Python (by unknown)
@@ -34,6 +36,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 The time complexity of common operations on Python's many data structures.
 
 **Table of contents**

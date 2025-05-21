@@ -1,12 +1,16 @@
 ---
 role: rssitem
-author: "Tanmayee Kamath"
-published: 2024-04-02T16:35:24.000Z
+aliases: []
+id: https://github.blog/?p=77210
+author: Tanmayee Kamath
 link: https://github.blog/2024-04-02-bringing-enterprise-level-security-and-even-more-power-to-github-hosted-runners/
-id: "https://github.blog/?p=77210"
+published: 2024-04-02T16:35:24.000Z
 feed: "[[The GitHub Blog꞉ Product News and Updates]]"
-tags: [rss/GitHub-hosted_runners,rss/GitHub_Actions,rss/Product]
 pinned: false
+tags:
+  - rss/GitHub-hosted_runners
+  - rss/GitHub_Actions
+  - rss/Product
 ---
 
 > [!abstract] Bringing enterprise-level security and even more power to GitHub-hosted runners (by Tanmayee Kamath)
@@ -22,6 +26,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 GitHub’s journey towards enhancing enterprise readiness for GitHub Actions takes a significant leap forward with the introduction of Azure private networking for GitHub-hosted runners on GitHub Actions. This development builds upon our initial offering of [more powerful GitHub-hosted runners](https://github.blog/changelog/2023-06-21-github-hosted-larger-runners-for-actions-are-generally-available/) equipped with Static IPs, marking a strategic move to cater to the complex networking and security needs of enterprise customers.
 
 The value of utilizing hosted runners is two-fold. For individual developers, it maximizes their coding time by eliminating the overhead associated with infrastructure management. Simultaneously, for DevOps administrators, it significantly reduces the time and cost required to manage and maintain compute infrastructure for software life cycle automation, thereby streamlining operations and allowing teams to focus on innovation. The rollout of larger runners was not just an upgrade; it was the beginning of a comprehensive plan aimed at enterprise-grade readiness, providing robust virtual machines and features tailored for business needs. A great testament to this is [how we, at GitHub, have transformed our CI system](https://github.blog/2023-09-26-how-github-uses-github-actions-and-actions-larger-runners-to-build-and-test-github-com/) to meet the scaling demands of our engineering teams and enabled them to confidently and quickly ship software with GitHub Actions and GitHub-hosted runners.

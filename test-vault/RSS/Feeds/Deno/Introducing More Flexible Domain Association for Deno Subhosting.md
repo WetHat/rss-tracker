@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "Yusuke Tanaka, Andy Jiang"
-published: 2024-06-14T12:00:00.000Z
+aliases: []
+id: https://deno.com/blog/subhosting-flexible-domain-association
+author: Yusuke Tanaka, Andy Jiang
 link: https://deno.com/blog/subhosting-flexible-domain-association
-id: "https://deno.com/blog/subhosting-flexible-domain-association"
+published: 2024-06-14T12:00:00.000Z
 feed: "[[Deno]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Introducing More Flexible Domain Association for Deno Subhosting (by Yusuke Tanaka, Andy Jiang)
@@ -22,3 +23,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

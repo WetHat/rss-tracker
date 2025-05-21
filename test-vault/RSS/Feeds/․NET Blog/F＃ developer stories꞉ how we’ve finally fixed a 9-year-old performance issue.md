@@ -1,12 +1,19 @@
 ---
 role: rssitem
-author: "Petr Semkin"
-published: 2024-05-29T17:05:00.000Z
+aliases:
+  - "F# developer stories: how we&#8217;ve finally fixed a 9-year-old performance issue"
+id: https://devblogs.microsoft.com/dotnet/?p=51967
+author: Petr Semkin
 link: https://devblogs.microsoft.com/dotnet/fsharp-developer-stories-how-weve-finally-fixed-a-9yearold-performance-issue/
-id: "https://devblogs.microsoft.com/dotnet/?p=51967"
+published: 2024-05-29T17:05:00.000Z
 feed: "[[․NET Blog]]"
-tags: [rss/F＃,rss/Performance,rss/_NET,rss/compilers,rss/performance]
 pinned: false
+tags:
+  - rss/F＃
+  - rss/Performance
+  - rss/compilers
+  - rss/performance
+  - rss/۔NET
 ---
 
 > [!abstract] F# developer stories: how we&#8217;ve finally fixed a 9-year-old performance issue (by Petr Semkin)
@@ -24,6 +31,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 Programming language authors have to think about many things at once: overall language design, runtime dangers, possible feature misuse, backward compatibility, forward compatibility, and so on. All these aspects, together with communication hiccups and time constraints, might get in the way of some seemingly clear and manageable problems.
 
 ## The Bug ![🐛](https://s.w.org/images/core/emoji/15.0.3/72x72/1f41b.png)

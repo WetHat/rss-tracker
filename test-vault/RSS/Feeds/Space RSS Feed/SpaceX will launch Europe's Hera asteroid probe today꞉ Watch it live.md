@@ -1,12 +1,17 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-10-06T13:00:01.000Z
+aliases:
+  - " SpaceX will launch Europe's Hera asteroid probe today: Watch it live "
+id: 4pWw6gTKuizShJZXC9BioD
+author: unknown
 link: https://www.space.com/esa-hera-mission-spacex-launch-livestream
-id: "4pWw6gTKuizShJZXC9BioD"
+published: 2024-10-06T13:00:01.000Z
 feed: "[[Space RSS Feed]]"
-tags: [rss/Launches,rss/Space_Exploration,rss/ampSpacecraft]
 pinned: false
+tags:
+  - rss/Launches
+  - rss/Space_Exploration
+  - rss/ampSpacecraft
 ---
 
 > [!abstract]  SpaceX will launch Europe's Hera asteroid probe today: Watch it live  (by unknown)
@@ -22,6 +27,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 SpaceX will launch Europe's Hera spacecraft toward the asteroid Dimorphos for a post-impact evaluation on Monday (Oct. 7), and you can watch the liftoff live.
 
 The [European Space Agency](https://www.space.com/22562-european-space-agency.html)'s Hera mission will visit Dimorphos — the asteroid that NASA's [DART](https://www.space.com/dart-asteroid-mission) (Double Asteroid Redirection Test) spacecraft knocked off course in September 2022. Hera will [assess the aftermath](https://www.space.com/nasa-dart-asteroid-crash-what-nasa-learned) of that impact and study both the surface and internal structure of the asteroid in greater detail. 

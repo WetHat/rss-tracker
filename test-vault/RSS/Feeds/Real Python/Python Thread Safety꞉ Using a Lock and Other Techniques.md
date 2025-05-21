@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-10-23T14:00:00.000Z
+aliases:
+  - "Python Thread Safety: Using a Lock and Other Techniques"
+id: https://realpython.com/python-thread-lock/
+author: unknown
 link: https://realpython.com/python-thread-lock/
-id: "https://realpython.com/python-thread-lock/"
+published: 2024-10-23T14:00:00.000Z
 feed: "[[Real Python]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Python Thread Safety: Using a Lock and Other Techniques (by unknown)
@@ -22,6 +24,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 Python threading allows you to run parts of your code concurrently, making the code more efficient. However, when you introduce threading to your code without knowing about thread safety, you may run into issues such as race conditions. You solve these with tools like locks, semaphores, events, conditions, and barriers.
 
 By the end of this tutorial, you’ll be able to identify safety issues and prevent them by using the synchronization primitives in Python’s `threading` module to make your code thread-safe.

@@ -1,12 +1,17 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-10-07T10:00:05.000Z
+aliases:
+  - " James Webb Space Telescope studies dusty 'pancakes' feeding baby stars and birthing planets "
+id: h7P4YB4oxW2M68vCdfmpRU
+author: unknown
 link: https://www.space.com/james-webb-space-telescope-dusty-pancakes-baby-stars
-id: "h7P4YB4oxW2M68vCdfmpRU"
+published: 2024-10-07T10:00:05.000Z
 feed: "[[Space RSS Feed]]"
-tags: [rss/James_Webb_Space_Telescope,rss/Missions,rss/Space_Exploration]
 pinned: false
+tags:
+  - rss/James_Webb_Space_Telescope
+  - rss/Missions
+  - rss/Space_Exploration
 ---
 
 > [!abstract]  James Webb Space Telescope studies dusty 'pancakes' feeding baby stars and birthing planets  (by unknown)
@@ -22,6 +27,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 Using the James Webb Space Telescope (JWST), astronomers have gained a more detailed picture of the turbulent "pancakes" of gas and dust surrounding young stars, feeding them and facilitating their growth before birthing planets.
 
 [JWST](https://www.space.com/21925-james-webb-space-telescope-jwst.html) gathered new details about the "winds of change" flows of gas that blow through these [protoplanetary disks](https://www.space.com/8605-solar-system-baby-photos-reveal-planets-form.html), carving out their shapes. In the process of doing this, the powerful space telescope saw evidence for a long-hypothesized mechanism that allows a [young star](https://www.space.com/supersonic-jets-young-star-space-james-webb-space-telescope) to gather the material from the disk that it needs to grow.

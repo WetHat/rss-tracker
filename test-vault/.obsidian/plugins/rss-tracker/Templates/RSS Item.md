@@ -1,12 +1,5 @@
 ---
 role: rssitem
-author: "{{author}}"
-published: {{publishDate}}
-link: {{link}}
-id: "{{id}}"
-feed: "[[{{feedFileName}}]]"
-tags: [{{tags}}]
-pinned: false
 ---
 
 > [!abstract] {{title}} (by {{author}})
@@ -22,4 +15,5 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 {{content}}

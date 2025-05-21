@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-10-03T00:00:00.000Z
+aliases: []
+id: https://jsdev.space/document-translation/
+author: unknown
 link: https://jsdev.space/document-translation/
-id: "https://jsdev.space/document-translation/"
+published: 2024-10-03T00:00:00.000Z
 feed: "[[JavaScript Development Space's RSS Feed]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Document Translation - OpenAI Real-Time Speech API Beta Version (by unknown)
@@ -22,6 +23,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 The rise of artificial intelligence has introduced groundbreaking advancements in language processing and speech recognition. One of the latest innovations from [OpenAI](https://openai.com/) is the **Real-Time Speech API** in its Beta version, specifically designed for tasks like document translation. This API represents a leap forward in how we interact with technology, making it easier to transcribe, translate, and interpret spoken language in real-time.
 
 ## What Is the OpenAI Real-Time Speech API?

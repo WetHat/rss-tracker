@@ -13832,7 +13832,7 @@ var TrackedRSSitem = class {
       }
       return tag == null ? void 0 : tag.replace(/[+&]/g, ",");
     }).join(",").split(",").map((c) => {
-      return c.trim().replace(/^#|\s*[;"\]\}\)\{\[\(]+\s*/g, "").replaceAll("#", "\uFF03").replace(/"'/g, "\u02B9").replace(/\s*[\\:]+\s*/g, "/").replace(/[\s\.]+/g, "_");
+      return c.trim().replace(/^#|\s*[;"\]\}\)\{\[\(]+\s*/g, "").replaceAll("#", "\uFF03").replaceAll("s*:s*", "\uA789").replaceAll(".", "\u06D4").replace(/"'/g, "\u02B9").replace(/\s*\\+\s*/g, "/").replace(/\s+/g, "_");
     }).filter((c) => !!c);
     this.tags = Array.from(new Set(this.tags)).sort();
     if (description) {
@@ -15302,9 +15302,9 @@ var RSSAdapter = class _RSSAdapter {
     return this.plugin.filemgr;
   }
   constructor(plugin, file, frontmatter) {
-    var _a2;
+    var _a2, _b;
     this.plugin = plugin;
-    this.frontmatter = frontmatter != null ? frontmatter : (_a2 = plugin.app.metadataCache.getFileCache(file)) != null ? _a2 : {};
+    this.frontmatter = frontmatter != null ? frontmatter : (_b = (_a2 = plugin.app.metadataCache.getFileCache(file)) == null ? void 0 : _a2.frontmatter) != null ? _b : {};
     this.file = file;
   }
   /**
@@ -15415,26 +15415,30 @@ var _RSSitemAdapter = class _RSSitemAdapter extends RSSAdapter {
     }
     const itemfolder = await feed.itemFolder(), tagmgr = feed.plugin.tagmgr, frontmatter = {
       role: "rssitem",
+      aliases: [],
       id: id != null ? id : link,
-      author: author != null ? author : "Unknown",
-      link: link != null ? link : "",
+      author: author != null ? author : "unknown",
+      link: link != null ? link : "unknown",
       published: published != null ? published : (/* @__PURE__ */ new Date()).valueOf(),
       feed: `[[${itemfolder.name}]]`,
       pinned: false,
       tags: tags.map((t) => tagmgr.mapHashtag(t.startsWith("#") ? t : "#" + t).slice(1))
     }, dataMap = {
-      "{{id}}": frontmatter.id,
       "{{author}}": frontmatter.author,
       "{{link}}": frontmatter.link,
       "{{publishDate}}": frontmatter.published,
-      "{{tags}}": frontmatter.tags,
       "{{title}}": title != null ? title : "",
       "{{image}}": image ? formatImage(image) : `![[${defaultImage}|float:right|100x100]]`,
       "{{description}}": description != null ? description : "",
       "{{content}}": content != null ? content : "",
       "{{feedFileName}}": itemfolder.name
     };
-    const file = await feed.filemgr.createFile(itemfolder.path, item.fileName, "RSS Item", dataMap, true), adapter = new _RSSitemAdapter(feed.plugin, file, frontmatter);
+    const file = await feed.filemgr.createFile(itemfolder.path, item.fileName, "RSS Item", dataMap, true);
+    if (title && file.basename !== title) {
+      frontmatter.aliases = [title];
+    }
+    const adapter = new _RSSitemAdapter(feed.plugin, file, frontmatter);
+    await adapter.commitFrontmatterChanges();
     return adapter;
   }
   constructor(plugin, file, frontmatter) {
@@ -15635,8 +15639,14 @@ _RSSfeedAdapter.OK_STATUS_ICON = "\u2705";
 var RSSfeedAdapter = _RSSfeedAdapter;
 var RSScollectionAdapter = class _RSScollectionAdapter extends RSSAdapter {
   static async create(plugin) {
-    const file = await plugin.filemgr.createFile(plugin.settings.rssCollectionsFolderPath, "New Feed Collection", "RSS Collection");
-    return new _RSScollectionAdapter(plugin, file);
+    const file = await plugin.filemgr.createFile(plugin.settings.rssCollectionsFolderPath, "New Feed Collection", "RSS Collection"), frontmatter = {
+      role: "rsscollection",
+      tags: ["nil"],
+      allof: [],
+      noneof: []
+    }, adapter = new _RSScollectionAdapter(plugin, file, frontmatter);
+    await adapter.commitFrontmatterChanges();
+    return adapter;
   }
   constructor(plugin, collection, frontmatter) {
     super(plugin, collection, frontmatter);
@@ -16346,7 +16356,8 @@ var _DataViewJSTools = class _DataViewJSTools {
     return this.dv.pages(from).where((p) => p.role === "rssfeed");
   }
   rssItemsOfCollection(collection) {
-    return this.dv.pages(this.fromItemsOfCollection(collection)).where((p) => p.role === "rssitem");
+    const from = this.fromItemsOfCollection(collection);
+    return from ? this.dv.pages(from).where((p) => p.role === "rssitem") : this.dv.array([]);
   }
   rssItemsOfTopic(topic) {
     return this.dv.pages(this.fromItemsOfTopic(topic)).where((p) => p.role === "rssitem");
@@ -16980,7 +16991,7 @@ var _RSSfileManager = class _RSSfileManager {
     data["{{filePath}}"] = uniqueFilepath;
     const tpl = await this.readTemplate(templateName), content = this.expandTemplate(tpl, data);
     if (postProcess) {
-      this._plugin.tagmgr.registerFileForPostProcessing(uniqueFilepath);
+      this._plugin.tagmgr.registerFileForPostProcessing(uniqueFilepath + ".md");
     }
     return this._vault.create(uniqueFilepath + ".md", content);
   }

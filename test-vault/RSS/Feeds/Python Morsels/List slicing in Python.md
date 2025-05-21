@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-03-08T22:16:58.000Z
+aliases: []
+id: https://www.pythonmorsels.com/slicing/
+author: unknown
 link: https://www.pythonmorsels.com/slicing/
-id: "https://www.pythonmorsels.com/slicing/"
+published: 2024-03-08T22:16:58.000Z
 feed: "[[Python Morsels]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] List slicing in Python (by unknown)
@@ -30,6 +31,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 In Python, slicing looks like indexing with colons (`:`). You can slice a list (or any sequence) to get the first few items, the last few items, or all items in reverse.
 
 **Table of contents**

@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2023-12-06T14:22:05.000Z
+aliases: []
+id: https://typescript.tv/best-practices/filtering-arrays-in-typescript-with-correct-types/
+author: unknown
 link: https://typescript.tv/best-practices/filtering-arrays-in-typescript-with-correct-types/
-id: "https://typescript.tv/best-practices/filtering-arrays-in-typescript-with-correct-types/"
+published: 2023-12-06T14:22:05.000Z
 feed: "[[TypeScript TV]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Filtering arrays in TypeScript with correct types (by unknown)
@@ -22,3 +23,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

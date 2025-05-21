@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-09-30T16:15:00.000Z
+aliases:
+  - Notes on TypeScript 5.6
+id: https://effectivetypescript.com/2024/09/30/ts-56/
+author: unknown
 link: https://effectivetypescript.com/2024/09/30/ts-56/
-id: "https://effectivetypescript.com/2024/09/30/ts-56/"
+published: 2024-09-30T16:15:00.000Z
 feed: "[[Effective TypeScript]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Notes on TypeScript 5.6 (by unknown)
@@ -22,6 +24,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 We TypeScript developers are a lucky bunch. While some languages ([Python](https://en.wikipedia.org/wiki/History_of_Python), [JavaScript](https://en.wikipedia.org/wiki/ECMAScript_version_history)) are released annually, every three years ([C++](https://en.wikipedia.org/wiki/C%2B%2B#Standardization)) or even less, we get _four_ new versions of TypeScript every year. TypeScript 5.6 was [released](https://devblogs.microsoft.com/typescript/announcing-typescript-5-6/) on September 9th, 2024. Let's take a look.
 
 ## [](#New-Features "New Features")New Features

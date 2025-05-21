@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2023-04-19T09:44:56.000Z
+aliases: []
+id: /blog/how-to-parse-command-line-arguments-in-common-lisp/
+author: unknown
 link: https://localhost/blog/how-to-parse-command-line-arguments-in-common-lisp/
-id: "/blog/how-to-parse-command-line-arguments-in-common-lisp/"
+published: 2023-04-19T09:44:56.000Z
 feed: "[[Blogs on Lisp journey]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] How to parse command line arguments in Common Lisp (bis) (by unknown)
@@ -22,3 +23,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

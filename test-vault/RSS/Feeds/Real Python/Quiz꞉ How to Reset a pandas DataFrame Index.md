@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-10-25T12:00:00.000Z
+aliases:
+  - "Quiz: How to Reset a pandas DataFrame Index"
+id: https://realpython.com/quizzes/pandas-reset-index/
+author: unknown
 link: https://realpython.com/quizzes/pandas-reset-index/
-id: "https://realpython.com/quizzes/pandas-reset-index/"
+published: 2024-10-25T12:00:00.000Z
 feed: "[[Real Python]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Quiz: How to Reset a pandas DataFrame Index (by unknown)
@@ -22,6 +24,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 In this quiz, you’ll test your understanding of [how to reset a pandas DataFrame index](https://realpython.com/pandas-reset-index/).
 
 By working through the questions, you’ll review your knowledge of indexing and also expand on what you learned in the tutorial.

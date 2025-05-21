@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-01-10T15:37:39.000Z
+aliases:
+  - "Enumberable vs. Iterable in TypeScript: What's the Difference?"
+id: https://typescript.tv/hands-on/enumberable-vs-iterable-in-typescript-whats-the-difference/
+author: unknown
 link: https://typescript.tv/hands-on/enumberable-vs-iterable-in-typescript-whats-the-difference/
-id: "https://typescript.tv/hands-on/enumberable-vs-iterable-in-typescript-whats-the-difference/"
+published: 2024-01-10T15:37:39.000Z
 feed: "[[TypeScript TV]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Enumberable vs. Iterable in TypeScript: What's the Difference? (by unknown)
@@ -22,3 +24,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

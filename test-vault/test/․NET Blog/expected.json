@@ -14,9 +14,9 @@
             "tags": [
                 "F＃",
                 "Performance",
-                "_NET",
                 "compilers",
-                "performance"
+                "performance",
+                "۔NET"
             ],
             "description": "<p>Some bugs carry exciting narratives — attempting to resolve them lets you trace the history of the repository and the community.</p>\n<p>The post <a href=\"https://devblogs.microsoft.com/dotnet/fsharp-developer-stories-how-weve-finally-fixed-a-9yearold-performance-issue/\">F# developer stories: how we&#8217;ve finally fixed a 9-year-old performance issue</a> appeared first on <a href=\"https://devblogs.microsoft.com/dotnet\">.NET Blog</a>.</p>\n",
             "title": "F# developer stories: how we&#8217;ve finally fixed a 9-year-old performance issue",
@@ -30,10 +30,10 @@
             "id": "https://devblogs.microsoft.com/dotnet/?p=51964",
             "tags": [
                 "Source_Link",
-                "_NET",
-                "_NET_Fundamentals",
-                "_NET_Internals",
-                "microsoft_learn"
+                "microsoft_learn",
+                "۔NET",
+                "۔NET_Fundamentals",
+                "۔NET_Internals"
             ],
             "description": "<p>.NET API reference docs now link directly to the source code! Learn how the links are generated, and some of ideas for future improvements.</p>\n<p>The post <a href=\"https://devblogs.microsoft.com/dotnet/dotnet-docs-link-to-source-code/\">Introducing links to source code for .NET API Docs</a> appeared first on <a href=\"https://devblogs.microsoft.com/dotnet\">.NET Blog</a>.</p>\n",
             "title": "Introducing links to source code for .NET API Docs",
@@ -47,8 +47,8 @@
             "id": "https://devblogs.microsoft.com/dotnet/?p=51919",
             "tags": [
                 "AI",
-                "ASP_NET",
-                "ASP_NET_Core",
+                "ASP۔NET",
+                "ASP۔NET_Core",
                 "Blazor",
                 "Cloud_Native",
                 "Containers",
@@ -56,15 +56,15 @@
                 "Performance",
                 "Visual_Studio",
                 "Visual_Studio_Code",
-                "_NET",
-                "_NET_Aspire",
-                "_NET_Internals",
-                "_NET_MAUI",
-                "_net_9",
-                "_net_9_preview_4",
-                "_net_aspire",
                 "announcement",
-                "microsoft_build"
+                "microsoft_build",
+                "۔NET",
+                "۔NET_Aspire",
+                "۔NET_Internals",
+                "۔NET_MAUI",
+                "۔net_9",
+                "۔net_9_preview_4",
+                "۔net_aspire"
             ],
             "description": "<p>Our latest updates and announcements from Microsoft Build including .NET Aspire, .NET 9 Preview 4, C# 13, Blazor, .NET MAUI, and more!</p>\n<p>The post <a href=\"https://devblogs.microsoft.com/dotnet/dotnet-build-2024-announcements/\">.NET Announcements and Updates from Microsoft Build 2024</a> appeared first on <a href=\"https://devblogs.microsoft.com/dotnet\">.NET Blog</a>.</p>\n",
             "title": ".NET Announcements and Updates from Microsoft Build 2024",
@@ -82,8 +82,6 @@
                 "Containers",
                 "Docker",
                 "OpenTelemetry",
-                "_NET",
-                "_NET_Aspire",
                 "aspire",
                 "azure",
                 "cloud_native",
@@ -91,7 +89,9 @@
                 "observable",
                 "otel",
                 "scalable",
-                "stack"
+                "stack",
+                "۔NET",
+                "۔NET_Aspire"
             ],
             "description": "<p>.NET Aspire, the stack that streamlines development of .NET cloud-native services, is now generally available.</p>\n<p>The post <a href=\"https://devblogs.microsoft.com/dotnet/dotnet-aspire-general-availability/\">General Availability of .NET Aspire: Simplifying .NET Cloud-Native Development</a> appeared first on <a href=\"https://devblogs.microsoft.com/dotnet\">.NET Blog</a>.</p>\n",
             "title": "General Availability of .NET Aspire: Simplifying .NET Cloud-Native Development",
@@ -106,9 +106,9 @@
             "tags": [
                 "Maintenance",
                 "Updates",
-                "_NET",
-                "_NET_Framework",
-                "_net_framework"
+                "۔NET",
+                "۔NET_Framework",
+                "۔net_framework"
             ],
             "description": "<p>A recap of the latest servicing updates for .NET and .NET Framework for May 2024.</p>\n<p>The post <a href=\"https://devblogs.microsoft.com/dotnet/dotnet-and-dotnet-framework-may-2024-servicing-updates/\">.NET and .NET Framework May 2024 Servicing Updates</a> appeared first on <a href=\"https://devblogs.microsoft.com/dotnet\">.NET Blog</a>.</p>\n",
             "title": ".NET and .NET Framework May 2024 Servicing Updates",
@@ -121,16 +121,16 @@
         {
             "id": "https://devblogs.microsoft.com/dotnet/?p=51767",
             "tags": [
-                "ASP_NET",
-                "ASP_NET_Core",
+                "ASP۔NET",
+                "ASP۔NET_Core",
                 "Cloud",
                 "Cloud_Native",
                 "Orleans",
-                "_NET",
-                "_NET_Aspire",
-                "_net_aspire",
                 "cloud_native",
-                "orleans"
+                "orleans",
+                "۔NET",
+                "۔NET_Aspire",
+                "۔net_aspire"
             ],
             "description": "<p>Let's take a look at what is new with Orleans for building robust, scalable distribute applications with Orleans 8 and integration with .NET Aspire.</p>\n<p>The post <a href=\"https://devblogs.microsoft.com/dotnet/whats-new-in-orleans-8/\">What&#8217;s new in Orleans 8 for Scalable Distributed Applications</a> appeared first on <a href=\"https://devblogs.microsoft.com/dotnet\">.NET Blog</a>.</p>\n",
             "title": "What&#8217;s new in Orleans 8 for Scalable Distributed Applications",
@@ -144,15 +144,15 @@
             "id": "https://devblogs.microsoft.com/dotnet/?p=51773",
             "tags": [
                 "AI",
-                "ASP_NET",
-                "ASP_NET_Core",
+                "ASP۔NET",
+                "ASP۔NET_Core",
                 "C＃",
                 "Machine_Learning",
-                "_NET",
-                "_NET_Core",
                 "azure",
                 "event",
-                "microsoft_build"
+                "microsoft_build",
+                "۔NET",
+                "۔NET_Core"
             ],
             "description": "<p>Get ready for a great lineup of .NET sessions at Microsoft Build 2024. Join us either in Seattle or from the comfort of your own home. With a mix of live and online sessions, you won’t miss a beat.</p>\n<p>The post <a href=\"https://devblogs.microsoft.com/dotnet/join-the-dotnet-team-microsoft-build-2024/\">Join the .NET Team at Microsoft Build 2024!</a> appeared first on <a href=\"https://devblogs.microsoft.com/dotnet\">.NET Blog</a>.</p>\n",
             "title": "Join the .NET Team at Microsoft Build 2024!",
@@ -166,9 +166,9 @@
             "id": "https://devblogs.microsoft.com/dotnet/?p=51745",
             "tags": [
                 "C＃",
-                "_NET",
-                "_net_8",
-                "c＃_12"
+                "c＃_12",
+                "۔NET",
+                "۔net_8"
             ],
             "description": "<p>Explore various C# 12 refactoring scenarios for a variety of target types using collection expressions, collection initializers, and the spread syntax.</p>\n<p>The post <a href=\"https://devblogs.microsoft.com/dotnet/refactor-your-code-with-collection-expressions/\">Refactor your code with C# collection expressions</a> appeared first on <a href=\"https://devblogs.microsoft.com/dotnet\">.NET Blog</a>.</p>\n",
             "title": "Refactor your code with C# collection expressions",
@@ -186,9 +186,9 @@
                 "C＃",
                 "C＃_Dev_Kit",
                 "Visual_Studio_Code",
-                "_NET",
                 "csharpdevkit",
-                "vscode"
+                "vscode",
+                "۔NET"
             ],
             "description": "<p>Explore the new features and enhancements in the latest version of C# Dev Kit including NuGet package management, .NET Aspire project support, and much more.</p>\n<p>The post <a href=\"https://devblogs.microsoft.com/dotnet/may-release-of-csharp-dev-kit/\">Package Management &amp; improved .NET Aspire support come to C# Dev Kit</a> appeared first on <a href=\"https://devblogs.microsoft.com/dotnet\">.NET Blog</a>.</p>\n",
             "title": "Package Management &#038; improved .NET Aspire support come to C# Dev Kit",
@@ -204,10 +204,10 @@
                 "CLI",
                 "Cloud_Native",
                 "Containers",
-                "_NET",
-                "_net_sdk",
                 "dotnet_cli",
-                "sdk"
+                "sdk",
+                "۔NET",
+                "۔net_sdk"
             ],
             "description": "<p>.NET 8 has new security features for containers, including non-root images and SDK tools. Discover how to create non-root container images, configure Kubernetes pods, and inspect images and containers for enhanced security.</p>\n<p>The post <a href=\"https://devblogs.microsoft.com/dotnet/secure-your-container-build-and-publish-with-dotnet-8/\">Secure your container build and publish with .NET 8</a> appeared first on <a href=\"https://devblogs.microsoft.com/dotnet\">.NET Blog</a>.</p>\n",
             "title": "Secure your container build and publish with .NET 8",

@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-04-30T14:36:46.000Z
+aliases:
+  - What are Generics and why you should use them?
+id: https://typescript.tv/hands-on/what-are-generics-and-why-you-should-use-them/
+author: unknown
 link: https://typescript.tv/hands-on/what-are-generics-and-why-you-should-use-them/
-id: "https://typescript.tv/hands-on/what-are-generics-and-why-you-should-use-them/"
+published: 2024-04-30T14:36:46.000Z
 feed: "[[TypeScript TV]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] What are Generics and why you should use them? (by unknown)
@@ -22,3 +24,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

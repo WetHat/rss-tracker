@@ -1,11 +1,11 @@
 ---
 role: rssfeed
+tags: []
 feedurl: https://localhost/test/fettblog․eu ∣ TypeScript, JavaScript, Jamstack/feed.xml
 site: https://fettblog.eu/
 itemlimit: 10
-updated: 2025-05-21T12:31:25.929Z
 status: ✅
-tags: []
+updated: 2025-05-21T19:06:25.232Z
 interval: 593
 ---
 > [!abstract] fettblog.eu | TypeScript, JavaScript, Jamstack

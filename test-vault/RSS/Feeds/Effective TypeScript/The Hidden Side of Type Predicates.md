@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-02-27T15:45:00.000Z
+aliases: []
+id: https://effectivetypescript.com/2024/02/27/type-guards/
+author: unknown
 link: https://effectivetypescript.com/2024/02/27/type-guards/
-id: "https://effectivetypescript.com/2024/02/27/type-guards/"
+published: 2024-02-27T15:45:00.000Z
 feed: "[[Effective TypeScript]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] The Hidden Side of Type Predicates (by unknown)
@@ -22,6 +23,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 For the past two months I've been participating in a batch at the [Recurse Center](https://www.recurse.com/) in Brooklyn, a "writer's retreat for programmers." I've been having lots of fun learning about [Interpreters](https://github.com/danvk/gravlax), [Programming Languages](https://github.com/danvk/Stanford-CS-242-Programming-Languages) and [Neural Nets](https://github.com/karpathy/nn-zero-to-hero), but you apply to RC with a _project_ in mind, and mine was to contribute to the TypeScript open source project. I've used TypeScript and written about it for years, but I've never contributed code to it. Time to change that!
 
 The result is [PR #57465](https://github.com/microsoft/TypeScript/pull/57465), which adds a feature I've always wanted in TypeScript: inference of [type predicates](https://www.typescriptlang.org/docs/handbook/2/narrowing.html#using-type-predicates). I'll have more to say about that PR in a future post. But for now I'd like to share some of what I've learned about type predicates while implementing it.

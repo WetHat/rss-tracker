@@ -1,12 +1,22 @@
 ---
 role: rssitem
-author: "Wendy Breiding (SHE/HER)"
-published: 2024-05-07T20:05:00.000Z
+aliases:
+  - Package Management &#038; improved .NET Aspire support come to C# Dev Kit
+id: https://devblogs.microsoft.com/dotnet/?p=51662
+author: Wendy Breiding (SHE/HER)
 link: https://devblogs.microsoft.com/dotnet/may-release-of-csharp-dev-kit/
-id: "https://devblogs.microsoft.com/dotnet/?p=51662"
+published: 2024-05-07T20:05:00.000Z
 feed: "[[․NET Blog]]"
-tags: [rss/Cloud_Native,rss/Csharp,rss/C＃,rss/C＃_Dev_Kit,rss/Visual_Studio_Code,rss/_NET,rss/csharpdevkit,rss/vscode]
 pinned: false
+tags:
+  - rss/Cloud_Native
+  - rss/Csharp
+  - rss/C＃
+  - rss/C＃_Dev_Kit
+  - rss/Visual_Studio_Code
+  - rss/csharpdevkit
+  - rss/vscode
+  - rss/۔NET
 ---
 
 > [!abstract] Package Management &#038; improved .NET Aspire support come to C# Dev Kit (by Wendy Breiding (SHE/HER))
@@ -24,6 +34,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 We are excited to announce the May release of C# Dev Kit, the official extension for C# development in Visual Studio Code. This release brings you several new features and improvements that will make your C# coding experience more productive and enjoyable. In this blog post, we will go over some of the highlights of this release and show you how to use them in your projects.
 
 ## Add, update, and remove NuGet packages

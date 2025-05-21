@@ -1,11 +1,10 @@
 ---
 role: rssfeed
+tags: []
 feedurl: https://localhost/test/Planet PowerShell/feed.xml
 site: https://www.planetpowershell.com/
 itemlimit: 10
-updated: 
 status: "❌Saving 'Keep Microsoft Teams status Available instead of away using PowerShell' of feed 'Planet PowerShell failed': File already exists."
-tags: []
 ---
 > [!abstract] Planet PowerShell
 > ![image|float:right|400](https://www.planetpowershell.com/Content/Logo.png) An aggregated feed from the PowerShell community

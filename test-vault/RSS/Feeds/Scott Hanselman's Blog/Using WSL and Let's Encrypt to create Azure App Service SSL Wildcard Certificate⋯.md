@@ -1,12 +1,15 @@
 ---
 role: rssitem
-author: "Scott Hanselman"
-published: 2023-06-27T17:17:25.000Z
+aliases:
+  - Using WSL and Let's Encrypt to create Azure App Service SSL Wildcard Certificates
+id: https://www.hanselman.com/blog/post/7fbeba21-edbe-4af4-b909-26b6ba644546
+author: Scott Hanselman
 link: https://feeds.hanselman.com/~/749206136/0/scotthanselman~Using-WSL-and-Lets-Encrypt-to-create-Azure-App-Service-SSL-Wildcard-Certificates
-id: "https://www.hanselman.com/blog/post/7fbeba21-edbe-4af4-b909-26b6ba644546"
+published: 2023-06-27T17:17:25.000Z
 feed: "[[Scott Hanselman's Blog]]"
-tags: [rss/Azure]
 pinned: false
+tags:
+  - rss/Azure
 ---
 
 > [!abstract] Using WSL and Let's Encrypt to create Azure App Service SSL Wildcard Certificates (by Scott Hanselman)
@@ -30,6 +33,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 There are many let's encrypt automatic tools for azure but I also wanted to see if I could use certbot in wsl to generate a wildcard certificate for the azure Friday website and then upload the resulting certificates to azure app service.
 
 Azure app service ultimately needs a specific format called dot PFX that includes the full certificate path and all intermediates.

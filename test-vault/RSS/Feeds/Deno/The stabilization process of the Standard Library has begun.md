@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "Yoshiya Hinosawa"
-published: 2024-06-10T16:00:00.000Z
+aliases: []
+id: https://deno.com/blog/stabilize-std
+author: Yoshiya Hinosawa
 link: https://deno.com/blog/stabilize-std
-id: "https://deno.com/blog/stabilize-std"
+published: 2024-06-10T16:00:00.000Z
 feed: "[[Deno]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] The stabilization process of the Standard Library has begun (by Yoshiya Hinosawa)
@@ -22,3 +23,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

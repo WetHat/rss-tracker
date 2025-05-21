@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2023-07-17T00:00:00.000Z
+aliases: []
+id: https://fettblog.eu/5-truths-about-typescript/
+author: unknown
 link: https://fettblog.eu/5-truths-about-typescript/
-id: "https://fettblog.eu/5-truths-about-typescript/"
+published: 2023-07-17T00:00:00.000Z
 feed: "[[fettblog․eu ∣ TypeScript, JavaScript, Jamstack]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] 5 Inconvenient Truths about TypeScript (by unknown)
@@ -22,4 +23,5 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 I’m writing books about TypeScript and I do workshops and trainings online and in-house. Every time I meet a new group of developers there are some TypeScript facts that they need to be confronted with:

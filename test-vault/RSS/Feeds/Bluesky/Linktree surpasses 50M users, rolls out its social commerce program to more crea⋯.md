@@ -1,12 +1,19 @@
 ---
 role: rssitem
-author: "Lauren Forristal"
-published: 2024-05-22T13:19:57.000Z
+aliases:
+  - Linktree surpasses 50M users, rolls out its social commerce program to more creators
+id: flipboard-6d6f6f9a11/techcrunch.com-1716383997
+author: Lauren Forristal
 link: https://techcrunch.com/2024/05/22/linktree-surpasses-50m-users-rolls-out-beta-social-commerce-program/?eicker.news=
-id: "flipboard-6d6f6f9a11/techcrunch.com-1716383997"
+published: 2024-05-22T13:19:57.000Z
 feed: "[[Bluesky]]"
-tags: [rss/Bluesky,rss/Business,rss/Linktree,rss/Social_Commerce,rss/Technology]
 pinned: false
+tags:
+  - rss/Bluesky
+  - rss/Business
+  - rss/Linktree
+  - rss/Social_Commerce
+  - rss/Technology
 ---
 
 > [!abstract] Linktree surpasses 50M users, rolls out its social commerce program to more creators (by Lauren Forristal)
@@ -22,3 +29,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

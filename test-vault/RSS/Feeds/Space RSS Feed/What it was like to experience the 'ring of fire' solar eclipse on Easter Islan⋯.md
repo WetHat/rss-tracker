@@ -1,12 +1,16 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-10-06T14:00:01.000Z
+aliases:
+  - " What it was like to experience the 'ring of fire' solar eclipse on Easter Island "
+id: 9VAkjx32VUJwcdrMgWxPjZ
+author: unknown
 link: https://www.space.com/annular-solar-eclipse-easter-island-first-hand-experience
-id: "9VAkjx32VUJwcdrMgWxPjZ"
+published: 2024-10-06T14:00:01.000Z
 feed: "[[Space RSS Feed]]"
-tags: [rss/Eclipses,rss/Stargazing]
 pinned: false
+tags:
+  - rss/Eclipses
+  - rss/Stargazing
 ---
 
 > [!abstract]  What it was like to experience the 'ring of fire' solar eclipse on Easter Island  (by unknown)
@@ -22,6 +26,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 RAPA NUI (EASTER ISLAND), Chile — Eclipse-chasers from across the globe gathered on remote Rapa Nui — also known as Isla de Pascua and Easter Island — to witness a fabulous "ring of fire" annular solar eclipse for about six minutes. It was the island's first in 236 years and last for 321 years. 
 
 I was there with eclipse-chaser experts [Astro Trails](https://www.astro-trails.com/), who I joined in Santiago, Chile to take a five-hour flight to the tiny Chilean island, 1,200 miles (1,931 kilometers) east of Pitcairn Island and 2,200 miles (3,540 km) from Chile. As I stepped off the plane, I could see extinct volcanoes and grassland. Within minutes, a necklace of flowers was placed around my neck. It was then a short 10-minute bus ride to the capital, Hanga Roa. The entire island is just 63 square miles (163 square km). 

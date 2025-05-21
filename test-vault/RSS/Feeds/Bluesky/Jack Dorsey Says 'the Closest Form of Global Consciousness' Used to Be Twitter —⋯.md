@@ -1,12 +1,19 @@
 ---
 role: rssitem
-author: "Sherin Shibu"
-published: 2024-05-23T19:51:00.000Z
+aliases:
+  - Jack Dorsey Says 'the Closest Form of Global Consciousness' Used to Be Twitter — Now It's Something Else
+id: flipboard-8Nx8R44tRoG6CQ3Bv1573w:a:2867092696-1716493860
+author: Sherin Shibu
 link: https://www.entrepreneur.com/business-news/jack-dorsey-says-corporate-ai-has-surpassed-twitter-x/474595
-id: "flipboard-8Nx8R44tRoG6CQ3Bv1573w:a:2867092696-1716493860"
+published: 2024-05-23T19:51:00.000Z
 feed: "[[Bluesky]]"
-tags: [rss/Artificial_Intelligence,rss/Bluesky,rss/Computer_Science,rss/Enterprise_Tech,rss/Technology]
 pinned: false
+tags:
+  - rss/Artificial_Intelligence
+  - rss/Bluesky
+  - rss/Computer_Science
+  - rss/Enterprise_Tech
+  - rss/Technology
 ---
 
 > [!abstract] Jack Dorsey Says 'the Closest Form of Global Consciousness' Used to Be Twitter — Now It's Something Else (by Sherin Shibu)
@@ -22,3 +29,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

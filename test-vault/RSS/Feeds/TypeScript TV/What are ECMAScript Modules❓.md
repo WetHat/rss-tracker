@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2023-11-09T17:07:20.000Z
+aliases:
+  - What are ECMAScript Modules?
+id: https://typescript.tv/new-features/what-are-ecmascript-modules/
+author: unknown
 link: https://typescript.tv/new-features/what-are-ecmascript-modules/
-id: "https://typescript.tv/new-features/what-are-ecmascript-modules/"
+published: 2023-11-09T17:07:20.000Z
 feed: "[[TypeScript TV]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] What are ECMAScript Modules? (by unknown)
@@ -22,3 +24,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

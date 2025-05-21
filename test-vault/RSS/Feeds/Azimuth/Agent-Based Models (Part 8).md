@@ -1,12 +1,16 @@
 ---
 role: rssitem
-author: "John Baez"
-published: 2024-04-16T19:01:15.000Z
+aliases: []
+id: http://johncarlosbaez.wordpress.com/?p=37766
+author: John Baez
 link: https://johncarlosbaez.wordpress.com/2024/04/16/agent-based-models-part-8/
-id: "http://johncarlosbaez.wordpress.com/?p=37766"
+published: 2024-04-16T19:01:15.000Z
 feed: "[[Azimuth]]"
-tags: [rss/computer_science,rss/epidemiology,rss/mathematics]
 pinned: false
+tags:
+  - rss/computer_science
+  - rss/epidemiology
+  - rss/mathematics
 ---
 
 > [!abstract] Agent-Based Models (Part 8) (by John Baez)
@@ -22,6 +26,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 [Last time](https://johncarlosbaez.wordpress.com/2024/02/28/agent-based-models-part-7/) I presented a class of agent-based models where agents hop around a graph in a stochastic way. Each vertex of the graph is some ‘state’ agents can be in, and each edge is called a ‘transition’. In these models, the probability per time of an agent making a transition and leaving some state can depend on when it arrived at that state. It can also depend on which agents are in other states that are ‘linked’ to that edge—and when _those_ agents arrived.
 
 I’ve been trying to generalize this framework to handle processes where agents are born or die—or perhaps more generally, processes where some number of agents turn into some other number of agents. There’s already a framework that does something sort of like this. It’s called ‘stochastic Petri nets’, and we explained this framework here:

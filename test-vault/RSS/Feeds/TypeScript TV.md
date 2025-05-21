@@ -1,11 +1,11 @@
 ---
 role: rssfeed
+tags: []
 feedurl: https://localhost/test/TypeScript TV/feed.xml
 site: https://typescript.tv/
 itemlimit: 10
-updated: 2025-05-21T12:31:01.319Z
 status: ✅
-tags: []
+updated: 2025-05-21T19:06:00.147Z
 interval: 809
 ---
 > [!abstract] TypeScript TV

@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-04-05T23:41:43.000Z
+aliases:
+  - Python's http.server module
+id: https://www.pythonmorsels.com/http-server/
+author: unknown
 link: https://www.pythonmorsels.com/http-server/
-id: "https://www.pythonmorsels.com/http-server/"
+published: 2024-04-05T23:41:43.000Z
 feed: "[[Python Morsels]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Python's http.server module (by unknown)
@@ -32,6 +34,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 Use Python's `http.server` module to serve up a static website on your own machine.
 
 **Table of contents**

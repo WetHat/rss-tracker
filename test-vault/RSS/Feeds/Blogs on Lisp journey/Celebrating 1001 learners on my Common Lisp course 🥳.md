@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-02-14T16:05:44.000Z
+aliases: []
+id: /blog/celebrating-1001-learners-on-my-common-lisp-course/
+author: unknown
 link: https://localhost/blog/celebrating-1001-learners-on-my-common-lisp-course/
-id: "/blog/celebrating-1001-learners-on-my-common-lisp-course/"
+published: 2024-02-14T16:05:44.000Z
 feed: "[[Blogs on Lisp journey]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Celebrating 1001 learners on my Common Lisp course 🥳 (by unknown)
@@ -22,3 +23,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

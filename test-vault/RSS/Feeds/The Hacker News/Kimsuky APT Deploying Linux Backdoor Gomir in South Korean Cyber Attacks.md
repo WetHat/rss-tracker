@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "info@thehackernews.com (The Hacker News)"
-published: 2024-05-17T08:46:00.000Z
+aliases: []
+id: https://thehackernews.com/2024/05/kimsuky-apt-deploying-linux-backdoor.html
+author: info@thehackernews.com (The Hacker News)
 link: https://thehackernews.com/2024/05/kimsuky-apt-deploying-linux-backdoor.html
-id: "https://thehackernews.com/2024/05/kimsuky-apt-deploying-linux-backdoor.html"
+published: 2024-05-17T08:46:00.000Z
 feed: "[[The Hacker News]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Kimsuky APT Deploying Linux Backdoor Gomir in South Korean Cyber Attacks (by info@thehackernews.com (The Hacker News))
@@ -22,3 +23,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2022-04-27T00:00:00.000Z
+aliases:
+  - 10 years of fettblog.eu
+id: https://fettblog.eu/10-years-of-fettblog/
+author: unknown
 link: https://fettblog.eu/10-years-of-fettblog/
-id: "https://fettblog.eu/10-years-of-fettblog/"
+published: 2022-04-27T00:00:00.000Z
 feed: "[[fettblog․eu ∣ TypeScript, JavaScript, Jamstack]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] 10 years of fettblog.eu (by unknown)
@@ -22,4 +24,5 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 I missed a little anniversary. Roughly 10 years ago (on April 8, 2012), I started blogging on [fettblog.eu](http://fettblog.eu)! Time flies! I think this is my longest-running project, let’s take some time to reflect.

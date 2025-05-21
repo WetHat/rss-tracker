@@ -1,12 +1,18 @@
 ---
 role: rssitem
-author: "Jeffery Hicks"
-published: 2024-05-24T17:03:43.000Z
+aliases: []
+id: https://jdhitsolutions.com/blog/?p=9389
+author: Jeffery Hicks
 link: https://jdhitsolutions.com/blog/books/9389/powershell-scripting-and-toolmaking/
-id: "https://jdhitsolutions.com/blog/?p=9389"
+published: 2024-05-24T17:03:43.000Z
 feed: "[[Planet PowerShell]]"
-tags: [rss/Books,rss/LeanPub,rss/PowerShell,rss/Scripting,rss/toolmaking]
 pinned: false
+tags:
+  - rss/Books
+  - rss/LeanPub
+  - rss/PowerShell
+  - rss/Scripting
+  - rss/toolmaking
 ---
 
 > [!abstract] PowerShell Scripting and Toolmaking (by Jeffery Hicks)
@@ -22,3 +28,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

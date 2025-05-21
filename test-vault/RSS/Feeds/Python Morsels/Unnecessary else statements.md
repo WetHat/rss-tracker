@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-03-22T22:00:00.000Z
+aliases: []
+id: https://www.pythonmorsels.com/unnecessary-else-statements/
+author: unknown
 link: https://www.pythonmorsels.com/unnecessary-else-statements/
-id: "https://www.pythonmorsels.com/unnecessary-else-statements/"
+published: 2024-03-22T22:00:00.000Z
 feed: "[[Python Morsels]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Unnecessary else statements (by unknown)
@@ -30,6 +31,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 When your function ends in an `else` block with a `return` statement in it, should you remove that `else`?
 
 **Table of contents**

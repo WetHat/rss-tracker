@@ -1,11 +1,11 @@
 ---
 role: rssfeed
+tags: []
 feedurl: https://localhost/test/Sabine Hossenfelder/feed.xml
 site: https://www.youtube.com/channel/UC1yNl2E66ZzKApQdRuTQ4tw
 itemlimit: 10
-updated: 2025-05-21T12:31:12.458Z
 status: ✅
-tags: []
+updated: 2025-05-21T19:06:11.521Z
 interval: 24
 ---
 > [!abstract] Sabine Hossenfelder

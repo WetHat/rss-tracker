@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-07-02T17:00:00.000Z
+aliases:
+  - "TypeScript 5.5: A Blockbuster Release"
+id: https://effectivetypescript.com/2024/07/02/ts-55/
+author: unknown
 link: https://effectivetypescript.com/2024/07/02/ts-55/
-id: "https://effectivetypescript.com/2024/07/02/ts-55/"
+published: 2024-07-02T17:00:00.000Z
 feed: "[[Effective TypeScript]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] TypeScript 5.5: A Blockbuster Release (by unknown)
@@ -22,6 +24,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 We TypeScript developers are a lucky bunch. While some languages ([Python](https://en.wikipedia.org/wiki/History_of_Python), [JavaScript](https://en.wikipedia.org/wiki/ECMAScript_version_history)) are released annually, every three years ([C++](https://en.wikipedia.org/wiki/C%2B%2B#Standardization)) or even less, we get _four_ new versions of TypeScript every year. TypeScript 5.5 was [released](https://devblogs.microsoft.com/typescript/announcing-typescript-5-5/) on June 20th, 2024, and it was a real blockbuster. Let's take a look.
 
 TypeScript's [motto](https://www.typescriptlang.org/) is "JavaScript with syntax for types." New versions of TypeScript don't add new runtime features (that's JavaScript's responsibility). Rather, they make changes within the type system. These tend to take a few forms:

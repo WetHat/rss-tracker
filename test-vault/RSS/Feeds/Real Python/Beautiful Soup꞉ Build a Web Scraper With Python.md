@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-10-28T14:00:00.000Z
+aliases:
+  - "Beautiful Soup: Build a Web Scraper With Python"
+id: https://realpython.com/beautiful-soup-web-scraper-python/
+author: unknown
 link: https://realpython.com/beautiful-soup-web-scraper-python/
-id: "https://realpython.com/beautiful-soup-web-scraper-python/"
+published: 2024-10-28T14:00:00.000Z
 feed: "[[Real Python]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Beautiful Soup: Build a Web Scraper With Python (by unknown)
@@ -22,6 +24,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 [Web scraping](https://realpython.com/python-web-scraping-practical-introduction/) is the automated process of extracting data from the internet. The Python libraries **Requests** and **Beautiful Soup** are powerful tools for the job. To effectively harvest the vast amount of data available online for your research, projects, or personal interests, you’ll need to become skilled at web scraping.
 
 **In this tutorial, you’ll learn how to:**

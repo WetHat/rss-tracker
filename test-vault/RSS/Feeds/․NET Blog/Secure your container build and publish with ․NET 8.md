@@ -1,12 +1,21 @@
 ---
 role: rssitem
-author: "Richard Lander"
-published: 2024-04-30T17:05:00.000Z
+aliases:
+  - Secure your container build and publish with .NET 8
+id: https://devblogs.microsoft.com/dotnet/?p=51654
+author: Richard Lander
 link: https://devblogs.microsoft.com/dotnet/secure-your-container-build-and-publish-with-dotnet-8/
-id: "https://devblogs.microsoft.com/dotnet/?p=51654"
+published: 2024-04-30T17:05:00.000Z
 feed: "[[․NET Blog]]"
-tags: [rss/CLI,rss/Cloud_Native,rss/Containers,rss/_NET,rss/_net_sdk,rss/dotnet_cli,rss/sdk]
 pinned: false
+tags:
+  - rss/CLI
+  - rss/Cloud_Native
+  - rss/Containers
+  - rss/dotnet_cli
+  - rss/sdk
+  - rss/۔NET
+  - rss/۔net_sdk
 ---
 
 > [!abstract] Secure your container build and publish with .NET 8 (by Richard Lander)
@@ -24,6 +33,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 .NET 8 raises the bar for container security for .NET container images and SDK tools. The SDK produces application images that align with [industry best practices and standards](https://kubernetes.io/docs/concepts/security/pod-security-standards/#restricted), by default. We also offer additional security hardening with [Chiseled images](https://devblogs.microsoft.com/dotnet/announcing-dotnet-chiseled-containers/) for an extra layer of protection.
 
 `dotnet publish` will generate a container image for you and configure it as non-root by default. It’s easy with .NET to quickly improve the security posture of your production apps.

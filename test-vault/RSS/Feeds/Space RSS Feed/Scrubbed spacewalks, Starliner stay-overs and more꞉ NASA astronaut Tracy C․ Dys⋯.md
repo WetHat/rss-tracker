@@ -1,12 +1,16 @@
 ---
 role: rssitem
+aliases:
+  - " Scrubbed spacewalks, Starliner stay-overs and more: NASA astronaut Tracy C. Dyson discusses her eventful 6 months in orbit "
+id: zvZkavgFL5GFmmUezkRB6A
 author: " robert@collectspace.com (Robert Z. Pearlman) "
-published: 2024-10-07T12:00:25.000Z
 link: https://www.space.com/nasa-astronaut-tracy-caldwell-dyson-post-flight-briefing
-id: "zvZkavgFL5GFmmUezkRB6A"
+published: 2024-10-07T12:00:25.000Z
 feed: "[[Space RSS Feed]]"
-tags: [rss/Human_Spaceflight,rss/Space_Exploration]
 pinned: false
+tags:
+  - rss/Human_Spaceflight
+  - rss/Space_Exploration
 ---
 
 > [!abstract]  Scrubbed spacewalks, Starliner stay-overs and more: NASA astronaut Tracy C. Dyson discusses her eventful 6 months in orbit  (by  robert@collectspace.com (Robert Z. Pearlman) )
@@ -22,6 +26,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 Out of the 184 days that NASA astronaut Tracy Caldwell Dyson logged on her most recent mission on board the International Space Station, there are 31 minutes that stand out to her as being among her finest.
 
 Dyson reflected on her time in space during a post-flight press conference at NASA's [Johnson Space Center](https://www.space.com/17216-nasa-johnson-space-center.html) in Houston on Friday (Oct. 4). She [returned to Earth](https://www.space.com/soyuz-ms-25-landing-record-days-space) less than two weeks ago on a Russian [Soyuz](https://www.space.com/40951-soyuz-spacecraft.html) spacecraft that touched down in Kazakhstan. 

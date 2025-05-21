@@ -1,11 +1,11 @@
 ---
 role: rssfeed
+tags: []
 feedurl: https://localhost/test/Deno/feed.xml
 site: https://deno.com/blog
 itemlimit: 10
-updated: 2025-05-21T12:31:30.436Z
 status: ✅
-tags: []
+updated: 2025-05-21T19:06:29.558Z
 interval: 207
 ---
 > [!abstract] Deno

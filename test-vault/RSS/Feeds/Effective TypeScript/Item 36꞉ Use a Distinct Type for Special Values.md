@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-06-13T17:30:00.000Z
+aliases:
+  - "Item 36: Use a Distinct Type for Special Values"
+id: https://effectivetypescript.com/2024/06/13/special-values/
+author: unknown
 link: https://effectivetypescript.com/2024/06/13/special-values/
-id: "https://effectivetypescript.com/2024/06/13/special-values/"
+published: 2024-06-13T17:30:00.000Z
 feed: "[[Effective TypeScript]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Item 36: Use a Distinct Type for Special Values (by unknown)
@@ -22,6 +24,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 _This is a sample item from Chapter 4 of the second edition of [Effective TypeScript](https://amzn.to/3UjPrsK), which was [released](https://effectivetypescript.com/2024/05/21/second-edition/) in May of 2024. It discusses a common mistake in TypeScript code: using `""`, `0`, or `-1` to represent special cases like missing data. By modeling these cases with a distinct type, you help TypeScript guide you towards writing more correct code. If you like what you read, consider [buying a copy](https://amzn.to/3UjPrsK) of the book!_
 
 JavaScript's [string `split` method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split) is a handy way to break a string around a delimiter:

@@ -1,12 +1,18 @@
 ---
 role: rssitem
-author: "Buffer"
-published: 2024-05-22T15:03:57.000Z
+aliases: []
+id: flipboard-2d95f12188/buffer.com-1716390237
+author: Buffer
 link: https://buffer.com/resources/buffer-product-update-may-2024/
-id: "flipboard-2d95f12188/buffer.com-1716390237"
+published: 2024-05-22T15:03:57.000Z
 feed: "[[Bluesky]]"
-tags: [rss/Bluesky,rss/Business,rss/Digital_Marketing,rss/Internet_Marketing,rss/Viral_Marketing]
 pinned: false
+tags:
+  - rss/Bluesky
+  - rss/Business
+  - rss/Digital_Marketing
+  - rss/Internet_Marketing
+  - rss/Viral_Marketing
 ---
 
 > [!abstract] 7 New Buffer Features to Explore in 2024 (+ a Sneak Peek at What's to Come) (by Buffer)
@@ -22,3 +28,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

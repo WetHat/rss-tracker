@@ -1,12 +1,16 @@
 ---
 role: rssitem
-author: "Scott Hanselman"
-published: 2021-11-23T20:02:00.000Z
+aliases:
+  - A Nightscout Segment for OhMyPosh shows my realtime Blood Sugar readings in my Git Prompt
+id: https://www.hanselman.com/blog/post/495513ca-ca88-421f-8ade-50e4cf17d747
+author: Scott Hanselman
 link: https://feeds.hanselman.com/~/673947624/0/scotthanselman~A-Nightscout-Segment-for-OhMyPosh-shows-my-realtime-Blood-Sugar-readings-in-my-Git-Prompt
-id: "https://www.hanselman.com/blog/post/495513ca-ca88-421f-8ade-50e4cf17d747"
+published: 2021-11-23T20:02:00.000Z
 feed: "[[Scott Hanselman's Blog]]"
-tags: [rss/Diabetes,rss/Open_Source]
 pinned: false
+tags:
+  - rss/Diabetes
+  - rss/Open_Source
 ---
 
 > [!abstract] A Nightscout Segment for OhMyPosh shows my realtime Blood Sugar readings in my Git Prompt (by Scott Hanselman)
@@ -24,6 +28,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 I've talked about [how I love a nice pretty prompt in my Windows Terminal](https://feeds.hanselman.com/~/t/0/0/scotthanselman/~https://www.hanselman.com/blog/my-ultimate-powershell-prompt-with-oh-my-posh-and-the-windows-terminal) and [made videos showing in detail how to do it](https://feeds.hanselman.com/~/t/0/0/scotthanselman/~https://www.youtube.com/watch?v=VT2L1SXFq9U). I've also worked with my buddy [TooTallNate to put my real-time blood sugar into a bash or PowerShell prompt](https://feeds.hanselman.com/~/t/0/0/scotthanselman/~https://www.hanselman.com/blog/visualizing-your-realtime-blood-sugar-values-and-a-git-prompt-on-windows-powershell-and-linux-bash), but this was back in 2017.
 
 Now that I'm "Team [OhMyPosh](https://feeds.hanselman.com/~/t/0/0/scotthanselman/~https://ohmyposh.dev/)" I have been meaning to write a Nightscout "segment" for my prompt. [Nightscout](https://feeds.hanselman.com/~/t/0/0/scotthanselman/~https://www.nightscoutfoundation.org/how-you-can-help) is an open source self-hosted (there are [commercial hosts also like T1Pal](https://feeds.hanselman.com/~/t/0/0/scotthanselman/~https://www.t1pal.com/)) website and API for remote display of real-time and near-real-time glucose readings for Diabetics like myself.

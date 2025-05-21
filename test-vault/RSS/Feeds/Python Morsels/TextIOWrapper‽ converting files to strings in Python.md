@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-02-05T16:00:00.000Z
+aliases: []
+id: https://www.pythonmorsels.com/TextIOWrapper/
+author: unknown
 link: https://www.pythonmorsels.com/TextIOWrapper/
-id: "https://www.pythonmorsels.com/TextIOWrapper/"
+published: 2024-02-05T16:00:00.000Z
 feed: "[[Python Morsels]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] TextIOWrapper‽ converting files to strings in Python (by unknown)
@@ -30,6 +31,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 Ever encountered an `_io.TextIOWrapper` object when you wished you had a string? That's Python's version of a "text file" object!
 
 **Table of contents**

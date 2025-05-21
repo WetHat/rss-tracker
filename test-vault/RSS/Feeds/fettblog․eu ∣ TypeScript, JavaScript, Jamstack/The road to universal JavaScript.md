@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2022-05-09T00:00:00.000Z
+aliases: []
+id: https://fettblog.eu/the-road-to-universal-javascript/
+author: unknown
 link: https://fettblog.eu/the-road-to-universal-javascript/
-id: "https://fettblog.eu/the-road-to-universal-javascript/"
+published: 2022-05-09T00:00:00.000Z
 feed: "[[fettblog․eu ∣ TypeScript, JavaScript, Jamstack]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] The road to universal JavaScript (by unknown)
@@ -22,4 +23,5 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 Universal JavaScript. JavaScript that works in every environment. JavaScript that runs on both the client and the server, something thinking about for years (see [1](https://medium.com/@mjackson/universal-javascript-4761051b7ae9), [2](https://medium.com/airbnb-engineering/isomorphic-javascript-the-future-of-web-apps-10882b7a2ebc)). Where are we now?

@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-05-15T16:14:32.000Z
+aliases: []
+id: https://typescript.tv/new-features/the-4-must-know-typescript-compiler-configs/
+author: unknown
 link: https://typescript.tv/new-features/the-4-must-know-typescript-compiler-configs/
-id: "https://typescript.tv/new-features/the-4-must-know-typescript-compiler-configs/"
+published: 2024-05-15T16:14:32.000Z
 feed: "[[TypeScript TV]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] The 4 Must-Know TypeScript Compiler Configs (by unknown)
@@ -22,3 +23,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

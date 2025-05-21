@@ -1,11 +1,11 @@
 ---
 role: rssfeed
+tags: []
 feedurl: https://localhost/test/․NET Blog/feed.xml
 site: https://devblogs.microsoft.com/dotnet/
 itemlimit: 10
-updated: 2025-05-21T12:30:59.391Z
 status: ✅
-tags: []
+updated: 2025-05-21T19:05:58.889Z
 interval: 77
 ---
 > [!abstract] .NET Blog

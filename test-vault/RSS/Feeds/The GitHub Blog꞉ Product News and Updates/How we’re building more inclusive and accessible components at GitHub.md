@@ -1,12 +1,17 @@
 ---
 role: rssitem
-author: "Eric Bailey"
-published: 2024-05-07T17:00:20.000Z
+aliases: []
+id: https://github.blog/?p=77929
+author: Eric Bailey
 link: https://github.blog/2024-05-07-how-were-building-more-inclusive-and-accessible-components-at-github/
-id: "https://github.blog/?p=77929"
+published: 2024-05-07T17:00:20.000Z
 feed: "[[The GitHub Blog꞉ Product News and Updates]]"
-tags: [rss/GitHub_Issues,rss/Global_Accessibility_Awareness_Day,rss/Product,rss/accessibility]
 pinned: false
+tags:
+  - rss/GitHub_Issues
+  - rss/Global_Accessibility_Awareness_Day
+  - rss/Product
+  - rss/accessibility
 ---
 
 > [!abstract] How we’re building more inclusive and accessible components at GitHub (by Eric Bailey)
@@ -22,6 +27,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 One of GitHub’s core values is **Diverse and Inclusive**. It is a guiding thought for how we operate, reminding us that GitHub serves a developer community that spans a wide range of geography and ability.
 
 Putting diversity and inclusivity into practice means incorporating a wide range of perspectives into our work. To that point, **disability and accessibility** are an integral part of our efforts.

@@ -1,11 +1,11 @@
 ---
 role: rssfeed
+tags: []
 feedurl: https://localhost/test/Scott Hanselman's Blog/feed.xml
 site: https://www.hanselman.com/blog/
 itemlimit: 10
-updated: 2025-05-21T12:31:10.161Z
 status: ✅
-tags: []
+updated: 2025-05-21T19:06:09.993Z
 interval: 2138
 ---
 > [!abstract] Scott Hanselman's Blog

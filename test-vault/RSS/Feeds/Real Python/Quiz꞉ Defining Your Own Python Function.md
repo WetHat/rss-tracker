@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-10-22T12:00:00.000Z
+aliases:
+  - "Quiz: Defining Your Own Python Function"
+id: https://realpython.com/quizzes/defining-your-own-python-function/
+author: unknown
 link: https://realpython.com/quizzes/defining-your-own-python-function/
-id: "https://realpython.com/quizzes/defining-your-own-python-function/"
+published: 2024-10-22T12:00:00.000Z
 feed: "[[Real Python]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Quiz: Defining Your Own Python Function (by unknown)
@@ -22,6 +24,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 In this quiz, you’ll test your understanding of how to [define your own Python function](https://realpython.com/defining-your-own-python-function/).
 
 You’ll revisit theoretical knowledge about passing values to functions, when to divide your program into separate user-defined functions, and all the tools you’ll need to define complex and powerful functions in Python.

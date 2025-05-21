@@ -1,12 +1,19 @@
 ---
 role: rssitem
-author: "Min Huang"
-published: 2024-05-27T15:00:00.000Z
+aliases:
+  - Introducing links to source code for .NET API Docs
+id: https://devblogs.microsoft.com/dotnet/?p=51964
+author: Min Huang
 link: https://devblogs.microsoft.com/dotnet/dotnet-docs-link-to-source-code/
-id: "https://devblogs.microsoft.com/dotnet/?p=51964"
+published: 2024-05-27T15:00:00.000Z
 feed: "[[․NET Blog]]"
-tags: [rss/Source_Link,rss/_NET,rss/_NET_Fundamentals,rss/_NET_Internals,rss/microsoft_learn]
 pinned: false
+tags:
+  - rss/Source_Link
+  - rss/microsoft_learn
+  - rss/۔NET
+  - rss/۔NET_Fundamentals
+  - rss/۔NET_Internals
 ---
 
 > [!abstract] Introducing links to source code for .NET API Docs (by Min Huang)
@@ -24,6 +31,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 When developers read API reference, they sometimes have a need or desire to review the corresponding source code. Until recently, the [.NET API reference docs](https://learn.microsoft.com/dotnet/api/) did not provide a link back to the source code, prompting calls from the community for this addition. In response to this feedback, we are happy to announce links connecting docs to the source code are now available on most of our popular .NET APIs.
 
 In this blog post, we will share details about how we added the links to the docs experience and how we made use of existing APIs to deliver this improvement.

@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "Matthew Dowst"
-published: 2024-05-24T12:23:18.000Z
+aliases: []
+id: https://psweekly.dowst.dev/?post_type=link_library_links&p=6889
+author: Matthew Dowst
 link: https://powershellisfun.com/2024/05/17/parameters-for-powershell-scripts-and-functions/
-id: "https://psweekly.dowst.dev/?post_type=link_library_links&p=6889"
+published: 2024-05-24T12:23:18.000Z
 feed: "[[Planet PowerShell]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Parameters for PowerShell Scripts and Functions (by Matthew Dowst)
@@ -26,6 +27,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 Using parameters for your Scripts and Functions is very powerful. You don't have to hardcode things
 
 in them, making running them from a command line easier. This blog post will show you the parameters I use in most of my scripts and how they work.

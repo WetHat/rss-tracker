@@ -1,12 +1,19 @@
 ---
 role: rssitem
-author: "Maxwell Zeff / Gizmodo"
-published: 2024-05-23T14:40:29.000Z
+aliases:
+  - Elon Musk might soon make Likes on X private to hide people's favorite 'edgy' content
+id: flipboard-Lfd4qhLMTw6oz9ycl-S4iw:a:109197962-1716475229
+author: Maxwell Zeff / Gizmodo
 link: https://qz.com/elon-musk-twitter-x-likes-private-1851496297
-id: "flipboard-Lfd4qhLMTw6oz9ycl-S4iw:a:109197962-1716475229"
+published: 2024-05-23T14:40:29.000Z
 feed: "[[Bluesky]]"
-tags: [rss/Bluesky,rss/Cryptocurrency,rss/Digital_Currency,rss/Elon_Musk,rss/Finance]
 pinned: false
+tags:
+  - rss/Bluesky
+  - rss/Cryptocurrency
+  - rss/Digital_Currency
+  - rss/Elon_Musk
+  - rss/Finance
 ---
 
 > [!abstract] Elon Musk might soon make Likes on X private to hide people's favorite 'edgy' content (by Maxwell Zeff / Gizmodo)
@@ -22,3 +29,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

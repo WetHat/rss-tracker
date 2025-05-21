@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-10-29T14:00:00.000Z
+aliases: []
+id: https://realpython.com/courses/magic-methods-classes/
+author: unknown
 link: https://realpython.com/courses/magic-methods-classes/
-id: "https://realpython.com/courses/magic-methods-classes/"
+published: 2024-10-29T14:00:00.000Z
 feed: "[[Real Python]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Python's Magic Methods in Classes (by unknown)
@@ -22,6 +23,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 As a Python developer who wants to harness the power of object-oriented programming, you’ll love to learn how to customize your classes using **special methods**, also known as **magic methods** or **dunder methods**. A special method is a method whose name starts and ends with a double underscore. These methods have special meanings in Python.
 
 Python automatically calls magic methods as a response to certain operations, such as instantiation, sequence indexing, attribute managing, and much more. Magic methods support core object-oriented features in Python, so learning about them is fundamental for you as a Python programmer.

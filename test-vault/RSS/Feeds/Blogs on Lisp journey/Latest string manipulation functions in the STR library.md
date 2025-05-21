@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2023-12-22T15:52:51.000Z
+aliases: []
+id: /blog/latest-string-manipulation-functions/
+author: unknown
 link: https://localhost/blog/latest-string-manipulation-functions/
-id: "/blog/latest-string-manipulation-functions/"
+published: 2023-12-22T15:52:51.000Z
 feed: "[[Blogs on Lisp journey]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Latest string manipulation functions in the STR library (by unknown)
@@ -22,3 +23,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

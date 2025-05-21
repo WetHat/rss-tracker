@@ -1,12 +1,16 @@
 ---
 role: rssitem
-author: "John Baez"
-published: 2024-02-28T21:09:29.000Z
+aliases: []
+id: http://johncarlosbaez.wordpress.com/?p=37547
+author: John Baez
 link: https://johncarlosbaez.wordpress.com/2024/02/28/agent-based-models-part-7/
-id: "http://johncarlosbaez.wordpress.com/?p=37547"
+published: 2024-02-28T21:09:29.000Z
 feed: "[[Azimuth]]"
-tags: [rss/computer_science,rss/epidemiology,rss/mathematics]
 pinned: false
+tags:
+  - rss/computer_science
+  - rss/epidemiology
+  - rss/mathematics
 ---
 
 > [!abstract] Agent-Based Models (Part 7) (by John Baez)
@@ -22,6 +26,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 [Last time](https://johncarlosbaez.wordpress.com/2024/02/21/agent-based-models-part-6/) I presented a simple, limited class of agent-based models where each agent independently hops around a graph. I wrote:
 
 > Today the probability for an agent to hop from one vertex of the graph to another by going along some edge will be determined the moment the agent arrives at that vertex. It will depend only on the agent and the various edges leaving that vertex. Later I’ll want this probability to depend on other things too—like whether other agents are at some vertex or other. When we do that, we’ll need to keep updating this probability as the other agents move around.

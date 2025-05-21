@@ -1,12 +1,17 @@
 ---
 role: rssitem
-author: "Ya Gao"
-published: 2024-05-13T18:27:34.000Z
+aliases:
+  - "Research: Quantifying GitHub Copilot’s impact in the enterprise with Accenture"
+id: https://github.blog/?p=78014
+author: Ya Gao
 link: https://github.blog/2024-05-13-research-quantifying-github-copilots-impact-in-the-enterprise-with-accenture/
-id: "https://github.blog/?p=78014"
+published: 2024-05-13T18:27:34.000Z
 feed: "[[The GitHub Blog꞉ Product News and Updates]]"
-tags: [rss/GitHub_Copilot,rss/Product,rss/research]
 pinned: false
+tags:
+  - rss/GitHub_Copilot
+  - rss/Product
+  - rss/research
 ---
 
 > [!abstract] Research: Quantifying GitHub Copilot’s impact in the enterprise with Accenture (by Ya Gao)
@@ -22,6 +27,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 Since bringing GitHub Copilot to market, we’ve conducted several lab studies to discover its impact on developer efficiency, developer satisfaction, and overall code quality. We found that our AI pair programmer helps developers code up to [55% faster](https://github.blog/2022-09-07-research-quantifying-github-copilots-impact-on-developer-productivity-and-happiness/) and that it made [85% of developers](https://github.blog/2023-10-10-research-quantifying-github-copilots-impact-on-code-quality/) feel more confident in their code quality. With the introduction of our first [GitHub Copilot offering for businesses and organizations in 2023](https://github.blog/2023-02-14-github-copilot-for-business-is-now-available/)—and more recently [GitHub Copilot Enterprise](https://github.blog/2024-02-27-github-copilot-enterprise-is-now-generally-available/#:~:text=Our%20most%20advanced%20AI%20offering,throughout%20the%20software%20development%20lifecycle.)—it’s become increasingly important for us to measure the impact of GitHub Copilot across real-world, large engineering organizations.
 
 **To learn more, we partnered with Accenture to study how developers integrated GitHub Copilot into their daily workflows**, and we found significant improvements in several areas, including:

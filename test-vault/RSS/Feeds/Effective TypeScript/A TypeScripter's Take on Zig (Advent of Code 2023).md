@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-07-17T19:50:00.000Z
+aliases: []
+id: https://effectivetypescript.com/2024/07/17/advent2023-zig/
+author: unknown
 link: https://effectivetypescript.com/2024/07/17/advent2023-zig/
-id: "https://effectivetypescript.com/2024/07/17/advent2023-zig/"
+published: 2024-07-17T19:50:00.000Z
 feed: "[[Effective TypeScript]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] A TypeScripter's Take on Zig (Advent of Code 2023) (by unknown)
@@ -22,6 +23,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 What can Zig learn from TypeScript, and what can TypeScript learn from Zig?
 
 ![](https://effectivetypescript.com/images/advent-of-code.png "Advent of Code Logo")The [Advent of Code](https://adventofcode.com/) is a fun annual programming competition with an Elf theme. It consists of 25 two-part problems of increasing difficulty, released every day in December leading up to Christmas.

@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-10-06T00:00:00.000Z
+aliases: []
+id: https://jsdev.space/howto/custom-webpack-plugin/
+author: unknown
 link: https://jsdev.space/howto/custom-webpack-plugin/
-id: "https://jsdev.space/howto/custom-webpack-plugin/"
+published: 2024-10-06T00:00:00.000Z
 feed: "[[JavaScript Development Space's RSS Feed]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] How to Create a Custom Webpack Plugin (by unknown)
@@ -22,6 +23,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 Creating a plugin for Webpack allows you to customize and extend Webpack's functionality to suit your needs. Webpack plugins can perform a variety of tasks, from file transformations and optimizations to code analysis and generation. Here's a step-by-step guide to creating a simple Webpack plugin.
 
 ![Create a Custom Webpack Plugin](./images/custom-webpack-plugin.png)

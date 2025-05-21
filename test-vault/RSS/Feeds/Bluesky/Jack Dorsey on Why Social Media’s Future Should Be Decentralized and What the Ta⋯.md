@@ -1,12 +1,19 @@
 ---
 role: rssitem
-author: "By David Inserra"
-published: 2024-05-21T13:00:00.000Z
+aliases:
+  - Jack Dorsey on Why Social Media’s Future Should Be Decentralized and What the Takeaways Are for Policymakers
+id: flipboard-7ed8808b34/cato.org-1716296400
+author: By David Inserra
 link: https://www.cato.org/blog/jack-dorsey-why-social-medias-future-should-be-decentralized-what-takeaways-are-policymakers
-id: "flipboard-7ed8808b34/cato.org-1716296400"
+published: 2024-05-21T13:00:00.000Z
 feed: "[[Bluesky]]"
-tags: [rss/Bluesky,rss/Conservative_View,rss/Digital_Currency,rss/Jack_Dorsey,rss/Technology]
 pinned: false
+tags:
+  - rss/Bluesky
+  - rss/Conservative_View
+  - rss/Digital_Currency
+  - rss/Jack_Dorsey
+  - rss/Technology
 ---
 
 > [!abstract] Jack Dorsey on Why Social Media’s Future Should Be Decentralized and What the Takeaways Are for Policymakers (by By David Inserra)
@@ -22,3 +29,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

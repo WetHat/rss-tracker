@@ -1,12 +1,13 @@
 ---
 role: rssitem
-author: "unknown"
-published: 2024-03-14T12:11:34.000Z
+aliases: []
+id: /blog/oh-no-i-started-a-magit-like-plugin-for-the-lem-editor/
+author: unknown
 link: https://localhost/blog/oh-no-i-started-a-magit-like-plugin-for-the-lem-editor/
-id: "/blog/oh-no-i-started-a-magit-like-plugin-for-the-lem-editor/"
+published: 2024-03-14T12:11:34.000Z
 feed: "[[Blogs on Lisp journey]]"
-tags: []
 pinned: false
+tags: []
 ---
 
 > [!abstract] Oh no, I started a Magit-like plugin for the Lem editor (by unknown)
@@ -22,3 +23,4 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+

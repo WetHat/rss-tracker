@@ -1,12 +1,14 @@
 ---
 role: rssitem
-author: "John Baez"
-published: 2024-04-14T10:57:14.000Z
+aliases: []
+id: http://johncarlosbaez.wordpress.com/?p=37742
+author: John Baez
 link: https://johncarlosbaez.wordpress.com/2024/04/14/protonium/
-id: "http://johncarlosbaez.wordpress.com/?p=37742"
+published: 2024-04-14T10:57:14.000Z
 feed: "[[Azimuth]]"
-tags: [physics]
 pinned: false
+tags:
+  - rss/physics
 ---
 
 > [!abstract] Protonium (by John Baez)
@@ -22,6 +24,7 @@ dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
+
 [![](http:math.ucr.edu/home/baez/physical/protonium.jpg)](https://en.wikipedia.org/wiki/Protonium)
 
 It looks like they’ve found [protonium](https://en.wikipedia.org/wiki/Protonium) in the decay of a heavy particle!
