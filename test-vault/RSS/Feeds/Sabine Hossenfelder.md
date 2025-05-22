@@ -4,7 +4,7 @@ site: https://www.youtube.com/channel/UC1yNl2E66ZzKApQdRuTQ4tw
 feedurl: https://localhost/test/Sabine Hossenfelder/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-22T06:11:46.932Z
+updated: 2025-05-22T07:13:18.498Z
 interval: 24
 tags: []
 ---

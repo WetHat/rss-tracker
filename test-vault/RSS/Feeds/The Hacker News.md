@@ -4,7 +4,7 @@ site: https://thehackernews.com
 feedurl: https://localhost/test/The Hacker News/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-22T06:11:38.272Z
+updated: 2025-05-22T07:13:09.747Z
 interval: 5
 tags: []
 ---

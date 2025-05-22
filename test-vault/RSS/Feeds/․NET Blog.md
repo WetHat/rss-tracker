@@ -4,7 +4,7 @@ site: https://devblogs.microsoft.com/dotnet/
 feedurl: https://localhost/test/․NET Blog/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-22T06:11:34.203Z
+updated: 2025-05-22T07:13:05.840Z
 interval: 77
 tags: []
 ---

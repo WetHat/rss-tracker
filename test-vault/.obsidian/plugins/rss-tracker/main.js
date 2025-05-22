@@ -16990,8 +16990,7 @@ var _RSSfileManager = class _RSSfileManager {
       uniqueFilepath = folderPath + "/" + uniqueBasename;
       index++;
     }
-    data["{{fileName}}"] = uniqueBasename;
-    data["{{filePath}}"] = uniqueFilepath;
+    data["{{fileLink}}"] = `[[${uniqueFilepath}|${uniqueBasename}]]`;
     const tpl = await this.readTemplate(templateName), content = this.expandTemplate(tpl, data);
     if (postProcess) {
       this._plugin.tagmgr.registerFileForPostProcessing(uniqueFilepath + ".md");
