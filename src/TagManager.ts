@@ -47,7 +47,7 @@ export class RSSTagManager {
      * into the domain of the users's knowledge graph.
      */
     private _knownTagsCache: TPropertyBag = {};
-    private _postProcessingRegistry = new Set();
+    private _postProcessingRegistry = new Set<string>();
     private _tagmap = new Map<string, string>(); // pagetag -> mapped hashtag.
     private _pendingMappings: string[] = [];
 
@@ -267,8 +267,15 @@ export class RSSTagManager {
                 // this file is not registered for postprocessing
                 return
             }
+            if (!metaData.frontmatter?.role) {
+                // incomplete item - regeister for post processing
+                this._postProcessingRegistry.add(item.path);
+                return;
+            }
+
             console.log(`Post Processing "${item.path}"`);
             const tags = metaData.tags;
+
             if (tags) {
                 const
                     tagCount = tags.length,
