@@ -249,6 +249,7 @@ export class RSSfeedAdapter extends RSSAdapter {
             image: IRssMedium | string | undefined = feed.image,
             frontmatter: TFrontmatter = {
                 role: "rssfeed",
+                aliases: [],
                 site: site ?? "Unknown",
                 feedurl: feed.source,
                 itemlimit: plugin.settings.defaultItemLimit,
@@ -257,10 +258,11 @@ export class RSSfeedAdapter extends RSSAdapter {
                 interval: 1,
                 tags: [],
             },
+            mdTitle = htmlToMarkdown(title ?? ""),
             dataMap = {
                 "{{feedUrl}}": frontmatter.feedurl,
                 "{{siteUrl}}": frontmatter.site,
-                "{{title}}": htmlToMarkdown(title ?? ""),
+                "{{title}}": mdTitle,
                 "{{description}}": description ? htmlToMarkdown(description) : "",
                 "{{image}}": image ? formatImage(image) : `![[${defaultImage}|float:right|100x100]]`
             };
@@ -268,8 +270,12 @@ export class RSSfeedAdapter extends RSSAdapter {
         // create the feed dashboard file
         const
             filemgr = plugin.filemgr,
-            dashboard = await filemgr.createFile(plugin.settings.rssFeedFolderPath, feed.fileName, "RSS Feed", dataMap, true),
-            adapter = new RSSfeedAdapter(plugin, dashboard, frontmatter);
+            dashboard = await filemgr.createFile(plugin.settings.rssFeedFolderPath, feed.fileName, "RSS Feed", dataMap, true);
+        // create an alias if the filename was doctored.
+        if (title && dashboard.basename !== title) {
+            frontmatter.aliases = [title];
+        }
+        const adapter = new RSSfeedAdapter(plugin, dashboard, frontmatter);
 
         try {
             await adapter.update(feed);
