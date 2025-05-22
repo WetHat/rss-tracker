@@ -15455,6 +15455,7 @@ var _RSSfeedAdapter = class _RSSfeedAdapter extends RSSAdapter {
   static async create(plugin, feed) {
     const { title, site, description } = feed, defaultImage = await plugin.settings.getRssDefaultImagePath(), image = feed.image, frontmatter = {
       role: "rssfeed",
+      aliases: [],
       site: site != null ? site : "Unknown",
       feedurl: feed.source,
       itemlimit: plugin.settings.defaultItemLimit,
@@ -15462,14 +15463,18 @@ var _RSSfeedAdapter = class _RSSfeedAdapter extends RSSAdapter {
       updated: 0,
       interval: 1,
       tags: []
-    }, dataMap = {
+    }, mdTitle = (0, import_obsidian2.htmlToMarkdown)(title != null ? title : ""), dataMap = {
       "{{feedUrl}}": frontmatter.feedurl,
       "{{siteUrl}}": frontmatter.site,
-      "{{title}}": (0, import_obsidian2.htmlToMarkdown)(title != null ? title : ""),
+      "{{title}}": mdTitle,
       "{{description}}": description ? (0, import_obsidian2.htmlToMarkdown)(description) : "",
       "{{image}}": image ? formatImage(image) : `![[${defaultImage}|float:right|100x100]]`
     };
-    const filemgr = plugin.filemgr, dashboard = await filemgr.createFile(plugin.settings.rssFeedFolderPath, feed.fileName, "RSS Feed", dataMap, true), adapter = new _RSSfeedAdapter(plugin, dashboard, frontmatter);
+    const filemgr = plugin.filemgr, dashboard = await filemgr.createFile(plugin.settings.rssFeedFolderPath, feed.fileName, "RSS Feed", dataMap, true);
+    if (title && dashboard.basename !== title) {
+      frontmatter.aliases = [title];
+    }
+    const adapter = new _RSSfeedAdapter(plugin, dashboard, frontmatter);
     try {
       await adapter.update(feed);
     } catch (err) {
@@ -16971,8 +16976,7 @@ var _RSSfileManager = class _RSSfileManager {
    * If a file with the same basename already exists in the given folder location, a new unique basename
    * is generated.
    *
-   * ❗The mustache token `{{fileName}}` is automatically added to the data object. This token maps to the unique
-   * basename of the generated file (no file extension) and can be used to create wiki-links.
+   * ❗The mustache token `{{fileLink}}` is automatically added to the data object. This token links to the generated file (no file extension) and can be used to create wiki-links.
    *
    * @param folderPath - THe location of the new file
    * @param basename - The basename of the new file (without fie extension)

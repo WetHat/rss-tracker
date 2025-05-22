@@ -1,10 +1,12 @@
 ---
 role: rssfeed
+aliases:
+  - "@wethat7.bsky.social - WetHat💦"
 site: https://bsky.app/profile/wethat7.bsky.social
 feedurl: https://localhost/test/@wethat7․bsky․social - WetHat💦/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-22T07:13:44.579Z
+updated: 2025-05-22T10:00:55.162Z
 interval: 19
 tags: []
 ---

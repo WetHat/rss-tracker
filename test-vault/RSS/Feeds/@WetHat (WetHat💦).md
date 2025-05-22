@@ -1,5 +1,6 @@
 ---
 role: rssfeed
+aliases: []
 site: https://fosstodon.org/@WetHat
 feedurl: https://localhost/test/@WetHat (WetHat💦)/feed.xml
 itemlimit: 10

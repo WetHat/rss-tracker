@@ -1,10 +1,11 @@
 ---
 role: rssfeed
+aliases: []
 site: https://www.space.com
 feedurl: https://localhost/test/Space RSS Feed/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-22T07:13:14.158Z
+updated: 2025-05-22T10:00:24.475Z
 interval: 5
 tags: []
 ---

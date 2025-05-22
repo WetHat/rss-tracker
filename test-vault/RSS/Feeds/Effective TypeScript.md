@@ -1,10 +1,11 @@
 ---
 role: rssfeed
+aliases: []
 site: https://effectivetypescript.com/
 feedurl: https://localhost/test/Effective TypeScript/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-22T07:13:33.789Z
+updated: 2025-05-22T10:00:44.500Z
 interval: 759
 tags: []
 ---

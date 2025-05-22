@@ -1,10 +1,11 @@
 ---
 role: rssfeed
+aliases: []
 site: https://localhost/blog/
 feedurl: https://localhost/test/Blogs on Lisp journey/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-22T07:13:40.186Z
+updated: 2025-05-22T10:00:50.749Z
 interval: 645
 tags: []
 ---

@@ -1,10 +1,11 @@
 ---
 role: rssfeed
+aliases: []
 site: https://flipboard.com/topic/blueskysocial
 feedurl: https://localhost/test/Bluesky/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-22T07:13:38.142Z
+updated: 2025-05-22T10:00:48.676Z
 interval: 19
 tags: []
 ---

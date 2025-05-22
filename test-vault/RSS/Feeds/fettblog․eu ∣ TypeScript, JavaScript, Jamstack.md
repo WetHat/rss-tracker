@@ -1,10 +1,12 @@
 ---
 role: rssfeed
+aliases:
+  - fettblog.eu | TypeScript, JavaScript, Jamstack
 site: https://fettblog.eu/
 feedurl: https://localhost/test/fettblog․eu ∣ TypeScript, JavaScript, Jamstack/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-22T07:13:31.510Z
+updated: 2025-05-22T10:00:42.289Z
 interval: 593
 tags: []
 ---

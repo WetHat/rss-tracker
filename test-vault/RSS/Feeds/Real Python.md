@@ -1,10 +1,11 @@
 ---
 role: rssfeed
+aliases: []
 site: https://realpython.com/
 feedurl: https://localhost/test/Real Python/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-22T07:13:20.558Z
+updated: 2025-05-22T10:00:30.880Z
 interval: 50
 tags: []
 ---

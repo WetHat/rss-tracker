@@ -1,5 +1,6 @@
 ---
 role: rssfeed
+aliases: []
 site: https://www.planetpowershell.com/
 feedurl: https://localhost/test/Planet PowerShell/feed.xml
 itemlimit: 10
