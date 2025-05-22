@@ -168,10 +168,8 @@ export class RSSfileManager {
 			uniqueFilepath = folderPath + "/" + uniqueBasename;
 			index++;
 		}
-		// 2. augment the data map with the unique file name & path
-		//    (without file extension) of the new file.
-		data["{{fileName}}"] = uniqueBasename;
-        data["{{filePath}}"] = uniqueFilepath;
+		// 2. augment the data map with a unique wiki link to the file.
+		data["{{fileLink}}"] = `[[${uniqueFilepath}|${uniqueBasename}]]`;
 
 		// 3. read and expand the template
 		const
