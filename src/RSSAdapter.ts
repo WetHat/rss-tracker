@@ -57,7 +57,7 @@ abstract class RSSAdapter {
     /**
      * Commit all pending frontmatter changes.
      */
-    async commitFrontmatterChanges(): Promise<void> {
+    commitFrontmatterChanges(): Promise<void> {
         return this.plugin.app.fileManager.processFrontMatter(this.file, fm => {
             for (const name in this.frontmatter) {
                 const thisValue = this.frontmatter[name];
@@ -202,8 +202,8 @@ export class RSSitemAdapter extends RSSAdapter {
                 link: link ?? "unknown",
                 published: published ?? new Date().valueOf(),
                 feed: `[[${itemfolder.name}]]`,
-                pinned: false,
                 tags: tags.map(t => tagmgr.mapHashtag(t.startsWith("#") ? t : "#" + t).slice(1)),
+                pinned: false,
             },
             dataMap = {
                 "{{author}}": frontmatter.author,
@@ -249,9 +249,12 @@ export class RSSfeedAdapter extends RSSAdapter {
             image: IRssMedium | string | undefined = feed.image,
             frontmatter: TFrontmatter = {
                 role: "rssfeed",
-                feedurl: feed.source,
                 site: site ?? "Unknown",
+                feedurl: feed.source,
                 itemlimit: plugin.settings.defaultItemLimit,
+                status: this.RESUMED_STATUS_ICON,
+                updated: 0,
+                interval: 1,
                 tags: [],
             },
             dataMap = {
