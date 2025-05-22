@@ -70,7 +70,7 @@ abstract class RSSAdapter {
 }
 
 /**
- * The adapter to an RSS item.
+ * The adapter to an RSS item file.
  */
 export class RSSitemAdapter extends RSSAdapter {
     static readonly EMBEDDING_MATCHER = /!\[[^\]]*\]\(([^\)]+)\)\s*/;
