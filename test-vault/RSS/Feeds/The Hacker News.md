@@ -1,13 +1,14 @@
 ---
 role: rssfeed
-tags: []
-feedurl: https://localhost/test/The Hacker News/feed.xml
 site: https://thehackernews.com
+feedurl: https://localhost/test/The Hacker News/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-21T19:06:02.477Z
+updated: 2025-05-22T06:11:38.272Z
 interval: 5
+tags: []
 ---
+
 > [!abstract] The Hacker News
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] Most trusted, widely-read independent cybersecurity news source for everyone; supported by hackers and IT professionals — Send TIPs to admin@thehackernews.com
 

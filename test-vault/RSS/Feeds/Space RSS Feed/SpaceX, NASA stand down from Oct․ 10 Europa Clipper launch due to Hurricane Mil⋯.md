@@ -7,16 +7,16 @@ author: " mwall@space.com (Mike Wall) "
 link: https://www.space.com/spacex-nasa-europa-clipper-launch-delay-hurricane-milton
 published: 2024-10-07T04:39:52.000Z
 feed: "[[Space RSS Feed]]"
-pinned: false
 tags:
   - rss/Missions
   - rss/Space_Exploration
+pinned: false
 ---
 
 > [!abstract]  SpaceX, NASA stand down from Oct. 10 Europa Clipper launch due to Hurricane Milton  (by  mwall@space.com (Mike Wall) )
 > ![image|float:right|400](https://cdn.mos.cms.futurecdn.net/NDgDS4Ebivgn68ancGeLcJ.jpg) SpaceX and NASA are standing down from the Oct. 10 launch of the Europa Clipper mission due to anticipated effects of Hurricane Milton. A new target date has not been announced.
 
-🌐 Read article [online](https://www.space.com/spacex-nasa-europa-clipper-launch-delay-hurricane-milton). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://www.space.com/spacex-nasa-europa-clipper-launch-delay-hurricane-milton). ⤴ For other items in this feed see [[Space RSS Feed]].
 
 - [ ] [[RSS/Feeds/Space RSS Feed/SpaceX, NASA stand down from Oct․ 10 Europa Clipper launch due to Hurricane Mil⋯|SpaceX, NASA stand down from Oct․ 10 Europa Clipper launch due to Hurricane Mil⋯]]
 

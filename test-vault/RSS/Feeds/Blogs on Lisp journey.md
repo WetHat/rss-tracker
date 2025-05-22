@@ -1,13 +1,14 @@
 ---
 role: rssfeed
-tags: []
-feedurl: https://localhost/test/Blogs on Lisp journey/feed.xml
 site: https://localhost/blog/
+feedurl: https://localhost/test/Blogs on Lisp journey/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-21T19:06:33.876Z
+updated: 2025-05-22T06:12:09.446Z
 interval: 645
+tags: []
 ---
+
 > [!abstract] Blogs on Lisp journey
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] Recent content in Blogs on Lisp journey
 

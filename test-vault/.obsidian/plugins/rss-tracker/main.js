@@ -15310,7 +15310,7 @@ var RSSAdapter = class _RSSAdapter {
   /**
    * Commit all pending frontmatter changes.
    */
-  async commitFrontmatterChanges() {
+  commitFrontmatterChanges() {
     return this.plugin.app.fileManager.processFrontMatter(this.file, (fm) => {
       for (const name in this.frontmatter) {
         const thisValue = this.frontmatter[name];
@@ -15421,8 +15421,8 @@ var _RSSitemAdapter = class _RSSitemAdapter extends RSSAdapter {
       link: link != null ? link : "unknown",
       published: published != null ? published : (/* @__PURE__ */ new Date()).valueOf(),
       feed: `[[${itemfolder.name}]]`,
-      pinned: false,
-      tags: tags.map((t) => tagmgr.mapHashtag(t.startsWith("#") ? t : "#" + t).slice(1))
+      tags: tags.map((t) => tagmgr.mapHashtag(t.startsWith("#") ? t : "#" + t).slice(1)),
+      pinned: false
     }, dataMap = {
       "{{author}}": frontmatter.author,
       "{{link}}": frontmatter.link,
@@ -15431,7 +15431,7 @@ var _RSSitemAdapter = class _RSSitemAdapter extends RSSAdapter {
       "{{image}}": image ? formatImage(image) : `![[${defaultImage}|float:right|100x100]]`,
       "{{description}}": description != null ? description : "",
       "{{content}}": content != null ? content : "",
-      "{{feedFileName}}": itemfolder.name
+      "{{feedLink}}": frontmatter.feed
     };
     const file = await feed.filemgr.createFile(itemfolder.path, item.fileName, "RSS Item", dataMap, true);
     if (title && file.basename !== title) {
@@ -15455,9 +15455,12 @@ var _RSSfeedAdapter = class _RSSfeedAdapter extends RSSAdapter {
   static async create(plugin, feed) {
     const { title, site, description } = feed, defaultImage = await plugin.settings.getRssDefaultImagePath(), image = feed.image, frontmatter = {
       role: "rssfeed",
-      feedurl: feed.source,
       site: site != null ? site : "Unknown",
+      feedurl: feed.source,
       itemlimit: plugin.settings.defaultItemLimit,
+      status: this.RESUMED_STATUS_ICON,
+      updated: 0,
+      interval: 1,
       tags: []
     }, dataMap = {
       "{{feedUrl}}": frontmatter.feedurl,
@@ -16408,7 +16411,7 @@ var _DataViewJSTools = class _DataViewJSTools {
     return duplicates.map((rec) => {
       const feed = rec.feed, pinned = rec.pinned ? " \u{1F4CD} " : " \u{1F4CC} ", task = this.itemReadingTask(rec);
       if (task) {
-        task.visual = item.file.link + pinned + "**\u2208** " + feed;
+        task.visual = rec.file.link + pinned + "**\u2208** " + feed;
       } else {
         return null;
       }
@@ -17216,8 +17219,12 @@ var RSSTagManager = class {
    */
   get rssTagPostProcessor() {
     return this._app.metadataCache.on("changed", async (item, content, metaData) => {
-      var _a2;
+      var _a2, _b;
       if (!this._postProcessingRegistry.delete(item.path)) {
+        return;
+      }
+      if (!((_a2 = metaData.frontmatter) == null ? void 0 : _a2.role)) {
+        this._postProcessingRegistry.add(item.path);
         return;
       }
       console.log(`Post Processing "${item.path}"`);
@@ -17238,7 +17245,7 @@ var RSSTagManager = class {
           await item.vault.modify(item, parts.join(""));
         }
       }
-      await this.commit((_a2 = metaData.frontmatter) == null ? void 0 : _a2.feed);
+      await this.commit((_b = metaData.frontmatter) == null ? void 0 : _b.feed);
     });
   }
 };

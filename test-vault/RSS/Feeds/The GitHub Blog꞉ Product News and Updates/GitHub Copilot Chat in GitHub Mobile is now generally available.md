@@ -6,19 +6,19 @@ author: Mario Rodriguez
 link: https://github.blog/2024-05-07-github-copilot-chat-in-github-mobile/
 published: 2024-05-07T16:00:04.000Z
 feed: "[[The GitHub Blog꞉ Product News and Updates]]"
-pinned: false
 tags:
   - rss/GitHub_Copilot
   - rss/GitHub_Copilot_Chat
   - rss/GitHub_Mobile
   - rss/Product
   - rss/generative_AI
+pinned: false
 ---
 
 > [!abstract] GitHub Copilot Chat in GitHub Mobile is now generally available (by Mario Rodriguez)
 > ![image|float:right|400](https://github.blog/wp-content/uploads/2024/05/Tech-Crunch-Blog-Asset-2.png?w=558&resize=558%2C1024) With GitHub Copilot Chat in GitHub Mobile, developers can collaborate, ask coding questions, and gain insights into both public and private repositories anywhere, anytime–all in natural language for users on all GitHub Copilot plans. The post GitHub Copilot Chat in GitHub Mobile is now generally available appeared first on The GitHub Blog.
 
-🌐 Read article [online](https://github.blog/2024-05-07-github-copilot-chat-in-github-mobile/). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://github.blog/2024-05-07-github-copilot-chat-in-github-mobile/). ⤴ For other items in this feed see [[The GitHub Blog꞉ Product News and Updates]].
 
 - [ ] [[RSS/Feeds/The GitHub Blog꞉ Product News and Updates/GitHub Copilot Chat in GitHub Mobile is now generally available|GitHub Copilot Chat in GitHub Mobile is now generally available]]
 

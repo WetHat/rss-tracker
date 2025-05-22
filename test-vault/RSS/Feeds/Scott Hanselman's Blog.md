@@ -1,13 +1,14 @@
 ---
 role: rssfeed
-tags: []
-feedurl: https://localhost/test/Scott Hanselman's Blog/feed.xml
 site: https://www.hanselman.com/blog/
+feedurl: https://localhost/test/Scott Hanselman's Blog/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-21T19:06:09.993Z
+updated: 2025-05-22T06:11:44.765Z
 interval: 2138
+tags: []
 ---
+
 > [!abstract] Scott Hanselman's Blog
 > ![image|float:right|400](http://www.hanselman.com/blog/images/tinyheadshot2.jpg) Scott Hanselman on Programming, User Experience, The Zen of Computers and Life in General
 

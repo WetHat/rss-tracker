@@ -6,8 +6,8 @@ author: unknown
 link: https://www.pythonmorsels.com/slicing/
 published: 2024-03-08T22:16:58.000Z
 feed: "[[Python Morsels]]"
-pinned: false
 tags: []
+pinned: false
 ---
 
 > [!abstract] List slicing in Python (by unknown)
@@ -21,7 +21,7 @@ tags: []
 > 4. [Default slice start/stop values](https://www.pythonmorsels.com/slicing/#default-slice-startstop-values)
 > 5. [Why the stop index isn't included in slices](https://www.pythonmorsels.com/slicing/#why-the-stop-index-is⋯
 
-🌐 Read article [online](https://www.pythonmorsels.com/slicing/). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://www.pythonmorsels.com/slicing/). ⤴ For other items in this feed see [[Python Morsels]].
 
 - [ ] [[RSS/Feeds/Python Morsels/List slicing in Python|List slicing in Python]]
 

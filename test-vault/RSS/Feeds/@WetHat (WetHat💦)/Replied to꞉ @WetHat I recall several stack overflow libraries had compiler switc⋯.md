@@ -7,8 +7,8 @@ author: "@WetHat"
 link: https://fosstodon.org/@WetHat/112438284637950197
 published: 2024-05-14T07:34:27.000Z
 feed: "[[@WetHat (WetHat💦)]]"
-pinned: false
 tags: []
+pinned: false
 ---
 
 > [!abstract] Replied to: @WetHat I recall several stack overflow libraries had compiler switches so they compiled with readonly in development and not readonly in production builds because the compiler added extra checks to the output and it slowed down hot paths. Not sure if this is still the case. Readonly is certainly important for development at the absolute minimum since it makes several classes of bugs effectively impossible. (by @WetHat)
@@ -22,7 +22,7 @@ tags: []
 > 
 > [@kvandermotten](https:⋯
 
-🌐 Read article [online](https://fosstodon.org/@WetHat/112438284637950197). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://fosstodon.org/@WetHat/112438284637950197). ⤴ For other items in this feed see [[@WetHat (WetHat💦)]].
 
 - [ ] [[RSS/Feeds/@WetHat (WetHat💦)/Replied to꞉ @WetHat I recall several stack overflow libraries had compiler switc⋯|Replied to꞉ @WetHat I recall several stack overflow libraries had compiler switc⋯]]
 

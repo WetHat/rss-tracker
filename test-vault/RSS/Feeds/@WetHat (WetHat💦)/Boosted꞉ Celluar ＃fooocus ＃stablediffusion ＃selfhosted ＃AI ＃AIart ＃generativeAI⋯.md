@@ -7,8 +7,8 @@ author: "@WetHat"
 link: https://fosstodon.org/@eddyizm/112440587071746764
 published: 2024-05-14T17:21:59.000Z
 feed: "[[@WetHat (WetHat💦)]]"
-pinned: false
 tags: []
+pinned: false
 ---
 
 > [!abstract] Boosted: Celluar #rss/fooocus #rss/stablediffusion #rss/selfhosted #rss/AI #rss/AIart #rss/generativeAI #rss/generativeArt #rss/AIArtwork #rss/stablediffusionart #rss/AiArtCommunity #rss/sdxl #rss/sdxlturbo #rss/feditart #rss/mastoart #rss/digitalart (by @WetHat)
@@ -16,7 +16,7 @@ tags: []
 > 
 > - eddyiz⋯
 
-🌐 Read article [online](https://fosstodon.org/@eddyizm/112440587071746764). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://fosstodon.org/@eddyizm/112440587071746764). ⤴ For other items in this feed see [[@WetHat (WetHat💦)]].
 
 - [ ] [[RSS/Feeds/@WetHat (WetHat💦)/Boosted꞉ Celluar ＃fooocus ＃stablediffusion ＃selfhosted ＃AI ＃AIart ＃generativeAI⋯|Boosted꞉ Celluar ＃fooocus ＃stablediffusion ＃selfhosted ＃AI ＃AIart ＃generativeAI⋯]]
 

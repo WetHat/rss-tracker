@@ -7,14 +7,14 @@ author: unknown
 link: https://effectivetypescript.com/2024/07/02/ts-55/
 published: 2024-07-02T17:00:00.000Z
 feed: "[[Effective TypeScript]]"
-pinned: false
 tags: []
+pinned: false
 ---
 
 > [!abstract] TypeScript 5.5: A Blockbuster Release (by unknown)
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] We TypeScript developers are a lucky bunch. While some languages (Python, JavaScript) are released annually, every three years (C++) or even less, we get four new versions of TypeScript every year. TypeScript 5.5 was released on June 20th, 2024, and it was a real blockbuster. Let's take a look.
 
-🌐 Read article [online](https://effectivetypescript.com/2024/07/02/ts-55/). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://effectivetypescript.com/2024/07/02/ts-55/). ⤴ For other items in this feed see [[Effective TypeScript]].
 
 - [ ] [[RSS/Feeds/Effective TypeScript/TypeScript 5․5꞉ A Blockbuster Release|TypeScript 5․5꞉ A Blockbuster Release]]
 

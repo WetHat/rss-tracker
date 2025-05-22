@@ -7,9 +7,9 @@ author: Scott Hanselman
 link: https://feeds.hanselman.com/~/749206136/0/scotthanselman~Using-WSL-and-Lets-Encrypt-to-create-Azure-App-Service-SSL-Wildcard-Certificates
 published: 2023-06-27T17:17:25.000Z
 feed: "[[Scott Hanselman's Blog]]"
-pinned: false
 tags:
   - rss/Azure
+pinned: false
 ---
 
 > [!abstract] Using WSL and Let's Encrypt to create Azure App Service SSL Wildcard Certificates (by Scott Hanselman)
@@ -23,7 +23,7 @@ tags:
 > - Contains private key at least 2048 bits long
 > - Contains all intermediate certificates and the root certificate in the certificate chai⋯
 
-🌐 Read article [online](https://feeds.hanselman.com/~/749206136/0/scotthanselman~Using-WSL-and-Lets-Encrypt-to-create-Azure-App-Service-SSL-Wildcard-Certificates). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://feeds.hanselman.com/~/749206136/0/scotthanselman~Using-WSL-and-Lets-Encrypt-to-create-Azure-App-Service-SSL-Wildcard-Certificates). ⤴ For other items in this feed see [[Scott Hanselman's Blog]].
 
 - [ ] [[RSS/Feeds/Scott Hanselman's Blog/Using WSL and Let's Encrypt to create Azure App Service SSL Wildcard Certificate⋯|Using WSL and Let's Encrypt to create Azure App Service SSL Wildcard Certificate⋯]]
 

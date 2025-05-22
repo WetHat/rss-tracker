@@ -7,14 +7,14 @@ author: unknown
 link: https://realpython.com/quizzes/pandas-reset-index/
 published: 2024-10-25T12:00:00.000Z
 feed: "[[Real Python]]"
-pinned: false
 tags: []
+pinned: false
 ---
 
 > [!abstract] Quiz: How to Reset a pandas DataFrame Index (by unknown)
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] This quiz will challenge your knowledge of resetting indexes in pandas DataFrames. You won't find all the answers in the tutorial, so you'll need to do some extra investigating. By finding all the answers, you're sure to learn some interesting things along the way.
 
-🌐 Read article [online](https://realpython.com/quizzes/pandas-reset-index/). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://realpython.com/quizzes/pandas-reset-index/). ⤴ For other items in this feed see [[Real Python]].
 
 - [ ] [[RSS/Feeds/Real Python/Quiz꞉ How to Reset a pandas DataFrame Index|Quiz꞉ How to Reset a pandas DataFrame Index]]
 

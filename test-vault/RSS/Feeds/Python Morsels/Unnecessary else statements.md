@@ -6,8 +6,8 @@ author: unknown
 link: https://www.pythonmorsels.com/unnecessary-else-statements/
 published: 2024-03-22T22:00:00.000Z
 feed: "[[Python Morsels]]"
-pinned: false
 tags: []
+pinned: false
 ---
 
 > [!abstract] Unnecessary else statements (by unknown)
@@ -21,7 +21,7 @@ tags: []
 > 4. [When should you remove an `else` statement?](https://www.pythonmorsels.com/unnecessary-else-statements/#when-should-you-remove-an-else-statement)
 > 5. [Considering readability with `if`-`else` statements](https://www.pythonmorsels.com/unne⋯
 
-🌐 Read article [online](https://www.pythonmorsels.com/unnecessary-else-statements/). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://www.pythonmorsels.com/unnecessary-else-statements/). ⤴ For other items in this feed see [[Python Morsels]].
 
 - [ ] [[RSS/Feeds/Python Morsels/Unnecessary else statements|Unnecessary else statements]]
 

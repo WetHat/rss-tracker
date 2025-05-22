@@ -7,14 +7,14 @@ author: unknown
 link: https://fettblog.eu/10-years-of-fettblog/
 published: 2022-04-27T00:00:00.000Z
 feed: "[[fettblog․eu ∣ TypeScript, JavaScript, Jamstack]]"
-pinned: false
 tags: []
+pinned: false
 ---
 
 > [!abstract] 10 years of fettblog.eu (by unknown)
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] I missed a little anniversary. Roughly 10 years ago (on April 8, 2012), I started blogging on fettblog.eu! Time flies! I think this is my longest-running project, let’s take some time to reflect.
 
-🌐 Read article [online](https://fettblog.eu/10-years-of-fettblog/). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://fettblog.eu/10-years-of-fettblog/). ⤴ For other items in this feed see [[fettblog․eu ∣ TypeScript, JavaScript, Jamstack]].
 
 - [ ] [[RSS/Feeds/fettblog․eu ∣ TypeScript, JavaScript, Jamstack/10 years of fettblog․eu|10 years of fettblog․eu]]
 

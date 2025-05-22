@@ -6,14 +6,14 @@ author: unknown
 link: https://effectivetypescript.com/2024/07/17/advent2023-zig/
 published: 2024-07-17T19:50:00.000Z
 feed: "[[Effective TypeScript]]"
-pinned: false
 tags: []
+pinned: false
 ---
 
 > [!abstract] A TypeScripter's Take on Zig (Advent of Code 2023) (by unknown)
 > ![image|float:right|400](https://effectivetypescript.com/images/advent-of-code.png "Advent of Code Logo") What can Zig learn from TypeScript, and what can TypeScript learn from Zig?
 
-🌐 Read article [online](https://effectivetypescript.com/2024/07/17/advent2023-zig/). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://effectivetypescript.com/2024/07/17/advent2023-zig/). ⤴ For other items in this feed see [[Effective TypeScript]].
 
 - [ ] [[RSS/Feeds/Effective TypeScript/A TypeScripter's Take on Zig (Advent of Code 2023)|A TypeScripter's Take on Zig (Advent of Code 2023)]]
 

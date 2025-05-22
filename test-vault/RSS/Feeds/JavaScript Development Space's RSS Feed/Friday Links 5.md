@@ -6,14 +6,14 @@ author: unknown
 link: https://jsdev.space/friday/friday-5/
 published: 2024-10-04T00:00:00.000Z
 feed: "[[JavaScript Development Space's RSS Feed]]"
-pinned: false
 tags: []
+pinned: false
 ---
 
 > [!abstract] Friday Links 5 (by unknown)
 > ![image|float:right|400](./images/friday-5.png) Happy Friday, devs! 🎉 It’s time for our weekly roundup, where we bring you the latest and greatest in the world of web development…
 
-🌐 Read article [online](https://jsdev.space/friday/friday-5/). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://jsdev.space/friday/friday-5/). ⤴ For other items in this feed see [[JavaScript Development Space's RSS Feed]].
 
 - [ ] [[RSS/Feeds/JavaScript Development Space's RSS Feed/Friday Links 5|Friday Links 5]]
 

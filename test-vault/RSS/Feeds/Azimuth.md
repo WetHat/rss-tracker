@@ -1,13 +1,14 @@
 ---
 role: rssfeed
-tags: []
-feedurl: https://localhost/test/Azimuth/feed.xml
 site: https://johncarlosbaez.wordpress.com
+feedurl: https://localhost/test/Azimuth/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-21T19:06:36.258Z
+updated: 2025-05-22T06:12:11.659Z
 interval: 206
+tags: []
 ---
+
 > [!abstract] Azimuth
 > ![image|float:right|400](https://s0.wp.com/i/buttonw-com.png) 
 

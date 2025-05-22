@@ -7,14 +7,14 @@ author: unknown
 link: https://jsdev.space/howto/freeze-seal-js/
 published: 2024-09-29T00:00:00.000Z
 feed: "[[JavaScript Development Space's RSS Feed]]"
-pinned: false
 tags: []
+pinned: false
 ---
 
 > [!abstract] Object.freeze() and Object.seal() in JavaScript (by unknown)
 > ![image|float:right|400](./images/freeze-seal-js.png) Previously, we wrote about How to Create Immutable Objects in JavaScript. In this howto, we'll explore the difference between Object.freeze(…
 
-🌐 Read article [online](https://jsdev.space/howto/freeze-seal-js/). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://jsdev.space/howto/freeze-seal-js/). ⤴ For other items in this feed see [[JavaScript Development Space's RSS Feed]].
 
 - [ ] [[RSS/Feeds/JavaScript Development Space's RSS Feed/Object․freeze() and Object․seal() in JavaScript|Object․freeze() and Object․seal() in JavaScript]]
 

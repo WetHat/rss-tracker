@@ -7,9 +7,9 @@ author: Scott Hanselman
 link: https://feeds.hanselman.com/~/722495722/0/scotthanselman~Use-your-own-user-domain-for-Mastodon-discoverability-with-the-WebFinger-Protocol-without-hosting-a-server
 published: 2022-12-18T22:16:30.000Z
 feed: "[[Scott Hanselman's Blog]]"
-pinned: false
 tags:
   - rss/Musings
+pinned: false
 ---
 
 > [!abstract] Use your own user @ domain for Mastodon discoverability with the WebFinger Protocol without hosting a server (by Scott Hanselman)
@@ -19,7 +19,7 @@ tags:
 > 
 > WebFinger uses a "well known" path structure when calling an domain.⋯
 
-🌐 Read article [online](https://feeds.hanselman.com/~/722495722/0/scotthanselman~Use-your-own-user-domain-for-Mastodon-discoverability-with-the-WebFinger-Protocol-without-hosting-a-server). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://feeds.hanselman.com/~/722495722/0/scotthanselman~Use-your-own-user-domain-for-Mastodon-discoverability-with-the-WebFinger-Protocol-without-hosting-a-server). ⤴ For other items in this feed see [[Scott Hanselman's Blog]].
 
 - [ ] [[RSS/Feeds/Scott Hanselman's Blog/Use your own user @ domain for Mastodon discoverability with the WebFinger Proto⋯|Use your own user @ domain for Mastodon discoverability with the WebFinger Proto⋯]]
 

@@ -1,13 +1,14 @@
 ---
 role: rssfeed
-tags: []
-feedurl: https://localhost/test/Effective TypeScript/feed.xml
 site: https://effectivetypescript.com/
+feedurl: https://localhost/test/Effective TypeScript/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-21T19:06:27.627Z
+updated: 2025-05-22T06:12:02.784Z
 interval: 759
+tags: []
 ---
+
 > [!abstract] Effective TypeScript
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] 62 Specific Ways to Improve Your TypeScript
 

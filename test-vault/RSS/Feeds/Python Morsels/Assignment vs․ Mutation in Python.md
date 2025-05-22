@@ -7,8 +7,8 @@ author: unknown
 link: https://www.pythonmorsels.com/assignment-versus-mutation/
 published: 2024-05-18T12:13:21.000Z
 feed: "[[Python Morsels]]"
-pinned: false
 tags: []
+pinned: false
 ---
 
 > [!abstract] Assignment vs. Mutation in Python (by unknown)
@@ -23,7 +23,7 @@ tags: []
 > 5. [Assignments versus mutations](https://www.pythonmorsels.com/assignment-versus-mutation/#assignments-versus-mutations)
 > 6. [Changing variables and changing objects](https://www.pythonmorsels.com/assignment-versus-mutation/#changing-variabl⋯
 
-🌐 Read article [online](https://www.pythonmorsels.com/assignment-versus-mutation/). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://www.pythonmorsels.com/assignment-versus-mutation/). ⤴ For other items in this feed see [[Python Morsels]].
 
 - [ ] [[RSS/Feeds/Python Morsels/Assignment vs․ Mutation in Python|Assignment vs․ Mutation in Python]]
 

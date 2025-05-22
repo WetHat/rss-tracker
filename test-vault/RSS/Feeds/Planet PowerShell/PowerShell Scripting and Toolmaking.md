@@ -6,19 +6,19 @@ author: Jeffery Hicks
 link: https://jdhitsolutions.com/blog/books/9389/powershell-scripting-and-toolmaking/
 published: 2024-05-24T17:03:43.000Z
 feed: "[[Planet PowerShell]]"
-pinned: false
 tags:
   - rss/Books
   - rss/LeanPub
   - rss/PowerShell
   - rss/Scripting
   - rss/toolmaking
+pinned: false
 ---
 
 > [!abstract] PowerShell Scripting and Toolmaking (by Jeffery Hicks)
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] Several years ago Don Jones and I wrote what we hoped would be the definitive book on PowerShell scripting and toolmaking. The book takes all off our years of experience, not only from writing PowerShell code, to teaching and conference presentations where we hear first hand what people struggle with. We published the book on...
 
-🌐 Read article [online](https://jdhitsolutions.com/blog/books/9389/powershell-scripting-and-toolmaking/). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://jdhitsolutions.com/blog/books/9389/powershell-scripting-and-toolmaking/). ⤴ For other items in this feed see [[Planet PowerShell]].
 
 - [ ] [[RSS/Feeds/Planet PowerShell/PowerShell Scripting and Toolmaking|PowerShell Scripting and Toolmaking]]
 

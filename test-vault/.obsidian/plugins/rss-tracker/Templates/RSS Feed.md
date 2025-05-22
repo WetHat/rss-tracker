@@ -1,7 +1,7 @@
 ---
 role: rssfeed
-tags: []
 ---
+
 > [!abstract] {{title}}
 > {{image}} {{description}}
 

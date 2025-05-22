@@ -6,14 +6,14 @@ author: unknown
 link: https://typescript.tv/hands-on/module-openai-has-no-exported-member/
 published: 2024-04-24T14:30:52.000Z
 feed: "[[TypeScript TV]]"
-pinned: false
 tags: []
+pinned: false
 ---
 
 > [!abstract] Module openai has no exported member (by unknown)
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] OpenAI's Node.js API Library has updated from Version 3 to Version 4. Changes include updating imports adjusting method calls.
 
-🌐 Read article [online](https://typescript.tv/hands-on/module-openai-has-no-exported-member/). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://typescript.tv/hands-on/module-openai-has-no-exported-member/). ⤴ For other items in this feed see [[TypeScript TV]].
 
 - [ ] [[RSS/Feeds/TypeScript TV/Module openai has no exported member|Module openai has no exported member]]
 

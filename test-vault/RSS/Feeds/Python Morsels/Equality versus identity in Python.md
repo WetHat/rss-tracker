@@ -6,8 +6,8 @@ author: unknown
 link: https://www.pythonmorsels.com/equality-vs-identity/
 published: 2024-05-28T23:52:24.000Z
 feed: "[[Python Morsels]]"
-pinned: false
 tags: []
+pinned: false
 ---
 
 > [!abstract] Equality versus identity in Python (by unknown)
@@ -22,7 +22,7 @@ tags: []
 > 5. [Where are identity checks used?](https://www.pythonmorsels.com/equality-vs-identity/#where-are-identity-checks-used)
 > 6. [Equa⋯
 
-🌐 Read article [online](https://www.pythonmorsels.com/equality-vs-identity/). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://www.pythonmorsels.com/equality-vs-identity/). ⤴ For other items in this feed see [[Python Morsels]].
 
 - [ ] [[RSS/Feeds/Python Morsels/Equality versus identity in Python|Equality versus identity in Python]]
 

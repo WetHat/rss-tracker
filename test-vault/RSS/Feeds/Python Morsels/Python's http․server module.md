@@ -7,8 +7,8 @@ author: unknown
 link: https://www.pythonmorsels.com/http-server/
 published: 2024-04-05T23:41:43.000Z
 feed: "[[Python Morsels]]"
-pinned: false
 tags: []
+pinned: false
 ---
 
 > [!abstract] Python's http.server module (by unknown)
@@ -24,7 +24,7 @@ tags: []
 > 
 > ## A directory trees of `index.html` files⋯
 
-🌐 Read article [online](https://www.pythonmorsels.com/http-server/). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://www.pythonmorsels.com/http-server/). ⤴ For other items in this feed see [[Python Morsels]].
 
 - [ ] [[RSS/Feeds/Python Morsels/Python's http․server module|Python's http․server module]]
 

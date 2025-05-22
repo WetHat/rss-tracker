@@ -6,17 +6,17 @@ author: John Baez
 link: https://johncarlosbaez.wordpress.com/2024/04/16/agent-based-models-part-8/
 published: 2024-04-16T19:01:15.000Z
 feed: "[[Azimuth]]"
-pinned: false
 tags:
   - rss/computer_science
   - rss/epidemiology
   - rss/mathematics
+pinned: false
 ---
 
 > [!abstract] Agent-Based Models (Part 8) (by John Baez)
 > ![image|float:right|400](https://johncarlosbaez.files.wordpress.com/2023/07/state_diagram.png) Last time I presented a class of agent-based models where agents hop around a graph in a stochastic way. Each vertex of the graph is some ‘state’ agents can be in, and each edge is called a ‘transition’. In these models, the probability per time of an agent making a transition and leaving some state ［…］
 
-🌐 Read article [online](https://johncarlosbaez.wordpress.com/2024/04/16/agent-based-models-part-8/). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://johncarlosbaez.wordpress.com/2024/04/16/agent-based-models-part-8/). ⤴ For other items in this feed see [[Azimuth]].
 
 - [ ] [[RSS/Feeds/Azimuth/Agent-Based Models (Part 8)|Agent-Based Models (Part 8)]]
 

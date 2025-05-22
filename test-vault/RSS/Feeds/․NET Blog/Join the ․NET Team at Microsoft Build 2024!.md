@@ -7,7 +7,6 @@ author: Mehul Harry
 link: https://devblogs.microsoft.com/dotnet/join-the-dotnet-team-microsoft-build-2024/
 published: 2024-05-09T17:05:00.000Z
 feed: "[[․NET Blog]]"
-pinned: false
 tags:
   - rss/AI
   - rss/ASP۔NET
@@ -19,6 +18,7 @@ tags:
   - rss/microsoft_build
   - rss/۔NET
   - rss/۔NET_Core
+pinned: false
 ---
 
 > [!abstract] Join the .NET Team at Microsoft Build 2024! (by Mehul Harry)
@@ -26,7 +26,7 @@ tags:
 > 
 > The post [Join the .NET Team at Microsoft Build 2024!](https://devblogs.microsoft.com/dotnet/join-the-dotnet-team-microsoft-build-2024/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 
-🌐 Read article [online](https://devblogs.microsoft.com/dotnet/join-the-dotnet-team-microsoft-build-2024/). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://devblogs.microsoft.com/dotnet/join-the-dotnet-team-microsoft-build-2024/). ⤴ For other items in this feed see [[․NET Blog]].
 
 - [ ] [[RSS/Feeds/․NET Blog/Join the ․NET Team at Microsoft Build 2024!|Join the ․NET Team at Microsoft Build 2024!]]
 

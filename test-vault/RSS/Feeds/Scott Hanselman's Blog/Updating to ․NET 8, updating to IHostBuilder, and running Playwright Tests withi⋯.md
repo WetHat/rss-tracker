@@ -7,10 +7,10 @@ author: Scott Hanselman
 link: https://feeds.hanselman.com/~/873234002/0/scotthanselman~Updating-to-NET-updating-to-IHostBuilder-and-running-Playwright-Tests-within-NUnit-headless-or-headed-on-any-OS
 published: 2024-03-07T01:12:13.000Z
 feed: "[[Scott Hanselman's Blog]]"
-pinned: false
 tags:
   - rss/ASP۔NET
   - rss/DotNetCore
+pinned: false
 ---
 
 > [!abstract] Updating to .NET 8, updating to IHostBuilder, and running Playwright Tests within NUnit headless or headed on any OS (by Scott Hanselman)
@@ -20,7 +20,7 @@ tags:
 > 
 > I can write those Playwright tests in something like TypeScript, and I could launch them with node, but I like running end unit tests and using that test runner and test harness as my jumping off point for my .NET applications. I'm used to right clicking and "run unit tests" or even better,⋯
 
-🌐 Read article [online](https://feeds.hanselman.com/~/873234002/0/scotthanselman~Updating-to-NET-updating-to-IHostBuilder-and-running-Playwright-Tests-within-NUnit-headless-or-headed-on-any-OS). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://feeds.hanselman.com/~/873234002/0/scotthanselman~Updating-to-NET-updating-to-IHostBuilder-and-running-Playwright-Tests-within-NUnit-headless-or-headed-on-any-OS). ⤴ For other items in this feed see [[Scott Hanselman's Blog]].
 
 - [ ] [[RSS/Feeds/Scott Hanselman's Blog/Updating to ․NET 8, updating to IHostBuilder, and running Playwright Tests withi⋯|Updating to ․NET 8, updating to IHostBuilder, and running Playwright Tests withi⋯]]
 

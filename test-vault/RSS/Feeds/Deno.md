@@ -1,13 +1,14 @@
 ---
 role: rssfeed
-tags: []
-feedurl: https://localhost/test/Deno/feed.xml
 site: https://deno.com/blog
+feedurl: https://localhost/test/Deno/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-21T19:06:29.558Z
+updated: 2025-05-22T06:12:05.035Z
 interval: 207
+tags: []
 ---
+
 > [!abstract] Deno
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] The latest news from Deno Land Inc.
 

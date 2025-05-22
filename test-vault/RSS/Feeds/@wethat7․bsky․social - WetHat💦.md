@@ -1,13 +1,14 @@
 ---
 role: rssfeed
-tags: []
-feedurl: https://localhost/test/@wethat7․bsky․social - WetHat💦/feed.xml
 site: https://bsky.app/profile/wethat7.bsky.social
+feedurl: https://localhost/test/@wethat7․bsky․social - WetHat💦/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-21T19:06:38.502Z
+updated: 2025-05-22T06:12:13.794Z
 interval: 19
+tags: []
 ---
+
 > [!abstract] @wethat7.bsky.social - WetHat💦
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] I enjoy programming computers
 

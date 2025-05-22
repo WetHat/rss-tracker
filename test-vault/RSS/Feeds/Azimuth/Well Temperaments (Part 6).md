@@ -6,15 +6,15 @@ author: John Baez
 link: https://johncarlosbaez.wordpress.com/2024/02/26/well-temperaments-part-6/
 published: 2024-02-26T10:00:27.000Z
 feed: "[[Azimuth]]"
-pinned: false
 tags:
   - rss/music
+pinned: false
 ---
 
 > [!abstract] Well Temperaments (Part 6) (by John Baez)
 > ![image|float:right|400](https://johncarlosbaez.files.wordpress.com/2024/02/temperament_werckmeister_iii.jpg) Andreas Werckmeister (1645–1706) was a musician and expert on the organ. Compared to Kirnberger, his life seems outwardly dull. He got his musical training from his uncles, and from the age of 19 to his death he worked as an organist in three German towns. That’s about all I know. His fame comes from the ［…］
 
-🌐 Read article [online](https://johncarlosbaez.wordpress.com/2024/02/26/well-temperaments-part-6/). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://johncarlosbaez.wordpress.com/2024/02/26/well-temperaments-part-6/). ⤴ For other items in this feed see [[Azimuth]].
 
 - [ ] [[RSS/Feeds/Azimuth/Well Temperaments (Part 6)|Well Temperaments (Part 6)]]
 

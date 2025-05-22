@@ -7,18 +7,18 @@ author: unknown
 link: https://www.space.com/earth-iss-sustainable-living-world-space-week
 published: 2024-10-06T10:00:01.000Z
 feed: "[[Space RSS Feed]]"
-pinned: false
 tags:
   - rss/Climate_Change
   - rss/Earth
   - rss/Solar_System
   - rss/The_Universe
+pinned: false
 ---
 
 > [!abstract]  Earth is a spaceship like the ISS — let me explain  (by unknown)
 > ![image|float:right|400](https://cdn.mos.cms.futurecdn.net/YaAwoQASUBtjW3fyXScSp4.jpg) From water recycling to carbon capture, there are a myriad ways in which space technologies can be applied to help us live in a more environmentally friendly way on Earth.
 
-🌐 Read article [online](https://www.space.com/earth-iss-sustainable-living-world-space-week). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://www.space.com/earth-iss-sustainable-living-world-space-week). ⤴ For other items in this feed see [[Space RSS Feed]].
 
 - [ ] [[RSS/Feeds/Space RSS Feed/Earth is a spaceship like the ISS — let me explain|Earth is a spaceship like the ISS — let me explain]]
 

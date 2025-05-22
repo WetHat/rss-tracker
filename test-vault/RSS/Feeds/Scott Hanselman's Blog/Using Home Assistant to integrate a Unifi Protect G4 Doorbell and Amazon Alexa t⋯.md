@@ -7,10 +7,10 @@ author: Scott Hanselman
 link: https://feeds.hanselman.com/~/676711904/0/scotthanselman~Using-Home-Assistant-to-integrate-a-Unifi-Protect-G-Doorbell-and-Amazon-Alexa-to-announce-visitors
 published: 2021-12-14T21:36:00.000Z
 feed: "[[Scott Hanselman's Blog]]"
-pinned: false
 tags:
   - rss/Home_Server
   - rss/Musings
+pinned: false
 ---
 
 > [!abstract] Using Home Assistant to integrate a Unifi Protect G4 Doorbell and Amazon Alexa to announce visitors (by Scott Hanselman)
@@ -20,7 +20,7 @@ tags:
 > 
 > > I was amazed at the devices/objects t⋯
 
-🌐 Read article [online](https://feeds.hanselman.com/~/676711904/0/scotthanselman~Using-Home-Assistant-to-integrate-a-Unifi-Protect-G-Doorbell-and-Amazon-Alexa-to-announce-visitors). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://feeds.hanselman.com/~/676711904/0/scotthanselman~Using-Home-Assistant-to-integrate-a-Unifi-Protect-G-Doorbell-and-Amazon-Alexa-to-announce-visitors). ⤴ For other items in this feed see [[Scott Hanselman's Blog]].
 
 - [ ] [[RSS/Feeds/Scott Hanselman's Blog/Using Home Assistant to integrate a Unifi Protect G4 Doorbell and Amazon Alexa t⋯|Using Home Assistant to integrate a Unifi Protect G4 Doorbell and Amazon Alexa t⋯]]
 

@@ -7,7 +7,6 @@ author: Richard Lander
 link: https://devblogs.microsoft.com/dotnet/secure-your-container-build-and-publish-with-dotnet-8/
 published: 2024-04-30T17:05:00.000Z
 feed: "[[․NET Blog]]"
-pinned: false
 tags:
   - rss/CLI
   - rss/Cloud_Native
@@ -16,6 +15,7 @@ tags:
   - rss/sdk
   - rss/۔NET
   - rss/۔net_sdk
+pinned: false
 ---
 
 > [!abstract] Secure your container build and publish with .NET 8 (by Richard Lander)
@@ -23,7 +23,7 @@ tags:
 > 
 > The post [Secure your container build and publish with .NET 8](https://devblogs.microsoft.com/dotnet/secure-your-container-build-and-publish-with-dotnet-8/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 
-🌐 Read article [online](https://devblogs.microsoft.com/dotnet/secure-your-container-build-and-publish-with-dotnet-8/). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://devblogs.microsoft.com/dotnet/secure-your-container-build-and-publish-with-dotnet-8/). ⤴ For other items in this feed see [[․NET Blog]].
 
 - [ ] [[RSS/Feeds/․NET Blog/Secure your container build and publish with ․NET 8|Secure your container build and publish with ․NET 8]]
 

@@ -7,8 +7,8 @@ author: Matthew Dowst
 link: https://gist.github.com/aeveltstra/94806a1230b8165f43e9b4e4dec9bacc
 published: 2024-05-24T12:24:44.000Z
 feed: "[[Planet PowerShell]]"
-pinned: false
 tags: []
+pinned: false
 ---
 
 > [!abstract] A Powershell GUI using DotNet Windows.Forms to start AWS Lambda Functions and display their output (by Matthew Dowst)
@@ -18,7 +18,7 @@ tags: []
 > 
 > (+)(-)
 
-🌐 Read article [online](https://gist.github.com/aeveltstra/94806a1230b8165f43e9b4e4dec9bacc). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://gist.github.com/aeveltstra/94806a1230b8165f43e9b4e4dec9bacc). ⤴ For other items in this feed see [[Planet PowerShell]].
 
 - [ ] [[RSS/Feeds/Planet PowerShell/A Powershell GUI using DotNet Windows․Forms to start AWS Lambda Functions and di⋯|A Powershell GUI using DotNet Windows․Forms to start AWS Lambda Functions and di⋯]]
 

@@ -6,8 +6,8 @@ author: Matthew Dowst
 link: https://powershellisfun.com/2024/05/17/parameters-for-powershell-scripts-and-functions/
 published: 2024-05-24T12:23:18.000Z
 feed: "[[Planet PowerShell]]"
-pinned: false
 tags: []
+pinned: false
 ---
 
 > [!abstract] Parameters for PowerShell Scripts and Functions (by Matthew Dowst)
@@ -17,7 +17,7 @@ tags: []
 > 
 > (+)(-)
 
-🌐 Read article [online](https://powershellisfun.com/2024/05/17/parameters-for-powershell-scripts-and-functions/). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://powershellisfun.com/2024/05/17/parameters-for-powershell-scripts-and-functions/). ⤴ For other items in this feed see [[Planet PowerShell]].
 
 - [ ] [[RSS/Feeds/Planet PowerShell/Parameters for PowerShell Scripts and Functions|Parameters for PowerShell Scripts and Functions]]
 

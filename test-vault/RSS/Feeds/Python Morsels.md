@@ -1,13 +1,14 @@
 ---
 role: rssfeed
-tags: []
-feedurl: https://localhost/test/Python Morsels/feed.xml
 site: https://www.pythonmorsels.com/topics/
+feedurl: https://localhost/test/Python Morsels/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-21T19:06:16.016Z
+updated: 2025-05-22T06:11:51.573Z
 interval: 425
+tags: []
 ---
+
 > [!abstract] Python Morsels
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] Python Morsels
 

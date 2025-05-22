@@ -7,14 +7,14 @@ author: unknown
 link: https://effectivetypescript.com/2024/05/21/second-edition/
 published: 2024-05-21T21:30:00.000Z
 feed: "[[Effective TypeScript]]"
-pinned: false
 tags: []
+pinned: false
 ---
 
 > [!abstract] Now Available: Effective TypeScript, Second Edition (by unknown)
 > ![image|float:right|400](https://effectivetypescript.com/images/cover-2e.jpg) Fully updated, thoroughly revised, now with 50% more book!
 
-🌐 Read article [online](https://effectivetypescript.com/2024/05/21/second-edition/). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://effectivetypescript.com/2024/05/21/second-edition/). ⤴ For other items in this feed see [[Effective TypeScript]].
 
 - [ ] [[RSS/Feeds/Effective TypeScript/Now Available꞉ Effective TypeScript, Second Edition|Now Available꞉ Effective TypeScript, Second Edition]]
 

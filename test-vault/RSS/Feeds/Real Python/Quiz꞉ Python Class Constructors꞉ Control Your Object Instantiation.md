@@ -7,14 +7,14 @@ author: unknown
 link: https://realpython.com/quizzes/python-class-constructor/
 published: 2024-10-23T12:00:00.000Z
 feed: "[[Real Python]]"
-pinned: false
 tags: []
+pinned: false
 ---
 
 > [!abstract] Quiz: Python Class Constructors: Control Your Object Instantiation (by unknown)
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] In this quiz, you'll test your understanding of class constructors in Python. By working through this quiz, you'll revisit the internal instantiation process, object initialization, and fine-tuning object creation.
 
-🌐 Read article [online](https://realpython.com/quizzes/python-class-constructor/). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://realpython.com/quizzes/python-class-constructor/). ⤴ For other items in this feed see [[Real Python]].
 
 - [ ] [[RSS/Feeds/Real Python/Quiz꞉ Python Class Constructors꞉ Control Your Object Instantiation|Quiz꞉ Python Class Constructors꞉ Control Your Object Instantiation]]
 

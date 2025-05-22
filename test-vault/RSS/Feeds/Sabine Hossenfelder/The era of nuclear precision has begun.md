@@ -6,14 +6,14 @@ author: Sabine Hossenfelder
 link: https://www.youtube.com/watch?v=xTnYS3od6iY
 published: 2024-05-08T15:00:51.000Z
 feed: "[[Sabine Hossenfelder]]"
-pinned: false
 tags: []
+pinned: false
 ---
 
 > [!abstract] The era of nuclear precision has begun (by Sabine Hossenfelder)
 > ![image|float:right|400](https://i1.ytimg.com/vi/xTnYS3od6iY/hqdefault.jpg) Stay safe with NordVPN. Sign up for a 2 year plan, and get 4 months free here ➼ https://NordVPN.com/sabine Risk-free with Nord’s 30-day money-back guarantee ✌ Scientists finally succeeded in exiting an atomic resonance with a laser in the near ultraviolet. It's a remarkable feat that they've been working on since the 1970s. It could usher in the era of nuclear precision. Let’s have a look. Paper here: https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.132.182501 🤓 Check out my new quiz app ➜ http://quizwithit.com/ 💌 Support me on Donorbox ➜ https://donorbox.org/swtg 📝 Transcripts and written news on Substack ➜ https://sciencewtg.substack.com/ 👉 Transcript with links to references on Patreon ➜ https://www.patreon.com/Sabine 📩 Free weekly science newsletter ➜ https://sabinehossen⋯
 
-🌐 Read article [online](https://www.youtube.com/watch?v=xTnYS3od6iY). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://www.youtube.com/watch?v=xTnYS3od6iY). ⤴ For other items in this feed see [[Sabine Hossenfelder]].
 
 - [ ] [[RSS/Feeds/Sabine Hossenfelder/The era of nuclear precision has begun|The era of nuclear precision has begun]]
 

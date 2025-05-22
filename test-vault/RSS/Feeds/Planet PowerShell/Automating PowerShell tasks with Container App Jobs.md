@@ -6,8 +6,8 @@ author: Matthew Dowst
 link: https://www.jannemattila.com/azure/2024/05/20/automating-powershell-tasks-with-container-apps.html
 published: 2024-05-24T12:23:54.000Z
 feed: "[[Planet PowerShell]]"
-pinned: false
 tags: []
+pinned: false
 ---
 
 > [!abstract] Automating PowerShell tasks with Container App Jobs (by Matthew Dowst)
@@ -17,7 +17,7 @@ tags: []
 > 
 > (+)(-)
 
-🌐 Read article [online](https://www.jannemattila.com/azure/2024/05/20/automating-powershell-tasks-with-container-apps.html). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://www.jannemattila.com/azure/2024/05/20/automating-powershell-tasks-with-container-apps.html). ⤴ For other items in this feed see [[Planet PowerShell]].
 
 - [ ] [[RSS/Feeds/Planet PowerShell/Automating PowerShell tasks with Container App Jobs|Automating PowerShell tasks with Container App Jobs]]
 

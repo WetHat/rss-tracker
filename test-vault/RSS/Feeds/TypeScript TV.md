@@ -1,13 +1,14 @@
 ---
 role: rssfeed
-tags: []
-feedurl: https://localhost/test/TypeScript TV/feed.xml
 site: https://typescript.tv/
+feedurl: https://localhost/test/TypeScript TV/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-21T19:06:00.147Z
+updated: 2025-05-22T06:11:36.121Z
 interval: 809
+tags: []
 ---
+
 > [!abstract] TypeScript TV
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] 🚀 Ideal for beginners or advanced TypeScript programmers, our coding course guarantees something new for everyone.
 

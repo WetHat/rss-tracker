@@ -7,11 +7,11 @@ author: Scott Hanselman
 link: https://feeds.hanselman.com/~/674283520/0/scotthanselman~JavaScript-and-TypeScript-Projects-with-React-Angular-or-Vue-in-Visual-Studio-with-or-without-NET
 published: 2021-11-25T20:50:00.000Z
 feed: "[[Scott Hanselman's Blog]]"
-pinned: false
 tags:
   - rss/ASP۔NET
   - rss/Javascript
   - rss/Web_Services
+pinned: false
 ---
 
 > [!abstract] JavaScript and TypeScript Projects with React, Angular, or Vue in Visual Studio 2022 with or without .NET (by Scott Hanselman)
@@ -23,7 +23,7 @@ tags:
 > 
 > 1. [An ASP.NET Web app that renders HTML on the ⋯
 
-🌐 Read article [online](https://feeds.hanselman.com/~/674283520/0/scotthanselman~JavaScript-and-TypeScript-Projects-with-React-Angular-or-Vue-in-Visual-Studio-with-or-without-NET). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://feeds.hanselman.com/~/674283520/0/scotthanselman~JavaScript-and-TypeScript-Projects-with-React-Angular-or-Vue-in-Visual-Studio-with-or-without-NET). ⤴ For other items in this feed see [[Scott Hanselman's Blog]].
 
 - [ ] [[RSS/Feeds/Scott Hanselman's Blog/JavaScript and TypeScript Projects with React, Angular, or Vue in Visual Studio⋯|JavaScript and TypeScript Projects with React, Angular, or Vue in Visual Studio⋯]]
 

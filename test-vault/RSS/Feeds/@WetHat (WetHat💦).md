@@ -1,11 +1,14 @@
 ---
 role: rssfeed
-tags: []
-feedurl: https://localhost/test/@WetHat (WetHat💦)/feed.xml
 site: https://fosstodon.org/@WetHat
+feedurl: https://localhost/test/@WetHat (WetHat💦)/feed.xml
 itemlimit: 10
 status: "❌Saving 'Replied to꞉ @WetHat Newtonsoft,Json is not dead․ It's last release was 14 months⋯' of feed '@WetHat (WetHat💦) failed': File already exists."
+updated: 0
+interval: 1
+tags: []
 ---
+
 > [!abstract] @WetHat (WetHat💦)
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] I enjoy programming computers.
 

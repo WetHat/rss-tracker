@@ -6,10 +6,10 @@ author: Scott Hanselman
 link: https://feeds.hanselman.com/~/737271731/0/scotthanselman~GitHub-Copilot-for-CLI-for-PowerShell
 published: 2023-04-25T15:31:49.000Z
 feed: "[[Scott Hanselman's Blog]]"
-pinned: false
 tags:
   - rss/AI
   - rss/PowerShell
+pinned: false
 ---
 
 > [!abstract] GitHub Copilot for CLI for PowerShell (by Scott Hanselman)
@@ -23,7 +23,7 @@ tags:
 > 
 > Now it's not perfect, but hopefully it will make the point to the Copilot CLI team that PowerSh⋯
 
-🌐 Read article [online](https://feeds.hanselman.com/~/737271731/0/scotthanselman~GitHub-Copilot-for-CLI-for-PowerShell). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://feeds.hanselman.com/~/737271731/0/scotthanselman~GitHub-Copilot-for-CLI-for-PowerShell). ⤴ For other items in this feed see [[Scott Hanselman's Blog]].
 
 - [ ] [[RSS/Feeds/Scott Hanselman's Blog/GitHub Copilot for CLI for PowerShell|GitHub Copilot for CLI for PowerShell]]
 

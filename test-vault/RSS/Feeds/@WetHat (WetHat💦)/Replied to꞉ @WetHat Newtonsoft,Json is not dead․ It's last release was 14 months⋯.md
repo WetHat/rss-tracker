@@ -7,8 +7,8 @@ author: "@WetHat"
 link: https://fosstodon.org/@WetHat/112434073371395011
 published: 2024-05-13T13:43:29.000Z
 feed: "[[@WetHat (WetHat💦)]]"
-pinned: false
 tags: []
+pinned: false
 ---
 
 > [!abstract] Replied to: @WetHat Newtonsoft,Json is not dead. It's last release was 14 months ago & the repo has commits in the last month. There is such a thing as stable code that doesn't need constant releases every 5 minutes. (by @WetHat)
@@ -26,7 +26,7 @@ tags: []
 > 
 > - WetHat💦 (@WetHat) [May 13, 2024](https://fosstodon.org/@WetHat/112434073371395011)
 
-🌐 Read article [online](https://fosstodon.org/@WetHat/112434073371395011). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://fosstodon.org/@WetHat/112434073371395011). ⤴ For other items in this feed see [[@WetHat (WetHat💦)]].
 
 - [ ] [[RSS/Feeds/@WetHat (WetHat💦)/Replied to꞉ @WetHat Newtonsoft,Json is not dead․ It's last release was 14 months⋯|Replied to꞉ @WetHat Newtonsoft,Json is not dead․ It's last release was 14 months⋯]]
 

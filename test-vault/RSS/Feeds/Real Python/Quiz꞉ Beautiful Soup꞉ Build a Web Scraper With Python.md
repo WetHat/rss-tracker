@@ -7,14 +7,14 @@ author: unknown
 link: https://realpython.com/quizzes/beautiful-soup-web-scraper-python/
 published: 2024-10-28T12:00:00.000Z
 feed: "[[Real Python]]"
-pinned: false
 tags: []
+pinned: false
 ---
 
 > [!abstract] Quiz: Beautiful Soup: Build a Web Scraper With Python (by unknown)
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] In this quiz, you'll test your understanding of web scraping using Python. By working through this quiz, you'll revisit how to inspect the HTML structure of a target site, decipher data encoded in URLs, and use Requests and Beautiful Soup for scraping and parsing data from the Web.
 
-🌐 Read article [online](https://realpython.com/quizzes/beautiful-soup-web-scraper-python/). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://realpython.com/quizzes/beautiful-soup-web-scraper-python/). ⤴ For other items in this feed see [[Real Python]].
 
 - [ ] [[RSS/Feeds/Real Python/Quiz꞉ Beautiful Soup꞉ Build a Web Scraper With Python|Quiz꞉ Beautiful Soup꞉ Build a Web Scraper With Python]]
 

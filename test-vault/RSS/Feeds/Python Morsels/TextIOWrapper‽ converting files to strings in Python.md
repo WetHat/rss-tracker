@@ -6,8 +6,8 @@ author: unknown
 link: https://www.pythonmorsels.com/TextIOWrapper/
 published: 2024-02-05T16:00:00.000Z
 feed: "[[Python Morsels]]"
-pinned: false
 tags: []
+pinned: false
 ---
 
 > [!abstract] TextIOWrapper‽ converting files to strings in Python (by unknown)
@@ -21,7 +21,7 @@ tags: []
 > 4. [You can also read line-by-line](https://www.pythonmorsels.com/TextIOWrapper/#you-can-also-read-line-by-line)
 > 5. [Use `read` to convert `_io.TextIOWrapper` objects to strings](https://www.pythonmorsels.com/TextIOWrapper/#use-read-to-convert-_iotextiowrapper-objects-to-string⋯
 
-🌐 Read article [online](https://www.pythonmorsels.com/TextIOWrapper/). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://www.pythonmorsels.com/TextIOWrapper/). ⤴ For other items in this feed see [[Python Morsels]].
 
 - [ ] [[RSS/Feeds/Python Morsels/TextIOWrapper‽ converting files to strings in Python|TextIOWrapper‽ converting files to strings in Python]]
 

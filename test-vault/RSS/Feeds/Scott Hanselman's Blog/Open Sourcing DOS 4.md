@@ -6,9 +6,9 @@ author: Scott Hanselman
 link: https://feeds.hanselman.com/~/882544025/0/scotthanselman~Open-Sourcing-DOS
 published: 2024-04-25T16:46:13.000Z
 feed: "[[Scott Hanselman's Blog]]"
-pinned: false
 tags:
   - rss/Open_Source
+pinned: false
 ---
 
 > [!abstract] Open Sourcing DOS 4 (by Scott Hanselman)
@@ -18,7 +18,7 @@ tags:
 > 
 > Today, in partnership with IBM and in the spirit of open innovation, we're releasing the source code to MS-DOS 4.00 under the MIT license. There's a somewhat complex and fascinating history⋯
 
-🌐 Read article [online](https://feeds.hanselman.com/~/882544025/0/scotthanselman~Open-Sourcing-DOS). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://feeds.hanselman.com/~/882544025/0/scotthanselman~Open-Sourcing-DOS). ⤴ For other items in this feed see [[Scott Hanselman's Blog]].
 
 - [ ] [[RSS/Feeds/Scott Hanselman's Blog/Open Sourcing DOS 4|Open Sourcing DOS 4]]
 

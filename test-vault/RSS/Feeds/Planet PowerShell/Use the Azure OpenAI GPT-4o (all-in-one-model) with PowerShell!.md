@@ -6,8 +6,8 @@ author: Matthew Dowst
 link: https://alexholmeset.blog/2024/05/22/use-the-azure-openai-gpt-4o-all-in-one-model-with-powershell/
 published: 2024-05-24T12:23:43.000Z
 feed: "[[Planet PowerShell]]"
-pinned: false
 tags: []
+pinned: false
 ---
 
 > [!abstract] Use the Azure OpenAI GPT-4o (all-in-one-model) with PowerShell! (by Matthew Dowst)
@@ -17,7 +17,7 @@ tags: []
 > 
 > (+)(-)
 
-🌐 Read article [online](https://alexholmeset.blog/2024/05/22/use-the-azure-openai-gpt-4o-all-in-one-model-with-powershell/). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://alexholmeset.blog/2024/05/22/use-the-azure-openai-gpt-4o-all-in-one-model-with-powershell/). ⤴ For other items in this feed see [[Planet PowerShell]].
 
 - [ ] [[RSS/Feeds/Planet PowerShell/Use the Azure OpenAI GPT-4o (all-in-one-model) with PowerShell!|Use the Azure OpenAI GPT-4o (all-in-one-model) with PowerShell!]]
 

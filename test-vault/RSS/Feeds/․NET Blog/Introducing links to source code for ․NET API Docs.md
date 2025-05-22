@@ -7,13 +7,13 @@ author: Min Huang
 link: https://devblogs.microsoft.com/dotnet/dotnet-docs-link-to-source-code/
 published: 2024-05-27T15:00:00.000Z
 feed: "[[․NET Blog]]"
-pinned: false
 tags:
   - rss/Source_Link
   - rss/microsoft_learn
   - rss/۔NET
   - rss/۔NET_Fundamentals
   - rss/۔NET_Internals
+pinned: false
 ---
 
 > [!abstract] Introducing links to source code for .NET API Docs (by Min Huang)
@@ -21,7 +21,7 @@ tags:
 > 
 > The post [Introducing links to source code for .NET API Docs](https://devblogs.microsoft.com/dotnet/dotnet-docs-link-to-source-code/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 
-🌐 Read article [online](https://devblogs.microsoft.com/dotnet/dotnet-docs-link-to-source-code/). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://devblogs.microsoft.com/dotnet/dotnet-docs-link-to-source-code/). ⤴ For other items in this feed see [[․NET Blog]].
 
 - [ ] [[RSS/Feeds/․NET Blog/Introducing links to source code for ․NET API Docs|Introducing links to source code for ․NET API Docs]]
 

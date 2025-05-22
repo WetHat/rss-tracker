@@ -1,13 +1,14 @@
 ---
 role: rssfeed
-tags: []
-feedurl: https://localhost/test/Bluesky/feed.xml
 site: https://flipboard.com/topic/blueskysocial
+feedurl: https://localhost/test/Bluesky/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-21T19:06:31.903Z
+updated: 2025-05-22T06:12:07.238Z
 interval: 19
+tags: []
 ---
+
 > [!abstract] Bluesky
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] 
 

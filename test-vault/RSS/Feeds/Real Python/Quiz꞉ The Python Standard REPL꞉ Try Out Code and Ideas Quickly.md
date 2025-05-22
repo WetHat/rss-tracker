@@ -7,14 +7,14 @@ author: unknown
 link: https://realpython.com/quizzes/python-repl/
 published: 2024-10-24T12:00:00.000Z
 feed: "[[Real Python]]"
-pinned: false
 tags: []
+pinned: false
 ---
 
 > [!abstract] Quiz: The Python Standard REPL: Try Out Code and Ideas Quickly (by unknown)
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] In this quiz, you'll test your understanding of the Python standard REPL. The Python REPL allows you to run Python code interactively, which is useful for testing new ideas, exploring libraries, refactoring and debugging code, and trying out examples.
 
-🌐 Read article [online](https://realpython.com/quizzes/python-repl/). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://realpython.com/quizzes/python-repl/). ⤴ For other items in this feed see [[Real Python]].
 
 - [ ] [[RSS/Feeds/Real Python/Quiz꞉ The Python Standard REPL꞉ Try Out Code and Ideas Quickly|Quiz꞉ The Python Standard REPL꞉ Try Out Code and Ideas Quickly]]
 

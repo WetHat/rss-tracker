@@ -1,13 +1,14 @@
 ---
 role: rssfeed
-tags: []
-feedurl: https://localhost/test/Real Python/feed.xml
 site: https://realpython.com/
+feedurl: https://localhost/test/Real Python/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-21T19:06:13.711Z
+updated: 2025-05-22T06:11:49.332Z
 interval: 50
+tags: []
 ---
+
 > [!abstract] Real Python
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] 
 

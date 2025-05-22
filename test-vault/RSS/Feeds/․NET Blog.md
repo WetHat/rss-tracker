@@ -1,13 +1,14 @@
 ---
 role: rssfeed
-tags: []
-feedurl: https://localhost/test/․NET Blog/feed.xml
 site: https://devblogs.microsoft.com/dotnet/
+feedurl: https://localhost/test/․NET Blog/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-21T19:05:58.889Z
+updated: 2025-05-22T06:11:34.203Z
 interval: 77
+tags: []
 ---
+
 > [!abstract] .NET Blog
 > ![image|float:right|400](https://devblogs.microsoft.com/dotnet/wp-content/uploads/sites/10/2018/10/Microsoft-Favicon.png) Free. Cross-platform. Open source. A developer platform for building all your apps.
 

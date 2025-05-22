@@ -7,8 +7,8 @@ author: "@WetHat"
 link: https://fosstodon.org/@WetHat/112434102899083500
 published: 2024-05-13T13:50:59.000Z
 feed: "[[@WetHat (WetHat💦)]]"
-pinned: false
 tags: []
+pinned: false
 ---
 
 > [!abstract] Replied to: @WetHat Thanks for sharing. Makes me wonder if AoT or PGO might benefit from it. Probably also no. (by @WetHat)
@@ -16,7 +16,7 @@ tags: []
 > 
 > - WetHat💦 (@WetHat) [May 13, 2024](https://fosstodon.org/@WetHat/112434102899083500)
 
-🌐 Read article [online](https://fosstodon.org/@WetHat/112434102899083500). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online](https://fosstodon.org/@WetHat/112434102899083500). ⤴ For other items in this feed see [[@WetHat (WetHat💦)]].
 
 - [ ] [[RSS/Feeds/@WetHat (WetHat💦)/Replied to꞉ @WetHat Thanks for sharing․ Makes me wonder if AoT or PGO might bene⋯|Replied to꞉ @WetHat Thanks for sharing․ Makes me wonder if AoT or PGO might bene⋯]]
 
