@@ -213,7 +213,7 @@ export class RSSitemAdapter extends RSSAdapter {
                 "{{image}}": image ? formatImage(image) : `![[${defaultImage}|float:right|100x100]]`,
                 "{{description}}": description ?? "",
                 "{{content}}": content ?? "",
-                "{{feedFileName}}": itemfolder.name,
+                "{{feedLink}}": frontmatter.feed,
             };
         const file = await feed.filemgr.createFile(itemfolder.path, item.fileName, "RSS Item", dataMap, true);
         // create an alias if the filename was doctored.

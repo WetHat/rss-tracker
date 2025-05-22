@@ -5,7 +5,7 @@ role:
 > [!abstract] {{title}} (by {{author}})
 > {{image}} {{description}}
 
-🌐 Read article [online]({{link}}). ⤴ For other items in this feed see `= this.feed`.
+🌐 Read article [online]({{link}}). ⤴ For other items in this feed see {{feedLink}}.
 
 - [ ] [[{{filePath}}|{{fileName}}]]
 
