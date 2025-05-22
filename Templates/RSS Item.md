@@ -1,5 +1,5 @@
 ---
-role: rssitem
+role:
 ---
 
 > [!abstract] {{title}} (by {{author}})
