@@ -19,12 +19,31 @@ abstract class RSSTrackerSettingBase extends Setting {
 	}
 }
 
+
+class RSSTagDomain extends RSSTrackerSettingBase {
+	constructor(settingsTab: RSSTrackerSettingTab) {
+		super(settingsTab);
+		this
+			.setName('RSS Tag Domain')
+			.setDesc("The domain for hashtags coming from in RSS feeds. This domain isolates RSS tags from the user's knowledge graph until explicitely mapped.")
+			.addText(tg => {
+				tg.setPlaceholder(DEFAULT_SETTINGS.rssTagDomain.toString());
+				if (this.settings.rssTagDomain !== DEFAULT_SETTINGS.rssTagDomain) {
+					tg.setValue(this.settings.rssTagDomain)
+				}
+				tg.onChange(evt => {
+					this.settings.rssTagDomain = tg.getValue();
+				})
+			});
+	}
+}
+
 class RSSTagmapNameSetting extends RSSTrackerSettingBase {
 	constructor(settingsTab: RSSTrackerSettingTab) {
 		super(settingsTab);
 		this
 			.setName('RSS tag map name')
-			.setDesc('THe name of the tag map Markdown file in the RSS Home folder which contains a table mapping tags found in feeds to tags in the local knowledge graph.')
+			.setDesc('The name of the tag map Markdown file in the RSS Home folder which contains a table mapping tags found in feeds to tags in the local knowledge graph.')
 			.addText(ta => {
 				ta
 					.setPlaceholder(DEFAULT_SETTINGS.rssTagmapName)
@@ -237,13 +256,15 @@ export class RSSTrackerSettingTab extends PluginSettingTab {
 		const frag = containerEl.doc.createDocumentFragment()
 
 		new RSSHomeSetting(this);
-		new RSSFeedFolderSetting(this);
 		new RSSCollectionsFolderSetting(this);
 		new RSSTopicsFolderSetting(this);
+		new RSSFeedFolderSetting(this);
+		new RSSTagDomain(this);
         new RSSautoUpdateSetting(this);
 		new RSSDashboardNameSetting(this);
-		new RSSTagmapNameSetting(this);
 		new RSSDefaultItemLimitSetting(this);
+		new RSSTagmapNameSetting(this);
+
 	}
 	hide() {
 		this.settings.commit();

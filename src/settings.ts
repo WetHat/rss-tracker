@@ -14,7 +14,9 @@ export interface IRSSTrackerSettings {
 	rssDashboardName: string;
 	rssTagmapName: string;
 	rssDefaultImage: string;
-	defaultItemLimit: number
+	defaultItemLimit: number;
+	rssTagDomain: string;
+	rssDashboardPlacement: TDashboardPlacement;
 }
 
 export const DEFAULT_SETTINGS: IRSSTrackerSettings = {
@@ -28,12 +30,20 @@ export const DEFAULT_SETTINGS: IRSSTrackerSettings = {
 	rssTagmapName: "RSS Tagmap",
 	rssDefaultImage: "",
 	defaultItemLimit: 100,
+	rssTagDomain: "rss",
+	rssDashboardPlacement: "insideFolder",
 }
 
 /**
  * The basenames of templates used for RSS content.
  */
 export type TTemplateName = "RSS Feed" | "RSS Item" | "RSS Topic" | "RSS Collection" | "RSS Dashboard" | "RSS Tagmap";
+
+/**
+ * The placement of RSS dashboard files relative to their data folders.
+ * The values are taken from the Folder Notes plugin.
+ */
+export type TDashboardPlacement = "insideFolder" | "parentFolder";
 
 /**
  * List of basenames of templates to be installed into the `Templates` folder.
@@ -54,7 +64,7 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 	}
 
 	/**
-	 * The persisted settings settings
+	 * The persisted settings.
 	 */
 	private _data: IRSSTrackerSettings = { ...DEFAULT_SETTINGS };
 
@@ -66,14 +76,16 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 		this._data.autoUpdateFeeds = value;
 	}
 
-	private _rssHome?: string;
-	private _rssFeedFolder?: string;
-	private _rssCollectionsFolder?: string;
-	private _rssTopicsFolder?: string;
-	private _rssTemplateFolder?: string;
-	private _rssDashboardName?: string;
-	private _rssTagmapName?: string;
-	private _defaultItemLimit?: number;
+	private _rssHome?: string; // cached value of the RSS home folder name
+	private _rssFeedFolder?: string; // cached value of the RSS feed folder name
+	private _rssCollectionsFolder?: string; // cached value of the RSS collections folder name
+	private _rssTopicsFolder?: string; // cached value of the RSS topics folder name
+	private _rssTemplateFolder?: string; // cached value of the RSS templates folder name
+	private _rssDashboardName?: string; // cached value of the RSS dashboard name
+	private _rssTagmapName?: string; // cached value of the RSS tagmap name
+	private _defaultItemLimit?: number; // cached value of the default item limit
+	private _rssTagDomain?: string; // cached value of the RSS tag domain
+	private _rssDashboardPlacement?: TDashboardPlacement; // cached value of the RSS dashboard placement
 
 	get rssHome(): string {
 		return this._data.rssHome ?? DEFAULT_SETTINGS.rssHome;
@@ -131,13 +143,43 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 		this._rssTagmapName = value;
 	}
 
-	get defaultItemLimit():number {
+	get defaultItemLimit(): number {
 		return this._data.defaultItemLimit ?? DEFAULT_SETTINGS.defaultItemLimit;
 	}
 
 	set defaultItemLimit(value: number) {
 		this._defaultItemLimit = value;
 	}
+
+	get rssTagDomain(): string {
+		return this._data.rssTagDomain ?? DEFAULT_SETTINGS.rssTagDomain;
+	}
+
+	set rssTagDomain(value: string) {
+		this._rssTagDomain = value;
+	}
+
+	/**
+	 * Get the placement of an RSS dashboard.
+	 *
+	 * By default this setting is `insideFolder`, unless the 'Folder Notes' plugin is enabled, then it is taken
+	 * from the Folder Notes plugin settings.
+	 * The placement can only be changed by the 'Folder Notes' plugin.
+	 */
+	get rssDashboardPlacement(): TDashboardPlacement {
+		const folderNotesSettings = (this.app as any).plugins.plugins["folder-notes"]?.settings;
+
+		if (folderNotesSettings) {
+			const placement = folderNotesSettings.storageLocation;
+			this._rssDashboardPlacement = placement;
+			this.commit();
+			return placement;
+		}
+		else {
+			return this._data.rssDashboardPlacement && DEFAULT_SETTINGS.rssDashboardPlacement;
+		}
+	}
+
 	/**
 	 * Get the path to the RSS default image
 	 */
@@ -160,6 +202,10 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 		return this._data.rssDefaultImage;
 	}
 
+	/**
+	 * Commit the changes to the settings.
+	 * This method is called when the user closes the settings UI.
+	 */
 	async commit() {
 		console.log("Commiting changes in settings");
 		if (this._rssHome && this._rssHome !== this.rssHome) {
