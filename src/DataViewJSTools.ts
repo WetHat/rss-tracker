@@ -636,11 +636,11 @@ export class DataViewJSTools {
     /**
      * Display collapsible reading tasks grouped by feed.
      *
-     * @param feeds - Collection of feeds
+     * @param items - Item list to get the reading tasks from.
      * @param read - `false` to collect and display unchecked (unread) reading tasks: `true` otherwise.
      * @param expand - `undefined` render immediately using a generic dataview table;
-     *                       `true` render table immediately and expand the table by default;
-     *                       `false` to collapse the table by default and render the table on-demand.
+     *                 `true` render table immediately and expand the table by default;
+     *                 `false` to collapse the table by default and render the table on-demand.
      */
     async rssReadingListByFeed(items: TPageRecords, read: boolean = false, expand = false) {
         const groups = items
