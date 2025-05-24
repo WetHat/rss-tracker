@@ -6,7 +6,7 @@ id: https://www.pythonmorsels.com/time-complexities/
 author: unknown
 link: https://www.pythonmorsels.com/time-complexities/
 published: 2024-04-16T15:00:00.000Z
-feed: "[[Python Morsels]]"
+feed: "[[RSS/Feeds/Python Morsels.md | Python Morsels]]"
 tags: []
 pinned: false
 ---
@@ -26,7 +26,7 @@ pinned: false
 > 8. [Sorted List 🔤](https://www.pythonmorsels.com/time-complexities/#sorted-list)
 > 9. [Traversal Techniques 🔍](https://www.pyt⋯
 
-🌐 Read article [online](https://www.pythonmorsels.com/time-complexities/). ⤴ For other items in this feed see [[Python Morsels]].
+🌐 Read article [online](https://www.pythonmorsels.com/time-complexities/). ⤴ For other items in this feed see [[RSS/Feeds/Python Morsels.md | Python Morsels]].
 
 - [ ] [[RSS/Feeds/Python Morsels/Python Big O꞉ the time complexities of different data structures in Python|Python Big O꞉ the time complexities of different data structures in Python]]
 

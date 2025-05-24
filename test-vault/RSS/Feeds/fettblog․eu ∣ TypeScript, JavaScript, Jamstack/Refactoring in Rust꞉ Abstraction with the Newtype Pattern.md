@@ -6,7 +6,7 @@ id: https://fettblog.eu/refactoring-rust-abstraction-newtype/
 author: unknown
 link: https://fettblog.eu/refactoring-rust-abstraction-newtype/
 published: 2023-02-21T00:00:00.000Z
-feed: "[[fettblog․eu ∣ TypeScript, JavaScript, Jamstack]]"
+feed: "[[RSS/Feeds/fettblog․eu ∣ TypeScript, JavaScript, Jamstack.md | fettblog․eu ∣ TypeScript, JavaScript, Jamstack]]"
 tags: []
 pinned: false
 ---
@@ -14,7 +14,7 @@ pinned: false
 > [!abstract] Refactoring in Rust: Abstraction with the Newtype Pattern (by unknown)
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] The following piece of code takes a PathBuf and extracts the file name, eventually converting it to an owned String.
 
-🌐 Read article [online](https://fettblog.eu/refactoring-rust-abstraction-newtype/). ⤴ For other items in this feed see [[fettblog․eu ∣ TypeScript, JavaScript, Jamstack]].
+🌐 Read article [online](https://fettblog.eu/refactoring-rust-abstraction-newtype/). ⤴ For other items in this feed see [[RSS/Feeds/fettblog․eu ∣ TypeScript, JavaScript, Jamstack.md | fettblog․eu ∣ TypeScript, JavaScript, Jamstack]].
 
 - [ ] [[RSS/Feeds/fettblog․eu ∣ TypeScript, JavaScript, Jamstack/Refactoring in Rust꞉ Abstraction with the Newtype Pattern|Refactoring in Rust꞉ Abstraction with the Newtype Pattern]]
 

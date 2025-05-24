@@ -6,7 +6,7 @@ id: https://github.blog/?p=78012
 author: Mario Rodriguez
 link: https://github.blog/2024-05-21-introducing-github-copilot-extensions/
 published: 2024-05-21T15:27:46.000Z
-feed: "[[The GitHub Blog꞉ Product News and Updates]]"
+feed: "[[RSS/Feeds/The GitHub Blog꞉ Product News and Updates.md | The GitHub Blog꞉ Product News and Updates]]"
 tags:
   - rss/AI
   - rss/GitHub_Copilot
@@ -19,7 +19,7 @@ pinned: false
 > [!abstract] Introducing GitHub Copilot Extensions: Unlocking unlimited possibilities with our ecosystem of partners (by Mario Rodriguez)
 > ![image|float:right|400](https://github.blog/wp-content/uploads/2024/05/Marketplace-App-Tiles@2x.png?resize=1024%2C597) The world of Copilot is getting bigger, improving the developer experience by keeping developers in the flow longer and allowing them to do more in natural language. The post Introducing GitHub Copilot Extensions: Unlocking unlimited possibilities with our ecosystem of partners appeared first on The GitHub Blog.
 
-🌐 Read article [online](https://github.blog/2024-05-21-introducing-github-copilot-extensions/). ⤴ For other items in this feed see [[The GitHub Blog꞉ Product News and Updates]].
+🌐 Read article [online](https://github.blog/2024-05-21-introducing-github-copilot-extensions/). ⤴ For other items in this feed see [[RSS/Feeds/The GitHub Blog꞉ Product News and Updates.md | The GitHub Blog꞉ Product News and Updates]].
 
 - [ ] [[RSS/Feeds/The GitHub Blog꞉ Product News and Updates/Introducing GitHub Copilot Extensions꞉ Unlocking unlimited possibilities with ou⋯|Introducing GitHub Copilot Extensions꞉ Unlocking unlimited possibilities with ou⋯]]
 

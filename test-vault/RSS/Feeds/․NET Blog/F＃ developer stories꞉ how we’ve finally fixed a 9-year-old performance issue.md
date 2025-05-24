@@ -6,7 +6,7 @@ id: https://devblogs.microsoft.com/dotnet/?p=51967
 author: Petr Semkin
 link: https://devblogs.microsoft.com/dotnet/fsharp-developer-stories-how-weve-finally-fixed-a-9yearold-performance-issue/
 published: 2024-05-29T17:05:00.000Z
-feed: "[[․NET Blog]]"
+feed: "[[RSS/Feeds/․NET Blog.md | ․NET Blog]]"
 tags:
   - rss/F＃
   - rss/Performance
@@ -21,7 +21,7 @@ pinned: false
 > 
 > The post [F# developer stories: how we’ve finally fixed a 9-year-old performance issue](https://devblogs.microsoft.com/dotnet/fsharp-developer-stories-how-weve-finally-fixed-a-9yearold-performance-issue/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 
-🌐 Read article [online](https://devblogs.microsoft.com/dotnet/fsharp-developer-stories-how-weve-finally-fixed-a-9yearold-performance-issue/). ⤴ For other items in this feed see [[․NET Blog]].
+🌐 Read article [online](https://devblogs.microsoft.com/dotnet/fsharp-developer-stories-how-weve-finally-fixed-a-9yearold-performance-issue/). ⤴ For other items in this feed see [[RSS/Feeds/․NET Blog.md | ․NET Blog]].
 
 - [ ] [[RSS/Feeds/․NET Blog/F＃ developer stories꞉ how we’ve finally fixed a 9-year-old performance issue|F＃ developer stories꞉ how we’ve finally fixed a 9-year-old performance issue]]
 

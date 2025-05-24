@@ -6,7 +6,7 @@ id: https://devblogs.microsoft.com/dotnet/?p=51767
 author: Mike Kistler
 link: https://devblogs.microsoft.com/dotnet/whats-new-in-orleans-8/
 published: 2024-05-13T17:05:00.000Z
-feed: "[[․NET Blog]]"
+feed: "[[RSS/Feeds/․NET Blog.md | ․NET Blog]]"
 tags:
   - rss/ASP۔NET
   - rss/ASP۔NET_Core
@@ -26,7 +26,7 @@ pinned: false
 > 
 > The post [What’s new in Orleans 8 for Scalable Distributed Applications](https://devblogs.microsoft.com/dotnet/whats-new-in-orleans-8/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 
-🌐 Read article [online](https://devblogs.microsoft.com/dotnet/whats-new-in-orleans-8/). ⤴ For other items in this feed see [[․NET Blog]].
+🌐 Read article [online](https://devblogs.microsoft.com/dotnet/whats-new-in-orleans-8/). ⤴ For other items in this feed see [[RSS/Feeds/․NET Blog.md | ․NET Blog]].
 
 - [ ] [[RSS/Feeds/․NET Blog/What’s new in Orleans 8 for Scalable Distributed Applications|What’s new in Orleans 8 for Scalable Distributed Applications]]
 

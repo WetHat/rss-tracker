@@ -6,7 +6,7 @@ site: https://fettblog.eu/
 feedurl: https://localhost/test/fettblog․eu ∣ TypeScript, JavaScript, Jamstack/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-22T10:00:42.289Z
+updated: 2025-05-24T17:13:28.374Z
 interval: 593
 tags: []
 ---

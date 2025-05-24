@@ -4,9 +4,9 @@ aliases: []
 site: https://fosstodon.org/@WetHat
 feedurl: https://localhost/test/@WetHat (WetHat💦)/feed.xml
 itemlimit: 10
-status: "❌Saving 'Replied to꞉ @WetHat Newtonsoft,Json is not dead․ It's last release was 14 months⋯' of feed '@WetHat (WetHat💦) failed': File already exists."
-updated: 0
-interval: 1
+status: ✅
+updated: 2025-05-24T17:13:43.542Z
+interval: 5
 tags: []
 ---
 

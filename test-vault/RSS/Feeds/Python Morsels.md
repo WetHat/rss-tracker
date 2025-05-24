@@ -5,7 +5,7 @@ site: https://www.pythonmorsels.com/topics/
 feedurl: https://localhost/test/Python Morsels/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-22T10:00:33.454Z
+updated: 2025-05-24T17:13:19.670Z
 interval: 425
 tags: []
 ---

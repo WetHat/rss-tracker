@@ -5,7 +5,7 @@ id: https://www.pythonmorsels.com/variables-are-pointers/
 author: unknown
 link: https://www.pythonmorsels.com/variables-are-pointers/
 published: 2024-05-02T15:00:00.000Z
-feed: "[[Python Morsels]]"
+feed: "[[RSS/Feeds/Python Morsels.md | Python Morsels]]"
 tags: []
 pinned: false
 ---
@@ -21,7 +21,7 @@ pinned: false
 > 4. [Explicitly copying a list](https://www.pythonmorsels.com/variables-are-pointers/#explicitly-copying-a-list)
 > 5. [Variables are like pointers, not buckets](https://www.pythonmorsels.com/variables-are⋯
 
-🌐 Read article [online](https://www.pythonmorsels.com/variables-are-pointers/). ⤴ For other items in this feed see [[Python Morsels]].
+🌐 Read article [online](https://www.pythonmorsels.com/variables-are-pointers/). ⤴ For other items in this feed see [[RSS/Feeds/Python Morsels.md | Python Morsels]].
 
 - [ ] [[RSS/Feeds/Python Morsels/Variables are pointers in Python|Variables are pointers in Python]]
 

@@ -5,7 +5,7 @@ id: https://www.hanselman.com/blog/post/aba7f282-e752-48e8-8bf5-3c2e8c33c0e6
 author: Scott Hanselman
 link: https://feeds.hanselman.com/~/722495724/0/scotthanselman~I-got-tired
 published: 2022-12-18T18:27:11.000Z
-feed: "[[Scott Hanselman's Blog]]"
+feed: "[[RSS/Feeds/Scott Hanselman's Blog.md | Scott Hanselman's Blog]]"
 tags:
   - rss/Musings
 pinned: false
@@ -16,7 +16,7 @@ pinned: false
 > 
 > I did find joy on [TikTok](https://www.tiktok.com/@shanselman) and amassed a small group of like-minded followers there. I enjoy my [YouTube](https://www.youtube.com/shanselman) as well, and my [weekly podcast](https://www.hanselminutes.com/episodes) is going strong with nearly 900 (!) episodes of interviews with cool people. I've also recently [started posting on Mastodon](https://hachyderm.io/@shanselman) (a fediverse (federated universe)) Twitter alternative t⋯
 
-🌐 Read article [online](https://feeds.hanselman.com/~/722495724/0/scotthanselman~I-got-tired). ⤴ For other items in this feed see [[Scott Hanselman's Blog]].
+🌐 Read article [online](https://feeds.hanselman.com/~/722495724/0/scotthanselman~I-got-tired). ⤴ For other items in this feed see [[RSS/Feeds/Scott Hanselman's Blog.md | Scott Hanselman's Blog]].
 
 - [ ] [[RSS/Feeds/Scott Hanselman's Blog/I got tired|I got tired]]
 

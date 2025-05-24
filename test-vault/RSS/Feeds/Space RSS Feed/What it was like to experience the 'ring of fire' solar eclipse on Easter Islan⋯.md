@@ -6,7 +6,7 @@ id: 9VAkjx32VUJwcdrMgWxPjZ
 author: unknown
 link: https://www.space.com/annular-solar-eclipse-easter-island-first-hand-experience
 published: 2024-10-06T14:00:01.000Z
-feed: "[[Space RSS Feed]]"
+feed: "[[RSS/Feeds/Space RSS Feed.md | Space RSS Feed]]"
 tags:
   - rss/Eclipses
   - rss/Stargazing
@@ -16,7 +16,7 @@ pinned: false
 > [!abstract]  What it was like to experience the 'ring of fire' solar eclipse on Easter Island  (by unknown)
 > ![image|float:right|400](https://cdn.mos.cms.futurecdn.net/WXmUPgGJMZUS3rkgA5SokM.jpg) A few hundred eclipse chasers flocked to Chile's Rapa Nui to see annularity from the home of the mysterious moai.
 
-🌐 Read article [online](https://www.space.com/annular-solar-eclipse-easter-island-first-hand-experience). ⤴ For other items in this feed see [[Space RSS Feed]].
+🌐 Read article [online](https://www.space.com/annular-solar-eclipse-easter-island-first-hand-experience). ⤴ For other items in this feed see [[RSS/Feeds/Space RSS Feed.md | Space RSS Feed]].
 
 - [ ] [[RSS/Feeds/Space RSS Feed/What it was like to experience the 'ring of fire' solar eclipse on Easter Islan⋯|What it was like to experience the 'ring of fire' solar eclipse on Easter Islan⋯]]
 

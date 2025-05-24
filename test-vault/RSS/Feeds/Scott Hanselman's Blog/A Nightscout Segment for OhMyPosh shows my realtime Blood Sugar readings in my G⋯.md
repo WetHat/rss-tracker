@@ -6,7 +6,7 @@ id: https://www.hanselman.com/blog/post/495513ca-ca88-421f-8ade-50e4cf17d747
 author: Scott Hanselman
 link: https://feeds.hanselman.com/~/673947624/0/scotthanselman~A-Nightscout-Segment-for-OhMyPosh-shows-my-realtime-Blood-Sugar-readings-in-my-Git-Prompt
 published: 2021-11-23T20:02:00.000Z
-feed: "[[Scott Hanselman's Blog]]"
+feed: "[[RSS/Feeds/Scott Hanselman's Blog.md | Scott Hanselman's Blog]]"
 tags:
   - rss/Diabetes
   - rss/Open_Source
@@ -18,7 +18,7 @@ pinned: false
 > 
 > Now that I'm "Team [OhMyPosh](https://ohmyposh.dev/)" I have been meaning to write a Nightscout "segment" for my prompt. [Nightscout](https://www.nightscoutfoundation.org/how-you-can-help) is an open source self-hosted (there are [commercial hosts also like⋯
 
-🌐 Read article [online](https://feeds.hanselman.com/~/673947624/0/scotthanselman~A-Nightscout-Segment-for-OhMyPosh-shows-my-realtime-Blood-Sugar-readings-in-my-Git-Prompt). ⤴ For other items in this feed see [[Scott Hanselman's Blog]].
+🌐 Read article [online](https://feeds.hanselman.com/~/673947624/0/scotthanselman~A-Nightscout-Segment-for-OhMyPosh-shows-my-realtime-Blood-Sugar-readings-in-my-Git-Prompt). ⤴ For other items in this feed see [[RSS/Feeds/Scott Hanselman's Blog.md | Scott Hanselman's Blog]].
 
 - [ ] [[RSS/Feeds/Scott Hanselman's Blog/A Nightscout Segment for OhMyPosh shows my realtime Blood Sugar readings in my G⋯|A Nightscout Segment for OhMyPosh shows my realtime Blood Sugar readings in my G⋯]]
 

@@ -5,7 +5,7 @@ id: http://johncarlosbaez.wordpress.com/?p=37567
 author: John Baez
 link: https://johncarlosbaez.wordpress.com/2024/02/29/nicholas-ludford/
 published: 2024-02-29T10:00:24.000Z
-feed: "[[Azimuth]]"
+feed: "[[RSS/Feeds/Azimuth.md | Azimuth]]"
 tags:
   - rss/music
 pinned: false
@@ -14,7 +14,7 @@ pinned: false
 > [!abstract] Nicholas Ludford (by John Baez)
 > ![image|float:right|400](https://johncarlosbaez.files.wordpress.com/2024/02/blue_heron_peterhouse_partbooks.jpg) At first glance it’s amazing that one of the great British composers of the 1400s largely sank from view until his works were rediscovered in 1850. But the reason is not hard to find. When the Puritans took over England, they burned not only witches and heretics, but also books — and music! They hated ［…］
 
-🌐 Read article [online](https://johncarlosbaez.wordpress.com/2024/02/29/nicholas-ludford/). ⤴ For other items in this feed see [[Azimuth]].
+🌐 Read article [online](https://johncarlosbaez.wordpress.com/2024/02/29/nicholas-ludford/). ⤴ For other items in this feed see [[RSS/Feeds/Azimuth.md | Azimuth]].
 
 - [ ] [[RSS/Feeds/Azimuth/Nicholas Ludford|Nicholas Ludford]]
 

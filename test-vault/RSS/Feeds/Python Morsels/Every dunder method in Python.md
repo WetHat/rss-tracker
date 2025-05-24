@@ -5,7 +5,7 @@ id: https://www.pythonmorsels.com/every-dunder-method/
 author: unknown
 link: https://www.pythonmorsels.com/every-dunder-method/
 published: 2024-03-19T21:30:00.000Z
-feed: "[[Python Morsels]]"
+feed: "[[RSS/Feeds/Python Morsels.md | Python Morsels]]"
 tags: []
 pinned: false
 ---
@@ -22,7 +22,7 @@ pinned: false
 > 5. [Context managers 🚪](https://www.pythonmorsels.com/every-dunder-method/#context-managers)
 > 6. [Containers and collections 🗃️](https://www.pythonmorsels.com/every-dunder-method/#containers-and-collection⋯
 
-🌐 Read article [online](https://www.pythonmorsels.com/every-dunder-method/). ⤴ For other items in this feed see [[Python Morsels]].
+🌐 Read article [online](https://www.pythonmorsels.com/every-dunder-method/). ⤴ For other items in this feed see [[RSS/Feeds/Python Morsels.md | Python Morsels]].
 
 - [ ] [[RSS/Feeds/Python Morsels/Every dunder method in Python|Every dunder method in Python]]
 

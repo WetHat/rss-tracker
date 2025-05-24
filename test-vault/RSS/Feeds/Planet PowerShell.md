@@ -4,9 +4,9 @@ aliases: []
 site: https://www.planetpowershell.com/
 feedurl: https://localhost/test/Planet PowerShell/feed.xml
 itemlimit: 10
-status: "❌Saving 'Keep Microsoft Teams status Available instead of away using PowerShell' of feed 'Planet PowerShell failed': File already exists."
-updated: 0
-interval: 1
+status: ✅
+updated: 2025-05-24T17:13:24.099Z
+interval: 102
 tags: []
 ---
 

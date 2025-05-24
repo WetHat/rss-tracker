@@ -7162,7 +7162,7 @@ var require_previous_map = __commonJS({
   "node_modules/postcss/lib/previous-map.js"(exports, module2) {
     "use strict";
     var { existsSync, readFileSync } = require("fs");
-    var { dirname, join: join2 } = require("path");
+    var { dirname, join } = require("path");
     var { SourceMapConsumer, SourceMapGenerator } = require_source_map();
     function fromBase64(str) {
       if (Buffer) {
@@ -7222,11 +7222,11 @@ var require_previous_map = __commonJS({
           this.annotation = this.getAnnotationURL(css.substring(start, end));
         }
       }
-      loadFile(path2) {
-        this.root = dirname(path2);
-        if (existsSync(path2)) {
-          this.mapFile = path2;
-          return readFileSync(path2, "utf-8").toString().trim();
+      loadFile(path) {
+        this.root = dirname(path);
+        if (existsSync(path)) {
+          this.mapFile = path;
+          return readFileSync(path, "utf-8").toString().trim();
         }
       }
       loadMap(file, prev) {
@@ -7260,7 +7260,7 @@ var require_previous_map = __commonJS({
           return this.decodeInline(this.annotation);
         } else if (this.annotation) {
           let map = this.annotation;
-          if (file) map = join2(dirname(file), map);
+          if (file) map = join(dirname(file), map);
           return this.loadFile(map);
         }
       }
@@ -7912,9 +7912,9 @@ var require_map_generator = __commonJS({
         if (typeof this.mapOpts.annotation === "string") {
           from = dirname(resolve(from, this.mapOpts.annotation));
         }
-        let path2 = relative(from, file);
-        this.memoizedPaths.set(file, path2);
-        return path2;
+        let path = relative(from, file);
+        this.memoizedPaths.set(file, path);
+        return path;
       }
       previous() {
         if (!this.previousMaps) {
@@ -7969,12 +7969,12 @@ var require_map_generator = __commonJS({
           return window.btoa(unescape(encodeURIComponent(str)));
         }
       }
-      toFileUrl(path2) {
-        let cached = this.memoizedFileURLs.get(path2);
+      toFileUrl(path) {
+        let cached = this.memoizedFileURLs.get(path);
         if (cached) return cached;
         if (pathToFileURL) {
-          let fileURL = pathToFileURL(path2).toString();
-          this.memoizedFileURLs.set(path2, fileURL);
+          let fileURL = pathToFileURL(path).toString();
+          this.memoizedFileURLs.set(path, fileURL);
           return fileURL;
         } else {
           throw new Error(
@@ -7982,14 +7982,14 @@ var require_map_generator = __commonJS({
           );
         }
       }
-      toUrl(path2) {
-        let cached = this.memoizedURLs.get(path2);
+      toUrl(path) {
+        let cached = this.memoizedURLs.get(path);
         if (cached) return cached;
         if (sep === "\\") {
-          path2 = path2.replace(/\\/g, "/");
+          path = path.replace(/\\/g, "/");
         }
-        let url = encodeURI(path2).replace(/[#?]/g, encodeURIComponent);
-        this.memoizedURLs.set(path2, url);
+        let url = encodeURI(path).replace(/[#?]/g, encodeURIComponent);
+        this.memoizedURLs.set(path, url);
         return url;
       }
     };
@@ -12420,13 +12420,15 @@ var DEFAULT_SETTINGS = {
   rssDashboardName: "RSS Dashboard",
   rssTagmapName: "RSS Tagmap",
   rssDefaultImage: "",
-  defaultItemLimit: 100
+  defaultItemLimit: 100,
+  rssTagDomain: "rss",
+  rssDashboardPlacement: "insideFolder"
 };
 var TEMPLATES = ["RSS Feed", "RSS Item", "RSS Topic", "RSS Collection"];
 var _RSSTrackerSettings = class _RSSTrackerSettings {
   constructor(app, plugin) {
     /**
-     * The persisted settings settings
+     * The persisted settings.
      */
     this._data = { ...DEFAULT_SETTINGS };
     this.app = app;
@@ -12444,6 +12446,7 @@ var _RSSTrackerSettings = class _RSSTrackerSettings {
   set autoUpdateFeeds(value) {
     this._data.autoUpdateFeeds = value;
   }
+  // cached value of the RSS dashboard placement
   get rssHome() {
     var _a2;
     return (_a2 = this._data.rssHome) != null ? _a2 : DEFAULT_SETTINGS.rssHome;
@@ -12498,6 +12501,32 @@ var _RSSTrackerSettings = class _RSSTrackerSettings {
   set defaultItemLimit(value) {
     this._defaultItemLimit = value;
   }
+  get rssTagDomain() {
+    var _a2;
+    return (_a2 = this._data.rssTagDomain) != null ? _a2 : DEFAULT_SETTINGS.rssTagDomain;
+  }
+  set rssTagDomain(value) {
+    this._rssTagDomain = value;
+  }
+  /**
+   * Get the placement of an RSS dashboard.
+   *
+   * By default this setting is `insideFolder`, unless the 'Folder Notes' plugin is enabled, then it is taken
+   * from the Folder Notes plugin settings.
+   * The placement can only be changed by the 'Folder Notes' plugin.
+   */
+  get rssDashboardPlacement() {
+    var _a2;
+    const folderNotesSettings = (_a2 = this.app.plugins.plugins["folder-notes"]) == null ? void 0 : _a2.settings;
+    if (folderNotesSettings) {
+      const placement = folderNotesSettings.storageLocation;
+      this._rssDashboardPlacement = placement;
+      this.commit();
+      return placement;
+    } else {
+      return this._data.rssDashboardPlacement && DEFAULT_SETTINGS.rssDashboardPlacement;
+    }
+  }
   /**
    * Get the path to the RSS default image
    */
@@ -12515,6 +12544,10 @@ var _RSSTrackerSettings = class _RSSTrackerSettings {
     }
     return this._data.rssDefaultImage;
   }
+  /**
+   * Commit the changes to the settings.
+   * This method is called when the user closes the settings UI.
+   */
   async commit() {
     console.log("Commiting changes in settings");
     if (this._rssHome && this._rssHome !== this.rssHome) {
@@ -12644,7 +12677,6 @@ var import_obsidian4 = require("obsidian");
 
 // src/RSSAdapter.ts
 var import_obsidian2 = require("obsidian");
-var path = __toESM(require("path"), 1);
 
 // node_modules/@extractus/feed-extractor/src/utils/linker.js
 var isValid = (url = "") => {
@@ -15292,19 +15324,45 @@ var HTMLxlate = class _HTMLxlate {
 
 // src/RSSAdapter.ts
 var RSSAdapter = class _RSSAdapter {
+  /**
+   * Get the (lazily evaluated) frontmatter of the underlying file.
+   */
+  get frontmatter() {
+    var _a2, _b;
+    if (!this._frontmatter) {
+      this._frontmatter = (_b = (_a2 = this.plugin.app.metadataCache.getFileCache(this.file)) == null ? void 0 : _a2.frontmatter) != null ? _b : {};
+    }
+    return this._frontmatter;
+  }
+  /**
+   * Remove the hash (`#`) from hashtags.
+   * @param hashtags List of hashtags to convert to plain tags.
+   * @returns Listof plain tags without the leading hash.
+   */
   static toPlaintags(hashtags) {
     return hashtags ? hashtags.map((h) => h.replace(/^#*/, "")) : [];
   }
+  /**
+   * The frontmatter tags (without the `#`).
+   */
   get tags() {
     return _RSSAdapter.toPlaintags(this.frontmatter.tags);
   }
+  /**
+   * Get the filemanager object used by the adapter.
+   */
   get filemgr() {
     return this.plugin.filemgr;
   }
+  /**
+   * Create a new adapter instance.
+   * @param plugin the plugin instance.
+   * @param file the file to create the adapter for.
+   * @param frontmatter Frontmatter to use. If not provided, the frontmatter is read from the file.
+   */
   constructor(plugin, file, frontmatter) {
-    var _a2, _b;
     this.plugin = plugin;
-    this.frontmatter = frontmatter != null ? frontmatter : (_b = (_a2 = plugin.app.metadataCache.getFileCache(file)) == null ? void 0 : _a2.frontmatter) != null ? _b : {};
+    this._frontmatter = frontmatter;
     this.file = file;
   }
   /**
@@ -15319,6 +15377,89 @@ var RSSAdapter = class _RSSAdapter {
         }
       }
     });
+  }
+};
+var RSSdashboardAdapter = class _RSSdashboardAdapter extends RSSAdapter {
+  /**
+   * Get the path to a RSS dashboard file for a given folder.
+   *
+   * @param folder The folder to get the dashboard for.
+   * @param placement The placement of the dashboard. If set to "insideFolder", the dashboard is in the folder itself.
+   * @returns Path to the RSS dashboard file. The dashboard may or may not exist.
+   */
+  static dashboardPath(folder, placement) {
+    var _a2, _b;
+    const dashboardBaseName = _RSSdashboardAdapter.dashboardName(folder);
+    if (placement === "insideFolder") {
+      return folder.path + "/" + dashboardBaseName + ".md";
+    } else {
+      return ((_b = (_a2 = folder.parent) == null ? void 0 : _a2.path) != null ? _b : "") + "/" + dashboardBaseName + ".md";
+    }
+  }
+  /**
+   * Get the RSS dashboard file for a given folder.
+   *
+   * @param folder The folder to get the dashboard for.
+   * @param placement The placement of the dashboard. If set to "insideFolder", the dashboard is in the folder itself.
+   * @returns The RSS dashboard file or null if it does not exist.
+   */
+  static dashboard(folder, placement) {
+    var _a2, _b;
+    const dashboardBaseName = _RSSdashboardAdapter.dashboardName(folder), dashboardPath = placement === "insideFolder" ? folder.path + "/" + dashboardBaseName + ".md" : ((_b = (_a2 = folder.parent) == null ? void 0 : _a2.path) != null ? _b : "") + "/" + dashboardBaseName + ".md";
+    return folder.vault.getFileByPath(dashboardPath);
+  }
+  /**
+   * Get the folder associated with a dashboard file.
+   *
+   * @param dashboard The dashboard file to get the folder for.
+   * @returns The folder associated with the dashboard (if any).
+   */
+  static dashboardFolder(dashboard) {
+    var _a2, _b, _c;
+    const folderName = dashboard.basename;
+    if (((_a2 = dashboard.parent) == null ? void 0 : _a2.name) === folderName) {
+      return dashboard.parent;
+    }
+    const folder = ((_c = (_b = dashboard.parent) == null ? void 0 : _b.path) != null ? _c : "") + "/" + folderName;
+    return dashboard.vault.getFolderByPath(folder);
+  }
+  /**
+   * Get name of a dashboard file for a given folder.
+   *
+   * ❗Uses the `folder Note` name template to generate the dashboard file name.
+   *
+   * @param folder The folder to get the dashboard name for.
+   * @returns The name of the dashboard file (without the `.md` extension).
+   */
+  static dashboardName(folder) {
+    return folder.name;
+  }
+  /**
+   * Factory method to create a new instance of an RSS dashboard adapter for a folder.
+   *
+   * @param cTor the constructor of the adapter to create.
+   * @param plugin The plugin instance.
+   * @param folder The folder to create the dashboard adapterfor.
+   * @param placement The placement of the dashboard. If set to "insideFolder", the dashboard is in the folder itself.
+   * @returns A new instance of an adapter of type `T` or `null` if the dashboard does not exist.
+   */
+  static createFromFolder(cTor, plugin, folder, placement) {
+    const dashboard = _RSSdashboardAdapter.dashboard(folder, placement);
+    if (!dashboard) {
+      return null;
+    }
+    return new cTor(plugin, folder, dashboard);
+  }
+  static createFromFile(cTor, plugin, file, frontmatter) {
+    const folder = _RSSdashboardAdapter.dashboardFolder(file);
+    if (!folder) {
+      return null;
+    }
+    return new cTor(plugin, folder, file, frontmatter);
+  }
+  constructor(plugin, folder, file, frontmatter) {
+    super(plugin, file, frontmatter);
+    this.folder = folder;
   }
 };
 var _RSSitemAdapter = class _RSSitemAdapter extends RSSAdapter {
@@ -15341,7 +15482,7 @@ var _RSSitemAdapter = class _RSSitemAdapter extends RSSAdapter {
     return (_a2 = new Date(this.frontmatter.published).valueOf()) != null ? _a2 : (/* @__PURE__ */ new Date()).valueOf();
   }
   /**
-   * The article link.
+   * The article web-link.
    *
    * @returns the hyperlink to the original article.
    */
@@ -15371,7 +15512,7 @@ var _RSSitemAdapter = class _RSSitemAdapter extends RSSAdapter {
     return false;
   }
   /**
-   * Factory methos to create a new instance of an RSS item
+   * Factory method to create a new instance of an RSS item
    * @param item - the parse item of an RSS feed.
    * @param feed - The feed this item is a part of
    * @returns A new instance of a RSS item file adapter.
@@ -15420,7 +15561,7 @@ var _RSSitemAdapter = class _RSSitemAdapter extends RSSAdapter {
       author: author != null ? author : "unknown",
       link: link != null ? link : "unknown",
       published: published != null ? published : (/* @__PURE__ */ new Date()).valueOf(),
-      feed: `[[${itemfolder.name}]]`,
+      feed: `[[${feed.file.path} | ${feed.file.basename}]]`,
       tags: tags.map((t) => tagmgr.mapHashtag(t.startsWith("#") ? t : "#" + t).slice(1)),
       pinned: false
     }, dataMap = {
@@ -15433,7 +15574,7 @@ var _RSSitemAdapter = class _RSSitemAdapter extends RSSAdapter {
       "{{content}}": content != null ? content : "",
       "{{feedLink}}": frontmatter.feed
     };
-    const file = await feed.filemgr.createFile(itemfolder.path, item.fileName, "RSS Item", dataMap, true);
+    const file = await feed.filemgr.createFileFromTemplate(itemfolder, item.fileName, "RSS Item", dataMap, true);
     if (title && file.basename !== title) {
       frontmatter.aliases = [title];
     }
@@ -15450,9 +15591,8 @@ var _RSSitemAdapter = class _RSSitemAdapter extends RSSAdapter {
 };
 _RSSitemAdapter.EMBEDDING_MATCHER = /!\[[^\]]*\]\(([^\)]+)\)\s*/;
 var RSSitemAdapter = _RSSitemAdapter;
-var _RSSfeedAdapter = class _RSSfeedAdapter extends RSSAdapter {
-  // lazily evaluated
-  static async create(plugin, feed) {
+var _RSSfeedAdapter = class _RSSfeedAdapter extends RSSdashboardAdapter {
+  static async create(plugin, feed, placement) {
     const { title, site, description } = feed, defaultImage = await plugin.settings.getRssDefaultImagePath(), image = feed.image, frontmatter = {
       role: "rssfeed",
       aliases: [],
@@ -15470,11 +15610,11 @@ var _RSSfeedAdapter = class _RSSfeedAdapter extends RSSAdapter {
       "{{description}}": description ? (0, import_obsidian2.htmlToMarkdown)(description) : "",
       "{{image}}": image ? formatImage(image) : `![[${defaultImage}|float:right|100x100]]`
     };
-    const filemgr = plugin.filemgr, dashboard = await filemgr.createFile(plugin.settings.rssFeedFolderPath, feed.fileName, "RSS Feed", dataMap, true);
+    const filemgr = plugin.filemgr, feedsFolder = await filemgr.ensureFolderExists(plugin.settings.rssFeedFolderPath), feedItemsFolder = await plugin.filemgr.createFolder(feedsFolder, feed.fileName), dashboardLocation = placement === "insideFolder" ? feedItemsFolder : feedsFolder, dashboard = await filemgr.createFileFromTemplate(dashboardLocation, feed.fileName, "RSS Feed", dataMap, true);
     if (title && dashboard.basename !== title) {
       frontmatter.aliases = [title];
     }
-    const adapter = new _RSSfeedAdapter(plugin, dashboard, frontmatter);
+    const adapter = new _RSSfeedAdapter(plugin, feedItemsFolder, dashboard, frontmatter);
     try {
       await adapter.update(feed);
     } catch (err) {
@@ -15484,10 +15624,11 @@ var _RSSfeedAdapter = class _RSSfeedAdapter extends RSSAdapter {
     await adapter.commitFrontmatterChanges();
     return adapter;
   }
-  constructor(plugin, feed, frontmatter) {
-    var _a2;
-    super(plugin, feed, frontmatter);
-    this._folder = (_a2 = feed.vault.getFolderByPath(this.itemFolderPath)) != null ? _a2 : void 0;
+  get feeds() {
+    return [this];
+  }
+  constructor(plugin, folder, feed, frontmatter) {
+    super(plugin, folder, feed, frontmatter);
   }
   /**
    * Get the feed status.
@@ -15546,7 +15687,7 @@ var _RSSfeedAdapter = class _RSSfeedAdapter extends RSSAdapter {
     this.frontmatter.itemlimit = value;
   }
   /**
-   * Get the fedd suspension state.
+   * Get the feed suspension state.
    * @returns `true` if feed updates are suspended, `false` otherwise.
    */
   get suspended() {
@@ -15563,25 +15704,26 @@ var _RSSfeedAdapter = class _RSSfeedAdapter extends RSSAdapter {
   set error(message) {
     this.status = _RSSfeedAdapter.ERROR_STATUS_ICON + message;
   }
-  get itemFolderPath() {
-    var _a2, _b;
-    return (0, import_obsidian2.normalizePath)(path.join((_b = (_a2 = this.file.parent) == null ? void 0 : _a2.path) != null ? _b : "", this.file.basename));
-  }
-  async itemFolder() {
-    return this.filemgr.ensureFolderExists(this.itemFolderPath);
+  itemFolder() {
+    return this.folder;
   }
   /**
-   * Get all items in this RSS feed currently in Obsidian.
-   * @returns proxies for all RSS items in an RSS feed.
+   * Get all items in this RSS feed currently downloaded in Obsidian.
+   * @returns adapter for all RSS items in an RSS feed.
    */
   get items() {
-    return this._folder ? this._folder.children.map((c) => c instanceof import_obsidian2.TFile && c.extension === "md" ? this.filemgr.getAdapter(c) : void 0).filter((p) => p instanceof RSSitemAdapter) : [];
+    const meta = this.plugin.app.metadataCache;
+    return this.folder ? this.folder.children.filter((c) => c instanceof import_obsidian2.TFile).map((f) => {
+      var _a2;
+      const frontmatter = (_a2 = meta.getFileCache(f)) == null ? void 0 : _a2.frontmatter;
+      return frontmatter && frontmatter.role === "rssitem" ? new RSSitemAdapter(this.plugin, f, frontmatter) : null;
+    }).filter((f) => f !== null) : [];
   }
   async rename(newBasename) {
     if (!newBasename) {
       return false;
     }
-    const vault = this.plugin.app.vault, itemFolder = await this.itemFolder(), items = this.items, newPath = this.plugin.settings.rssFeedFolderPath + "/" + newBasename;
+    const vault = this.plugin.app.vault, itemFolder = this.itemFolder(), items = this.items, newPath = this.plugin.settings.rssFeedFolderPath + "/" + newBasename;
     console.log(`${this.file.basename} -> ${newBasename}`);
     items.forEach(async (item) => {
       item.feed = newBasename;
@@ -15647,7 +15789,7 @@ _RSSfeedAdapter.OK_STATUS_ICON = "\u2705";
 var RSSfeedAdapter = _RSSfeedAdapter;
 var RSScollectionAdapter = class _RSScollectionAdapter extends RSSAdapter {
   static async create(plugin) {
-    const file = await plugin.filemgr.createFile(plugin.settings.rssCollectionsFolderPath, "New Feed Collection", "RSS Collection"), frontmatter = {
+    const folder = await plugin.filemgr.ensureFolderExists(plugin.settings.rssCollectionsFolderPath), file = await plugin.filemgr.createFileFromTemplate(folder, "New Feed Collection", "RSS Collection"), frontmatter = {
       role: "rsscollection",
       tags: ["nil"],
       allof: [],
@@ -15792,7 +15934,7 @@ var RenameRSSfeedModalCommand = class extends RSSTrackerCommandBase {
   checkCallback(checking) {
     const active = this.app.workspace.getActiveFile();
     if (active) {
-      const adapter = this.plugin.filemgr.getAdapter(active);
+      const adapter = this.plugin.filemgr.createAdapter(active, "rssfeed");
       if (checking) {
         return adapter instanceof RSSfeedAdapter;
       }
@@ -15810,7 +15952,7 @@ var UpdateRSSfeedCommand = class extends RSSTrackerCommandBase {
   checkCallback(checking) {
     const active = this.app.workspace.getActiveFile();
     if (active) {
-      const adapter = this.plugin.filemgr.getAdapter(active);
+      const adapter = this.plugin.filemgr.createAdapter(active, "rssfeed", "rsscollection");
       if (checking) {
         return adapter instanceof RSSfeedAdapter && !adapter.suspended || adapter instanceof RSScollectionAdapter;
       }
@@ -15844,9 +15986,9 @@ var MarkAllRSSitemsReadCommand = class extends RSSTrackerCommandBase {
   checkCallback(checking) {
     const active = this.app.workspace.getActiveFile();
     if (active) {
-      const adapter = this.plugin.filemgr.getAdapter(active);
+      const adapter = this.plugin.filemgr.createAdapter(active, "rssfeed", "rsscollection");
       if (checking) {
-        return adapter instanceof RSSfeedAdapter || adapter instanceof RSScollectionAdapter;
+        return adapter;
       }
       if (adapter instanceof RSSfeedAdapter || adapter instanceof RSScollectionAdapter) {
         this.plugin.feedmgr.completeReadingTasks(adapter).then(() => this.plugin.refreshActiveFile());
@@ -15860,8 +16002,9 @@ var NewRSSTopicCommand = class extends RSSTrackerCommandBase {
   constructor(plugin) {
     super(plugin, "rss-tracker-new-topic", "New RSS topic");
   }
-  callback() {
-    this.plugin.filemgr.createFile(this.plugin.settings.rssTopicsFolderPath, "New Topic", "RSS Topic").then((topic) => {
+  async callback() {
+    const topicFolder = await this.plugin.filemgr.ensureFolderExists(this.plugin.settings.rssTopicsFolderPath);
+    await this.plugin.filemgr.createFileFromTemplate(topicFolder, "New Topic", "RSS Topic").then((topic) => {
       const leaf = this.app.workspace.getLeaf(false);
       leaf.openFile(topic).catch((reason) => new import_obsidian4.Notice(reason.message));
     }).catch((reason) => new import_obsidian4.Notice(`RSS topic could not be created! ${reason.message}`));
@@ -15931,7 +16074,7 @@ var FeedManager = class {
   async createFeedFromFile(xml) {
     await this._plugin.tagmgr.updateTagMap();
     const feedXML = await this._app.vault.read(xml);
-    return RSSfeedAdapter.create(this._plugin, new TrackedRSSfeed(feedXML, "https://localhost/" + xml.path));
+    return RSSfeedAdapter.create(this._plugin, new TrackedRSSfeed(feedXML, "https://localhost/" + xml.path), this._plugin.settings.rssDashboardPlacement);
   }
   /**
   * Create an RSS feed Markdown representation from a hyperlink.
@@ -15939,9 +16082,9 @@ var FeedManager = class {
   * The Markdown representation consists of
   * - a feed dashboard
   * - a directory whic has the same name as the dashboard (without the .md extension)
-  *   containingthe RSS items of the feed,
+  *   containing the RSS items of the feed,
   *
-  * The file system layout of an Obsidian RSS feed looks like this:
+  * The file system layout of an Obsidian RSS feed looks like this (placement = "parentFolder"):
   * ~~~
   * 📂
   *  ├─ <feedname>.md ← dashboard
@@ -15962,7 +16105,7 @@ var FeedManager = class {
       method: "GET"
     });
     await this._plugin.tagmgr.updateTagMap();
-    return RSSfeedAdapter.create(this._plugin, new TrackedRSSfeed(feedXML, url));
+    return RSSfeedAdapter.create(this._plugin, new TrackedRSSfeed(feedXML, url), this._plugin.settings.rssDashboardPlacement);
   }
   /**
    * Update an RSS feed according to the configured frequency.
@@ -15996,9 +16139,9 @@ var FeedManager = class {
     return itemCount;
   }
   get feeds() {
-    const feedFolder = this._app.vault.getFolderByPath(this._plugin.settings.rssFeedFolderPath);
+    const placement = this._plugin.settings.rssDashboardPlacement, feedFolder = this._app.vault.getFolderByPath(this._plugin.settings.rssFeedFolderPath);
     if (feedFolder) {
-      return feedFolder.children.map((f) => f instanceof import_obsidian5.TFile ? this._filemgr.getAdapter(f) : null).filter((p) => p instanceof RSSfeedAdapter);
+      return feedFolder.children.filter((f) => f instanceof import_obsidian5.TFolder).map((f) => RSSdashboardAdapter.createFromFolder(RSSfeedAdapter, this._plugin, f, placement)).filter((p) => p instanceof RSSfeedAdapter);
     }
     return [];
   }
@@ -16033,12 +16176,7 @@ var FeedManager = class {
     }
   }
   async completeReadingTasks(adapter) {
-    let completed = 0;
-    if (adapter instanceof RSSfeedAdapter) {
-      completed = await adapter.completeReadingTasks();
-    } else if (adapter instanceof RSScollectionAdapter) {
-      completed = await adapter.completeReadingTasks();
-    }
+    let completed = await adapter.completeReadingTasks;
     new import_obsidian5.Notice(`${completed} items taken off the '${adapter.file.basename}' reading list`, 3e4);
   }
   /**
@@ -16102,7 +16240,7 @@ var MarkAllItemsReadMenuItem = class extends RSSTrackerMenuItem {
     if (!dashboard) {
       return;
     }
-    const adapter = this.plugin.filemgr.getAdapter(dashboard);
+    const adapter = this.plugin.filemgr.createAdapter(dashboard, "rssfeed", "rsscollection");
     if (adapter instanceof RSSfeedAdapter || adapter instanceof RSScollectionAdapter) {
       menu.addItem((item) => {
         item.setTitle("Mark all RSS items as read").setIcon("list-checks").onClick(async () => {
@@ -16148,7 +16286,7 @@ var UpdateRSSfeedMenuItem = class extends RSSTrackerMenuItem {
       return;
     }
     menu.addSeparator();
-    const adapter = this.plugin.filemgr.getAdapter(file);
+    const adapter = this.plugin.filemgr.createAdapter(file, "rssfeed", "rsscollection");
     let title;
     if (adapter instanceof RSSfeedAdapter && !adapter.suspended) {
       title = "Update RSS feed";
@@ -16187,7 +16325,7 @@ var RenameRSSfeedMenuItem = class extends RSSTrackerMenuItem {
     if (!file) {
       return;
     }
-    const adapter = this.plugin.filemgr.getAdapter(file);
+    const adapter = this.plugin.filemgr.createAdapter(file, "rssfeed");
     let title;
     if (adapter instanceof RSSfeedAdapter) {
       menu.addItem((item) => {
@@ -16216,7 +16354,7 @@ var ToggleRSSfeedActiveStatusMenuItem = class extends RSSTrackerMenuItem {
     if (!file) {
       return;
     }
-    const adapter = this.plugin.filemgr.getAdapter(file);
+    const adapter = this.plugin.filemgr.createAdapter(file, "rssfeed");
     if (!(adapter instanceof RSSfeedAdapter)) {
       return;
     }
@@ -16251,7 +16389,8 @@ var _DataViewJSTools = class _DataViewJSTools {
   static getHashtagsAsString(page) {
     return page.file.etags.map((t) => _DataViewJSTools.toHashtag(t)).join(" ");
   }
-  constructor(dv, settings) {
+  constructor(plugin, dv, settings) {
+    this.plugin = plugin;
     this.dv = dv;
     this.settings = settings;
   }
@@ -16307,7 +16446,7 @@ var _DataViewJSTools = class _DataViewJSTools {
   get fromFeeds() {
     const settings = this.settings, feedsFolder = settings.app.vault.getFolderByPath(settings.rssFeedFolderPath);
     if (feedsFolder) {
-      const feeds = feedsFolder.children.filter((c) => c instanceof import_obsidian7.TFile && c.extension === "md").map((f) => '"' + f.path + '"');
+      const feeds = feedsFolder.children.filter((c) => c instanceof import_obsidian7.TFolder).map((f) => '"' + f.path + '"');
       return feeds.length > 0 ? "(" + feeds.join(" OR ") + ")" : "/";
     }
     return "/";
@@ -16334,8 +16473,8 @@ var _DataViewJSTools = class _DataViewJSTools {
    * @param type - Type of the pages to get.
    * @returns The dataview array of files in a given folder with a given type.
    */
-  getPagesOfFolder(path2, type) {
-    const folder = this.settings.app.vault.getFolderByPath(path2);
+  getPagesOfFolder(path, type) {
+    const folder = this.settings.app.vault.getFolderByPath(path);
     if (folder) {
       const pages = folder.children.filter((fof) => fof instanceof import_obsidian7.TFile).map((f) => this.dv.page(f.path)).filter((f) => (f == null ? void 0 : f.role) === type);
       return this.dv.array(pages);
@@ -16349,7 +16488,7 @@ var _DataViewJSTools = class _DataViewJSTools {
    * @returns dataview array of RSS items.
    */
   rssItemsOfFeed(feed) {
-    return this.getPagesOfFolder(feed.file.folder + "/" + feed.file.name, "rssitem");
+    return this.dv.array(feed.file.inlinks.map((inlink) => this.dv.page(inlink.path)).where((p) => p.role === "rssitem"));
   }
   /**
    * Get a list of all RSS feeds.
@@ -16357,7 +16496,7 @@ var _DataViewJSTools = class _DataViewJSTools {
    * @returns a dataview array of all RSS feeds.
    */
   get rssFeeds() {
-    return this.getPagesOfFolder(this.settings.rssFeedFolderPath, "rssfeed");
+    return this.dv.array(this.plugin.feedmgr.feeds.map((feed) => this.dv.page(feed.file.path)));
   }
   rssFeedsOfCollection(collection) {
     let from = this.fromFeedsOfCollection(collection);
@@ -16403,8 +16542,8 @@ var _DataViewJSTools = class _DataViewJSTools {
    * @returns List of duplicates, if any.
    */
   async rssDuplicateItems(item) {
-    const link = item.link, path2 = item.file.path, pages = await this.rssItems;
-    return pages.where((rec) => rec.role === "rssitem" && rec.link === link && rec.file.path !== path2);
+    const link = item.link, path = item.file.path, pages = await this.rssItems;
+    return pages.where((rec) => rec.role === "rssitem" && rec.link === link && rec.file.path !== path);
   }
   /**
    * get a task list for items which refer to the same article.
@@ -16662,11 +16801,11 @@ var _DataViewJSTools = class _DataViewJSTools {
   /**
    * Display collapsible reading tasks grouped by feed.
    *
-   * @param feeds - Collection of feeds
+   * @param items - Item list to get the reading tasks from.
    * @param read - `false` to collect and display unchecked (unread) reading tasks: `true` otherwise.
    * @param expand - `undefined` render immediately using a generic dataview table;
-   *                       `true` render table immediately and expand the table by default;
-   *                       `false` to collapse the table by default and render the table on-demand.
+   *                 `true` render table immediately and expand the table by default;
+   *                 `false` to collapse the table by default and render the table on-demand.
    */
   async rssReadingListByFeed(items, read = false, expand = false) {
     const groups = items.groupBy((i) => i.feed).sort((g) => g.key, "asc");
@@ -16712,10 +16851,24 @@ var RSSTrackerSettingBase = class extends import_obsidian8.Setting {
     this.settingsTab = settingsTab;
   }
 };
+var RSSTagDomain = class extends RSSTrackerSettingBase {
+  constructor(settingsTab) {
+    super(settingsTab);
+    this.setName("RSS Tag Domain").setDesc("The domain for hashtags coming from in RSS feeds. This domain isolates RSS tags from the user's knowledge graph until explicitely mapped.").addText((tg) => {
+      tg.setPlaceholder(DEFAULT_SETTINGS.rssTagDomain.toString());
+      if (this.settings.rssTagDomain !== DEFAULT_SETTINGS.rssTagDomain) {
+        tg.setValue(this.settings.rssTagDomain);
+      }
+      tg.onChange((evt) => {
+        this.settings.rssTagDomain = tg.getValue();
+      });
+    });
+  }
+};
 var RSSTagmapNameSetting = class extends RSSTrackerSettingBase {
   constructor(settingsTab) {
     super(settingsTab);
-    this.setName("RSS tag map name").setDesc("THe name of the tag map Markdown file in the RSS Home folder which contains a table mapping tags found in feeds to tags in the local knowledge graph.").addText((ta) => {
+    this.setName("RSS tag map name").setDesc("The name of the tag map Markdown file in the RSS Home folder which contains a table mapping tags found in feeds to tags in the local knowledge graph.").addText((ta) => {
       ta.setPlaceholder(DEFAULT_SETTINGS.rssTagmapName).onChange((value) => {
         this.settings.rssTagmapName = value;
       });
@@ -16852,13 +17005,14 @@ var RSSTrackerSettingTab = class extends import_obsidian8.PluginSettingTab {
     containerEl.empty();
     const frag = containerEl.doc.createDocumentFragment();
     new RSSHomeSetting(this);
-    new RSSFeedFolderSetting(this);
     new RSSCollectionsFolderSetting(this);
     new RSSTopicsFolderSetting(this);
+    new RSSFeedFolderSetting(this);
+    new RSSTagDomain(this);
     new RSSautoUpdateSetting(this);
     new RSSDashboardNameSetting(this);
-    new RSSTagmapNameSetting(this);
     new RSSDefaultItemLimitSetting(this);
+    new RSSTagmapNameSetting(this);
   }
   hide() {
     this.settings.commit();
@@ -16867,6 +17021,16 @@ var RSSTrackerSettingTab = class extends import_obsidian8.PluginSettingTab {
 
 // src/RSSFileManager.ts
 var _RSSfileManager = class _RSSfileManager {
+  constructor(app, plugin) {
+    this._adapterFactories = {
+      "rssfeed": (f, fm) => RSSdashboardAdapter.createFromFile(RSSfeedAdapter, this._plugin, f, fm),
+      "rssitem": (f, fm) => new RSSitemAdapter(this._plugin, f, fm),
+      "rsscollection": (f, fm) => new RSScollectionAdapter(this._plugin, f, fm)
+    };
+    this._app = app;
+    this._vault = app.vault;
+    this._plugin = plugin;
+  }
   get settings() {
     return this._plugin.settings;
   }
@@ -16876,30 +17040,35 @@ var _RSSfileManager = class _RSSfileManager {
   get metadataCache() {
     return this._app.metadataCache;
   }
-  constructor(app, plugin) {
-    this._app = app;
-    this._vault = app.vault;
-    this._plugin = plugin;
+  /**
+   * Get the dashboard file for a given folder.
+   * @param folder the folder to get the dashboard for.
+   * @param placement the placement of the dashboard. If set to "insideFolder", the dashboard is in the folder itself.
+   *       If set to "outsideFolder", the dashboard is in the parent folder.
+   * @returns the dashboard file or null if it does not exist.
+   */
+  getFolderDashboard(folder, placement = "insideFolder") {
+    var _a2, _b;
+    const dashboardName = folder.name, dashboardPath = (placement === "insideFolder" ? folder.path : (_b = (_a2 = folder.parent) == null ? void 0 : _a2.path) != null ? _b : "") + "/" + dashboardName + ".md";
+    return this._vault.getFileByPath(dashboardPath);
   }
   /**
-   * Factory method to create proxies for RSS files
-   * @param file - An RSS file to create the adapter for.
-   * @returns The appropriate adapter, if it exists.
+   * Get the RSS adapter for a given file.
+   * @param file the file to get the adapter for.
+   * @param types the types of adapters to create. The adapter is created if the file has a frontmatter property `role`
+   *              that matches one of the given types.
+   * @returns the adapter or null if it does not exist.
    */
-  getAdapter(file) {
+  createAdapter(file, ...types) {
     var _a2;
-    const frontmatter = (_a2 = this.metadataCache.getFileCache(file)) == null ? void 0 : _a2.frontmatter;
-    if (frontmatter) {
-      switch (frontmatter.role) {
-        case "rssfeed":
-          return new RSSfeedAdapter(this._plugin, file, frontmatter);
-        case "rssitem":
-          return new RSSitemAdapter(this._plugin, file, frontmatter);
-        case "rsscollection":
-          return new RSScollectionAdapter(this._plugin, file, frontmatter);
+    const frontmatter = (_a2 = this._plugin.app.metadataCache.getFileCache(file)) == null ? void 0 : _a2.frontmatter, role = frontmatter == null ? void 0 : frontmatter.role;
+    if (role && role in types) {
+      const factory = this._adapterFactories[role];
+      if (factory) {
+        return factory(file, frontmatter);
       }
     }
-    return void 0;
+    return null;
   }
   /**
    * Expand `{{mustache}}` placeholders with data from a property bag.
@@ -16966,9 +17135,29 @@ var _RSSfileManager = class _RSSfileManager {
     }
     return false;
   }
-  ensureFolderExists(path2) {
+  async ensureFolderExists(path) {
     var _a2;
-    return (_a2 = this.app.vault.getFolderByPath(path2)) != null ? _a2 : this.app.vault.createFolder(path2);
+    return (_a2 = this.app.vault.getFolderByPath(path)) != null ? _a2 : await this.app.vault.createFolder(path);
+  }
+  /**
+   * Create a folder with a unique name in a given context.
+   * @param parentFolder the parent folder in which to create the new folder
+   * @param folderName the name of the new folder
+   * @returns A `Promise` to the new folder handle.
+   */
+  async createFolder(parentFolder, folderName) {
+    const parentPath = parentFolder.path;
+    let uniqueFolderName = folderName, index = 1, folder = null;
+    do {
+      const uniqueFolderPath = parentPath + "/" + uniqueFolderName;
+      try {
+        folder = await this._vault.createFolder(uniqueFolderPath);
+      } catch (e) {
+        uniqueFolderName = `${folderName} (${index})`;
+        index++;
+      }
+    } while (folder === null);
+    return folder;
   }
   /**
    * Create a file from an RSS template.
@@ -16978,28 +17167,27 @@ var _RSSfileManager = class _RSSfileManager {
    *
    * ❗The mustache token `{{fileLink}}` is automatically added to the data object. This token links to the generated file (no file extension) and can be used to create wiki-links.
    *
-   * @param folderPath - THe location of the new file
+   * @param folder - The folder to create the file in.
    * @param basename - The basename of the new file (without fie extension)
    * @param templateName - The template to use
    * @param data - Optional data map for replacing the mustache tokens in the template with custom data.
    * @param postProcess - Flag indicating if this file requires post processing
    * @returns A `Promise` to the file handle.
    */
-  async createFile(folderPath, basename, templateName, data = {}, postProcess = false) {
-    await this.ensureFolderExists(folderPath);
-    let uniqueBasename = basename, uniqueFilepath = folderPath + "/" + basename, index = 1;
+  async createFileFromTemplate(folder, basename, templateName, data = {}, postProcess = false) {
+    let uniqueBasename = basename, folderPath = folder.path, uniqueFilepath = folderPath + "/" + basename + ".md", index = 1;
     const fs = this._vault.adapter;
     while (await fs.exists(uniqueFilepath)) {
       uniqueBasename = `${basename} (${index})`;
-      uniqueFilepath = folderPath + "/" + uniqueBasename;
+      uniqueFilepath = folderPath + "/" + uniqueBasename + ".md";
       index++;
     }
-    data["{{fileLink}}"] = `[[${uniqueFilepath}|${uniqueBasename}]]`;
+    data["{{fileLink}}"] = `[[${folderPath + "/" + uniqueBasename}|${uniqueBasename}]]`;
     const tpl = await this.readTemplate(templateName), content = this.expandTemplate(tpl, data);
     if (postProcess) {
-      this._plugin.tagmgr.registerFileForPostProcessing(uniqueFilepath + ".md");
+      this._plugin.tagmgr.registerFileForPostProcessing(uniqueFilepath);
     }
-    return this._vault.create(uniqueFilepath + ".md", content);
+    return this._vault.create(uniqueFilepath, content);
   }
 };
 /**
@@ -17060,9 +17248,9 @@ var RSSTagManager = class {
    * @param path - Vault relative path to file
    * @returns the registered path
    */
-  registerFileForPostProcessing(path2) {
-    this._postProcessingRegistry.add(path2);
-    return path2;
+  registerFileForPostProcessing(path) {
+    this._postProcessingRegistry.add(path);
+    return path;
   }
   /**
    * Get or create the tag map file handle.
@@ -17275,7 +17463,7 @@ var RSSTrackerPlugin = class extends import_obsidian10.Plugin {
     this._tagmgr = new RSSTagManager(app, this);
   }
   getDVJSTools(dv) {
-    return new DataViewJSTools(dv, this._settings);
+    return new DataViewJSTools(this, dv, this._settings);
   }
   /**
    * Refresh the dataview blocks on the currently active Obsidian note.

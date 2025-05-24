@@ -5,7 +5,7 @@ site: https://effectivetypescript.com/
 feedurl: https://localhost/test/Effective TypeScript/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-22T10:00:44.500Z
+updated: 2025-05-24T17:13:30.657Z
 interval: 759
 tags: []
 ---

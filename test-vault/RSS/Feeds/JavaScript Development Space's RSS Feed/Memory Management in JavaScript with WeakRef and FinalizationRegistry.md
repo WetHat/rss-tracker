@@ -5,7 +5,7 @@ id: https://jsdev.space/memory-management-js/
 author: unknown
 link: https://jsdev.space/memory-management-js/
 published: 2024-10-02T00:15:18.000Z
-feed: "[[JavaScript Development Space's RSS Feed]]"
+feed: "[[RSS/Feeds/JavaScript Development Space's RSS Feed.md | JavaScript Development Space's RSS Feed]]"
 tags: []
 pinned: false
 ---
@@ -13,7 +13,7 @@ pinned: false
 > [!abstract] Memory Management in JavaScript with WeakRef and FinalizationRegistry (by unknown)
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] Today, we’re diving into the topic of memory management in JavaScript—but not in the traditional sense of garbage collection. Instead, we'll…
 
-🌐 Read article [online](https://jsdev.space/memory-management-js/). ⤴ For other items in this feed see [[JavaScript Development Space's RSS Feed]].
+🌐 Read article [online](https://jsdev.space/memory-management-js/). ⤴ For other items in this feed see [[RSS/Feeds/JavaScript Development Space's RSS Feed.md | JavaScript Development Space's RSS Feed]].
 
 - [ ] [[RSS/Feeds/JavaScript Development Space's RSS Feed/Memory Management in JavaScript with WeakRef and FinalizationRegistry|Memory Management in JavaScript with WeakRef and FinalizationRegistry]]
 

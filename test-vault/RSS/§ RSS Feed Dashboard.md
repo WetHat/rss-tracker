@@ -10,11 +10,9 @@ tags: []
 ~~~dataviewjs
 const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	pages = await dvjs.rssFeeds();
-dvjs.rssTable(
-	pages,
-	dvjs.getOptions("rss_dashboard_feeds")
-)
+	expanded = false,
+	feeds = dvjs.rssFeeds;
+dvjs.rssFeedDashboard(feeds,expanded);
 ~~~
 
 # Feed Collections 📚
@@ -22,11 +20,9 @@ dvjs.rssTable(
 ~~~dataviewjs
 const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	pages = await dvjs.rssCollections();
-dvjs.rssTable(
-	pages,
-	dvjs.getOptions("rss_collections")
-);
+	expand = false,
+	collections = dvjs.rssCollections;
+await dvjs.rssCollectionTable(collections,expand);
 ~~~
 
 # Topics 🔬
@@ -34,21 +30,17 @@ dvjs.rssTable(
 ~~~dataviewjs
 const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	pages = await dvjs.rssTopics();
-dvjs.rssTable(
-	pages,
-	dvjs.getOptions("rss_topics")
-);
+	expand = false,
+	topics = dvjs.rssTopics;
+await dvjs.rssTopicTable(topics,expand);
 ~~~
 
-# Pinned Items  📍
+# Pinned Items 📍x
 
 ~~~dataviewjs
 const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	pages = await dvjs.rssItems();
-dvjs.rssTable(
-	pages.where(p => p.pinned === true),
-	dvjs.getOptions("rss_context_items")
-	)
+	expand = false,
+	items = dvjs.rssItems.where(i => i.pinned === true);
+await dvjs.rssItemTableByFeed(items,expand);
 ~~~

@@ -6,7 +6,7 @@ id: https://fosstodon.org/@WetHat/112438284637950197
 author: "@WetHat"
 link: https://fosstodon.org/@WetHat/112438284637950197
 published: 2024-05-14T07:34:27.000Z
-feed: "[[@WetHat (WetHat💦)]]"
+feed: "[[RSS/Feeds/@WetHat (WetHat💦).md | @WetHat (WetHat💦)]]"
 tags: []
 pinned: false
 ---
@@ -22,7 +22,7 @@ pinned: false
 > 
 > [@kvandermotten](https:⋯
 
-🌐 Read article [online](https://fosstodon.org/@WetHat/112438284637950197). ⤴ For other items in this feed see [[@WetHat (WetHat💦)]].
+🌐 Read article [online](https://fosstodon.org/@WetHat/112438284637950197). ⤴ For other items in this feed see [[RSS/Feeds/@WetHat (WetHat💦).md | @WetHat (WetHat💦)]].
 
 - [ ] [[RSS/Feeds/@WetHat (WetHat💦)/Replied to꞉ @WetHat I recall several stack overflow libraries had compiler switc⋯|Replied to꞉ @WetHat I recall several stack overflow libraries had compiler switc⋯]]
 

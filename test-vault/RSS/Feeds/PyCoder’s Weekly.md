@@ -5,7 +5,7 @@ site: https://pycoders.com/
 feedurl: https://localhost/test/PyCoder’s Weekly/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-22T10:00:35.183Z
+updated: 2025-05-24T17:13:21.580Z
 interval: 168
 tags: []
 ---

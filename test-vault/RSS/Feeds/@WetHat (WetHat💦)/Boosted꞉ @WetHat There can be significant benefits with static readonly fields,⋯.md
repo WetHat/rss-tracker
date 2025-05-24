@@ -6,7 +6,7 @@ id: https://mastodon.online/@kvandermotten/112434653881037869
 author: "@WetHat"
 link: https://mastodon.online/@kvandermotten/112434653881037869
 published: 2024-05-13T16:13:42.000Z
-feed: "[[@WetHat (WetHat💦)]]"
+feed: "[[RSS/Feeds/@WetHat (WetHat💦).md | @WetHat (WetHat💦)]]"
 tags: []
 pinned: false
 ---
@@ -18,7 +18,7 @@ pinned: false
 > 
 > - Kris Vandermotten (@kvandermotten) [May 13, 2024](https://mastodon.online/@kvandermotten/112434653881037869)
 
-🌐 Read article [online](https://mastodon.online/@kvandermotten/112434653881037869). ⤴ For other items in this feed see [[@WetHat (WetHat💦)]].
+🌐 Read article [online](https://mastodon.online/@kvandermotten/112434653881037869). ⤴ For other items in this feed see [[RSS/Feeds/@WetHat (WetHat💦).md | @WetHat (WetHat💦)]].
 
 - [ ] [[RSS/Feeds/@WetHat (WetHat💦)/Boosted꞉ @WetHat There can be significant benefits with static readonly fields,⋯|Boosted꞉ @WetHat There can be significant benefits with static readonly fields,⋯]]
 

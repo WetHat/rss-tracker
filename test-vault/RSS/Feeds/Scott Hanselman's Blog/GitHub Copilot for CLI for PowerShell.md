@@ -5,7 +5,7 @@ id: https://www.hanselman.com/blog/post/aa1cc05f-3910-471d-8686-68c749ec90ff
 author: Scott Hanselman
 link: https://feeds.hanselman.com/~/737271731/0/scotthanselman~GitHub-Copilot-for-CLI-for-PowerShell
 published: 2023-04-25T15:31:49.000Z
-feed: "[[Scott Hanselman's Blog]]"
+feed: "[[RSS/Feeds/Scott Hanselman's Blog.md | Scott Hanselman's Blog]]"
 tags:
   - rss/AI
   - rss/PowerShell
@@ -23,7 +23,7 @@ pinned: false
 > 
 > Now it's not perfect, but hopefully it will make the point to the Copilot CLI team that PowerSh⋯
 
-🌐 Read article [online](https://feeds.hanselman.com/~/737271731/0/scotthanselman~GitHub-Copilot-for-CLI-for-PowerShell). ⤴ For other items in this feed see [[Scott Hanselman's Blog]].
+🌐 Read article [online](https://feeds.hanselman.com/~/737271731/0/scotthanselman~GitHub-Copilot-for-CLI-for-PowerShell). ⤴ For other items in this feed see [[RSS/Feeds/Scott Hanselman's Blog.md | Scott Hanselman's Blog]].
 
 - [ ] [[RSS/Feeds/Scott Hanselman's Blog/GitHub Copilot for CLI for PowerShell|GitHub Copilot for CLI for PowerShell]]
 

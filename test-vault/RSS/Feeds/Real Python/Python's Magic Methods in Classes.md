@@ -5,7 +5,7 @@ id: https://realpython.com/courses/magic-methods-classes/
 author: unknown
 link: https://realpython.com/courses/magic-methods-classes/
 published: 2024-10-29T14:00:00.000Z
-feed: "[[Real Python]]"
+feed: "[[RSS/Feeds/Real Python.md | Real Python]]"
 tags: []
 pinned: false
 ---
@@ -13,7 +13,7 @@ pinned: false
 > [!abstract] Python's Magic Methods in Classes (by unknown)
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] In this video course, you'll learn what magic methods are in Python, how they work, and how to use them in your custom classes to support powerful features in your object-oriented code.
 
-🌐 Read article [online](https://realpython.com/courses/magic-methods-classes/). ⤴ For other items in this feed see [[Real Python]].
+🌐 Read article [online](https://realpython.com/courses/magic-methods-classes/). ⤴ For other items in this feed see [[RSS/Feeds/Real Python.md | Real Python]].
 
 - [ ] [[RSS/Feeds/Real Python/Python's Magic Methods in Classes|Python's Magic Methods in Classes]]
 

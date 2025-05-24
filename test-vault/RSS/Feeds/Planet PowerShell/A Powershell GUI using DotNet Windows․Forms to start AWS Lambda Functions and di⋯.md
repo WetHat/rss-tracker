@@ -6,7 +6,7 @@ id: https://psweekly.dowst.dev/?post_type=link_library_links&p=6894
 author: Matthew Dowst
 link: https://gist.github.com/aeveltstra/94806a1230b8165f43e9b4e4dec9bacc
 published: 2024-05-24T12:24:44.000Z
-feed: "[[Planet PowerShell]]"
+feed: "[[RSS/Feeds/Planet PowerShell.md | Planet PowerShell]]"
 tags: []
 pinned: false
 ---
@@ -18,7 +18,7 @@ pinned: false
 > 
 > (+)(-)
 
-🌐 Read article [online](https://gist.github.com/aeveltstra/94806a1230b8165f43e9b4e4dec9bacc). ⤴ For other items in this feed see [[Planet PowerShell]].
+🌐 Read article [online](https://gist.github.com/aeveltstra/94806a1230b8165f43e9b4e4dec9bacc). ⤴ For other items in this feed see [[RSS/Feeds/Planet PowerShell.md | Planet PowerShell]].
 
 - [ ] [[RSS/Feeds/Planet PowerShell/A Powershell GUI using DotNet Windows․Forms to start AWS Lambda Functions and di⋯|A Powershell GUI using DotNet Windows․Forms to start AWS Lambda Functions and di⋯]]
 

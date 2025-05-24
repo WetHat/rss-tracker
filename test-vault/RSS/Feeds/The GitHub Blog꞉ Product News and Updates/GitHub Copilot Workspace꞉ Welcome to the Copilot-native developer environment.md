@@ -6,7 +6,7 @@ id: https://github.blog/?p=77597
 author: Thomas Dohmke
 link: https://github.blog/2024-04-29-github-copilot-workspace/
 published: 2024-04-29T16:00:02.000Z
-feed: "[[The GitHub Blog꞉ Product News and Updates]]"
+feed: "[[RSS/Feeds/The GitHub Blog꞉ Product News and Updates.md | The GitHub Blog꞉ Product News and Updates]]"
 tags:
   - rss/GitHub_Copilot
   - rss/GitHub_Enterprise
@@ -18,7 +18,7 @@ pinned: false
 > [!abstract] GitHub Copilot Workspace: Welcome to the Copilot-native developer environment (by Thomas Dohmke)
 > ![image|float:right|400](https://github.blog/wp-content/uploads/2024/04/octoacademy-projects.png?w=1024&resize=1024%2C593) We’re redefining the developer environment with GitHub Copilot Workspace - where any developer can go from idea, to code, to software all in natural language. The post GitHub Copilot Workspace: Welcome to the Copilot-native developer environment appeared first on The GitHub Blog.
 
-🌐 Read article [online](https://github.blog/2024-04-29-github-copilot-workspace/). ⤴ For other items in this feed see [[The GitHub Blog꞉ Product News and Updates]].
+🌐 Read article [online](https://github.blog/2024-04-29-github-copilot-workspace/). ⤴ For other items in this feed see [[RSS/Feeds/The GitHub Blog꞉ Product News and Updates.md | The GitHub Blog꞉ Product News and Updates]].
 
 - [ ] [[RSS/Feeds/The GitHub Blog꞉ Product News and Updates/GitHub Copilot Workspace꞉ Welcome to the Copilot-native developer environment|GitHub Copilot Workspace꞉ Welcome to the Copilot-native developer environment]]
 

@@ -5,7 +5,7 @@ id: https://github.blog/?p=77824
 author: Carlin Cherry
 link: https://github.blog/2024-05-02-dependabot-on-github-actions-and-self-hosted-runners-is-now-generally-available/
 published: 2024-05-02T16:30:32.000Z
-feed: "[[The GitHub Blog꞉ Product News and Updates]]"
+feed: "[[RSS/Feeds/The GitHub Blog꞉ Product News and Updates.md | The GitHub Blog꞉ Product News and Updates]]"
 tags:
   - rss/Dependabot
   - rss/GitHub_Actions
@@ -17,7 +17,7 @@ pinned: false
 > [!abstract] Dependabot on GitHub Actions and self-hosted runners is now generally available (by Carlin Cherry)
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] A quick guide on the advantages of Dependabot as a GitHub Actions workflow and the benefits this unlocks, including self-hosted runner support. The post Dependabot on GitHub Actions and self-hosted runners is now generally available appeared first on The GitHub Blog.
 
-🌐 Read article [online](https://github.blog/2024-05-02-dependabot-on-github-actions-and-self-hosted-runners-is-now-generally-available/). ⤴ For other items in this feed see [[The GitHub Blog꞉ Product News and Updates]].
+🌐 Read article [online](https://github.blog/2024-05-02-dependabot-on-github-actions-and-self-hosted-runners-is-now-generally-available/). ⤴ For other items in this feed see [[RSS/Feeds/The GitHub Blog꞉ Product News and Updates.md | The GitHub Blog꞉ Product News and Updates]].
 
 - [ ] [[RSS/Feeds/The GitHub Blog꞉ Product News and Updates/Dependabot on GitHub Actions and self-hosted runners is now generally available|Dependabot on GitHub Actions and self-hosted runners is now generally available]]
 

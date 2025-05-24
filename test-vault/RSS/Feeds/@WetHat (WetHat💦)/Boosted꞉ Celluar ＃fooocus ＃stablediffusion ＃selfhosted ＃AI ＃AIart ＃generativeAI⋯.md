@@ -6,7 +6,7 @@ id: https://fosstodon.org/@eddyizm/112440587071746764
 author: "@WetHat"
 link: https://fosstodon.org/@eddyizm/112440587071746764
 published: 2024-05-14T17:21:59.000Z
-feed: "[[@WetHat (WetHat💦)]]"
+feed: "[[RSS/Feeds/@WetHat (WetHat💦).md | @WetHat (WetHat💦)]]"
 tags: []
 pinned: false
 ---
@@ -16,7 +16,7 @@ pinned: false
 > 
 > - eddyiz⋯
 
-🌐 Read article [online](https://fosstodon.org/@eddyizm/112440587071746764). ⤴ For other items in this feed see [[@WetHat (WetHat💦)]].
+🌐 Read article [online](https://fosstodon.org/@eddyizm/112440587071746764). ⤴ For other items in this feed see [[RSS/Feeds/@WetHat (WetHat💦).md | @WetHat (WetHat💦)]].
 
 - [ ] [[RSS/Feeds/@WetHat (WetHat💦)/Boosted꞉ Celluar ＃fooocus ＃stablediffusion ＃selfhosted ＃AI ＃AIart ＃generativeAI⋯|Boosted꞉ Celluar ＃fooocus ＃stablediffusion ＃selfhosted ＃AI ＃AIart ＃generativeAI⋯]]
 

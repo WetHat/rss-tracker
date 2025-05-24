@@ -161,6 +161,9 @@ to (**including the** `#` prefix).
 | rss/LeanPub | #rss/LeanPub |
 | rss/Scripting | #rss/Scripting |
 | rss/toolmaking | #rss/toolmaking |
+| rss/Fun | #rss/Fun |
+| rss/Microsoft_Teams | #rss/Microsoft_Teams |
+| rss/IT_Ops | #rss/IT_Ops |
 | rss/Artificial_Intelligence | #rss/Artificial_Intelligence |
 | rss/Bluesky | #rss/Bluesky |
 | rss/Enterprise_Tech | #rss/Enterprise_Tech |
