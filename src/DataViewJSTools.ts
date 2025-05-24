@@ -1,6 +1,8 @@
 import { TPropertyBag } from './FeedAssembler';
+import RSSTrackerPlugin from './main';
+import { RSSfeedAdapter } from './RSSAdapter';
 import { RSSTrackerSettings } from './settings';
-import { TFile } from 'obsidian';
+import { TFile, TFolder } from 'obsidian';
 
 /**
  * A extension of HTMLDetailsElement to provide additional properties for a collapsible tables.
@@ -120,6 +122,7 @@ export class DataViewJSTools {
         return page.file.etags.map((t: string) => DataViewJSTools.toHashtag(t)).join(" ");
     }
 
+    plugin: RSSTrackerPlugin;
     /**
      * The dataview API object.
      */
@@ -129,7 +132,8 @@ export class DataViewJSTools {
      */
     private settings: RSSTrackerSettings;
 
-    constructor(dv: TPropertyBag, settings: RSSTrackerSettings) {
+    constructor(plugin: RSSTrackerPlugin, dv: TPropertyBag, settings: RSSTrackerSettings) {
+        this.plugin = plugin;
         this.dv = dv;
         this.settings = settings;
     }
@@ -260,7 +264,8 @@ export class DataViewJSTools {
      * @returns a dataview array of all RSS feeds.
      */
     get rssFeeds(): TPageRecords {
-        return this.getPagesOfFolder(this.settings.rssFeedFolderPath, "rssfeed");
+        return this.dv.array(this.plugin.feedmgr.feeds
+            .map((feed: RSSfeedAdapter) => this.dv.page(feed.file.path)))
     }
 
     rssFeedsOfCollection(collection: TPageRecord): TPageRecords {
