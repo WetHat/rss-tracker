@@ -197,7 +197,7 @@ export class DataViewJSTools {
             feedsFolder = settings.app.vault.getFolderByPath(settings.rssFeedFolderPath);
         if (feedsFolder) {
             const feeds: string[] = feedsFolder.children
-                .filter(c => c instanceof TFile && c.extension === "md")
+                .filter(c => c instanceof TFolder)
                 .map(f => '"' + f.path + '"');
             return feeds.length > 0 ? "(" + feeds.join(" OR ") + ")" : "/";
         }
