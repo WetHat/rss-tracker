@@ -55,7 +55,7 @@ export class MarkAllItemsReadMenuItem extends RSSTrackerMenuItem {
             return;
         }
 
-        const adapter = this.plugin.filemgr.getAdapter(dashboard);
+        const adapter = this.plugin.filemgr.createAdapter(dashboard,"rssfeed","rsscollection");
         if (adapter instanceof RSSfeedAdapter || adapter instanceof RSScollectionAdapter) {
             menu.addItem(item => {
                 item.setTitle('Mark all RSS items as read')
@@ -114,7 +114,7 @@ export class UpdateRSSfeedMenuItem extends RSSTrackerMenuItem {
             return;
         }
         menu.addSeparator();
-        const adapter = this.plugin.filemgr.getAdapter(file);
+        const adapter = this.plugin.filemgr.createAdapter(file,"rssfeed","rsscollection");
         let title: string;
         if (adapter instanceof RSSfeedAdapter && !adapter.suspended) {
             title = "Update RSS feed";
@@ -158,7 +158,7 @@ export class RenameRSSfeedMenuItem extends RSSTrackerMenuItem {
         if (!file) {
             return;
         }
-        const adapter = this.plugin.filemgr.getAdapter(file);
+        const adapter = this.plugin.filemgr.createAdapter(file,"rssfeed");
         let title: string;
         if (adapter instanceof RSSfeedAdapter) {
             menu.addItem(item => {
@@ -191,7 +191,7 @@ export class ToggleRSSfeedActiveStatusMenuItem extends RSSTrackerMenuItem {
         if (!file) {
             return;
         }
-        const adapter = this.plugin.filemgr.getAdapter(file);
+        const adapter = this.plugin.filemgr.createAdapter(file,"rssfeed");
         if (!(adapter instanceof RSSfeedAdapter)) {
             return;
         }

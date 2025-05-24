@@ -32,7 +32,7 @@ export class RenameRSSfeedModalCommand extends RSSTrackerCommandBase {
         if (active) {
             // If checking is true, we're simply "checking" if the command can be run.
             // If checking is false, then we want to actually perform the operation.
-            const adapter = this.plugin.filemgr.getAdapter(active);
+            const adapter = this.plugin.filemgr.createAdapter(active,"rssfeed");
             if (checking) {
                 // This command will only show up in Command Palette when the check function returns true
                 // check if active file is a rss feed dashboard.
@@ -61,7 +61,7 @@ export class UpdateRSSfeedCommand extends RSSTrackerCommandBase {
         if (active) {
             // If checking is true, we're simply "checking" if the command can be run.
             // If checking is false, then we want to actually perform the operation.
-            const adapter = this.plugin.filemgr.getAdapter(active);
+            const adapter = this.plugin.filemgr.createAdapter(active,"rssfeed","rsscollection");
             if (checking) {
                 // This command will only show up in Command Palette when the check function returns true
                 // check if active file is a rss feed dashboard.
@@ -116,11 +116,11 @@ export class MarkAllRSSitemsReadCommand extends RSSTrackerCommandBase {
         if (active) {
             // If checking is true, we're simply "checking" if the command can be run.
             // If checking is false, then we want to actually perform the operation.
-            const adapter = this.plugin.filemgr.getAdapter(active);
+            const adapter = this.plugin.filemgr.createAdapter(active,"rssfeed","rsscollection");
             if (checking) {
                 // This command will only show up in Command Palette when the check function returns true
                 // check if active file is a rss feed dashboard.
-                return adapter instanceof RSSfeedAdapter || adapter instanceof RSScollectionAdapter;
+                return adapter;
             }
             if (adapter instanceof RSSfeedAdapter || adapter instanceof RSScollectionAdapter) {
                 this.plugin.feedmgr.completeReadingTasks(adapter).then(() => this.plugin.refreshActiveFile());
@@ -136,8 +136,9 @@ export class NewRSSTopicCommand extends RSSTrackerCommandBase {
         super(plugin, 'rss-tracker-new-topic', 'New RSS topic');
     }
 
-    callback(): any {
-        this.plugin.filemgr.createFile(this.plugin.settings.rssTopicsFolderPath, "New Topic", "RSS Topic")
+    async callback(): Promise<any> {
+        const topicFolder = await this.plugin.filemgr.ensureFolderExists(this.plugin.settings.rssTopicsFolderPath);
+        await this.plugin.filemgr.createFileFromTemplate(topicFolder, "New Topic", "RSS Topic")
             .then(topic => {
                 const leaf = this.app.workspace.getLeaf(false);
                 leaf.openFile(topic).catch(reason => new Notice(reason.message))
