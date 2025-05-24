@@ -1,4 +1,5 @@
 import { TPropertyBag } from './FeedAssembler';
+import RSSTrackerPlugin from './main';
 import { RSSTrackerSettings } from './settings';
 /**
  * A utility tpye to specify the intial state of an expandable table.
@@ -73,6 +74,7 @@ declare type TTaskRecords = TRecords;
 export declare class DataViewJSTools {
     private static toHashtag;
     private static getHashtagsAsString;
+    plugin: RSSTrackerPlugin;
     /**
      * The dataview API object.
      */
@@ -81,7 +83,7 @@ export declare class DataViewJSTools {
      * The settings object describing the RSS related folder structure and settings.
      */
     private settings;
-    constructor(dv: TPropertyBag, settings: RSSTrackerSettings);
+    constructor(plugin: RSSTrackerPlugin, dv: TPropertyBag, settings: RSSTrackerSettings);
     /**
      * Generate a dataview FROM expression to get pages matching a tag filter.
      *
@@ -294,11 +296,11 @@ export declare class DataViewJSTools {
     /**
      * Display collapsible reading tasks grouped by feed.
      *
-     * @param feeds - Collection of feeds
+     * @param items - Item list to get the reading tasks from.
      * @param read - `false` to collect and display unchecked (unread) reading tasks: `true` otherwise.
      * @param expand - `undefined` render immediately using a generic dataview table;
-     *                       `true` render table immediately and expand the table by default;
-     *                       `false` to collapse the table by default and render the table on-demand.
+     *                 `true` render table immediately and expand the table by default;
+     *                 `false` to collapse the table by default and render the table on-demand.
      */
     rssReadingListByFeed(items: TPageRecords, read?: boolean, expand?: boolean): Promise<void>;
 }

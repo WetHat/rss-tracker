@@ -34,7 +34,7 @@ export declare class MarkAllRSSitemsReadCommand extends RSSTrackerCommandBase {
 }
 export declare class NewRSSTopicCommand extends RSSTrackerCommandBase {
     constructor(plugin: RSSTrackerPlugin);
-    callback(): any;
+    callback(): Promise<any>;
 }
 export declare class NewRSSFeedCollectionCommand extends RSSTrackerCommandBase {
     constructor(plugin: RSSTrackerPlugin);

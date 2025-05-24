@@ -7,7 +7,7 @@ import { RSSfeedAdapter, RSScollectionAdapter } from './RSSAdapter';
  * Currently available functionality:
  *
  * - Building a Markdown representation of RSS feeds including feed dashboards.
- *   {@link FeedManager.createFeedFromFile} and  {@link FeedManager.createFeedFromUrl}
+ *   {@link createFeedFromFile} and  {@link createFeedFromUrl}
  *
  * - Updating feeds (individual or all). {@link FeedManager.updateFeed} and {@link FeedManager.updateFeeds}
  *
@@ -48,9 +48,9 @@ export declare class FeedManager {
     * The Markdown representation consists of
     * - a feed dashboard
     * - a directory whic has the same name as the dashboard (without the .md extension)
-    *   containingthe RSS items of the feed,
+    *   containing the RSS items of the feed,
     *
-    * The file system layout of an Obsidian RSS feed looks like this:
+    * The file system layout of an Obsidian RSS feed looks like this (placement = "parentFolder"):
     * ~~~
     * 📂
     *  ├─ <feedname>.md ← dashboard
@@ -76,7 +76,7 @@ export declare class FeedManager {
     get feeds(): RSSfeedAdapter[];
     private updateFeeds;
     update(force: boolean, adapter?: RSSfeedAdapter | RSScollectionAdapter): Promise<void>;
-    completeReadingTasks(adapter: RSSfeedAdapter | RSScollectionAdapter): Promise<void>;
+    completeReadingTasks(adapter: RSScollectionAdapter | RSSfeedAdapter): Promise<void>;
     /**
      * A predicate to determine if a file has a link to a downloadable article.
      *
