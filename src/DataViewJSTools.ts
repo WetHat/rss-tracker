@@ -249,7 +249,9 @@ export class DataViewJSTools {
      * @returns dataview array of RSS items.
      */
     rssItemsOfFeed(feed: TPageRecord): TPageRecords {
-        return this.getPagesOfFolder(feed.file.folder + "/" + feed.file.name, "rssitem");
+        return this.dv.array(feed.file.inlinks
+            .map((inlink: TPropertyBag) => this.dv.page(inlink.path))
+            .where((p: TPageRecord) => p.role === "rssitem"));
     }
 
     /**
