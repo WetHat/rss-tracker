@@ -1,9 +1,9 @@
-import { App, request, TFile, Notice, FrontMatterCache } from 'obsidian';
+import { App, request, TFile, TFolder, Notice, FrontMatterCache } from 'obsidian';
 import RSSTrackerPlugin from './main';
 import { TrackedRSSfeed } from './FeedAssembler';
 import { RSSfileManager } from './RSSFileManager';
 import { HTMLxlate } from './HTMLxlate';
-import { RSSfeedAdapter, RSScollectionAdapter } from './RSSAdapter';
+import { RSSfeedAdapter, RSScollectionAdapter, RSSdashboardAdapter } from './RSSAdapter';
 
 
 /**
@@ -12,7 +12,7 @@ import { RSSfeedAdapter, RSScollectionAdapter } from './RSSAdapter';
  * Currently available functionality:
  *
  * - Building a Markdown representation of RSS feeds including feed dashboards.
- *   {@link FeedManager.createFeedFromFile} and  {@link FeedManager.createFeedFromUrl}
+ *   {@link createFeedFromFile} and  {@link createFeedFromUrl}
  *
  * - Updating feeds (individual or all). {@link FeedManager.updateFeed} and {@link FeedManager.updateFeeds}
  *
@@ -58,7 +58,7 @@ export class FeedManager {
     async createFeedFromFile(xml: TFile): Promise<RSSfeedAdapter> {
         await this._plugin.tagmgr.updateTagMap();
         const feedXML = await this._app.vault.read(xml);
-        return RSSfeedAdapter.create(this._plugin, new TrackedRSSfeed(feedXML, "https://localhost/" + xml.path));
+        return RSSfeedAdapter.create(this._plugin, new TrackedRSSfeed(feedXML, "https://localhost/" + xml.path),this._plugin.settings.rssDashboardPlacement);
     }
 
     /**
@@ -67,9 +67,9 @@ export class FeedManager {
     * The Markdown representation consists of
     * - a feed dashboard
     * - a directory whic has the same name as the dashboard (without the .md extension)
-    *   containingthe RSS items of the feed,
+    *   containing the RSS items of the feed,
     *
-    * The file system layout of an Obsidian RSS feed looks like this:
+    * The file system layout of an Obsidian RSS feed looks like this (placement = "parentFolder"):
     * ~~~
     * 📂
     *  ├─ <feedname>.md ← dashboard
@@ -90,7 +90,7 @@ export class FeedManager {
             method: "GET"
         });
         await this._plugin.tagmgr.updateTagMap();
-        return RSSfeedAdapter.create(this._plugin, new TrackedRSSfeed(feedXML, url));
+        return RSSfeedAdapter.create(this._plugin, new TrackedRSSfeed(feedXML, url),this._plugin.settings.rssDashboardPlacement);
     }
 
     /**
@@ -133,10 +133,13 @@ export class FeedManager {
     }
 
     get feeds(): RSSfeedAdapter[] {
-        const feedFolder = this._app.vault.getFolderByPath(this._plugin.settings.rssFeedFolderPath);
+        const
+            placement = this._plugin.settings.rssDashboardPlacement,
+            feedFolder = this._app.vault.getFolderByPath(this._plugin.settings.rssFeedFolderPath);
         if (feedFolder) {
             return feedFolder.children
-                .map(f => f instanceof TFile ? this._filemgr.getAdapter(f) : null)
+                .filter(f => f instanceof TFolder)
+                .map(f => RSSdashboardAdapter.createFromFolder(RSSfeedAdapter,this._plugin, f as TFolder, placement))
                 .filter(p => p instanceof RSSfeedAdapter) as RSSfeedAdapter[];
         }
         return [];
@@ -179,14 +182,8 @@ export class FeedManager {
         }
     }
 
-    async completeReadingTasks(adapter: RSSfeedAdapter | RSScollectionAdapter) {
-        let completed = 0;
-        if (adapter instanceof RSSfeedAdapter) {
-            completed = await adapter.completeReadingTasks();
-        } else if (adapter instanceof RSScollectionAdapter) {
-            completed = await adapter.completeReadingTasks();
-        }
-
+    async completeReadingTasks(adapter: RSScollectionAdapter | RSSfeedAdapter): Promise<void> {
+        let completed = await adapter.completeReadingTasks;
         new Notice(`${completed} items taken off the '${adapter.file.basename}' reading list`, 30000);
     }
 
