@@ -12416,7 +12416,7 @@ var DEFAULT_SETTINGS = {
   rssFeedFolderName: "Feeds",
   rssCollectionsFolderName: "Collections",
   rssTopicsFolderName: "Topics",
-  rssTemplateFolder: "Templates",
+  rssTemplateFolderName: "Templates",
   rssDashboardName: "RSS Dashboard",
   rssTagmapName: "RSS Tagmap",
   rssDefaultImage: "",
@@ -12446,64 +12446,57 @@ var _RSSTrackerSettings = class _RSSTrackerSettings {
   set autoUpdateFeeds(value) {
     this._data.autoUpdateFeeds = value;
   }
-  // cached value of the RSS dashboard placement
+  // pending value of the RSS dashboard placement
   get rssHome() {
-    var _a2;
-    return (_a2 = this._data.rssHome) != null ? _a2 : DEFAULT_SETTINGS.rssHome;
+    return this._rssHome || this._data.rssHome || DEFAULT_SETTINGS.rssHome;
   }
   set rssHome(value) {
     this._rssHome = value;
   }
   get rssFeedFolderName() {
-    var _a2;
-    return (_a2 = this._data.rssFeedFolderName) != null ? _a2 : DEFAULT_SETTINGS.rssFeedFolderName;
+    return this._rssFeedFolderName || this._data.rssFeedFolderName || DEFAULT_SETTINGS.rssFeedFolderName;
   }
   set rssFeedFolderName(value) {
-    this._rssFeedFolder = value;
+    this._rssFeedFolderName = value;
   }
   get rssCollectionsFolderName() {
-    var _a2;
-    return (_a2 = this._data.rssCollectionsFolderName) != null ? _a2 : DEFAULT_SETTINGS.rssCollectionsFolderName;
+    return this._rssCollectionsFolderName || this._data.rssCollectionsFolderName || DEFAULT_SETTINGS.rssCollectionsFolderName;
   }
   set rssCollectionsFolderName(value) {
-    this._rssCollectionsFolder = value;
+    this._rssCollectionsFolderName = value;
   }
   get rssTopicsFolderName() {
-    var _a2;
-    return (_a2 = this._data.rssTopicsFolderName) != null ? _a2 : DEFAULT_SETTINGS.rssTopicsFolderName;
+    return this._rssTopicsFolderName || this._data.rssTopicsFolderName || DEFAULT_SETTINGS.rssTopicsFolderName;
   }
   set rssTopicsFolderName(value) {
-    this._rssCollectionsFolder = value;
+    this._rssCollectionsFolderName = value;
   }
-  get rssTemplateFolder() {
-    var _a2;
-    return (_a2 = this._data.rssTemplateFolder) != null ? _a2 : DEFAULT_SETTINGS.rssTemplateFolder;
+  get rssTemplateFolderName() {
+    return this._rssTemplateFolderName || this._data.rssTemplateFolderName || DEFAULT_SETTINGS.rssTemplateFolderName;
   }
-  set rssTemplateFolder(value) {
-    this._rssTemplateFolder = value;
+  set rssTemplateFolderName(value) {
+    this._rssTemplateFolderName = value;
   }
   get rssDashboardName() {
-    return this._data.rssDashboardName || DEFAULT_SETTINGS.rssDashboardName;
+    return this._rssDashboardName || this._data.rssDashboardName || DEFAULT_SETTINGS.rssDashboardName;
   }
   set rssDashboardName(value) {
     this._rssDashboardName = value;
   }
   get rssTagmapName() {
-    return this._data.rssTagmapName || DEFAULT_SETTINGS.rssTagmapName;
+    return this._rssTagmapName || this._data.rssTagmapName || DEFAULT_SETTINGS.rssTagmapName;
   }
   set rssTagmapName(value) {
     this._rssTagmapName = value;
   }
   get defaultItemLimit() {
-    var _a2;
-    return (_a2 = this._data.defaultItemLimit) != null ? _a2 : DEFAULT_SETTINGS.defaultItemLimit;
+    return this._defaultItemLimit || this._data.defaultItemLimit || DEFAULT_SETTINGS.defaultItemLimit;
   }
   set defaultItemLimit(value) {
     this._defaultItemLimit = value;
   }
   get rssTagDomain() {
-    var _a2;
-    return (_a2 = this._data.rssTagDomain) != null ? _a2 : DEFAULT_SETTINGS.rssTagDomain;
+    return this._rssTagDomain || this._data.rssTagDomain || DEFAULT_SETTINGS.rssTagDomain;
   }
   set rssTagDomain(value) {
     this._rssTagDomain = value;
@@ -12512,7 +12505,8 @@ var _RSSTrackerSettings = class _RSSTrackerSettings {
    * Get the placement of an RSS dashboard.
    *
    * By default this setting is `insideFolder`, unless the 'Folder Notes' plugin is enabled, then it is taken
-   * from the Folder Notes plugin settings.
+   * from the that plugin's settings.
+   *
    * The placement can only be changed by the 'Folder Notes' plugin.
    */
   get rssDashboardPlacement() {
@@ -12521,10 +12515,9 @@ var _RSSTrackerSettings = class _RSSTrackerSettings {
     if (folderNotesSettings) {
       const placement = folderNotesSettings.storageLocation;
       this._rssDashboardPlacement = placement;
-      this.commit();
       return placement;
     } else {
-      return this._data.rssDashboardPlacement && DEFAULT_SETTINGS.rssDashboardPlacement;
+      return this._rssDashboardPlacement || this._data.rssDashboardPlacement || DEFAULT_SETTINGS.rssDashboardPlacement;
     }
   }
   /**
@@ -12550,51 +12543,59 @@ var _RSSTrackerSettings = class _RSSTrackerSettings {
    */
   async commit() {
     console.log("Commiting changes in settings");
-    if (this._rssHome && this._rssHome !== this.rssHome) {
+    if (this._rssHome && this._rssHome !== this._data.rssHome) {
       if (await this._filemgr.renameFolder(this.rssHome, this._rssHome)) {
         this._data.rssHome = this._rssHome;
       }
       this._rssHome = void 0;
     }
-    if (this._rssFeedFolder && this._rssFeedFolder !== this.rssFeedFolderName) {
-      if (await this._filemgr.renameFolder(this.rssFeedFolderPath, this.rssHome + "/" + this._rssFeedFolder)) {
-        this._data.rssFeedFolderName = this._rssFeedFolder;
+    if (this._rssFeedFolderName && this._rssFeedFolderName !== this._data.rssFeedFolderName) {
+      if (await this._filemgr.renameFolder(this.rssFeedFolderPath, this.rssHome + "/" + this._rssFeedFolderName)) {
+        this._data.rssFeedFolderName = this._rssFeedFolderName;
       }
-      this._rssFeedFolder = void 0;
+      this._rssFeedFolderName = void 0;
     }
-    if (this._rssCollectionsFolder && this._rssCollectionsFolder !== this.rssCollectionsFolderName) {
-      if (await this._filemgr.renameFolder(this.rssCollectionsFolderPath, this.rssHome + "/" + this._rssCollectionsFolder)) {
-        this._data.rssCollectionsFolderName = this._rssCollectionsFolder;
+    if (this._rssCollectionsFolderName && this._rssCollectionsFolderName !== this._data.rssCollectionsFolderName) {
+      if (await this._filemgr.renameFolder(this.rssCollectionsFolderPath, this.rssHome + "/" + this._rssCollectionsFolderName)) {
+        this._data.rssCollectionsFolderName = this._rssCollectionsFolderName;
       }
-      this._rssCollectionsFolder = void 0;
+      this._rssCollectionsFolderName = void 0;
     }
-    if (this._rssTopicsFolder && this._rssTopicsFolder !== this.rssTopicsFolderName) {
-      if (await this._filemgr.renameFolder(this.rssTopicsFolderPath, this.rssHome + "/" + this._rssTopicsFolder)) {
-        this._data.rssTopicsFolderName = this._rssTopicsFolder;
+    if (this._rssTopicsFolderName && this._rssTopicsFolderName !== this._data.rssTopicsFolderName) {
+      if (await this._filemgr.renameFolder(this.rssTopicsFolderPath, this.rssHome + "/" + this._rssTopicsFolderName)) {
+        this._data.rssTopicsFolderName = this._rssTopicsFolderName;
       }
-      this._rssTopicsFolder = void 0;
+      this._rssTopicsFolderName = void 0;
     }
-    if (this._rssTemplateFolder && this._rssTemplateFolder !== this.rssTemplateFolder) {
-      if (await this._filemgr.renameFolder(this.rssTemplateFolderPath, this.rssHome + "/" + this._rssTemplateFolder)) {
-        this._data.rssTemplateFolder = this._rssTemplateFolder;
+    if (this._rssTemplateFolderName && this._rssTemplateFolderName !== this._data.rssTemplateFolderName) {
+      if (await this._filemgr.renameFolder(this.rssTemplateFolderPath, this.rssHome + "/" + this._rssTemplateFolderName)) {
+        this._data.rssTemplateFolderName = this._rssTemplateFolderName;
       }
-      this._rssTemplateFolder = void 0;
+      this._rssTemplateFolderName = void 0;
     }
-    if (this._rssDashboardName && this._rssDashboardName !== this.rssDashboardName) {
-      if (await this._filemgr.renameFile(this.rssTemplateFolderPath, this.rssHome + "/" + this._rssTemplateFolder)) {
+    if (this._rssDashboardName && this._rssDashboardName !== this._data.rssDashboardName) {
+      if (await this._filemgr.renameFile(this.rssTemplateFolderPath, this.rssHome + "/" + this._rssTemplateFolderName)) {
         this._data.rssDashboardName = this._rssDashboardName;
       }
       this._rssDashboardName = void 0;
     }
-    if (this._rssTagmapName && this._rssTagmapName !== this.rssTagmapName) {
-      if (await this._filemgr.renameFile(this.rssTemplateFolderPath, this.rssHome + "/" + this._rssTemplateFolder)) {
+    if (this._rssTagmapName && this._rssTagmapName !== this._data.rssTagmapName) {
+      if (await this._filemgr.renameFile(this.rssTemplateFolderPath, this.rssHome + "/" + this._rssTemplateFolderName)) {
         this._data._rssTagmapName = this._rssTagmapName;
       }
       this._rssDashboardName = void 0;
     }
-    if (this._defaultItemLimit && this._defaultItemLimit !== this.defaultItemLimit) {
+    if (this._defaultItemLimit && this._defaultItemLimit !== this._data.defaultItemLimit) {
       this._data.defaultItemLimit = this._defaultItemLimit;
       this._defaultItemLimit = void 0;
+    }
+    if (this._rssTagDomain && this._rssTagDomain !== this._data.rssTagDomain) {
+      this._data.rssTagDomain = this._rssTagDomain;
+      this._rssTagDomain = void 0;
+    }
+    if (this._rssDashboardPlacement && this._rssDashboardPlacement !== this._data.rssDashboardPlacement) {
+      this._data.rssDashboardPlacement = this._rssDashboardPlacement;
+      this._rssDashboardPlacement = void 0;
     }
     await this.saveData();
     this.install();
@@ -12657,7 +12658,7 @@ var _RSSTrackerSettings = class _RSSTrackerSettings {
     return this.rssHome + "/" + this.rssTopicsFolderName;
   }
   get rssTemplateFolderPath() {
-    return this.rssHome + "/" + this.rssTemplateFolder;
+    return this.rssHome + "/" + this.rssTemplateFolderName;
   }
   get rssDashboardPath() {
     return this.rssHome + "/" + this.rssDashboardName + ".md";
@@ -15414,14 +15415,19 @@ var RSSdashboardAdapter = class _RSSdashboardAdapter extends RSSAdapter {
    * @param dashboard The dashboard file to get the folder for.
    * @returns The folder associated with the dashboard (if any).
    */
-  static dashboardFolder(dashboard) {
-    var _a2, _b, _c;
-    const folderName = dashboard.basename;
-    if (((_a2 = dashboard.parent) == null ? void 0 : _a2.name) === folderName) {
-      return dashboard.parent;
+  static dashboardFolder(dashboard, placement) {
+    var _a2, _b;
+    const folderName = _RSSdashboardAdapter.dashboardFolderName(dashboard);
+    if (placement === "insideFolder") {
+      const parentFolder = dashboard.parent;
+      if ((parentFolder == null ? void 0 : parentFolder.name) === folderName) {
+        return parentFolder;
+      }
+    } else {
+      const folderPath = (_b = (_a2 = dashboard.parent) == null ? void 0 : _a2.path) != null ? _b : "/" + folderName;
+      return dashboard.vault.getFolderByPath(folderPath);
     }
-    const folder = ((_c = (_b = dashboard.parent) == null ? void 0 : _b.path) != null ? _c : "") + "/" + folderName;
-    return dashboard.vault.getFolderByPath(folder);
+    return null;
   }
   /**
    * Get name of a dashboard file for a given folder.
@@ -15434,6 +15440,9 @@ var RSSdashboardAdapter = class _RSSdashboardAdapter extends RSSAdapter {
   static dashboardName(folder) {
     return folder.name;
   }
+  static dashboardFolderName(dashboard) {
+    return dashboard.basename;
+  }
   /**
    * Factory method to create a new instance of an RSS dashboard adapter for a folder.
    *
@@ -15444,16 +15453,24 @@ var RSSdashboardAdapter = class _RSSdashboardAdapter extends RSSAdapter {
    * @returns A new instance of an adapter of type `T` or `null` if the dashboard does not exist.
    */
   static createFromFolder(cTor, plugin, folder, placement) {
-    const dashboard = _RSSdashboardAdapter.dashboard(folder, placement);
+    let dashboard = _RSSdashboardAdapter.dashboard(folder, placement);
     if (!dashboard) {
-      return null;
+      placement = placement === "insideFolder" ? "parentFolder" : "insideFolder";
+      dashboard = _RSSdashboardAdapter.dashboard(folder, placement);
+      if (!dashboard) {
+        return null;
+      }
     }
     return new cTor(plugin, folder, dashboard);
   }
-  static createFromFile(cTor, plugin, file, frontmatter) {
-    const folder = _RSSdashboardAdapter.dashboardFolder(file);
+  static createFromFile(cTor, plugin, file, placement, frontmatter) {
+    let folder = _RSSdashboardAdapter.dashboardFolder(file, placement);
     if (!folder) {
-      return null;
+      placement = placement === "insideFolder" ? "parentFolder" : "insideFolder";
+      folder = _RSSdashboardAdapter.dashboardFolder(file, placement);
+      if (!folder) {
+        return null;
+      }
     }
     return new cTor(plugin, folder, file, frontmatter);
   }
@@ -16073,8 +16090,9 @@ var FeedManager = class {
    */
   async createFeedFromFile(xml) {
     await this._plugin.tagmgr.updateTagMap();
-    const feedXML = await this._app.vault.read(xml);
-    return RSSfeedAdapter.create(this._plugin, new TrackedRSSfeed(feedXML, "https://localhost/" + xml.path), this._plugin.settings.rssDashboardPlacement);
+    const feedXML = await this._app.vault.read(xml), settings = this._plugin.settings, feed = await RSSfeedAdapter.create(this._plugin, new TrackedRSSfeed(feedXML, "https://localhost/" + xml.path), settings.rssDashboardPlacement);
+    await settings.commit();
+    return feed;
   }
   /**
   * Create an RSS feed Markdown representation from a hyperlink.
@@ -16105,7 +16123,9 @@ var FeedManager = class {
       method: "GET"
     });
     await this._plugin.tagmgr.updateTagMap();
-    return RSSfeedAdapter.create(this._plugin, new TrackedRSSfeed(feedXML, url), this._plugin.settings.rssDashboardPlacement);
+    const settings = this._plugin.settings, feed = await RSSfeedAdapter.create(this._plugin, new TrackedRSSfeed(feedXML, url), settings.rssDashboardPlacement);
+    await settings.commit();
+    return feed;
   }
   /**
    * Update an RSS feed according to the configured frequency.
@@ -17005,9 +17025,9 @@ var RSSTrackerSettingTab = class extends import_obsidian8.PluginSettingTab {
     containerEl.empty();
     const frag = containerEl.doc.createDocumentFragment();
     new RSSHomeSetting(this);
+    new RSSFeedFolderSetting(this);
     new RSSCollectionsFolderSetting(this);
     new RSSTopicsFolderSetting(this);
-    new RSSFeedFolderSetting(this);
     new RSSTagDomain(this);
     new RSSautoUpdateSetting(this);
     new RSSDashboardNameSetting(this);
@@ -17023,7 +17043,7 @@ var RSSTrackerSettingTab = class extends import_obsidian8.PluginSettingTab {
 var _RSSfileManager = class _RSSfileManager {
   constructor(app, plugin) {
     this._adapterFactories = {
-      "rssfeed": (f, fm) => RSSdashboardAdapter.createFromFile(RSSfeedAdapter, this._plugin, f, fm),
+      "rssfeed": (f, fm) => RSSdashboardAdapter.createFromFile(RSSfeedAdapter, this._plugin, f, this.settings.rssDashboardPlacement, fm),
       "rssitem": (f, fm) => new RSSitemAdapter(this._plugin, f, fm),
       "rsscollection": (f, fm) => new RSScollectionAdapter(this._plugin, f, fm)
     };
