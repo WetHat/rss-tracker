@@ -56,17 +56,59 @@ export class RSSfileManager {
 	}
 
 	/**
+	 * Get the folder associated with a dashboard.
+	 *
+	 * @param dashboard The dashboard file to find the folder for.
+	 * @param placement the placement of the dashboard. If set to "insideFolder", the dashboard is in the folder itself.
+	 *                  If set to "outsideFolder", the dashboard is in the parent folder.
+	 * @returns The dashboard folder. `null` if the folder does not exist
+	 */
+	getDashboardFolder(dashboard: TFile, placement: TDashboardPlacement): TFolder | null {
+		const
+			folderName = dashboard.name, // TODO: run the folder note temlate backwards to get the folder name
+			dashboardParent = dashboard.parent;
+		if (placement === "insideFolder") {
+			return dashboardParent?.name === folderName
+				? dashboardParent
+				: dashboard.vault.getFolderByPath((dashboardParent?.path ?? "") + "/" + folderName);
+		} else {
+			const folder = dashboard.vault.getFolderByPath((dashboardParent?.path ?? "") + "/" + folderName);
+			return folder
+				? folder
+				: dashboardParent;
+		}
+	}
+
+	/**
+	 * Get the name of the dashboard file associated with the given folder.
+	 *
+	 * @param folder The folder to get the dashboard name for
+	 * @returns dashboard name (without extension).
+	 */
+	private getFolderDashboardName(folder: TFolder):string {
+		return folder.name; // TODO: use folder note name template for name generation
+	}
+	/**
 	 * Get the dashboard file for a given folder.
+	 *
 	 * @param folder the folder to get the dashboard for.
 	 * @param placement the placement of the dashboard. If set to "insideFolder", the dashboard is in the folder itself.
 	 *       If set to "outsideFolder", the dashboard is in the parent folder.
 	 * @returns the dashboard file or null if it does not exist.
 	 */
-	getFolderDashboard(folder: TFolder, placement: TDashboardPlacement = "insideFolder"): TFile | null {
+	getFolderDashboard(folder: TFolder, placement: TDashboardPlacement): TFile | null {
 		const
-			dashboardName = folder.name, // TODO: use folder note name template
-			dashboardPath = (placement === "insideFolder" ? folder.path : (folder.parent?.path ?? "")) + "/" + dashboardName + ".md";
-		return this._vault.getFileByPath(dashboardPath);
+			dashboardName = this.getFolderDashboardName(folder),
+			insideFolderPath = folder.path,
+			parentFolderPath = folder.parent?.path ?? "";
+
+		for (const path of (placement === "insideFolder" ? [insideFolderPath, parentFolderPath] : [parentFolderPath, insideFolderPath])) {
+			const dashboard = folder.vault.getFileByPath(path + "/" + dashboardName + ".md");
+			if (dashboard) {
+				return dashboard;
+			}
+		}
+		return null; // no dashboard found
 	}
 
 	constructor(app: App, plugin: RSSTrackerPlugin) {
@@ -75,6 +117,18 @@ export class RSSfileManager {
 		this._plugin = plugin;
 	}
 
+	/**
+	 * Create a `Folder Notes` style dashboard for a folder from given contents.
+	 * @param folder The folder to creat tehe
+	 * @param contents
+	 */
+	createDashboard(folder: TFolder, contents: string) : Promise<TFile> {
+		const
+			placement = this.settings.rssDashboardPlacement,
+			dashboardName = this.getFolderDashboardName(folder),
+			location = placement === "insideFolder" ? folder.path : folder.parent?.path ?? "";
+		return folder.vault.create(location + "/" + dashboardName + ".md" ,contents);
+	}
 
 	/**
 	 * Get the RSS adapter for a given file.
@@ -175,6 +229,7 @@ export class RSSfileManager {
 
 	/**
 	 * Create a folder with a unique name in a given context.
+	 *
 	 * @param parentFolder the parent folder in which to create the new folder
 	 * @param folderName the name of the new folder
 	 * @returns A `Promise` to the new folder handle.
