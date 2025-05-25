@@ -1,7 +1,6 @@
 import { Setting, PluginSettingTab } from "obsidian";
 import RSSTrackerPlugin from "./main";
 import { DEFAULT_SETTINGS, RSSTrackerSettings } from "./settings";
-import { RSSdashboardAdapter } from "./RSSAdapter";
 
 abstract class RSSTrackerSettingBase extends Setting {
 	protected settingsTab: RSSTrackerSettingTab;
@@ -61,33 +60,6 @@ class RSSTagmapNameSetting extends RSSTrackerSettingBase {
 					.setTooltip("Reset the RSS Tag Map name to default")
 					.onClick(evt => {
 						this.settings.rssTagmapName = DEFAULT_SETTINGS.rssTagmapName;
-					})
-			});
-	}
-}
-
-class RSSDashboardNameSetting extends RSSTrackerSettingBase {
-	constructor(settingsTab: RSSTrackerSettingTab) {
-		super(settingsTab);
-		this
-			.setName('RSS Dashboard Name')
-			.setDesc('THe name of the dashboard Markdown file in the RSS Home folder which contains a content map of the subscribed RSS feeds.')
-			.addText(ta => {
-				ta
-					.setPlaceholder(DEFAULT_SETTINGS.rssDashboardName)
-					.onChange(value => {
-						this.settings.rssDashboardName = value;
-					});
-				if (this.settings.rssDashboardName !== DEFAULT_SETTINGS.rssDashboardName) {
-					ta.setValue(this.settings.rssDashboardName)
-				}
-			})
-			.addButton(btn => {
-				btn
-					.setIcon("reset")
-					.setTooltip("Reset the RSS dashboard name to default")
-					.onClick(evt => {
-						this.settings.rssDashboardName = DEFAULT_SETTINGS.rssDashboardName;
 					})
 			});
 	}
@@ -281,12 +253,10 @@ export class RSSTrackerSettingTab extends PluginSettingTab {
 		new RSSFeedFolderSetting(this);
 		new RSSCollectionsFolderSetting(this);
 		new RSSTopicsFolderSetting(this);
-		new RSSTagDomain(this);
         new RSSautoUpdateSetting(this);
-		new RSSDashboardNameSetting(this);
 		new RSSDefaultItemLimitSetting(this);
+		new RSSTagDomain(this);
 		new RSSTagmapNameSetting(this);
-
 	}
 	hide() {
 		this.settings.commit();

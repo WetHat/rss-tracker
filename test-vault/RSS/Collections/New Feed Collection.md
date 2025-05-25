@@ -9,6 +9,14 @@ noneof: []
 > [!abstract] [headline:: A curated collection of RSS feeds]
 > ![[RSSdefaultImage.svg|float:right|100x100]] Specify tags in the `tags`, `allof`, `noneof` frontmatter properties to collect feeds matching the tag filter.
 
+~~~dataviewjs
+const
+	c = dv.current(),
+	vault = dv.app.vault;
+dv.paragraph(Object.keys(vault.adapter));
+
+~~~
+
 # Feeds in this Collection 📚
 
 ~~~dataviewjs

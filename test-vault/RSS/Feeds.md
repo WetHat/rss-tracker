@@ -12,7 +12,7 @@ const
 	expanded = false,
 	feeds = dvjs.rssFeeds;
 dv.header(2,"Failed Feeds ❌");
-dvjs.rssFeedDashboard(feeds.where(f => f.status !== "✅"),expanded);
+dvjs.rssFeedDashboard(feeds.where(f => f.status !== "✅"),true);
 
 dv.header(2,"Successful Feeds ✅");
 dvjs.rssFeedDashboard(feeds.where(f => f.status === "✅"),expanded);

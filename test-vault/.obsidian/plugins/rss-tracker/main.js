@@ -12417,7 +12417,6 @@ var DEFAULT_SETTINGS = {
   rssCollectionsFolderName: "Collections",
   rssTopicsFolderName: "Topics",
   rssTemplateFolderName: "Templates",
-  rssDashboardName: "RSS Dashboard",
   rssTagmapName: "RSS Tagmap",
   rssDefaultImage: "",
   defaultItemLimit: 100,
@@ -12437,7 +12436,7 @@ const
 	expanded = false,
 	feeds = dvjs.rssFeeds;
 dv.header(2,"Failed Feeds \u274C");
-dvjs.rssFeedDashboard(feeds.where(f => f.status !== "\u2705"),expanded);
+dvjs.rssFeedDashboard(feeds.where(f => f.status !== "\u2705"),true);
 
 dv.header(2,"Successful Feeds \u2705");
 dvjs.rssFeedDashboard(feeds.where(f => f.status === "\u2705"),expanded);
@@ -12560,12 +12559,6 @@ var _RSSTrackerSettings = class _RSSTrackerSettings {
   set rssTemplateFolderName(value) {
     this._rssTemplateFolderName = value;
   }
-  get rssDashboardName() {
-    return this._rssDashboardName || this._data.rssDashboardName || DEFAULT_SETTINGS.rssDashboardName;
-  }
-  set rssDashboardName(value) {
-    this._rssDashboardName = value;
-  }
   get rssTagmapName() {
     return this._rssTagmapName || this._data.rssTagmapName || DEFAULT_SETTINGS.rssTagmapName;
   }
@@ -12664,12 +12657,6 @@ var _RSSTrackerSettings = class _RSSTrackerSettings {
         this._data.rssTemplateFolderName = this._rssTemplateFolderName;
       }
       this._rssTemplateFolderName = void 0;
-    }
-    if (this._rssDashboardName && this._rssDashboardName !== this._data.rssDashboardName) {
-      if (await this._filemgr.renameFile(this.rssTemplateFolderPath, this.rssHome + "/" + this._rssTemplateFolderName)) {
-        this._data.rssDashboardName = this._rssDashboardName;
-      }
-      this._rssDashboardName = void 0;
     }
     if (this._rssTagmapName && this._rssTagmapName !== this._data.rssTagmapName) {
       if (await this._filemgr.renameFile(this.rssTemplateFolderPath, this.rssHome + "/" + this._rssTemplateFolderName)) {
@@ -16915,23 +16902,6 @@ var RSSTagmapNameSetting = class extends RSSTrackerSettingBase {
     });
   }
 };
-var RSSDashboardNameSetting = class extends RSSTrackerSettingBase {
-  constructor(settingsTab) {
-    super(settingsTab);
-    this.setName("RSS Dashboard Name").setDesc("THe name of the dashboard Markdown file in the RSS Home folder which contains a content map of the subscribed RSS feeds.").addText((ta) => {
-      ta.setPlaceholder(DEFAULT_SETTINGS.rssDashboardName).onChange((value) => {
-        this.settings.rssDashboardName = value;
-      });
-      if (this.settings.rssDashboardName !== DEFAULT_SETTINGS.rssDashboardName) {
-        ta.setValue(this.settings.rssDashboardName);
-      }
-    }).addButton((btn) => {
-      btn.setIcon("reset").setTooltip("Reset the RSS dashboard name to default").onClick((evt) => {
-        this.settings.rssDashboardName = DEFAULT_SETTINGS.rssDashboardName;
-      });
-    });
-  }
-};
 var RSSautoUpdateSetting = class extends RSSTrackerSettingBase {
   constructor(settingsTab) {
     super(settingsTab);
@@ -17049,10 +17019,9 @@ var RSSTrackerSettingTab = class extends import_obsidian8.PluginSettingTab {
     new RSSFeedFolderSetting(this);
     new RSSCollectionsFolderSetting(this);
     new RSSTopicsFolderSetting(this);
-    new RSSTagDomain(this);
     new RSSautoUpdateSetting(this);
-    new RSSDashboardNameSetting(this);
     new RSSDefaultItemLimitSetting(this);
+    new RSSTagDomain(this);
     new RSSTagmapNameSetting(this);
   }
   hide() {

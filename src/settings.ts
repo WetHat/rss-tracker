@@ -18,7 +18,6 @@ export interface IRSSTrackerSettings {
 	rssCollectionsFolderName: string;
 	rssTopicsFolderName: string;
 	rssTemplateFolderName: string;
-	rssDashboardName: string;
 	rssTagmapName: string;
 	rssDefaultImage: string;
 	defaultItemLimit: number;
@@ -39,7 +38,6 @@ export const DEFAULT_SETTINGS: IRSSTrackerSettings = {
 	rssCollectionsFolderName: "Collections",
 	rssTopicsFolderName: "Topics",
 	rssTemplateFolderName: "Templates",
-	rssDashboardName: "RSS Dashboard",
 	rssTagmapName: "RSS Tagmap",
 	rssDefaultImage: "",
 	defaultItemLimit: 100,
@@ -59,7 +57,7 @@ const
 	expanded = false,
 	feeds = dvjs.rssFeeds;
 dv.header(2,"Failed Feeds ❌");
-dvjs.rssFeedDashboard(feeds.where(f => f.status !== "✅"),expanded);
+dvjs.rssFeedDashboard(feeds.where(f => f.status !== "✅"),true);
 
 dv.header(2,"Successful Feeds ✅");
 dvjs.rssFeedDashboard(feeds.where(f => f.status === "✅"),expanded);
@@ -191,7 +189,6 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 	private _rssCollectionsFolderName?: string; // cached value of the RSS collections folder name
 	private _rssTopicsFolderName?: string; // pending value of the RSS topics folder name
 	private _rssTemplateFolderName?: string; // pending value of the RSS templates folder name
-	private _rssDashboardName?: string; // pending value of the RSS dashboard name
 	private _rssTagmapName?: string; // pending value of the RSS tagmap name
 	private _defaultItemLimit?: number; // pending value of the default item limit
 	private _rssTagDomain?: string; // pending value of the RSS tag domain
@@ -235,14 +232,6 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 
 	set rssTemplateFolderName(value: string) {
 		this._rssTemplateFolderName = value;
-	}
-
-	get rssDashboardName(): string {
-		return this._rssDashboardName || this._data.rssDashboardName || DEFAULT_SETTINGS.rssDashboardName;
-	}
-
-	set rssDashboardName(value: string) {
-		this._rssDashboardName = value;
 	}
 
 	get rssTagmapName(): string {
@@ -364,14 +353,6 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 			}
 
 			this._rssTemplateFolderName = undefined;
-		}
-
-		if (this._rssDashboardName && this._rssDashboardName !== this._data.rssDashboardName) {
-			if (await this._filemgr.renameFile(this.rssTemplateFolderPath, this.rssHome + "/" + this._rssTemplateFolderName)) {
-				this._data.rssDashboardName = this._rssDashboardName;
-			}
-
-			this._rssDashboardName = undefined;
 		}
 
 		if (this._rssTagmapName && this._rssTagmapName !== this._data.rssTagmapName) {
