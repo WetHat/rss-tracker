@@ -1,6 +1,7 @@
 import { Setting, PluginSettingTab } from "obsidian";
 import RSSTrackerPlugin from "./main";
 import { DEFAULT_SETTINGS, RSSTrackerSettings } from "./settings";
+import { RSSdashboardAdapter } from "./RSSAdapter";
 
 abstract class RSSTrackerSettingBase extends Setting {
 	protected settingsTab: RSSTrackerSettingTab;
@@ -157,6 +158,29 @@ class RSSFeedFolderSetting extends RSSTrackerSettingBase {
 					.onClick(evt => {
 						this.settings.rssFeedFolderName = DEFAULT_SETTINGS.rssFeedFolderName;
 					})
+			})
+			.addButton(btn => {
+				btn
+					.setIcon("layout-dashboard")
+					.setTooltip("Reset the RSS feed dashboard to default")
+					//.setButtonText("Reset Dashboard")
+					.onClick(async evt => {
+						// get the dashboard folder
+						const
+						    filemgr = this.plugin.filemgr,
+							settings = this.plugin.settings,
+							placement = settings.rssDashboardPlacement,
+							dashboardFolder = await filemgr.ensureFolderExists(this.plugin.settings.rssFeedFolderPath),
+							dashboard = filemgr.getFolderDashboard(dashboardFolder,placement);
+
+						if (dashboard) {
+							// just update the dashboard
+							await dashboard.vault.modify(dashboard,settings.rssFeedDashboardTemplate);
+						} else {
+							// create a new dashboard
+							await filemgr.createDashboard(dashboardFolder,settings.rssFeedDashboardTemplate);
+						}
+					})
 			});
 	}
 }
@@ -253,12 +277,10 @@ export class RSSTrackerSettingTab extends PluginSettingTab {
 	display(): void {
 		const { containerEl } = this;
 		containerEl.empty();
-		const frag = containerEl.doc.createDocumentFragment()
-
 		new RSSHomeSetting(this);
+		new RSSFeedFolderSetting(this);
 		new RSSCollectionsFolderSetting(this);
 		new RSSTopicsFolderSetting(this);
-		new RSSFeedFolderSetting(this);
 		new RSSTagDomain(this);
         new RSSautoUpdateSetting(this);
 		new RSSDashboardNameSetting(this);

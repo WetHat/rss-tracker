@@ -442,6 +442,17 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 			}
 		}
 
+		// create Dashboards for certain folders
+		const filemgr = this.plugin.filemgr;
+		try {
+			const folder = vault.getFolderByPath(this.rssFeedFolderPath);
+			if (folder) {
+				filemgr.createDashboard(folder,this.rssFeedDashboardTemplate);
+			}
+		} catch (e) {
+			console.log("Dashboard Feed dashboard already exists");
+		}
+
 		// install factory templates if necessary
 		//for (const tpl of TEMPLATES) {
 		//	const tplPath = this.getTemplatePath(tpl);
@@ -451,14 +462,7 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 		//	}
 		//}
 
-		// the RSS dashboard is a special case
-		const dashboardPath = this.rssDashboardPath;
-		if (!await fs.exists(dashboardPath)) {
-			const factoryPath = this.plugin.manifest.dir + "/Templates/RSS Dashboard.md";
-			fs.copy(factoryPath, dashboardPath);
-		}
-
-		// the RSS tag map is a special case too
+		// the RSS tag map is a special case
 		const tagmapPath = this.rssTagmapPath;
 		if (!await fs.exists(tagmapPath)) {
 			const factoryPath = this.plugin.manifest.dir + "/Templates/RSS Tagmap.md";
