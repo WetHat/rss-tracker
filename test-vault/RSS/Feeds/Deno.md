@@ -5,7 +5,7 @@ site: https://deno.com/blog
 feedurl: https://localhost/test/Deno/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-24T17:13:32.743Z
+updated: 2025-05-25T12:21:23.436Z
 interval: 207
 tags: []
 ---

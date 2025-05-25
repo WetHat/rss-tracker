@@ -5,7 +5,7 @@ site: https://typescript.tv/
 feedurl: https://localhost/test/TypeScript TV/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-24T17:13:04.752Z
+updated: 2025-05-25T12:20:54.807Z
 interval: 809
 tags: []
 ---

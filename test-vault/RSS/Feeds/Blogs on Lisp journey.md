@@ -5,7 +5,7 @@ site: https://localhost/blog/
 feedurl: https://localhost/test/Blogs on Lisp journey/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-24T17:13:36.971Z
+updated: 2025-05-25T12:21:27.675Z
 interval: 645
 tags: []
 ---

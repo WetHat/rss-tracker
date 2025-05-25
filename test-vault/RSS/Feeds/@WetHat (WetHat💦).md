@@ -5,7 +5,7 @@ site: https://fosstodon.org/@WetHat
 feedurl: https://localhost/test/@WetHat (WetHat💦)/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-24T17:13:43.542Z
+updated: 2025-05-25T12:21:34.157Z
 interval: 5
 tags: []
 ---

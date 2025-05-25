@@ -6,7 +6,7 @@ site: https://github.blog/category/product/
 feedurl: https://localhost/test/The GitHub Blog꞉ Product News and Updates/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-24T17:13:09.010Z
+updated: 2025-05-25T12:20:59.264Z
 interval: 165
 tags: []
 ---
