@@ -57,8 +57,13 @@ export class FeedManager {
      */
     async createFeedFromFile(xml: TFile): Promise<RSSfeedAdapter> {
         await this._plugin.tagmgr.updateTagMap();
-        const feedXML = await this._app.vault.read(xml);
-        return RSSfeedAdapter.create(this._plugin, new TrackedRSSfeed(feedXML, "https://localhost/" + xml.path),this._plugin.settings.rssDashboardPlacement);
+        const
+            feedXML = await this._app.vault.read(xml),
+            settings = this._plugin.settings,
+            feed = await RSSfeedAdapter.create(this._plugin, new TrackedRSSfeed(feedXML, "https://localhost/" + xml.path),settings.rssDashboardPlacement);
+        // make sure the settings are properly persisted if taken from `Folder Notes`.
+        await settings.commit();
+        return feed;
     }
 
     /**
@@ -90,7 +95,12 @@ export class FeedManager {
             method: "GET"
         });
         await this._plugin.tagmgr.updateTagMap();
-        return RSSfeedAdapter.create(this._plugin, new TrackedRSSfeed(feedXML, url),this._plugin.settings.rssDashboardPlacement);
+        const
+            settings = this._plugin.settings,
+            feed = await RSSfeedAdapter.create(this._plugin, new TrackedRSSfeed(feedXML, url),settings.rssDashboardPlacement);
+        // make sure settings are properly persisted if taken from `Folder Notes`
+        await settings.commit();
+        return feed;
     }
 
     /**

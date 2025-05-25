@@ -26,7 +26,7 @@ export class RSSfileManager {
 	private _plugin: RSSTrackerPlugin;
 
 	private _adapterFactories: { [role: string]: TAdapterFactory } = {
-		"rssfeed": (f: TFile, fm: TFrontmatter) => RSSdashboardAdapter.createFromFile(RSSfeedAdapter, this._plugin, f, fm),
+		"rssfeed": (f: TFile, fm: TFrontmatter) => RSSdashboardAdapter.createFromFile(RSSfeedAdapter, this._plugin, f, this.settings.rssDashboardPlacement, fm),
 		"rssitem": (f: TFile, fm: TFrontmatter) => new RSSitemAdapter(this._plugin, f, fm),
 		"rsscollection": (f: TFile, fm: TFrontmatter) => new RSScollectionAdapter(this._plugin, f, fm),
 	}
@@ -72,18 +72,18 @@ export class RSSfileManager {
 	 * @returns the adapter or null if it does not exist.
 	 */
 	createAdapter(file: TFile, ...types: string[]): RSSAdapter | null {
-        const
-            frontmatter = this._plugin.app.metadataCache.getFileCache(file)?.frontmatter,
-            role = frontmatter?.role;
+		const
+			frontmatter = this._plugin.app.metadataCache.getFileCache(file)?.frontmatter,
+			role = frontmatter?.role;
 
-        if (role && role in types) {
-            const factory = this._adapterFactories[role];
-            if (factory) {
-                return factory(file, frontmatter);
-            }
-        }
-        return null;
-    }
+		if (role && role in types) {
+			const factory = this._adapterFactories[role];
+			if (factory) {
+				return factory(file, frontmatter);
+			}
+		}
+		return null;
+	}
 
 	/**
 	 * Expand `{{mustache}}` placeholders with data from a property bag.

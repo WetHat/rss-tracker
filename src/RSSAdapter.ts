@@ -152,16 +152,19 @@ export abstract class RSSdashboardAdapter extends RSSAdapter {
      * @param dashboard The dashboard file to get the folder for.
      * @returns The folder associated with the dashboard (if any).
      */
-    static dashboardFolder(dashboard: TFile): TFolder | null {
-        // determine the folder name by running the dashboard name template backwards
-        const folderName = dashboard.basename; // TODO: use the folder note name template
-        if (dashboard.parent?.name === folderName) {
-            return dashboard.parent;
-        }
+    private static dashboardFolder(dashboard: TFile, placement: TDashboardPlacement): TFolder | null {
+        const folderName = RSSdashboardAdapter.dashboardFolderName(dashboard);
 
-        // assuming `parentFolder` placement
-        const folder = (dashboard.parent?.path ?? "") + "/" + folderName;
-        return dashboard.vault.getFolderByPath(folder);
+        if (placement === "insideFolder") {
+            const parentFolder = dashboard.parent;
+            if (parentFolder?.name === folderName) {
+                return parentFolder;
+            }
+        } else { // placement === "parentFolder"
+            const folderPath = dashboard.parent?.path ?? "" + "/" + folderName;
+            return dashboard.vault.getFolderByPath(folderPath);
+        }
+        return null;
     }
 
     /**
@@ -172,8 +175,12 @@ export abstract class RSSdashboardAdapter extends RSSAdapter {
      * @param folder The folder to get the dashboard name for.
      * @returns The name of the dashboard file (without the `.md` extension).
      */
-    static dashboardName(folder: TFolder): string {
+    private static dashboardName(folder: TFolder): string {
         return folder.name; // TODO: use folder note name template
+    }
+
+    private static dashboardFolderName(dashboard: TFile): string {
+        return dashboard.basename; // TODO: use the folder note name template backwards
     }
 
     /**
@@ -186,17 +193,27 @@ export abstract class RSSdashboardAdapter extends RSSAdapter {
      * @returns A new instance of an adapter of type `T` or `null` if the dashboard does not exist.
      */
     static createFromFolder<T extends RSSdashboardAdapter>(cTor: IConstructableDashboard<T>, plugin: RSSTrackerPlugin, folder: TFolder, placement: TDashboardPlacement): T | null {
-        const dashboard = RSSdashboardAdapter.dashboard(folder, placement);
+        let dashboard = RSSdashboardAdapter.dashboard(folder, placement);
         if (!dashboard) {
-            return null;
+            // maybe the placement was wrong. Try the other one.
+            placement = placement === "insideFolder" ? "parentFolder" : "insideFolder";
+            dashboard = RSSdashboardAdapter.dashboard(folder, placement);
+            if (!dashboard) {
+                return null;  // no dashboard found anywhere.
+            }
         }
         return new cTor(plugin, folder, dashboard);
     }
 
-    static createFromFile<T extends RSSdashboardAdapter>(cTor: IConstructableDashboard<T>, plugin: RSSTrackerPlugin, file: TFile, frontmatter?: TFrontmatter): T | null {
-        const folder = RSSdashboardAdapter.dashboardFolder(file);
+    static createFromFile<T extends RSSdashboardAdapter>(cTor: IConstructableDashboard<T>, plugin: RSSTrackerPlugin, file: TFile, placement: TDashboardPlacement, frontmatter?: TFrontmatter): T | null {
+        let folder = RSSdashboardAdapter.dashboardFolder(file, placement);
         if (!folder) {
-            return null;
+            // no folder found for the dashboard file, maybe the placement was wrong.
+            placement = placement === "insideFolder" ? "parentFolder" : "insideFolder";
+            folder = RSSdashboardAdapter.dashboardFolder(file, placement);
+            if (!folder) {
+                return null; // no folder found anywhere for the dashboard file.
+            }
         }
         return new cTor(plugin, folder, file, frontmatter);
     }
