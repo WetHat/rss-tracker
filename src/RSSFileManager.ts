@@ -25,11 +25,23 @@ export class RSSfileManager {
 	private _vault: Vault;
 	private _plugin: RSSTrackerPlugin;
 
-	private _adapterFactories: { [role: string]: TAdapterFactory } = {
+	private readonly _adapterFactories: { [role: string]: TAdapterFactory } = {
 		"rssfeed": (f: TFile, fm: TFrontmatter) => RSSdashboardAdapter.createFromFile(RSSfeedAdapter, this._plugin, f, this.settings.rssDashboardPlacement, fm),
 		"rssitem": (f: TFile, fm: TFrontmatter) => new RSSitemAdapter(this._plugin, f, fm),
 		"rsscollection": (f: TFile, fm: TFrontmatter) => new RSScollectionAdapter(this._plugin, f, fm),
 	}
+
+	/**
+	 * A map of template names to their property names in {@link RSSTrackerSettings}.
+	 */
+	private readonly _templateMap: { [name: string]: string } = {
+		"RSS Item": "rssItemTemplate",
+		"RSS Feed": "rssFeedTemplate",
+		"RSS Collection": "rssCollectionTemplate",
+		"RSS Topic": "rssTopicTemplate",
+		"RSS Dashboard": "rssDashboardTemplate",
+		"RSS Tagmap": "rssTagmapTemplate",
+	};
 
 	get settings(): RSSTrackerSettings {
 		return this._plugin.settings;
@@ -96,28 +108,25 @@ export class RSSfileManager {
 	}
 
 	/**
-	 * Read the content of a template from the RSS template folder.
+	 * Read the content of a template from a template folder or from settings.
 	 *
-	 * If the template does not esist, it is installed,
+	 * The template folder returned from {@link RSSTrackerSettings.getTemplatePath} is checked first.
+	 * If no template file exists at that location, the template is read from the settings.
 	 *
-	 * @param templateName - Name of the template to read
-	 * @returns Template contents
+	 * @param templateName - Name of the template to read.
+	 * @returns A `Promise`for the template contents.
 	 */
 	private async readTemplate(templateName: TTemplateName): Promise<string> {
-		const
-			fs = this._vault.adapter,
-			templatePath = this.settings.getTemplatePath(templateName);
-
-		if (!fs.exists(this.settings.rssTemplateFolderPath) || !fs.exists(templatePath)) {
-			await this.settings.install(); // recovering from missing template
-		}
+		const templatePath = this.settings.getTemplatePath(templateName);
 
 		const tplFile = this._vault.getFileByPath(templatePath);
-		if (!tplFile) {
-			throw new Error(`Template ${templatePath} unavailable!`);
+		if (tplFile) {
+			// template exists, read and return its contents
+			return this._vault.read(tplFile);
+		} else {
+			// template does not exist, use the factory defined template instead.
+			return this.settings[this._templateMap[templateName]];
 		}
-
-		return this._vault.cachedRead(tplFile);
 	}
 
 	/**
