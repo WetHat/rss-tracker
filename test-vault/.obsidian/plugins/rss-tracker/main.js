@@ -17015,12 +17015,15 @@ var RSSTrackerSettingTab = class extends import_obsidian8.PluginSettingTab {
   display() {
     const { containerEl } = this;
     containerEl.empty();
+    containerEl.createEl("h1", { text: "RSS Folders" });
     new RSSHomeSetting(this);
     new RSSFeedFolderSetting(this);
     new RSSCollectionsFolderSetting(this);
     new RSSTopicsFolderSetting(this);
+    containerEl.createEl("h1", { text: "RSS Feed Settings", attr: { style: "border-top: 0.3em solid gray; padding-top: 1em" } });
     new RSSautoUpdateSetting(this);
     new RSSDefaultItemLimitSetting(this);
+    containerEl.createEl("h1", { text: "RSS Tag Mapping", attr: { style: "border-top: 0.3em solid gray; padding-top: 1em" } });
     new RSSTagDomain(this);
     new RSSTagmapNameSetting(this);
   }
