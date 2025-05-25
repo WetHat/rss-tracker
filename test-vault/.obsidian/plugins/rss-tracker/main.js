@@ -12423,6 +12423,36 @@ var DEFAULT_SETTINGS = {
   defaultItemLimit: 100,
   rssTagDomain: "rss",
   rssDashboardPlacement: "parentFolder",
+  rssFeedDashboardTemplate: `---
+role: rssdashboard
+---
+> [!abstract] RSS feed Dashboard
+> ![[RSSdefaultImage.svg|float:right|100x100]] See all your subscribed and curated content at a glance.
+
+# Feed Status \u{1F494}
+
+~~~dataviewjs
+const
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	expanded = false,
+	feeds = dvjs.rssFeeds;
+dv.header(2,"Failed Feeds \u274C");
+dvjs.rssFeedDashboard(feeds.where(f => f.status !== "\u2705"),expanded);
+
+dv.header(2,"Successful Feeds \u2705");
+dvjs.rssFeedDashboard(feeds.where(f => f.status === "\u2705"),expanded);
+~~~
+
+# Pinned Items \u{1F4CD}x
+
+~~~dataviewjs
+const
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	expand = false,
+	items = dvjs.rssItems.where(i => i.pinned === true);
+await dvjs.rssItemTableByFeed(items,expand);
+~~~
+`,
   rssItemTemplate: `---
 role:
 ---
@@ -12579,6 +12609,9 @@ var _RSSTrackerSettings = class _RSSTrackerSettings {
   get rssItemTemplate() {
     return DEFAULT_SETTINGS.rssItemTemplate;
   }
+  get rssFeedDashboardTemplate() {
+    return DEFAULT_SETTINGS.rssFeedDashboardTemplate;
+  }
   /**
    * Get the path to the RSS default image
    */
@@ -12687,10 +12720,14 @@ var _RSSTrackerSettings = class _RSSTrackerSettings {
         await vault.createFolder(folderPath);
       }
     }
-    const dashboardPath = this.rssDashboardPath;
-    if (!await fs.exists(dashboardPath)) {
-      const factoryPath = this.plugin.manifest.dir + "/Templates/RSS Dashboard.md";
-      fs.copy(factoryPath, dashboardPath);
+    const filemgr = this.plugin.filemgr;
+    try {
+      const folder = vault.getFolderByPath(this.rssFeedFolderPath);
+      if (folder) {
+        filemgr.createDashboard(folder, this.rssFeedDashboardTemplate);
+      }
+    } catch (e) {
+      console.log("Dashboard Feed dashboard already exists");
     }
     const tagmapPath = this.rssTagmapPath;
     if (!await fs.exists(tagmapPath)) {
@@ -15432,99 +15469,23 @@ var RSSAdapter = class _RSSAdapter {
     });
   }
 };
-var RSSdashboardAdapter = class _RSSdashboardAdapter extends RSSAdapter {
-  /**
-   * Get the path to a RSS dashboard file for a given folder.
-   *
-   * @param folder The folder to get the dashboard for.
-   * @param placement The placement of the dashboard. If set to "insideFolder", the dashboard is in the folder itself.
-   * @returns Path to the RSS dashboard file. The dashboard may or may not exist.
-   */
-  static dashboardPath(folder, placement) {
-    var _a2, _b;
-    const dashboardBaseName = _RSSdashboardAdapter.dashboardName(folder);
-    if (placement === "insideFolder") {
-      return folder.path + "/" + dashboardBaseName + ".md";
-    } else {
-      return ((_b = (_a2 = folder.parent) == null ? void 0 : _a2.path) != null ? _b : "") + "/" + dashboardBaseName + ".md";
-    }
-  }
-  /**
-   * Get the RSS dashboard file for a given folder.
-   *
-   * @param folder The folder to get the dashboard for.
-   * @param placement The placement of the dashboard. If set to "insideFolder", the dashboard is in the folder itself.
-   * @returns The RSS dashboard file or null if it does not exist.
-   */
-  static dashboard(folder, placement) {
-    var _a2, _b;
-    const dashboardBaseName = _RSSdashboardAdapter.dashboardName(folder), dashboardPath = placement === "insideFolder" ? folder.path + "/" + dashboardBaseName + ".md" : ((_b = (_a2 = folder.parent) == null ? void 0 : _a2.path) != null ? _b : "") + "/" + dashboardBaseName + ".md";
-    return folder.vault.getFileByPath(dashboardPath);
-  }
-  /**
-   * Get the folder associated with a dashboard file.
-   *
-   * @param dashboard The dashboard file to get the folder for.
-   * @returns The folder associated with the dashboard (if any).
-   */
-  static dashboardFolder(dashboard, placement) {
-    var _a2, _b;
-    const folderName = _RSSdashboardAdapter.dashboardFolderName(dashboard);
-    if (placement === "insideFolder") {
-      const parentFolder = dashboard.parent;
-      if ((parentFolder == null ? void 0 : parentFolder.name) === folderName) {
-        return parentFolder;
-      }
-    } else {
-      const folderPath = (_b = (_a2 = dashboard.parent) == null ? void 0 : _a2.path) != null ? _b : "/" + folderName;
-      return dashboard.vault.getFolderByPath(folderPath);
-    }
-    return null;
-  }
-  /**
-   * Get name of a dashboard file for a given folder.
-   *
-   * ❗Uses the `folder Note` name template to generate the dashboard file name.
-   *
-   * @param folder The folder to get the dashboard name for.
-   * @returns The name of the dashboard file (without the `.md` extension).
-   */
-  static dashboardName(folder) {
-    return folder.name;
-  }
-  static dashboardFolderName(dashboard) {
-    return dashboard.basename;
-  }
+var RSSdashboardAdapter = class extends RSSAdapter {
   /**
    * Factory method to create a new instance of an RSS dashboard adapter for a folder.
    *
    * @param cTor the constructor of the adapter to create.
    * @param plugin The plugin instance.
-   * @param folder The folder to create the dashboard adapterfor.
+   * @param folder The folder to create the dashboard adapterfor.cls
    * @param placement The placement of the dashboard. If set to "insideFolder", the dashboard is in the folder itself.
    * @returns A new instance of an adapter of type `T` or `null` if the dashboard does not exist.
    */
   static createFromFolder(cTor, plugin, folder, placement) {
-    let dashboard = _RSSdashboardAdapter.dashboard(folder, placement);
-    if (!dashboard) {
-      placement = placement === "insideFolder" ? "parentFolder" : "insideFolder";
-      dashboard = _RSSdashboardAdapter.dashboard(folder, placement);
-      if (!dashboard) {
-        return null;
-      }
-    }
-    return new cTor(plugin, folder, dashboard);
+    const dashboard = plugin.filemgr.getFolderDashboard(folder, placement);
+    return dashboard ? new cTor(plugin, folder, dashboard) : null;
   }
   static createFromFile(cTor, plugin, file, placement, frontmatter) {
-    let folder = _RSSdashboardAdapter.dashboardFolder(file, placement);
-    if (!folder) {
-      placement = placement === "insideFolder" ? "parentFolder" : "insideFolder";
-      folder = _RSSdashboardAdapter.dashboardFolder(file, placement);
-      if (!folder) {
-        return null;
-      }
-    }
-    return new cTor(plugin, folder, file, frontmatter);
+    const folder = plugin.filemgr.getDashboardFolder(file, placement);
+    return folder ? new cTor(plugin, folder, file, frontmatter) : null;
   }
   constructor(plugin, folder, file, frontmatter) {
     super(plugin, file, frontmatter);
@@ -17013,6 +16974,15 @@ var RSSFeedFolderSetting = class extends RSSTrackerSettingBase {
       btn.setIcon("reset").setTooltip("Reset the RSS feed location to default").onClick((evt) => {
         this.settings.rssFeedFolderName = DEFAULT_SETTINGS.rssFeedFolderName;
       });
+    }).addButton((btn) => {
+      btn.setIcon("layout-dashboard").setTooltip("Reset the RSS feed dashboard to default").onClick(async (evt) => {
+        const filemgr = this.plugin.filemgr, settings = this.plugin.settings, placement = settings.rssDashboardPlacement, dashboardFolder = await filemgr.ensureFolderExists(this.plugin.settings.rssFeedFolderPath), dashboard = filemgr.getFolderDashboard(dashboardFolder, placement);
+        if (dashboard) {
+          await dashboard.vault.modify(dashboard, settings.rssFeedDashboardTemplate);
+        } else {
+          await filemgr.createDashboard(dashboardFolder, settings.rssFeedDashboardTemplate);
+        }
+      });
     });
   }
 };
@@ -17075,7 +17045,6 @@ var RSSTrackerSettingTab = class extends import_obsidian8.PluginSettingTab {
   display() {
     const { containerEl } = this;
     containerEl.empty();
-    const frag = containerEl.doc.createDocumentFragment();
     new RSSHomeSetting(this);
     new RSSFeedFolderSetting(this);
     new RSSCollectionsFolderSetting(this);
@@ -17124,16 +17093,60 @@ var _RSSfileManager = class _RSSfileManager {
     return this._app.metadataCache;
   }
   /**
+   * Get the folder associated with a dashboard.
+   *
+   * @param dashboard The dashboard file to find the folder for.
+   * @param placement the placement of the dashboard. If set to "insideFolder", the dashboard is in the folder itself.
+   *                  If set to "outsideFolder", the dashboard is in the parent folder.
+   * @returns The dashboard folder. `null` if the folder does not exist
+   */
+  getDashboardFolder(dashboard, placement) {
+    var _a2, _b;
+    const folderName = dashboard.name, dashboardParent = dashboard.parent;
+    if (placement === "insideFolder") {
+      return (dashboardParent == null ? void 0 : dashboardParent.name) === folderName ? dashboardParent : dashboard.vault.getFolderByPath(((_a2 = dashboardParent == null ? void 0 : dashboardParent.path) != null ? _a2 : "") + "/" + folderName);
+    } else {
+      const folder = dashboard.vault.getFolderByPath(((_b = dashboardParent == null ? void 0 : dashboardParent.path) != null ? _b : "") + "/" + folderName);
+      return folder ? folder : dashboardParent;
+    }
+  }
+  /**
+   * Get the name of the dashboard file associated with the given folder.
+   *
+   * @param folder The folder to get the dashboard name for
+   * @returns dashboard name (without extension).
+   */
+  getFolderDashboardName(folder) {
+    return folder.name;
+  }
+  /**
    * Get the dashboard file for a given folder.
+   *
    * @param folder the folder to get the dashboard for.
    * @param placement the placement of the dashboard. If set to "insideFolder", the dashboard is in the folder itself.
    *       If set to "outsideFolder", the dashboard is in the parent folder.
    * @returns the dashboard file or null if it does not exist.
    */
-  getFolderDashboard(folder, placement = "insideFolder") {
+  getFolderDashboard(folder, placement) {
     var _a2, _b;
-    const dashboardName = folder.name, dashboardPath = (placement === "insideFolder" ? folder.path : (_b = (_a2 = folder.parent) == null ? void 0 : _a2.path) != null ? _b : "") + "/" + dashboardName + ".md";
-    return this._vault.getFileByPath(dashboardPath);
+    const dashboardName = this.getFolderDashboardName(folder), insideFolderPath = folder.path, parentFolderPath = (_b = (_a2 = folder.parent) == null ? void 0 : _a2.path) != null ? _b : "";
+    for (const path of placement === "insideFolder" ? [insideFolderPath, parentFolderPath] : [parentFolderPath, insideFolderPath]) {
+      const dashboard = folder.vault.getFileByPath(path + "/" + dashboardName + ".md");
+      if (dashboard) {
+        return dashboard;
+      }
+    }
+    return null;
+  }
+  /**
+   * Create a `Folder Notes` style dashboard for a folder from given contents.
+   * @param folder The folder to creat tehe
+   * @param contents
+   */
+  createDashboard(folder, contents) {
+    var _a2, _b;
+    const placement = this.settings.rssDashboardPlacement, dashboardName = this.getFolderDashboardName(folder), location = placement === "insideFolder" ? folder.path : (_b = (_a2 = folder.parent) == null ? void 0 : _a2.path) != null ? _b : "";
+    return folder.vault.create(location + "/" + dashboardName + ".md", contents);
   }
   /**
    * Get the RSS adapter for a given file.
@@ -17166,9 +17179,12 @@ var _RSSfileManager = class _RSSfileManager {
     }).join("");
   }
   /**
-   * Read the content of a template from the RSS template folder.
+   * Read the content of a template from a template folder or from settings.
    *
-   * @param templateName - Name of the template to read
+   * The template folder returned from {@link RSSTrackerSettings.getTemplatePath} is checked first.
+   * If no template file exists at that location, the template is read from the settings.
+   *
+   * @param templateName - Name of the template to read.
    * @returns A `Promise`for the template contents.
    */
   async readTemplate(templateName) {
@@ -17220,6 +17236,7 @@ var _RSSfileManager = class _RSSfileManager {
   }
   /**
    * Create a folder with a unique name in a given context.
+   *
    * @param parentFolder the parent folder in which to create the new folder
    * @param folderName the name of the new folder
    * @returns A `Promise` to the new folder handle.
