@@ -12422,7 +12422,7 @@ var DEFAULT_SETTINGS = {
   rssDefaultImage: "",
   defaultItemLimit: 100,
   rssTagDomain: "rss",
-  rssDashboardPlacement: "insideFolder"
+  rssDashboardPlacement: "parentFolder"
 };
 var TEMPLATES = ["RSS Feed", "RSS Item", "RSS Topic", "RSS Collection"];
 var _RSSTrackerSettings = class _RSSTrackerSettings {
@@ -12504,7 +12504,7 @@ var _RSSTrackerSettings = class _RSSTrackerSettings {
   /**
    * Get the placement of an RSS dashboard.
    *
-   * By default this setting is `insideFolder`, unless the 'Folder Notes' plugin is enabled, then it is taken
+   * By default this setting is `parentFolder`, unless the 'Folder Notes' plugin is enabled, then it is taken
    * from the that plugin's settings.
    *
    * The placement can only be changed by the 'Folder Notes' plugin.
