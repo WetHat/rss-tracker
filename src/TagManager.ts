@@ -1,8 +1,9 @@
-import { EventRef, TFile, CachedMetadata, App, Vault, Notice, Plugin } from 'obsidian';
+import { EventRef, TFile, CachedMetadata, App, Notice } from 'obsidian';
 import RSSTrackerPlugin from "./main";
 import { TPropertyBag } from "./FeedAssembler";
 import { RSSTrackerSettings } from "./settings";
 import { MetadataCacheEx } from "./RSSFileManager";
+import { RSSTrackerService } from './PluginServices';
 
 /**
  * A critical section implementation to protect non-thread-save resources.
@@ -33,12 +34,8 @@ class Mutex {
  * Utility class to orchestrate the mapping of rss tags to tags into the domain
  * of the local knowledge graph.
  */
-export class RSSTagManager {
-    private _app: App;
-    private _vault: Vault;
-    private _plugin: RSSTrackerPlugin;
+export class RSSTagManager extends RSSTrackerService {
     private _metadataCache: MetadataCacheEx;
-
     private _tagmapMutex = new Mutex();
 
     /**
@@ -52,10 +49,8 @@ export class RSSTagManager {
     private _pendingMappings: string[] = [];
 
     constructor(app: App, plugin: RSSTrackerPlugin) {
-        this._app = app;
-        this._plugin = plugin;
+        super(app, plugin);
         this._metadataCache = app.metadataCache as MetadataCacheEx;
-        this._vault = app.vault;
     }
 
     /**
@@ -67,13 +62,13 @@ export class RSSTagManager {
      */
     async ensureTagmapExists(): Promise<TFile> {
         const
-            filemgr = this._plugin.filemgr,
-            settings = this._plugin.settings,
+            filemgr = this.plugin.filemgr,
+            settings = this.plugin.settings,
             tagmapName = settings.rssTagmapName,
             tagmapPath = settings.rssHome + "/" + tagmapName + ".md";
 
         console.log(`Ensuring Tagmap: ${tagmapPath}`);
-        let tagmap = this._vault.getFileByPath(tagmapPath);
+        let tagmap = this.vault.getFileByPath(tagmapPath);
 
         if (!tagmap) {
             // make a tagmap from a template
@@ -129,7 +124,7 @@ export class RSSTagManager {
         if (removed > 0 && prefix) {
             // write an updated file
             const mapfile = await this.ensureTagmapExists();
-            await this._vault.modify(mapfile, prefix[0] + "\n");
+            await this.vault.modify(mapfile, prefix[0] + "\n");
             this._pendingMappings = prefix.slice(1);
             for (let [hashtag, mappedTag] of this._tagmap) {
                 this._pendingMappings.push(`| ${hashtag.slice(1)} | ${mappedTag} |`);
@@ -159,7 +154,7 @@ export class RSSTagManager {
                 const mappings = "\n" + this._pendingMappings.join("\n");
                 console.log(`Tag map updated with: "${mappings}"`);
                 this._pendingMappings = [];
-                await this._vault.append(file, mappings);
+                await this.vault.append(file, mappings);
             }
             this._tagmapMutex.unlock();
         } else {
@@ -217,7 +212,7 @@ export class RSSTagManager {
         }
 
         // read and parse the mapfile
-        const content = await this._vault.read(mapfile);
+        const content = await this.vault.read(mapfile);
         for (const section of sections) {
             if (section.type === "table") {
                 // everyting after the table start is supposed to belong to
@@ -269,7 +264,7 @@ export class RSSTagManager {
      * @returns Event handler reference object
      */
     get rssTagPostProcessor(): EventRef {
-        return this._app.metadataCache.on("changed", async (item: TFile, content: string, metaData: CachedMetadata): Promise<void> => {
+        return this.app.metadataCache.on("changed", async (item: TFile, content: string, metaData: CachedMetadata): Promise<void> => {
             if (!this._postProcessingRegistry.delete(item.path)) {
                 // this file is not registered for postprocessing
                 return

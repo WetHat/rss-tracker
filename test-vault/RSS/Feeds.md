@@ -6,7 +6,7 @@ role: rssfeed-dashboard
 
 # Feed Status 💔
 
-⚠️ Untagged feeds cannot be claimed by feed collections.
+⚠️ Only tagged feeds can be claimed by feed collections.
 ~~~dataviewjs
 const
 	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),

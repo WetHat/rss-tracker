@@ -1,9 +1,9 @@
 import { App, request, TFile, TFolder, Notice, FrontMatterCache } from 'obsidian';
 import RSSTrackerPlugin from './main';
 import { TrackedRSSfeed } from './FeedAssembler';
-import { RSSfileManager } from './RSSFileManager';
 import { HTMLxlate } from './HTMLxlate';
 import { RSSfeedAdapter, RSScollectionAdapter, RSSdashboardAdapter } from './RSSAdapter';
+import { RSSTrackerService } from './PluginServices';
 
 
 /**
@@ -18,18 +18,11 @@ import { RSSfeedAdapter, RSScollectionAdapter, RSSdashboardAdapter } from './RSS
  *
  * - Setting all items on a feed as _read_. See {@link FeedManager.completeReadingTasks}
  */
-export class FeedManager {
-    private _app: App;
-    private _plugin: RSSTrackerPlugin;
+export class FeedManager extends RSSTrackerService {
     private _html: HTMLxlate;
 
-    private get _filemgr(): RSSfileManager {
-        return this._plugin.filemgr;
-    }
-
     constructor(app: App, plugin: RSSTrackerPlugin) {
-        this._app = app;
-        this._plugin = plugin;
+        super(app, plugin);
         this._html = HTMLxlate.instance;
     }
 
@@ -56,11 +49,11 @@ export class FeedManager {
      * @returns the feed adapter
      */
     async createFeedFromFile(xml: TFile): Promise<RSSfeedAdapter> {
-        await this._plugin.tagmgr.updateTagMap();
+        await this.plugin.tagmgr.updateTagMap();
         const
-            feedXML = await this._app.vault.read(xml),
-            settings = this._plugin.settings,
-            feed = await RSSfeedAdapter.create(this._plugin, new TrackedRSSfeed(feedXML, "https://localhost/" + xml.path));
+            feedXML = await this.vault.read(xml),
+            settings = this.plugin.settings,
+            feed = await RSSfeedAdapter.create(this.plugin, new TrackedRSSfeed(feedXML, "https://localhost/" + xml.path));
         // make sure the settings are properly persisted if taken from `Folder Notes`.
         await settings.commit();
         return feed;
@@ -94,10 +87,10 @@ export class FeedManager {
             url: url,
             method: "GET"
         });
-        await this._plugin.tagmgr.updateTagMap();
+        await this.plugin.tagmgr.updateTagMap();
         const
-            settings = this._plugin.settings,
-            feed = await RSSfeedAdapter.create(this._plugin, new TrackedRSSfeed(feedXML, url));
+            settings = this.plugin.settings,
+            feed = await RSSfeedAdapter.create(this.plugin, new TrackedRSSfeed(feedXML, url));
         // make sure settings are properly persisted if taken from `Folder Notes`
         await settings.commit();
         return feed;
@@ -144,12 +137,12 @@ export class FeedManager {
 
     get feeds(): RSSfeedAdapter[] {
         const
-            placement = this._plugin.settings.rssDashboardPlacement,
-            feedFolder = this._app.vault.getFolderByPath(this._plugin.settings.rssFeedFolderPath);
+            placement = this.plugin.settings.rssDashboardPlacement,
+            feedFolder = this.vault.getFolderByPath(this.plugin.settings.rssFeedFolderPath);
         if (feedFolder) {
             return feedFolder.children
                 .filter(f => f instanceof TFolder)
-                .map(f => RSSdashboardAdapter.createFromFolder(RSSfeedAdapter,this._plugin, f as TFolder, placement))
+                .map(f => RSSdashboardAdapter.createFromFolder(RSSfeedAdapter,this.plugin, f as TFolder, placement))
                 .filter(p => p instanceof RSSfeedAdapter) as RSSfeedAdapter[];
         }
         return [];
@@ -177,7 +170,7 @@ export class FeedManager {
     }
 
     async update(force: boolean, adapter?: RSSfeedAdapter | RSScollectionAdapter) : Promise<void> {
-        await this._plugin.tagmgr.updateTagMap();
+        await this.plugin.tagmgr.updateTagMap();
         if (adapter instanceof RSSfeedAdapter) {
             const itemCount = await this.updateFeed(adapter,force);
             new Notice(`Feed '${adapter.file.basename}' has '${itemCount}' new items`,20000);
@@ -204,13 +197,13 @@ export class FeedManager {
      * @returns `true` if the file is a RSS item with a link to a downloadable article.
      */
     canDownloadArticle(item: TFile): boolean {
-        const fm: FrontMatterCache | undefined = this._app.metadataCache.getFileCache(item)?.frontmatter;
+        const fm: FrontMatterCache | undefined = this.app.metadataCache.getFileCache(item)?.frontmatter;
         return fm !== undefined && fm["role"] === "rssitem";
     }
 
     async downloadArticle(item: TFile) {
         const
-            fm: FrontMatterCache | undefined = this._app.metadataCache.getFileCache(item)?.frontmatter,
+            fm: FrontMatterCache | undefined = this.app.metadataCache.getFileCache(item)?.frontmatter,
             link: string | undefined = fm?.["link"];
         if (link) {
             // download the article
@@ -222,8 +215,8 @@ export class FeedManager {
                 article: string | null = await this._html.articleAsMarkdown(itemHTML, link);
             if (article) {
                 if (article.length > 0) {
-                    this._plugin.tagmgr.registerFileForPostProcessing(item.path);
-                    return this._app.vault.append(item, article);
+                    this.plugin.tagmgr.registerFileForPostProcessing(item.path);
+                    return this.app.vault.append(item, article);
                 }
             }
         }

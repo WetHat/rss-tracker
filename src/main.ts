@@ -8,6 +8,7 @@ import { TPropertyBag } from './FeedAssembler';
 import { RSSTrackerSettingTab } from './settingsUI';
 import { RSSfileManager } from './RSSFileManager';
 import { RSSTagManager } from './TagManager';
+import { TemplateManager } from './TemplateManager';
 
 // API exports
 export { RSSTrackerSettings } from './settings';
@@ -17,10 +18,13 @@ export { RSSfileManager } from './RSSFileManager';
 export { RSSTagManager } from './TagManager';
 
 export default class RSSTrackerPlugin extends Plugin {
+
+    //#region RSS Tracker services
     private _settings: RSSTrackerSettings;
     private _feedmgr: FeedManager;
     private _filemgr: RSSfileManager;
     private _tagmgr: RSSTagManager;
+    private _tplmgr: TemplateManager;
 
     get settings(): RSSTrackerSettings {
         return this._settings;
@@ -38,6 +42,11 @@ export default class RSSTrackerPlugin extends Plugin {
         return this._tagmgr;
     }
 
+    get tplmgr(): TemplateManager {
+        return this._tplmgr;
+    }
+
+    //#endregion RSS Tracker services
     get vault(): Vault {
         return this.app.vault;
     }
@@ -48,6 +57,7 @@ export default class RSSTrackerPlugin extends Plugin {
         this._filemgr = new RSSfileManager(app, this);
         this._feedmgr = new FeedManager(app, this);
         this._tagmgr = new RSSTagManager(app, this);
+        this._tplmgr = new TemplateManager(app, this);
     }
 
     getDVJSTools(dv: TPropertyBag) {

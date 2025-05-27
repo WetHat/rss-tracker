@@ -12718,9 +12718,6 @@ var RSSTrackerSettings = class {
   get rssTagmapPath() {
     return this.rssHome + "/" + this.rssTagmapName + ".md";
   }
-  getTemplatePath(templateName) {
-    return this.rssTemplateFolderPath + "/" + templateName + ".md";
-  }
 };
 
 // src/commands.ts
@@ -16087,13 +16084,31 @@ var NewRSSFeedModalCommand = class extends RSSTrackerCommandBase {
 
 // src/FeedManager.ts
 var import_obsidian5 = require("obsidian");
-var FeedManager = class {
-  get _filemgr() {
-    return this._plugin.filemgr;
+
+// src/PluginServices.ts
+var RSSTrackerService = class {
+  get plugin() {
+    return this._plugin;
+  }
+  get app() {
+    return this._plugin.app;
+  }
+  get vault() {
+    return this._plugin.vault;
+  }
+  get settings() {
+    return this._plugin.settings;
   }
   constructor(app, plugin) {
     this._app = app;
     this._plugin = plugin;
+  }
+};
+
+// src/FeedManager.ts
+var FeedManager = class extends RSSTrackerService {
+  constructor(app, plugin) {
+    super(app, plugin);
     this._html = HTMLxlate.instance;
   }
   /**
@@ -16119,8 +16134,8 @@ var FeedManager = class {
    * @returns the feed adapter
    */
   async createFeedFromFile(xml) {
-    await this._plugin.tagmgr.updateTagMap();
-    const feedXML = await this._app.vault.read(xml), settings = this._plugin.settings, feed = await RSSfeedAdapter.create(this._plugin, new TrackedRSSfeed(feedXML, "https://localhost/" + xml.path));
+    await this.plugin.tagmgr.updateTagMap();
+    const feedXML = await this.vault.read(xml), settings = this.plugin.settings, feed = await RSSfeedAdapter.create(this.plugin, new TrackedRSSfeed(feedXML, "https://localhost/" + xml.path));
     await settings.commit();
     return feed;
   }
@@ -16152,8 +16167,8 @@ var FeedManager = class {
       url,
       method: "GET"
     });
-    await this._plugin.tagmgr.updateTagMap();
-    const settings = this._plugin.settings, feed = await RSSfeedAdapter.create(this._plugin, new TrackedRSSfeed(feedXML, url));
+    await this.plugin.tagmgr.updateTagMap();
+    const settings = this.plugin.settings, feed = await RSSfeedAdapter.create(this.plugin, new TrackedRSSfeed(feedXML, url));
     await settings.commit();
     return feed;
   }
@@ -16189,9 +16204,9 @@ var FeedManager = class {
     return itemCount;
   }
   get feeds() {
-    const placement = this._plugin.settings.rssDashboardPlacement, feedFolder = this._app.vault.getFolderByPath(this._plugin.settings.rssFeedFolderPath);
+    const placement = this.plugin.settings.rssDashboardPlacement, feedFolder = this.vault.getFolderByPath(this.plugin.settings.rssFeedFolderPath);
     if (feedFolder) {
-      return feedFolder.children.filter((f) => f instanceof import_obsidian5.TFolder).map((f) => RSSdashboardAdapter.createFromFolder(RSSfeedAdapter, this._plugin, f, placement)).filter((p) => p instanceof RSSfeedAdapter);
+      return feedFolder.children.filter((f) => f instanceof import_obsidian5.TFolder).map((f) => RSSdashboardAdapter.createFromFolder(RSSfeedAdapter, this.plugin, f, placement)).filter((p) => p instanceof RSSfeedAdapter);
     }
     return [];
   }
@@ -16213,7 +16228,7 @@ var FeedManager = class {
     return newItemCount;
   }
   async update(force, adapter) {
-    await this._plugin.tagmgr.updateTagMap();
+    await this.plugin.tagmgr.updateTagMap();
     if (adapter instanceof RSSfeedAdapter) {
       const itemCount = await this.updateFeed(adapter, force);
       new import_obsidian5.Notice(`Feed '${adapter.file.basename}' has '${itemCount}' new items`, 2e4);
@@ -16237,12 +16252,12 @@ var FeedManager = class {
    */
   canDownloadArticle(item) {
     var _a2;
-    const fm = (_a2 = this._app.metadataCache.getFileCache(item)) == null ? void 0 : _a2.frontmatter;
+    const fm = (_a2 = this.app.metadataCache.getFileCache(item)) == null ? void 0 : _a2.frontmatter;
     return fm !== void 0 && fm["role"] === "rssitem";
   }
   async downloadArticle(item) {
     var _a2;
-    const fm = (_a2 = this._app.metadataCache.getFileCache(item)) == null ? void 0 : _a2.frontmatter, link = fm == null ? void 0 : fm["link"];
+    const fm = (_a2 = this.app.metadataCache.getFileCache(item)) == null ? void 0 : _a2.frontmatter, link = fm == null ? void 0 : fm["link"];
     if (link) {
       const itemHTML = await (0, import_obsidian5.request)({
         url: link,
@@ -16250,8 +16265,8 @@ var FeedManager = class {
       }), article = await this._html.articleAsMarkdown(itemHTML, link);
       if (article) {
         if (article.length > 0) {
-          this._plugin.tagmgr.registerFileForPostProcessing(item.path);
-          return this._app.vault.append(item, article);
+          this.plugin.tagmgr.registerFileForPostProcessing(item.path);
+          return this.app.vault.append(item, article);
         }
       }
     }
@@ -17056,37 +17071,17 @@ var RSSTrackerSettingTab = class extends import_obsidian8.PluginSettingTab {
 };
 
 // src/RSSFileManager.ts
-var _RSSfileManager = class _RSSfileManager {
+var RSSfileManager = class extends RSSTrackerService {
   constructor(app, plugin) {
+    super(app, plugin);
     this._adapterFactoriesbyRole = {
-      "rssfeed": (f, fm) => RSSdashboardAdapter.createFromFile(RSSfeedAdapter, this._plugin, f, this.settings.rssDashboardPlacement, fm),
-      "rssitem": (f, fm) => new RSSitemAdapter(this._plugin, f, fm),
-      "rsscollection": (f, fm) => new RSScollectionAdapter(this._plugin, f, fm)
+      "rssfeed": (f, fm) => RSSdashboardAdapter.createFromFile(RSSfeedAdapter, this.plugin, f, this.settings.rssDashboardPlacement, fm),
+      "rssitem": (f, fm) => new RSSitemAdapter(this.plugin, f, fm),
+      "rsscollection": (f, fm) => new RSScollectionAdapter(this.plugin, f, fm)
     };
-    /**
-     * A map of template names to their property names in {@link RSSTrackerSettings}.
-     */
-    this._templateMap = {
-      "RSS Item": "rssItemTemplate",
-      "RSS Feed": "rssFeedTemplate",
-      "RSS Collection": "rssCollectionTemplate",
-      "RSS Collection Dashboard": "rssCollectionDashboardTemplate",
-      "RSS Topic": "rssTopicTemplate",
-      "RSS Feed Dashboard": "rssFeedDashboardTemplate",
-      "RSS Tagmap": "rssTagmapTemplate"
-    };
-    this._app = app;
-    this._vault = app.vault;
-    this._plugin = plugin;
-  }
-  get settings() {
-    return this._plugin.settings;
-  }
-  get app() {
-    return this._app;
   }
   get metadataCache() {
-    return this._app.metadataCache;
+    return this.app.metadataCache;
   }
   async ensureRSShomeFolderExists() {
     return this.ensureFolderExists(this.settings.rssHome);
@@ -17118,7 +17113,7 @@ var _RSSfileManager = class _RSSfileManager {
    */
   createAdapter(file, ...types) {
     var _a2;
-    const frontmatter = (_a2 = this._plugin.app.metadataCache.getFileCache(file)) == null ? void 0 : _a2.frontmatter, role = frontmatter == null ? void 0 : frontmatter.role;
+    const frontmatter = (_a2 = this.plugin.app.metadataCache.getFileCache(file)) == null ? void 0 : _a2.frontmatter, role = frontmatter == null ? void 0 : frontmatter.role;
     if (role && role in types) {
       const factory = this._adapterFactoriesbyRole[role];
       if (factory) {
@@ -17126,32 +17121,6 @@ var _RSSfileManager = class _RSSfileManager {
       }
     }
     return null;
-  }
-  /**
-   * Expand `{{mustache}}` placeholders with data from a property bag.
-   * @param template - A template string with `{{mustache}}` placeholders.
-   * @param properties - A property bag for replacing `{{mustache}}` placeholdes with data.
-   * @returns template with `{{mustache}}` placeholders substituted.
-   */
-  expandTemplate(template, properties) {
-    return template.split(_RSSfileManager.TOKEN_SPLITTER).map((s) => {
-      var _a2;
-      return s.startsWith("{{") ? (_a2 = properties[s]) != null ? _a2 : s : s;
-    }).join("");
-  }
-  /**
-   * Read the content of a template from a template folder or from settings.
-   *
-   * The template folder returned from {@link RSSTrackerSettings.getTemplatePath} is checked first.
-   * If no template file exists at that location, the template is read from the settings.
-   *
-   * @param templateName - Name of the template to read.
-   * @returns A `Promise`for the template contents.
-   */
-  async readTemplate(templateName) {
-    const templatePath = this.settings.getTemplatePath(templateName);
-    const tplFile = this._vault.getFileByPath(templatePath);
-    return tplFile ? this._vault.read(tplFile) : this.settings[this._templateMap[templateName]];
   }
   /**
    * Rename a folder
@@ -17163,9 +17132,9 @@ var _RSSfileManager = class _RSSfileManager {
     if (oldFolderPath === newFolderPath) {
       return false;
     }
-    const oldFolder = this._vault.getFolderByPath(oldFolderPath);
+    const oldFolder = this.vault.getFolderByPath(oldFolderPath);
     if (oldFolder) {
-      await this._vault.rename(oldFolder, newFolderPath);
+      await this.vault.rename(oldFolder, newFolderPath);
       return true;
     }
     return false;
@@ -17180,9 +17149,9 @@ var _RSSfileManager = class _RSSfileManager {
     if (oldFilePath === newFilePath) {
       return false;
     }
-    const oldFile = this._vault.getFileByPath(oldFilePath);
+    const oldFile = this.vault.getFileByPath(oldFilePath);
     if (oldFile) {
-      await this._vault.rename(oldFile, newFilePath);
+      await this.vault.rename(oldFile, newFilePath);
       return true;
     }
     return false;
@@ -17204,7 +17173,7 @@ var _RSSfileManager = class _RSSfileManager {
     do {
       const uniqueFolderPath = parentPath + "/" + uniqueFolderName;
       try {
-        folder = await this._vault.createFolder(uniqueFolderPath);
+        folder = await this.vault.createFolder(uniqueFolderPath);
       } catch (e) {
         uniqueFolderName = `${folderName} (${index})`;
         index++;
@@ -17227,16 +17196,16 @@ var _RSSfileManager = class _RSSfileManager {
    * @returns A `Promise` to the file handle.
    */
   async upsertFile(folder, basename, templateName, data = {}, postProcess = false) {
-    const filepath = folder.path + "/" + basename + ".md", tpl = await this.readTemplate(templateName), content = this.expandTemplate(tpl, data);
+    const filepath = folder.path + "/" + basename + ".md", content = await this.plugin.tplmgr.expandTemplate(templateName, data);
     data["{{fileLink}}"] = `[[${filepath}|${basename}]]`;
     if (postProcess) {
-      this._plugin.tagmgr.registerFileForPostProcessing(filepath);
+      this.plugin.tagmgr.registerFileForPostProcessing(filepath);
     }
-    let file = this._vault.getFileByPath(filepath);
+    let file = this.vault.getFileByPath(filepath);
     if (file) {
-      await this._vault.modify(file, content);
+      await this.vault.modify(file, content);
     } else {
-      file = await this._vault.create(filepath, content);
+      file = await this.vault.create(filepath, content);
     }
     return file;
   }
@@ -17257,27 +17226,20 @@ var _RSSfileManager = class _RSSfileManager {
    */
   async createUniqueFile(folder, basename, templateName, data = {}, postProcess = false) {
     let uniqueBasename = basename, folderPath = folder.path, uniqueFilepath = folderPath + "/" + basename + ".md", index = 1;
-    const fs = this._vault.adapter;
+    const fs = this.vault.adapter;
     while (await fs.exists(uniqueFilepath)) {
       uniqueBasename = `${basename} (${index})`;
       uniqueFilepath = folderPath + "/" + uniqueBasename + ".md";
       index++;
     }
     data["{{fileLink}}"] = `[[${folderPath + "/" + uniqueBasename}|${uniqueBasename}]]`;
-    const tpl = await this.readTemplate(templateName), content = this.expandTemplate(tpl, data);
+    const content = await this.plugin.tplmgr.expandTemplate(templateName, data);
     if (postProcess) {
-      this._plugin.tagmgr.registerFileForPostProcessing(uniqueFilepath);
+      this.plugin.tagmgr.registerFileForPostProcessing(uniqueFilepath);
     }
-    return this._vault.create(uniqueFilepath, content);
+    return this.vault.create(uniqueFilepath, content);
   }
 };
-/**
- * Regular expression to split a template string into and array
- * where all mustache tokens of the form `{{mustache}}` have their
- * own slot.
- */
-_RSSfileManager.TOKEN_SPLITTER = /(?<={{[^{}]+}})|(?={{[^{}]+}})/g;
-var RSSfileManager = _RSSfileManager;
 
 // src/TagManager.ts
 var import_obsidian9 = require("obsidian");
@@ -17302,8 +17264,9 @@ var Mutex = class {
     }
   }
 };
-var RSSTagManager = class {
+var RSSTagManager = class extends RSSTrackerService {
   constructor(app, plugin) {
+    super(app, plugin);
     this._tagmapMutex = new Mutex();
     /**
      * A snapshot of the tags cached by Obsidian.
@@ -17315,10 +17278,7 @@ var RSSTagManager = class {
     this._tagmap = /* @__PURE__ */ new Map();
     // pagetag -> mapped hashtag.
     this._pendingMappings = [];
-    this._app = app;
-    this._plugin = plugin;
     this._metadataCache = app.metadataCache;
-    this._vault = app.vault;
   }
   /**
    * Get the tag mapping file (tagmap).
@@ -17328,9 +17288,9 @@ var RSSTagManager = class {
    * @returns A promise to a Tagmap file handle.
    */
   async ensureTagmapExists() {
-    const filemgr = this._plugin.filemgr, settings = this._plugin.settings, tagmapName = settings.rssTagmapName, tagmapPath = settings.rssHome + "/" + tagmapName + ".md";
+    const filemgr = this.plugin.filemgr, settings = this.plugin.settings, tagmapName = settings.rssTagmapName, tagmapPath = settings.rssHome + "/" + tagmapName + ".md";
     console.log(`Ensuring Tagmap: ${tagmapPath}`);
-    let tagmap = this._vault.getFileByPath(tagmapPath);
+    let tagmap = this.vault.getFileByPath(tagmapPath);
     if (!tagmap) {
       tagmap = await filemgr.upsertFile(await filemgr.ensureRSShomeFolderExists(), tagmapName, "RSS Tagmap", {}, false);
       console.log("rss-tracker: tagmap created");
@@ -17375,7 +17335,7 @@ var RSSTagManager = class {
     }
     if (removed > 0 && prefix) {
       const mapfile = await this.ensureTagmapExists();
-      await this._vault.modify(mapfile, prefix[0] + "\n");
+      await this.vault.modify(mapfile, prefix[0] + "\n");
       this._pendingMappings = prefix.slice(1);
       for (let [hashtag, mappedTag] of this._tagmap) {
         this._pendingMappings.push(`| ${hashtag.slice(1)} | ${mappedTag} |`);
@@ -17400,7 +17360,7 @@ var RSSTagManager = class {
         const mappings = "\n" + this._pendingMappings.join("\n");
         console.log(`Tag map updated with: "${mappings}"`);
         this._pendingMappings = [];
-        await this._vault.append(file, mappings);
+        await this.vault.append(file, mappings);
       }
       this._tagmapMutex.unlock();
     } else {
@@ -17450,7 +17410,7 @@ var RSSTagManager = class {
     if (!sections) {
       return null;
     }
-    const content = await this._vault.read(mapfile);
+    const content = await this.vault.read(mapfile);
     for (const section of sections) {
       if (section.type === "table") {
         let errorCount = 0;
@@ -17491,7 +17451,7 @@ var RSSTagManager = class {
    * @returns Event handler reference object
    */
   get rssTagPostProcessor() {
-    return this._app.metadataCache.on("changed", async (item, content, metaData) => {
+    return this.app.metadataCache.on("changed", async (item, content, metaData) => {
       var _a2, _b;
       if (!this._postProcessingRegistry.delete(item.path)) {
         return;
@@ -17523,6 +17483,52 @@ var RSSTagManager = class {
   }
 };
 
+// src/TemplateManager.ts
+var _TemplateManager = class _TemplateManager extends RSSTrackerService {
+  constructor(app, plugin) {
+    super(app, plugin);
+    /**
+     * A map of template names to names in {@link RSSTrackerSettings} containing the default template.
+     */
+    this._templateMap = {
+      "RSS Item": "rssItemTemplate",
+      "RSS Feed": "rssFeedTemplate",
+      "RSS Collection": "rssCollectionTemplate",
+      "RSS Collection Dashboard": "rssCollectionDashboardTemplate",
+      "RSS Topic": "rssTopicTemplate",
+      "RSS Feed Dashboard": "rssFeedDashboardTemplate",
+      "RSS Tagmap": "rssTagmapTemplate"
+    };
+  }
+  /**
+  * Expand `{{mustache}}` placeholders in a template with data from a property bag.
+  * @param template - A template string with `{{mustache}}` placeholders.
+  * @param properties - A property bag for replacing `{{mustache}}` placeholdes with data.
+  * @returns template with `{{mustache}}` placeholders substituted.
+  */
+  async expandTemplate(templateName, properties) {
+    let template;
+    const templateFolderPath = this.settings.rssTemplateFolderPath;
+    if (!templateFolderPath) {
+      template = this._templateMap[templateName];
+    } else {
+      const templateFolder = await this.plugin.filemgr.ensureFolderExists(templateFolderPath), templateFile = this.vault.getFileByPath(templateFolder.path + "/" + templateName + ".md");
+      template = templateFile ? await this.vault.read(templateFile) : this.settings[this._templateMap[templateName]];
+    }
+    return template.split(_TemplateManager.TOKEN_SPLITTER).map((s) => {
+      var _a2;
+      return s.startsWith("{{") ? (_a2 = properties[s]) != null ? _a2 : s : s;
+    }).join("");
+  }
+};
+/**
+ * Regular expression to split a template string into and array
+ * where all mustache tokens of the form `{{mustache}}` have their
+ * own slot.
+ */
+_TemplateManager.TOKEN_SPLITTER = /(?<={{[^{}]+}})|(?={{[^{}]+}})/g;
+var TemplateManager = _TemplateManager;
+
 // src/main.ts
 var RSSTrackerPlugin = class extends import_obsidian10.Plugin {
   get settings() {
@@ -17537,6 +17543,10 @@ var RSSTrackerPlugin = class extends import_obsidian10.Plugin {
   get tagmgr() {
     return this._tagmgr;
   }
+  get tplmgr() {
+    return this._tplmgr;
+  }
+  //#endregion RSS Tracker services
   get vault() {
     return this.app.vault;
   }
@@ -17546,6 +17556,7 @@ var RSSTrackerPlugin = class extends import_obsidian10.Plugin {
     this._filemgr = new RSSfileManager(app, this);
     this._feedmgr = new FeedManager(app, this);
     this._tagmgr = new RSSTagManager(app, this);
+    this._tplmgr = new TemplateManager(app, this);
   }
   getDVJSTools(dv) {
     return new DataViewJSTools(this, dv, this._settings);

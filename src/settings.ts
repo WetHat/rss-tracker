@@ -1,7 +1,7 @@
 import { TPropertyBag } from './FeedAssembler';
 import RSSTrackerPlugin from './main';
 import { App } from 'obsidian';
-import { RSSfileManager, TTemplateName } from './RSSFileManager';
+import { RSSfileManager } from './RSSFileManager';
 
 /**
  * The settings for the RSS Tracker plugin.
@@ -154,11 +154,6 @@ to (**including the** \`#\` prefix).
  * The values are taken from the Folder Notes plugin.
  */
 export type TDashboardPlacement = "insideFolder" | "parentFolder";
-
-/**
- * List of basenames of templates to be installed into the `Templates` folder.
- */
-const TEMPLATES: TTemplateName[] = ["RSS Feed", "RSS Item", "RSS Topic", "RSS Collection"];
 
 /**
  * The settings for the RSS Tracker plugin.
@@ -426,9 +421,5 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 
 	get rssTagmapPath(): string {
 		return this.rssHome + "/" + this.rssTagmapName + ".md";
-	}
-
-	getTemplatePath(templateName: TTemplateName): string {
-		return this.rssTemplateFolderPath + "/" + templateName + ".md";
 	}
 }
