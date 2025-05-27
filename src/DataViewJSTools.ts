@@ -1,6 +1,7 @@
+import { fileURLToPath } from 'url';
 import { TPropertyBag } from './FeedAssembler';
 import RSSTrackerPlugin from './main';
-import { RSSfeedAdapter } from './RSSAdapter';
+import { RSScollectionAdapter, RSSfeedAdapter } from './RSSAdapter';
 import { RSSTrackerSettings } from './settings';
 import { TFile, TFolder } from 'obsidian';
 
@@ -187,29 +188,17 @@ export class DataViewJSTools {
         return this.fromFeedsFolder + " AND " + this.fromTags(topic);
     }
 
-    private fromItemsOfCollection(collection: TPageRecord): Promise<string> {
-        const feeds: TPageRecords = this.rssFeedsOfCollection(collection);
-        return feeds.map((f: TPropertyBag) => `"${f.file.folder}/${f.file.name}"`).join(" OR ");
-    }
-
-    /**
-     * @returns A **FROM** expression to get all items from all feed folders.
-     */
-    private get fromFeeds(): string {
-        const
-            settings = this.settings,
-            feedsFolder = settings.app.vault.getFolderByPath(settings.rssFeedFolderPath);
-        if (feedsFolder) {
-            const feeds: string[] = feedsFolder.children
-                .filter(c => c instanceof TFolder)
-                .map(f => '"' + f.path + '"');
-            return feeds.length > 0 ? "(" + feeds.join(" OR ") + ")" : "/";
+    private fromItemsOfCollection(collection: TPageRecord): string {
+        const file = this.plugin.vault.getFileByPath(collection.file.path);
+        if (!file) {
+            return this.dv.array([]);
         }
-        return "/";
-    }
-
-    private fromFeedsOfCollection(collection: TPageRecord): string {
-        return this.fromFeeds + " AND " + this.fromTags(collection);
+        const adapter = this.plugin.filemgr.createAdapter(file,"rsscollection") as RSScollectionAdapter;
+        if (!adapter) {
+            return this.dv.array([]);
+        }
+        const feedsFolder = this.plugin.settings.rssFeedFolderPath;
+        return adapter.feeds.map((f: RSSfeedAdapter) => `"${feedsFolder}/${f.folder.name}"`).join(" OR ");
     }
 
     //#endregion Dataview queries
@@ -269,8 +258,35 @@ export class DataViewJSTools {
     }
 
     rssFeedsOfCollection(collection: TPageRecord): TPageRecords {
-        let from = this.fromFeedsOfCollection(collection);
-        return this.dv.pages(from).where((p: TPageRecord) => p.role === "rssfeed");
+        const file = this.plugin.vault.getFileByPath(collection.file.path);
+        if (!file) {
+            return this.dv.array([]);
+        }
+        const adapter = this.plugin.filemgr.createAdapter(file,"rsscollection") as RSScollectionAdapter;
+        if (!adapter) {
+            return this.dv.array([]);
+        }
+        return this.dv.array(adapter.feeds.map(f => this.dv.page(f.file.path)));
+    }
+
+    rssUnclaimedFeeds(): TPageRecords {
+        const feedsToCollections = new Map<string, TPageRecord[]>();
+        for (const collection of this.rssCollections) {
+            for (const feed of this.rssFeedsOfCollection(collection)) {
+                let cList = feedsToCollections.get(feed.file.path);
+                if (!cList) {
+                    cList = [];
+                    feedsToCollections.set(feed.file.path, cList);
+                }
+
+                cList.push(collection);
+            }
+        }
+
+        // now collect the feeds without assigned collection(s)
+        return this.rssFeeds
+            .where((f: TPageRecord) => !feedsToCollections.has(f.file.path))
+            .sort((f: TPageRecord) => f.file.name, "asc");
     }
 
     rssItemsOfCollection(collection: TPageRecord): TPageRecords {
@@ -499,8 +515,7 @@ export class DataViewJSTools {
      *                       `false` to collapse the table by default and render the table on-demand.
      */
     async rssFeedDashboard(feeds: TPageRecords, expand: TExpandState = undefined) {
-        const
-            feedsToCollections = new Map<string, TPageRecord[]>();
+        const feedsToCollections = new Map<string, TPageRecord[]>();
         for (const collection of this.rssCollections) {
             for (const feed of this.rssFeedsOfCollection(collection)) {
                 let cList = feedsToCollections.get(feed.file.path);
@@ -556,10 +571,14 @@ export class DataViewJSTools {
         }
 
         const groups = items
-            .groupBy((i: TPageRecord) => i.feed)
+            .groupBy((i: TPageRecord) => i.feed.path.trim())
             .sort((g: any) => g.key, "asc");
         for (const group of groups) {
-            await this.rssItemTable(group.rows, expand, group.key);
+            const
+                feed = this.dv.page(group.key),
+                feedlink= `[[${feed.file.path}|${feed.file.name}]]`;
+
+            await this.rssItemTable(group.rows, expand, feedlink);
         }
     }
     // #endregion specific RSS collapsible tables
@@ -649,15 +668,18 @@ export class DataViewJSTools {
      */
     async rssReadingListByFeed(items: TPageRecords, read: boolean = false, expand = false) {
         const groups = items
-            .groupBy((i: TPageRecord) => i.feed)
+            .groupBy((i: TPageRecord) => i.feed.path.trim())
             .sort((g: any) => g.key, "asc");
         let totalTasks = 0;
 
         for (const group of groups) {
             const tasks: TTaskRecords = this.rssReadingTasks(group.rows, read);
             if (tasks.length > 0) {
+                const
+                    feed = this.dv.page(group.key),
+                    feedlink = `[[${feed.file.path}|${feed.file.name}]]`;
                 totalTasks += tasks.length;
-                await this.rssTaskList(tasks, expand, group.key);
+                await this.rssTaskList(tasks, expand, feedlink);
             }
         }
         if (totalTasks === 0) {
