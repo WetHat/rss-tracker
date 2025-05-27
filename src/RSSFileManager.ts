@@ -12,7 +12,6 @@ export type MetadataCacheEx = MetadataCache & {
 }
 
 type TAdapterFactory = (f: TFile, fm: TFrontmatter) => RSSAdapter | null;
-type TDashboarAdapterdFactory = (folder: TFolder, Dashboard: TFile) => RSSdashboardAdapter | null;
 
 /**
  * A utility class to manage RSS related files in the Obsidian file system.
@@ -71,10 +70,10 @@ export class RSSfileManager extends RSSTrackerService {
 	 */
 	createAdapter(file: TFile, ...types: string[]): RSSAdapter | null {
 		const
-			frontmatter = this.plugin.app.metadataCache.getFileCache(file)?.frontmatter,
+			frontmatter = this.plugin.app.metadataCache.getFileCache(file)?.frontmatter as TPropertyBag,
 			role = frontmatter?.role;
 
-		if (role && role in types) {
+		if (types.includes(role)) {
 			const factory = this._adapterFactoriesbyRole[role];
 			if (factory) {
 				return factory(file, frontmatter);
