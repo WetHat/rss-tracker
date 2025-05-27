@@ -60,7 +60,7 @@ export class FeedManager {
         const
             feedXML = await this._app.vault.read(xml),
             settings = this._plugin.settings,
-            feed = await RSSfeedAdapter.create(this._plugin, new TrackedRSSfeed(feedXML, "https://localhost/" + xml.path),settings.rssDashboardPlacement);
+            feed = await RSSfeedAdapter.create(this._plugin, new TrackedRSSfeed(feedXML, "https://localhost/" + xml.path));
         // make sure the settings are properly persisted if taken from `Folder Notes`.
         await settings.commit();
         return feed;
@@ -97,7 +97,7 @@ export class FeedManager {
         await this._plugin.tagmgr.updateTagMap();
         const
             settings = this._plugin.settings,
-            feed = await RSSfeedAdapter.create(this._plugin, new TrackedRSSfeed(feedXML, url),settings.rssDashboardPlacement);
+            feed = await RSSfeedAdapter.create(this._plugin, new TrackedRSSfeed(feedXML, url));
         // make sure settings are properly persisted if taken from `Folder Notes`
         await settings.commit();
         return feed;

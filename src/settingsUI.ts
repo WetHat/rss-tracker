@@ -1,6 +1,7 @@
 import { Setting, PluginSettingTab } from "obsidian";
 import RSSTrackerPlugin from "./main";
 import { DEFAULT_SETTINGS, RSSTrackerSettings } from "./settings";
+import { RSSFeedsDashboardAdapter } from './RSSAdapter';
 
 abstract class RSSTrackerSettingBase extends Setting {
 	protected settingsTab: RSSTrackerSettingTab;
@@ -18,7 +19,6 @@ abstract class RSSTrackerSettingBase extends Setting {
 		this.settingsTab = settingsTab;
 	}
 }
-
 
 class RSSTagDomain extends RSSTrackerSettingBase {
 	constructor(settingsTab: RSSTrackerSettingTab) {
@@ -84,8 +84,8 @@ class RSSHomeSetting extends RSSTrackerSettingBase {
 	constructor(settingsTab: RSSTrackerSettingTab) {
 		super(settingsTab);
 		this
-			.setName("RSS feed base (home) location")
-			.setDesc("The base folder containing RSS feeds, dashboards and assets.")
+			.setName("RSS feed home folder name")
+			.setDesc("The name of the RSS folder containing all RSS related folders, feeds, dashboards and assets.")
 			.addText(ta => {
 				ta
 					.setPlaceholder(DEFAULT_SETTINGS.rssHome)
@@ -111,8 +111,8 @@ class RSSFeedFolderSetting extends RSSTrackerSettingBase {
 	constructor(settingsTab: RSSTrackerSettingTab) {
 		super(settingsTab);
 		this
-			.setName("RSS feed location")
-			.setDesc("The folder containing all RSS feeds.")
+			.setName("RSS feed folder name")
+			.setDesc("The name of the sub-folder in RSS Home containing all subscribed RSS feeds.")
 			.addText(ta => {
 				ta
 					.setPlaceholder(DEFAULT_SETTINGS.rssFeedFolderName)
@@ -136,23 +136,7 @@ class RSSFeedFolderSetting extends RSSTrackerSettingBase {
 					.setIcon("layout-dashboard")
 					.setTooltip("Reset the RSS feed dashboard to default")
 					//.setButtonText("Reset Dashboard")
-					.onClick(async evt => {
-						// get the dashboard folder
-						const
-						    filemgr = this.plugin.filemgr,
-							settings = this.plugin.settings,
-							placement = settings.rssDashboardPlacement,
-							dashboardFolder = await filemgr.ensureFolderExists(this.plugin.settings.rssFeedFolderPath),
-							dashboard = filemgr.getFolderDashboard(dashboardFolder,placement);
-
-						if (dashboard) {
-							// just update the dashboard
-							await dashboard.vault.modify(dashboard,settings.rssFeedDashboardTemplate);
-						} else {
-							// create a new dashboard
-							await filemgr.createDashboard(dashboardFolder,settings.rssFeedDashboardTemplate);
-						}
-					})
+					.onClick(async evt => await RSSFeedsDashboardAdapter.create(this.plugin));
 			});
 	}
 }

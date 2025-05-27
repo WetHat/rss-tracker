@@ -1,4 +1,4 @@
-import { EventRef, TFile, CachedMetadata, App, Vault, Notice } from "obsidian";
+import { EventRef, TFile, CachedMetadata, App, Vault, Notice, Plugin } from 'obsidian';
 import RSSTrackerPlugin from "./main";
 import { TPropertyBag } from "./FeedAssembler";
 import { RSSTrackerSettings } from "./settings";
@@ -59,6 +59,31 @@ export class RSSTagManager {
     }
 
     /**
+     * Get the tag mapping file (tagmap).
+     *
+     * If the map file does not exist it is created from a template.
+     *
+     * @returns A promise to a Tagmap file handle.
+     */
+    async ensureTagmapExists(): Promise<TFile> {
+        const
+            filemgr = this._plugin.filemgr,
+            settings = this._plugin.settings,
+            tagmapName = settings.rssTagmapName,
+            tagmapPath = settings.rssHome + "/" + tagmapName + ".md";
+
+        console.log(`Ensuring Tagmap: ${tagmapPath}`);
+        let tagmap = this._vault.getFileByPath(tagmapPath);
+
+        if (!tagmap) {
+            // make a tagmap from a template
+            tagmap = await filemgr.upsertFile(await filemgr.ensureRSShomeFolderExists(), tagmapName, "RSS Tagmap", {}, false);
+            console.log("rss-tracker: tagmap created");
+        }
+        return tagmap;
+    }
+
+    /**
      * Register a file for post processing hashtags in the note body.
      *
      * Post processing is performed by the event handler returnd from
@@ -70,19 +95,6 @@ export class RSSTagManager {
     registerFileForPostProcessing(path: string): string {
         this._postProcessingRegistry.add(path);
         return path;
-    }
-
-    /**
-     * Get or create the tag map file handle.
-     * @returns a valid file handle to the tag map file located at {@link RSSTrackerSettings.rssTagmapPath}.
-     */
-    private async getTagmapFile(): Promise<TFile | null> {
-        let tagmap = this._vault.getFileByPath(this._plugin.settings.rssTagmapPath);
-        if (!tagmap) {
-            // install it
-            await this._plugin.settings.install();
-        }
-        return this._vault.getFileByPath(this._plugin.settings.rssTagmapPath);
     }
 
     /**
@@ -116,15 +128,13 @@ export class RSSTagManager {
         }
         if (removed > 0 && prefix) {
             // write an updated file
-            const mapfile = await this.getTagmapFile();
-            if (mapfile) {
-                await this._vault.modify(mapfile, prefix[0] + "\n");
-                this._pendingMappings = prefix.slice(1);
-                for (let [hashtag, mappedTag] of this._tagmap) {
-                    this._pendingMappings.push(`| ${hashtag.slice(1)} | ${mappedTag} |`);
-                }
-                new Notice(`${removed} unused tags removed`, 30000);
+            const mapfile = await this.ensureTagmapExists();
+            await this._vault.modify(mapfile, prefix[0] + "\n");
+            this._pendingMappings = prefix.slice(1);
+            for (let [hashtag, mappedTag] of this._tagmap) {
+                this._pendingMappings.push(`| ${hashtag.slice(1)} | ${mappedTag} |`);
             }
+            new Notice(`${removed} unused tags removed`, 30000);
         }
         // find idendity mappings in the
         // just in case new tags appeared when we weren't looking.
@@ -139,7 +149,7 @@ export class RSSTagManager {
         if (this._pendingMappings.length > 0) {
             await this._tagmapMutex.lock();
             const
-                file = await this.getTagmapFile(),
+                file = await this.ensureTagmapExists(),
                 taglist = this._pendingMappings.map(row => `- ${row.split("|")[1]}`).join("\n");
             if (context) {
                 new Notice(`${this._pendingMappings.length} new tags in ${context}\n` + taglist, 30000);
@@ -197,10 +207,7 @@ export class RSSTagManager {
      *
      */
     private async loadTagmap(): Promise<string[] | null> {
-        const mapfile = await this.getTagmapFile();
-        if (!mapfile) {
-            return null;
-        }
+        const mapfile = await this.ensureTagmapExists();
         console.log(`loading tag map from ${mapfile.path}`);
         const
             metadata = this._metadataCache.getFileCache(mapfile),

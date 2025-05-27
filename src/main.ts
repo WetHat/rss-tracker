@@ -1,4 +1,4 @@
-import { Notice, Plugin, PluginManifest, App, ObsidianProtocolData } from 'obsidian';
+import { Notice, Plugin, PluginManifest, App, ObsidianProtocolData, Vault } from 'obsidian';
 import { RSSTrackerSettings } from './settings';
 import { DownloadRSSitemArticleCommand, MarkAllRSSitemsReadCommand, NewRSSFeedCollectionCommand, NewRSSFeedModalCommand, NewRSSTopicCommand, RenameRSSfeedModalCommand, UpdateRSSfeedCommand } from './commands';
 import { FeedManager } from './FeedManager';
@@ -10,7 +10,7 @@ import { RSSfileManager } from './RSSFileManager';
 import { RSSTagManager } from './TagManager';
 
 // API exports
-export {RSSTrackerSettings} from './settings';
+export { RSSTrackerSettings } from './settings';
 export { FeedManager } from './FeedManager';
 export { DataViewJSTools } from './DataViewJSTools';
 export { RSSfileManager } from './RSSFileManager';
@@ -38,6 +38,10 @@ export default class RSSTrackerPlugin extends Plugin {
         return this._tagmgr;
     }
 
+    get vault(): Vault {
+        return this.app.vault;
+    }
+
     constructor(app: App, manifest: PluginManifest) {
         super(app, manifest);
         this._settings = new RSSTrackerSettings(app, this);
@@ -47,7 +51,7 @@ export default class RSSTrackerPlugin extends Plugin {
     }
 
     getDVJSTools(dv: TPropertyBag) {
-        return new DataViewJSTools(this,dv, this._settings);
+        return new DataViewJSTools(this, dv, this._settings);
     }
 
     /**
@@ -146,10 +150,45 @@ export default class RSSTrackerPlugin extends Plugin {
                 }
             }
         }, 60 * 60 * 1000));
+        // make sure Obsidian is ready before installing the folder structure
+        // The vault needs to be ready. Calling install here right away causes errors.
+        this.app.workspace.onLayoutReady(() => {
+            this.install();
+        });
     }
 
     onunload() {
         console.log('Unloading rss-tracker.');
-        this._settings.saveData();
+        this._settings.commit();
+    }
+
+    /**
+     * Install a minimal RSS folder structure.
+     *
+     * ~~~
+     * 📂RSS
+     * ├── 📂assets
+     * |    └─ RSSdefaultImage.svg
+     * └── RSS Tagmap.md
+     * ~~~
+     * Additional folders and files will be created on demand.
+     *
+     * ⚠️ This function should only be called when Obsidian and plugins are fully initialized.
+     */
+    async install() {
+        console.log("rss-tracker: Ensuring minimal folder structure");
+        const
+            home = await this.filemgr.ensureRSShomeFolderExists(),// make sure the Home folder exists
+            placement = this._settings.rssDashboardPlacement; // update placement cache in case 'Folder Notes' is present.
+        await this.tagmgr.ensureTagmapExists();
+        if (!this.settings.rssDefaultImagePath || !this.app.vault.adapter.exists(this.settings.rssDefaultImagePath, true)) {
+            const
+                imagePath = await this.app.fileManager.getAvailablePathForAttachment("RSSdefaultImage.svg", this.settings.rssTagmapPath),
+                img = await this.app.vault.create(imagePath, this.settings.rssDefaultImage);
+            this.settings.rssDefaultImagePath = img.path;
+        }
+        console.log(`rss-tracker: home = ${home.path}; dashboard placement: ${placement}; default image: ${this.settings.rssDefaultImagePath}`);
+
+        await this.settings.commit();
     }
 }

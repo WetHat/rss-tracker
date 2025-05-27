@@ -1,18 +1,25 @@
 
 import { App, TFile, Vault, MetadataCache, TFolder } from 'obsidian';
 import { TPropertyBag } from './FeedAssembler';
-import { RSSTrackerSettings, TTemplateName, TDashboardPlacement } from './settings';
+import { RSSTrackerSettings, TDashboardPlacement } from './settings';
 import RSSTrackerPlugin from "./main";
-import { RSSAdapter, RSScollectionAdapter, RSSdashboardAdapter, RSSfeedAdapter, RSSitemAdapter, TFrontmatter } from './RSSAdapter';
+import { RSSAdapter, RSScollectionAdapter, RSSdashboardAdapter, RSSfeedAdapter, RSSFeedsDashboardAdapter, RSSitemAdapter, TFrontmatter } from './RSSAdapter';
 
 export type MetadataCacheEx = MetadataCache & {
 	getTags(): TPropertyBag; // undocumented non-API method
 }
 
+/**
+ * The basenames of templates used for RSS content creation.
+ * ⚠️Not all templates are avaiable as customizable template files.
+ */
+export type TTemplateName = "RSS Feed" | "RSS Item" | "RSS Topic" | "RSS Collection" | "RSS Collection Dashboard" | "RSS Feed Dashboard" | "RSS Tagmap";
+
 type TAdapterFactory = (f: TFile, fm: TFrontmatter) => RSSAdapter | null;
+type TDashboarAdapterdFactory = (folder: TFolder, Dashboard: TFile) => RSSdashboardAdapter | null;
 
 /**
- * A utility class to manage RSS related files.
+ * A utility class to manage RSS related files in the Obsidian file system.
  */
 export class RSSfileManager {
 	/**
@@ -25,12 +32,11 @@ export class RSSfileManager {
 	private _vault: Vault;
 	private _plugin: RSSTrackerPlugin;
 
-	private readonly _adapterFactories: { [role: string]: TAdapterFactory } = {
+	private readonly _adapterFactoriesbyRole: { [role: string]: TAdapterFactory } = {
 		"rssfeed": (f: TFile, fm: TFrontmatter) => RSSdashboardAdapter.createFromFile(RSSfeedAdapter, this._plugin, f, this.settings.rssDashboardPlacement, fm),
 		"rssitem": (f: TFile, fm: TFrontmatter) => new RSSitemAdapter(this._plugin, f, fm),
 		"rsscollection": (f: TFile, fm: TFrontmatter) => new RSScollectionAdapter(this._plugin, f, fm),
 	}
-
 	/**
 	 * A map of template names to their property names in {@link RSSTrackerSettings}.
 	 */
@@ -38,8 +44,9 @@ export class RSSfileManager {
 		"RSS Item": "rssItemTemplate",
 		"RSS Feed": "rssFeedTemplate",
 		"RSS Collection": "rssCollectionTemplate",
+		"RSS Collection Dashboard": "rssCollectionDashboardTemplate",
 		"RSS Topic": "rssTopicTemplate",
-		"RSS Dashboard": "rssDashboardTemplate",
+		"RSS Feed Dashboard": "rssFeedDashboardTemplate",
 		"RSS Tagmap": "rssTagmapTemplate",
 	};
 
@@ -55,8 +62,18 @@ export class RSSfileManager {
 		return this._app.metadataCache as MetadataCacheEx;
 	}
 
+	constructor(app: App, plugin: RSSTrackerPlugin) {
+		this._app = app;
+		this._vault = app.vault;
+		this._plugin = plugin;
+	}
+
+	async ensureRSShomeFolderExists(): Promise<TFolder> {
+		return this.ensureFolderExists(this.settings.rssHome);
+	}
+
 	/**
-	 * Get the folder associated with a dashboard.
+	 * Get the folder associated with a given dashboard.
 	 *
 	 * @param dashboard The dashboard file to find the folder for.
 	 * @param placement the placement of the dashboard. If set to "insideFolder", the dashboard is in the folder itself.
@@ -65,7 +82,7 @@ export class RSSfileManager {
 	 */
 	getDashboardFolder(dashboard: TFile, placement: TDashboardPlacement): TFolder | null {
 		const
-			folderName = dashboard.name, // TODO: run the folder note temlate backwards to get the folder name
+			folderName = RSSdashboardAdapter.getDashboardFolderName(dashboard),
 			dashboardParent = dashboard.parent;
 		if (placement === "insideFolder") {
 			return dashboardParent?.name === folderName
@@ -77,57 +94,6 @@ export class RSSfileManager {
 				? folder
 				: dashboardParent;
 		}
-	}
-
-	/**
-	 * Get the name of the dashboard file associated with the given folder.
-	 *
-	 * @param folder The folder to get the dashboard name for
-	 * @returns dashboard name (without extension).
-	 */
-	private getFolderDashboardName(folder: TFolder):string {
-		return folder.name; // TODO: use folder note name template for name generation
-	}
-	/**
-	 * Get the dashboard file for a given folder.
-	 *
-	 * @param folder the folder to get the dashboard for.
-	 * @param placement the placement of the dashboard. If set to "insideFolder", the dashboard is in the folder itself.
-	 *       If set to "outsideFolder", the dashboard is in the parent folder.
-	 * @returns the dashboard file or null if it does not exist.
-	 */
-	getFolderDashboard(folder: TFolder, placement: TDashboardPlacement): TFile | null {
-		const
-			dashboardName = this.getFolderDashboardName(folder),
-			insideFolderPath = folder.path,
-			parentFolderPath = folder.parent?.path ?? "";
-
-		for (const path of (placement === "insideFolder" ? [insideFolderPath, parentFolderPath] : [parentFolderPath, insideFolderPath])) {
-			const dashboard = folder.vault.getFileByPath(path + "/" + dashboardName + ".md");
-			if (dashboard) {
-				return dashboard;
-			}
-		}
-		return null; // no dashboard found
-	}
-
-	constructor(app: App, plugin: RSSTrackerPlugin) {
-		this._app = app;
-		this._vault = app.vault;
-		this._plugin = plugin;
-	}
-
-	/**
-	 * Create a `Folder Notes` style dashboard for a folder from given contents.
-	 * @param folder The folder to creat tehe
-	 * @param contents
-	 */
-	createDashboard(folder: TFolder, contents: string) : Promise<TFile> {
-		const
-			placement = this.settings.rssDashboardPlacement,
-			dashboardName = this.getFolderDashboardName(folder),
-			location = placement === "insideFolder" ? folder.path : folder.parent?.path ?? "";
-		return folder.vault.create(location + "/" + dashboardName + ".md" ,contents);
 	}
 
 	/**
@@ -143,7 +109,7 @@ export class RSSfileManager {
 			role = frontmatter?.role;
 
 		if (role && role in types) {
-			const factory = this._adapterFactories[role];
+			const factory = this._adapterFactoriesbyRole[role];
 			if (factory) {
 				return factory(file, frontmatter);
 			}
@@ -174,13 +140,9 @@ export class RSSfileManager {
 		const templatePath = this.settings.getTemplatePath(templateName);
 
 		const tplFile = this._vault.getFileByPath(templatePath);
-		if (tplFile) {
-			// template exists, read and return its contents
-			return this._vault.read(tplFile);
-		} else {
-			// template does not exist, use the factory defined template instead.
-			return this.settings[this._templateMap[templateName]];
-		}
+		return tplFile
+			? this._vault.read(tplFile) // read the template file from the vault
+			: this.settings[this._templateMap[templateName]]; // return the default template from settings
 	}
 
 	/**
@@ -234,7 +196,7 @@ export class RSSfileManager {
 	 * @param folderName the name of the new folder
 	 * @returns A `Promise` to the new folder handle.
 	 */
-	async createFolder(parentFolder: TFolder, folderName: string): Promise<TFolder> {
+	async createUniqueFolder(parentFolder: TFolder, folderName: string): Promise<TFolder> {
 		const parentPath = parentFolder.path;
 		let
 			uniqueFolderName = folderName,
@@ -256,12 +218,11 @@ export class RSSfileManager {
 	}
 
 	/**
-	 * Create a file from an RSS template.
+	 * Create or update a file using an RSS template.
 	 *
-	 * If a file with the same basename already exists in the given folder location, a new unique basename
-	 * is generated.
+	 * If a file with the same basename already exists in the given folder location,its content is updated.
 	 *
-	 * ❗The mustache token `{{fileLink}}` is automatically added to the data object. This token links to the generated file (no file extension) and can be used to create wiki-links.
+	 * ❗The mustache token `{{fileLink}}` is automatically added to the data object. This token resolves to a Wiki link to the generated file.
 	 *
 	 * @param folder - The folder to create the file in.
 	 * @param basename - The basename of the new file (without fie extension)
@@ -270,7 +231,47 @@ export class RSSfileManager {
 	 * @param postProcess - Flag indicating if this file requires post processing
 	 * @returns A `Promise` to the file handle.
 	 */
-	async createFileFromTemplate(folder: TFolder, basename: string, templateName: TTemplateName, data: TPropertyBag = {}, postProcess: boolean = false): Promise<TFile> {
+	async upsertFile(folder: TFolder, basename: string, templateName: TTemplateName, data: TPropertyBag = {}, postProcess: boolean = false): Promise<TFile> {
+		// 1. generate a unique filename based on the given desired file system location info.
+		const
+			filepath = folder.path + "/" + basename + ".md",
+			tpl = await this.readTemplate(templateName),
+			content = this.expandTemplate(tpl, data);
+
+
+		// 2. augment the data map with a unique wiki link to the file.
+		data["{{fileLink}}"] = `[[${filepath}|${basename}]]`;
+
+		// 4. Save the expanded template into a file at the given location
+		if (postProcess) {
+			this._plugin.tagmgr.registerFileForPostProcessing(filepath);
+		}
+		let file = this._vault.getFileByPath(filepath);
+		if (file) {
+			await this._vault.modify(file, content);
+		} else {
+			// file does not exist, create it
+			file = await this._vault.create(filepath, content);
+		}
+		return file
+	}
+
+	/**
+	 * Create a file from an RSS template.
+	 *
+	 * If a file with the same basename already exists in the given folder location, a new unique basename
+	 * is generated.
+	 *
+	 * ❗The mustache token `{{fileLink}}` is automatically added to the data object. This token resolves to a Wiki link to the generated file.
+	 *
+	 * @param folder - The folder to create the file in.
+	 * @param basename - The basename of the new file (without fie extension)
+	 * @param templateName - The template to use
+	 * @param data - Optional data map for replacing the mustache tokens in the template with custom data.
+	 * @param postProcess - Flag indicating if this file requires post processing
+	 * @returns A `Promise` to the file handle.
+	 */
+	async createUniqueFile(folder: TFolder, basename: string, templateName: TTemplateName, data: TPropertyBag = {}, postProcess: boolean = false): Promise<TFile> {
 		// 1. generate a unique filename based on the given desired file system location info.
 		let
 			uniqueBasename = basename,

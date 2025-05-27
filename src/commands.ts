@@ -138,7 +138,7 @@ export class NewRSSTopicCommand extends RSSTrackerCommandBase {
 
     async callback(): Promise<any> {
         const topicFolder = await this.plugin.filemgr.ensureFolderExists(this.plugin.settings.rssTopicsFolderPath);
-        await this.plugin.filemgr.createFileFromTemplate(topicFolder, "New Topic", "RSS Topic")
+        await this.plugin.filemgr.createUniqueFile(topicFolder, "New Topic", "RSS Topic")
             .then(topic => {
                 const leaf = this.app.workspace.getLeaf(false);
                 leaf.openFile(topic).catch(reason => new Notice(reason.message))
