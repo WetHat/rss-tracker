@@ -6,12 +6,10 @@
 */
 img[alt*="float:right"] {
     float: right;
-    margin-left: auto;
-    margin-right: auto;
+   margin-left: 0.5em;
 }
 
 img[alt*="float:left"] {
     float: right;
-    margin-left: auto;
-    margin-right: auto;
+    margin-right: 0.5em;
 }
