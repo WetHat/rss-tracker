@@ -12,7 +12,7 @@ pinned: false
 ---
 
 > [!abstract] Replied to: @WetHat Newtonsoft,Json is not dead. It's last release was 14 months ago & the repo has commits in the last month. There is such a thing as stable code that doesn't need constant releases every 5 minutes. (by @WetHat)
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] [@irongut](https://mastodon.scot/@irongut) I did ask some fellow hackers why they would consider [https://github.com/JamesNK/Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json) dead.
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] [@irongut](https://mastodon.scot/@irongut) I did ask some fellow hackers why they would consider [https://github.com/JamesNK/Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json) dead.
 > 
 > Arguments for 'dead':  
 > ➡️ ~700 open issues  

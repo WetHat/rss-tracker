@@ -22,7 +22,7 @@ pinned: false
 ---
 
 > [!abstract] Join the .NET Team at Microsoft Build 2024! (by Mehul Harry)
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] Get ready for a great lineup of .NET sessions at Microsoft Build 2024. Join us either in Seattle or from the comfort of your own home. With a mix of live and online sessions, you won’t miss a beat.
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] Get ready for a great lineup of .NET sessions at Microsoft Build 2024. Join us either in Seattle or from the comfort of your own home. With a mix of live and online sessions, you won’t miss a beat.
 > 
 > The post [Join the .NET Team at Microsoft Build 2024!](https://devblogs.microsoft.com/dotnet/join-the-dotnet-team-microsoft-build-2024/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 

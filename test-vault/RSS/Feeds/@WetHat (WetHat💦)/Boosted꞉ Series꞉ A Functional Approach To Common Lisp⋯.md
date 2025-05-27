@@ -12,7 +12,7 @@ pinned: false
 ---
 
 > [!abstract] Boosted: Series: A Functional Approach To Common Lisp https://youtu.be/2mJ88j3CqRs Discussions: https://discu.eu/q/https://youtu.be/2mJ88j3CqRs #rss/lisp #rss/programming (by @WetHat)
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] Series: A Functional Approach To Common Lisp
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] Series: A Functional Approach To Common Lisp
 > 
 > [https://youtu.be/2mJ88j3CqRs](https://youtu.be/2mJ88j3CqRs)
 > 

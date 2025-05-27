@@ -11,7 +11,7 @@ pinned: false
 ---
 
 > [!abstract] Parameters for PowerShell Scripts and Functions (by Matthew Dowst)
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] Using parameters for your Scripts and Functions is very powerful. You don't have to hardcode things
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] Using parameters for your Scripts and Functions is very powerful. You don't have to hardcode things
 > 
 > in them, making running them from a command line easier. This blog post will show you the parameters I use in most of my scripts and how they work.
 > 

@@ -12,7 +12,7 @@ pinned: false
 ---
 
 > [!abstract] Replied to: @WetHat There can be significant benefits with static readonly fields, see https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-8/#tiering-and-dynamic-pgo and https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-8/#constant-folding IIRC, the JIT will also optimize multiple loads of the same field better in some cases if it is readonly. (by @WetHat)
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] [@kvandermotten](https://mastodon.online/@kvandermotten) Excellent articles! Thanks for pointing that out!👍
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] [@kvandermotten](https://mastodon.online/@kvandermotten) Excellent articles! Thanks for pointing that out!👍
 > 
 > - WetHat💦 (@WetHat) [May 13, 2024](https://fosstodon.org/@WetHat/112434672435437631)
 

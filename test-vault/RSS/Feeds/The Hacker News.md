@@ -5,13 +5,13 @@ site: https://thehackernews.com
 feedurl: https://localhost/test/The Hacker News/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-25T12:20:56.883Z
+updated: 2025-05-27T08:05:14.698Z
 interval: 5
 tags: []
 ---
 
 > [!abstract] The Hacker News
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] Most trusted, widely-read independent cybersecurity news source for everyone; supported by hackers and IT professionals — Send TIPs to admin@thehackernews.com
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] Most trusted, widely-read independent cybersecurity news source for everyone; supported by hackers and IT professionals — Send TIPs to admin@thehackernews.com
 
 # Reading List 📑
 

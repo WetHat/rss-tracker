@@ -12,7 +12,7 @@ pinned: false
 ---
 
 > [!abstract] A Powershell GUI using DotNet Windows.Forms to start AWS Lambda Functions and display their output (by Matthew Dowst)
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] A Powershell GUI using DotNet Windows.Forms to start AWS Lambda Functions and display their output -
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] A Powershell GUI using DotNet Windows.Forms to start AWS Lambda Functions and display their output -
 > 
 > powershell-gui-aws-lambda-start-functions.ps1
 > 

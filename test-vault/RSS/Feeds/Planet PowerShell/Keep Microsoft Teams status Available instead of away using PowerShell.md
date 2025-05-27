@@ -11,7 +11,7 @@ pinned: false
 ---
 
 > [!abstract] Keep Microsoft Teams status Available instead of away using PowerShell (by Matthew Dowst)
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] It is one of the things I hear my colleagues, and even my girlfriend, mention regularly... Why does
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] It is one of the things I hear my colleagues, and even my girlfriend, mention regularly... Why does
 > 
 > Microsoft Teams think I'm away while I'm not / My PC isn't locked yet... I read a few solutions, setting your status duration to a date in the future, etc... Didn't work :( What does work is running my simple PowerShell scripts, which I will show you in this blog post :)
 > 

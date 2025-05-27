@@ -17,7 +17,7 @@ pinned: false
 ---
 
 > [!abstract] .NET and .NET Framework May 2024 Servicing Updates (by Tara Overfield)
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] A recap of the latest servicing updates for .NET and .NET Framework for May 2024.
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] A recap of the latest servicing updates for .NET and .NET Framework for May 2024.
 > 
 > The post [.NET and .NET Framework May 2024 Servicing Updates](https://devblogs.microsoft.com/dotnet/dotnet-and-dotnet-framework-may-2024-servicing-updates/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 

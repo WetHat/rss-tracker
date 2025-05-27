@@ -12,7 +12,7 @@ pinned: false
 ---
 
 > [!abstract] Replied to: @WetHat Thanks for sharing. Makes me wonder if AoT or PGO might benefit from it. Probably also no. (by @WetHat)
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] [@blaue_Fledermaus](https://mstdn.io/@blaue_Fledermaus) I do see some possibility that readonly would allow AoT (Ahead of Time compilation) or PGO (Profile-Guided Optimization) to choose a memory layout better suited for the computing pipeline. However. I'm not aware of any measurements in this direction. And I would agree that the advantage is probably small.
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] [@blaue_Fledermaus](https://mstdn.io/@blaue_Fledermaus) I do see some possibility that readonly would allow AoT (Ahead of Time compilation) or PGO (Profile-Guided Optimization) to choose a memory layout better suited for the computing pipeline. However. I'm not aware of any measurements in this direction. And I would agree that the advantage is probably small.
 > 
 > - WetHat💦 (@WetHat) [May 13, 2024](https://fosstodon.org/@WetHat/112434102899083500)
 

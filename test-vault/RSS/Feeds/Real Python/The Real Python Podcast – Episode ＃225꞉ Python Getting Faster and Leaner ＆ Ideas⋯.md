@@ -12,7 +12,7 @@ pinned: false
 ---
 
 > [!abstract] The Real Python Podcast – Episode #225: Python Getting Faster and Leaner & Ideas for Django Projects (by unknown)
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] What changes are happening under the hood in the latest versions of Python? How are these updates laying the groundwork for a faster Python in the coming years? Christopher Trudeau is back on the show this week, bringing another batch of PyCoder's Weekly articles and projects.
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] What changes are happening under the hood in the latest versions of Python? How are these updates laying the groundwork for a faster Python in the coming years? Christopher Trudeau is back on the show this week, bringing another batch of PyCoder's Weekly articles and projects.
 
 🌐 Read article [online](https://realpython.com/podcasts/rpp/225/). ⤴ For other items in this feed see [[RSS/Feeds/Real Python.md | Real Python]].
 

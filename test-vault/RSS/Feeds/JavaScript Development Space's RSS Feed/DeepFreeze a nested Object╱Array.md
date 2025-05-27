@@ -12,7 +12,7 @@ pinned: false
 ---
 
 > [!abstract] DeepFreeze a nested Object/Array (by unknown)
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] To deeply freeze a nested object or array in JavaScript, you need to freeze not only the outer object but also any nested objects or arrays.…
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] To deeply freeze a nested object or array in JavaScript, you need to freeze not only the outer object but also any nested objects or arrays.…
 
 🌐 Read article [online](https://jsdev.space/snippets/deepfreeze-js/). ⤴ For other items in this feed see [[RSS/Feeds/JavaScript Development Space's RSS Feed.md | JavaScript Development Space's RSS Feed]].
 

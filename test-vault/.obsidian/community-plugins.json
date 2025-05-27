@@ -5,7 +5,7 @@
   "obsidian-linter",
   "obsidian-style-settings",
   "obsidian-plugin-update-tracker",
-  "rss-tracker",
   "markdown-attributes",
-  "folder-notes"
+  "folder-notes",
+  "rss-tracker"
 ]

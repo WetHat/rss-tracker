@@ -5,13 +5,13 @@ site: https://flipboard.com/topic/blueskysocial
 feedurl: https://localhost/test/Bluesky/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-25T12:21:25.437Z
+updated: 2025-05-27T08:05:43.209Z
 interval: 19
 tags: []
 ---
 
 > [!abstract] Bluesky
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] 
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] 
 
 # Reading List 📑
 

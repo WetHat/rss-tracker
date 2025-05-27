@@ -5,13 +5,13 @@ site: https://www.space.com
 feedurl: https://localhost/test/Space RSS Feed/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-25T12:21:01.351Z
+updated: 2025-05-27T08:05:19.415Z
 interval: 5
 tags: []
 ---
 
 > [!abstract] Space RSS Feed
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] 
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] 
 
 # Reading List 📑
 

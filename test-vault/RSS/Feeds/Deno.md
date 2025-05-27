@@ -5,13 +5,13 @@ site: https://deno.com/blog
 feedurl: https://localhost/test/Deno/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-25T12:21:23.436Z
+updated: 2025-05-27T08:05:41.026Z
 interval: 207
 tags: []
 ---
 
 > [!abstract] Deno
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] The latest news from Deno Land Inc.
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] The latest news from Deno Land Inc.
 
 # Reading List 📑
 

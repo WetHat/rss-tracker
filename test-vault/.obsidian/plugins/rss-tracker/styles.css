@@ -5,13 +5,11 @@
   to float text around the image of wudth 400.
 */
 img[alt*="float:right"] {
-    float: right;
-    margin-left: auto;
-    margin-right: auto;
+  float: right;
+  margin-left: 0.5em;
 }
 
 img[alt*="float:left"] {
-    float: right;
-    margin-left: auto;
-    margin-right: auto;
+  float: right;
+  margin-right: 0.5em;
 }

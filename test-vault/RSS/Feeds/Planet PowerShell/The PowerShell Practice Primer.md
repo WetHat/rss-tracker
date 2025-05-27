@@ -11,7 +11,7 @@ pinned: false
 ---
 
 > [!abstract] The PowerShell Practice Primer (by Matthew Dowst)
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] A collection of over 100 PowerShell learning exercises targeted for beginners developed by
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] A collection of over 100 PowerShell learning exercises targeted for beginners developed by
 > 
 > PowerShell MVP and veteran teacher Jeff Hicks.
 > 

@@ -12,7 +12,7 @@ pinned: false
 ---
 
 > [!abstract] Deno 1.44: Private npm registries, improved Node.js compat, and performance boosts (by Bartek Iwańczuk, Marvin Hagemeister, Ryan Dahl)
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] Deno 1.44 adds support for private npm registries, gRPC connections, improved Node.js compat with initial Next.js support, and significant performance improvements.
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] Deno 1.44 adds support for private npm registries, gRPC connections, improved Node.js compat with initial Next.js support, and significant performance improvements.
 
 🌐 Read article [online](https://deno.com/blog/v1.44). ⤴ For other items in this feed see [[RSS/Feeds/Deno.md | Deno]].
 

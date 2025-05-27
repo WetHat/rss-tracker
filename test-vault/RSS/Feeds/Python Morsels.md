@@ -5,13 +5,13 @@ site: https://www.pythonmorsels.com/topics/
 feedurl: https://localhost/test/Python Morsels/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-25T12:21:09.766Z
+updated: 2025-05-27T08:05:27.893Z
 interval: 425
 tags: []
 ---
 
 > [!abstract] Python Morsels
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] Python Morsels
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] Python Morsels
 
 # Reading List 📑
 

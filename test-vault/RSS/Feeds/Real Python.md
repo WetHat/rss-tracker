@@ -5,13 +5,13 @@ site: https://realpython.com/
 feedurl: https://localhost/test/Real Python/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-25T12:21:07.610Z
+updated: 2025-05-27T08:05:25.627Z
 interval: 50
 tags: []
 ---
 
 > [!abstract] Real Python
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] 
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] 
 
 # Reading List 📑
 

@@ -11,7 +11,7 @@ pinned: false
 ---
 
 > [!abstract] How to use JavaScript to manipulate the Visual Viewport (by unknown)
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] Manipulating the visual viewport in JavaScript can enhance the user experience on mobile devices, particularly when dealing with dynamic…
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] Manipulating the visual viewport in JavaScript can enhance the user experience on mobile devices, particularly when dealing with dynamic…
 
 🌐 Read article [online](https://jsdev.space/howto/visual-viewport-js/). ⤴ For other items in this feed see [[RSS/Feeds/JavaScript Development Space's RSS Feed.md | JavaScript Development Space's RSS Feed]].
 

@@ -11,7 +11,7 @@ pinned: false
 ---
 
 > [!abstract] The road to universal JavaScript (by unknown)
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] Universal JavaScript. JavaScript that works in every environment. JavaScript that runs on both the client and the server, something thinking about for years (see 1, 2). Where are we now?
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] Universal JavaScript. JavaScript that works in every environment. JavaScript that runs on both the client and the server, something thinking about for years (see 1, 2). Where are we now?
 
 🌐 Read article [online](https://fettblog.eu/the-road-to-universal-javascript/). ⤴ For other items in this feed see [[RSS/Feeds/fettblog․eu ∣ TypeScript, JavaScript, Jamstack.md | fettblog․eu ∣ TypeScript, JavaScript, Jamstack]].
 

@@ -11,7 +11,7 @@ pinned: false
 ---
 
 > [!abstract] The 4 Must-Know TypeScript Compiler Configs (by unknown)
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] TypeScript compiler configs are crucial for building apps. Key settings include file locations, syntax specification, module formats, and type checking capabilities. Understanding these configs enhances development. This posts shows you how to build the perfect TypeScript compiler configuration for your project and how configs from frameworks can be extended for ease.
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] TypeScript compiler configs are crucial for building apps. Key settings include file locations, syntax specification, module formats, and type checking capabilities. Understanding these configs enhances development. This posts shows you how to build the perfect TypeScript compiler configuration for your project and how configs from frameworks can be extended for ease.
 
 🌐 Read article [online](https://typescript.tv/new-features/the-4-must-know-typescript-compiler-configs/). ⤴ For other items in this feed see [[RSS/Feeds/TypeScript TV.md | TypeScript TV]].
 

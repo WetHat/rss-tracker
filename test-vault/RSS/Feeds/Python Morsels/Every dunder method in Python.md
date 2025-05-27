@@ -11,7 +11,7 @@ pinned: false
 ---
 
 > [!abstract] Every dunder method in Python (by unknown)
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] An explanation of all of Python's 100+ dunder methods and 50+ dunder attributes, including a summary of each one.
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] An explanation of all of Python's 100+ dunder methods and 50+ dunder attributes, including a summary of each one.
 > 
 > **Table of contents**
 > 

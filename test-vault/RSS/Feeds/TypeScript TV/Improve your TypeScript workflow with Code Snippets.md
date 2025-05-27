@@ -11,7 +11,7 @@ pinned: false
 ---
 
 > [!abstract] Improve your TypeScript workflow with Code Snippets (by unknown)
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] Learn how to improve your TypeScript workflow by using code snippets. This article provides a code example for logging a JSON response into a file using Node.js and TypeScript.
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] Learn how to improve your TypeScript workflow by using code snippets. This article provides a code example for logging a JSON response into a file using Node.js and TypeScript.
 
 🌐 Read article [online](https://typescript.tv/hands-on/improve-your-typescript-workflow-with-code-snippets/). ⤴ For other items in this feed see [[RSS/Feeds/TypeScript TV.md | TypeScript TV]].
 

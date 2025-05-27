@@ -12,8 +12,9 @@ noneof: []
 ~~~dataviewjs
 const
 	c = dv.current(),
-	vault = dv.app.vault;
-dv.paragraph(Object.keys(vault.adapter));
+	vault = dv.app.vault,
+	cf = vault.getFileByPath("/" + c.file.path);
+dv.paragraph(c.file.path);
 
 ~~~
 

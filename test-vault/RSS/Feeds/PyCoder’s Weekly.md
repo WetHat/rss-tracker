@@ -5,13 +5,13 @@ site: https://pycoders.com/
 feedurl: https://localhost/test/PyCoder’s Weekly/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-25T12:21:12.074Z
+updated: 2025-05-27T08:05:30.487Z
 interval: 168
 tags: []
 ---
 
 > [!abstract] PyCoder’s Weekly
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] 
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] 
 
 # Reading List 📑
 

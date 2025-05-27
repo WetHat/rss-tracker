@@ -5,13 +5,13 @@ site: https://localhost/blog/
 feedurl: https://localhost/test/Blogs on Lisp journey/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-25T12:21:27.675Z
+updated: 2025-05-27T08:05:45.195Z
 interval: 645
 tags: []
 ---
 
 > [!abstract] Blogs on Lisp journey
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] Recent content in Blogs on Lisp journey
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] Recent content in Blogs on Lisp journey
 
 # Reading List 📑
 

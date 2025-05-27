@@ -12,7 +12,7 @@ pinned: false
 ---
 
 > [!abstract] Frontend PowerShell with Google Forms: Part 1 Getting your data (by Matthew Dowst)
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] ［OC］ Learn how to get data from a Google Form into PowerShell, by building a repeatable and reusable
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] ［OC］ Learn how to get data from a Google Form into PowerShell, by building a repeatable and reusable
 > 
 > automation you can use to with any form.
 > 

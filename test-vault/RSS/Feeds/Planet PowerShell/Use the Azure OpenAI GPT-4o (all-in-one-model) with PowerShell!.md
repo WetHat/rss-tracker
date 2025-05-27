@@ -11,7 +11,7 @@ pinned: false
 ---
 
 > [!abstract] Use the Azure OpenAI GPT-4o (all-in-one-model) with PowerShell! (by Matthew Dowst)
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] On May 13th GPT-4o was released in preview in the Azure OpenAI Playground. No API access, only
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] On May 13th GPT-4o was released in preview in the Azure OpenAI Playground. No API access, only
 > 
 > accessible in the browser. Today I was going into the playground to test something with the GPT-4o model, but could not find it. What had happened? Turnes out it suddenly was in GA and available to choose under ... Continue reading Use the Azure OpenAI GPT-4o (all-in-one-model) with PowerShell!
 > 

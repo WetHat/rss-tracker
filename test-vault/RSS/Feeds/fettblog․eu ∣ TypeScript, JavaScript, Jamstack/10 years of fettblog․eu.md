@@ -12,7 +12,7 @@ pinned: false
 ---
 
 > [!abstract] 10 years of fettblog.eu (by unknown)
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] I missed a little anniversary. Roughly 10 years ago (on April 8, 2012), I started blogging on fettblog.eu! Time flies! I think this is my longest-running project, let’s take some time to reflect.
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] I missed a little anniversary. Roughly 10 years ago (on April 8, 2012), I started blogging on fettblog.eu! Time flies! I think this is my longest-running project, let’s take some time to reflect.
 
 🌐 Read article [online](https://fettblog.eu/10-years-of-fettblog/). ⤴ For other items in this feed see [[RSS/Feeds/fettblog․eu ∣ TypeScript, JavaScript, Jamstack.md | fettblog․eu ∣ TypeScript, JavaScript, Jamstack]].
 

@@ -12,7 +12,7 @@ pinned: false
 ---
 
 > [!abstract] Replied to: @WetHat it's AI-generated. See comments at https://old.reddit.com/r/lisp/comments/1cpfljb/how_to_explore_lisp_metaprogramming_techniques/ (by @WetHat)
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] [@phoe](https://functional.cafe/@phoe) Thanks for pointing this out. I do agree that some of the examples would be better written as functions. As the reddit article points out the coverage of metapogramming is rather shalllow demonstrating just the basics.
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] [@phoe](https://functional.cafe/@phoe) Thanks for pointing this out. I do agree that some of the examples would be better written as functions. As the reddit article points out the coverage of metapogramming is rather shalllow demonstrating just the basics.
 > 
 > I've checked the contributors of that website. Most of which have skeleton LinkedIn profiles claming they are from South Africa. I believe that site indeed is fake!
 > 

@@ -11,7 +11,7 @@ pinned: false
 ---
 
 > [!abstract] Automating PowerShell tasks with Container App Jobs (by Matthew Dowst)
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] I previously wrote about Automating maintenance tasks with Azure Functions and PowerShell. That
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] I previously wrote about Automating maintenance tasks with Azure Functions and PowerShell. That
 > 
 > combo has been my go-to solution for many automation tasks.
 > 

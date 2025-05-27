@@ -5,13 +5,13 @@ site: https://typescript.tv/
 feedurl: https://localhost/test/TypeScript TV/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-25T12:20:54.807Z
+updated: 2025-05-27T08:05:12.624Z
 interval: 809
 tags: []
 ---
 
 > [!abstract] TypeScript TV
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] 🚀 Ideal for beginners or advanced TypeScript programmers, our coding course guarantees something new for everyone.
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] 🚀 Ideal for beginners or advanced TypeScript programmers, our coding course guarantees something new for everyone.
 
 # Reading List 📑
 

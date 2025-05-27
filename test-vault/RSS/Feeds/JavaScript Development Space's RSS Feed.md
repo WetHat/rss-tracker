@@ -5,13 +5,13 @@ site: http://github.com/dylang/node-rss
 feedurl: https://localhost/test/JavaScript Development Space's RSS Feed/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-25T12:21:16.771Z
+updated: 2025-05-27T08:05:34.582Z
 interval: 138
 tags: []
 ---
 
 > [!abstract] JavaScript Development Space's RSS Feed
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] Explore the world of JavaScript at our blog, your ultimate resource for guides, tutorials, and articles. Uncover the latest insights, tips, and trends.
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] Explore the world of JavaScript at our blog, your ultimate resource for guides, tutorials, and articles. Uncover the latest insights, tips, and trends.
 
 # Reading List 📑
 

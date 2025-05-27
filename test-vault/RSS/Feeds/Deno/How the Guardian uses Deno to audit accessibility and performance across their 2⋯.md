@@ -12,7 +12,7 @@ pinned: false
 ---
 
 > [!abstract] How the Guardian uses Deno to audit accessibility and performance across their 2.7 million articles (by Andy Jiang)
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] The Guardian receives over 350 million unique page views. Learn how Deno helps the Guardian maximize web performance and adhere to accessibility standards to retain and grow their readership.
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] The Guardian receives over 350 million unique page views. Learn how Deno helps the Guardian maximize web performance and adhere to accessibility standards to retain and grow their readership.
 
 🌐 Read article [online](https://deno.com/blog/guardian). ⤴ For other items in this feed see [[RSS/Feeds/Deno.md | Deno]].
 

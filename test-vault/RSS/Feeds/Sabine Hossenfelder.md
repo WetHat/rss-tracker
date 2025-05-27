@@ -5,13 +5,13 @@ site: https://www.youtube.com/channel/UC1yNl2E66ZzKApQdRuTQ4tw
 feedurl: https://localhost/test/Sabine Hossenfelder/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-25T12:21:05.507Z
+updated: 2025-05-27T08:05:23.628Z
 interval: 24
 tags: []
 ---
 
 > [!abstract] Sabine Hossenfelder
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] 
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] 
 
 # Reading List 📑
 

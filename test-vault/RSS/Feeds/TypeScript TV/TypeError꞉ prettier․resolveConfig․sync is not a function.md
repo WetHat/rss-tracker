@@ -12,7 +12,7 @@ pinned: false
 ---
 
 > [!abstract] TypeError: prettier.resolveConfig.sync is not a function (by unknown)
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] Learn how to fix error: prettier.resolveConfig.sync is not a function. Resolve any issues that arise from updating to Prettier v3 and migrate from Husky & pretty-quick to Lefthook.
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] Learn how to fix error: prettier.resolveConfig.sync is not a function. Resolve any issues that arise from updating to Prettier v3 and migrate from Husky & pretty-quick to Lefthook.
 
 🌐 Read article [online](https://typescript.tv/hands-on/typeerror-prettierresolveconfigsync-is-not-a-function/). ⤴ For other items in this feed see [[RSS/Feeds/TypeScript TV.md | TypeScript TV]].
 

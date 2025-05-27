@@ -5,13 +5,13 @@ site: https://effectivetypescript.com/
 feedurl: https://localhost/test/Effective TypeScript/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-25T12:21:21.394Z
+updated: 2025-05-27T08:05:38.996Z
 interval: 759
 tags: []
 ---
 
 > [!abstract] Effective TypeScript
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] 62 Specific Ways to Improve Your TypeScript
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] 62 Specific Ways to Improve Your TypeScript
 
 # Reading List 📑
 

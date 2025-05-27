@@ -6,13 +6,13 @@ site: https://github.blog/category/product/
 feedurl: https://localhost/test/The GitHub Blog꞉ Product News and Updates/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-25T12:20:59.264Z
+updated: 2025-05-27T08:05:17.364Z
 interval: 165
 tags: []
 ---
 
 > [!abstract] The GitHub Blog: Product News and Updates
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] Updates, ideas, and inspiration from GitHub to help developers build and design software.
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] Updates, ideas, and inspiration from GitHub to help developers build and design software.
 
 # Reading List 📑
 

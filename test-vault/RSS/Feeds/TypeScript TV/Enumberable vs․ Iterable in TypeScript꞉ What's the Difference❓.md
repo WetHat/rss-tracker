@@ -12,7 +12,7 @@ pinned: false
 ---
 
 > [!abstract] Enumberable vs. Iterable in TypeScript: What's the Difference? (by unknown)
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] In TypeScript, "enumerable" and "iterable" are terms used to describe different aspects of data collections. Enumerable refers to an object's properties that can be counted or iterated over using a `for...in` loop. Iterable, on the other hand, refers to an object that can be traversed through its elements one by one using a `for...of` loop.
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] In TypeScript, "enumerable" and "iterable" are terms used to describe different aspects of data collections. Enumerable refers to an object's properties that can be counted or iterated over using a `for...in` loop. Iterable, on the other hand, refers to an object that can be traversed through its elements one by one using a `for...of` loop.
 
 🌐 Read article [online](https://typescript.tv/hands-on/enumberable-vs-iterable-in-typescript-whats-the-difference/). ⤴ For other items in this feed see [[RSS/Feeds/TypeScript TV.md | TypeScript TV]].
 

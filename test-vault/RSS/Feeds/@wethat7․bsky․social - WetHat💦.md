@@ -6,13 +6,13 @@ site: https://bsky.app/profile/wethat7.bsky.social
 feedurl: https://localhost/test/@wethat7․bsky․social - WetHat💦/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-25T12:21:32.027Z
+updated: 2025-05-27T08:05:49.623Z
 interval: 19
 tags: []
 ---
 
 > [!abstract] @wethat7.bsky.social - WetHat💦
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] I enjoy programming computers
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] I enjoy programming computers
 
 # Reading List 📑
 

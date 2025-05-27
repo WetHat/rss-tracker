@@ -11,7 +11,7 @@ pinned: false
 ---
 
 > [!abstract] Introducing More Flexible Domain Association for Deno Subhosting (by Yusuke Tanaka, Andy Jiang)
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] This new update simplifies programmatically managing custom domains, wildcard domains, subdomains for different deployments, and more.
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] This new update simplifies programmatically managing custom domains, wildcard domains, subdomains for different deployments, and more.
 
 🌐 Read article [online](https://deno.com/blog/subhosting-flexible-domain-association). ⤴ For other items in this feed see [[RSS/Feeds/Deno.md | Deno]].
 

@@ -11,7 +11,7 @@ pinned: false
 ---
 
 > [!abstract] The stabilization process of the Standard Library has begun (by Yoshiya Hinosawa)
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] The Deno Standard Library is going to reach 1.0.0 shortly. We hope you try RC versions of the packages and give us feedback!
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] The Deno Standard Library is going to reach 1.0.0 shortly. We hope you try RC versions of the packages and give us feedback!
 
 🌐 Read article [online](https://deno.com/blog/stabilize-std). ⤴ For other items in this feed see [[RSS/Feeds/Deno.md | Deno]].
 

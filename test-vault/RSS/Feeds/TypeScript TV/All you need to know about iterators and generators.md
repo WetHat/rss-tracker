@@ -11,7 +11,7 @@ pinned: false
 ---
 
 > [!abstract] All you need to know about iterators and generators (by unknown)
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] Learn about iterators and generators in TypeScript. Understand how to use for-of loops, iterator protocol, iterable protocol, and async generators. See examples and practical applications.
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] Learn about iterators and generators in TypeScript. Understand how to use for-of loops, iterator protocol, iterable protocol, and async generators. See examples and practical applications.
 
 🌐 Read article [online](https://typescript.tv/hands-on/all-you-need-to-know-about-iterators-and-generators/). ⤴ For other items in this feed see [[RSS/Feeds/TypeScript TV.md | TypeScript TV]].
 

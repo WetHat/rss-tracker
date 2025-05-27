@@ -5,7 +5,7 @@ site: https://johncarlosbaez.wordpress.com
 feedurl: https://localhost/test/Azimuth/feed.xml
 itemlimit: 10
 status: ✅
-updated: 2025-05-25T12:21:29.848Z
+updated: 2025-05-27T08:05:47.562Z
 interval: 206
 tags: []
 ---

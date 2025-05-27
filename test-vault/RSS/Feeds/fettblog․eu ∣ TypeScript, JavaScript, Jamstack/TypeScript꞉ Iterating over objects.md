@@ -12,7 +12,7 @@ pinned: false
 ---
 
 > [!abstract] TypeScript: Iterating over objects (by unknown)
-> ![[RSS/assets/RSSdefaultImage.svg|float:right|100x100]] There is rarely a head-scratcher in TypeScript as prominent as trying to access an object property via iterating through its keys. This is a pattern that’s so common in JavaScript, yet TypeScript seems to through all the obstacles at you. This simple line:
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] There is rarely a head-scratcher in TypeScript as prominent as trying to access an object property via iterating through its keys. This is a pattern that’s so common in JavaScript, yet TypeScript seems to through all the obstacles at you. This simple line:
 
 🌐 Read article [online](https://fettblog.eu/typescript-iterating-over-objects/). ⤴ For other items in this feed see [[RSS/Feeds/fettblog․eu ∣ TypeScript, JavaScript, Jamstack.md | fettblog․eu ∣ TypeScript, JavaScript, Jamstack]].
 
