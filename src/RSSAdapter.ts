@@ -250,7 +250,7 @@ export class RSSitemAdapter extends RSSAdapter {
                 author: author ?? "unknown",
                 link: link ?? "unknown",
                 published: published ?? new Date().valueOf(),
-                feed: `[[${feed.file.path} | ${feed.file.basename}]]`,
+                feed: `[[${feed.file.path}|${feed.file.basename}]]`,
                 tags: tags.map(t => tagmgr.mapHashtag(t.startsWith("#") ? t : "#" + t).slice(1)),
                 pinned: false,
             },
