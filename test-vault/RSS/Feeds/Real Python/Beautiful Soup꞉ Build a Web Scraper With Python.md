@@ -6,7 +6,7 @@ id: https://realpython.com/beautiful-soup-web-scraper-python/
 author: unknown
 link: https://realpython.com/beautiful-soup-web-scraper-python/
 published: 2024-10-28T14:00:00.000Z
-feed: "[[RSS/Feeds/Real Python.md | Real Python]]"
+feed: "[[RSS/Feeds/Real Python.md|Real Python]]"
 tags: []
 pinned: false
 ---
@@ -14,7 +14,7 @@ pinned: false
 > [!abstract] Beautiful Soup: Build a Web Scraper With Python (by unknown)
 > ![image|float:right|400](https://files.realpython.com/media/Build-a-Web-Scraper-With-Requests-and-Beautiful-Soup_Watermarked.37918fb3906c.jpg) In this tutorial, you'll walk through the main steps of the web scraping process. You'll learn how to write a script that uses Python's Requests library to scrape data from a website. You'll also use Beautiful Soup to extract the specific pieces of information you're interested in.
 
-🌐 Read article [online](https://realpython.com/beautiful-soup-web-scraper-python/). ⤴ For other items in this feed see [[RSS/Feeds/Real Python.md | Real Python]].
+🌐 Read article [online](https://realpython.com/beautiful-soup-web-scraper-python/). ⤴ For other items in this feed see [[RSS/Feeds/Real Python.md|Real Python]].
 
 - [ ] [[RSS/Feeds/Real Python/Beautiful Soup꞉ Build a Web Scraper With Python|Beautiful Soup꞉ Build a Web Scraper With Python]]
 

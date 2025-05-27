@@ -6,7 +6,7 @@ id: https://devblogs.microsoft.com/dotnet/?p=51745
 author: David Pine
 link: https://devblogs.microsoft.com/dotnet/refactor-your-code-with-collection-expressions/
 published: 2024-05-08T17:05:00.000Z
-feed: "[[RSS/Feeds/․NET Blog.md | ․NET Blog]]"
+feed: "[[RSS/Feeds/․NET Blog.md|․NET Blog]]"
 tags:
   - rss/C＃
   - rss/c＃_12
@@ -20,7 +20,7 @@ pinned: false
 > 
 > The post [Refactor your code with C# collection expressions](https://devblogs.microsoft.com/dotnet/refactor-your-code-with-collection-expressions/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 
-🌐 Read article [online](https://devblogs.microsoft.com/dotnet/refactor-your-code-with-collection-expressions/). ⤴ For other items in this feed see [[RSS/Feeds/․NET Blog.md | ․NET Blog]].
+🌐 Read article [online](https://devblogs.microsoft.com/dotnet/refactor-your-code-with-collection-expressions/). ⤴ For other items in this feed see [[RSS/Feeds/․NET Blog.md|․NET Blog]].
 
 - [ ] [[RSS/Feeds/․NET Blog/Refactor your code with C＃ collection expressions|Refactor your code with C＃ collection expressions]]
 

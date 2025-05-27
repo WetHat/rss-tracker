@@ -6,7 +6,7 @@ id: https://www.pythonmorsels.com/http-server/
 author: unknown
 link: https://www.pythonmorsels.com/http-server/
 published: 2024-04-05T23:41:43.000Z
-feed: "[[RSS/Feeds/Python Morsels.md | Python Morsels]]"
+feed: "[[RSS/Feeds/Python Morsels.md|Python Morsels]]"
 tags: []
 pinned: false
 ---
@@ -24,7 +24,7 @@ pinned: false
 > 
 > ## A directory trees of `index.html` files⋯
 
-🌐 Read article [online](https://www.pythonmorsels.com/http-server/). ⤴ For other items in this feed see [[RSS/Feeds/Python Morsels.md | Python Morsels]].
+🌐 Read article [online](https://www.pythonmorsels.com/http-server/). ⤴ For other items in this feed see [[RSS/Feeds/Python Morsels.md|Python Morsels]].
 
 - [ ] [[RSS/Feeds/Python Morsels/Python's http․server module|Python's http․server module]]
 

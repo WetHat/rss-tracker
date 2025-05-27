@@ -6,7 +6,7 @@ id: https://realpython.com/quizzes/defining-your-own-python-function/
 author: unknown
 link: https://realpython.com/quizzes/defining-your-own-python-function/
 published: 2024-10-22T12:00:00.000Z
-feed: "[[RSS/Feeds/Real Python.md | Real Python]]"
+feed: "[[RSS/Feeds/Real Python.md|Real Python]]"
 tags: []
 pinned: false
 ---
@@ -14,7 +14,7 @@ pinned: false
 > [!abstract] Quiz: Defining Your Own Python Function (by unknown)
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] In this quiz, you'll test your understanding of how to define your own Python functions. You'll revisit both the basics and more complex syntax, such as args and kwargs, to sharpen your knowledge of function definitions in Python.
 
-🌐 Read article [online](https://realpython.com/quizzes/defining-your-own-python-function/). ⤴ For other items in this feed see [[RSS/Feeds/Real Python.md | Real Python]].
+🌐 Read article [online](https://realpython.com/quizzes/defining-your-own-python-function/). ⤴ For other items in this feed see [[RSS/Feeds/Real Python.md|Real Python]].
 
 - [ ] [[RSS/Feeds/Real Python/Quiz꞉ Defining Your Own Python Function|Quiz꞉ Defining Your Own Python Function]]
 

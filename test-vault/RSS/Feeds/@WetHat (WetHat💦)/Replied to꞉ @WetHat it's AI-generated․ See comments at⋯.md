@@ -6,7 +6,7 @@ id: https://fosstodon.org/@WetHat/112433745762841309
 author: "@WetHat"
 link: https://fosstodon.org/@WetHat/112433745762841309
 published: 2024-05-13T12:20:10.000Z
-feed: "[[RSS/Feeds/@WetHat (WetHat💦).md | @WetHat (WetHat💦)]]"
+feed: "[[RSS/Feeds/@WetHat (WetHat💦).md|@WetHat (WetHat💦)]]"
 tags: []
 pinned: false
 ---
@@ -18,7 +18,7 @@ pinned: false
 > 
 > - WetHat💦 (@WetHat) [May 13, 2024](https://fosstodon.org/@WetHat/112433745762841309)
 
-🌐 Read article [online](https://fosstodon.org/@WetHat/112433745762841309). ⤴ For other items in this feed see [[RSS/Feeds/@WetHat (WetHat💦).md | @WetHat (WetHat💦)]].
+🌐 Read article [online](https://fosstodon.org/@WetHat/112433745762841309). ⤴ For other items in this feed see [[RSS/Feeds/@WetHat (WetHat💦).md|@WetHat (WetHat💦)]].
 
 - [ ] [[RSS/Feeds/@WetHat (WetHat💦)/Replied to꞉ @WetHat it's AI-generated․ See comments at⋯|Replied to꞉ @WetHat it's AI-generated․ See comments at⋯]]
 

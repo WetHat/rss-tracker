@@ -6,7 +6,7 @@ id: https://devblogs.microsoft.com/dotnet/?p=51907
 author: Damian Edwards
 link: https://devblogs.microsoft.com/dotnet/dotnet-aspire-general-availability/
 published: 2024-05-21T15:50:00.000Z
-feed: "[[RSS/Feeds/․NET Blog.md | ․NET Blog]]"
+feed: "[[RSS/Feeds/․NET Blog.md|․NET Blog]]"
 tags:
   - rss/Azure
   - rss/Cloud_Native
@@ -31,7 +31,7 @@ pinned: false
 > 
 > The post [General Availability of .NET Aspire: Simplifying .NET Cloud-Native Development](https://devblogs.microsoft.com/dotnet/dotnet-aspire-general-availability/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 
-🌐 Read article [online](https://devblogs.microsoft.com/dotnet/dotnet-aspire-general-availability/). ⤴ For other items in this feed see [[RSS/Feeds/․NET Blog.md | ․NET Blog]].
+🌐 Read article [online](https://devblogs.microsoft.com/dotnet/dotnet-aspire-general-availability/). ⤴ For other items in this feed see [[RSS/Feeds/․NET Blog.md|․NET Blog]].
 
 - [ ] [[RSS/Feeds/․NET Blog/General Availability of ․NET Aspire꞉ Simplifying ․NET Cloud-Native Development|General Availability of ․NET Aspire꞉ Simplifying ․NET Cloud-Native Development]]
 

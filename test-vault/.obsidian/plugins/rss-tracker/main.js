@@ -15539,7 +15539,7 @@ var _RSSitemAdapter = class _RSSitemAdapter extends RSSAdapter {
       author: author != null ? author : "unknown",
       link: link != null ? link : "unknown",
       published: published != null ? published : (/* @__PURE__ */ new Date()).valueOf(),
-      feed: `[[${feed.file.path} | ${feed.file.basename}]]`,
+      feed: `[[${feed.file.path}|${feed.file.basename}]]`,
       tags: tags.map((t) => tagmgr.mapHashtag(t.startsWith("#") ? t : "#" + t).slice(1)),
       pinned: false
     }, dataMap = {
@@ -16502,22 +16502,16 @@ var _DataViewJSTools = class _DataViewJSTools {
     return this.fromFeedsFolder + " AND " + this.fromTags(topic);
   }
   fromItemsOfCollection(collection) {
-    const feeds = this.rssFeedsOfCollection(collection);
-    return feeds.map((f) => `"${f.file.folder}/${f.file.name}"`).join(" OR ");
-  }
-  /**
-   * @returns A **FROM** expression to get all items from all feed folders.
-   */
-  get fromFeeds() {
-    const settings = this.settings, feedsFolder = settings.app.vault.getFolderByPath(settings.rssFeedFolderPath);
-    if (feedsFolder) {
-      const feeds = feedsFolder.children.filter((c) => c instanceof import_obsidian7.TFolder).map((f) => '"' + f.path + '"');
-      return feeds.length > 0 ? "(" + feeds.join(" OR ") + ")" : "/";
+    const file = this.plugin.vault.getFileByPath(collection.file.path);
+    if (!file) {
+      return this.dv.array([]);
     }
-    return "/";
-  }
-  fromFeedsOfCollection(collection) {
-    return this.fromFeeds + " AND " + this.fromTags(collection);
+    const adapter = this.plugin.filemgr.createAdapter(file, "rsscollection");
+    if (!adapter) {
+      return this.dv.array([]);
+    }
+    const feedsFolder = this.plugin.settings.rssFeedFolderPath;
+    return adapter.feeds.map((f) => `"${feedsFolder}/${f.folder.name}"`).join(" OR ");
   }
   //#endregion Dataview queries
   //#region Item lists
@@ -16564,8 +16558,29 @@ var _DataViewJSTools = class _DataViewJSTools {
     return this.dv.array(this.plugin.feedmgr.feeds.map((feed) => this.dv.page(feed.file.path)));
   }
   rssFeedsOfCollection(collection) {
-    let from = this.fromFeedsOfCollection(collection);
-    return this.dv.pages(from).where((p) => p.role === "rssfeed");
+    const file = this.plugin.vault.getFileByPath(collection.file.path);
+    if (!file) {
+      return this.dv.array([]);
+    }
+    const adapter = this.plugin.filemgr.createAdapter(file, "rsscollection");
+    if (!adapter) {
+      return this.dv.array([]);
+    }
+    return this.dv.array(adapter.feeds.map((f) => this.dv.page(f.file.path)));
+  }
+  rssUnclaimedFeeds() {
+    const feedsToCollections = /* @__PURE__ */ new Map();
+    for (const collection of this.rssCollections) {
+      for (const feed of this.rssFeedsOfCollection(collection)) {
+        let cList = feedsToCollections.get(feed.file.path);
+        if (!cList) {
+          cList = [];
+          feedsToCollections.set(feed.file.path, cList);
+        }
+        cList.push(collection);
+      }
+    }
+    return this.rssFeeds.where((f) => !feedsToCollections.has(f.file.path)).sort((f) => f.file.name, "asc");
   }
   rssItemsOfCollection(collection) {
     const from = this.fromItemsOfCollection(collection);
@@ -16790,9 +16805,10 @@ var _DataViewJSTools = class _DataViewJSTools {
       this.dv.paragraph("\u26D4");
       return;
     }
-    const groups = items.groupBy((i) => i.feed).sort((g) => g.key, "asc");
+    const groups = items.groupBy((i) => i.feed.path.trim()).sort((g) => g.key, "asc");
     for (const group of groups) {
-      await this.rssItemTable(group.rows, expand, group.key);
+      const feed = this.dv.page(group.key), feedlink = `[[${feed.file.path}|${feed.file.name}]]`;
+      await this.rssItemTable(group.rows, expand, feedlink);
     }
   }
   // #endregion specific RSS collapsible tables
@@ -16873,13 +16889,14 @@ var _DataViewJSTools = class _DataViewJSTools {
    *                 `false` to collapse the table by default and render the table on-demand.
    */
   async rssReadingListByFeed(items, read = false, expand = false) {
-    const groups = items.groupBy((i) => i.feed).sort((g) => g.key, "asc");
+    const groups = items.groupBy((i) => i.feed.path.trim()).sort((g) => g.key, "asc");
     let totalTasks = 0;
     for (const group of groups) {
       const tasks = this.rssReadingTasks(group.rows, read);
       if (tasks.length > 0) {
+        const feed = this.dv.page(group.key), feedlink = `[[${feed.file.path}|${feed.file.name}]]`;
         totalTasks += tasks.length;
-        await this.rssTaskList(tasks, expand, group.key);
+        await this.rssTaskList(tasks, expand, feedlink);
       }
     }
     if (totalTasks === 0) {
@@ -17114,7 +17131,7 @@ var RSSfileManager = class extends RSSTrackerService {
   createAdapter(file, ...types) {
     var _a2;
     const frontmatter = (_a2 = this.plugin.app.metadataCache.getFileCache(file)) == null ? void 0 : _a2.frontmatter, role = frontmatter == null ? void 0 : frontmatter.role;
-    if (role && role in types) {
+    if (types.includes(role)) {
       const factory = this._adapterFactoriesbyRole[role];
       if (factory) {
         return factory(file, frontmatter);

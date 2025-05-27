@@ -5,7 +5,7 @@ id: https://github.blog/?p=77210
 author: Tanmayee Kamath
 link: https://github.blog/2024-04-02-bringing-enterprise-level-security-and-even-more-power-to-github-hosted-runners/
 published: 2024-04-02T16:35:24.000Z
-feed: "[[RSS/Feeds/The GitHub Blog꞉ Product News and Updates.md | The GitHub Blog꞉ Product News and Updates]]"
+feed: "[[RSS/Feeds/The GitHub Blog꞉ Product News and Updates.md|The GitHub Blog꞉ Product News and Updates]]"
 tags:
   - rss/GitHub-hosted_runners
   - rss/GitHub_Actions
@@ -16,7 +16,7 @@ pinned: false
 > [!abstract] Bringing enterprise-level security and even more power to GitHub-hosted runners (by Tanmayee Kamath)
 > ![image|float:right|400](https://github.blog/wp-content/uploads/2024/04/new-network-configuration.png?w=1024&resize=1024%2C582) GitHub-hosted runners now support Azure private networking. Plus, we've added 2 vCPU Linux, 4 vCPU Windows, macOS L, macOS XL, and GPU hosted runners to our runner fleet. The post Bringing enterprise-level security and even more power to GitHub-hosted runners appeared first on The GitHub Blog.
 
-🌐 Read article [online](https://github.blog/2024-04-02-bringing-enterprise-level-security-and-even-more-power-to-github-hosted-runners/). ⤴ For other items in this feed see [[RSS/Feeds/The GitHub Blog꞉ Product News and Updates.md | The GitHub Blog꞉ Product News and Updates]].
+🌐 Read article [online](https://github.blog/2024-04-02-bringing-enterprise-level-security-and-even-more-power-to-github-hosted-runners/). ⤴ For other items in this feed see [[RSS/Feeds/The GitHub Blog꞉ Product News and Updates.md|The GitHub Blog꞉ Product News and Updates]].
 
 - [ ] [[RSS/Feeds/The GitHub Blog꞉ Product News and Updates/Bringing enterprise-level security and even more power to GitHub-hosted runners|Bringing enterprise-level security and even more power to GitHub-hosted runners]]
 

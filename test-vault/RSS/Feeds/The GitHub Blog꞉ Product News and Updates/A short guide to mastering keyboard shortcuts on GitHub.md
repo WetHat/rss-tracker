@@ -5,7 +5,7 @@ id: https://github.blog/?p=77552
 author: Sara Verdi
 link: https://github.blog/2024-04-19-a-short-guide-to-mastering-keyboard-shortcuts-on-github/
 published: 2024-04-19T16:37:20.000Z
-feed: "[[RSS/Feeds/The GitHub Blog꞉ Product News and Updates.md | The GitHub Blog꞉ Product News and Updates]]"
+feed: "[[RSS/Feeds/The GitHub Blog꞉ Product News and Updates.md|The GitHub Blog꞉ Product News and Updates]]"
 tags:
   - rss/Github
   - rss/Insider
@@ -18,7 +18,7 @@ pinned: false
 > [!abstract] A short guide to mastering keyboard shortcuts on GitHub (by Sara Verdi)
 > ![image|float:right|400](https://github.blog/wp-content/uploads/2024/04/ezgif.com-gif-maker.gif?w=600&resize=600%2C338) Say goodbye to constant mouse clicking and hello to seamless navigation with GitHub shortcuts. The post A short guide to mastering keyboard shortcuts on GitHub appeared first on The GitHub Blog.
 
-🌐 Read article [online](https://github.blog/2024-04-19-a-short-guide-to-mastering-keyboard-shortcuts-on-github/). ⤴ For other items in this feed see [[RSS/Feeds/The GitHub Blog꞉ Product News and Updates.md | The GitHub Blog꞉ Product News and Updates]].
+🌐 Read article [online](https://github.blog/2024-04-19-a-short-guide-to-mastering-keyboard-shortcuts-on-github/). ⤴ For other items in this feed see [[RSS/Feeds/The GitHub Blog꞉ Product News and Updates.md|The GitHub Blog꞉ Product News and Updates]].
 
 - [ ] [[RSS/Feeds/The GitHub Blog꞉ Product News and Updates/A short guide to mastering keyboard shortcuts on GitHub|A short guide to mastering keyboard shortcuts on GitHub]]
 

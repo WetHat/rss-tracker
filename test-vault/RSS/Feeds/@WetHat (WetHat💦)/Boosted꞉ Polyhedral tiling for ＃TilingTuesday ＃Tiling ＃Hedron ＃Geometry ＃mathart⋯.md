@@ -6,7 +6,7 @@ id: https://mathstodon.xyz/@ngons/112440813968194589
 author: "@WetHat"
 link: https://mathstodon.xyz/@ngons/112440813968194589
 published: 2024-05-15T05:36:22.000Z
-feed: "[[RSS/Feeds/@WetHat (WetHat💦).md | @WetHat (WetHat💦)]]"
+feed: "[[RSS/Feeds/@WetHat (WetHat💦).md|@WetHat (WetHat💦)]]"
 tags: []
 pinned: false
 ---
@@ -18,7 +18,7 @@ pinned: false
 > 
 > - n-gons (@ngons) [May 14, 2024](https://mathstodon.xyz/@ngons/112440813968194589)
 
-🌐 Read article [online](https://mathstodon.xyz/@ngons/112440813968194589). ⤴ For other items in this feed see [[RSS/Feeds/@WetHat (WetHat💦).md | @WetHat (WetHat💦)]].
+🌐 Read article [online](https://mathstodon.xyz/@ngons/112440813968194589). ⤴ For other items in this feed see [[RSS/Feeds/@WetHat (WetHat💦).md|@WetHat (WetHat💦)]].
 
 - [ ] [[RSS/Feeds/@WetHat (WetHat💦)/Boosted꞉ Polyhedral tiling for ＃TilingTuesday ＃Tiling ＃Hedron ＃Geometry ＃mathart⋯|Boosted꞉ Polyhedral tiling for ＃TilingTuesday ＃Tiling ＃Hedron ＃Geometry ＃mathart⋯]]
 

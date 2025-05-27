@@ -6,7 +6,7 @@ id: https://devblogs.microsoft.com/dotnet/?p=51919
 author: .NET Team
 link: https://devblogs.microsoft.com/dotnet/dotnet-build-2024-announcements/
 published: 2024-05-21T17:05:00.000Z
-feed: "[[RSS/Feeds/․NET Blog.md | ․NET Blog]]"
+feed: "[[RSS/Feeds/․NET Blog.md|․NET Blog]]"
 tags:
   - rss/AI
   - rss/ASP۔NET
@@ -35,7 +35,7 @@ pinned: false
 > 
 > The post [.NET Announcements and Updates from Microsoft Build 2024](https://devblogs.microsoft.com/dotnet/dotnet-build-2024-announcements/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 
-🌐 Read article [online](https://devblogs.microsoft.com/dotnet/dotnet-build-2024-announcements/). ⤴ For other items in this feed see [[RSS/Feeds/․NET Blog.md | ․NET Blog]].
+🌐 Read article [online](https://devblogs.microsoft.com/dotnet/dotnet-build-2024-announcements/). ⤴ For other items in this feed see [[RSS/Feeds/․NET Blog.md|․NET Blog]].
 
 - [ ] [[RSS/Feeds/․NET Blog/․NET Announcements and Updates from Microsoft Build 2024|․NET Announcements and Updates from Microsoft Build 2024]]
 

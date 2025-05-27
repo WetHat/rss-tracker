@@ -6,7 +6,7 @@ id: https://devblogs.microsoft.com/dotnet/?p=51662
 author: Wendy Breiding (SHE/HER)
 link: https://devblogs.microsoft.com/dotnet/may-release-of-csharp-dev-kit/
 published: 2024-05-07T20:05:00.000Z
-feed: "[[RSS/Feeds/․NET Blog.md | ․NET Blog]]"
+feed: "[[RSS/Feeds/․NET Blog.md|․NET Blog]]"
 tags:
   - rss/Cloud_Native
   - rss/Csharp
@@ -24,7 +24,7 @@ pinned: false
 > 
 > The post [Package Management & improved .NET Aspire support come to C# Dev Kit](https://devblogs.microsoft.com/dotnet/may-release-of-csharp-dev-kit/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 
-🌐 Read article [online](https://devblogs.microsoft.com/dotnet/may-release-of-csharp-dev-kit/). ⤴ For other items in this feed see [[RSS/Feeds/․NET Blog.md | ․NET Blog]].
+🌐 Read article [online](https://devblogs.microsoft.com/dotnet/may-release-of-csharp-dev-kit/). ⤴ For other items in this feed see [[RSS/Feeds/․NET Blog.md|․NET Blog]].
 
 - [ ] [[RSS/Feeds/․NET Blog/Package Management ＆ improved ․NET Aspire support come to C＃ Dev Kit|Package Management ＆ improved ․NET Aspire support come to C＃ Dev Kit]]
 

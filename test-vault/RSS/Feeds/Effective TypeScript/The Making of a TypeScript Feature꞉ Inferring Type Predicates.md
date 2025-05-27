@@ -6,7 +6,7 @@ id: https://effectivetypescript.com/2024/04/16/inferring-a-type-predicate/
 author: unknown
 link: https://effectivetypescript.com/2024/04/16/inferring-a-type-predicate/
 published: 2024-04-16T17:30:00.000Z
-feed: "[[RSS/Feeds/Effective TypeScript.md | Effective TypeScript]]"
+feed: "[[RSS/Feeds/Effective TypeScript.md|Effective TypeScript]]"
 tags: []
 pinned: false
 ---
@@ -14,7 +14,7 @@ pinned: false
 > [!abstract] The Making of a TypeScript Feature: Inferring Type Predicates (by unknown)
 > ![image|float:right|400](https://effectivetypescript.com/images/inferred-predicate.png) Over the past few months I became a TypeScript contributor and implemented a new feature, type predicate inference, that should be one of the headliners for TypeScript 5.5. This post tells the story of how that happened: why I wanted to contribute to TypeScript, the journey to implementing the feature and getting the PR merged, and what I've learned along the way. This is not a short read, but it will give you a good sense of what it's like to become a TypeScript contributor and develop a new feature.
 
-🌐 Read article [online](https://effectivetypescript.com/2024/04/16/inferring-a-type-predicate/). ⤴ For other items in this feed see [[RSS/Feeds/Effective TypeScript.md | Effective TypeScript]].
+🌐 Read article [online](https://effectivetypescript.com/2024/04/16/inferring-a-type-predicate/). ⤴ For other items in this feed see [[RSS/Feeds/Effective TypeScript.md|Effective TypeScript]].
 
 - [ ] [[RSS/Feeds/Effective TypeScript/The Making of a TypeScript Feature꞉ Inferring Type Predicates|The Making of a TypeScript Feature꞉ Inferring Type Predicates]]
 

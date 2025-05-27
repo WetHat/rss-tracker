@@ -6,7 +6,7 @@ id: https://devblogs.microsoft.com/dotnet/?p=51837
 author: Tara Overfield
 link: https://devblogs.microsoft.com/dotnet/dotnet-and-dotnet-framework-may-2024-servicing-updates/
 published: 2024-05-15T17:05:00.000Z
-feed: "[[RSS/Feeds/․NET Blog.md | ․NET Blog]]"
+feed: "[[RSS/Feeds/․NET Blog.md|․NET Blog]]"
 tags:
   - rss/Maintenance
   - rss/Updates
@@ -21,7 +21,7 @@ pinned: false
 > 
 > The post [.NET and .NET Framework May 2024 Servicing Updates](https://devblogs.microsoft.com/dotnet/dotnet-and-dotnet-framework-may-2024-servicing-updates/) appeared first on [.NET Blog](https://devblogs.microsoft.com/dotnet).
 
-🌐 Read article [online](https://devblogs.microsoft.com/dotnet/dotnet-and-dotnet-framework-may-2024-servicing-updates/). ⤴ For other items in this feed see [[RSS/Feeds/․NET Blog.md | ․NET Blog]].
+🌐 Read article [online](https://devblogs.microsoft.com/dotnet/dotnet-and-dotnet-framework-may-2024-servicing-updates/). ⤴ For other items in this feed see [[RSS/Feeds/․NET Blog.md|․NET Blog]].
 
 - [ ] [[RSS/Feeds/․NET Blog/․NET and ․NET Framework May 2024 Servicing Updates|․NET and ․NET Framework May 2024 Servicing Updates]]
 

@@ -5,7 +5,7 @@ id: https://www.pythonmorsels.com/multiline-comments/
 author: unknown
 link: https://www.pythonmorsels.com/multiline-comments/
 published: 2024-04-19T23:00:00.000Z
-feed: "[[RSS/Feeds/Python Morsels.md | Python Morsels]]"
+feed: "[[RSS/Feeds/Python Morsels.md|Python Morsels]]"
 tags: []
 pinned: false
 ---
@@ -21,7 +21,7 @@ pinned: false
 > 4. [What if I want to comment-out a whole block of code?](https://www.pythonmorsels.com/multiline-comments/#what-if-i-want-to-comment-out-a-whole-block-of-code)
 > 5. [How to comment multiple lines](https://www.pythonmorsels.com/multiline-comments/#how-to-c⋯
 
-🌐 Read article [online](https://www.pythonmorsels.com/multiline-comments/). ⤴ For other items in this feed see [[RSS/Feeds/Python Morsels.md | Python Morsels]].
+🌐 Read article [online](https://www.pythonmorsels.com/multiline-comments/). ⤴ For other items in this feed see [[RSS/Feeds/Python Morsels.md|Python Morsels]].
 
 - [ ] [[RSS/Feeds/Python Morsels/Multiline comments in Python|Multiline comments in Python]]
 

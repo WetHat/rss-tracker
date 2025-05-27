@@ -5,7 +5,7 @@ id: https://jsdev.space/howto/custom-webpack-plugin/
 author: unknown
 link: https://jsdev.space/howto/custom-webpack-plugin/
 published: 2024-10-06T00:00:00.000Z
-feed: "[[RSS/Feeds/JavaScript Development Space's RSS Feed.md | JavaScript Development Space's RSS Feed]]"
+feed: "[[RSS/Feeds/JavaScript Development Space's RSS Feed.md|JavaScript Development Space's RSS Feed]]"
 tags: []
 pinned: false
 ---
@@ -13,7 +13,7 @@ pinned: false
 > [!abstract] How to Create a Custom Webpack Plugin (by unknown)
 > ![image|float:right|400](./images/custom-webpack-plugin.png) Creating a plugin for Webpack allows you to customize and extend Webpack's functionality to suit your needs. Webpack plugins can perform a…
 
-🌐 Read article [online](https://jsdev.space/howto/custom-webpack-plugin/). ⤴ For other items in this feed see [[RSS/Feeds/JavaScript Development Space's RSS Feed.md | JavaScript Development Space's RSS Feed]].
+🌐 Read article [online](https://jsdev.space/howto/custom-webpack-plugin/). ⤴ For other items in this feed see [[RSS/Feeds/JavaScript Development Space's RSS Feed.md|JavaScript Development Space's RSS Feed]].
 
 - [ ] [[RSS/Feeds/JavaScript Development Space's RSS Feed/How to Create a Custom Webpack Plugin|How to Create a Custom Webpack Plugin]]
 

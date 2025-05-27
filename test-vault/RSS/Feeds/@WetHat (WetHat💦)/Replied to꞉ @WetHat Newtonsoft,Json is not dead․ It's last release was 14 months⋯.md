@@ -6,7 +6,7 @@ id: https://fosstodon.org/@WetHat/112434073371395011
 author: "@WetHat"
 link: https://fosstodon.org/@WetHat/112434073371395011
 published: 2024-05-13T13:43:29.000Z
-feed: "[[RSS/Feeds/@WetHat (WetHat💦).md | @WetHat (WetHat💦)]]"
+feed: "[[RSS/Feeds/@WetHat (WetHat💦).md|@WetHat (WetHat💦)]]"
 tags: []
 pinned: false
 ---
@@ -26,7 +26,7 @@ pinned: false
 > 
 > - WetHat💦 (@WetHat) [May 13, 2024](https://fosstodon.org/@WetHat/112434073371395011)
 
-🌐 Read article [online](https://fosstodon.org/@WetHat/112434073371395011). ⤴ For other items in this feed see [[RSS/Feeds/@WetHat (WetHat💦).md | @WetHat (WetHat💦)]].
+🌐 Read article [online](https://fosstodon.org/@WetHat/112434073371395011). ⤴ For other items in this feed see [[RSS/Feeds/@WetHat (WetHat💦).md|@WetHat (WetHat💦)]].
 
 - [ ] [[RSS/Feeds/@WetHat (WetHat💦)/Replied to꞉ @WetHat Newtonsoft,Json is not dead․ It's last release was 14 months⋯|Replied to꞉ @WetHat Newtonsoft,Json is not dead․ It's last release was 14 months⋯]]
 

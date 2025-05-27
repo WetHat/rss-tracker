@@ -5,7 +5,7 @@ id: https://psweekly.dowst.dev/?post_type=link_library_links&p=6896
 author: Matthew Dowst
 link: https://leanpub.com/psprimer
 published: 2024-05-24T12:25:00.000Z
-feed: "[[RSS/Feeds/Planet PowerShell.md | Planet PowerShell]]"
+feed: "[[RSS/Feeds/Planet PowerShell.md|Planet PowerShell]]"
 tags: []
 pinned: false
 ---
@@ -17,7 +17,7 @@ pinned: false
 > 
 > (+)(-)
 
-🌐 Read article [online](https://leanpub.com/psprimer). ⤴ For other items in this feed see [[RSS/Feeds/Planet PowerShell.md | Planet PowerShell]].
+🌐 Read article [online](https://leanpub.com/psprimer). ⤴ For other items in this feed see [[RSS/Feeds/Planet PowerShell.md|Planet PowerShell]].
 
 - [ ] [[RSS/Feeds/Planet PowerShell/The PowerShell Practice Primer|The PowerShell Practice Primer]]
 

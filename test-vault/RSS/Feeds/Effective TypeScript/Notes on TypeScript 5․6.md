@@ -6,7 +6,7 @@ id: https://effectivetypescript.com/2024/09/30/ts-56/
 author: unknown
 link: https://effectivetypescript.com/2024/09/30/ts-56/
 published: 2024-09-30T16:15:00.000Z
-feed: "[[RSS/Feeds/Effective TypeScript.md | Effective TypeScript]]"
+feed: "[[RSS/Feeds/Effective TypeScript.md|Effective TypeScript]]"
 tags: []
 pinned: false
 ---
@@ -14,7 +14,7 @@ pinned: false
 > [!abstract] Notes on TypeScript 5.6 (by unknown)
 > ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] We TypeScript developers are a lucky bunch. While some languages (Python, JavaScript) are released annually, every three years (C++) or even less, we get four new versions of TypeScript every year. TypeScript 5.6 was released on September 9th, 2024. Let's take a look.
 
-🌐 Read article [online](https://effectivetypescript.com/2024/09/30/ts-56/). ⤴ For other items in this feed see [[RSS/Feeds/Effective TypeScript.md | Effective TypeScript]].
+🌐 Read article [online](https://effectivetypescript.com/2024/09/30/ts-56/). ⤴ For other items in this feed see [[RSS/Feeds/Effective TypeScript.md|Effective TypeScript]].
 
 - [ ] [[RSS/Feeds/Effective TypeScript/Notes on TypeScript 5․6|Notes on TypeScript 5․6]]
 
