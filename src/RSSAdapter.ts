@@ -285,7 +285,10 @@ export class RSScollectionAdapter extends RSSAdapter {
     static async create(plugin: RSSTrackerPlugin): Promise<RSScollectionAdapter> {
         const
             folder = await plugin.filemgr.ensureFolderExists(plugin.settings.rssCollectionsFolderPath),
-            file = await plugin.filemgr.createUniqueFile(folder, "New Feed Collection", "RSS Collection"),
+            data = {
+                "{{image}}": plugin.settings.rssDefaultImageLink,
+            },
+            file = await plugin.filemgr.createUniqueFile(folder, "New Feed Collection", "RSS Collection", data),
             frontmatter: TFrontmatter = {
                 role: "rsscollection",
                 tags: ["nil"],
@@ -416,7 +419,7 @@ export class RSSfeedAdapter extends RSSdashboardAdapter {
     static async create(plugin: RSSTrackerPlugin, feed: TrackedRSSfeed): Promise<RSSfeedAdapter> {
         const
             { title, site, description } = feed,
-           image: IRssMedium | string | undefined = feed.image,
+            image: IRssMedium | string | undefined = feed.image,
             frontmatter: TFrontmatter = {
                 role: "rssfeed",
                 aliases: [],
@@ -651,13 +654,13 @@ export class RSSfeedAdapter extends RSSdashboardAdapter {
 export class RSSFeedsDashboardAdapter extends RSSdashboardAdapter {
 
     static async ensureDashboardFolderExists(plugin: RSSTrackerPlugin): Promise<TFolder> {
-    	const folder = plugin.vault.getFolderByPath(plugin.settings.rssFeedsFolderPath);
-		if (folder) {
-			return folder;
-		}
-		const adapter = await RSSFeedsDashboardAdapter.create(plugin);
-		return adapter.folder;
-	}
+        const folder = plugin.vault.getFolderByPath(plugin.settings.rssFeedsFolderPath);
+        if (folder) {
+            return folder;
+        }
+        const adapter = await RSSFeedsDashboardAdapter.create(plugin);
+        return adapter.folder;
+    }
 
     /**
      * Create a new RSS Feeds dashboard adapter.
@@ -677,9 +680,57 @@ export class RSSFeedsDashboardAdapter extends RSSdashboardAdapter {
             },
             dashboardName = RSSdashboardAdapter.getDashboardName(folder),
             dashboardplacement = RSSdashboardAdapter.getDashboardPlacementFolder(folder, placement),
-            dashboard = await filemgr.upsertFile(dashboardplacement, dashboardName, "RSS Feed Dashboard", {}, false);
+            data = {
+                "{{image}}": plugin.settings.rssDefaultImageLink
+            },
+            dashboard = await filemgr.upsertFile(dashboardplacement, dashboardName, "RSS Feed Dashboard", data, false);
 
-        const adapter =  new RSSFeedsDashboardAdapter(plugin, folder, dashboard, frontmatter);
+        const adapter = new RSSFeedsDashboardAdapter(plugin, folder, dashboard, frontmatter);
+        await adapter.commitFrontmatterChanges();
+        await settings.commit();
+        return adapter;
+    }
+
+    constructor(plugin: RSSTrackerPlugin, folder: TFolder, dashboard: TFile, frontmatter?: TFrontmatter) {
+        super(plugin, folder, dashboard, frontmatter);
+    }
+}
+
+export class RSSCollectionDashboardAdapter extends RSSdashboardAdapter {
+
+    static async ensureDashboardFolderExists(plugin: RSSTrackerPlugin): Promise<TFolder> {
+        const folder = plugin.vault.getFolderByPath(plugin.settings.rssFeedsFolderPath);
+        if (folder) {
+            return folder;
+        }
+        const adapter = await RSSCollectionDashboardAdapter.create(plugin);
+        return adapter.folder;
+    }
+
+    /**
+     * Create a new RSS collections dashboard adapter.
+     * @param plugin the plugin instance
+     * @param folder the folder containing the dashboard
+     * @param dashboard the dashboard file
+     * @returns a new adapter instance.
+     */
+    static async create(plugin: RSSTrackerPlugin): Promise<RSSCollectionDashboardAdapter> {
+        const
+            filemgr = plugin.filemgr,
+            settings = plugin.settings,
+            folder = await filemgr.ensureFolderExists(settings.rssCollectionsFolderPath),
+            placement = settings.rssDashboardPlacement,
+            frontmatter: TFrontmatter = {
+                role: "rsscollection-dashboard",
+            },
+            dashboardName = RSSdashboardAdapter.getDashboardName(folder),
+            dashboardplacement = RSSdashboardAdapter.getDashboardPlacementFolder(folder, placement),
+            data = {
+                "{{image}}": plugin.settings.rssDefaultImageLink
+            },
+            dashboard = await filemgr.upsertFile(dashboardplacement, dashboardName, "RSS Collection Dashboard", data, false);
+
+        const adapter = new RSSCollectionDashboardAdapter(plugin, folder, dashboard, frontmatter);
         await adapter.commitFrontmatterChanges();
         await settings.commit();
         return adapter;

@@ -1,7 +1,7 @@
-import { Setting, PluginSettingTab } from "obsidian";
+import { Setting, PluginSettingTab, Notice } from "obsidian";
 import RSSTrackerPlugin from "./main";
 import { DEFAULT_SETTINGS, RSSTrackerSettings } from "./settings";
-import { RSSFeedsDashboardAdapter } from './RSSAdapter';
+import { RSSCollectionDashboardAdapter, RSSFeedsDashboardAdapter } from './RSSAdapter';
 
 abstract class RSSTrackerSettingBase extends Setting {
 	protected settingsTab: RSSTrackerSettingTab;
@@ -133,10 +133,13 @@ class RSSFeedFolderSetting extends RSSTrackerSettingBase {
 			})
 			.addButton(btn => {
 				btn
-					.setIcon("layout-dashboard")
+					.setIcon("archive-restore")
 					.setTooltip("Reset the RSS feed dashboard to default")
 					//.setButtonText("Reset Dashboard")
-					.onClick(async evt => await RSSFeedsDashboardAdapter.create(this.plugin));
+					.onClick(async evt => {
+						await RSSFeedsDashboardAdapter.create(this.plugin)
+						new Notice("Feed dashboard reset complete — you're back to the default setting.");
+					});
 			});
 	}
 }
@@ -163,6 +166,16 @@ class RSSCollectionsFolderSetting extends RSSTrackerSettingBase {
 					.setTooltip("Reset the RSS feed collections location to default")
 					.onClick(evt => {
 						this.settings.rssCollectionsFolderName = DEFAULT_SETTINGS.rssCollectionsFolderName;
+					})
+			})
+			.addButton(btn => {
+				btn
+					.setIcon("archive-restore")
+					.setTooltip("Reset the RSS collection dashboard to default")
+					//.setButtonText("Reset Dashboard")
+					.onClick(async evt => {
+						await RSSCollectionDashboardAdapter.create(this.plugin);
+						new Notice("Collection dashboard reset complete — you're back to the default setting.");
 					})
 			});
 	}

@@ -26,7 +26,9 @@ export interface IRSSTrackerSettings {
 	rssFeedDashboardTemplate: string; // The template for RSS feeds folder dashboard
 	rssFeedTemplate: string,
 	rssItemTemplate: string,
-	rssTagmapTemplate: string;
+	rssTagmapTemplate: string,
+	rssCollectionDashboardTemplate: string,
+	rssCollectionTemplate: string,
 }
 
 /**
@@ -47,8 +49,8 @@ export const DEFAULT_SETTINGS: IRSSTrackerSettings = {
 	rssFeedDashboardTemplate: `---
 role:
 ---
-> [!abstract] RSS feed Dashboard
-> ![[RSSdefaultImage.svg|float:right|100]] See all your subscribed and curated content at a glance.
+> [!abstract] RSS feed dashboard
+> {{image}} All your subscribed feeds at a glance.
 
 # Feed Status 💔
 
@@ -146,9 +148,75 @@ to (**including the** \`#\` prefix).
 
 | RSS Tag | Mapped Tag |
 | ------- | ---------- |`,
-	rssCollectionTemplate: `
+	rssCollectionTemplate: `---
+role:
+---
+
+> [!abstract] (headline:: A collection of feeds providing perspectives and knowledge about ...)
+> {{image}}
+> - [ ] Complete the headline.
+> - [ ] Specify tags in the \`tags\`, \`allof\`, \`noneof\` frontmatter properties to collect feeds matching the tag filter.
+
+# Feeds in this Collection 📚
+
+~~~dataviewjs
+const
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	expand = false,
+	feeds = dvjs.rssFeedsOfCollection(dv.current());
+await dvjs.rssFeedTable(feeds,expand);
+dv.paragraph("From: " + dvjs.fromTags(dv.current()));
+~~~
+
+# Reading List 📑
+
+~~~dataviewjs
+const
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	expand = false,
+	items = dvjs.rssItemsOfCollection(dv.current());
+await dvjs.rssReadingListByFeed(items,false,expand);
+~~~
+
+# Pinned Items 📍
+
+~~~dataviewjs
+const
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	expand = false,
+	items = dvjs.rssItemsOfCollection(dv.current()).where( i => i.pinned === true);
+await dvjs.rssItemTableByFeed(items,expand);
+~~~
 `,
-	rssCollectionDashboardTemplate: `
+	rssCollectionDashboardTemplate: `---
+role:
+---
+
+> [!abstract] A Gateway to Knowledge.
+> {{image}} Each collection is designed to provide a curated blend of authoritative sources, expert insights, and updates within its specific subject area.
+
+# Feed Collections 📚
+
+~~~dataviewjs
+const
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	expand = true,
+	collections = dvjs.rssCollections;
+await dvjs.rssCollectionTable(collections,expand);
+~~~
+
+# Unclaimed Feeds 📦
+
+⚠️ Only tagged feeds can be claimed by feed collections.
+
+~~~dataviewjs
+const
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	expand = false,
+	unclaimed = dvjs.rssUnclaimedFeeds();
+
+await dvjs.rssFeedTable(unclaimed,expand)
+~~~
 `,
 }
 
@@ -307,16 +375,26 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 		}
 	}
 
+	//#region Template Accessors
+	get rssFeedDashboardTemplate(): string {
+		return DEFAULT_SETTINGS.rssFeedDashboardTemplate;
+	}
+
 	get rssFeedTemplate(): string {
 		return DEFAULT_SETTINGS.rssFeedTemplate;
 	}
 
-	get rssItemTemplate(): string {
-		return DEFAULT_SETTINGS.rssItemTemplate;
+	get rssCollectionDashboardTemplate(): string {
+		return DEFAULT_SETTINGS.rssCollectionDashboardTemplate;
 	}
 
-	get rssFeedDashboardTemplate(): string {
-		return DEFAULT_SETTINGS.rssFeedDashboardTemplate;
+	get rssCollectionTemplate(): string {
+		return DEFAULT_SETTINGS.rssCollectionTemplate;
+	}
+
+    //#endregion Template Accessors
+	get rssItemTemplate(): string {
+		return DEFAULT_SETTINGS.rssItemTemplate;
 	}
 
 	get rssTagmapTemplate(): string {
