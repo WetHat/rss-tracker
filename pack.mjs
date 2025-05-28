@@ -12,7 +12,6 @@ console.log("Copying assets...");
 [
     "manifest.json",
     "styles.css",
-    "Templates"
 ].forEach(f => {
     const target = join("./dist", f);
     console.log(`${f} => ${target}`);
