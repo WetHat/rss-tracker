@@ -3,7 +3,7 @@ import { App, TFile, Vault, MetadataCache, TFolder } from 'obsidian';
 import { TPropertyBag } from './FeedAssembler';
 import { TDashboardPlacement } from './settings';
 import RSSTrackerPlugin from "./main";
-import { RSSAdapter, RSScollectionAdapter, RSSdashboardAdapter, RSSfeedAdapter, RSSFeedsDashboardAdapter, RSSitemAdapter, TFrontmatter } from './RSSAdapter';
+import { RSSAdapter, RSScollectionAdapter, RSSdashboardAdapter, RSSfeedAdapter, RSSfeedsDashboardAdapter, RSSitemAdapter, RSStopicAdapter, TFrontmatter } from './RSSAdapter';
 import { TTemplateName } from './TemplateManager';
 import { RSSTrackerService } from './PluginServices';
 
@@ -22,6 +22,7 @@ export class RSSfileManager extends RSSTrackerService {
 		"rssfeed": (f: TFile, fm: TFrontmatter) => RSSdashboardAdapter.createFromFile(RSSfeedAdapter, this.plugin, f, this.settings.rssDashboardPlacement, fm),
 		"rssitem": (f: TFile, fm: TFrontmatter) => new RSSitemAdapter(this.plugin, f, fm),
 		"rsscollection": (f: TFile, fm: TFrontmatter) => new RSScollectionAdapter(this.plugin, f, fm),
+		"rsstopic": (f: TFile, fm: TFrontmatter) => new RSStopicAdapter(this.plugin, f, fm),
 	}
 
 

@@ -28,11 +28,11 @@ export class TemplateManager extends RSSTrackerService {
     private readonly _templateMap: { [name: string]: string } = {
         "RSS Item": "rssItemTemplate",
         "RSS Feed": "rssFeedTemplate",
+        "RSS Feed Dashboard": "rssFeedDashboardTemplate",
         "RSS Collection": "rssCollectionTemplate",
         "RSS Collection Dashboard": "rssCollectionDashboardTemplate",
         "RSS Topic": "rssTopicTemplate",
         "RSS Topic Dashboard": "rssTopicDashboardTemplate",
-        "RSS Feed Dashboard": "rssFeedDashboardTemplate",
         "RSS Tagmap": "rssTagmapTemplate",
     };
 
@@ -52,9 +52,7 @@ export class TemplateManager extends RSSTrackerService {
         if (!templateFolderPath) {
             template = this._templateMap[templateName]; // use the default template
         } else {
-            const
-                templateFolder = await this.plugin.filemgr.ensureFolderExists(templateFolderPath),
-                templateFile = this.vault.getFileByPath(templateFolder.path + "/" + templateName + ".md");
+            const templateFile = this.vault.getFileByPath(templateFolderPath+ "/" + templateName + ".md");
 
             template = templateFile
                 ? await this.vault.read(templateFile) // read the template file contents from the vault

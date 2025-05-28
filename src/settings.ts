@@ -29,6 +29,8 @@ export interface IRSSTrackerSettings {
 	rssTagmapTemplate: string,
 	rssCollectionDashboardTemplate: string,
 	rssCollectionTemplate: string,
+	rssTopicDashboardTemplate: string,
+	rssTopicTemplate: string,
 }
 
 /**
@@ -67,7 +69,7 @@ dv.header(2,"Updated Feeds ✅");
 dvjs.rssFeedTable(feeds.where(f => f.status === "✅"),expanded);
 ~~~
 
-# Pinned Items 📍x
+# Pinned Items 📍
 
 ~~~dataviewjs
 const
@@ -192,7 +194,7 @@ await dvjs.rssItemTableByFeed(items,expand);
 role:
 ---
 
-> [!abstract] A Gateway to Knowledge.
+> [!abstract] Curated collections of RSS feeds focused on specific topics.
 > {{image}} Each collection is designed to provide a curated blend of authoritative sources, expert insights, and updates within its specific subject area.
 
 # Feed Collections 📚
@@ -216,6 +218,53 @@ const
 	unclaimed = dvjs.rssUnclaimedFeeds();
 
 await dvjs.rssFeedTable(unclaimed,expand)
+~~~
+`,
+	rssTopicTemplate: `---
+role:
+tags: []
+allof: []
+noneof: []
+---
+> [!abstract] (headline:: A curated list of RSS items about ...)
+> {{image}}
+> - [ ] Create a headline
+> - [ ] Specify tags in the \`tags\`, \`allof\`, \'noneof\' frontmatter properties
+
+# Curated Articles📍
+
+~~~dataviewjs
+const
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	expand = true,
+	items = dvjs.rssItemsOfTopic(dv.current()).where(t => t.pinned === true);
+await dvjs.rssItemTableByFeed(items,expand)
+dv.paragraph("From: " + dvjs.fromTags(dv.current()));
+~~~
+
+# Other Articles 📄
+
+~~~dataviewjs
+const
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	expand = false,
+	items = dvjs.rssItemsOfTopic(dv.current()).where(t => t.pinned !== true);
+await dvjs.rssItemTableByFeed(items,expand)
+dv.paragraph("From: " + dvjs.fromTags(dv.current()));
+~~~
+`,
+	rssTopicDashboardTemplate: `---
+role:
+---
+
+> [!abstract] Curated collections of RSS feed posts focused on specific topics.
+> {{image}} Each topic is designed to provide a curated blend of authoritative sources, expert insights, and updates within its specific subject area.
+~~~dataviewjs
+const
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	expand = true,
+	topics = dvjs.rssTopics;
+await dvjs.rssTopicTable(topics,expand);
 ~~~
 `,
 }
@@ -343,7 +392,7 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 		this._rssDefaultImagePath = value;
 	}
 
-	get rssDefaultImageLink() : string {
+	get rssDefaultImageLink(): string {
 		return `![[${this.rssDefaultImagePath}|float:right|100]]`;
 	}
 
@@ -392,7 +441,14 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 		return DEFAULT_SETTINGS.rssCollectionTemplate;
 	}
 
-    //#endregion Template Accessors
+	get rssTopicDashboardTemplate(): string {
+		return DEFAULT_SETTINGS.rssTopicDashboardTemplate;
+	}
+
+	get rssTopicTemplate(): string {
+		return DEFAULT_SETTINGS.rssTopicTemplate;
+	}
+
 	get rssItemTemplate(): string {
 		return DEFAULT_SETTINGS.rssItemTemplate;
 	}
@@ -400,6 +456,7 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 	get rssTagmapTemplate(): string {
 		return DEFAULT_SETTINGS.rssTagmapTemplate;
 	}
+	//#endregion Template Accessors
 
 	/**
 	 * Commit the changes to the settings.

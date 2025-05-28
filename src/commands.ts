@@ -1,6 +1,6 @@
 import { App, Command, Notice } from 'obsidian';
 import RSSTrackerPlugin from './main';
-import { RSScollectionAdapter, RSSfeedAdapter } from './RSSAdapter';
+import { RSScollectionAdapter, RSSfeedAdapter, RSStopicAdapter } from './RSSAdapter';
 import { InputUrlModal, RenameRSSFeedModal } from './dialogs';
 
 abstract class RSSTrackerCommandBase implements Command {
@@ -137,11 +137,10 @@ export class NewRSSTopicCommand extends RSSTrackerCommandBase {
     }
 
     async callback(): Promise<any> {
-        const topicFolder = await this.plugin.filemgr.ensureFolderExists(this.plugin.settings.rssTopicsFolderPath);
-        await this.plugin.filemgr.createUniqueFile(topicFolder, "New Topic", "RSS Topic")
+        await RSStopicAdapter.create(this.plugin)
             .then(topic => {
                 const leaf = this.app.workspace.getLeaf(false);
-                leaf.openFile(topic).catch(reason => new Notice(reason.message))
+                leaf.openFile(topic.file).catch(reason => new Notice(reason.message))
             })
             .catch(reason => new Notice(`RSS topic could not be created! ${reason.message}`));
     }
