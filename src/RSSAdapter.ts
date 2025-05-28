@@ -1,4 +1,4 @@
-import { TFile, normalizePath, TFolder, htmlToMarkdown, ListItemCache, App, Vault } from 'obsidian';
+import { TFile, normalizePath, TFolder, htmlToMarkdown, ListItemCache, App, Vault, Plugin } from 'obsidian';
 import { IRssMedium, MediumType, TPropertyBag, TrackedRSSfeed, TrackedRSSitem } from "./FeedAssembler";
 import { HTMLxlate, formatImage } from "./HTMLxlate";
 import { RSSfileManager } from "./RSSFileManager";
@@ -231,8 +231,6 @@ export class RSSitemAdapter extends RSSAdapter {
             content = description
         }
 
-        const defaultImage = await feed.plugin.settings.rssDefaultImagePath;
-
         if (description) {
             // truncate description
             const teaser = (description.length > abstractMaxLength ? (description.substring(0, abstractMaxLength) + "⋯") : description);
@@ -259,7 +257,7 @@ export class RSSitemAdapter extends RSSAdapter {
                 "{{link}}": frontmatter.link,
                 "{{publishDate}}": frontmatter.published,
                 "{{title}}": title ?? "",
-                "{{image}}": image ? formatImage(image) : `![[${defaultImage}|float:right|100]]`,
+                "{{image}}": image ? formatImage(image) : feed.plugin.settings.rssDefaultImageLink,
                 "{{description}}": description ?? "",
                 "{{content}}": content ?? "",
                 "{{feedLink}}": frontmatter.feed,
@@ -418,8 +416,7 @@ export class RSSfeedAdapter extends RSSdashboardAdapter {
     static async create(plugin: RSSTrackerPlugin, feed: TrackedRSSfeed): Promise<RSSfeedAdapter> {
         const
             { title, site, description } = feed,
-            defaultImage: string = await plugin.settings.rssDefaultImagePath,
-            image: IRssMedium | string | undefined = feed.image,
+           image: IRssMedium | string | undefined = feed.image,
             frontmatter: TFrontmatter = {
                 role: "rssfeed",
                 aliases: [],
@@ -437,7 +434,7 @@ export class RSSfeedAdapter extends RSSdashboardAdapter {
                 "{{siteUrl}}": frontmatter.site,
                 "{{title}}": mdTitle,
                 "{{description}}": description ? htmlToMarkdown(description) : "",
-                "{{image}}": image ? formatImage(image) : `![[${defaultImage}|float:right|100]]`
+                "{{image}}": image ? formatImage(image) : plugin.settings.rssDefaultImageLink,
             };
 
         // create the feed folder

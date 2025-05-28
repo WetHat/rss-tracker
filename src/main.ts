@@ -16,6 +16,7 @@ export { FeedManager } from './FeedManager';
 export { DataViewJSTools } from './DataViewJSTools';
 export { RSSfileManager } from './RSSFileManager';
 export { RSSTagManager } from './TagManager';
+export { TemplateManager } from './TemplateManager';
 
 export default class RSSTrackerPlugin extends Plugin {
 
@@ -191,12 +192,7 @@ export default class RSSTrackerPlugin extends Plugin {
             home = await this.filemgr.ensureRSShomeFolderExists(),// make sure the Home folder exists
             placement = this._settings.rssDashboardPlacement; // update placement cache in case 'Folder Notes' is present.
         await this.tagmgr.ensureTagmapExists();
-        if (!this.settings.rssDefaultImagePath || !this.app.vault.adapter.exists(this.settings.rssDefaultImagePath, true)) {
-            const
-                imagePath = await this.app.fileManager.getAvailablePathForAttachment("RSSdefaultImage.svg", this.settings.rssTagmapPath),
-                img = await this.app.vault.create(imagePath, this.settings.rssDefaultImage);
-            this.settings.rssDefaultImagePath = img.path;
-        }
+        await this.filemgr.ensureDefaultImageExists();
         console.log(`rss-tracker: home = ${home.path}; dashboard placement: ${placement}; default image: ${this.settings.rssDefaultImagePath}`);
 
         await this.settings.commit();

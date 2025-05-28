@@ -146,7 +146,10 @@ to (**including the** \`#\` prefix).
 
 | RSS Tag | Mapped Tag |
 | ------- | ---------- |`,
-
+	rssCollectionTemplate: `
+`,
+	rssCollectionDashboardTemplate: `
+`,
 }
 
 /**
@@ -198,7 +201,7 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 	private _defaultItemLimit?: number; // pending value of the default item limit
 	private _rssTagDomain?: string; // pending value of the RSS tag domain
 	private _rssDashboardPlacement?: TDashboardPlacement; // pending value of the RSS dashboard placement
-	private _rssDefaultImagPath?: string; // pending value of the RSS default image path
+	private _rssDefaultImagePath?: string; // pending value of the RSS default image path
 
 	get rssHome(): string {
 		return this._rssHome || this._data.rssHome || DEFAULT_SETTINGS.rssHome;
@@ -265,12 +268,15 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 	}
 
 	get rssDefaultImagePath(): string {
-		console.log(`${this._rssDefaultImagePath} - ${this._data.rssDefaultImagePath}`);
-		return this._rssDefaultImagePath || this._data.rssDefaultImagePath;
+		return this._rssDefaultImagePath || this._data.rssDefaultImagePath || "";
 	}
 
 	set rssDefaultImagePath(value: string) {
 		this._rssDefaultImagePath = value;
+	}
+
+	get rssDefaultImageLink() : string {
+		return `![[${this.rssDefaultImagePath}|float:right|100]]`;
 	}
 
 	/**

@@ -37,6 +37,16 @@ export class RSSfileManager extends RSSTrackerService {
 		return this.ensureFolderExists(this.settings.rssHome);
 	}
 
+	async ensureDefaultImageExists(): Promise<string> {
+		if (!this.settings.rssDefaultImagePath || !this.app.vault.adapter.exists(this.settings.rssDefaultImagePath, true)) {
+			const
+				imagePath = await this.app.fileManager.getAvailablePathForAttachment("RSSdefaultImage.svg", this.settings.rssTagmapPath),
+				img = await this.app.vault.create(imagePath, this.settings.rssDefaultImage);
+			this.settings.rssDefaultImagePath = img.path;
+		}
+		return this.settings.rssDefaultImagePath;
+	}
+
 	/**
 	 * Get the folder associated with a given dashboard.
 	 *
