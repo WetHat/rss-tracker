@@ -86,7 +86,6 @@ to (**including the** `#` prefix).adadd
 | rss/Uncategorized | #rss/Uncategorized |
 | rss/Intune | #rss/Intune |
 | rss/performance | #rss/performance |
-| rss/۔NET | #rss/۔NET |
 | rss/css | #rss/css |
 | rss/CSS | #rss/CSS |
 | rss/Javascript | #rss/Javascript |
@@ -97,6 +96,7 @@ to (**including the** `#` prefix).adadd
 | rss/OpenSource | #rss/OpenSource |
 | rss/F＃ | #rss/F＃ |
 | rss/compilers | #rss/compilers |
+| rss/۔NET | #rss/۔NET |
 | rss/Source_Link | #rss/Source_Link |
 | rss/microsoft_learn | #rss/microsoft_learn |
 | rss/۔NET_Fundamentals | #rss/۔NET_Fundamentals |

@@ -1,8 +1,8 @@
 ---
 role: rssfeed-dashboard
 ---
-> [!abstract] RSS feed Dashboard
-> ![[RSSdefaultImage.svg|float:right|100]] See all your subscribed and curated content at a glance.
+> [!abstract] RSS feed dashboard
+> ![[RSS/assets/RSSdefaultImage.svg|float:right|100]] All your subscribed feeds at a glance.
 
 # Feed Status 💔
 

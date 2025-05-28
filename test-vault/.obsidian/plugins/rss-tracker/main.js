@@ -12404,6 +12404,7 @@ __export(main_exports, {
   RSSTagManager: () => RSSTagManager,
   RSSTrackerSettings: () => RSSTrackerSettings,
   RSSfileManager: () => RSSfileManager,
+  TemplateManager: () => TemplateManager,
   default: () => RSSTrackerPlugin
 });
 module.exports = __toCommonJS(main_exports);
@@ -12425,8 +12426,8 @@ var DEFAULT_SETTINGS = {
   rssFeedDashboardTemplate: `---
 role:
 ---
-> [!abstract] RSS feed Dashboard
-> ![[RSSdefaultImage.svg|float:right|100]] See all your subscribed and curated content at a glance.
+> [!abstract] RSS feed dashboard
+> {{image}} All your subscribed feeds at a glance.
 
 # Feed Status \u{1F494}
 
@@ -12523,7 +12524,77 @@ The _Mapped Tag_ columns contains the tag from the local knowledge graph the RSS
 to (**including the** \`#\` prefix).
 
 | RSS Tag | Mapped Tag |
-| ------- | ---------- |`
+| ------- | ---------- |`,
+  rssCollectionTemplate: `---
+role:
+---
+
+> [!abstract] (headline:: A collection of feeds providing perspectives and knowledge about ...)
+> {{image}}
+> - [ ] Complete the headline.
+> - [ ] Specify tags in the \`tags\`, \`allof\`, \`noneof\` frontmatter properties to collect feeds matching the tag filter.
+
+# Feeds in this Collection \u{1F4DA}
+
+~~~dataviewjs
+const
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	expand = false,
+	feeds = dvjs.rssFeedsOfCollection(dv.current());
+await dvjs.rssFeedTable(feeds,expand);
+dv.paragraph("From: " + dvjs.fromTags(dv.current()));
+~~~
+
+# Reading List \u{1F4D1}
+
+~~~dataviewjs
+const
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	expand = false,
+	items = dvjs.rssItemsOfCollection(dv.current());
+await dvjs.rssReadingListByFeed(items,false,expand);
+~~~
+
+# Pinned Items \u{1F4CD}
+
+~~~dataviewjs
+const
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	expand = false,
+	items = dvjs.rssItemsOfCollection(dv.current()).where( i => i.pinned === true);
+await dvjs.rssItemTableByFeed(items,expand);
+~~~
+`,
+  rssCollectionDashboardTemplate: `---
+role:
+---
+
+> [!abstract] A Gateway to Knowledge.
+> {{image}} Each collection is designed to provide a curated blend of authoritative sources, expert insights, and updates within its specific subject area.
+
+# Feed Collections \u{1F4DA}
+
+~~~dataviewjs
+const
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	expand = true,
+	collections = dvjs.rssCollections;
+await dvjs.rssCollectionTable(collections,expand);
+~~~
+
+# Unclaimed Feeds \u{1F4E6}
+
+\u26A0\uFE0F Only tagged feeds can be claimed by feed collections.
+
+~~~dataviewjs
+const
+	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
+	expand = false,
+	unclaimed = dvjs.rssUnclaimedFeeds();
+
+await dvjs.rssFeedTable(unclaimed,expand)
+~~~
+`
 };
 var RSSTrackerSettings = class {
   constructor(app, plugin) {
@@ -12593,11 +12664,13 @@ var RSSTrackerSettings = class {
     this._rssTagDomain = value;
   }
   get rssDefaultImagePath() {
-    console.log(`${this._rssDefaultImagePath} - ${this._data.rssDefaultImagePath}`);
-    return this._rssDefaultImagePath || this._data.rssDefaultImagePath;
+    return this._rssDefaultImagePath || this._data.rssDefaultImagePath || "";
   }
   set rssDefaultImagePath(value) {
     this._rssDefaultImagePath = value;
+  }
+  get rssDefaultImageLink() {
+    return `![[${this.rssDefaultImagePath}|float:right|100]]`;
   }
   /**
    * Get the RSS default image definition (svg).
@@ -12624,14 +12697,22 @@ var RSSTrackerSettings = class {
       return this._rssDashboardPlacement || this._data.rssDashboardPlacement || DEFAULT_SETTINGS.rssDashboardPlacement;
     }
   }
+  //#region Template Accessors
+  get rssFeedDashboardTemplate() {
+    return DEFAULT_SETTINGS.rssFeedDashboardTemplate;
+  }
   get rssFeedTemplate() {
     return DEFAULT_SETTINGS.rssFeedTemplate;
   }
+  get rssCollectionDashboardTemplate() {
+    return DEFAULT_SETTINGS.rssCollectionDashboardTemplate;
+  }
+  get rssCollectionTemplate() {
+    return DEFAULT_SETTINGS.rssCollectionTemplate;
+  }
+  //#endregion Template Accessors
   get rssItemTemplate() {
     return DEFAULT_SETTINGS.rssItemTemplate;
-  }
-  get rssFeedDashboardTemplate() {
-    return DEFAULT_SETTINGS.rssFeedDashboardTemplate;
   }
   get rssTagmapTemplate() {
     return DEFAULT_SETTINGS.rssTagmapTemplate;
@@ -15527,7 +15608,6 @@ var _RSSitemAdapter = class _RSSitemAdapter extends RSSAdapter {
     if (!content && description && description.length > abstractMaxLength) {
       content = description;
     }
-    const defaultImage = await feed.plugin.settings.rssDefaultImagePath;
     if (description) {
       const teaser = description.length > abstractMaxLength ? description.substring(0, abstractMaxLength) + "\u22EF" : description;
       description = teaser.replaceAll("\n", "\n> ");
@@ -15547,7 +15627,7 @@ var _RSSitemAdapter = class _RSSitemAdapter extends RSSAdapter {
       "{{link}}": frontmatter.link,
       "{{publishDate}}": frontmatter.published,
       "{{title}}": title != null ? title : "",
-      "{{image}}": image ? formatImage(image) : `![[${defaultImage}|float:right|100]]`,
+      "{{image}}": image ? formatImage(image) : feed.plugin.settings.rssDefaultImageLink,
       "{{description}}": description != null ? description : "",
       "{{content}}": content != null ? content : "",
       "{{feedLink}}": frontmatter.feed
@@ -15571,7 +15651,9 @@ _RSSitemAdapter.EMBEDDING_MATCHER = /!\[[^\]]*\]\(([^\)]+)\)\s*/;
 var RSSitemAdapter = _RSSitemAdapter;
 var RSScollectionAdapter = class _RSScollectionAdapter extends RSSAdapter {
   static async create(plugin) {
-    const folder = await plugin.filemgr.ensureFolderExists(plugin.settings.rssCollectionsFolderPath), file = await plugin.filemgr.createUniqueFile(folder, "New Feed Collection", "RSS Collection"), frontmatter = {
+    const folder = await plugin.filemgr.ensureFolderExists(plugin.settings.rssCollectionsFolderPath), data = {
+      "{{image}}": plugin.settings.rssDefaultImageLink
+    }, file = await plugin.filemgr.createUniqueFile(folder, "New Feed Collection", "RSS Collection", data), frontmatter = {
       role: "rsscollection",
       tags: ["nil"],
       allof: [],
@@ -15650,7 +15732,7 @@ var RSSdashboardAdapter = class _RSSdashboardAdapter extends RSSAdapter {
 };
 var _RSSfeedAdapter = class _RSSfeedAdapter extends RSSdashboardAdapter {
   static async create(plugin, feed) {
-    const { title, site, description } = feed, defaultImage = await plugin.settings.rssDefaultImagePath, image = feed.image, frontmatter = {
+    const { title, site, description } = feed, image = feed.image, frontmatter = {
       role: "rssfeed",
       aliases: [],
       site: site != null ? site : "Unknown",
@@ -15665,7 +15747,7 @@ var _RSSfeedAdapter = class _RSSfeedAdapter extends RSSdashboardAdapter {
       "{{siteUrl}}": frontmatter.site,
       "{{title}}": mdTitle,
       "{{description}}": description ? (0, import_obsidian2.htmlToMarkdown)(description) : "",
-      "{{image}}": image ? formatImage(image) : `![[${defaultImage}|float:right|100]]`
+      "{{image}}": image ? formatImage(image) : plugin.settings.rssDefaultImageLink
     };
     const filemgr = plugin.filemgr, settings = plugin.settings, feedsFolder = await RSSFeedsDashboardAdapter.ensureDashboardFolderExists(plugin), feedItemsFolder = await plugin.filemgr.createUniqueFolder(feedsFolder, feed.fileName), dashboardPlacementFolder = settings.rssDashboardPlacement === "insideFolder" ? feedItemsFolder : feedsFolder, dashboard = await filemgr.upsertFile(dashboardPlacementFolder, feed.fileName, "RSS Feed", dataMap, true);
     if (title && dashboard.basename !== title) {
@@ -15850,8 +15932,41 @@ var RSSFeedsDashboardAdapter = class _RSSFeedsDashboardAdapter extends RSSdashbo
   static async create(plugin) {
     const filemgr = plugin.filemgr, settings = plugin.settings, folder = await filemgr.ensureFolderExists(settings.rssFeedFolderPath), placement = settings.rssDashboardPlacement, frontmatter = {
       role: "rssfeed-dashboard"
-    }, dashboardName = RSSdashboardAdapter.getDashboardName(folder), dashboardplacement = RSSdashboardAdapter.getDashboardPlacementFolder(folder, placement), dashboard = await filemgr.upsertFile(dashboardplacement, dashboardName, "RSS Feed Dashboard", {}, false);
+    }, dashboardName = RSSdashboardAdapter.getDashboardName(folder), dashboardplacement = RSSdashboardAdapter.getDashboardPlacementFolder(folder, placement), data = {
+      "{{image}}": plugin.settings.rssDefaultImageLink
+    }, dashboard = await filemgr.upsertFile(dashboardplacement, dashboardName, "RSS Feed Dashboard", data, false);
     const adapter = new _RSSFeedsDashboardAdapter(plugin, folder, dashboard, frontmatter);
+    await adapter.commitFrontmatterChanges();
+    await settings.commit();
+    return adapter;
+  }
+  constructor(plugin, folder, dashboard, frontmatter) {
+    super(plugin, folder, dashboard, frontmatter);
+  }
+};
+var RSSCollectionDashboardAdapter = class _RSSCollectionDashboardAdapter extends RSSdashboardAdapter {
+  static async ensureDashboardFolderExists(plugin) {
+    const folder = plugin.vault.getFolderByPath(plugin.settings.rssFeedsFolderPath);
+    if (folder) {
+      return folder;
+    }
+    const adapter = await _RSSCollectionDashboardAdapter.create(plugin);
+    return adapter.folder;
+  }
+  /**
+   * Create a new RSS collections dashboard adapter.
+   * @param plugin the plugin instance
+   * @param folder the folder containing the dashboard
+   * @param dashboard the dashboard file
+   * @returns a new adapter instance.
+   */
+  static async create(plugin) {
+    const filemgr = plugin.filemgr, settings = plugin.settings, folder = await filemgr.ensureFolderExists(settings.rssCollectionsFolderPath), placement = settings.rssDashboardPlacement, frontmatter = {
+      role: "rsscollection-dashboard"
+    }, dashboardName = RSSdashboardAdapter.getDashboardName(folder), dashboardplacement = RSSdashboardAdapter.getDashboardPlacementFolder(folder, placement), data = {
+      "{{image}}": plugin.settings.rssDefaultImageLink
+    }, dashboard = await filemgr.upsertFile(dashboardplacement, dashboardName, "RSS Collection Dashboard", data, false);
+    const adapter = new _RSSCollectionDashboardAdapter(plugin, folder, dashboard, frontmatter);
     await adapter.commitFrontmatterChanges();
     await settings.commit();
     return adapter;
@@ -17006,7 +17121,10 @@ var RSSFeedFolderSetting = class extends RSSTrackerSettingBase {
         this.settings.rssFeedFolderName = DEFAULT_SETTINGS.rssFeedFolderName;
       });
     }).addButton((btn) => {
-      btn.setIcon("layout-dashboard").setTooltip("Reset the RSS feed dashboard to default").onClick(async (evt) => await RSSFeedsDashboardAdapter.create(this.plugin));
+      btn.setIcon("archive-restore").setTooltip("Reset the RSS feed dashboard to default").onClick(async (evt) => {
+        await RSSFeedsDashboardAdapter.create(this.plugin);
+        new import_obsidian8.Notice("Feed dashboard reset complete \u2014 you're back to the default setting.");
+      });
     });
   }
 };
@@ -17023,6 +17141,11 @@ var RSSCollectionsFolderSetting = class extends RSSTrackerSettingBase {
     }).addButton((btn) => {
       btn.setIcon("reset").setTooltip("Reset the RSS feed collections location to default").onClick((evt) => {
         this.settings.rssCollectionsFolderName = DEFAULT_SETTINGS.rssCollectionsFolderName;
+      });
+    }).addButton((btn) => {
+      btn.setIcon("archive-restore").setTooltip("Reset the RSS collection dashboard to default").onClick(async (evt) => {
+        await RSSCollectionDashboardAdapter.create(this.plugin);
+        new import_obsidian8.Notice("Collection dashboard reset complete \u2014 you're back to the default setting.");
       });
     });
   }
@@ -17101,6 +17224,13 @@ var RSSfileManager = class extends RSSTrackerService {
   }
   async ensureRSShomeFolderExists() {
     return this.ensureFolderExists(this.settings.rssHome);
+  }
+  async ensureDefaultImageExists() {
+    if (!this.settings.rssDefaultImagePath || !this.app.vault.adapter.exists(this.settings.rssDefaultImagePath, true)) {
+      const imagePath = await this.app.fileManager.getAvailablePathForAttachment("RSSdefaultImage.svg", this.settings.rssTagmapPath), img = await this.app.vault.create(imagePath, this.settings.rssDefaultImage);
+      this.settings.rssDefaultImagePath = img.path;
+    }
+    return this.settings.rssDefaultImagePath;
   }
   /**
    * Get the folder associated with a given dashboard.
@@ -17512,6 +17642,7 @@ var _TemplateManager = class _TemplateManager extends RSSTrackerService {
       "RSS Collection": "rssCollectionTemplate",
       "RSS Collection Dashboard": "rssCollectionDashboardTemplate",
       "RSS Topic": "rssTopicTemplate",
+      "RSS Topic Dashboard": "rssTopicDashboardTemplate",
       "RSS Feed Dashboard": "rssFeedDashboardTemplate",
       "RSS Tagmap": "rssTagmapTemplate"
     };
@@ -17663,10 +17794,7 @@ var RSSTrackerPlugin = class extends import_obsidian10.Plugin {
     console.log("rss-tracker: Ensuring minimal folder structure");
     const home = await this.filemgr.ensureRSShomeFolderExists(), placement = this._settings.rssDashboardPlacement;
     await this.tagmgr.ensureTagmapExists();
-    if (!this.settings.rssDefaultImagePath || !this.app.vault.adapter.exists(this.settings.rssDefaultImagePath, true)) {
-      const imagePath = await this.app.fileManager.getAvailablePathForAttachment("RSSdefaultImage.svg", this.settings.rssTagmapPath), img = await this.app.vault.create(imagePath, this.settings.rssDefaultImage);
-      this.settings.rssDefaultImagePath = img.path;
-    }
+    await this.filemgr.ensureDefaultImageExists();
     console.log(`rss-tracker: home = ${home.path}; dashboard placement: ${placement}; default image: ${this.settings.rssDefaultImagePath}`);
     await this.settings.commit();
   }
