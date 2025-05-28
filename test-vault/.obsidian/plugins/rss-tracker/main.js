@@ -16447,17 +16447,16 @@ var ToggleRSSfeedActiveStatusMenuItem = class extends RSSTrackerMenuItem {
 
 // src/DataViewJSTools.ts
 var import_obsidian7 = require("obsidian");
-var _DataViewJSTools = class _DataViewJSTools {
+var _DataViewJSTools = class _DataViewJSTools extends RSSTrackerService {
   static toHashtag(tag) {
     return tag.startsWith("#") ? tag : "#" + tag;
   }
   static getHashtagsAsString(page) {
     return page.file.etags.map((t) => _DataViewJSTools.toHashtag(t)).join(" ");
   }
-  constructor(plugin, dv, settings) {
-    this.plugin = plugin;
+  constructor(app, plugin, dv) {
+    super(app, plugin);
     this.dv = dv;
-    this.settings = settings;
   }
   // #region Dataview queries
   /**
@@ -17576,7 +17575,7 @@ var RSSTrackerPlugin = class extends import_obsidian10.Plugin {
     this._tplmgr = new TemplateManager(app, this);
   }
   getDVJSTools(dv) {
-    return new DataViewJSTools(this, dv, this._settings);
+    return new DataViewJSTools(this.app, this, dv);
   }
   /**
    * Refresh the dataview blocks on the currently active Obsidian note.

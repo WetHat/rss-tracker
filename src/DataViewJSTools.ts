@@ -1,9 +1,8 @@
-import { fileURLToPath } from 'url';
 import { TPropertyBag } from './FeedAssembler';
 import RSSTrackerPlugin from './main';
 import { RSScollectionAdapter, RSSfeedAdapter } from './RSSAdapter';
-import { RSSTrackerSettings } from './settings';
-import { TFile, TFolder } from 'obsidian';
+import { App, TFile, TFolder } from 'obsidian';
+import { RSSTrackerService } from './PluginServices';
 
 /**
  * A extension of HTMLDetailsElement to provide additional properties for a collapsible tables.
@@ -113,7 +112,7 @@ type TTaskRecords = TRecords;
  * The arrows indicate the direction of interaction, showing that a `dataviewjs` interacts with the `dataview`
  * API through the {@link DataViewJSTools}.
  */
-export class DataViewJSTools {
+export class DataViewJSTools extends RSSTrackerService {
 
     private static toHashtag(tag: string): string {
         return tag.startsWith("#") ? tag : "#" + tag;
@@ -123,20 +122,14 @@ export class DataViewJSTools {
         return page.file.etags.map((t: string) => DataViewJSTools.toHashtag(t)).join(" ");
     }
 
-    plugin: RSSTrackerPlugin;
     /**
      * The dataview API object.
      */
     dv: TPropertyBag;
-    /**
-     * The settings object describing the RSS related folder structure and settings.
-     */
-    private settings: RSSTrackerSettings;
 
-    constructor(plugin: RSSTrackerPlugin, dv: TPropertyBag, settings: RSSTrackerSettings) {
-        this.plugin = plugin;
+    constructor(app: App, plugin: RSSTrackerPlugin, dv: TPropertyBag) {
+        super(app,plugin);
         this.dv = dv;
-        this.settings = settings;
     }
 
     // #region Dataview queries
