@@ -7,7 +7,7 @@ import { RSSTrackerService } from "./PluginServices";
  * The basenames of templates used for RSS content creation.
  * ⚠️Not all templates are avaiable as customizable template files.
  */
-export type TTemplateName = "RSS Feed" | "RSS Item" | "RSS Topic" | "RSS Collection" | "RSS Collection Dashboard" | "RSS Feed Dashboard" | "RSS Tagmap";
+export type TTemplateName = "RSS Feed" | "RSS Item" | "RSS Topic" | "RSS Topic Dashboard" | "RSS Collection" | "RSS Collection Dashboard" | "RSS Feed Dashboard" | "RSS Tagmap";
 
 /**
  * RSS Tracker Servcce to manage the expansion of RSS file templates.
@@ -31,6 +31,7 @@ export class TemplateManager extends RSSTrackerService {
         "RSS Collection": "rssCollectionTemplate",
         "RSS Collection Dashboard": "rssCollectionDashboardTemplate",
         "RSS Topic": "rssTopicTemplate",
+        "RSS Topic Dashboard": "rssTopicDashboardTemplate",
         "RSS Feed Dashboard": "rssFeedDashboardTemplate",
         "RSS Tagmap": "rssTagmapTemplate",
     };
