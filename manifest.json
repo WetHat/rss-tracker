@@ -1,7 +1,7 @@
 {
 	"id": "rss-tracker",
 	"name": "RSS Tracker",
-	"version": "1.2.15",
+	"version": "0.2.15",
 	"minAppVersion": "1.7.0",
 	"description": "Track RSS Feeds in Obsidian",
 	"author": "WetHat",
