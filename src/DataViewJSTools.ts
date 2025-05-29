@@ -5,12 +5,12 @@ import { App, TFile, TFolder } from 'obsidian';
 import { RSSTrackerService } from './PluginServices';
 
 /**
- * A extension of HTMLDetailsElement to provide additional properties for a collapsible tables.
+ * An extension of HTMLDetailsElement to provide additional properties for collapsible tables.
  */
 type TCollapsibleTableContainer = HTMLDetailsElement & { tableHeader: string[], tableData: any[][], tableRendered: boolean };
 
 /**
- * A extension of HTMLDetailsElement to provide additional properties for a collapsible task lists.
+ * An extension of HTMLDetailsElement to provide additional properties for collapsible task lists.
  */
 type TCollapsibleTaskList = HTMLDetailsElement & { readingList: TTaskRecords, readingListRendered: boolean };
 
@@ -213,7 +213,7 @@ export class DataViewJSTools extends RSSTrackerService {
      * Get all pages of a folder of a specific type.
      *
      * @param path - Obsidian path to a folder
-     * @param type - Type of the pages to get.
+     * @param type - Type of the pages to fetch.
      * @returns The dataview array of files in a given folder with a given type.
      */
     private getPagesOfFolder(path: string, type: TRSSPageType): TPageRecords {

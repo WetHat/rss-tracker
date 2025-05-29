@@ -11,12 +11,12 @@ import { RSSTrackerService } from './PluginServices';
  *
  * Currently available functionality:
  *
- * - Building a Markdown representation of RSS feeds including feed dashboards.
+ * - Generation of a Markdown representation of RSS feeds and their items.
  *   {@link createFeedFromFile} and  {@link createFeedFromUrl}
  *
  * - Updating feeds (individual or all). {@link FeedManager.updateFeed} and {@link FeedManager.updateFeeds}
- *
  * - Setting all items on a feed as _read_. See {@link FeedManager.completeReadingTasks}
+ * - Retention of pinned items
  */
 export class FeedManager extends RSSTrackerService {
     private _html: HTMLxlate;
@@ -30,21 +30,30 @@ export class FeedManager extends RSSTrackerService {
      * Create an RSS feed Markdown representaiton from a local XML file.
      *
      * The Markdown representation consists of
-     * - a feed dashboard
-     * - a directory whic has the same name as the dashboard (without the .md extension)
-     *   containing the RSS items of the feed,
+     * - a feed dashboard file (following the _Folder Notes_ naming convention).
+     * - a directory for the the RSS items of the feed.
      *
-     * The file system layout of an Obsidian RSS feed looks like this:
+     * The file system layout of an Obsidian RSS feed looks like this for dashboard placement `parentFolder`:
      * ~~~
-     * 📂
-     *  ├─ <feedname>.md ← dashboard
+     * 📂Feeds
+     *  ├─ <feed dashboard>.md (_Folder Notes_ naming convention)
      *  ╰─ 📂<feedname>
      *        ├─ <item-1>.md
      *        ├─ …
      *        ╰─ <item-n>.md
      * ~~~
      *
-     * ⚠ the base url to make relative urls absolute is synthesized as `https://localhost`.
+     * The file system layout of an Obsidian RSS feed looks like this for dashboard placement `insideFolder`:
+     * ~~~
+     * 📂Feeds
+     *  ╰─ 📂<feedname>
+     *        ├─ <feed dashboard>.md (_Folder Notes_ naming convention)
+     *        ├─ <item-1>.md
+     *        ├─ …
+     *        ╰─ <item-n>.md
+     * ~~~
+     *
+     * ⚠️ the base url to make relative urls absolute is synthesized as `https://localhost`.
      * @param xml - XML file containing an RSS feed.
      * @returns the feed adapter
      */
@@ -135,6 +144,9 @@ export class FeedManager extends RSSTrackerService {
         return itemCount;
     }
 
+    /**
+     * Get all subscribed feeds.
+     */
     get feeds(): RSSfeedAdapter[] {
         const
             placement = this.plugin.settings.rssDashboardPlacement,

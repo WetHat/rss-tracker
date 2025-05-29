@@ -1,4 +1,4 @@
-import { TFile, normalizePath, TFolder, htmlToMarkdown, ListItemCache, App, Vault, Plugin } from 'obsidian';
+import { TFile, TFolder, htmlToMarkdown, ListItemCache } from 'obsidian';
 import { IRssMedium, MediumType, TPropertyBag, TrackedRSSfeed, TrackedRSSitem } from "./FeedAssembler";
 import { HTMLxlate, formatImage } from "./HTMLxlate";
 import { RSSfileManager } from "./RSSFileManager";
