@@ -1,13 +1,15 @@
 import fs from 'fs-extra'
 import { join } from 'path';
 
+// Build distribution folder and
+
 // remove templates
 const templates = "./dist/Templates";
 if (fs.existsSync(templates)) {
     fs.rmSync(templates,{recursive: true});
 }
 
-// copy assets
+// copy remaining plugin files.
 console.log("Copying assets...");
 [
     "manifest.json",
@@ -15,20 +17,18 @@ console.log("Copying assets...");
 ].forEach(f => {
     const target = join("./dist", f);
     console.log(`${f} => ${target}`);
-    fs.copySync(f, target);
+    fs.copySync(f, target); // overwrites existing files
 });
 
 
 // configure test code
 console.log("Configuring regression tests...");
-try {
-    fs.exists("./test/scripts/FeedAssembler.js");
-} catch (err) {
-    process.exit(0);
-}
+const
+    fromPath = "./test/scripts/FeedAssembler.js",
+    toPath = "./test/scripts/FeedAssembler.mjs";
 
 try {
-    fs.renameSync("./test/scripts/FeedAssembler.js", "./test/scripts/FeedAssembler.mjs");
+    fs.renameSync(fromPath,toPath); // overwites file existing at toPath
     console.log("src/FeedAssembler.ts => test/scripts/FeedAssembler.mjs");
 } catch (err) {
     console.error(err);
