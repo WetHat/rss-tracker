@@ -35,7 +35,7 @@
 		"typescript": "4.7.4"
 	},
 	"dependencies": {
-		"@extractus/article-extractor": "^8.0.10",
+		"@extractus/article-extractor": "^8.0.19",
 		"@extractus/feed-extractor": "^7.1.3",
 		"entities": "^4.5.0"
 	}
