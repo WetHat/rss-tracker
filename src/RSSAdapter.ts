@@ -373,7 +373,7 @@ export abstract class RSSdashboardAdapter extends RSSAdapter {
     }
 
     static getDashboardFolderName(dashboard: TFile, template?: string): string {
-        return dashboard.name; // TODO: run the folder note temlate backwards to get the folder name
+        return dashboard.basename; // TODO: run the folder note temlate backwards to get the folder name
     }
 
     static getDashboardPlacementFolder(folder: TFolder, placement: TDashboardPlacement): TFolder {

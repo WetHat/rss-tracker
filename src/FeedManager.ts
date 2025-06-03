@@ -198,7 +198,7 @@ export class FeedManager extends RSSTrackerService {
     }
 
     async completeReadingTasks(adapter: RSScollectionAdapter | RSSfeedAdapter): Promise<void> {
-        let completed = await adapter.completeReadingTasks;
+        let completed = await adapter.completeReadingTasks();
         new Notice(`${completed} items taken off the '${adapter.file.basename}' reading list`, 30000);
     }
 
