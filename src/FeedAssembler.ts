@@ -6,7 +6,17 @@ import { decode, DecodingMode, EntityLevel } from "entities";
  * @returns valid filename without file extension.
  */
 function toFilename(name: string): string {
-    let fname = name
+    let fname = name;
+    if (fname.length > 80) {
+        // find a cutting location
+        const cutAt = fname.indexOf(" ",80);
+        fname = fname
+            .substring(0, cutAt > 0 ? cutAt : name.length)
+            .trim() + "⋯";
+    } else {
+        fname = fname.trim();
+    }
+    return fname
         .replace(/\s*[htps]+:\/\/.*/, "⋯") // strip urls
         .replaceAll("?", "❓")
         .replaceAll(".", "․")
@@ -23,16 +33,6 @@ function toFilename(name: string): string {
         .replaceAll("^", "△")
         .replaceAll("&", "＆")
         .replaceAll("*", "✱");
-
-    if (fname.length > 80) {
-        fname = fname
-            .substring(0, 80)
-            .trim() + "⋯";
-    } else {
-        fname = fname.trim();
-    }
-
-    return fname;
 }
 
 /**
