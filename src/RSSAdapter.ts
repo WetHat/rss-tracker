@@ -680,7 +680,7 @@ export class RSSfeedAdapter extends RSSdashboardAdapter {
 export class RSSfeedsDashboardAdapter extends RSSdashboardAdapter {
 
     static async ensureDashboardFolderExists(plugin: RSSTrackerPlugin): Promise<TFolder> {
-        const folder = plugin.vault.getFolderByPath(plugin.settings.rssFeedsFolderPath);
+        const folder = plugin.vault.getFolderByPath(plugin.settings.rssFeedFolderPath);
         if (folder) {
             return folder;
         }

@@ -1,17 +1,20 @@
-import { TPropertyBag } from './FeedAssembler';
+
 import RSSTrackerPlugin from './main';
 import { App } from 'obsidian';
 import { RSSfileManager } from './RSSFileManager';
 
 /**
+ * The placement of RSS dashboard files relative to their data folders.
+ * The values are stoidentical to the corresponding settings in the Folder Notes plugin.
+ */
+export type TDashboardPlacement = "insideFolder" | "parentFolder";
+
+/**
  * The settings for the RSS Tracker plugin.
  *
- * This interface defines:
- * - Settings that can be configured by the user.
- * - Settings cached from other plugins.
+ * This interface defines settings that can be configured by the user.
  */
-export interface IRSSTrackerSettings {
-	[key: string]: any;
+export interface IConfigurableRSSTrackerSettings {
 	autoUpdateFeeds: boolean;
 	rssHome: string;
 	rssFeedFolderName: string;
@@ -22,32 +25,86 @@ export interface IRSSTrackerSettings {
 	rssDefaultImagePath?: string; // The path to the default image, if set
 	defaultItemLimit: number;
 	rssTagDomain: string;
-	rssDashboardPlacement: TDashboardPlacement; // Uses `Folder Notes` plugin
-	rssFeedDashboardTemplate: string; // The template for RSS feeds folder dashboard
-	rssFeedTemplate: string,
-	rssItemTemplate: string,
-	rssTagmapTemplate: string,
-	rssCollectionDashboardTemplate: string,
-	rssCollectionTemplate: string,
-	rssTopicDashboardTemplate: string,
-	rssTopicTemplate: string,
 }
 
 /**
- * Default settings for the RSS Tracker plugin.
+ * The readonly default templates for the RSS Tracker plugin.
  */
-export const DEFAULT_SETTINGS: IRSSTrackerSettings = {
-	autoUpdateFeeds: false,
-	rssHome: "RSS",
-	rssFeedFolderName: "Feeds",
-	rssCollectionsFolderName: "Collections",
-	rssTopicsFolderName: "Topics",
-	rssTemplateFolderName: "Templates",
-	rssTagmapName: "RSS Tagmap",
-	defaultItemLimit: 100,
-	rssTagDomain: "rss",
-	rssDashboardPlacement: "parentFolder",
-	rssDefaultImagePath: undefined,
+interface IRSSTrackerDefaultTemplates {
+	readonly rssFeedDashboardTemplate: string;
+	readonly rssCollectionDashboardTemplate: string;
+	readonly rssCollectionTemplate: string;
+	readonly rssFeedTemplate: string;
+	readonly rssTopicDashboardTemplate: string;
+	readonly rssTopicTemplate: string;
+	readonly rssItemTemplate: string;
+	readonly rssTagmapTemplate: string;
+}
+
+/**
+ * The keys of the default templates in {@link FACTORY_SETTINGS}.
+ */
+export type TDefaultTemplateKey = keyof IRSSTrackerDefaultTemplates;
+
+/**
+ * An indexer type for the default templates in {@link FACTORY_SETTINGS}.
+ */
+type TDefaultTemplateIndexer = {
+	[K in TDefaultTemplateKey]: string;
+};
+
+/**
+ * The computed settings for the RSS Tracker plugin.
+ */
+export interface IRSSTrackerComputedSettings {
+	get rssDefaultImageLink(): string;
+	get rssDefaultImage(): string;
+	get rssFeedFolderPath(): string;
+	get rssCollectionsFolderPath(): string;
+	get rssTopicsFolderPath(): string;
+	get rssTemplateFolderPath(): string;
+	get rssTagmapPath(): string;
+}
+
+/**
+ * Settings cached from other plugins.
+ */
+export interface IExternalSettings {
+	/**
+	 * The placement of the RSS dashboard files relative to their data folders (Folder Notes plugin).
+	 */
+	rssDashboardPlacement: TDashboardPlacement;
+	/**
+	 * A template to generate the dashboard name from a folder name (Folder Notes plugin).
+	 */
+	rssDashboardName: string;
+}
+
+/**
+ * The settings for the RSS Tracker plugin.
+ *
+ * This interface combines the configurable and external (readonly) settings.
+ */
+interface IRSSTrackerPersistedSettings extends IConfigurableRSSTrackerSettings, IExternalSettings { }
+
+/**
+ * The cache type for persisted settings of the RSSTracker plugin.
+ * All properties are optional (because they may or may not be cached).
+ */
+type TCachedSettings = Partial<IRSSTrackerPersistedSettings>;
+
+/**
+ * The default settings for the RSS Tracker plugin where all properties are readonly.
+ */
+type TDefaultSettings = {
+	readonly [K in keyof IRSSTrackerPersistedSettings]: IRSSTrackerPersistedSettings[K]
+}
+
+/**
+ * The hard-coded settings for the RSS Tracker plugin.
+ * Currently these only the RSS templates used by the plugin.
+ */
+export const FACTORY_SETTINGS: TDefaultTemplateIndexer = {
 	rssFeedDashboardTemplate: `---
 role:
 ---
@@ -144,7 +201,7 @@ This note defines a mapping betweeen tags in the RSS domain to tags in the domai
 
 # Tag Map
 
-The _RSS Tag_ column contains tag names in the RSS tag domain configured in the _RSS Tracker_ plugin settings (**without** the \`#\` prefix).
+The RSS Tag_ column contains tag names in the RSS tag domain configured in the _cache.rss Tracker_ plugin settings (**without** the \`#\` prefix).
 The _Mapped Tag_ columns contains the tag from the local knowledge graph the RSS tag is mapped
 to (**including the** \`#\` prefix).
 
@@ -270,10 +327,22 @@ await dvjs.rssTopicTable(topics,expand);
 }
 
 /**
- * The placement of RSS dashboard files relative to their data folders.
- * The values are taken from the Folder Notes plugin.
+ * Default settings for the RSS Tracker plugin.
  */
-export type TDashboardPlacement = "insideFolder" | "parentFolder";
+export const DEFAULT_SETTINGS: TDefaultSettings = {
+	autoUpdateFeeds: false,
+	rssHome: "RSS",
+	rssFeedFolderName: "Feeds",
+	rssCollectionsFolderName: "Collections",
+	rssTopicsFolderName: "Topics",
+	rssTemplateFolderName: "Templates",
+	rssTagmapName: "RSS Tagmap",
+	defaultItemLimit: 100,
+	rssTagDomain: "rss",
+	rssDashboardPlacement: "parentFolder",
+	rssDashboardName: "{{folder_name}}",
+	rssDefaultImagePath: undefined,
+}
 
 /**
  * The settings for the RSS Tracker plugin.
@@ -285,113 +354,181 @@ export type TDashboardPlacement = "insideFolder" | "parentFolder";
  * - Installing the plugin's directory structure and templates.
  *
  * ⚠️ When using cached settings from other plugins it is the responsibility of the caller to
- * update the cache by calling {@link commit}.
+ * update the cache by calling {@link commit} to keep them accessible if these plugins are uavailable.
  */
-export class RSSTrackerSettings implements IRSSTrackerSettings {
-	[key: string]: any; // Index signature
-	plugin: RSSTrackerPlugin;
-	app: App;
+export class RSSTrackerSettings implements IRSSTrackerPersistedSettings, IRSSTrackerComputedSettings {
+
+	/**
+	 * The plugin instance for the RSS Tracker.
+	 */
+	public plugin: RSSTrackerPlugin;
+
+	/**
+	 * The Obsidian app instance.
+	 */
+	public app: App;
 
 	private get _filemgr(): RSSfileManager {
 		return this.plugin.filemgr;
 	};
 
-	/**
-	 * The persisted settings.
-	 */
-	private _data: IRSSTrackerSettings = { ...DEFAULT_SETTINGS };
+	private _data: IRSSTrackerPersistedSettings = { ...DEFAULT_SETTINGS }; // The settings data loaded from the plugin's settings file.
+	private _cache: TCachedSettings = {}; // The cached settings for pending changes and external settings.
 
+
+	/**
+	 * Whether feeds are updated automatically.
+	 */
 	get autoUpdateFeeds(): boolean {
 		return this._data.autoUpdateFeeds;
 	}
 
+	/**
+	 * Set whether feeds are updated automatically.
+	 */
 	set autoUpdateFeeds(value: boolean) {
 		this._data.autoUpdateFeeds = value;
 	}
 
-	private _rssHome?: string; // pending value of the RSS home folder name
-	private _rssFeedFolderName?: string; // pending value of the RSS feed folder name
-	private _rssCollectionsFolderName?: string; // cached value of the RSS collections folder name
-	private _rssTopicsFolderName?: string; // pending value of the RSS topics folder name
-	private _rssTemplateFolderName?: string; // pending value of the RSS templates folder name
-	private _rssTagmapName?: string; // pending value of the RSS tagmap name
-	private _defaultItemLimit?: number; // pending value of the default item limit
-	private _rssTagDomain?: string; // pending value of the RSS tag domain
-	private _rssDashboardPlacement?: TDashboardPlacement; // pending value of the RSS dashboard placement
-	private _rssDefaultImagePath?: string; // pending value of the RSS default image path
 
+	/**
+	 * The root folder for RSS data.
+	 */
 	get rssHome(): string {
-		return this._rssHome || this._data.rssHome || DEFAULT_SETTINGS.rssHome;
+		return this._cache.rssHome || this._data.rssHome || DEFAULT_SETTINGS.rssHome;
 	}
 
+	/**
+	 * Set the root folder for RSS data.
+	 */
 	set rssHome(value: string) {
-		this._rssHome = value;
+		this._cache.rssHome = value;
 	}
 
+
+	/**
+	 * The folder name for RSS feeds.
+	 */
 	get rssFeedFolderName(): string {
-		return this._rssFeedFolderName || this._data.rssFeedFolderName || DEFAULT_SETTINGS.rssFeedFolderName;
+		return this._cache.rssFeedFolderName || this._data.rssFeedFolderName || DEFAULT_SETTINGS.rssFeedFolderName;
 	}
 
+	/**
+	 * Set the folder name for RSS feeds.
+	 */
 	set rssFeedFolderName(value: string) {
-		this._rssFeedFolderName = value;
+		this._cache.rssFeedFolderName = value;
 	}
 
+
+	/**
+	 * The folder name for RSS collections.
+	 */
 	get rssCollectionsFolderName(): string {
-		return this._rssCollectionsFolderName || this._data.rssCollectionsFolderName || DEFAULT_SETTINGS.rssCollectionsFolderName;
+		return this._cache.rssCollectionsFolderName || this._data.rssCollectionsFolderName || DEFAULT_SETTINGS.rssCollectionsFolderName;
 	}
 
+	/**
+	 * Set the folder name for RSS collections.
+	 */
 	set rssCollectionsFolderName(value: string) {
-		this._rssCollectionsFolderName = value;
+		this._cache.rssCollectionsFolderName = value;
 	}
 
+
+	/**
+	 * The folder name for RSS topics.
+	 */
 	get rssTopicsFolderName(): string {
-		return this._rssTopicsFolderName || this._data.rssTopicsFolderName || DEFAULT_SETTINGS.rssTopicsFolderName;
+		return this._cache.rssTopicsFolderName || this._data.rssTopicsFolderName || DEFAULT_SETTINGS.rssTopicsFolderName;
 	}
 
+	/**
+	 * Set the folder name for RSS topics.
+	 */
 	set rssTopicsFolderName(value: string) {
-		this._rssCollectionsFolderName = value;
+		this._cache.rssTopicsFolderName = value;
 	}
 
+
+	/**
+	 * The folder name for RSS templates.
+	 */
 	get rssTemplateFolderName(): string {
-		return this._rssTemplateFolderName || this._data.rssTemplateFolderName || DEFAULT_SETTINGS.rssTemplateFolderName;
+		return this._cache.rssTemplateFolderName || this._data.rssTemplateFolderName || DEFAULT_SETTINGS.rssTemplateFolderName;
 	}
 
+	/**
+	 * Set the folder name for RSS templates.
+	 */
 	set rssTemplateFolderName(value: string) {
-		this._rssTemplateFolderName = value;
+		this._cache.rssTemplateFolderName = value;
 	}
 
+
+	/**
+	 * The name of the RSS tagmap file (without extension).
+	 */
 	get rssTagmapName(): string {
-		return this._rssTagmapName || this._data.rssTagmapName || DEFAULT_SETTINGS.rssTagmapName;
+		return this._cache.rssTagmapName || this._data.rssTagmapName || DEFAULT_SETTINGS.rssTagmapName;
 	}
 
+	/**
+	 * Set the name of the RSS tagmap file (without extension).
+	 */
 	set rssTagmapName(value: string) {
-		this._rssTagmapName = value;
+		this._cache.rssTagmapName = value;
 	}
 
+
+	/**
+	 * The default item limit for RSS feeds.
+	 */
 	get defaultItemLimit(): number {
-		return this._defaultItemLimit || this._data.defaultItemLimit || DEFAULT_SETTINGS.defaultItemLimit;
+		return this._cache.defaultItemLimit || this._data.defaultItemLimit || DEFAULT_SETTINGS.defaultItemLimit;
 	}
 
+	/**
+	 * Set the default item limit for RSS feeds.
+	 */
 	set defaultItemLimit(value: number) {
-		this._defaultItemLimit = value;
+		this._cache.defaultItemLimit = value;
 	}
 
+
+	/**
+	 * The tag domain for RSS tags.
+	 */
 	get rssTagDomain(): string {
-		return this._rssTagDomain || this._data.rssTagDomain || DEFAULT_SETTINGS.rssTagDomain;
+		return this._cache.rssTagDomain || this._data.rssTagDomain || DEFAULT_SETTINGS.rssTagDomain;
 	}
 
+	/**
+	 * Set the tag domain for RSS tags.
+	 */
 	set rssTagDomain(value: string) {
-		this._rssTagDomain = value;
+		this._cache.rssTagDomain = value;
 	}
 
+
+	/**
+	 * The path to the default image for RSS feeds.
+	 */
 	get rssDefaultImagePath(): string {
-		return this._rssDefaultImagePath || this._data.rssDefaultImagePath || "";
+		return this._cache.rssDefaultImagePath || this._data.rssDefaultImagePath || "";
 	}
 
+	/**
+	 * Set the path to the default image for RSS feeds.
+	 */
 	set rssDefaultImagePath(value: string) {
-		this._rssDefaultImagePath = value;
+		this._cache.rssDefaultImagePath = value;
 	}
 
+
+	/**
+	 * Get the markdown image link for the default RSS image.
+	 */
 	get rssDefaultImageLink(): string {
 		return `![[${this.rssDefaultImagePath}|float:right|100]]`;
 	}
@@ -416,47 +553,25 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 
 		if (folderNotesSettings) {
 			const placement = folderNotesSettings.storageLocation;
-			this._rssDashboardPlacement = placement;
+			this._cache.rssDashboardPlacement = placement;
 			return placement;
 		}
 		else {
-			return this._rssDashboardPlacement || this._data.rssDashboardPlacement || DEFAULT_SETTINGS.rssDashboardPlacement;
+			return this._cache.rssDashboardPlacement || this._data.rssDashboardPlacement || DEFAULT_SETTINGS.rssDashboardPlacement;
 		}
 	}
 
-	//#region Template Accessors
-	get rssFeedDashboardTemplate(): string {
-		return DEFAULT_SETTINGS.rssFeedDashboardTemplate;
+	get rssDashboardName(): string {
+		const folderNotesSettings = (this.app as any).plugins.plugins["folder-notes"]?.settings;
+		if (folderNotesSettings) {
+			const folderNoteName = folderNotesSettings.folderNoteName;
+			this._cache.rssDashboardName = folderNoteName;
+			return folderNoteName;
+		}
+		else {
+			return this._cache.rssDashboardName || this._data.rssDashboardName || DEFAULT_SETTINGS.rssDashboardName;
+		}
 	}
-
-	get rssFeedTemplate(): string {
-		return DEFAULT_SETTINGS.rssFeedTemplate;
-	}
-
-	get rssCollectionDashboardTemplate(): string {
-		return DEFAULT_SETTINGS.rssCollectionDashboardTemplate;
-	}
-
-	get rssCollectionTemplate(): string {
-		return DEFAULT_SETTINGS.rssCollectionTemplate;
-	}
-
-	get rssTopicDashboardTemplate(): string {
-		return DEFAULT_SETTINGS.rssTopicDashboardTemplate;
-	}
-
-	get rssTopicTemplate(): string {
-		return DEFAULT_SETTINGS.rssTopicTemplate;
-	}
-
-	get rssItemTemplate(): string {
-		return DEFAULT_SETTINGS.rssItemTemplate;
-	}
-
-	get rssTagmapTemplate(): string {
-		return DEFAULT_SETTINGS.rssTagmapTemplate;
-	}
-	//#endregion Template Accessors
 
 	/**
 	 * Commit the changes to the settings.
@@ -464,61 +579,64 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 	 */
 	async commit() {
 		console.log("Commiting changes in settings");
-		if (this._rssHome && this._rssHome !== this._data.rssHome) {
-			this._data.rssHome = this._rssHome;
-			this._rssHome = undefined;
-			await this.install(); // setup a new RSS folder if needed
+		if (this._cache.rssHome && this._cache.rssHome !== this._data.rssHome) {
+			this._data.rssHome = this._cache.rssHome;
+			this._cache.rssHome = undefined;
 		}
 
-		if (this._rssFeedFolderName && this._rssFeedFolderName !== this._data.rssFeedFolderName) {
-			this._data.rssFeedFolderName = this._rssFeedFolderName;
-			this._rssFeedFolderName = undefined;
+		if (this._cache.rssFeedFolderName && this._cache.rssFeedFolderName !== this._data.rssFeedFolderName) {
+			this._data.rssFeedFolderName = this._cache.rssFeedFolderName;
+			this._cache.rssFeedFolderName = undefined;
 		}
 
-		if (this._rssCollectionsFolderName && this._rssCollectionsFolderName !== this._data.rssCollectionsFolderName) {
-			this._data.rssCollectionsFolderName = this._rssCollectionsFolderName;
-			this._rssCollectionsFolderName = undefined;
+		if (this._cache.rssCollectionsFolderName && this._cache.rssCollectionsFolderName !== this._data.rssCollectionsFolderName) {
+			this._data.rssCollectionsFolderName = this._cache.rssCollectionsFolderName;
+			this._cache.rssCollectionsFolderName = undefined;
 		}
 
-		if (this._rssTopicsFolderName && this._rssTopicsFolderName !== this._data.rssTopicsFolderName) {
-			this._data.rssTopicsFolderName = this._rssTopicsFolderName;
-			this._rssTopicsFolderName = undefined;
+		if (this._cache.rssTopicsFolderName && this._cache.rssTopicsFolderName !== this._data.rssTopicsFolderName) {
+			this._data.rssTopicsFolderName = this._cache.rssTopicsFolderName;
+			this._cache.rssTopicsFolderName = undefined;
 		}
 
-		if (this._rssTemplateFolderName && this._rssTemplateFolderName !== this._data.rssTemplateFolderName) {
-			if (await this._filemgr.renameFolder(this.rssTemplateFolderPath, this.rssHome + "/" + this._rssTemplateFolderName)) {
-				this._data.rssTemplateFolderName = this._rssTemplateFolderName;
+		if (this._cache.rssTemplateFolderName && this._cache.rssTemplateFolderName !== this._data.rssTemplateFolderName) {
+			if (await this._filemgr.renameFolder(this.rssTemplateFolderPath, this.rssHome + "/" + this._cache.rssTemplateFolderName)) {
+				this._data.rssTemplateFolderName = this._cache.rssTemplateFolderName;
 			}
 
-			this._rssTemplateFolderName = undefined;
+			this._cache.rssTemplateFolderName = undefined;
 		}
 
-		if (this._rssTagmapName && this._rssTagmapName !== this._data.rssTagmapName) {
-			this._data.rssTagmapName = this._rssTagmapName;
-			this._rssDashboardName = undefined;
+		if (this._cache.rssTagmapName && this._cache.rssTagmapName !== this._data.rssTagmapName) {
+			this._data.rssTagmapName = this._cache.rssTagmapName;
 		}
 
-		if (this._defaultItemLimit && this._defaultItemLimit !== this._data.defaultItemLimit) {
-			this._data.defaultItemLimit = this._defaultItemLimit;
-			this._defaultItemLimit = undefined;
+		if (this._cache.defaultItemLimit && this._cache.defaultItemLimit !== this._data.defaultItemLimit) {
+			this._data.defaultItemLimit = this._cache.defaultItemLimit;
+			this._cache.defaultItemLimit = undefined;
 		}
 
-		if (this._rssTagDomain && this._rssTagDomain !== this._data.rssTagDomain) {
-			this._data.rssTagDomain = this._rssTagDomain;
-			this._rssTagDomain = undefined;
+		if (this._cache.rssTagDomain && this._cache.rssTagDomain !== this._data.rssTagDomain) {
+			this._data.rssTagDomain = this._cache.rssTagDomain;
+			this._cache.rssTagDomain = undefined;
 		}
 
-		if (this._rssDashboardPlacement && this._rssDashboardPlacement !== this._data.rssDashboardPlacement) {
-			this._data.rssDashboardPlacement = this._rssDashboardPlacement;
-			this._rssDashboardPlacement = undefined;
+		if (this._cache.rssDashboardPlacement && this._cache.rssDashboardPlacement !== this._data.rssDashboardPlacement) {
+			this._data.rssDashboardPlacement = this._cache.rssDashboardPlacement;
+			this._cache.rssDashboardPlacement = undefined;
 		}
 
-		if (this._rssDefaultImagePath && this._rssDefaultImagePath !== this._data.rssDefaultImagePath) {
-			this._data.rssDefaultImagePath = this._rssDefaultImagePath;
-			this._rssDefaultImagePath = undefined;
+		if (this._cache.rssDashboardName && this._cache.rssDashboardName !== this._data.rssDashboardName) {
+			this._data.rssDashboardName = this._cache.rssDashboardName;
+			this._cache.rssDashboardName = undefined;
 		}
 
-		await this.saveData();
+		if (this._cache.rssDefaultImagePath && this._cache.rssDefaultImagePath !== this._data.rssDefaultImagePath) {
+			this._data.rssDefaultImagePath = this._cache.rssDefaultImagePath;
+			this._cache.rssDefaultImagePath = undefined;
+		}
+
+		await this.plugin.saveData(this._data);
 	}
 
 	constructor(app: App, plugin: RSSTrackerPlugin) {
@@ -527,39 +645,49 @@ export class RSSTrackerSettings implements IRSSTrackerSettings {
 	}
 
 	async loadData(): Promise<void> {
-		const data: TPropertyBag = await this.plugin.loadData();
+		const data = await this.plugin.loadData() as IRSSTrackerPersistedSettings;
 		if (data) {
-			for (const propertyName in this._data) {
-				if (propertyName in data) {
-					this._data[propertyName] = data[propertyName];
-				}
-			}
+			(Object.keys(this._data) as Array<keyof IRSSTrackerPersistedSettings>).forEach((key) => {
+				(this._data[key] as any) = data[key];
+			});
 		} else {
 			console.log("rss-tracker first time load");
 		}
 		console.log("rss-tracker: settings loaded");
 	}
 
-	async saveData(): Promise<void> {
-		return this.plugin.saveData(this._data);
-	}
 
+	/**
+	 * Get the full path to the RSS feed folder.
+	 */
 	get rssFeedFolderPath(): string {
 		return this.rssHome + "/" + this.rssFeedFolderName;
 	}
 
+	/**
+	 * Get the full path to the RSS collections folder.
+	 */
 	get rssCollectionsFolderPath(): string {
 		return this.rssHome + "/" + this.rssCollectionsFolderName;
 	}
 
+	/**
+	 * Get the full path to the RSS topics folder.
+	 */
 	get rssTopicsFolderPath(): string {
 		return this.rssHome + "/" + this.rssTopicsFolderName;
 	}
 
+	/**
+	 * Get the full path to the RSS template folder.
+	 */
 	get rssTemplateFolderPath(): string {
 		return this.rssHome + "/" + this.rssTemplateFolderName;
 	}
 
+	/**
+	 * Get the full path to the RSS tagmap file (with .md extension).
+	 */
 	get rssTagmapPath(): string {
 		return this.rssHome + "/" + this.rssTagmapName + ".md";
 	}

@@ -2,21 +2,23 @@ import { App } from "obsidian";
 import { TPropertyBag } from "./FeedAssembler";
 import RSSTrackerPlugin from "./main";
 import { RSSTrackerService } from "./PluginServices";
+import { FACTORY_SETTINGS, RSSTrackerSettings, TDefaultTemplateKey } from './settings';
 
 /**
  * The basenames of templates used for RSS content creation.
- * ⚠️Not all templates are avaiable as customizable template files.
+ * ⚠️Not all templates are available as customizable template files.
  */
 export type TTemplateName = "RSS Feed" | "RSS Item" | "RSS Topic" | "RSS Topic Dashboard" | "RSS Collection" | "RSS Collection Dashboard" | "RSS Feed Dashboard" | "RSS Tagmap";
 
 /**
- * RSS Tracker Servcce to manage the expansion of RSS file templates.
+ * Service for managing and expanding RSS file templates for the RSS Tracker plugin.
  *
+ * Provides methods to expand mustache-style placeholders in template files using property bags.
  * An instance of this service can be obtained by {@link RSSTrackerPlugin.tplmgr}.
  */
 export class TemplateManager extends RSSTrackerService {
     /**
-     * Regular expression to split a template string into and array
+     * Regular expression to split a template string into an array
      * where all mustache tokens of the form `{{mustache}}` have their
      * own slot.
      */
@@ -25,7 +27,8 @@ export class TemplateManager extends RSSTrackerService {
     /**
      * A map of template names to names in {@link RSSTrackerSettings} containing the default template.
      */
-    private readonly _templateMap: { [name: string]: string } = {
+    private readonly _templateMap: { [key in TTemplateName]: TDefaultTemplateKey } = {
+
         "RSS Item": "rssItemTemplate",
         "RSS Feed": "rssFeedTemplate",
         "RSS Feed Dashboard": "rssFeedDashboardTemplate",
@@ -36,30 +39,37 @@ export class TemplateManager extends RSSTrackerService {
         "RSS Tagmap": "rssTagmapTemplate",
     };
 
-    constructor(app:App,plugin: RSSTrackerPlugin) {
-        super(app,plugin);
+
+    /**
+     * Create a new TemplateManager instance.
+     * @param app - The Obsidian app instance.
+     * @param plugin - The parent RSSTrackerPlugin instance.
+     */
+    constructor(app: App, plugin: RSSTrackerPlugin) {
+        super(app, plugin);
     }
 
     /**
-	 * Expand `{{mustache}}` placeholders in a template with data from a property bag.
-	 * @param template - A template string with `{{mustache}}` placeholders.
-	 * @param properties - A property bag for replacing `{{mustache}}` placeholdes with data.
-	 * @returns template with `{{mustache}}` placeholders substituted.
-	 */
+     * Expand `{{mustache}}` placeholders in a template with data from a property bag.
+     *
+     * @param templateName - The name of the template to expand.
+     * @param properties - A property bag for replacing `{{mustache}}` placeholders with data.
+     * @returns The template string with all `{{mustache}}` placeholders substituted.
+     */
     async expandTemplate(templateName: TTemplateName, properties: TPropertyBag): Promise<string> {
         let template;
         const templateFolderPath = this.settings.rssTemplateFolderPath;
         if (!templateFolderPath) {
-            template = this._templateMap[templateName]; // use the default template
+            template = FACTORY_SETTINGS[this._templateMap[templateName]]; // use the default template
         } else {
-            const templateFile = this.vault.getFileByPath(templateFolderPath+ "/" + templateName + ".md");
+            const templateFile = this.vault.getFileByPath(templateFolderPath + "/" + templateName + ".md");
 
             template = templateFile
                 ? await this.vault.read(templateFile) // read the template file contents from the vault
-                : this.settings[this._templateMap[templateName]]; // use the default template from settings
+                : FACTORY_SETTINGS[this._templateMap[templateName]]; // use the default template from settings
         }
 
         // here we got the template one way or another.
-        return template.split(TemplateManager.TOKEN_SPLITTER).map((s:string) => s.startsWith("{{") ? (properties[s] ?? s) : s).join("")
+        return template.split(TemplateManager.TOKEN_SPLITTER).map((s: string) => s.startsWith("{{") ? (properties[s] ?? s) : s).join("");
     }
 }
