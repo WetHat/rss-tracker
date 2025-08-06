@@ -294,7 +294,7 @@ export class ObsidianHTMLLinter {
     /**
      * Cleanup incorrectly used '<code>' elements.
      *
-     * Cleanup Criteria: If there are nested `<code>` or `<pre>` elements inside a `<code>`element,
+     * Cleanup Criteria: If there are nested `<code>` or `<pre>` elements inside a `<code>` element,
      * the outer `<code>` element is converted to a `<div>`.
      *
      * @returns instance of this class for method chaining.
@@ -312,6 +312,8 @@ export class ObsidianHTMLLinter {
                 code.remove();
             }
         });
+        // remove all elements that should not be there.
+        this.element.querySelectorAll("code button, code style").forEach(el => {el.remove();});
         return this;
     }
 
