@@ -25,10 +25,10 @@ export class TextTransformer {
         const text = this.textNode.textContent;
         if (text) {
             const transformed = text // non-greedy matches
-                .replace(/[\$\s]*\\\[([\s\S]*?)\\\][\$\s]*/g,'\n$$$$\n$1\n$$$$\n') // matches \[...\] block math
-                .replace(/[\s\$]*(\\begin\{align\}[\s\S]*?\\end\{align\})[\s\$]*/g,'\n$$$$\n$1\n$$$$\n') // matches \begin{align}...\end{align} block math
-                .replace(/[\s\$]*(\\begin\{equation\}[\s\S]*?\\end\{equation\})[\s\$]*/g,'\n$$$$\n$1\n$$$$\n') // matches \begin{equation}...\end{equation} block math
-                .replace(/\\\((.*?)\\\)/g, "$$$1$$") // matches \(...\) inline math
+                .replace(/[\$\s]*\\\[([\s\S]*?)\\\][\$\s]*/g, '\n$$$$\n$1\n$$$$\n') // matches \[...\] block math
+                .replace(/[\s\$]*(\\begin\{align\}[\s\S]*?\\end\{align\})[\s\$]*/g, '\n$$$$\n$1\n$$$$\n') // matches \begin{align}...\end{align} block math
+                .replace(/[\s\$]*(\\begin\{equation\}[\s\S]*?\\end\{equation\})[\s\$]*/g, '\n$$$$\n$1\n$$$$\n') // matches \begin{equation}...\end{equation} block math
+                .replace(/\\\(([\s\S]*?)\\\)/g, "$$$1$$") // matches \(...\) inline math
                 .replace(/\\label\{[^}{]+\}/g, ''); // unsupported by Obsidian
 
             if (text !== transformed) {
@@ -54,10 +54,10 @@ export class TextTransformer {
         if (text && parent && parent.localName !== "code" && !parent.classList.contains("math")) {
             // replace Obsidian unfriendly html entities and characters.
             const transformed = text
-                .replace(/>/g, '＞')
-                .replace(/</g, '＜')
-                .replace(/\[/g, '［')
-                .replace(/\]/g, '］');
+                .replace(/>/g, '\\>')
+                .replace(/</g, '\\<')
+                .replace(/\[/g, '\\[')
+                .replace(/\]/g, '\\]');
 
             if (transformed !== text) {
                 this.textNode.textContent = transformed;
@@ -131,7 +131,7 @@ export class ObsidianHTMLLinter {
         }
 
         if (reduceLineFeeds) {
-             // Remove additional empty lines produced by divs.
+            // Remove additional empty lines produced by divs.
             element.textContent = element.textContent?.replace(/\n+/g, "\n") ?? null;
         } else {
             element.textContent = element.textContent ?? null;
@@ -313,7 +313,7 @@ export class ObsidianHTMLLinter {
             }
         });
         // remove all elements that should not be there.
-        this.element.querySelectorAll("code button, code style").forEach(el => {el.remove();});
+        this.element.querySelectorAll("code button, code style").forEach(el => { el.remove(); });
         return this;
     }
 
