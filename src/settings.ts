@@ -111,45 +111,97 @@ role:
 > [!abstract] RSS feed dashboard
 > {{image}} All your subscribed feeds at a glance.
 
-# Feed Status 💔
+# Feeds & Status
 
-⚠️ Only tagged feeds can be claimed by feed collections.
-~~~dataviewjs
-const
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	expanded = false,
-	feeds = dvjs.rssFeeds;
-dv.header(2,"Failed and Suspended Feeds ❌");
-dvjs.rssFeedTable(feeds.where(f => f.status !== "✅"),true);
-
-dv.header(2,"Updated Feeds ✅");
-dvjs.rssFeedTable(feeds.where(f => f.status === "✅"),expanded);
-~~~
-
-# Pinned Items 📍
-
-~~~dataviewjs
-const
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	expand = false,
-	items = dvjs.rssItems.where(i => i.pinned === true);
-await dvjs.rssItemTableByFeed(items,expand);
+~~~base
+filters:
+  and:
+    - role == "rssfeed"
+properties:
+  file.name:
+    displayName: Feed
+  note.status:
+    displayName: Feed Status
+  note.updated:
+    displayName: Last Update
+  note.headline:
+    displayName: Headline
+  note.collections:
+    displayName: Collections
+views:
+  - type: table
+    name: Feed Status 💔
+    filters:
+      and:
+        - status != "✅"
+    order:
+      - file.name
+      - status
+      - updated
+    sort:
+      - property: updated
+        direction: ASC
+    columnSize:
+      file.name: 464
+      note.status: 178
+  - type: table
+    name: All Feeds 📰
+    order:
+      - file.name
+      - headline
+      - updated
+      - collections
+    sort:
+      - property: updated
+        direction: DESC
+      - property: collections
+        direction: ASC
+    columnSize:
+      file.name: 277
+      note.headline: 367
+      note.updated: 182
+      note.collections: 200
 ~~~
 `,
 	rssItemTemplate: `---
 role:
+read: false
+pinned: false
 ---
 
 > [!abstract] {{title}} (by {{author}})
 > {{image}} {{description}}
 
-🌐 Read article [online]({{link}}). ⤴ For other items in this feed see {{feedLink}}.
+🌐 Read article [online]({{link}}).
 
-- [ ] {{fileLink}}
+~~~base
+filters:
+  and:
+    - role == "rssitem"
+    - link == this.note.link
+formulas:
+  item: if(file == this.file,file.name,file)
+properties:
+  note.pinned:
+    displayName: Pinned
+  note.feed:
+    displayName: Feed
+  note.read:
+    displayName: Read
+  formula.item:
+    displayName: Feed Item
+views:
+  - type: table
+    name: Equivalent Feed Items (Same Article)
+    order:
+      - read
+      - formula.item
+      - feed
+      - pinned
+    columnSize:
+      formula.item: 362
+      note.feed: 341
 
-~~~dataviewjs
-const dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv);
-dvjs.rssItemHeader(dv.current());
 ~~~
 
 - - -
@@ -158,39 +210,71 @@ dvjs.rssItemHeader(dv.current());
 `,
 	rssFeedTemplate: `---
 role:
+headline: A feed about ...
 ---
 
 > [!abstract] {{title}}
 > {{image}} {{description}}
 
-# Reading List 📑
-
-~~~dataviewjs
-const
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	expand = true,
-	items = dvjs.rssItemsOfFeed(dv.current());
-await dvjs.rssReadingList(items,false,expand);
-~~~
-
-# Pinned Feed Items 📍
-
-~~~dataviewjs
-const
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	expand = false,
-	items = await dvjs.rssItemsOfFeed(dv.current()).where(i => i.pinned === true);
-await dvjs.rssItemTable(items,expand);
-~~~
-
-# Read Feed Items ✅
-
-~~~dataviewjs
-const
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	expand = false,
-	items = dvjs.rssItemsOfFeed(dv.current());
-await dvjs.rssReadingList(items,true,expand);
+~~~base
+filters:
+  and:
+    - role == "rssitem"
+    - feed.asFile() == this.file
+properties:
+  file.name:
+    displayName: RSS Item
+  note.published:
+    displayName: Published
+  note.pinned:
+    displayName: Pinned
+  note.read:
+    displayName: Read
+views:
+  - type: table
+    name: Reading List 📰
+    filters:
+      and:
+        - read != true
+    order:
+      - read
+      - file.name
+      - published
+    sort:
+      - property: published
+        direction: DESC
+    columnSize:
+      file.name: 618
+  - type: table
+    name: Read Items ✅
+    filters:
+      and:
+        - read == true
+    order:
+      - read
+      - file.name
+      - published
+    sort:
+      - property: published
+        direction: DESC
+    columnSize:
+      file.name: 575
+  - type: table
+    name: Pinned Items 📍
+    filters:
+      and:
+        - pinned == true
+    order:
+      - read
+      - pinned
+      - file.name
+      - published
+    sort:
+      - property: published
+        direction: DESC
+    columnSize:
+      note.pinned: 76
+      file.name: 506
 ~~~
 `,
 	rssTagmapTemplate: `---
@@ -209,6 +293,7 @@ to (**including the** \`#\` prefix).
 | ------- | ---------- |`,
 	rssCollectionTemplate: `---
 role:
+headline: A collection of feeds about ...
 ---
 
 > [!abstract] (headline:: A collection of feeds providing perspectives and knowledge about ...)
@@ -216,35 +301,126 @@ role:
 > - [ ] Complete the headline.
 > - [ ] Specify tags in the \`tags\`, \`allof\`, \`noneof\` frontmatter properties to collect feeds matching the tag filter.
 
-# Feeds in this Collection 📚
-
-~~~dataviewjs
-const
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	expand = false,
-	feeds = dvjs.rssFeedsOfCollection(dv.current());
-await dvjs.rssFeedTable(feeds,expand);
-dv.paragraph("From: " + dvjs.fromTags(dv.current()));
+# Feeds in this Collection
+~~~base
+filters:
+  and:
+    - role == "rssfeed"
+properties:
+  file.name:
+    displayName: Feed
+  note.status:
+    displayName: Status
+  note.updated:
+    displayName: Last Update
+  note.headline:
+    displayName: Headline
+  note.collections:
+    displayName: Collections
+views:
+  - type: table
+    name: Feeds in this Collection 📰
+    filters:
+      and:
+        - collections.contains(this.file)
+    order:
+      - file.name
+      - headline
+      - status
+      - updated
+    sort: []
+    columnSize:
+      file.name: 218
+      note.headline: 326
+      note.status: 101
+  - type: table
+    name: Collectible Feeds by Tag 🧩
+    filters:
+      and:
+        - or:
+            - collections.isEmpty()
+            - this.file.tags.isEmpty()
+        - this.tags.filter(file.hasTag(value)).length > 0
+    order:
+      - file.name
+      - headline
+      - collections
+    sort:
+      - property: collections
+        direction: ASC
+    columnSize:
+      file.name: 218
+      note.headline: 326
+      note.status: 101
 ~~~
 
-# Reading List 📑
+# Feed Items
 
-~~~dataviewjs
-const
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	expand = false,
-	items = dvjs.rssItemsOfCollection(dv.current());
-await dvjs.rssReadingListByFeed(items,false,expand);
-~~~
-
-# Pinned Items 📍
-
-~~~dataviewjs
-const
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	expand = false,
-	items = dvjs.rssItemsOfCollection(dv.current()).where( i => i.pinned === true);
-await dvjs.rssItemTableByFeed(items,expand);
+~~~base
+filters:
+  and:
+    - role == "rssitem"
+    - file(feed).properties.collections.contains(this.file)
+properties:
+  file.name:
+    displayName: Feed Item
+  note.feed:
+    displayName: Feed
+  note.published:
+    displayName: Published
+  note.read:
+    displayName: Read
+views:
+  - type: table
+    name: Reading List  📰
+    filters:
+      and:
+        - read == false
+    order:
+      - read
+      - file.name
+      - feed
+      - published
+    sort:
+      - property: published
+        direction: DESC
+    columnSize:
+      file.name: 299
+      note.feed: 292
+      note.published: 183
+  - type: table
+    name: Read Feed Items  ✅
+    filters:
+      and:
+        - read == true
+    order:
+      - read
+      - file.name
+      - feed
+      - published
+    sort:
+      - property: published
+        direction: DESC
+    columnSize:
+      file.name: 404
+      note.feed: 253
+      note.published: 158
+  - type: table
+    name: Pinned Feed Items 📍
+    filters:
+      and:
+        - pinned == true
+    order:
+      - file.name
+      - feed
+      - published
+    sort:
+      - property: file.mtime
+        direction: DESC
+    columnSize:
+      file.name: 404
+      note.feed: 253
+      note.published: 178
 ~~~
 `,
 	rssCollectionDashboardTemplate: `---
@@ -256,72 +432,139 @@ role:
 
 # Feed Collections 📚
 
-~~~dataviewjs
-const
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	expand = true,
-	collections = dvjs.rssCollections;
-await dvjs.rssCollectionTable(collections,expand);
+~~~base
+filters:
+  and:
+    - role == "rsscollection"
+properties:
+  file.name:
+    displayName: Collection
+  note.headline:
+    displayName: Headline
+views:
+  - type: table
+    name: Collections
+    order:
+      - file.name
+      - headline
+    columnSize:
+      file.name: 490
+    cardSize: 310
+
 ~~~
 
-# Unclaimed Feeds 📦
+# Unclaimed Feeds
 
-⚠️ Only tagged feeds can be claimed by feed collections.
+~~~base
+filters:
+  and:
+    - role == "rssfeed"
+    - collections.isEmpty()
+properties:
+  file.name:
+    displayName: Feed
+  note.headline:
+    displayName: Headline
+  note.collections:
+    displayName: Collections
+views:
+  - type: table
+    name: Feeds
+    order:
+      - file.name
+      - headline
+      - collections
+    columnSize:
+      file.name: 334
+      note.headline: 248
 
-~~~dataviewjs
-const
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	expand = false,
-	unclaimed = dvjs.rssUnclaimedFeeds();
-
-await dvjs.rssFeedTable(unclaimed,expand)
 ~~~
 `,
 	rssTopicTemplate: `---
 role:
 tags: []
-allof: []
-noneof: []
+headline: A curated list of RSS items about ...
 ---
 > [!abstract] (headline:: A curated list of RSS items about ...)
 > {{image}}
 > - [ ] Create a headline
-> - [ ] Specify tags in the \`tags\`, \`allof\`, \'noneof\' frontmatter properties
+> - [ ] Specify tags in the \`tags\` frontmatter properties.
+> - [ ] Configure additional filters
 
-# Curated Articles📍
-
-~~~dataviewjs
-const
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	expand = true,
-	items = dvjs.rssItemsOfTopic(dv.current()).where(t => t.pinned === true);
-await dvjs.rssItemTableByFeed(items,expand)
-dv.paragraph("From: " + dvjs.fromTags(dv.current()));
-~~~
-
-# Other Articles 📄
-
-~~~dataviewjs
-const
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	expand = false,
-	items = dvjs.rssItemsOfTopic(dv.current()).where(t => t.pinned !== true);
-await dvjs.rssItemTableByFeed(items,expand)
-dv.paragraph("From: " + dvjs.fromTags(dv.current()));
+~~~base
+filters:
+  and:
+    - role == "rssitem"
+    - file != this.file
+    - this.tags.filter(file.hasTag(value)).length > 0
+properties:
+  file.name:
+    displayName: Feed Item
+  note.feed:
+    displayName: Feed
+  note.published:
+    displayName: Published
+  note.read:
+    displayName: Read
+views:
+  - type: table
+    name: Pinned Feed Items 📍
+    filters:
+      and:
+        - pinned == true
+    order:
+      - file.name
+      - feed
+      - published
+    sort:
+      - property: published
+        direction: DESC
+    columnSize:
+      file.name: 573
+      note.feed: 192
+      note.published: 154
+  - type: table
+    name: Similar Feed Items ≈
+    filters:
+      and:
+        - pinned == false
+    order:
+      - read
+      - file.name
+      - published
+    sort:
+      - property: published
+        direction: DESC
+    columnSize:
+      file.name: 590
+      note.published: 178
 ~~~
 `,
 	rssTopicDashboardTemplate: `---
 role:
 ---
 
-> [!abstract] Curated collections of RSS feed posts focused on specific topics.
+> [!abstract] Curated collections of feed items focused on specific topics.
 > {{image}} Each topic is designed to provide a curated blend of authoritative sources, expert insights, and updates within its specific subject area.
-~~~dataviewjs
-const
-	dvjs = dv.app.plugins.plugins["rss-tracker"].getDVJSTools(dv),
-	expand = true,
-	topics = dvjs.rssTopics;
-await dvjs.rssTopicTable(topics,expand);
+
+~~~base
+filters:
+  and:
+    - role == "rsstopic"
+properties:
+  file.name:
+    displayName: Topic
+  note.headline:
+    displayName: Headline
+views:
+  - type: cards
+    name: Topics
+    order:
+      - file.name
+      - headline
+    columnSize:
+      file.name: 282
+    cardSize: 400
 ~~~
 `,
 }

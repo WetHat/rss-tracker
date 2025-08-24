@@ -307,7 +307,7 @@ export class DataViewJSTools extends RSSTrackerService {
         return this.getPagesOfFolder(this.settings.rssTopicsFolderPath, "rsstopic");
     }
 
-    private itemReadingTask(item: TPageRecord): TTaskRecord | null {
+    itemReadingTask(item: TPageRecord): TTaskRecord | null {
         const tasks = item.file.tasks.where((t: TTaskRecord) => t.text.startsWith("[["));
         return tasks.length > 0 ? tasks[0] : null;
     }
