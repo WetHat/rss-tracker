@@ -165,24 +165,10 @@ export class RSSitemAdapter extends RSSAdapter {
         this.frontmatter.tags = value.map(t => tagmgr.mapHashtag(t.startsWith("#") ? t : "#" + t).slice(1));
     }
 
-    async completeReadingTask(): Promise<boolean> {
-        const
-            app = this.plugin.app,
-            vault = app.vault,
-            tasks = app.metadataCache.getFileCache(this.file)
-                ?.listItems
-                ?.filter((li: ListItemCache) => li.task === " "),
-            first = tasks?.first();
-        if (first) {
-            const
-                data = await vault.read(this.file),
-                s = first.position.start.offset,
-                e = first.position.end.offset,
-                newdata = data.substring(0, s) + "- [x]" + data.substring(s + 5);
-            await vault.modify(this.file, newdata);
-            return true;
-        }
-        return false;
+    completeReadingTask(): Promise<void> {
+        return this.plugin.app.fileManager.processFrontMatter(this.file, fm => {
+            fm.read = true;
+        });
     }
 
     /**
@@ -669,9 +655,8 @@ export class RSSfeedAdapter extends RSSdashboardAdapter {
     async completeReadingTasks(): Promise<number> {
         let completed = 0;
         for (const item of this.items) {
-            if (await item.completeReadingTask()) {
-                completed++;
-            }
+            await item.completeReadingTask();
+            completed++;
         }
         return completed;
     }
