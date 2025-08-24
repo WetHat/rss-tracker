@@ -210,6 +210,7 @@ views:
 `,
 	rssFeedTemplate: `---
 role:
+collections: []
 headline: A feed about ...
 ---
 
