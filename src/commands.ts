@@ -68,7 +68,7 @@ export class UpdateRSSfeedCommand extends RSSTrackerCommandBase {
                 return (adapter instanceof RSSfeedAdapter && !adapter.suspended) || adapter instanceof RSScollectionAdapter;
             }
             if ((adapter instanceof RSSfeedAdapter && !adapter.suspended) || adapter instanceof RSScollectionAdapter) {
-                this.plugin.feedmgr.update(true, adapter).then(() => this.plugin.refreshActiveFile());
+                this.plugin.feedmgr.update(true, adapter);
             }
         }
         return false;
@@ -123,7 +123,7 @@ export class MarkAllRSSitemsReadCommand extends RSSTrackerCommandBase {
                 return adapter;
             }
             if (adapter instanceof RSSfeedAdapter || adapter instanceof RSScollectionAdapter) {
-                this.plugin.feedmgr.completeReadingTasks(adapter).then(() => this.plugin.refreshActiveFile());
+                this.plugin.feedmgr.completeReadingTasks(adapter);
                 return true;
             }
         }

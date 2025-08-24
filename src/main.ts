@@ -65,19 +65,6 @@ export default class RSSTrackerPlugin extends Plugin {
         return new DataViewJSTools(this.app,this, dv);
     }
 
-    /**
-     * Refresh the dataview blocks on the currently active Obsidian note.
-     *
-     * Calls the _Dataview: Rebuild current view_ command via an undocumented API call.
-     * Found at: https://forum.obsidian.md/t/triggering-an-obsidian-command-from-within-an-event-callback/37158
-     */
-    refreshActiveFile() {
-        // Everything here is totally undocumented and may break any time!
-        if (!(this.app as any).plugins.plugins.dataview.settings.refreshEnabled) {
-            (this.app as any).commands.executeCommandById("dataview:dataview-rebuild-current-view");
-        }
-    }
-
     async onload() {
         console.log('Loading rss-tracker.');
 

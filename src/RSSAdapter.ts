@@ -123,6 +123,11 @@ export abstract class RSSAdapter {
  */
 export class RSSitemAdapter extends RSSAdapter {
     static readonly EMBEDDING_MATCHER = /!\[[^\]]*\]\(([^\)]+)\)\s*/;
+
+    get read(): boolean {
+        return this.frontmatter.read === true;
+    }
+
     /**
      * **Note**. This property can only be changed by the user.
      * @returns `true` if the item is pinned and will not be deleted; `false` otherwise.
@@ -165,10 +170,15 @@ export class RSSitemAdapter extends RSSAdapter {
         this.frontmatter.tags = value.map(t => tagmgr.mapHashtag(t.startsWith("#") ? t : "#" + t).slice(1));
     }
 
-    completeReadingTask(): Promise<void> {
-        return this.plugin.app.fileManager.processFrontMatter(this.file, fm => {
+    async completeReadingTask(): Promise<boolean> {
+        if (this.read) {
+            return false; // already read
+        }
+        await this.plugin.app.fileManager.processFrontMatter(this.file, fm => {
             fm.read = true;
         });
+
+        return true;
     }
 
     /**
@@ -292,23 +302,22 @@ export class RSScollectionAdapter extends RSSAdapter {
     }
 
     get feeds(): RSSfeedAdapter[] {
-        const
-            anyofSet = new Set<string>(this.tags),
-            allof = RSSAdapter.toPlaintags(this.frontmatter.allof),
-            noneofSet = new Set<string>(RSSAdapter.toPlaintags(this.frontmatter.noneof));
+        const mCache = this.plugin.app.metadataCache;
         return this.plugin.feedmgr.feeds
             .filter(f => {
-                const
-                    tags: string[] = f.tags,
-                    tagSet = new Set<string>(tags);
-                return !tags.some(t => noneofSet.has(t)) && !allof.some(t => !tagSet.has(t)) && tags.some(t => anyofSet.has(t));
-            });
+                const collections = f.frontmatter.collections as string[] ?? [];
+                return collections.some(c => {
+                    const collectionPath = c.replace(/\[\[\s*|\|.*\]\]|\]\]/g, "");
+                    return mCache.getFirstLinkpathDest(collectionPath, f.file.path) === this.file;
+                });
+            })
     }
 
     async completeReadingTasks(): Promise<number> {
         let completed = 0;
         for (const feed of this.feeds) {
             completed += await feed.completeReadingTasks();
+
         }
         return completed;
     }
@@ -655,8 +664,9 @@ export class RSSfeedAdapter extends RSSdashboardAdapter {
     async completeReadingTasks(): Promise<number> {
         let completed = 0;
         for (const item of this.items) {
-            await item.completeReadingTask();
-            completed++;
+            if (await item.completeReadingTask()) {
+                completed++;
+            }
         }
         return completed;
     }
