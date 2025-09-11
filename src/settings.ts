@@ -108,7 +108,7 @@ export const FACTORY_SETTINGS: TDefaultTemplateIndexer = {
 	rssFeedDashboardTemplate: `---
 role:
 ---
-> [!abstract] RSS feed dashboard
+> [!overview] RSS feed dashboard
 > {{image}} All your subscribed feeds at a glance.
 
 # Feeds & Status
@@ -169,7 +169,7 @@ read: false
 pinned: false
 ---
 
-> [!abstract] {{title}} (by {{author}})
+> [!outline] {{title}} (by {{author}})
 > {{image}} {{description}}
 
 🌐 Read article [online]({{link}}).
@@ -297,12 +297,13 @@ role:
 headline: A collection of feeds about ...
 ---
 
-> [!abstract] (headline:: A collection of feeds providing perspectives and knowledge about ...)
+> [!overview]
 > {{image}}
 > - [ ] Complete the headline.
-> - [ ] Specify tags in the \`tags\`, \`allof\`, \`noneof\` frontmatter properties to collect feeds matching the tag filter.
+> - [ ] Write a brief overview here
 
 # Feeds in this Collection
+
 ~~~base
 filters:
   and:
@@ -329,11 +330,13 @@ views:
       - headline
       - status
       - updated
+      - collections
     sort: []
     columnSize:
       file.name: 218
       note.headline: 326
-      note.status: 101
+      note.status: 90
+      note.updated: 190
   - type: table
     name: Collectible Feeds by Tag 🧩
     filters:
@@ -341,7 +344,8 @@ views:
         - or:
             - collections.isEmpty()
             - this.file.tags.isEmpty()
-        - this.tags.filter(file.hasTag(value)).length > 0
+            - this.tags.filter(file.hasTag(value)).length > 0
+        - "!collections.contains(this.file.asLink())"
     order:
       - file.name
       - headline
@@ -428,7 +432,7 @@ views:
 role:
 ---
 
-> [!abstract] Curated collections of RSS feeds focused on specific topics.
+> [!headline] Curated collections of RSS feeds focused on specific topics.
 > {{image}} Each collection is designed to provide a curated blend of authoritative sources, expert insights, and updates within its specific subject area.
 
 # Feed Collections 📚
@@ -529,6 +533,7 @@ views:
     filters:
       and:
         - pinned == false
+		- read == false
     order:
       - read
       - file.name
@@ -545,7 +550,7 @@ views:
 role:
 ---
 
-> [!abstract] Curated collections of feed items focused on specific topics.
+> [!overview] Curated collections of feed items focused on specific topics.
 > {{image}} Each topic is designed to provide a curated blend of authoritative sources, expert insights, and updates within its specific subject area.
 
 ~~~base
