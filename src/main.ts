@@ -3,7 +3,6 @@ import { RSSTrackerSettings } from './settings';
 import { DownloadRSSitemArticleCommand, MarkAllRSSitemsReadCommand, NewRSSFeedCollectionCommand, NewRSSFeedModalCommand, NewRSSTopicCommand, RenameRSSfeedModalCommand, UpdateRSSfeedCommand } from './commands';
 import { FeedManager } from './FeedManager';
 import { UpdateRSSfeedMenuItem, MarkAllItemsReadMenuItem, DownloadArticleContentMenuItem, ToggleRSSfeedActiveStatusMenuItem, RenameRSSfeedMenuItem } from './menus';
-import { DataViewJSTools } from './DataViewJSTools';
 import { TPropertyBag } from './FeedAssembler';
 import { RSSTrackerSettingTab } from './settingsUI';
 import { RSSfileManager } from './RSSFileManager';
@@ -13,7 +12,6 @@ import { TemplateManager } from './TemplateManager';
 // API exports
 export { RSSTrackerSettings } from './settings';
 export { FeedManager } from './FeedManager';
-export { DataViewJSTools } from './DataViewJSTools';
 export { RSSfileManager } from './RSSFileManager';
 export { RSSTagManager } from './TagManager';
 export { TemplateManager } from './TemplateManager';
@@ -59,10 +57,6 @@ export default class RSSTrackerPlugin extends Plugin {
         this._feedmgr = new FeedManager(app, this);
         this._tagmgr = new RSSTagManager(app, this);
         this._tplmgr = new TemplateManager(app, this);
-    }
-
-    getDVJSTools(dv: TPropertyBag) {
-        return new DataViewJSTools(this.app,this, dv);
     }
 
     async onload() {
