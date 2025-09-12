@@ -46,12 +46,6 @@ interface IRSSTrackerDefaultTemplates {
  */
 export type TDefaultTemplateKey = keyof IRSSTrackerDefaultTemplates;
 
-/**
- * An indexer type for the default templates in {@link FACTORY_SETTINGS}.
- */
-type TDefaultTemplateIndexer = {
-	[K in TDefaultTemplateKey]: string;
-};
 
 /**
  * The computed settings for the RSS Tracker plugin.
@@ -104,7 +98,7 @@ type TDefaultSettings = {
  * The hard-coded settings for the RSS Tracker plugin.
  * Currently these only the RSS templates used by the plugin.
  */
-export const FACTORY_SETTINGS: TDefaultTemplateIndexer = {
+export const FACTORY_SETTINGS: IRSSTrackerDefaultTemplates = {
 	rssFeedDashboardTemplate: `---
 role:
 ---
