@@ -252,6 +252,17 @@ export class ObsidianHTMLLinter {
      * @returns instance of this class for method chaining.
      */
     detectCode(): ObsidianHTMLLinter {
+        // custom code block handling for custom tags typically originating from static site generators.
+        this.element.querySelectorAll("code-block").forEach(block => {
+                const pre_code = block.querySelector("pre,code");
+                if (pre_code) {
+                    // rescue the attributes
+                    for (const { name, value } of Array.from(block.attributes)) {
+                        pre_code.setAttribute(name, value);
+                    }
+                    block.replaceWith(pre_code);
+                }
+            });
         this.element.querySelectorAll("[data-syntax-language],[class*=code]")
             .forEach(e => {
                 // identify the <code> element
@@ -288,6 +299,7 @@ export class ObsidianHTMLLinter {
                     }
                 }
             });
+
         return this;
     }
 
