@@ -188,7 +188,7 @@ export class RSSitemAdapter extends RSSAdapter {
      * @returns A new instance of a RSS item file adapter.
      */
     static async create(item: TrackedRSSitem, feed: RSSfeedAdapter): Promise<RSSitemAdapter> {
-        let { id, tags, title, link, description, published, author, image, content } = item;
+        let { id, tags, title, link, description, published, author, image, content, media } = item;
 
         const html = HTMLxlate.instance;
 
@@ -207,7 +207,6 @@ export class RSSitemAdapter extends RSSAdapter {
                 }
             }
         }
-
         if (content) {
             content = html.fragmentAsMarkdown(content);
             if (!image) {
@@ -222,10 +221,27 @@ export class RSSitemAdapter extends RSSAdapter {
             }
         }
 
+        // add other media embeddings to the content
+        if (media) {
+            if (!content) {
+                content = "";
+            }
+            media.forEach(m => {
+                if (m.type === MediumType.Audio) {
+                    // add HTML 5 audio embedding
+                    content += `
+<audio controls>
+   <source src="${m.src}"/>
+</audio>`;
+                }
+            });
+        }
+
         const abstractMaxLength = 800;
         if (!content && description && description.length > abstractMaxLength) {
             content = description
         }
+
 
         if (description) {
             // truncate description

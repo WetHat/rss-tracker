@@ -112,7 +112,7 @@ export class TrackedRSSitem {
     published: string; // publish date
     author?: string; // one or more authors
     image?: IRssMedium; // The items image
-    media: IRssMedium[]; // A list of media associated with the articls
+    media: IRssMedium[]; // A list of media associated with the articles
     content?: string; // Optional item content (in most cases a HTML fragment)
 
     /**
@@ -204,7 +204,8 @@ export class TrackedRSSitem {
  */
 function assembleMedia(elem: TPropertyBag): IRssMedium[] {
 
-    let mediaContent = elem["media:content"],
+    let
+        mediaContent = elem["media:content"] || elem["enclosure"],
         media: IRssMedium[] | null = null;
 
     if (!mediaContent) {
