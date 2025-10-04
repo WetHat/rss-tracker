@@ -90,7 +90,6 @@ interface IEntryDataExtended extends IEntryDataTracked, FeedEntry {
  */
 interface IFeedDataExtra {
     image?: IRssMedium,
-    link?: string;
 }
 /**
  * Specification of a parsed RSS feed including canonical and
@@ -400,11 +399,14 @@ const DEFAULT_OPTIONS: ReaderOptions = {
     },
 
     getExtraFeedFields: (feedData: TPropertyBag) => {
-        let tracked: IFeedDataExtra = {};
+        let tracked: IFeedDataExtended = {};
         const image = assembleImage(feedData);
         if (image) {
             tracked.image = image;
         }
+
+        // try to find the site link. This is part of FeedData interface
+        // but we need to be sure it is passed though in the right way.
         let link = feedData.link;
         if (link) {
             if (Array.isArray(link)) {
@@ -455,7 +457,11 @@ export class TrackedRSSfeed {
         let { link, title, description, image, entries } = feed as IFeedDataExtended;
 
         if (link) {
-            this.site = link.startsWith("/") && options.baseUrl ? options.baseUrl + link : link;
+            if (typeof link === "string") {
+                this.site = options.baseUrl && link.startsWith("/") ? options.baseUrl + link : link;
+            } else {
+                this.site = link["@_href"]
+            }
         }
 
         if (title) {
