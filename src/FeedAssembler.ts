@@ -9,7 +9,7 @@ function toFilename(name: string): string {
     let fname = name;
     if (fname.length > 80) {
         // find a cutting location
-        const cutAt = fname.indexOf(" ",80);
+        const cutAt = fname.indexOf(" ", 80);
         fname = fname
             .substring(0, cutAt > 0 ? cutAt : name.length)
             .trim() + "⋯";
@@ -123,7 +123,7 @@ export class TrackedRSSitem {
         this.id = id;
         this.media = media;
         this.tags = (entry.category ?? [])
-            .map((c: string | object ) => {
+            .map((c: string | object) => {
                 let tag = null;
                 if (typeof c === "string") {
                     tag = c;
@@ -221,14 +221,15 @@ function assembleMedia(elem: TPropertyBag): IRssMedium[] {
     if (mediaContent) {
         media = mediaContent.map((mc: TPropertyBag): IRssMedium => {
             const type: string = mc["@_type"] || mc["@_medium"];
-
             let mediumType = MediumType.Unknown;
-            if (type.includes("image")) {
-                mediumType = MediumType.Image;
-            } else if (type.match(/video|shock/)) {
-                mediumType = MediumType.Video;
-            } else if (type.includes("audio")) {
-                mediumType = MediumType.Audio;
+            if (type) {
+                if (type.includes("image")) {
+                    mediumType = MediumType.Image;
+                } else if (type.match(/video|shock/)) {
+                    mediumType = MediumType.Video;
+                } else if (type.includes("audio")) {
+                    mediumType = MediumType.Audio;
+                }
             }
 
             let medium: IRssMedium = { src: mc["@_url"], type: mediumType };
@@ -326,7 +327,7 @@ function assembleCreator(elem: TPropertyBag): string | null {
         return author;
     }
     if (Array.isArray(author)) {
-        return author.map((a : TPropertyBag) => a.name).join(", ");
+        return author.map((a: TPropertyBag) => a.name).join(", ");
     }
     return author?.name || author;
 }
@@ -382,7 +383,7 @@ const DEFAULT_OPTIONS: ReaderOptions = {
             tracked.image = image;
         }
 
-        let content = item["content:encoded"] || item.content || item["dc:content"] ;
+        let content = item["content:encoded"] || item.content || item["dc:content"];
         if (content) {
             tracked.content = typeof content === "string" ? content : content["#text"];
         }
