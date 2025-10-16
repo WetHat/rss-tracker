@@ -251,7 +251,7 @@ export class RSSitemAdapter extends RSSAdapter {
 
         let milliesSinceEpoc = Date.parse(published);
         if (isNaN(milliesSinceEpoc)) {
-            const germanMatch = /^(\d{1,2})\.(\d{1,2})\.(\d{4})(?:\s+(\d{1,2}):(\d{2}))?$/.exec(published);
+            const germanMatch = /^(\d{1,2})\D(\d{1,2})\D(\d{4})(?:\s+(\d{1,2}):(\d{2}))?$/.exec(published);
             if (germanMatch) {
                 const [, d, m, y, hh, mm] = germanMatch;
                 try {
