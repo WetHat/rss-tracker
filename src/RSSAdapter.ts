@@ -249,6 +249,32 @@ export class RSSitemAdapter extends RSSAdapter {
             description = teaser.replaceAll("\n", "\n> ");
         }
 
+        let milliesSinceEpoc = Date.parse(published);
+        if (isNaN(milliesSinceEpoc)) {
+            const germanMatch = /^(\d{1,2})\.(\d{1,2})\.(\d{4})(?:\s+(\d{1,2}):(\d{2}))?$/.exec(published);
+            if (germanMatch) {
+                const [, d, m, y, hh, mm] = germanMatch;
+                try {
+                    const date = new Date(
+                        Number(y),
+                        Number(m) - 1, // months are 0-based
+                        Number(d),
+                        hh ? Number(hh) : 0,
+                        mm ? Number(mm) : 0
+                    );
+                    milliesSinceEpoc = date.valueOf();
+                } catch {
+                    console.warn(`Failed to parse date '${published}' of item '${title}' in feed '${feed.file.basename}'`);
+                }
+            }
+        }
+        const nowMillies = new Date().valueOf();
+
+        if (isNaN(milliesSinceEpoc)) {
+            milliesSinceEpoc = nowMillies;   // use "now" if we cannot parse the date
+        } else if (milliesSinceEpoc > nowMillies) {
+            milliesSinceEpoc = nowMillies;   // eliminate dates in the future
+        }
         // fill in the template
         const
             itemfolder = await feed.itemFolder(),
@@ -259,7 +285,7 @@ export class RSSitemAdapter extends RSSAdapter {
                 id: id ?? link,
                 author: author ?? "unknown",
                 link: link ?? "unknown",
-                published: published ?? new Date().valueOf(),
+                published: new Date(milliesSinceEpoc),
                 feed: `[[${feed.file.path}|${feed.file.basename}]]`,
                 tags: tags.map(t => tagmgr.mapHashtag(t.startsWith("#") ? t : "#" + t).slice(1)),
                 pinned: false,
