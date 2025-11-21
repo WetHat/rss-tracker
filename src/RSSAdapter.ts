@@ -329,9 +329,7 @@ export class RSScollectionAdapter extends RSSAdapter {
             file = await plugin.filemgr.createUniqueFile(folder, "New Feed Collection", "RSS Collection", data),
             frontmatter: TFrontmatter = {
                 role: "rsscollection",
-                tags: ["nil"],
-                allof: [],
-                noneof: []
+                tags: ["nil"]
             },
             adapter = new RSScollectionAdapter(plugin, file, frontmatter);
 
@@ -375,9 +373,7 @@ export class RSStopicAdapter extends RSSAdapter {
             file = await plugin.filemgr.createUniqueFile(folder, "New Topic", "RSS Topic", data),
             frontmatter: TFrontmatter = {
                 role: "rsstopic",
-                tags: ["nil"],
-                allof: [],
-                noneof: []
+                tags: ["nil"]
             },
             adapter = new RSScollectionAdapter(plugin, file, frontmatter);
 
