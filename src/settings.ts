@@ -392,34 +392,36 @@ views:
     filters:
       and:
         - read == true
+    groupBy:
+      property: feed
+      direction: ASC
     order:
       - read
       - file.name
-      - feed
       - published
     sort:
       - property: published
         direction: DESC
     columnSize:
-      file.name: 404
-      note.feed: 253
+      file.name: 563
       note.published: 158
   - type: table
     name: Pinned Feed Items 📍
     filters:
       and:
         - pinned == true
+    groupBy:
+      property: feed
+      direction: ASC
     order:
       - file.name
-      - feed
       - published
     sort:
       - property: file.mtime
         direction: DESC
     columnSize:
-      file.name: 404
-      note.feed: 253
-      note.published: 178
+      file.name: 645
+      note.published: 202
 ~~~
 `,
 	rssCollectionDashboardTemplate: `---
@@ -496,6 +498,7 @@ filters:
     - role == "rssitem"
     - file != this.file
     - this.tags.filter(file.hasTag(value)).length > 0
+    - '!file.hasTag("Trump", "ElonMusk")'
 properties:
   file.name:
     displayName: Feed Item
@@ -511,23 +514,27 @@ views:
     filters:
       and:
         - pinned == true
+    groupBy:
+      property: feed
+      direction: ASC
     order:
       - file.name
-      - feed
       - published
     sort:
-      - property: published
-        direction: DESC
+      - property: feed
+        direction: ASC
     columnSize:
-      file.name: 573
-      note.feed: 192
+      file.name: 597
       note.published: 154
   - type: table
     name: Similar Feed Items ≈
     filters:
       and:
         - pinned == false
-		- read == false
+        - read == false
+    groupBy:
+      property: feed
+      direction: ASC
     order:
       - read
       - file.name
@@ -536,8 +543,9 @@ views:
       - property: published
         direction: DESC
     columnSize:
-      file.name: 590
-      note.published: 178
+      note.read: 62
+      file.name: 559
+      note.published: 202
 ~~~
 `,
 	rssTopicDashboardTemplate: `---
