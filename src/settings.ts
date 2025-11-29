@@ -102,7 +102,7 @@ export const FACTORY_SETTINGS: IRSSTrackerDefaultTemplates = {
 	rssFeedDashboardTemplate: `---
 role:
 ---
-> [!overview] RSS feed dashboard
+> [!overview]+ RSS feed dashboard
 > {{image}} All your subscribed feeds at a glance.
 
 # Feeds & Status
@@ -163,7 +163,7 @@ read: false
 pinned: false
 ---
 
-> [!outline] {{title}} (by {{author}})
+> [!outline]+ {{title}} (by {{author}})
 > {{image}} {{description}}
 
 🌐 Read article [online]({{link}}).
@@ -208,7 +208,7 @@ collections: []
 headline: A feed about ...
 ---
 
-> [!abstract] {{title}}
+> [!overview]+ {{title}}
 > {{image}} {{description}}
 
 ~~~base
@@ -291,7 +291,7 @@ role:
 headline: A collection of feeds about ...
 ---
 
-> [!overview]
+> [!overview]+
 > {{image}}
 > - [ ] Complete the headline.
 > - [ ] Write a brief overview here
@@ -428,7 +428,7 @@ views:
 role:
 ---
 
-> [!headline] Curated collections of RSS feeds focused on specific topics.
+> [!overview]+ Curated collections of RSS feeds focused on specific topics.
 > {{image}} Each collection is designed to provide a curated blend of authoritative sources, expert insights, and updates within its specific subject area.
 
 # Feed Collections 📚
@@ -486,7 +486,7 @@ role:
 tags: []
 headline: A curated list of RSS items about ...
 ---
-> [!abstract] (headline:: A curated list of RSS items about ...)
+> [!overview]+
 > {{image}}
 > - [ ] Create a headline
 > - [ ] Specify tags in the \`tags\` frontmatter properties.
@@ -552,8 +552,8 @@ views:
 role:
 ---
 
-> [!overview] Curated collections of feed items focused on specific topics.
-> {{image}} Each topic is designed to provide a curated blend of authoritative sources, expert insights, and updates within its specific subject area.
+> [!overview]+ Curated collections of feed items focused on specific topics.
+> {{image}} Each topic is designed to provide a curated blend of reliable sources, expert insights, and updates within its specific subject area.
 
 ~~~base
 filters:
