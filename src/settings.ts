@@ -189,13 +189,14 @@ views:
     name: Equivalent Feed Items (Same Article)
     order:
       - read
+      - pinned
       - formula.item
       - feed
-      - pinned
     columnSize:
-      formula.item: 362
+      note.read: 63
+      note.pinned: 74
+      formula.item: 381
       note.feed: 341
-
 ~~~
 
 - - -
